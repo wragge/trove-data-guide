@@ -2,9 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Trove Data Guide
-author: Tim Sherratt
+author: '<a href="https://timsherratt.org">Tim Sherratt</a>'
 logo: tdg-logo.png
-copyright: "2023"
+copyright: "2023 Australian Research Data Commons"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -38,8 +38,10 @@ html:
     </p>
 sphinx:
   config:
+    recursive_update: true
     #html_theme: sphinx_book_theme
-    html_show_copyright: false
+    #html_theme: pydata_sphinx_theme
+    html_show_copyright: true
     #templates_path:
     #  - _templates
 
