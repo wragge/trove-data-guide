@@ -12,6 +12,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Research pathways
 
 ```{code-cell} ipython3

@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"user_expressions": []}
 
-# What is Trove?
+# Jupyter Book demo page
 
 ```{code-cell} ipython3
 :tags: [remove-cell]
