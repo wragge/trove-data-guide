@@ -37,11 +37,14 @@ html:
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
     </p>
 sphinx:
+  recursive_update: true
   config:
-    recursive_update: true
     #html_theme: sphinx_book_theme
     #html_theme: pydata_sphinx_theme
     html_show_copyright: true
     #templates_path:
     #  - _templates
+    bibtex_default_style: plain
+    bibtex_reference_style: author_year
+    bibtex_foot_reference_style: foot
 

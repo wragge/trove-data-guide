@@ -9,4 +9,8 @@ chapters:
   - file: understanding-search
   - file: accessing-data
   - file: pathways
+  - file: glossary
+  - file: genindex
+  - file: references
+  - file: demo
 
