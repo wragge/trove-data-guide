@@ -391,15 +391,150 @@ Test content only!</p>
 <p class="sidebar-title"></p>
 <div class="note admonition">
 <p class="admonition-title">Did you know?</p>
-<p>As of , there are  digitised newspaper articles in Trove</p>
+<p>As of <span class="pasted-text">31 May 2023</span>, there are <span class="pasted-text">242,209,095</span> digitised newspaper articles in Trove</p>
 </div>
 </aside>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="note admonition">
 <p class="admonition-title">Trove categories</p>
-</div>
+<div class="output text_html">
+<style>
+  #altair-viz-daaa6454e8b54b34ae2ae663d445b0eb.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-daaa6454e8b54b34ae2ae663d445b0eb.vega-embed details,
+  #altair-viz-daaa6454e8b54b34ae2ae663d445b0eb.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-daaa6454e8b54b34ae2ae663d445b0eb"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-daaa6454e8b54b34ae2ae663d445b0eb") {
+      outputDiv = document.getElementById("altair-viz-daaa6454e8b54b34ae2ae663d445b0eb");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-16b012dd1684eb1dab5789677ff1660e"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-16b012dd1684eb1dab5789677ff1660e": [{"name": "Books & Libraries", "total": 26303200}, {"name": "Diaries, Letters & Archives", "total": 4860543}, {"name": "Images, Maps & Artefacts", "total": 5846748}, {"name": "Lists", "total": 108007}, {"name": "Magazines & Newsletters", "total": 1807131}, {"name": "Music, Audio & Video", "total": 3190592}, {"name": "Newspapers & Gazettes", "total": 242209095}, {"name": "People & Organisations", "total": 1321197}, {"name": "Research & Reports", "total": 5416753}]}}, {"mode": "vega-lite"});
+</script></div></div>
 </aside>
+<figure class="align-center" id="fig-cats">
+<span id="index-0"></span><div class="output text_html">
+<style>
+  #altair-viz-180d337fbb7041158182ffab34d61d73.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-180d337fbb7041158182ffab34d61d73.vega-embed details,
+  #altair-viz-180d337fbb7041158182ffab34d61d73.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-180d337fbb7041158182ffab34d61d73"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-180d337fbb7041158182ffab34d61d73") {
+      outputDiv = document.getElementById("altair-viz-180d337fbb7041158182ffab34d61d73");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-16b012dd1684eb1dab5789677ff1660e"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-16b012dd1684eb1dab5789677ff1660e": [{"name": "Books & Libraries", "total": 26303200}, {"name": "Diaries, Letters & Archives", "total": 4860543}, {"name": "Images, Maps & Artefacts", "total": 5846748}, {"name": "Lists", "total": 108007}, {"name": "Magazines & Newsletters", "total": 1807131}, {"name": "Music, Audio & Video", "total": 3190592}, {"name": "Newspapers & Gazettes", "total": 242209095}, {"name": "People & Organisations", "total": 1321197}, {"name": "Research & Reports", "total": 5416753}]}}, {"mode": "vega-lite"});
+</script></div><figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Number of resources per Trove category</span><a class="headerlink" href="#fig-cats" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>an aggregation of collection <a class="reference internal" href="glossary.html#term-Metadata"><span class="xref std std-term">metadata</span></a> from Australian <abbr title="Galleries, Libraries, Archives, and Museums">GLAM</abbr> and research organisations (includes pre-aggregated content through Libraries Australia<a class="footnote-reference brackets" href="#la" id="id2">1</a> as well as individually harvested collections)</p></li>
 <li><p>a repository of digitised content from the NLA and partners, includes:</p>
