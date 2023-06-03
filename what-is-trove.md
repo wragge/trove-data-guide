@@ -87,8 +87,6 @@ glue("categories-chart", chart.properties(width=600, height=250))
 
 +++ {"user_expressions": []}
 
-# Welcome to the Trove Data Guide
-
 - an aggregation of collection {term}`metadata` from Australian {abbr}`GLAM (Galleries, Libraries, Archives, and Museums)` and research organisations (includes pre-aggregated content through Libraries Australia[^LA] as well as individually harvested collections)
 - a repository of digitised content from the NLA and partners, includes:
     - newspapers
