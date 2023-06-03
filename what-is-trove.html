@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">What is Trove?</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="types-of-data.html">Types of data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="understanding-search.html">Understanding search</a></li>
 <li class="toctree-l1"><a class="reference internal" href="accessing-data.html">Accessing data</a></li>
@@ -365,9 +366,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What is Trove?</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-is">Trove is</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-trove-data-guide">Welcome to the Trove Data Guide</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-basic-concepts">Some basic concepts:</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -380,164 +388,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-trove">
 <h1>What is Trove?<a class="headerlink" href="#what-is-trove" title="Permalink to this heading">#</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Under construction
-Test content only!</p>
-</div>
-<p>Trove is not one thing. <span id="id1">[<a class="reference internal" href="references.html#id18" title="Tim Sherratt. Hacking Heritage: Understanding the Limits of Online Access. In H Lewi, W Smith, D von Lehn, and S Cooke, editors, The Routledge International Handbook of New Digital Practices in Galleries, Libraries, Archives, Museums and Heritage Sites, pages 116–130. Routledge, London, 2019. doi:10.5281/zenodo.5035855.">Sherratt, 2019</a>]</span></p>
 <section id="trove-is">
 <h2>Trove is<a class="headerlink" href="#trove-is" title="Permalink to this heading">#</a></h2>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="note admonition">
-<p class="admonition-title">Did you know?</p>
-<p>As of <span class="pasted-text">31 May 2023</span>, there are <span class="pasted-text">242,209,095</span> digitised newspaper articles in Trove</p>
-</div>
-</aside>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="note admonition">
-<p class="admonition-title">Trove categories</p>
-<div class="output text_html">
-<style>
-  #altair-viz-41dd0aac27354237b5040e26f7b2ea97.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-41dd0aac27354237b5040e26f7b2ea97.vega-embed details,
-  #altair-viz-41dd0aac27354237b5040e26f7b2ea97.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-41dd0aac27354237b5040e26f7b2ea97"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-41dd0aac27354237b5040e26f7b2ea97") {
-      outputDiv = document.getElementById("altair-viz-41dd0aac27354237b5040e26f7b2ea97");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-16b012dd1684eb1dab5789677ff1660e"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-16b012dd1684eb1dab5789677ff1660e": [{"name": "Books & Libraries", "total": 26303200}, {"name": "Diaries, Letters & Archives", "total": 4860543}, {"name": "Images, Maps & Artefacts", "total": 5846748}, {"name": "Lists", "total": 108007}, {"name": "Magazines & Newsletters", "total": 1807131}, {"name": "Music, Audio & Video", "total": 3190592}, {"name": "Newspapers & Gazettes", "total": 242209095}, {"name": "People & Organisations", "total": 1321197}, {"name": "Research & Reports", "total": 5416753}]}}, {"mode": "vega-lite"});
-</script></div></div>
-</aside>
-<figure class="align-center" id="fig-cats">
-<span id="index-0"></span><div class="output text_html">
-<style>
-  #altair-viz-245789d9592a485090d0f44d93237579.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-245789d9592a485090d0f44d93237579.vega-embed details,
-  #altair-viz-245789d9592a485090d0f44d93237579.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-245789d9592a485090d0f44d93237579"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-245789d9592a485090d0f44d93237579") {
-      outputDiv = document.getElementById("altair-viz-245789d9592a485090d0f44d93237579");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-16b012dd1684eb1dab5789677ff1660e"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-16b012dd1684eb1dab5789677ff1660e": [{"name": "Books & Libraries", "total": 26303200}, {"name": "Diaries, Letters & Archives", "total": 4860543}, {"name": "Images, Maps & Artefacts", "total": 5846748}, {"name": "Lists", "total": 108007}, {"name": "Magazines & Newsletters", "total": 1807131}, {"name": "Music, Audio & Video", "total": 3190592}, {"name": "Newspapers & Gazettes", "total": 242209095}, {"name": "People & Organisations", "total": 1321197}, {"name": "Research & Reports", "total": 5416753}]}}, {"mode": "vega-lite"});
-</script></div><figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Number of resources per Trove category</span><a class="headerlink" href="#fig-cats" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="welcome-to-the-trove-data-guide">
+<h1>Welcome to the Trove Data Guide<a class="headerlink" href="#welcome-to-the-trove-data-guide" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
-<li><p>an aggregation of collection <a class="reference internal" href="glossary.html#term-Metadata"><span class="xref std std-term">metadata</span></a> from Australian <abbr title="Galleries, Libraries, Archives, and Museums">GLAM</abbr> and research organisations (includes pre-aggregated content through Libraries Australia<a class="footnote-reference brackets" href="#la" id="id2">1</a> as well as individually harvested collections)</p></li>
+<li><p>an aggregation of collection <a class="reference internal" href="glossary.html#term-Metadata"><span class="xref std std-term">metadata</span></a> from Australian <abbr title="Galleries, Libraries, Archives, and Museums">GLAM</abbr> and research organisations (includes pre-aggregated content through Libraries Australia<a class="footnote-reference brackets" href="#la" id="id1">1</a> as well as individually harvested collections)</p></li>
 <li><p>a repository of digitised content from the NLA and partners, includes:</p>
 <ul>
 <li><p>newspapers</p></li>
@@ -554,7 +412,6 @@ Test content only!</p>
 <li><p>a platform for user engagement via tags, comments, lists, and OCR corrections</p></li>
 <li><p>a series of APIs for delivering machine-actionable data</p></li>
 </ul>
-</section>
 <section id="some-basic-concepts">
 <h2>Some basic concepts:<a class="headerlink" href="#some-basic-concepts" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -565,7 +422,7 @@ Test content only!</p>
 </ul>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="la"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dt class="label" id="la"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Is Libraries Australia even a thing any more or has it been rolled into Trove?</p>
 </dd>
 </dl>
@@ -639,9 +496,16 @@ Test content only!</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What is Trove?</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-is">Trove is</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-the-trove-data-guide">Welcome to the Trove Data Guide</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-basic-concepts">Some basic concepts:</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

@@ -83,53 +83,11 @@ glue("categories-chart", chart.properties(width=600, height=250))
 
 +++ {"user_expressions": []}
 
-```{warning} Under construction
-Test content only!
-```
-
-+++ {"user_expressions": []}
-
-Trove is not one thing. {cite:p}`sherrattHackingHeritageUnderstanding2019`
-
-
-+++ {"user_expressions": []}
-
 ## Trove is
 
 +++ {"user_expressions": []}
 
-````{margin}
-
-```{admonition} Did you know?
-:class: note
-As of {glue:text}`today`, there are {glue:text}`total_newspapers:,` digitised newspaper articles in Trove
-```
-````
-
-+++ {"user_expressions": []}
-
-`````{margin}
-
-````{admonition} Trove categories
-:class: note
-```{glue:} categories-chart-narrow
-```
-````
-`````
-
-+++ {"user_expressions": []}
-
-```{index} categories
-```
-
-```{glue:figure} categories-chart
-:name: "fig-cats"
-:align: center
-
-Number of resources per Trove category
-```
-
-+++ {"user_expressions": []}
+# Welcome to the Trove Data Guide
 
 - an aggregation of collection {term}`metadata` from Australian {abbr}`GLAM (Galleries, Libraries, Archives, and Museums)` and research organisations (includes pre-aggregated content through Libraries Australia[^LA] as well as individually harvested collections)
 - a repository of digitised content from the NLA and partners, includes:
