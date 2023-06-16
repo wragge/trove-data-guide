@@ -3,12 +3,19 @@
 
 format: jb-book
 root: intro
+options:
+  numbered: true
+  maxdepth: 1
 chapters:
+  - file: introduction
   - file: what-is-trove
   - file: types-of-data
   - file: understanding-search
   - file: accessing-data
   - file: pathways
+  - file: how-to
+    sections:
+      - file: how-to/querypic
   - file: glossary
   - file: genindex
   - file: references
