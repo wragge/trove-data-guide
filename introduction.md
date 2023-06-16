@@ -18,7 +18,7 @@ kernelspec:
 
 We all know how to use [Trove](https://trove.nla.gov.au/). You just type your search terms into the box and click the button. You then work your way through the first few pages of results, saving anything that looks useful. If, for example, I’m interested in the development of radio in Australia, I could search for the term ‘radio’ in Trove’s digitised newspapers. It’s easy! 
 
-```{figure} ./images/trove-search-screenshot.png
+```{figure} ./images/trove-search-screenshot-arrow.png
 ---
 name: trove-search-screenshot
 width: 80%
