@@ -23,7 +23,7 @@ We all know how to use [Trove](https://trove.nla.gov.au/). You just type your se
 name: trove-search-screenshot
 width: 80%
 ---
-Screenshot of Trove search results for the term 'radio'
+Screenshot of Trove search for the term 'radio' – 3,661,933 results!
 ```
 
 But have you ever wondered about the *other three million results*? The scale of Trove challenges our ability to understand. What does it mean when our search returns millions of possible matches? What does it tell us? What are we missing?
