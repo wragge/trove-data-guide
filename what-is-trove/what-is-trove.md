@@ -16,7 +16,7 @@ kernelspec:
 
 # What is Trove?
 
-```{note}
+```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
 ```
 
@@ -85,35 +85,5 @@ glue("categories-chart-narrow", chart.properties(width=150, height=250))
 glue("categories-chart", chart.properties(width=600, height=250))
 ```
 
-+++ {"user_expressions": []}
-
-## Trove is
-
-+++ {"user_expressions": []}
-
-- an aggregation of collection {term}`metadata` from Australian {abbr}`GLAM (Galleries, Libraries, Archives, and Museums)` and research organisations (includes pre-aggregated content through Libraries Australia[^LA] as well as individually harvested collections)
-- a repository of digitised content from the NLA and partners, includes:
-    - newspapers
-    - journals and magazines
-    - books
-    - ephemera
-    - photographs
-    - maps
-    - manuscripts
-- an archive of Australian web content from 1996 onwards
-- born-digital publications submitted via the electronic legal deposit scheme (access may be restricted)
-- a platform for user engagement via tags, comments, lists, and OCR corrections
-- a series of APIs for delivering machine-actionable data
-
-+++ {"user_expressions": []}
-
-## Some basic concepts:
-
-- metadata vs digital objects
-- works and versions
-- categories and zones
-- NLA identifiers
-
-+++ {"user_expressions": []}
-
-[^LA]: Is Libraries Australia even a thing any more or has it been rolled into Trove?
+```{tableofcontents}
+```

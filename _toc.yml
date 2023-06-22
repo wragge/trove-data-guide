@@ -8,7 +8,13 @@ options:
   maxdepth: 1
 chapters:
   - file: introduction
-  - file: what-is-trove
+  - file: what-is-trove/what-is-trove
+    sections:
+      - file: what-is-trove/trove-is
+      - file: what-is-trove/categories-and-zones
+      - file: what-is-trove/metadata-and-digital-objects
+      - file: what-is-trove/works-and-versions
+      - file: what-is-trove/links-and-identifiers
   - file: types-of-data
   - file: understanding-search
   - file: accessing-data
