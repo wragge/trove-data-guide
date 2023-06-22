@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'introduction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. What is Trove?" href="what-is-trove.html" />
+    <link rel="next" title="2. What is Trove?" href="what-is-trove/what-is-trove.html" />
     <link rel="prev" title="Welcome to the Trove Data Guide" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -164,12 +164,19 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="what-is-trove.html">2. What is Trove?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="what-is-trove/what-is-trove.html">2. What is Trove?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="what-is-trove/trove-is.html">2.1. Trove is…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-trove/categories-and-zones.html">2.2. Categories and zones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-trove/metadata-and-digital-objects.html">2.3. Metadata and digital objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-trove/works-and-versions.html">2.4. Works and versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-trove/links-and-identifiers.html">2.5. Links and identifiers</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="types-of-data.html">3. Types of data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="understanding-search.html">4. Understanding search</a></li>
 <li class="toctree-l1"><a class="reference internal" href="accessing-data.html">5. Accessing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pathways.html">6. Research pathways</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="how-to.html">7. How to</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="how-to.html">7. How to</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="how-to/querypic.html">7.1. Visualising newspaper searches with QueryPic</a></li>
 </ul>
 </li>
@@ -374,8 +381,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
 <p>We all know how to use <a class="reference external" href="https://trove.nla.gov.au/">Trove</a>. You just type your search terms into the box and click the button. You then work your way through the first few pages of results, saving anything that looks useful. If, for example, I’m interested in the development of radio in Australia, I could search for the term ‘radio’ in Trove’s digitised newspapers. It’s easy!</p>
@@ -410,7 +417,7 @@ document.write(`
 <p>By accessing Trove’s search data directly, we can start to grapple with the challenges of scale. We can examine those millions of results from a range of perspectives, looking for patterns and anomalies. We can see them differently.</p>
 <p>But that’s just the beginning. If the resources we’re interested in are digitised, we can often access their <em>contents</em> as data – such as the text of a book, or a digital image of a photograph. We can use computational methods to analyse and compare these resources, looking in depth at their structure and form.</p>
 <p>Search results and digitised content are two types of data available from Trove, but there are more. This Guide describes <a class="reference internal" href="types-of-data.html"><span class="doc std std-doc">the different types of data</span></a> Trove provides, explains <a class="reference internal" href="accessing-data.html"><span class="doc std std-doc">how to access them</span></a>, and gives <a class="reference internal" href="pathways.html"><span class="doc std std-doc">some examples</span></a> of what you can do with this data. What new types of questions can we ask?</p>
-<p>But there are new dangers and challenges too. If we look again at the charts created by QueryPic, we might wonder what the peaks and troughs actually mean. How are the results influenced by the number of newspapers published or digitised? If we’re going to use Trove as a source of research data, we need to ask critical questions about where that data comes from, what it represents, and what it is missing. That’s why this Guide starts by examining <a class="reference internal" href="what-is-trove.html"><span class="doc std std-doc">the nature of Trove itself</span></a>. As researchers we should always seek to understand the context of our sources, whether a single handwritten letter, or a massive digital collection.</p>
+<p>But there are new dangers and challenges too. If we look again at the charts created by QueryPic, we might wonder what the peaks and troughs actually mean. How are the results influenced by the number of newspapers published or digitised? If we’re going to use Trove as a source of research data, we need to ask critical questions about where that data comes from, what it represents, and what it is missing. That’s why this Guide starts by examining <span class="xref myst">the nature of Trove itself</span>. As researchers we should always seek to understand the context of our sources, whether a single handwritten letter, or a massive digital collection.</p>
 <p>==Something about skills?==</p>
 </section>
 
@@ -455,7 +462,7 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="what-is-trove.html"
+       href="what-is-trove/what-is-trove.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
