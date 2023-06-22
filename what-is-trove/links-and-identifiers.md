@@ -12,13 +12,14 @@ kernelspec:
   name: python3
 ---
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"user_expressions": []}
 
-# Research pathways
+# Links and identifiers
 
 ```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
 ```
+
 
 ```{code-cell} ipython3
 
