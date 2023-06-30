@@ -173,10 +173,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="types-of-data.html">3. Types of data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="understanding-search.html">4. Understanding search</a></li>
-<li class="toctree-l1"><a class="reference internal" href="accessing-data.html">5. Accessing data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="accessing-data/accessing-data.html">5. Accessing data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="accessing-data/newspapers-and-gazettes.html">5.1. Newspapers and gazettes</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pathways.html">6. Research pathways</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="how-to.html">7. How to</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="how-to.html">7. How to</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="how-to/querypic.html">7.1. Visualising newspaper searches with QueryPic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/total-number-of-newspapers.html">7.2. Get the total number of newspapers and gazettes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">8. Glossary</a></li>
@@ -403,7 +407,7 @@ Test content only!</p>
 <p class="sidebar-title"></p>
 <div class="note admonition">
 <p class="admonition-title">Did you know?</p>
-<p>As of <span class="pasted-text">22 Jun 2023</span>, there are <span class="pasted-text">242,882,331</span> digitised newspaper articles in Trove</p>
+<p>As of <span class="pasted-text">30 Jun 2023</span>, there are <span class="pasted-text">243,105,342</span> digitised newspaper articles in Trove</p>
 </div>
 </aside>
 <aside class="margin sidebar">
@@ -412,23 +416,23 @@ Test content only!</p>
 <p class="admonition-title">Trove categories</p>
 <div class="output text_html">
 <style>
-  #altair-viz-dbee7a12552c4f4f87151eeb8205d851.vega-embed {
+  #altair-viz-9abf8724b8484e6899ed80a962c038a5.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-dbee7a12552c4f4f87151eeb8205d851.vega-embed details,
-  #altair-viz-dbee7a12552c4f4f87151eeb8205d851.vega-embed details summary {
+  #altair-viz-9abf8724b8484e6899ed80a962c038a5.vega-embed details,
+  #altair-viz-9abf8724b8484e6899ed80a962c038a5.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-dbee7a12552c4f4f87151eeb8205d851"></div>
+<div id="altair-viz-9abf8724b8484e6899ed80a962c038a5"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-dbee7a12552c4f4f87151eeb8205d851") {
-      outputDiv = document.getElementById("altair-viz-dbee7a12552c4f4f87151eeb8205d851");
+    if (outputDiv.id !== "altair-viz-9abf8724b8484e6899ed80a962c038a5") {
+      outputDiv = document.getElementById("altair-viz-9abf8724b8484e6899ed80a962c038a5");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -474,29 +478,29 @@ Test content only!</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-ade0ac9abe5cef4300a312737e9f41df"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-ade0ac9abe5cef4300a312737e9f41df": [{"name": "Books & Libraries", "total": 26334044}, {"name": "Diaries, Letters & Archives", "total": 4864850}, {"name": "Images, Maps & Artefacts", "total": 5873826}, {"name": "Lists", "total": 108295}, {"name": "Magazines & Newsletters", "total": 1807153}, {"name": "Music, Audio & Video", "total": 3194067}, {"name": "Newspapers & Gazettes", "total": 242882331}, {"name": "People & Organisations", "total": 1321577}, {"name": "Research & Reports", "total": 5441763}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-9192602e71d82d88241aed28838b4cde"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-9192602e71d82d88241aed28838b4cde": [{"name": "Books & Libraries", "total": 26381905}, {"name": "Diaries, Letters & Archives", "total": 4898456}, {"name": "Images, Maps & Artefacts", "total": 5879533}, {"name": "Lists", "total": 108414}, {"name": "Magazines & Newsletters", "total": 1807151}, {"name": "Music, Audio & Video", "total": 3232736}, {"name": "Newspapers & Gazettes", "total": 243105342}, {"name": "People & Organisations", "total": 1321728}, {"name": "Research & Reports", "total": 5400703}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </aside>
 <figure class="align-center" id="fig-cats">
 <span id="index-0"></span><div class="output text_html">
 <style>
-  #altair-viz-8479bd56fbc540cca091dd6ee2b6f039.vega-embed {
+  #altair-viz-39bc58755f764fc2a81fa9740c145deb.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-8479bd56fbc540cca091dd6ee2b6f039.vega-embed details,
-  #altair-viz-8479bd56fbc540cca091dd6ee2b6f039.vega-embed details summary {
+  #altair-viz-39bc58755f764fc2a81fa9740c145deb.vega-embed details,
+  #altair-viz-39bc58755f764fc2a81fa9740c145deb.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-8479bd56fbc540cca091dd6ee2b6f039"></div>
+<div id="altair-viz-39bc58755f764fc2a81fa9740c145deb"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-8479bd56fbc540cca091dd6ee2b6f039") {
-      outputDiv = document.getElementById("altair-viz-8479bd56fbc540cca091dd6ee2b6f039");
+    if (outputDiv.id !== "altair-viz-39bc58755f764fc2a81fa9740c145deb") {
+      outputDiv = document.getElementById("altair-viz-39bc58755f764fc2a81fa9740c145deb");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -542,7 +546,7 @@ Test content only!</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-ade0ac9abe5cef4300a312737e9f41df"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-ade0ac9abe5cef4300a312737e9f41df": [{"name": "Books & Libraries", "total": 26334044}, {"name": "Diaries, Letters & Archives", "total": 4864850}, {"name": "Images, Maps & Artefacts", "total": 5873826}, {"name": "Lists", "total": 108295}, {"name": "Magazines & Newsletters", "total": 1807153}, {"name": "Music, Audio & Video", "total": 3194067}, {"name": "Newspapers & Gazettes", "total": 242882331}, {"name": "People & Organisations", "total": 1321577}, {"name": "Research & Reports", "total": 5441763}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-9192602e71d82d88241aed28838b4cde"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-9192602e71d82d88241aed28838b4cde": [{"name": "Books & Libraries", "total": 26381905}, {"name": "Diaries, Letters & Archives", "total": 4898456}, {"name": "Images, Maps & Artefacts", "total": 5879533}, {"name": "Lists", "total": 108414}, {"name": "Magazines & Newsletters", "total": 1807151}, {"name": "Music, Audio & Video", "total": 3232736}, {"name": "Newspapers & Gazettes", "total": 243105342}, {"name": "People & Organisations", "total": 1321728}, {"name": "Research & Reports", "total": 5400703}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
 <p><span class="caption-number">Fig. 11.1 </span><span class="caption-text">Number of resources per Trove category</span><a class="headerlink" href="#fig-cats" title="Permalink to this image">#</a></p>
 </figcaption>
