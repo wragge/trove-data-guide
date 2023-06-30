@@ -5,14 +5,14 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.5
+    jupytext_version: 1.14.6
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-+++ {"user_expressions": []}
++++ {"user_expressions": [], "editable": true, "slideshow": {"slide_type": ""}}
 
 # Introduction
 
@@ -67,5 +67,3 @@ Search results and digitised content are two types of data available from Trove,
 But there are new dangers and challenges too. If we look again at the charts created by QueryPic, we might wonder what the peaks and troughs actually mean. How are the results influenced by the number of newspapers published or digitised? If we’re going to use Trove as a source of research data, we need to ask critical questions about where that data comes from, what it represents, and what it is missing. That’s why this Guide starts by examining [the nature of Trove itself](what-is-trove). As researchers we should always seek to understand the context of our sources, whether a single handwritten letter, or a massive digital collection. 
 
 ==Something about skills?==
-
-
