@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.5
+    jupytext_version: 1.14.6
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -21,8 +21,12 @@ This guide is currently under development. For more information and discussion s
 ```
 
 ```{code-cell} ipython3
-:tags: [remove-cell]
-
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
 import datetime
 import os
 
@@ -39,8 +43,12 @@ TROVE_API_KEY = os.getenv("TROVE_API_KEY")
 ```
 
 ```{code-cell} ipython3
-:tags: [remove-cell]
-
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
 params = {"category": "newspaper", "n": 0}
 
 headers = {"X-API-KEY": TROVE_API_KEY, "Accept": "application/json"}
@@ -69,8 +77,12 @@ for category in data["category"]:
 ```
 
 ```{code-cell} ipython3
-:tags: [remove-cell]
-
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
 df = pd.DataFrame(categories)
 chart = (
     alt.Chart(df)
@@ -84,6 +96,8 @@ chart = (
 glue("categories-chart-narrow", chart.properties(width=150, height=250))
 glue("categories-chart", chart.properties(width=600, height=250))
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{tableofcontents}
 ```

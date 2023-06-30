@@ -1,5 +1,5 @@
 jupyter-book
-jupyterlab<4.0
+jupyterlab
 jupytext
 jupyterlab_myst
 jupyterlab-code-formatter
