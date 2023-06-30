@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 options:
-  numbered: true
+  numbered: 2
   maxdepth: 1
 chapters:
   - file: introduction
@@ -17,11 +17,14 @@ chapters:
       - file: what-is-trove/links-and-identifiers
   - file: types-of-data
   - file: understanding-search
-  - file: accessing-data
+  - file: accessing-data/accessing-data
+    sections:
+      - file: accessing-data/newspapers-and-gazettes
   - file: pathways
   - file: how-to
     sections:
       - file: how-to/querypic
+      - file: how-to/total-number-of-newspapers
   - file: glossary
   - file: genindex
   - file: references
