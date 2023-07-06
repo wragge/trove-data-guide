@@ -20,6 +20,8 @@ kernelspec:
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
 ```
 
+<mark>==Note here about the structure of digitised newspapers -- titles, issues, pages, and articles. With articles the main entry point.==</mark>
+
 ```{code-cell} ipython3
 ---
 editable: true
@@ -34,6 +36,7 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 from myst_nb import glue
+from IPython.display import HTML
 
 load_dotenv()
 YOUR_API_KEY = os.getenv("TROVE_API_KEY")
@@ -43,13 +46,13 @@ YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 
 ##  Getting metadata
 
-### Titles
+### Newspaper & gazette titles
 
 'Titles' in this context refers to the names of the publications whose articles are digitised in Trove. For example: *Canberra Times*, *Sydney Morning Herald*, or *Commonwealth of Australia Gazette*.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-#### Get a list of titles
+#### Get a list of newspaper & gazette titles
 
 You can get information about newspaper and gazette titles in Trove from these API endpoints:
 
@@ -97,7 +100,7 @@ The `newspaper/titles` endpoint currently returns all the gazette titles as well
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-#### How many titles are there?
+#### How many newspaper titles are there?
 
 The responses you get back from the `newspaper/titles` or `gazette/titles` endpoints includes a `total` value that tells you the number of titles matching your request. Reusing the data from the request above, we can get the total number of newspaper titles like this:
 
@@ -112,14 +115,13 @@ data["total"]
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-However, as noted above, the `newspaper/titles` endpoint currently includes gazette titles as well. So to find the number of **newspapers** you'd need to subtract the number of **gazettes** from the total supplied by the `newspaper/titles` endpoint. Here's a [complete example](../how-to/total-number-of-newspapers).
+However, as noted above, the `newspaper/titles` endpoint currently includes gazette titles as well. So to find the number of **newspapers** you'd need to subtract the number of **gazettes** from the total supplied by the `newspaper/titles` endpoint. Here's a [complete example](../how-to/newspaper-titles-totals).
 
 ```{code-cell} ipython3
 ---
 editable: true
 slideshow:
   slide_type: ''
-tags: [remove-cell]
 ---
 newspapers_df = pd.DataFrame(newspapers)
 chart = (
@@ -137,7 +139,7 @@ glue("titles-by-state-chart", chart)
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-#### Get a list of titles from a particular state
+#### Get a list of newspaper titles from a particular state
 
 `````{margin}
 ````{admonition} Newspapers by state
@@ -187,16 +189,20 @@ newspapers[0]
 ```{warning}
 The `state` value of some titles is 'International', but the API won't accept 'international' as a value for the `state` parameter – adding `&state=international` to a request results in a nasty `400` error.
 
-To get a list of just the international titles, you'd need to get the full list and then filter the results based on the `state` field. [Here's an example](how-to/international-newspaper-titles).
+To get a list of just the international titles, you'd need to get the full list and then filter the results based on the `state` field. [Here's an example](../how-to/international-newspaper-titles).
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-#### Get details of a single title
+#### Get details of a single newspaper or gazette title
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-To retrieve information about an individual title, use the `newspaper/title` or `gazette/title` endpoints with a title identifier. You can find a title's identifier in the Trove web interface. Go to the [Digitised Newspapers and Gazettes in Trove](https://trove.nla.gov.au/newspaper/about) and select a title to view more information about it. The title's `id` is the number at the end of the url of the information page. For example, the [page about the Canberra Times](https://trove.nla.gov.au/newspaper/title/11) has the url `https://trove.nla.gov.au/newspaper/title/11`, so the title's `id` is `11`.
+To retrieve information about an individual title, use the `newspaper/title` or `gazette/title` endpoints with a title identifier.
+
+You can find a title's identifier in the Trove web interface. Go to the [Digitised Newspapers and Gazettes in Trove](https://trove.nla.gov.au/newspaper/about) and select a title to view more information about it. The title's `id` is the number at the end of the url of the information page. For example, the [page about the Canberra Times](https://trove.nla.gov.au/newspaper/title/11) has the url `https://trove.nla.gov.au/newspaper/title/11`, so the title's `id` is `11`.
+
+If you're working with article records from the API, you can find the title identifier in the `title["id"]` field.
 
 ```{code-cell} ipython3
 ---
@@ -312,7 +318,7 @@ issues[0:5]
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{note}
-You might be wondering where an issue's `url` actually goes to, as there's no issue landing page in Trove. If you try clicking on one of the links, you'll notice that you're redirected from the issue url to a url that points to the first page of that issue. This provides a useful shortcut if you want to assemble a collection of front pages (see below for details).
+You might be wondering where an issue's `url` actually goes to, as there's no issue landing page in Trove. If you try clicking on one of the links, you'll notice that you're redirected from the issue url to a url that points to the first page of that issue. This provides a useful shortcut if you want to assemble a collection of front pages ([see below for details](get-a-list-of-front-page-urls)).
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
@@ -321,6 +327,7 @@ You might be wondering where an issue's `url` actually goes to, as there's no is
 
 There is no direct method for requesting metadata about a newspaper page in Trove. You can, however, get some information about pages from issues and articles.
 
+(get-a-list-of-front-page-urls)=
 #### Get a list of front page urls
 
 As described above, you can get information about individual issues from the `newspaper/title` and `gazette/title` endpoints. The issue data includes a `date` and a `url`. If you request the url you are redirected to the first page of that issue. Therefore, by working through each issue, it's possible to get a list of all of the front page urls for a particular newspaper. Here's an example:
@@ -345,7 +352,7 @@ for issue in issues[:5]:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-The number at the end of the page url uniquely identifies that page. It can be used to download an image of the page (see below). While this method is a bit inefficient, forcing us to fire off a request for every issue, it does enable us to link three important pieces of page metadata – the date, the page number, and the page identifier.
+The number at the end of the page url uniquely identifies that page. It can be used to download an image of the page ([see below](download-a-page-image)). While this method is a bit inefficient, forcing us to fire off a request for every issue, it does enable us to link three important pieces of page metadata – the date, the page number, and the page identifier.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -381,7 +388,7 @@ So, in summary, if we wanted the identifier of page 3 of the *Canberra Times* fr
 
 More detail about using the `/result` endpoint to get information about articles is included below.
 
-The article metadata returned by this search will include a value for `trovePageUrl`, for example: `https://nla.gov.au/nla.news-page682904`. You could use this identifier to retrieve an image of the page using the method described below. Here's a full example:
+The article metadata returned by this search will include a value for `trovePageUrl`, for example: `https://nla.gov.au/nla.news-page682904`. You could use this identifier to retrieve an image of the page using the [method described below](download-a-page-image). Here's a full example:
 
 ```{code-cell} ipython3
 ---
@@ -413,22 +420,136 @@ page_identifier
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-### Articles
+### Newspaper & gazette articles
 
-Bulk export
-
-Trove Newspaper Harvester
+Newspaper and gazette article metadata includes basic information such as the article heading, publication date, publication title, and page number. Additional information such as attached tags or comments can be also be retrieved from the API. 
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Text
+#### Save article metadata from the web interface
 
-### articles
+Before you dive straight into to the API documentation, there are ways of getting article metadata from the Trove web interface. Each method has its own limitations, but depending on your needs they might do the job.
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+##### Saving article metadata with Zotero
+
+````{margin}
+```{seealso}
+The GLAM Workbench notebook [Upload Trove newspaper articles to Omeka-S](https://glam-workbench.net/trove-newspapers/#upload-trove-newspaper-articles-to-omeka-s) provides an example of how you can access newspaper article metadata saved with Zotero, or in a Trove list, add additional information, and upload the results to an Omeka exhibition.
+```
+````
+
+[Zotero](https://www.zotero.org/) includes a 'translator' for Trove that saves article metadata into your own research database. It also downloads a PDF copy of the article, and saves the OCRd text into an attached note. You can [add items](https://www.zotero.org/support/adding_items_to_zotero) by clicking on the Zotero icon in your web browser.
+
+<mark>==Note that it's not possible to add multiple items after Trove 2020 changes==</mark>
+
+The translator extracts metadata from the article web page, rather than the Trove API. It saves the following fields:
+
+```{list-table} Newspaper and gazette metadata fields extracted by Zotero
+:header-rows: 1
+:name: zotero-fields
+* - Zotero UI
+  - Zotero field
+  - Value
+* - Item Type
+  - `type`
+  - `newspaperArticle`
+* - Title
+  - `title`
+  - article heading
+* - Publication
+  - `publicationTitle`
+  - newspaper title (location and date range in brackets is removed)
+* - Date
+  - `date`
+  - publication date
+* - Place
+  - `place`
+  - publication state (extracted from newspaper title)
+* - Abstract
+  - `abstract`
+  - first four lines of text, if available (taken from `description` META tag)
+* - URL
+  - `url`
+  - `http://nla.gov.au/nla.news-article[article ID]`
+```
+
+Zotero provides many ways to export data. So once you've assembled a collection of articles you could export them in a suitable format for additional processing or analysis. Alternatively, you can use the Zotero API to access and manipulate the saved data.
+
+<mark>==Note about annotating PDFs==</mark>
+
+<mark>==Describe a possible workflow? Eg curation, collaboration, annotation, access via API, further processing etc. A pathway?==</mark>
+
+Zotero is a convenient option for creating curated datasets of digitised newspaper articles. Zotero's built-in annotation features enable you to tags and notes to further organise your collection. You can also collaborate on the selection and annotation of articles using shared groups.
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+##### Trove Lists
+
+Another option for creating collections of manually selected newspaper article metadata is Trove's built-in Lists function. 
+
+<mark>==Note about adding mutliple items to Lists. Hacking the url to get more==</mark>
+
+List data can be:
+
+- downloaded from the web interface (though fields are limited)
+- accessed through the API
+
+<mark>==Link to Lists section in Accessing Data==</mark>
+
+<mark>==Link toGW notebook to convert lists to CSV==</mark>
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+##### Bulk export
+
+<mark>==Include more info once official documentation is available==</mark>
+
+<mark>==Note that there are some differences in fields from the API==</mark>
+
+- metadata only, 1 million article limit
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+#### Get metadata from a search for articles using the API
+
+<mark>==Link to full record structure?==</mark>
+
+You can search for newspaper and gazette articles using the Trove API's `/result` endpoint 
+
+<mark>==Links to Understanding Search chapter? Where will the general guide to API searching go?==</mark>
+
+#### Trove Newspaper Harvester
+
+<mark>==Where should this go?==</mark>
+
+- metadata, text, images, PDFs
+- no limit
+- metadata file captures query details
+
+<mark>==Trove Query Parser to translate web interface searches to API==</mark>
+
+#### Get metadata for an individual article
+
+#### Scraping positional information from page
+
+- article boundaries
+- lines
+- words (using highlighted search terms)
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Getting text
+
+Newspaper text is segmented by article. The text is generated by OCR, with manual corrections by volunteers.
+
+### Articles
 
 `include=articletext`
 
 Note: includes html
-Note: not the AWW
+Note: not the AWW (have to scrape)
 
 Trove Newspaper Harvester (including AWW)
 
@@ -436,15 +557,39 @@ Trove Newspaper Harvester (including AWW)
 
 aggregated articles
 
+Trove Newspaper harvester file titles -- how to reaggregate
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Images
+## Getting images and PDFs
 
 Getting images from newspapers and gazettes is not straightforward, but there are a number of workarounds and hacks you can use.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+### Issues
+
+### Get an issue as a PDF
+
+````{margin}
+```{seealso}
+To download all the issues of a newspaper within a specified date range as PDFs see the GLAM Workbench notebook [Harvest the issues of a newspaper as PDFs](https://glam-workbench.net/trove-newspapers/#harvest-the-issues-of-a-newspaper-as-pdfs).
+```
+````
+
+You can download a newspaper or gazette issue as a PDF from the web interface.
+
+- click on the **Download** tab
+- select 'Issue' from the dropdown list
+- when PDF generation is complete, click on the **View PDF** button
+
+Downloading issue PDFs automatically using code is a bit more complicated. There are three steps:
+
+- ask for a PDF to be generated for a particular issue ID
+- ping Trove at regular intervals to check whether the PDF is ready
+- once the PDF is ready, download it
+
+See [How to get a newspaper issue or article as a PDF](../how-to/get-newspaper-issue-article-pdfs) for a full example.
 
 ### Pages
 
@@ -454,6 +599,7 @@ If you want to quickly get a page image from an article url, try the GLAM Workbe
 ```
 ````
 
+(download-a-page-image)=
 #### Download a page image
 
 Once you know the secret formula, getting page images is easy. You can download a page image using a url like this:
@@ -479,11 +625,13 @@ But where do you get the page identifiers from?
 
 Perhaps you want to download all the front pages of a particular newspaper, or the front page of all newspapers on a particular date. Use one of the methods described above to get a list of page urls. Then loop through the list, extracting the page id, and constructing the image download url for each page. The GLAM Workbench provides an example of this in the [Harvest Australian Women's Weekly covers (or the front pages of any newspaper)](https://glam-workbench.net/trove-newspapers/#harvest-australian-womens-weekly-covers-or-the-front-pages-of-any-newspaper) notebook.
 
+#### Page as PDF
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ### Articles
 
-
+PDF proxy
 
 ### issues
 
