@@ -22,9 +22,11 @@ parse:
     - smartquotes
     - substitution
     - tasklist
+    - fieldlist
+    - attrs_block
   myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
-
+  myst_heading_anchors: 5
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
@@ -55,8 +57,11 @@ html:
     <p>
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
     </p>
+
 sphinx:
   recursive_update: true
+  extra_extensions:
+    - sphinx_tippy
   config:
     #html_theme: sphinx_book_theme
     #html_theme: pydata_sphinx_theme
@@ -66,4 +71,6 @@ sphinx:
     bibtex_default_style: plain
     bibtex_reference_style: author_year
     bibtex_foot_reference_style: foot
+    tippy_skip_anchor_classes: ["headerlink", "sd-stretched-link", "sd-rounded-pill"]
+    tippy_anchor_parent_selector: "article.bd-article"
 

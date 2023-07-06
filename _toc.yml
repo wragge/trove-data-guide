@@ -24,7 +24,9 @@ chapters:
   - file: how-to
     sections:
       - file: how-to/querypic
-      - file: how-to/total-number-of-newspapers
+      - file: how-to/newspaper-titles-totals
+      - file: how-to/get-newspaper-issue-article-pdfs
+      - file: how-to/international-newspaper-titles
   - file: glossary
   - file: genindex
   - file: references
