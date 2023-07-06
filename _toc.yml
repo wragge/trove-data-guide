@@ -2,12 +2,12 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: home
 options:
   numbered: 2
   maxdepth: 1
 chapters:
-  - file: introduction
+  - file: introduction/introduction
   - file: what-is-trove/what-is-trove
     sections:
       - file: what-is-trove/trove-is
@@ -15,13 +15,13 @@ chapters:
       - file: what-is-trove/metadata-and-digital-objects
       - file: what-is-trove/works-and-versions
       - file: what-is-trove/links-and-identifiers
-  - file: types-of-data
-  - file: understanding-search
+  - file: types-of-data/types-of-data
+  - file: understanding-search/understanding-search
   - file: accessing-data/accessing-data
     sections:
       - file: accessing-data/newspapers-and-gazettes
-  - file: pathways
-  - file: how-to
+  - file: pathways/pathways
+  - file: how-to/how-to
     sections:
       - file: how-to/querypic
       - file: how-to/newspaper-titles-totals
