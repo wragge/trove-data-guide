@@ -7,9 +7,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>7.2. Get the total number of newspapers and gazettes &#8212; Trove Data Guide</title>
+    <title>7.3. Get a newspaper issue or article as a PDF &#8212; Trove Data Guide</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -61,11 +62,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/total-number-of-newspapers';</script>
+    <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/how-to/get-newspaper-issue-article-pdfs.8b529988-e2e0-42da-bdfc-aaa4005b62ec.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/get-newspaper-issue-article-pdfs';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Glossary" href="../glossary.html" />
-    <link rel="prev" title="7.1. Visualising newspaper searches with QueryPic" href="querypic.html" />
+    <link rel="next" title="7.4. Get a list of ‘International’ newspapers and gazettes" href="international-newspaper-titles.html" />
+    <link rel="prev" title="7.2. Find the number of newspapers" href="newspaper-titles-totals.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,7 +185,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../pathways.html">6. Research pathways</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../how-to.html">7. How to</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="querypic.html">7.1. Visualising newspaper searches with QueryPic</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.2. Get the total number of newspapers and gazettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newspaper-titles-totals.html">7.2. Find the number of newspapers</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Get a newspaper issue or article as a PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="international-newspaper-titles.html">7.4. Get a list of ‘International’ newspapers and gazettes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">8. Glossary</a></li>
@@ -259,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/wragge/trove-data-guide/issues/new?title=Issue%20on%20page%20%2Fhow-to/total-number-of-newspapers.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/wragge/trove-data-guide/issues/new?title=Issue%20on%20page%20%2Fhow-to/get-newspaper-issue-article-pdfs.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -289,7 +295,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/how-to/total-number-of-newspapers.ipynb" target="_blank"
+      <li><a href="../_sources/how-to/get-newspaper-issue-article-pdfs.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -358,7 +364,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -369,11 +377,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Get the total number of newspapers and gazettes</h1>
+    <h1>Get a newspaper issue or article as a PDF</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-pdf-of-an-issue">Get a PDF of an issue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-pdf-of-an-article">Get a PDF of an article</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -383,73 +400,130 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="get-the-total-number-of-newspapers-and-gazettes">
-<h1><span class="section-number">7.2. </span>Get the total number of newspapers and gazettes<a class="headerlink" href="#get-the-total-number-of-newspapers-and-gazettes" title="Permalink to this heading">#</a></h1>
+  <section id="get-a-newspaper-issue-or-article-as-a-pdf">
+<h1><span class="section-number">7.3. </span>Get a newspaper issue or article as a PDF<a class="headerlink" href="#get-a-newspaper-issue-or-article-as-a-pdf" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">requests.exceptions</span> <span class="kn">import</span> <span class="n">HTTPError</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set encoding parameter to JSON</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">}</span>
-<span class="c1"># Supply API key using headers</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ping_pdf</span><span class="p">(</span><span class="n">ping_url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check to see if a PDF is ready for download.</span>
+<span class="sd">    If a 200 status code is received, return True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ready</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ping_url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">HTTPError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">423</span><span class="p">:</span>
+            <span class="n">ready</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ready</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">ready</span>
 
-<span class="c1"># Make the request</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/newspaper/titles&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
-<span class="p">)</span>
-<span class="c1"># Get the JSON data from the response</span>
-<span class="n">newspaper_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-<span class="n">newspapers_total</span> <span class="o">=</span> <span class="n">newspaper_data</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">newspapers_total</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_pdf_url</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">pdf_type</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Download the PDF version of an issue.</span>
+<span class="sd">    These can take a while to generate, so we need to ping the server to see if it&#39;s ready before we download.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pdf_url</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">base_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://trove.nla.gov.au/newspaper/rendition/nla.news-</span><span class="si">{</span><span class="n">pdf_type</span><span class="si">}{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="n">pdf_type</span> <span class="o">==</span> <span class="s2">&quot;article&quot;</span><span class="p">:</span>
+        <span class="n">prep_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/level/</span><span class="si">{</span><span class="n">zoom</span><span class="si">}</span><span class="s2">/prep&quot;</span>
+        <span class="n">base_url</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="n">zoom</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">prep_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/prep&quot;</span>
+
+    <span class="c1"># Ask for the PDF to be created, this returns a plain text hash that we use in later requests</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">prep_url</span><span class="p">)</span>
+
+    <span class="c1"># Get the hash</span>
+    <span class="n">prep_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+
+    <span class="c1"># Url to check if the PDF is ready</span>
+    <span class="n">ping_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">.ping?followup=</span><span class="si">{</span><span class="n">prep_id</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">tries</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ready</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Give some time to generate pdf</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Are you ready yet?</span>
+    <span class="k">while</span> <span class="n">ready</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">tries</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">ready</span> <span class="o">=</span> <span class="n">ping_pdf</span><span class="p">(</span><span class="n">ping_url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ready</span><span class="p">:</span>
+            <span class="n">tries</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="c1"># Download if ready</span>
+    <span class="k">if</span> <span class="n">ready</span><span class="p">:</span>
+        <span class="n">pdf_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">.pdf?followup=</span><span class="si">{</span><span class="n">prep_id</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">pdf_url</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="get-a-pdf-of-an-issue">
+<h2>Get a PDF of an issue<a class="headerlink" href="#get-a-pdf-of-an-issue" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set issue id -- in practice, this would probably be in a loop, accessing a list of issues</span>
+<span class="n">issue_id</span> <span class="o">=</span> <span class="s2">&quot;424530&quot;</span>
+
+<span class="c1"># Get the PDF url</span>
+<span class="n">pdf_url</span> <span class="o">=</span> <span class="n">get_pdf_url</span><span class="p">(</span><span class="n">issue_id</span><span class="p">,</span> <span class="s2">&quot;issue&quot;</span><span class="p">)</span>
+
+<span class="c1"># Download and save the PDF</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pdf_url</span><span class="p">)</span>
+<span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;issue-</span><span class="si">{</span><span class="n">issue_id</span><span class="si">}</span><span class="s2">.pdf&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1809
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9258851
 </pre></div>
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">newspaper/titles</span></code> endpoint tells us that there are <span class="output text_plain">1809</span> titles, but, due to a bug, this includes gazette titles as well. To find the number of newspapers we’ll have to subtract the number of gazettes from <span class="output text_plain">1809</span>.</p>
+</section>
+<section id="get-a-pdf-of-an-article">
+<h2>Get a PDF of an article<a class="headerlink" href="#get-a-pdf-of-an-article" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the request</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/gazette/titles&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
-<span class="p">)</span>
-<span class="c1"># Get the JSON data from the response</span>
-<span class="n">gazette_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set article id -- in practice, this would probably be in a loop, accessing a list of articles</span>
+<span class="n">article_id</span> <span class="o">=</span> <span class="s2">&quot;61389505&quot;</span>
 
-<span class="n">gazettes_total</span> <span class="o">=</span> <span class="n">gazette_data</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">gazettes_total</span><span class="p">)</span>
+<span class="c1"># Get the PDF url</span>
+<span class="n">pdf_url</span> <span class="o">=</span> <span class="n">get_pdf_url</span><span class="p">(</span><span class="n">article_id</span><span class="p">,</span> <span class="s2">&quot;article&quot;</span><span class="p">)</span>
+
+<span class="c1"># Download and save the PDF</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pdf_url</span><span class="p">)</span>
+<span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;article-</span><span class="si">{</span><span class="n">article_id</span><span class="si">}</span><span class="s2">.pdf&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>230961
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newspapers_total</span> <span class="o">-</span> <span class="n">gazettes_total</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1771
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -484,20 +558,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="querypic.html"
+       href="newspaper-titles-totals.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.1. </span>Visualising newspaper searches with QueryPic</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>Find the number of newspapers</p>
       </div>
     </a>
     <a class="right-next"
-       href="../glossary.html"
+       href="international-newspaper-titles.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Glossary</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>Get a list of ‘International’ newspapers and gazettes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -510,6 +584,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-pdf-of-an-issue">Get a PDF of an issue</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-pdf-of-an-article">Get a PDF of an article</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

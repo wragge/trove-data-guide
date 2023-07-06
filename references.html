@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>10. References &#8212; Trove Data Guide</title>
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tippy.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -61,6 +62,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="_static/tippy/references.74531553-a080-4d0c-8cc3-c85512d1d976.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'references';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -181,7 +185,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="pathways.html">6. Research pathways</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="how-to.html">7. How to</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="how-to/querypic.html">7.1. Visualising newspaper searches with QueryPic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how-to/total-number-of-newspapers.html">7.2. Get the total number of newspapers and gazettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/newspaper-titles-totals.html">7.2. Find the number of newspapers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/get-newspaper-issue-article-pdfs.html">7.3. Get a newspaper issue or article as a PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/international-newspaper-titles.html">7.4. Get a list of ‘International’ newspapers and gazettes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">8. Glossary</a></li>
@@ -383,18 +389,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="references">
+  <section id="references">
 <h1><span class="section-number">10. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
 <div class="docutils container" id="id1">
-<dl class="citation">
-<dt class="label" id="id18"><span class="brackets">1</span></dt>
-<dd><p>Tim Sherratt. Hacking Heritage: Understanding the Limits of Online Access. In H Lewi, W Smith, D von Lehn, and S Cooke, editors, <em>The Routledge International Handbook of New Digital Practices in Galleries, Libraries, Archives, Museums and Heritage Sites</em>, pages 116–130. Routledge, London, 2019. <a class="reference external" href="https://doi.org/10.5281/zenodo.5035855">doi:10.5281/zenodo.5035855</a>.</p>
-</dd>
-</dl>
+<div class="citation" id="id18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Tim Sherratt. Hacking Heritage: Understanding the Limits of Online Access. In H Lewi, W Smith, D von Lehn, and S Cooke, editors, <em>The Routledge International Handbook of New Digital Practices in Galleries, Libraries, Archives, Museums and Heritage Sites</em>, pages 116–130. Routledge, London, 2019. <a class="reference external" href="https://doi.org/10.5281/zenodo.5035855">doi:10.5281/zenodo.5035855</a>.</p>
+</div>
+</div>
 </div>
 </section>
 
