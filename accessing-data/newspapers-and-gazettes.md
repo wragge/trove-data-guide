@@ -122,6 +122,7 @@ However, as noted above, the `newspaper/titles` endpoint currently includes gaze
 editable: true
 slideshow:
   slide_type: ''
+tags: [remove-cell]
 ---
 newspapers_df = pd.DataFrame(newspapers)
 chart = (
