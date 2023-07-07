@@ -488,18 +488,16 @@ Zotero is a convenient option for creating curated datasets of digitised newspap
 
 ##### Trove Lists
 
+````{margin}
+```{seealso}
+The GLAM Workbench notebook [Convert a Trove list into a CSV file](https://glam-workbench.net/trove-lists/convert-a-trove-list-into-a-csv-file/) shows you how to save the full details of newspaper articles in a Trove list as a CSV file. You can also save the articles as PDFs and images, and download the OCRd text.
+```
+````
 Another option for creating collections of manually selected newspaper article metadata is Trove's built-in Lists function. 
 
 <mark>==Note about adding mutliple items to Lists. Hacking the url to get more==</mark>
 
-List data can be:
-
-- downloaded from the web interface (though fields are limited)
-- accessed through the API
-
-<mark>==Link to Lists section in Accessing Data==</mark>
-
-<mark>==Link toGW notebook to convert lists to CSV==</mark>
+See the [Trove Lists](./trove-lists) section for information on saving lists metadata.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -521,6 +519,8 @@ You can search for newspaper and gazette articles using the Trove API's `/result
 
 <mark>==Links to Understanding Search chapter? Where will the general guide to API searching go?==</mark>
 
+<mark>==Trove Query Parser to translate web interface searches to API==</mark>
+
 #### Trove Newspaper Harvester
 
 <mark>==Where should this go?==</mark>
@@ -529,15 +529,80 @@ You can search for newspaper and gazette articles using the Trove API's `/result
 - no limit
 - metadata file captures query details
 
-<mark>==Trove Query Parser to translate web interface searches to API==</mark>
-
 #### Get metadata for an individual article
 
-#### Scraping positional information from page
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-- article boundaries
-- lines
-- words (using highlighted search terms)
+#### Scraping positional information from the web site
+
+The OCR process not only extracts text from an image, it generates coordinates that document the position of each piece of text within the parent image. You could use this information to crop an image of the OCRd text out of the parent image. In the case of digitised newspapers, this sort of positional information could help you explore the layout and contents of newspaper pages and how this changes over time.
+
+No positional information is available from the Trove API, however, there is some embedded within the web site. If you view the source of a newspaper article's web page, you'll find a number of `<input>` tags like this:
+
+```html
+<input id="l1.0.0" class="edit" type="text" aria-label="Line 1.0.0" data-x="2905" data-y="573" data-w="844" data-h="43" value="Mr. Wragge is going to issue a &quot;Wragge.&quot;" />
+```
+
+The `value` attribute of the tag includes the text of a single line. The `data` attributes provide the positional coordinates of that line:
+
+- `data-x`: horizontal offset of the top left corner of a box surrounding the line (in pixels)
+- `data-y`: vertical offset of the top left corner of a box surrounding the line (in pixels)
+- `data-w`: the width of a box surrounding the line (in pixels)
+- `data-h`: the height of a box surrounding the line (in pixels)
+
+Individual lines are aggregated into blocks of content labelled as `zones` within the HTML. The position of each zone is also recorded:
+
+```html
+<div class="zone onPage readMode" data-page-id="5417618" data-x="2889" data-y="487" data-w="862" data-h="89" data-rotation="-1" style="display: none;">
+```
+
+Zones can also contain illustrations:
+
+```html
+<div class="illustration help-region onPage" data-x="4455" data-y="677" data-w="706" data-h="1031" data-caption="none" data-type="Cartoon" data-id="8281319" data-part="134576145" >
+```
+
+```{note}
+The pixel values are absolute, so they relate to a page image at a specific resolution. This resolution is the highest available from the Trove web interface, with a zoom level of `7`. See below for [information on saving page images](download-a-page-image).
+```
+
+````{margin}
+```{seealso}
+For a full working example of this, see the GLAM Workbench notebook [Get the page coordinates of a digitised newspaper article from Trove](https://glam-workbench.net/trove-newspapers/#get-the-page-coordinates-of-a-digitised-newspaper-article-from-trove)
+```
+````
+
+To get the coordinates of a box containing an entire article, you can add up the boxes for each zone. For example, assuming you have the zones in a list you could try:
+
+```python
+left = 10000
+right = 0
+top = 10000
+bottom = 0
+for zone in zones:
+    if int(zone["data-y"]) < top:
+        top = int(zone["data-y"])
+    if int(zone["data-x"]) < left:
+        left = int(zone["data-x"])
+    if (int(zone["data-x"]) + int(zone["data-w"])) > right:
+        right = int(zone["data-x"]) + int(zone["data-w"])
+    if (int(zone["data-y"]) + int(zone["data-h"])) > bottom:
+        bottom = int(zone["data-y"]) + int(zone["data-h"])
+```
+
+We can use this information to extract the image of an individual article or illustration from a page image. See below for details.
+
+With an extra little trick you can even get the coordinates of an individual word. This information is not ordinarily contained within the HTML, *but* if you search for a particular word, that word is highlighted and its coordinates included in the HTML. Here's a line of text with a highlighted word:
+
+```html
+<div class="read"><span class="highlightedTerm" data-x="4458" data-y="1949" data-w="129" data-h="32">Wragge,</span> the Government Meteorologist of</div>
+```
+
+You can see that the `<span>` element includes the same set of `data` attributes defining a box around the highlighted word.
+
+In theory, you could write some code that gets the positions of every word in an article by looping through the words, adding each one to the page url's `searchTerm` parameter so that it's highlighted, then grabbing the coordinates from the `<span>`. It would be rather inefficient though.
+
+As described below, you can use this information to save images of individual words.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -634,6 +699,21 @@ Perhaps you want to download all the front pages of a particular newspaper, or t
 
 PDF proxy
 
+Save articles as images
+
+Save just the illustrations as images
+
+Save words as images
+
 ### issues
 
 issues as PDFs
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+
+```

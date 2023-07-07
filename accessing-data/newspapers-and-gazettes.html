@@ -64,11 +64,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes.a4838ec4-ac76-4b7b-816c-cca5196e2700.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes.38bab50c-c932-40ff-9106-62eb8c672251.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Research pathways" href="../pathways/pathways.html" />
+    <link rel="next" title="5.2. Trove lists" href="trove-lists.html" />
     <link rel="prev" title="5. Accessing data" href="accessing-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,6 +180,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../understanding-search/understanding-search.html">4. Understanding search</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="accessing-data.html">5. Accessing data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">5.1. Newspapers and gazettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trove-lists.html">5.2. Trove lists</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pathways/pathways.html">6. Research pathways</a></li>
@@ -415,7 +416,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-from-a-search-for-articles-using-the-api">Get metadata from a search for articles using the API</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-harvester">Trove Newspaper Harvester</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-for-an-individual-article">Get metadata for an individual article</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping-positional-information-from-page">Scraping positional information from page</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping-positional-information-from-the-web-site">Scraping positional information from the web site</a></li>
 </ul>
 </li>
 </ul>
@@ -539,23 +540,23 @@ document.write(`
 <p class="admonition-title">Newspapers by state</p>
 <div class="output text_html">
 <style>
-  #altair-viz-eb337ae51bca4daa9345f8e76d20b2ac.vega-embed {
+  #altair-viz-04a51b819d4c4b4db966f82bc850abf3.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-eb337ae51bca4daa9345f8e76d20b2ac.vega-embed details,
-  #altair-viz-eb337ae51bca4daa9345f8e76d20b2ac.vega-embed details summary {
+  #altair-viz-04a51b819d4c4b4db966f82bc850abf3.vega-embed details,
+  #altair-viz-04a51b819d4c4b4db966f82bc850abf3.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-eb337ae51bca4daa9345f8e76d20b2ac"></div>
+<div id="altair-viz-04a51b819d4c4b4db966f82bc850abf3"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-eb337ae51bca4daa9345f8e76d20b2ac") {
-      outputDiv = document.getElementById("altair-viz-eb337ae51bca4daa9345f8e76d20b2ac");
+    if (outputDiv.id !== "altair-viz-04a51b819d4c4b4db966f82bc850abf3") {
+      outputDiv = document.getElementById("altair-viz-04a51b819d4c4b4db966f82bc850abf3");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -949,15 +950,16 @@ document.write(`
 </section>
 <section id="trove-lists">
 <h5>Trove Lists<a class="headerlink" href="#trove-lists" title="Permalink to this heading">#</a></h5>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-lists/convert-a-trove-list-into-a-csv-file/">Convert a Trove list into a CSV file</a> shows you how to save the full details of newspaper articles in a Trove list as a CSV file. You can also save the articles as PDFs and images, and download the OCRd text.</p>
+</div>
+</aside>
 <p>Another option for creating collections of manually selected newspaper article metadata is Trove’s built-in Lists function.</p>
 <p><mark>==Note about adding mutliple items to Lists. Hacking the url to get more==</mark></p>
-<p>List data can be:</p>
-<ul class="simple">
-<li><p>downloaded from the web interface (though fields are limited)</p></li>
-<li><p>accessed through the API</p></li>
-</ul>
-<p><mark>==Link to Lists section in Accessing Data==</mark></p>
-<p><mark>==Link toGW notebook to convert lists to CSV==</mark></p>
+<p>See the <a class="reference internal" href="trove-lists.html"><span class="doc std std-doc">Trove Lists</span></a> section for information on saving lists metadata.</p>
 </section>
 <section id="bulk-export">
 <h5>Bulk export<a class="headerlink" href="#bulk-export" title="Permalink to this heading">#</a></h5>
@@ -973,6 +975,7 @@ document.write(`
 <p><mark>==Link to full record structure?==</mark></p>
 <p>You can search for newspaper and gazette articles using the Trove API’s <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint</p>
 <p><mark>==Links to Understanding Search chapter? Where will the general guide to API searching go?==</mark></p>
+<p><mark>==Trove Query Parser to translate web interface searches to API==</mark></p>
 </section>
 <section id="trove-newspaper-harvester">
 <h4>Trove Newspaper Harvester<a class="headerlink" href="#trove-newspaper-harvester" title="Permalink to this heading">#</a></h4>
@@ -982,18 +985,67 @@ document.write(`
 <li><p>no limit</p></li>
 <li><p>metadata file captures query details</p></li>
 </ul>
-<p><mark>==Trove Query Parser to translate web interface searches to API==</mark></p>
 </section>
 <section id="get-metadata-for-an-individual-article">
 <h4>Get metadata for an individual article<a class="headerlink" href="#get-metadata-for-an-individual-article" title="Permalink to this heading">#</a></h4>
 </section>
-<section id="scraping-positional-information-from-page">
-<h4>Scraping positional information from page<a class="headerlink" href="#scraping-positional-information-from-page" title="Permalink to this heading">#</a></h4>
+<section id="scraping-positional-information-from-the-web-site">
+<h4>Scraping positional information from the web site<a class="headerlink" href="#scraping-positional-information-from-the-web-site" title="Permalink to this heading">#</a></h4>
+<p>The OCR process not only extracts text from an image, it generates coordinates that document the position of each piece of text within the parent image. You could use this information to crop an image of the OCRd text out of the parent image. In the case of digitised newspapers, this sort of positional information could help you explore the layout and contents of newspaper pages and how this changes over time.</p>
+<p>No positional information is available from the Trove API, however, there is some embedded within the web site. If you view the source of a newspaper article’s web page, you’ll find a number of <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tags like this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;l1.0.0&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;edit&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&quot;Line 1.0.0&quot;</span> <span class="na">data-x</span><span class="o">=</span><span class="s">&quot;2905&quot;</span> <span class="na">data-y</span><span class="o">=</span><span class="s">&quot;573&quot;</span> <span class="na">data-w</span><span class="o">=</span><span class="s">&quot;844&quot;</span> <span class="na">data-h</span><span class="o">=</span><span class="s">&quot;43&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Mr. Wragge is going to issue a &amp;quot;Wragge.&amp;quot;&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">value</span></code> attribute of the tag includes the text of a single line. The <code class="docutils literal notranslate"><span class="pre">data</span></code> attributes provide the positional coordinates of that line:</p>
 <ul class="simple">
-<li><p>article boundaries</p></li>
-<li><p>lines</p></li>
-<li><p>words (using highlighted search terms)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data-x</span></code>: horizontal offset of the top left corner of a box surrounding the line (in pixels)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data-y</span></code>: vertical offset of the top left corner of a box surrounding the line (in pixels)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data-w</span></code>: the width of a box surrounding the line (in pixels)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data-h</span></code>: the height of a box surrounding the line (in pixels)</p></li>
 </ul>
+<p>Individual lines are aggregated into blocks of content labelled as <code class="docutils literal notranslate"><span class="pre">zones</span></code> within the HTML. The position of each zone is also recorded:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;zone onPage readMode&quot;</span> <span class="na">data-page-id</span><span class="o">=</span><span class="s">&quot;5417618&quot;</span> <span class="na">data-x</span><span class="o">=</span><span class="s">&quot;2889&quot;</span> <span class="na">data-y</span><span class="o">=</span><span class="s">&quot;487&quot;</span> <span class="na">data-w</span><span class="o">=</span><span class="s">&quot;862&quot;</span> <span class="na">data-h</span><span class="o">=</span><span class="s">&quot;89&quot;</span> <span class="na">data-rotation</span><span class="o">=</span><span class="s">&quot;-1&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;display: none;&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Zones can also contain illustrations:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;illustration help-region onPage&quot;</span> <span class="na">data-x</span><span class="o">=</span><span class="s">&quot;4455&quot;</span> <span class="na">data-y</span><span class="o">=</span><span class="s">&quot;677&quot;</span> <span class="na">data-w</span><span class="o">=</span><span class="s">&quot;706&quot;</span> <span class="na">data-h</span><span class="o">=</span><span class="s">&quot;1031&quot;</span> <span class="na">data-caption</span><span class="o">=</span><span class="s">&quot;none&quot;</span> <span class="na">data-type</span><span class="o">=</span><span class="s">&quot;Cartoon&quot;</span> <span class="na">data-id</span><span class="o">=</span><span class="s">&quot;8281319&quot;</span> <span class="na">data-part</span><span class="o">=</span><span class="s">&quot;134576145&quot;</span> <span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pixel values are absolute, so they relate to a page image at a specific resolution. This resolution is the highest available from the Trove web interface, with a zoom level of <code class="docutils literal notranslate"><span class="pre">7</span></code>. See below for <a class="reference internal" href="#download-a-page-image"><span class="std std-ref">information on saving page images</span></a>.</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For a full working example of this, see the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#get-the-page-coordinates-of-a-digitised-newspaper-article-from-trove">Get the page coordinates of a digitised newspaper article from Trove</a></p>
+</div>
+</aside>
+<p>To get the coordinates of a box containing an entire article, you can add up the boxes for each zone. For example, assuming you have the zones in a list you could try:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">top</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">zone</span> <span class="ow">in</span> <span class="n">zones</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-y&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">top</span><span class="p">:</span>
+        <span class="n">top</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-y&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-x&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">left</span><span class="p">:</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-x&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-x&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-w&quot;</span><span class="p">]))</span> <span class="o">&gt;</span> <span class="n">right</span><span class="p">:</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-x&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-w&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-y&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-h&quot;</span><span class="p">]))</span> <span class="o">&gt;</span> <span class="n">bottom</span><span class="p">:</span>
+        <span class="n">bottom</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-y&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-h&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We can use this information to extract the image of an individual article or illustration from a page image. See below for details.</p>
+<p>With an extra little trick you can even get the coordinates of an individual word. This information is not ordinarily contained within the HTML, <em>but</em> if you search for a particular word, that word is highlighted and its coordinates included in the HTML. Here’s a line of text with a highlighted word:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;read&quot;</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;highlightedTerm&quot;</span> <span class="na">data-x</span><span class="o">=</span><span class="s">&quot;4458&quot;</span> <span class="na">data-y</span><span class="o">=</span><span class="s">&quot;1949&quot;</span> <span class="na">data-w</span><span class="o">=</span><span class="s">&quot;129&quot;</span> <span class="na">data-h</span><span class="o">=</span><span class="s">&quot;32&quot;</span><span class="p">&gt;</span>Wragge,<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> the Government Meteorologist of<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>You can see that the <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> element includes the same set of <code class="docutils literal notranslate"><span class="pre">data</span></code> attributes defining a box around the highlighted word.</p>
+<p>In theory, you could write some code that gets the positions of every word in an article by looping through the words, adding each one to the page url’s <code class="docutils literal notranslate"><span class="pre">searchTerm</span></code> parameter so that it’s highlighted, then grabbing the coordinates from the <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code>. It would be rather inefficient though.</p>
+<p>As described below, you can use this information to save images of individual words.</p>
 </section>
 </section>
 </section>
@@ -1081,6 +1133,9 @@ Note: not the AWW (have to scrape)</p>
 <section id="id5">
 <h3>Articles<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>PDF proxy</p>
+<p>Save articles as images</p>
+<p>Save just the illustrations as images</p>
+<p>Save words as images</p>
 </section>
 <section id="id6">
 <h3>issues<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
@@ -1130,11 +1185,11 @@ Note: not the AWW (have to scrape)</p>
       </div>
     </a>
     <a class="right-next"
-       href="../pathways/pathways.html"
+       href="trove-lists.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Research pathways</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Trove lists</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1184,7 +1239,7 @@ Note: not the AWW (have to scrape)</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-from-a-search-for-articles-using-the-api">Get metadata from a search for articles using the API</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-harvester">Trove Newspaper Harvester</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-for-an-individual-article">Get metadata for an individual article</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping-positional-information-from-page">Scraping positional information from page</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping-positional-information-from-the-web-site">Scraping positional information from the web site</a></li>
 </ul>
 </li>
 </ul>
