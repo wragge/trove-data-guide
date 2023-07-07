@@ -20,6 +20,7 @@ chapters:
   - file: accessing-data/accessing-data
     sections:
       - file: accessing-data/newspapers-and-gazettes
+      - file: accessing-data/trove-lists
   - file: pathways/pathways
   - file: how-to/how-to
     sections:
