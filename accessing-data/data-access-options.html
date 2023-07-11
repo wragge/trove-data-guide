@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>5. Accessing data &#8212; Trove Data Guide</title>
+    <title>5.1. Data access options &#8212; Trove Data Guide</title>
   
   
   
@@ -64,12 +64,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/accessing-data.f5cfab2b-a074-4d8c-b39a-f7e690be1374.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/accessing-data';</script>
+    <script defer="defer" src="../_static/tippy/accessing-data/data-access-options.766f93ec-c039-459f-8a91-3f4958974288.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/data-access-options';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.1. Data access options" href="data-access-options.html" />
-    <link rel="prev" title="4. Understanding search" href="../understanding-search/understanding-search.html" />
+    <link rel="next" title="5.2. Trove API introduction" href="trove-api-intro.html" />
+    <link rel="prev" title="5. Accessing data" href="accessing-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,8 +178,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../types-of-data/types-of-data.html">3. Types of data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../understanding-search/understanding-search.html">4. Understanding search</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. Accessing data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="data-access-options.html">5.1. Data access options</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="accessing-data.html">5. Accessing data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.1. Data access options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trove-api-intro.html">5.2. Trove API introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="newspapers-and-gazettes.html">5.3. Newspapers and gazettes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trove-lists.html">5.4. Trove lists</a></li>
@@ -268,7 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/wragge/trove-data-guide/issues/new?title=Issue%20on%20page%20%2Faccessing-data/accessing-data.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/wragge/trove-data-guide/issues/new?title=Issue%20on%20page%20%2Faccessing-data/data-access-options.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/accessing-data/accessing-data.md" target="_blank"
+      <li><a href="../_sources/accessing-data/data-access-options.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -367,7 +367,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -378,11 +380,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Accessing data</h1>
+    <h1>Data access options</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-web-interface">Using the web interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-pre-harvested-datasets">Downloading pre-harvested datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-apis">Querying APIs</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -392,20 +404,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="accessing-data">
-<h1><span class="section-number">5. </span>Accessing data<a class="headerlink" href="#accessing-data" title="Permalink to this heading">#</a></h1>
+  <section id="data-access-options">
+<h1><span class="section-number">5.1. </span>Data access options<a class="headerlink" href="#data-access-options" title="Permalink to this heading">#</a></h1>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="data-access-options.html">5.1. Data access options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trove-api-intro.html">5.2. Trove API introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="newspapers-and-gazettes.html">5.3. Newspapers and gazettes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trove-lists.html">5.4. Trove lists</a></li>
+<p>There are a number of ways in which you can access data from Trove:</p>
+<ul class="simple">
+<li><p>using the web interface</p></li>
+<li><p>downloading pre-harvested datasets</p></li>
+<li><p>querying APIs</p></li>
 </ul>
-</div>
+<section id="using-the-web-interface">
+<h2>Using the web interface<a class="headerlink" href="#using-the-web-interface" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>download images and text</p></li>
+<li><p>download citations</p></li>
+<li><p>scrape metadata</p></li>
+<li><p>bulk export</p></li>
+<li><p>download lists</p></li>
+</ul>
+</section>
+<section id="downloading-pre-harvested-datasets">
+<h2>Downloading pre-harvested datasets<a class="headerlink" href="#downloading-pre-harvested-datasets" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://glam-workbench.net/glam-data-list/">Sources of Australian GLAM data</a></p></li>
+</ul>
+</section>
+<section id="querying-apis">
+<h2>Querying APIs<a class="headerlink" href="#querying-apis" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Introduction to APIs</p></li>
+<li><p>Trove APIs overview</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -440,20 +473,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../understanding-search/understanding-search.html"
+       href="accessing-data.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Understanding search</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Accessing data</p>
       </div>
     </a>
     <a class="right-next"
-       href="data-access-options.html"
+       href="trove-api-intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.1. </span>Data access options</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Trove API introduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -466,6 +499,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-web-interface">Using the web interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-pre-harvested-datasets">Downloading pre-harvested datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-apis">Querying APIs</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
