@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/how-to/international-newspaper-titles.7d78c2ec-e159-40bf-8a21-721209d0b5be.js"></script>
+    <script defer="defer" src="../_static/tippy/how-to/international-newspaper-titles.90b527f3-218f-4794-a6fc-50c761cd9635.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/international-newspaper-titles';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Glossary" href="../glossary.html" />
+    <link rel="next" title="7.5. How to create a dataset of digitised newspaper articles" href="create-newspaper-articles-dataset.html" />
     <link rel="prev" title="7.3. Get a newspaper issue or article as a PDF" href="get-newspaper-issue-article-pdfs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,8 +178,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../types-of-data/types-of-data.html">3. Types of data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../understanding-search/understanding-search.html">4. Understanding search</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../accessing-data/accessing-data.html">5. Accessing data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../understanding-search/understanding-search.html">4. Understanding search</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../understanding-search/simple-search-options.html">4.1. ‘Simple’ search options</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../accessing-data/accessing-data.html">5. Accessing data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../accessing-data/data-access-options.html">5.1. Data access options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../accessing-data/trove-api-intro.html">5.2. Trove API introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../accessing-data/newspapers-and-gazettes.html">5.3. Newspapers and gazettes</a></li>
@@ -187,11 +190,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pathways/pathways.html">6. Research pathways</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="how-to.html">7. How to</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="how-to.html">7. How to</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="querypic.html">7.1. Visualising newspaper searches with QueryPic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="newspaper-titles-totals.html">7.2. Find the number of newspapers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-newspaper-issue-article-pdfs.html">7.3. Get a newspaper issue or article as a PDF</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.4. Get a list of ‘International’ newspapers and gazettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create-newspaper-articles-dataset.html">7.5. How to create a dataset of digitised newspaper articles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">8. Glossary</a></li>
@@ -440,13 +444,6 @@ document.write(`
   &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-title1498&#39;,
   &#39;startDate&#39;: &#39;1970-06-11&#39;,
   &#39;endDate&#39;: &#39;1975-08-09&#39;},
- {&#39;id&#39;: &#39;1571&#39;,
-  &#39;title&#39;: &#39;Administration Order (Nauru : 1921 - 1926)&#39;,
-  &#39;state&#39;: &#39;International&#39;,
-  &#39;issn&#39;: &#39;NDP00071&#39;,
-  &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-title1571&#39;,
-  &#39;startDate&#39;: &#39;1924-05-03&#39;,
-  &#39;endDate&#39;: &#39;1924-05-31&#39;},
  {&#39;id&#39;: &#39;1488&#39;,
   &#39;title&#39;: &#39;Bangkok Recorder (Thailand : 1865 - 1867)&#39;,
   &#39;state&#39;: &#39;International&#39;,
@@ -468,13 +465,6 @@ document.write(`
   &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-title1377&#39;,
   &#39;startDate&#39;: &#39;1942-11-19&#39;,
   &#39;endDate&#39;: &#39;1945-12-22&#39;},
- {&#39;id&#39;: &#39;1372&#39;,
-  &#39;title&#39;: &#39;Papua New Guinea Government Gazette (1971 - 1975)&#39;,
-  &#39;state&#39;: &#39;International&#39;,
-  &#39;issn&#39;: &#39;22086870&#39;,
-  &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-title1372&#39;,
-  &#39;startDate&#39;: &#39;1971-07-01&#39;,
-  &#39;endDate&#39;: &#39;1975-09-15&#39;},
  {&#39;id&#39;: &#39;1376&#39;,
   &#39;title&#39;: &#39;Papua New Guinea Post-Courier (Port Moresby : 1969 - 1981)&#39;,
   &#39;state&#39;: &#39;International&#39;,
@@ -524,27 +514,6 @@ document.write(`
   &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-title1330&#39;,
   &#39;startDate&#39;: &#39;1840-02-22&#39;,
   &#39;endDate&#39;: &#39;1840-05-02&#39;},
- {&#39;id&#39;: &#39;1371&#39;,
-  &#39;title&#39;: &#39;Territory of Papua and New Guinea Government Gazette (1949 - 1971)&#39;,
-  &#39;state&#39;: &#39;International&#39;,
-  &#39;issn&#39;: &#39;22086803&#39;,
-  &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-title1371&#39;,
-  &#39;startDate&#39;: &#39;1949-07-01&#39;,
-  &#39;endDate&#39;: &#39;1971-06-25&#39;},
- {&#39;id&#39;: &#39;1369&#39;,
-  &#39;title&#39;: &#39;Territory of Papua Government Gazette (Papua New Guinea : 1906 - 1942)&#39;,
-  &#39;state&#39;: &#39;International&#39;,
-  &#39;issn&#39;: &#39;22086730&#39;,
-  &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-title1369&#39;,
-  &#39;startDate&#39;: &#39;1906-09-01&#39;,
-  &#39;endDate&#39;: &#39;1942-02-14&#39;},
- {&#39;id&#39;: &#39;1370&#39;,
-  &#39;title&#39;: &#39;Territory of Papua-New Guinea Government Gazette (1945 - 1949)&#39;,
-  &#39;state&#39;: &#39;International&#39;,
-  &#39;issn&#39;: &#39;22086757&#39;,
-  &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-title1370&#39;,
-  &#39;startDate&#39;: &#39;1945-11-07&#39;,
-  &#39;endDate&#39;: &#39;1949-06-08&#39;},
  {&#39;id&#39;: &#39;1030&#39;,
   &#39;title&#39;: &quot;The South Australian Colonist and Settlers&#39; Weekly Record of British, Foreign and Colonial Intelligence (London, England : 1840)&quot;,
   &#39;state&#39;: &#39;International&#39;,
@@ -606,11 +575,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../glossary.html"
+       href="create-newspaper-articles-dataset.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Glossary</p>
+        <p class="prev-next-title"><span class="section-number">7.5. </span>How to create a dataset of digitised newspaper articles</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
