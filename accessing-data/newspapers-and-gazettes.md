@@ -47,14 +47,15 @@ slideshow:
   slide_type: ''
 tags: [remove-cell]
 ---
+import datetime
 import os
 
 import altair as alt
 import pandas as pd
 import requests
 from dotenv import load_dotenv
+from IPython.display import HTML, JSON
 from myst_nb import glue
-from IPython.display import HTML
 
 load_dotenv()
 YOUR_API_KEY = os.getenv("TROVE_API_KEY")
@@ -69,13 +70,13 @@ YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 
 ### Article metadata
 
-Newspaper and gazette article metadata includes basic information such as the article heading, publication date, publication title, and page number. Additional information such as attached tags or comments can be also be retrieved from the API.
+Newspaper and gazette article metadata includes basic information such as the article heading, publication date, publication title, and page number. Additional information such as attached tags or comments can be also be retrieved from the Trove API.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 #### Save article metadata from the web interface
 
-Before you dive straight into to the API documentation, there are ways of getting article metadata from the Trove web interface. Each method has its own limitations, but depending on your needs they might do the job.
+Before you dive straight into to the API documentation, remember that there are ways of getting article metadata from the Trove web interface. Each method has its own limitations, but depending on your needs they might do the job. See [](../how-to/create-newspaper-articles-dataset.md) for further tips.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}, "jp-MarkdownHeadingCollapsed": true}
 
@@ -87,11 +88,13 @@ The GLAM Workbench notebook [Upload Trove newspaper articles to Omeka-S](https:/
 ```
 ````
 
-[Zotero](https://www.zotero.org/) includes a 'translator' for Trove that saves article metadata into your own research database. It also downloads a PDF copy of the article, and saves the OCRd text into an attached note. You can [add items](https://www.zotero.org/support/adding_items_to_zotero) by clicking on the Zotero icon in your web browser.
+[Zotero](https://www.zotero.org/) includes a 'translator' for Trove that saves article metadata into your own research database. It also downloads a PDF copy of the article, and saves the OCRd text into an attached note. You can [add items](https://www.zotero.org/support/adding_items_to_zotero) by clicking on the Zotero icon in your web browser. The translator extracts metadata from the article web page and citation, rather than the Trove API.
 
-<mark>==Note that it's not possible to add multiple items after Trove 2020 changes==</mark>
+```{warning}
+It's not currently possible to save details of multiple newspaper articles from Trove's search results. This is due to changes introduced by Trove's 2020 interface update. Unfortunately, you'll need to add individual articles one by one.
+```
 
-The translator extracts metadata from the article web page, rather than the Trove API. It saves the following fields:
+Zotero saves the following fields for each newspaper article:
 
 ```{list-table} Newspaper and gazette metadata fields extracted by Zotero
 :header-rows: 1
@@ -122,13 +125,11 @@ The translator extracts metadata from the article web page, rather than the Trov
   - `http://nla.gov.au/nla.news-article[article ID]`
 ```
 
-Zotero provides many ways to export data. So once you've assembled a collection of articles you could export them in a suitable format for additional processing or analysis. Alternatively, you can use the Zotero API to access and manipulate the saved data.
-
-<mark>==Note about annotating PDFs==</mark>
-
-<mark>==Describe a possible workflow? Eg curation, collaboration, annotation, access via API, further processing etc. A pathway?==</mark>
+Zotero provides many ways to [export data](https://www.zotero.org/support/kb/exporting). Once you've assembled a collection of articles you can export them in a suitable format for additional processing or analysis. Alternatively, you can use the [Zotero API](https://www.zotero.org/support/dev/web_api/v3/start) to access and manipulate the saved data. 
 
 Zotero is a convenient option for creating curated datasets of digitised newspaper articles. Zotero's built-in annotation features enable you to tags and notes to further organise your collection. You can also collaborate on the selection and annotation of articles using shared groups.
+
+For example, Zotero's built-in PDF viewer enables you to select sections of newspaper articles for annotation. You could use this to manually highlight sections of interest in long newspaper articles. The annotations and cropped images could then be retrieved from the Zotero API to create your own custom dataset. See [](../how-to/create-newspaper-articles-dataset.md) for further ideas.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -145,7 +146,7 @@ Another option for creating collections of manually selected newspaper article m
 
 See the [Trove Lists](./trove-lists) section for information on saving lists metadata.
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}, "jp-MarkdownHeadingCollapsed": true}
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ##### Bulk export
 
@@ -155,17 +156,161 @@ See the [Trove Lists](./trove-lists) section for information on saving lists met
 
 - metadata only, 1 million article limit
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++
 
 #### Get metadata from a search for articles using the API
 
-<mark>==Link to full record structure?==</mark>
+You can retrieve newspaper and gazette articles using the Trove API's `/result` endpoint, just set the `category` parameter to `newspaper`.
 
-You can search for newspaper and gazette articles using the Trove API's `/result` endpoint 
+[![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26encoding%3Djson)
 
-<mark>==Links to Understanding Search chapter? Where will the general guide to API searching go?==</mark>
+If we don't include any search parameters, we get everything! We can use this to find out the number of newspaper and gazette articles in Trove:
 
-<mark>==Trove Query Parser to translate web interface searches to API==</mark>
+```{code-cell} ipython3
+import requests
+
+# Set n to 0 because we don't want any records
+params = {"category": "newspaper", "n": 0, "encoding": "json"}
+
+# Supply API key using headers
+headers = {"X-API-KEY": YOUR_API_KEY}
+
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
+
+data = response.json()
+
+data
+```
+
+Note that the example above doesn't return any articles because it sets the `n` parameter to `0`. The current number of newspaper and gazette articles is in the `total` field.
+
+```{code-cell} ipython3
+import datetime
+
+# Get the total number of articles
+total = data["category"][0]["records"]["total"]
+# And today's date
+today = datetime.datetime.now().strftime("%d %B %Y")
+
+# Display the result
+print(f"As of {today}, there are {total:,} newspaper & gazette articles in Trove")
+```
+
+Use the `artType` facet to limit the results to either newspapers or gazettes:
+
+- `l-artType=newspapers` – [![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-artType%3Dnewspapers%26encoding%3Djson)
+- or `l-artType=gazette` – [![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-artType%3Dgazette%26encoding%3Djson)
+
+Notice that `newspapers` is pluralised, but `gazette` is not.
+
++++
+
+````{margin}
+```{seealso}
+The [trove-query-parser](https://wragge.github.io/trove_query_parser/) Python library makes it easy to translate searches for newspaper articles in Trove's web interface into a form that the API can understand. Just give it the url of a newspaper search and it will generate the set of parameters you'll need to replicate the search using the API.
+```
+````
+
++++
+
+Use the `q` parameter to supply search keywords. The query string can be anything you might include in Trove's ['simple' search](../understanding-search/simple-search-options.md) box. Results can be filtered using a number of facets, such as `category`, `state`, `illustrated`, and `decade`.
+
+<mark>==More detail on constructing searches here or somewhere else?==</mark>
+
+For example, to get the first 100 results of a search for `"clement wragge" AND cyclone`, limited to news articles published in Queensland, you would do something like:
+
+```{code-cell} ipython3
+import requests
+
+params = {
+    # Search string -- note the use of double quotes to search for a phrase
+    "q": '"clement wragge" AND cyclone',
+    "category": "newspaper",
+    "l-artType": "newspapers",
+    # Limit to articles published in Queensland
+    "l-state": "Queensland",
+    # Limit to news-ish articles
+    "l-category": "Article",
+    # Return 100 results
+    "n": 100,
+    "encoding": "json",
+}
+
+# Supply API key using headers
+headers = {"X-API-KEY": YOUR_API_KEY}
+
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
+
+data = response.json()
+```
+
+[![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26artType%3Dnewspapers%26l-category%3DArticle%26l-state%3DQueensland%26n%3D100%26encoding%3Djson)
+
++++
+
+The list of article records can be found at `data["category"][0]["records"]["article"]`. Here's the first record:
+
+```{code-cell} ipython3
+data["category"][0]["records"]["article"][0]
+```
+
+To print the titles of the first 10 articles you could do something like:
+
+```{code-cell} ipython3
+for article in data["category"][0]["records"]["article"][:10]:
+    print(article["heading"])
+```
+
+You can use the `reclevel` and `include` parameters to control the amount of metadata provided about each article. For example:
+
+Setting `reclevel=full` adds the following fields:
+
+- `trovePageUrl` – website url pointing to the page on which the article was published
+- `illustrated` – is this article illustrated ("Y" or "N")
+- `wordCount` – number of words
+- `correctionCount` – number of OCR corrections
+- `tagCount` – number of tags attached to this article
+- `commentCount` – number of tags attached to this article
+- `listCount` – number of lists this article has been added to
+- `lastCorrection` – details of last OCR correction, includes date and user name
+- `pdf` – link to download a PDF version of the page this article was published on
+
+[![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26encoding%3Djson)
+
++++
+
+````{warning}
+Note that while `wordCount`, `correctionCount`, `tagCount`, `commentCount`, and `listCount` are numbers, the API returns them as *strings*. If you want to run any mathematical operations on them, you'll first need to convert them into integers.
+
+```python
+word_count = int(article["wordCount"])
+```
+````
+
++++
+
+Use the `include` parameter to add details about tags, comments, and lists. For example, etting `include=tags` will add a list of any attached tags to the article metadata:
+
+```json
+"tag": [
+    {
+        "lastupdated": "2017-01-02T02:46:49Z",
+        "value": "Meteorologist - Clement Wragge"
+    },
+    {
+        "lastupdated": "2017-01-02T02:46:49Z",
+        "value": "Novelist - Marie Corelli"
+    }
+]
+```
+
+[![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26include%3Dtags%26include%3Dcomments%26include%3Dlists%26encoding%3Djson#limit-to-articles-with-illustrations)
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 #### Trove Newspaper Harvester
 
@@ -774,11 +919,13 @@ params = {
     "l-title": "11",
     "reclevel": "full",
     "n": 1,
-    "encoding": "json"
+    "encoding": "json",
 }
 
 # Make the request
-response = requests.get("https://api.trove.nla.gov.au/v3/result", params=params, headers=headers)
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
 
 # Get the results as JSON
 data = response.json()
@@ -786,14 +933,16 @@ data = response.json()
 # Get the `trovePageUrl` value from the first article in the result set
 page_identifier = data["category"][0]["records"]["article"][0]["trovePageUrl"]
 
-page_identifier 
+page_identifier
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+### Find catalogue entries for newspaper titles
+
+- use ISSNs to search in "Books & Libraries"
+- search for `format:Periodical/Newspaper`, add filters such as "nla.gov.au/nla.news" and "trove.nla.gov.au", weed out journals and eDeposit (how many are there?)
+
 ```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
 
 ```
