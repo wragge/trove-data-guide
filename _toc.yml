@@ -17,6 +17,8 @@ chapters:
       - file: what-is-trove/links-and-identifiers
   - file: types-of-data/types-of-data
   - file: understanding-search/understanding-search
+    sections:
+      - file: understanding-search/simple-search-options
   - file: accessing-data/accessing-data
     sections:
       - file: accessing-data/data-access-options
@@ -30,6 +32,7 @@ chapters:
       - file: how-to/newspaper-titles-totals
       - file: how-to/get-newspaper-issue-article-pdfs
       - file: how-to/international-newspaper-titles
+      - file: how-to/create-newspaper-articles-dataset
   - file: glossary
   - file: genindex
   - file: references
