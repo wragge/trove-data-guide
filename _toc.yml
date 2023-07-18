@@ -5,36 +5,60 @@ format: jb-book
 root: home
 options:
   numbered: 2
-  maxdepth: 1
-chapters:
-  - file: introduction/introduction
-  - file: what-is-trove/what-is-trove
-    sections:
+  maxdepth: 3
+parts:
+  - chapters:
+    - file: introduction/introduction
+  - caption: "What is Trove?"
+    numbered: true
+    chapters:
       - file: what-is-trove/trove-is
       - file: what-is-trove/categories-and-zones
       - file: what-is-trove/metadata-and-digital-objects
       - file: what-is-trove/works-and-versions
       - file: what-is-trove/links-and-identifiers
-  - file: types-of-data/types-of-data
-  - file: understanding-search/understanding-search
-    sections:
-      - file: understanding-search/simple-search-options
-  - file: accessing-data/accessing-data
-    sections:
+  - caption: "Types of data"
+    numbered: true
+    chapters:
+      - file: types-of-data/types-of-data
+  - caption: Understanding search
+    numbered: true
+    chapters:
+      - file: understanding-search/understanding-search
+        sections:
+          - file: understanding-search/simple-search-options
+  - caption: Accessing data
+    numbered: 2
+    maxdepth: 3
+    chapters:
       - file: accessing-data/data-access-options
       - file: accessing-data/trove-api-intro
       - file: accessing-data/newspapers-and-gazettes
+        sections:
+          - file: accessing-data/newspapers-and-gazettes-articles
+            title: Articles
+          - file: accessing-data/newspapers-and-gazettes-pages
+            title: Pages
+          - file: accessing-data/newspapers-and-gazettes-issues
+            title: Issues
+          - file: accessing-data/newspapers-and-gazettes-titles
+            title: Titles
       - file: accessing-data/trove-lists
-  - file: pathways/pathways
-  - file: how-to/how-to
-    sections:
+  - caption: Research pathways
+    numbered: true
+    chapters:
+      - file: pathways/pathways
+  - caption: How to...
+    numbered: true
+    chapters:
       - file: how-to/querypic
       - file: how-to/newspaper-titles-totals
       - file: how-to/get-newspaper-issue-article-pdfs
       - file: how-to/international-newspaper-titles
       - file: how-to/create-newspaper-articles-dataset
-  - file: glossary
-  - file: genindex
-  - file: references
-  - file: demo
+  - chapters:
+    - file: glossary
+    - file: genindex
+    - file: references
+    - file: demo
 
