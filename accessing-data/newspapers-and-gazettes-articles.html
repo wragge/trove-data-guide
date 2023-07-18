@@ -1,0 +1,984 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>10.1. Accessing data about newspaper and gazette articles &#8212; Trove Data Guide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-articles.5554e988-8053-49d0-b289-2c731d56673e.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes-articles';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10.2. Accessing data about newspaper &amp; gazette pages" href="newspapers-and-gazettes-pages.html" />
+    <link rel="prev" title="10. Newspapers and gazettes" href="newspapers-and-gazettes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+
+  <div class="bd-header-announcement container-fluid bd-header-announcement">
+    <div class="bd-header-announcement__content">🚧 <b>This is a working draft and will change often. Please do not cite or share!</b> 🚧</div>
+  </div>
+
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../home.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/trove-words-1685171984-1000-1000.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/trove-words-1685171984-1000-1000.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../home.html">
+                    Welcome to the Trove Data Guide
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">What is Trove?</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../what-is-trove/trove-is.html">1. Trove is…</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-trove/categories-and-zones.html">2. Categories and zones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-trove/metadata-and-digital-objects.html">3. Metadata and digital objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-trove/works-and-versions.html">4. Works and versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-trove/links-and-identifiers.html">5. Links and identifiers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Types of data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../types-of-data/types-of-data.html">6. Types of data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding search</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../understanding-search/understanding-search.html">7. Understanding search</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../understanding-search/simple-search-options.html">7.1. ‘Simple’ search options</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data-access-options.html">8. Data access options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trove-api-intro.html">9. Trove API introduction</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="newspapers-and-gazettes.html">10. Newspapers and gazettes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.1. Articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newspapers-and-gazettes-pages.html">10.2. Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newspapers-and-gazettes-issues.html">10.3. Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newspapers-and-gazettes-titles.html">10.4. Titles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trove-lists.html">11. Trove lists</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research pathways</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pathways/pathways.html">12. Research pathways</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to...</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../how-to/querypic.html">13. Visualising newspaper searches with QueryPic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/newspaper-titles-totals.html">14. Find the number of newspapers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/get-newspaper-issue-article-pdfs.html">15. Get a newspaper issue or article as a PDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/international-newspaper-titles.html">16. Get a list of ‘International’ newspapers and gazettes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/create-newspaper-articles-dataset.html">17. How to create a dataset of digitised newspaper articles</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demo.html">Jupyter Book demo page</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wragge/trove-data-guide" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wragge/trove-data-guide/issues/new?title=Issue%20on%20page%20%2Faccessing-data/newspapers-and-gazettes-articles.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/accessing-data/newspapers-and-gazettes-articles.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Accessing data about newspaper and gazette articles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-metadata">Article metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-article-metadata-from-the-web-interface">Save article metadata from the web interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-article-metadata-with-zotero">Saving article metadata with Zotero</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-lists">Trove Lists</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-export">Bulk export</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-from-a-search-for-articles-using-the-api">Get metadata from a search for articles using the API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-harvester">Trove Newspaper Harvester</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-for-an-individual-article">Get metadata for an individual article</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping-positional-information-from-the-web-site">Scraping positional information from the web site</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text">Article text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-images">Article images</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-data-about-newspaper-and-gazette-articles">
+<h1><span class="section-number">10.1. </span>Accessing data about newspaper and gazette articles<a class="headerlink" href="#accessing-data-about-newspaper-and-gazette-articles" title="Permalink to this heading">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
+</div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#article-metadata" id="id1">Article metadata</a></p>
+<ul>
+<li><p><a class="reference internal" href="#save-article-metadata-from-the-web-interface" id="id2">Save article metadata from the web interface</a></p>
+<ul>
+<li><p><a class="reference internal" href="#saving-article-metadata-with-zotero" id="id3">Saving article metadata with Zotero</a></p></li>
+<li><p><a class="reference internal" href="#trove-lists" id="id4">Trove Lists</a></p></li>
+<li><p><a class="reference internal" href="#bulk-export" id="id5">Bulk export</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#get-metadata-from-a-search-for-articles-using-the-api" id="id6">Get metadata from a search for articles using the API</a></p></li>
+<li><p><a class="reference internal" href="#trove-newspaper-harvester" id="id7">Trove Newspaper Harvester</a></p></li>
+<li><p><a class="reference internal" href="#get-metadata-for-an-individual-article" id="id8">Get metadata for an individual article</a></p></li>
+<li><p><a class="reference internal" href="#scraping-positional-information-from-the-web-site" id="id9">Scraping positional information from the web site</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#article-text" id="id10">Article text</a></p>
+<ul>
+<li><p><a class="reference internal" href="#api" id="id11">API</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#article-images" id="id12">Article images</a></p></li>
+</ul>
+</nav>
+<p><img alt="Screenshot of Trove web interface displaying basic article metadata" src="../_images/trove-article-metadata.png" /></p>
+<section id="article-metadata">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Article metadata</a><a class="headerlink" href="#article-metadata" title="Permalink to this heading">#</a></h2>
+<p>Newspaper and gazette article metadata includes basic information such as the article heading, publication date, publication title, and page number. Additional information such as attached tags or comments can be also be retrieved from the Trove API.</p>
+<section id="save-article-metadata-from-the-web-interface">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Save article metadata from the web interface</a><a class="headerlink" href="#save-article-metadata-from-the-web-interface" title="Permalink to this heading">#</a></h3>
+<p>Before you dive straight into to the API documentation, remember that there are ways of getting article metadata from the Trove web interface. Each method has its own limitations, but depending on your needs they might do the job. See <a class="reference internal" href="../how-to/create-newspaper-articles-dataset.html"><span class="doc std std-doc">How to create a dataset of digitised newspaper articles</span></a> for further tips.</p>
+<section id="saving-article-metadata-with-zotero">
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Saving article metadata with Zotero</a><a class="headerlink" href="#saving-article-metadata-with-zotero" title="Permalink to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#upload-trove-newspaper-articles-to-omeka-s">Upload Trove newspaper articles to Omeka-S</a> provides an example of how you can access newspaper article metadata saved with Zotero, or in a Trove list, add additional information, and upload the results to an Omeka exhibition.</p>
+</div>
+</aside>
+<p><a class="reference external" href="https://www.zotero.org/">Zotero</a> includes a ‘translator’ for Trove that saves article metadata into your own research database. It also downloads a PDF copy of the article, and saves the OCRd text into an attached note. You can <a class="reference external" href="https://www.zotero.org/support/adding_items_to_zotero">add items</a> by clicking on the Zotero icon in your web browser. The translator extracts metadata from the article web page and citation, rather than the Trove API.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It’s not currently possible to save details of multiple newspaper articles from Trove’s search results. This is due to changes introduced by Trove’s 2020 interface update. Unfortunately, you’ll need to add individual articles one by one.</p>
+</div>
+<p>Zotero saves the following fields for each newspaper article:</p>
+<table class="table" id="zotero-fields">
+<caption><span class="caption-number">Table 10.1 </span><span class="caption-text">Newspaper and gazette metadata fields extracted by Zotero</span><a class="headerlink" href="#zotero-fields" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Zotero UI</p></th>
+<th class="head"><p>Zotero field</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Item Type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">newspaperArticle</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Title</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>article heading</p></td>
+</tr>
+<tr class="row-even"><td><p>Publication</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">publicationTitle</span></code></p></td>
+<td><p>newspaper title (location and date range in brackets is removed)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Date</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td><p>publication date</p></td>
+</tr>
+<tr class="row-even"><td><p>Place</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">place</span></code></p></td>
+<td><p>publication state (extracted from newspaper title)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Abstract</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">abstract</span></code></p></td>
+<td><p>first four lines of text, if available (taken from <code class="docutils literal notranslate"><span class="pre">description</span></code> META tag)</p></td>
+</tr>
+<tr class="row-even"><td><p>URL</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">url</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.news-article[article</span> <span class="pre">ID]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Zotero provides many ways to <a class="reference external" href="https://www.zotero.org/support/kb/exporting">export data</a>. Once you’ve assembled a collection of articles you can export them in a suitable format for additional processing or analysis. Alternatively, you can use the <a class="reference external" href="https://www.zotero.org/support/dev/web_api/v3/start">Zotero API</a> to access and manipulate the saved data.</p>
+<p>Zotero is a convenient option for creating curated datasets of digitised newspaper articles. Zotero’s built-in annotation features enable you to tags and notes to further organise your collection. You can also collaborate on the selection and annotation of articles using shared groups.</p>
+<p>For example, Zotero’s built-in PDF viewer enables you to select sections of newspaper articles for annotation. You could use this to manually highlight sections of interest in long newspaper articles. The annotations and cropped images could then be retrieved from the Zotero API to create your own custom dataset. See <a class="reference internal" href="../how-to/create-newspaper-articles-dataset.html"><span class="doc std std-doc">How to create a dataset of digitised newspaper articles</span></a> for further ideas.</p>
+</section>
+<section id="trove-lists">
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Trove Lists</a><a class="headerlink" href="#trove-lists" title="Permalink to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-lists/convert-a-trove-list-into-a-csv-file/">Convert a Trove list into a CSV file</a> shows you how to save the full details of newspaper articles in a Trove list as a CSV file. You can also save the articles as PDFs and images, and download the OCRd text.</p>
+</div>
+</aside>
+<p>Another option for creating collections of manually selected newspaper article metadata is Trove’s built-in Lists function.</p>
+<p><mark>==Note about adding mutliple items to Lists. Hacking the url to get more==</mark></p>
+<p>See the <a class="reference internal" href="trove-lists.html"><span class="doc std std-doc">Trove Lists</span></a> section for information on saving lists metadata.</p>
+</section>
+<section id="bulk-export">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Bulk export</a><a class="headerlink" href="#bulk-export" title="Permalink to this heading">#</a></h4>
+<p><mark>==Include more info once official documentation is available==</mark></p>
+<p><mark>==Note that there are some differences in fields from the API==</mark></p>
+<ul class="simple">
+<li><p>metadata only, 1 million article limit</p></li>
+</ul>
+</section>
+</section>
+<section id="get-metadata-from-a-search-for-articles-using-the-api">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Get metadata from a search for articles using the API</a><a class="headerlink" href="#get-metadata-from-a-search-for-articles-using-the-api" title="Permalink to this heading">#</a></h3>
+<p>You can retrieve newspaper and gazette articles using the Trove API’s <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint, just set the <code class="docutils literal notranslate"><span class="pre">category</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
+<p>If we don’t include any search parameters, you get everything! You can use this to find out the number of newspaper and gazette articles in Trove:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># Set n to 0 because we don&#39;t want any records</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">}</span>
+
+<span class="c1"># Supply API key using headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;category&#39;: [{&#39;code&#39;: &#39;newspaper&#39;,
+   &#39;name&#39;: &#39;Newspapers &amp; Gazettes&#39;,
+   &#39;records&#39;: {&#39;s&#39;: &#39;*&#39;,
+    &#39;n&#39;: 0,
+    &#39;total&#39;: 243538039,
+    &#39;next&#39;: &#39;https://api.trove.nla.gov.au/v3/result?category=newspaper&amp;n=0&amp;encoding=json&amp;s=*&#39;,
+    &#39;nextStart&#39;: &#39;*&#39;}}]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the example above doesn’t return any articles because it sets the <code class="docutils literal notranslate"><span class="pre">n</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">0</span></code>. The current number of newspaper and gazette articles is in the <code class="docutils literal notranslate"><span class="pre">total</span></code> field.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="c1"># Get the total number of articles</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+<span class="c1"># And today&#39;s date</span>
+<span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;As of </span><span class="si">{</span><span class="n">today</span><span class="si">}</span><span class="s2">, there are </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> newspaper &amp; gazette articles in Trove&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 18 July 2023, there are 243,538,039 newspaper &amp; gazette articles in Trove
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">artType</span></code> facet to limit the results to either newspapers or gazettes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">l-artType=newspapers</span></code> – <a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-artType%3Dnewspapers%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p></li>
+<li><p>or <code class="docutils literal notranslate"><span class="pre">l-artType=gazette</span></code> – <a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-artType%3Dgazette%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p></li>
+</ul>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">newspapers</span></code> is pluralised, but <code class="docutils literal notranslate"><span class="pre">gazette</span></code> is not.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The <a class="reference external" href="https://wragge.github.io/trove_query_parser/">trove-query-parser</a> Python library makes it easy to translate searches for newspaper articles in Trove’s web interface into a form that the API can understand. Just give it the url of a newspaper search and it will generate the set of parameters you’ll need to replicate the search using the API.</p>
+</div>
+</aside>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter to supply search keywords. The query string can be anything you might include in Trove’s <a class="reference internal" href="../understanding-search/simple-search-options.html"><span class="doc std std-doc">‘simple’ search</span></a> box. Results can be filtered using a number of facets, such as <code class="docutils literal notranslate"><span class="pre">category</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">illustrated</span></code>, and <code class="docutils literal notranslate"><span class="pre">decade</span></code>.</p>
+<p><mark>==More detail on constructing searches here or somewhere else?==</mark></p>
+<p>For example, to get the first 100 results of a search for <code class="docutils literal notranslate"><span class="pre">&quot;clement</span> <span class="pre">wragge&quot;</span> <span class="pre">AND</span> <span class="pre">cyclone</span></code>, limited to news articles published in Queensland, you would do something like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Search string -- note the use of double quotes to search for a phrase</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;&quot;clement wragge&quot; AND cyclone&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;l-artType&quot;</span><span class="p">:</span> <span class="s2">&quot;newspapers&quot;</span><span class="p">,</span>
+    <span class="c1"># Limit to articles published in Queensland</span>
+    <span class="s2">&quot;l-state&quot;</span><span class="p">:</span> <span class="s2">&quot;Queensland&quot;</span><span class="p">,</span>
+    <span class="c1"># Limit to news-ish articles</span>
+    <span class="s2">&quot;l-category&quot;</span><span class="p">:</span> <span class="s2">&quot;Article&quot;</span><span class="p">,</span>
+    <span class="c1"># Return 100 results</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Supply API key using headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26artType%3Dnewspapers%26l-category%3DArticle%26l-state%3DQueensland%26n%3D100%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
+<p>The list of article records can be found at <code class="docutils literal notranslate"><span class="pre">data[&quot;category&quot;][0][&quot;records&quot;][&quot;article&quot;]</span></code>. Here’s the first record:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;article&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: &#39;169851997&#39;,
+ &#39;url&#39;: &#39;https://api.trove.nla.gov.au/v3/newspaper/169851997&#39;,
+ &#39;heading&#39;: &#39;CYCLONE FORECASTER. MR. CLEMENT WRAGGE.&#39;,
+ &#39;category&#39;: &#39;Article&#39;,
+ &#39;title&#39;: {&#39;id&#39;: &#39;837&#39;, &#39;title&#39;: &#39;Daily Mercury (Mackay, Qld. : 1906 - 1954)&#39;},
+ &#39;date&#39;: &#39;1927-03-08&#39;,
+ &#39;page&#39;: &#39;3&#39;,
+ &#39;pageSequence&#39;: &#39;3&#39;,
+ &#39;relevance&#39;: {&#39;score&#39;: 540.1367797851562, &#39;value&#39;: &#39;very relevant&#39;},
+ &#39;snippet&#39;: &#39;&quot;Coyyan&quot; writes in the Cairns \&#39;Post\&#39;:-- Mr. Clement Wragge was generally referred to as the Inclement Wragge,&quot; purely on account of&#39;,
+ &#39;troveUrl&#39;: &#39;https://.nla.gov.au/nla.news-article169851997?searchTerm=%22clement+wragge%22+AND+cyclone&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>To print the titles of the first 10 articles you could do something like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;article&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">article</span><span class="p">[</span><span class="s2">&quot;heading&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CYCLONE FORECASTER. MR. CLEMENT WRAGGE.
+CLEMENT WRAGGE.
+CYCLONE FORECASTER. MR. CLEMENT WRAGGE. SOME PROOF.
+CYCLONE FORECASTER. MR. CLEMENT WRAGGE. SOME PROOF.
+MR. CLEMENT WRAGGE.
+MR. CLEMENT WRAGGE.
+CLEMENT WRAGGE&#39;S LATEST PREDICTION.
+Mr. Clement Wragge at Longreach
+METEOROLOGY. MR. CLEMENT WRAGGE&#39; PROPOSALS.
+Weather Wizard. Mr. Clement Wragge. Mount Wellington Observatory.
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> and <code class="docutils literal notranslate"><span class="pre">include</span></code> parameters to control the amount of metadata provided about each article. For example:</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">reclevel=full</span></code> adds the following fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trovePageUrl</span></code> – website url pointing to the page on which the article was published</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">illustrated</span></code> – is this article illustrated (“Y” or “N”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wordCount</span></code> – number of words</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">correctionCount</span></code> – number of OCR corrections</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tagCount</span></code> – number of tags attached to this article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">commentCount</span></code> – number of tags attached to this article</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">listCount</span></code> – number of lists this article has been added to</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lastCorrection</span></code> – details of last OCR correction, includes date and user name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdf</span></code> – link to download a PDF version of the page this article was published on</p></li>
+</ul>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that while <code class="docutils literal notranslate"><span class="pre">wordCount</span></code>, <code class="docutils literal notranslate"><span class="pre">correctionCount</span></code>, <code class="docutils literal notranslate"><span class="pre">tagCount</span></code>, <code class="docutils literal notranslate"><span class="pre">commentCount</span></code>, and <code class="docutils literal notranslate"><span class="pre">listCount</span></code> are numbers, the API returns them as <em>strings</em>. If you want to run any mathematical operations on them, you’ll first need to convert them into integers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">word_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">article</span><span class="p">[</span><span class="s2">&quot;wordCount&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter to add details about tags, comments, and lists. For example, setting <code class="docutils literal notranslate"><span class="pre">include=tags</span></code> will add a list of any attached tags to the article metadata:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;lastupdated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-01-02T02:46:49Z&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Meteorologist - Clement Wragge&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;lastupdated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2017-01-02T02:46:49Z&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Novelist - Marie Corelli&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26include%3Dtags%26include%3Dcomments%26include%3Dlists%26encoding%3Djson#limit-to-articles-with-illustrations"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
+</section>
+<section id="trove-newspaper-harvester">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Trove Newspaper Harvester</a><a class="headerlink" href="#trove-newspaper-harvester" title="Permalink to this heading">#</a></h3>
+<p><mark>==Where should this go?==</mark></p>
+<ul class="simple">
+<li><p>metadata, text, images, PDFs</p></li>
+<li><p>no limit</p></li>
+<li><p>metadata file captures query details</p></li>
+</ul>
+</section>
+<section id="get-metadata-for-an-individual-article">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Get metadata for an individual article</a><a class="headerlink" href="#get-metadata-for-an-individual-article" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="scraping-positional-information-from-the-web-site">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Scraping positional information from the web site</a><a class="headerlink" href="#scraping-positional-information-from-the-web-site" title="Permalink to this heading">#</a></h3>
+<p>The OCR process not only extracts text from an image, it generates coordinates that document the position of each piece of text within the parent image. You could use this information to crop an image of the OCRd text out of the parent image. In the case of digitised newspapers, this sort of positional information could help you explore the layout and contents of newspaper pages and how this changes over time.</p>
+<p>No positional information is available from the Trove API, however, there is some embedded within the web site. If you view the source of a newspaper article’s web page, you’ll find a number of <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> tags like this:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;l1.0.0&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;edit&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&quot;Line 1.0.0&quot;</span> <span class="na">data-x</span><span class="o">=</span><span class="s">&quot;2905&quot;</span> <span class="na">data-y</span><span class="o">=</span><span class="s">&quot;573&quot;</span> <span class="na">data-w</span><span class="o">=</span><span class="s">&quot;844&quot;</span> <span class="na">data-h</span><span class="o">=</span><span class="s">&quot;43&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Mr. Wragge is going to issue a &amp;quot;Wragge.&amp;quot;&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">value</span></code> attribute of the tag includes the text of a single line. The <code class="docutils literal notranslate"><span class="pre">data</span></code> attributes provide the positional coordinates of that line:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data-x</span></code>: horizontal offset of the top left corner of a box surrounding the line (in pixels)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data-y</span></code>: vertical offset of the top left corner of a box surrounding the line (in pixels)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data-w</span></code>: the width of a box surrounding the line (in pixels)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data-h</span></code>: the height of a box surrounding the line (in pixels)</p></li>
+</ul>
+<p>Individual lines are aggregated into blocks of content labelled as <code class="docutils literal notranslate"><span class="pre">zones</span></code> within the HTML. The position of each zone is also recorded:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;zone onPage readMode&quot;</span> <span class="na">data-page-id</span><span class="o">=</span><span class="s">&quot;5417618&quot;</span> <span class="na">data-x</span><span class="o">=</span><span class="s">&quot;2889&quot;</span> <span class="na">data-y</span><span class="o">=</span><span class="s">&quot;487&quot;</span> <span class="na">data-w</span><span class="o">=</span><span class="s">&quot;862&quot;</span> <span class="na">data-h</span><span class="o">=</span><span class="s">&quot;89&quot;</span> <span class="na">data-rotation</span><span class="o">=</span><span class="s">&quot;-1&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;display: none;&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Zones can also contain illustrations:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;illustration help-region onPage&quot;</span> <span class="na">data-x</span><span class="o">=</span><span class="s">&quot;4455&quot;</span> <span class="na">data-y</span><span class="o">=</span><span class="s">&quot;677&quot;</span> <span class="na">data-w</span><span class="o">=</span><span class="s">&quot;706&quot;</span> <span class="na">data-h</span><span class="o">=</span><span class="s">&quot;1031&quot;</span> <span class="na">data-caption</span><span class="o">=</span><span class="s">&quot;none&quot;</span> <span class="na">data-type</span><span class="o">=</span><span class="s">&quot;Cartoon&quot;</span> <span class="na">data-id</span><span class="o">=</span><span class="s">&quot;8281319&quot;</span> <span class="na">data-part</span><span class="o">=</span><span class="s">&quot;134576145&quot;</span> <span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pixel values are absolute, so they relate to a page image at a specific resolution. This resolution is the highest available from the Trove web interface, with a zoom level of <code class="docutils literal notranslate"><span class="pre">7</span></code>. See below for <a class="reference internal" href="newspapers-and-gazettes-pages.html#download-a-page-image"><span class="std std-ref">information on saving page images</span></a>.</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For a full working example of this, see the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#get-the-page-coordinates-of-a-digitised-newspaper-article-from-trove">Get the page coordinates of a digitised newspaper article from Trove</a></p>
+</div>
+</aside>
+<p>To get the coordinates of a box containing an entire article, you can add up the boxes for each zone. For example, assuming you have the zones in a list you could try:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">top</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">zone</span> <span class="ow">in</span> <span class="n">zones</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-y&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">top</span><span class="p">:</span>
+        <span class="n">top</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-y&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-x&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">left</span><span class="p">:</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-x&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-x&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-w&quot;</span><span class="p">]))</span> <span class="o">&gt;</span> <span class="n">right</span><span class="p">:</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-x&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-w&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-y&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-h&quot;</span><span class="p">]))</span> <span class="o">&gt;</span> <span class="n">bottom</span><span class="p">:</span>
+        <span class="n">bottom</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-y&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone</span><span class="p">[</span><span class="s2">&quot;data-h&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We can use this information to extract the image of an individual article or illustration from a page image. See below for details.</p>
+<p>With an extra little trick you can even get the coordinates of an individual word. This information is not ordinarily contained within the HTML, <em>but</em> if you search for a particular word, that word is highlighted and its coordinates included in the HTML. Here’s a line of text with a highlighted word:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;read&quot;</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;highlightedTerm&quot;</span> <span class="na">data-x</span><span class="o">=</span><span class="s">&quot;4458&quot;</span> <span class="na">data-y</span><span class="o">=</span><span class="s">&quot;1949&quot;</span> <span class="na">data-w</span><span class="o">=</span><span class="s">&quot;129&quot;</span> <span class="na">data-h</span><span class="o">=</span><span class="s">&quot;32&quot;</span><span class="p">&gt;</span>Wragge,<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> the Government Meteorologist of<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>You can see that the <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> element includes the same set of <code class="docutils literal notranslate"><span class="pre">data</span></code> attributes defining a box around the highlighted word.</p>
+<p>In theory, you could write some code that gets the positions of every word in an article by looping through the words, adding each one to the page url’s <code class="docutils literal notranslate"><span class="pre">searchTerm</span></code> parameter so that it’s highlighted, then grabbing the coordinates from the <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code>. It would be rather inefficient though.</p>
+<p>As described below, you can use this information to save images of individual words.</p>
+</section>
+</section>
+<section id="article-text">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Article text</a><a class="headerlink" href="#article-text" title="Permalink to this heading">#</a></h2>
+<p>Newspaper text is segmented by article. The text is generated by OCR, with manual corrections by volunteers.</p>
+<section id="api">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">API</a><a class="headerlink" href="#api" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">include=articletext</span></code></p>
+<p>Note: includes html
+Note: not the AWW (have to scrape)</p>
+<p>Trove Newspaper Harvester (including AWW)</p>
+</section>
+</section>
+<section id="article-images">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Article images</a><a class="headerlink" href="#article-images" title="Permalink to this heading">#</a></h2>
+<p>PDF proxy</p>
+<p>Save articles as images</p>
+<p>Save just the illustrations as images</p>
+<p>Save words as images</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./accessing-data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="newspapers-and-gazettes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Newspapers and gazettes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="newspapers-and-gazettes-pages.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10.2. </span>Accessing data about newspaper &amp; gazette pages</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-metadata">Article metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-article-metadata-from-the-web-interface">Save article metadata from the web interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-article-metadata-with-zotero">Saving article metadata with Zotero</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-lists">Trove Lists</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-export">Bulk export</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-from-a-search-for-articles-using-the-api">Get metadata from a search for articles using the API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-harvester">Trove Newspaper Harvester</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-for-an-individual-article">Get metadata for an individual article</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping-positional-information-from-the-web-site">Scraping positional information from the web site</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text">Article text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-images">Article images</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="https://timsherratt.org">Tim Sherratt</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023 Australian Research Data Commons.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
