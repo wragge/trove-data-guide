@@ -4,22 +4,20 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.6
+    jupytext_version: 1.14.7
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
+# Newspaper and gazettes how to...
 
-# Accessing data
++++
 
 ```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
 ```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{tableofcontents}
 ```

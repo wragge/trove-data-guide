@@ -51,11 +51,12 @@ parts:
   - caption: How to...
     numbered: true
     chapters:
-      - file: how-to/querypic
-      - file: how-to/newspaper-titles-totals
-      - file: how-to/get-newspaper-issue-article-pdfs
-      - file: how-to/international-newspaper-titles
-      - file: how-to/create-newspaper-articles-dataset
+      - file: how-to/newspapers/newspapers-and-gazettes
+        sections:
+          - file: how-to/newspapers/querypic
+          - file: how-to/newspapers/get-newspaper-issue-article-pdfs
+          - file: how-to/newspapers/international-newspaper-titles
+          - file: how-to/newspapers/create-newspaper-articles-dataset
   - chapters:
     - file: glossary
     - file: genindex
