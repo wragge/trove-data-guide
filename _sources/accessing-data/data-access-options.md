@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.6
+    jupytext_version: 1.14.7
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -22,6 +22,8 @@ This guide is currently under development. For more information and discussion s
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+This section documents methods for obtaining {term}`machine-readable data` from Trove. You can manually download some types of data, such as images, from Trove's web interface. But the focus here is on reusable and extensible methods that can be used in a variety of workflows, such as the creation of datasets for further analysis.
 
 There are a number of ways in which you can access data from Trove:
 

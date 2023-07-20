@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/demo.427389a5-0bcf-4403-abf1-75fda8585e69.js"></script>
+    <script defer="defer" src="_static/tippy/demo.d828cceb-d626-4682-b18f-1c59ac232b85.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'demo';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -207,11 +207,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">How to...</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="how-to/querypic.html">13. Visualising newspaper searches with QueryPic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to/newspaper-titles-totals.html">14. Find the number of newspapers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to/get-newspaper-issue-article-pdfs.html">15. Get a newspaper issue or article as a PDF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to/international-newspaper-titles.html">16. Get a list of ‘International’ newspapers and gazettes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to/create-newspaper-articles-dataset.html">17. How to create a dataset of digitised newspaper articles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="how-to/newspapers/newspapers-and-gazettes.html">13. Newspaper and gazettes how to…</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/newspapers/querypic.html">13.1. Visualising newspaper searches with QueryPic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/newspapers/get-newspaper-issue-article-pdfs.html">13.2. Get a newspaper issue or article as a PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/newspapers/international-newspaper-titles.html">13.3. Get a list of ‘International’ newspapers and gazettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/newspapers/create-newspaper-articles-dataset.html">13.4. How to create a dataset of digitised newspaper articles</a></li>
+</ul>
+</li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -438,7 +440,7 @@ Test content only!</p>
 <p class="sidebar-title"></p>
 <div class="note admonition">
 <p class="admonition-title">Did you know?</p>
-<p>As of <span class="pasted-text">18 Jul 2023</span>, there are <span class="pasted-text">243,538,039</span> digitised newspaper articles in Trove</p>
+<p>As of <span class="pasted-text">20 Jul 2023</span>, there are <span class="pasted-text">243,655,031</span> digitised newspaper articles in Trove</p>
 </div>
 </aside>
 <aside class="margin sidebar">
@@ -447,23 +449,23 @@ Test content only!</p>
 <p class="admonition-title">Trove categories</p>
 <div class="output text_html">
 <style>
-  #altair-viz-3d263e2f63d646b995ad36bb74077457.vega-embed {
+  #altair-viz-9750cbd7958649339064cafe37e42a55.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-3d263e2f63d646b995ad36bb74077457.vega-embed details,
-  #altair-viz-3d263e2f63d646b995ad36bb74077457.vega-embed details summary {
+  #altair-viz-9750cbd7958649339064cafe37e42a55.vega-embed details,
+  #altair-viz-9750cbd7958649339064cafe37e42a55.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-3d263e2f63d646b995ad36bb74077457"></div>
+<div id="altair-viz-9750cbd7958649339064cafe37e42a55"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-3d263e2f63d646b995ad36bb74077457") {
-      outputDiv = document.getElementById("altair-viz-3d263e2f63d646b995ad36bb74077457");
+    if (outputDiv.id !== "altair-viz-9750cbd7958649339064cafe37e42a55") {
+      outputDiv = document.getElementById("altair-viz-9750cbd7958649339064cafe37e42a55");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -509,29 +511,29 @@ Test content only!</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c428f0f92799032ed1bcbc46ec85ba89"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-c428f0f92799032ed1bcbc46ec85ba89": [{"name": "Books & Libraries", "total": 26563412}, {"name": "Diaries, Letters & Archives", "total": 4943246}, {"name": "Images, Maps & Artefacts", "total": 5922566}, {"name": "Lists", "total": 108741}, {"name": "Magazines & Newsletters", "total": 1807150}, {"name": "Music, Audio & Video", "total": 3256430}, {"name": "Newspapers & Gazettes", "total": 243538039}, {"name": "People & Organisations", "total": 1322125}, {"name": "Research & Reports", "total": 5487103}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-3a4985bd4100cf96327cf601233d206d"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-3a4985bd4100cf96327cf601233d206d": [{"name": "Books & Libraries", "total": 26566321}, {"name": "Diaries, Letters & Archives", "total": 4943349}, {"name": "Images, Maps & Artefacts", "total": 5923038}, {"name": "Lists", "total": 108750}, {"name": "Magazines & Newsletters", "total": 1807180}, {"name": "Music, Audio & Video", "total": 3256609}, {"name": "Newspapers & Gazettes", "total": 243655031}, {"name": "People & Organisations", "total": 1322137}, {"name": "Research & Reports", "total": 5491510}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </aside>
 <figure class="align-center" id="fig-cats">
 <span id="index-0"></span><div class="output text_html">
 <style>
-  #altair-viz-84a3de99cb5f40b5a4ee25fb704db20c.vega-embed {
+  #altair-viz-39f71275dc3f46398e8e5612175061df.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-84a3de99cb5f40b5a4ee25fb704db20c.vega-embed details,
-  #altair-viz-84a3de99cb5f40b5a4ee25fb704db20c.vega-embed details summary {
+  #altair-viz-39f71275dc3f46398e8e5612175061df.vega-embed details,
+  #altair-viz-39f71275dc3f46398e8e5612175061df.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-84a3de99cb5f40b5a4ee25fb704db20c"></div>
+<div id="altair-viz-39f71275dc3f46398e8e5612175061df"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-84a3de99cb5f40b5a4ee25fb704db20c") {
-      outputDiv = document.getElementById("altair-viz-84a3de99cb5f40b5a4ee25fb704db20c");
+    if (outputDiv.id !== "altair-viz-39f71275dc3f46398e8e5612175061df") {
+      outputDiv = document.getElementById("altair-viz-39f71275dc3f46398e8e5612175061df");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -577,7 +579,7 @@ Test content only!</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c428f0f92799032ed1bcbc46ec85ba89"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-c428f0f92799032ed1bcbc46ec85ba89": [{"name": "Books & Libraries", "total": 26563412}, {"name": "Diaries, Letters & Archives", "total": 4943246}, {"name": "Images, Maps & Artefacts", "total": 5922566}, {"name": "Lists", "total": 108741}, {"name": "Magazines & Newsletters", "total": 1807150}, {"name": "Music, Audio & Video", "total": 3256430}, {"name": "Newspapers & Gazettes", "total": 243538039}, {"name": "People & Organisations", "total": 1322125}, {"name": "Research & Reports", "total": 5487103}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-3a4985bd4100cf96327cf601233d206d"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-3a4985bd4100cf96327cf601233d206d": [{"name": "Books & Libraries", "total": 26566321}, {"name": "Diaries, Letters & Archives", "total": 4943349}, {"name": "Images, Maps & Artefacts", "total": 5923038}, {"name": "Lists", "total": 108750}, {"name": "Magazines & Newsletters", "total": 1807180}, {"name": "Music, Audio & Video", "total": 3256609}, {"name": "Newspapers & Gazettes", "total": 243655031}, {"name": "People & Organisations", "total": 1322137}, {"name": "Research & Reports", "total": 5491510}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">Number of resources per Trove category</span><a class="headerlink" href="#fig-cats" title="Permalink to this image">#</a></p>
 </figcaption>

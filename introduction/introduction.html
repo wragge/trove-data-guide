@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/introduction/introduction.d954bc41-c716-4457-9102-d0ae42934d5f.js"></script>
+    <script defer="defer" src="../_static/tippy/introduction/introduction.115170fc-9863-4613-83e2-8d47bb26a4a6.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'introduction/introduction';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -208,11 +208,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">How to...</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../how-to/querypic.html">13. Visualising newspaper searches with QueryPic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how-to/newspaper-titles-totals.html">14. Find the number of newspapers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how-to/get-newspaper-issue-article-pdfs.html">15. Get a newspaper issue or article as a PDF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how-to/international-newspaper-titles.html">16. Get a list of ‘International’ newspapers and gazettes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../how-to/create-newspaper-articles-dataset.html">17. How to create a dataset of digitised newspaper articles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../how-to/newspapers/newspapers-and-gazettes.html">13. Newspaper and gazettes how to…</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/querypic.html">13.1. Visualising newspaper searches with QueryPic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/get-newspaper-issue-article-pdfs.html">13.2. Get a newspaper issue or article as a PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/international-newspaper-titles.html">13.3. Get a list of ‘International’ newspapers and gazettes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/create-newspaper-articles-dataset.html">13.4. How to create a dataset of digitised newspaper articles</a></li>
+</ul>
+</li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -445,13 +447,13 @@ document.write(`
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>How to <a class="reference internal" href="../how-to/querypic.html"><span class="doc std std-doc">visualise newspaper searches using QueryPic</span></a>.</p>
+<p>How to <span class="xref myst">visualise newspaper searches using QueryPic</span>.</p>
 </div>
 </aside>
 <p>These charts are created by a tool called QueryPic, which retrieves search data from Trove using its <a class="reference internal" href="../glossary.html#term-Application-Programming-Interface-API"><span class="xref std std-term">Application Programming Interface (API)</span></a>. Like a standard search box, APIs accept requests for information, but they deliver the results back in a structured form that computers can understand and use. Web sites are for humans, web APIs are for machines. This Guide provides many examples of how you can use the Trove API to retrieve and process data.</p>
 <p>By accessing Trove’s search data directly, we can start to grapple with the challenges of scale. We can examine those millions of results from a range of perspectives, looking for patterns and anomalies. We can see them differently.</p>
 <p>But that’s just the beginning. If the resources we’re interested in are digitised, we can often access their <em>contents</em> as data – such as the text of a book, or a digital image of a photograph. We can use computational methods to analyse and compare these resources, looking in depth at their structure and form.</p>
-<p>Search results and digitised content are two types of data available from Trove, but there are more. This Guide describes <a class="reference internal" href="../types-of-data/types-of-data.html"><span class="doc std std-doc">the different types of data</span></a> Trove provides, explains <a class="reference internal" href="../accessing-data/accessing-data.html"><span class="doc std std-doc">how to access them</span></a>, and gives <a class="reference internal" href="../pathways/pathways.html"><span class="doc std std-doc">some examples</span></a> of what you can do with this data. What new types of questions can we ask?</p>
+<p>Search results and digitised content are two types of data available from Trove, but there are more. This Guide describes <a class="reference internal" href="../types-of-data/types-of-data.html"><span class="doc std std-doc">the different types of data</span></a> Trove provides, explains <span class="xref myst">how to access them</span>, and gives <a class="reference internal" href="../pathways/pathways.html"><span class="doc std std-doc">some examples</span></a> of what you can do with this data. What new types of questions can we ask?</p>
 <p>But there are new dangers and challenges too. If we look again at the charts created by QueryPic, we might wonder what the peaks and troughs actually mean. How are the results influenced by the number of newspapers published or digitised? If we’re going to use Trove as a source of research data, we need to ask critical questions about where that data comes from, what it represents, and what it is missing. That’s why this Guide starts by examining <a class="reference internal" href="../what-is-trove/what-is-trove.html"><span class="doc std std-doc">the nature of Trove itself</span></a>. As researchers we should always seek to understand the context of our sources, whether a single handwritten letter, or a massive digital collection.</p>
 <p>==Something about skills?==</p>
 </section>
