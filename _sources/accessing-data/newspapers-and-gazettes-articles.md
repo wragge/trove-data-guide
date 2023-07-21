@@ -54,7 +54,14 @@ When you search in Trove's digitised newspapers, you're searching for *articles*
 
 ## Metadata
 
-Newspaper and gazette article metadata includes basic information such as the article heading, publication date, publication title, and page number. Additional information such as attached tags or comments can be also be retrieved from the Trove API.
+The {term}`metadata` associated with newspaper and gazette articles in Trove includes the basic information you'd expect to put in a citation, like the article's headline, publication date, newspaper, and page number. Additional fields are added by the OCR and data ingestion processes, such as internal links, the number of words, and the article category. User activity also adds data relating to tags, comments, lists, and corrections.
+
++++
+
+```{admonition} Don't get your categories mixed up!
+:class: note
+The term `category` is used in two completely different contexts in Trove. It's used to describe the top-level groupings of resources, such as 'Newspapers & Gazettes', 'Books & Libraries', and 'Magazines & Newsletters'. But it's also used to describe different types of newspaper and gazette articles, such as 'Article', 'Advertising', and 'Family Notices'.
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -68,13 +75,58 @@ See [](../how-to/create-newspaper-articles-dataset.md) for further tips.
 
 +++
 
-Articles are linked to:
+### Article links and connections
 
-- pages via page numbers and page identifiers
-- titles via title identifiers
-- issues via date
+Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.
 
-<mark>==Note about different values for pages==</mark>
+Links to newspaper **titles** are perhaps the most straightforward. Each article is linked to a single newspaper title by the title's unique identifier. An article's metadata record includes a field for `title` that includes both the identifier and the newspaper's masthead. for example:
+
+```json
+"title": {
+    "id": "101",
+    "title": "Western Mail (Perth, WA : 1885 - 1954)"
+}
+```
+
+You can use the newspapers' `id` to request more information from the `newspaper/titles` API endpoint.
+
+There are no direct links from articles to newspaper **issues**. However, articles share a date with their parent issue, so it's possible to use the date to connect them. For example you can use a `date` search to find all the articles in an issue. 
+
++++
+
+```{admonition} But what about 'editions'?
+:class: note
+One problem in trying to link articles with issues is that newspapers often published multiple editions per day. So to identify a specific issue you might need both a date *and* an edition. This is not really possible in Trove, because editions are rarely documented. This is something to keep in mind if, for example, you're trying to match a Trove article with an original paper copy, or trying to track down a pre-Trove reference – a date might not be enough!
+```
+
++++
+
+There are two ways in which articles are linked to pages. The first is simply by the `page` value, which is a number indicating the sequence of page within an issue. This *usually* corresponds to the page number printed on the page, however, sometimes issues include separately numbered supplements. You can tell if a page is part of a supplement by looking at the confusingly-named `pageSequence` value – it will typically include an 'S' after the page number. There might also be a `pageLabel` value that provides the number printed on the page within the supplement.
+
+Here's [an advertisement for abstestos cement](https://trove.nla.gov.au/newspaper/article/48076559/) in a 1957 building supplement published as part of the *Australian Women's Weekly*. The article's metadata record includes the following page values:
+
+```json
+"page": "82",
+"pageSequence": "82 S",
+"pageLabel": "2",
+```
+
+This means the article is on the 82nd page of the issue, but this page is within a supplement and is numbered '2' on the printed page.
+
+The second way articles are linked to pages is by the page's unique identifier. If you set `reclevel` to `full` when requesting article records, the metadata will include a `trovePageUrl` value, for example:
+
+```json
+"trovePageUrl": "https://nla.gov.au/nla.news-page5417618"
+```
+
+The url displays the page in the Trove web interface, but the numeric part uniquely identifies the page and can be used to do things like downloading an image of a page.
+
++++
+
+```{admonition} What happens when pages are split over multiple pages?
+:class: note
+The `page` value in an article's metadata is only ever a single number. If an article is split over multiple pages, then the `page` value will indicate the page on which the article *begins*. The metadata doesn't include the numbers of any subsequent pages. You can, however, find out whether an article is split across pages by looking at the `pdf` field. This field contains a list of links to page PDFs. The number of links will tell you the number of pages the article appears on. (But note that the `pdf` field seems to be missing from *Australian Women's Weekly* articles.)
+```
 
 +++
 
@@ -241,6 +293,16 @@ Use the `include` parameter to add details about tags, comments, and lists. For 
 ```
 
 [![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26include%3Dtags%26include%3Dcomments%26include%3Dlists%26encoding%3Djson#limit-to-articles-with-illustrations)
+
++++
+
+### Using facets to get aggregate data about articles
+
+<mark>Links to QueryPic and other examples</mark>
+
++++
+
+### Pagination
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
