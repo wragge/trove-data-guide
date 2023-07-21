@@ -26,6 +26,7 @@ This guide is currently under development. For more information and discussion s
 <mark>==Note that there are some differences in fields from the API==</mark>
 
 - metadata only (no fulltext or versions), 1 million article limit
+- different fields to API? Perhaps generated from internal API rather than public one? How to reconcile?
 
 ```{code-cell} ipython3
 
