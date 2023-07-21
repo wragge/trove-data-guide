@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-articles.48b614eb-12f8-4d4c-ac13-b58c57727bf9.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-articles.eac9d5f4-9f98-4018-a8b2-11bccef3c55e.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes-articles';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -492,20 +492,20 @@ document.write(`
 <section id="article-links-and-connections">
 <h3><a class="toc-backref" href="#id2" role="doc-backlink">Article links and connections</a><a class="headerlink" href="#article-links-and-connections" title="Permalink to this heading">#</a></h3>
 <p>Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.</p>
-<p>Links to newspaper <strong>titles</strong> are perhaps the most straightforward. Each article is linked to a single newspaper title by the title’s unique identifier. An article’s metadata record includes a field for <code class="docutils literal notranslate"><span class="pre">title</span></code> that includes both the identifier and the newspaper’s masthead. for example:</p>
+<p>Links to newspaper <strong>titles</strong> are perhaps the most straightforward. Each article is linked to a single newspaper title by the title’s unique identifier. An article’s metadata record includes a field for <code class="docutils literal notranslate"><span class="pre">title</span></code> that includes both the numeric identifier and the newspaper’s masthead. for example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;101&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Western Mail (Perth, WA : 1885 - 1954)&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>You can use the newspapers’ <code class="docutils literal notranslate"><span class="pre">id</span></code> to request more information from the <code class="docutils literal notranslate"><span class="pre">newspaper/titles</span></code> API endpoint.</p>
+<p>You can use the newspaper’s <code class="docutils literal notranslate"><span class="pre">id</span></code> to request more information from the <code class="docutils literal notranslate"><span class="pre">newspaper/titles</span></code> API endpoint.</p>
 <p>There are no direct links from articles to newspaper <strong>issues</strong>. However, articles share a date with their parent issue, so it’s possible to use the date to connect them. For example you can use a <code class="docutils literal notranslate"><span class="pre">date</span></code> search to find all the articles in an issue.</p>
 <div class="note admonition">
 <p class="admonition-title">But what about ‘editions’?</p>
 <p>One problem in trying to link articles with issues is that newspapers often published multiple editions per day. So to identify a specific issue you might need both a date <em>and</em> an edition. This is not really possible in Trove, because editions are rarely documented. This is something to keep in mind if, for example, you’re trying to match a Trove article with an original paper copy, or trying to track down a pre-Trove reference – a date might not be enough!</p>
 </div>
-<p>There are two ways in which articles are linked to pages. The first is simply by the <code class="docutils literal notranslate"><span class="pre">page</span></code> value, which is a number indicating the sequence of page within an issue. This <em>usually</em> corresponds to the page number printed on the page, however, sometimes issues include separately numbered supplements. You can tell if a page is part of a supplement by looking at the confusingly-named <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code> value – it will typically include an ‘S’ after the page number. There might also be a <code class="docutils literal notranslate"><span class="pre">pageLabel</span></code> value that provides the number printed on the page within the supplement.</p>
+<p>There are two ways in which articles are linked to <strong>pages</strong>. The first is simply by the <code class="docutils literal notranslate"><span class="pre">page</span></code> value, which is a number indicating the sequence of a page within an issue. This <em>usually</em> corresponds to the page number printed on the page, however, sometimes issues include separately numbered supplements. You can tell if a page is part of a supplement by looking at the confusingly-named <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code> value – it will typically include an ‘S’ after the page number. There might also be a <code class="docutils literal notranslate"><span class="pre">pageLabel</span></code> value that provides the number printed on the page within the supplement.</p>
 <p>Here’s <a class="reference external" href="https://trove.nla.gov.au/newspaper/article/48076559/">an advertisement for abstestos cement</a> in a 1957 building supplement published as part of the <em>Australian Women’s Weekly</em>. The article’s metadata record includes the following page values:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82&quot;</span><span class="p">,</span>
 <span class="nt">&quot;pageSequence&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82 S&quot;</span><span class="p">,</span>
@@ -517,10 +517,10 @@ document.write(`
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;trovePageUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://nla.gov.au/nla.news-page5417618&quot;</span>
 </pre></div>
 </div>
-<p>The url displays the page in the Trove web interface, but the numeric part uniquely identifies the page and can be used to do things like downloading an image of a page.</p>
+<p>If you follow the url it will display the page in the Trove web interface, but the numeric part of the url uniquely identifies the page and can be used to do things like downloading an image of a page.</p>
 <div class="note admonition">
-<p class="admonition-title">What happens when pages are split over multiple pages?</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">page</span></code> value in an article’s metadata is only ever a single number. If an article is split over multiple pages, then the <code class="docutils literal notranslate"><span class="pre">page</span></code> value will indicate the page on which the article <em>begins</em>. The metadata doesn’t include the numbers of any subsequent pages. You can, however, find out whether an article is split across pages by looking at the <code class="docutils literal notranslate"><span class="pre">pdf</span></code> field. This field contains a list of links to page PDFs. The number of links will tell you the number of pages the article appears on. (But note that the <code class="docutils literal notranslate"><span class="pre">pdf</span></code> field seems to be missing from <em>Australian Women’s Weekly</em> articles.)</p>
+<p class="admonition-title">What happens when articles are split over multiple pages?</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">page</span></code> value in an article’s metadata is only ever a single number. If an article is split over multiple pages, then the <code class="docutils literal notranslate"><span class="pre">page</span></code> value will indicate the page on which the article <em>begins</em>. The metadata doesn’t include the numbers of any subsequent pages. You can, however, find out whether an article is split across pages by looking at the <code class="docutils literal notranslate"><span class="pre">pdf</span></code> field. This field contains a list of links to page PDFs. The number of links will tell you the number of pages the article appears on. (But note that the <code class="docutils literal notranslate"><span class="pre">pdf</span></code> field seems to be missing from <em>Australian Women’s Weekly</em> articles.) The PDF links also include the page identifiers.</p>
 </div>
 </section>
 <section id="find-the-total-number-of-newspaper-gazette-articles">
@@ -553,7 +553,7 @@ document.write(`
    &#39;name&#39;: &#39;Newspapers &amp; Gazettes&#39;,
    &#39;records&#39;: {&#39;s&#39;: &#39;*&#39;,
     &#39;n&#39;: 0,
-    &#39;total&#39;: 243655031,
+    &#39;total&#39;: 243665063,
     &#39;next&#39;: &#39;https://api.trove.nla.gov.au/v3/result?category=newspaper&amp;n=0&amp;encoding=json&amp;s=*&#39;,
     &#39;nextStart&#39;: &#39;*&#39;}}]}
 </pre></div>
@@ -576,7 +576,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 21 July 2023, there are 243,655,031 newspaper &amp; gazette articles in Trove
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 21 July 2023, there are 243,665,063 newspaper &amp; gazette articles in Trove
 </pre></div>
 </div>
 </div>
@@ -650,7 +650,7 @@ document.write(`
  &#39;date&#39;: &#39;1927-03-08&#39;,
  &#39;page&#39;: &#39;3&#39;,
  &#39;pageSequence&#39;: &#39;3&#39;,
- &#39;relevance&#39;: {&#39;score&#39;: 540.1431274414062, &#39;value&#39;: &#39;very relevant&#39;},
+ &#39;relevance&#39;: {&#39;score&#39;: 540.134033203125, &#39;value&#39;: &#39;very relevant&#39;},
  &#39;snippet&#39;: &#39;&quot;Coyyan&quot; writes in the Cairns \&#39;Post\&#39;:-- Mr. Clement Wragge was generally referred to as the Inclement Wragge,&quot; purely on account of&#39;,
  &#39;troveUrl&#39;: &#39;https://.nla.gov.au/nla.news-article169851997?searchTerm=%22clement+wragge%22+AND+cyclone&#39;}
 </pre></div>
