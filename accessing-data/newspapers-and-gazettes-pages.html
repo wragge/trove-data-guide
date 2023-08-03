@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-pages.fac34ed9-e1e5-422c-b269-a23c37b98d17.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-pages.0ec0bc47-9837-4cf1-988d-13e8b9e5768c.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes-pages';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -414,6 +414,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-pages">What are pages?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pages-are-groups-of-articles">Pages are groups of articles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pages-are-images">Pages are images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pages-are-entry-points">Pages are entry points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pages-are-sometimes-missing">Pages are sometimes missing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#page-links-and-identifiers">Page links and identifiers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-list-of-front-page-urls">Get a list of front page urls</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-page-url-for-a-specific-title-date-and-page">Get a page url for a specific title, date, and page</a></li>
@@ -422,8 +430,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#page-text">Page text</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#page-images-and-pdfs">Page images and PDFs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-page-image">Download a page image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-collection-of-page-images">Download a collection of page images</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-as-pdf">Page as PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-page-as-a-pdf">Download a page as a PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-collection-of-page-images-or-pdfs">Download a collection of page images or PDFs</a></li>
 </ul>
 </li>
 </ul>
@@ -439,52 +447,146 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="accessing-data-about-newspaper-gazette-pages">
 <h1><span class="section-number">10.2. </span>Accessing data about newspaper &amp; gazette pages<a class="headerlink" href="#accessing-data-about-newspaper-gazette-pages" title="Permalink to this heading">#</a></h1>
+<p><img alt="Screenshot of the masthead at the top of a newspaper page" src="../_images/16635065-level4-cropped.jpg" /></p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#metadata" id="id3">Metadata</a></p>
+<li><p><a class="reference internal" href="#what-are-pages" id="id4">What are pages?</a></p>
 <ul>
-<li><p><a class="reference internal" href="#get-a-list-of-front-page-urls" id="id4">Get a list of front page urls</a></p></li>
-<li><p><a class="reference internal" href="#get-a-page-url-for-a-specific-title-date-and-page" id="id5">Get a page url for a specific title, date, and page</a></p></li>
+<li><p><a class="reference internal" href="#pages-are-groups-of-articles" id="id5">Pages are groups of articles</a></p></li>
+<li><p><a class="reference internal" href="#pages-are-images" id="id6">Pages are images</a></p></li>
+<li><p><a class="reference internal" href="#pages-are-entry-points" id="id7">Pages are entry points</a></p></li>
+<li><p><a class="reference internal" href="#pages-are-sometimes-missing" id="id8">Pages are sometimes missing</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#page-text" id="id6">Page text</a></p></li>
-<li><p><a class="reference internal" href="#page-images-and-pdfs" id="id7">Page images and PDFs</a></p>
+<li><p><a class="reference internal" href="#page-links-and-identifiers" id="id9">Page links and identifiers</a></p></li>
+<li><p><a class="reference internal" href="#metadata" id="id10">Metadata</a></p>
 <ul>
-<li><p><a class="reference internal" href="#download-a-page-image" id="id8">Download a page image</a></p></li>
-<li><p><a class="reference internal" href="#download-a-collection-of-page-images" id="id9">Download a collection of page images</a></p></li>
-<li><p><a class="reference internal" href="#page-as-pdf" id="id10">Page as PDF</a></p></li>
+<li><p><a class="reference internal" href="#get-a-list-of-front-page-urls" id="id11">Get a list of front page urls</a></p></li>
+<li><p><a class="reference internal" href="#get-a-page-url-for-a-specific-title-date-and-page" id="id12">Get a page url for a specific title, date, and page</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#page-text" id="id13">Page text</a></p></li>
+<li><p><a class="reference internal" href="#page-images-and-pdfs" id="id14">Page images and PDFs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#download-a-page-image" id="id15">Download a page image</a></p></li>
+<li><p><a class="reference internal" href="#download-a-page-as-a-pdf" id="id16">Download a page as a PDF</a></p></li>
+<li><p><a class="reference internal" href="#download-a-collection-of-page-images-or-pdfs" id="id17">Download a collection of page images or PDFs</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
+<section id="what-are-pages">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">What are pages?</a><a class="headerlink" href="#what-are-pages" title="Permalink to this heading">#</a></h2>
+<p>Printed newspaper pages are easy to understand. You can read them, you can turn them, you can wrap your fish and chips in them. Digitised newspaper pages in Trove are a bit more complex and exist in several related forms.</p>
+<section id="pages-are-groups-of-articles">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Pages are groups of articles</a><a class="headerlink" href="#pages-are-groups-of-articles" title="Permalink to this heading">#</a></h3>
+<p>Every digitised article has a page reference that tells you the number of the page on which the article was published. Page numbers are displayed in the Trove web interface and included in article metadata. They generally correspond to the numbers printed on the original pages. You can search for articles on a specific page using the <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> index.</p>
+<div class="warning admonition">
+<p class="admonition-title">Beware these page peculiarities!</p>
+<ul class="simple">
+<li><p>Newspaper issues sometimes include special supplements with their own internal page numbering. This means, for example, that an issue could contain multiple pages numbered as <code class="docutils literal notranslate"><span class="pre">1</span></code>. You can identify pages in supplements using the <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code> metadata field.</p></li>
+<li><p>Some periodicals don’t start each issue at page number 1! For example, until 1908 the <a class="reference external" href="https://trove.nla.gov.au/newspaper/title/698">Sydney Mail and New South Wales Advertiser</a> had continuous page numbering across all issues in a year. So the issue dated 8 September 1894 actually starts with page number <code class="docutils literal notranslate"><span class="pre">472</span></code>.</p></li>
+</ul>
+</div>
+</section>
+<section id="pages-are-images">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Pages are images</a><a class="headerlink" href="#pages-are-images" title="Permalink to this heading">#</a></h3>
+<p>The digitisation process creates an image of each newspaper page. These images can be downloaded in different resolutions by <a class="reference internal" href="#download-a-page-image"><span class="std std-ref">using the page’s unique identifier to construct a direct url</span></a>. Articles are extracted from page images by the OCR process.</p>
+</section>
+<section id="pages-are-entry-points">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Pages are entry points</a><a class="headerlink" href="#pages-are-entry-points" title="Permalink to this heading">#</a></h3>
+<p>You can save and share links to pages. These links open the page in the Trove web interface and display a list of included articles. You can also find page links in the <code class="docutils literal notranslate"><span class="pre">trovePageUrl</span></code> field of an article’s metadata. However, while you can view pages in the Trove web interface, you can’t access information about individual pages using the API – they just don’t exist as separate entities.</p>
+</section>
+<section id="pages-are-sometimes-missing">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Pages are sometimes missing</a><a class="headerlink" href="#pages-are-sometimes-missing" title="Permalink to this heading">#</a></h3>
+<p>Pages that were missing when a newspaper was digitised are marked by placeholder images. Missing pages, like other pages, have unique identifiers. You can construct links to them, and even download the placeholder, but they’re <em>not really there</em>. Because the pages haven’t gone through the OCR process, no articles from them will show up in search results. This raises the question, how many newspaper and gazette pages are missing from Trove?</p>
+<figure class="align-default" id="missing-page">
+<a class="reference internal image-reference" href="../_images/missing-page.png"><img alt="../_images/missing-page.png" src="../_images/missing-page.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10.1 </span><span class="caption-text">Example of a missing page placeholder, from <a class="reference external" href="http://nla.gov.au/nla.news-page20232534">The Sydney Mail and New South Wales Advertiser, 6 January 1894, page 1</a></span><a class="headerlink" href="#missing-page" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="page-links-and-identifiers">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Page links and identifiers</a><a class="headerlink" href="#page-links-and-identifiers" title="Permalink to this heading">#</a></h2>
+<p>Each newspaper and gazette page has a unique identifier. This identifier pops up in links to pages and PDFs and can be used to download a page image. But where do you find it?</p>
+<p>In the web interface look under the ‘Cite’ tab of an article and you’ll see a page identifier of the form <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.news-page16635065</span></code>.</p>
+<figure class="align-default" id="article-cite">
+<a class="reference internal image-reference" href="../_images/article-cite.png"><img alt="../_images/article-cite.png" src="../_images/article-cite.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">Example of a page identifier found in an article’s ‘Cite’ tab.</span><a class="headerlink" href="#article-cite" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If you click on this link, you get redirected to a different url that looks like this <code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/newspaper/page/16635065</span></code>. Note that both urls contain the same number – this is the page’s numeric identifier.</p>
+<p>You can also use the API to get page identifiers from article metadata, but they’re not included by default. If you search for articles using the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint, or request a particular article using the <code class="docutils literal notranslate"><span class="pre">/newspaper</span></code> endpoint, you have to set the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">full</span></code> to include the page identifiers.</p>
+<p>Here’s an example of an article record obtained from the API using <code class="docutils literal notranslate"><span class="pre">reclevel=full</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41697877&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/newspaper/41697877&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://nla.gov.au/nla.news-article41697877&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;heading&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WRAGGE AND WEATHER CYCLES.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Article&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;101&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Western Mail (Perth, WA : 1885 - 1954)&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1922-11-23&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pageSequence&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;troveUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://.nla.gov.au/nla.news-article41697877&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trovePageUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://nla.gov.au/nla.news-page3522839&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;illustrated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;N&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wordCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1054&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;correctionCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tagCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;commentCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;listCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;lastCorrection&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;by&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*anon*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lastupdated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2016-09-12T07:08:57Z&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;pdf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;https://trove.nla.gov.au/ndp/imageservice/nla.news-page3522839/print&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2F41697877%3Fencoding%3Djson%26reclevel%3Dfull&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>The identifier of the page on which this article was published is included in the <code class="docutils literal notranslate"><span class="pre">trovePageUrl</span></code> field. But there’s also a <code class="docutils literal notranslate"><span class="pre">pdf</span></code> field that contains a list of links that include the same numeric identifier. You can use these links to download PDF copies of pages.</p>
+<p>If you’re just interested in front pages, there’s also a <a class="reference internal" href="#get-a-list-of-front-page-urls"><span class="std std-ref">little trick you can use to get from issue to page identifiers</span></a>.</p>
+<p>A common task is to get from a web link to an image or PDF. You can do this by extracting the numeric part of the link with a regular expression, then using the number to construct a new url to download the format of your choice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">JSON</span>
-<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">page_url</span> <span class="o">=</span> <span class="s2">&quot;https://nla.gov.au/nla.news-page3522839&quot;</span>
 
-<span class="n">load_dotenv</span><span class="p">()</span>
-<span class="n">YOUR_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TROVE_API_KEY&quot;</span><span class="p">)</span>
+<span class="n">page_id</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;page(\d+)&quot;</span><span class="p">,</span> <span class="n">page_url</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">pdf_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://trove.nla.gov.au/ndp/imageservice/nla.news-page</span><span class="si">{</span><span class="n">page_id</span><span class="si">}</span><span class="s2">/print&quot;</span>
+
+<span class="c1"># Display the result as a clickable link so you can try it!</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">pdf_url</span><span class="si">}</span><span class="s2">&gt;&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<p><a class="reference external" href="https://trove.nla.gov.au/ndp/imageservice/nla.news-page3522839/print">https://trove.nla.gov.au/ndp/imageservice/nla.news-page3522839/print</a></p>
 </div>
+</div>
+<p>There are more <a class="reference internal" href="#page-images-and-pdfs"><span class="std std-ref">examples of this below</span></a>.</p>
+</section>
 <section id="metadata">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h2>
-<p><mark>==Include something about the different ways pages are represented – as images with identifiers, as consecutive numbers in navigation, and as labels.==</mark></p>
-<p>There is no direct method for requesting metadata about a newspaper page in Trove. You can, however, get some information about pages from issues and articles.</p>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h2>
+<p>There’s no direct method for requesting metadata about a newspaper page in Trove. You can, however, get some information about pages from issues and articles.</p>
+<p>Each newspaper and gazette page has a unique numeric identifier.</p>
 <section id="get-a-list-of-front-page-urls">
-<span id="id1"></span><h3><a class="toc-backref" href="#id4" role="doc-backlink">Get a list of front page urls</a><a class="headerlink" href="#get-a-list-of-front-page-urls" title="Permalink to this heading">#</a></h3>
+<span id="id1"></span><h3><a class="toc-backref" href="#id11" role="doc-backlink">Get a list of front page urls</a><a class="headerlink" href="#get-a-list-of-front-page-urls" title="Permalink to this heading">#</a></h3>
 <p>As described below, you can get information about individual issues from the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints. The issue data includes a <code class="docutils literal notranslate"><span class="pre">date</span></code> and a <code class="docutils literal notranslate"><span class="pre">url</span></code>. If you request the url you are redirected to the first page of that issue. Therefore, by working through each issue, it’s possible to get a list of all of the front page urls for a particular newspaper. Here’s an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -547,7 +649,7 @@ document.write(`
 <p>The number at the end of the page url uniquely identifies that page. It can be used to download an image of the page (<a class="reference internal" href="#download-a-page-image"><span class="std std-ref">see below</span></a>). While this method is a bit inefficient, forcing us to fire off a request for every issue, it does enable us to link three important pieces of page metadata – the date, the page number, and the page identifier.</p>
 </section>
 <section id="get-a-page-url-for-a-specific-title-date-and-page">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Get a page url for a specific title, date, and page</a><a class="headerlink" href="#get-a-page-url-for-a-specific-title-date-and-page" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Get a page url for a specific title, date, and page</a><a class="headerlink" href="#get-a-page-url-for-a-specific-title-date-and-page" title="Permalink to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -608,12 +710,14 @@ document.write(`
 </section>
 </section>
 <section id="page-text">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Page text</a><a class="headerlink" href="#page-text" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Page text</a><a class="headerlink" href="#page-text" title="Permalink to this heading">#</a></h2>
 <p>aggregated articles</p>
 <p>Trove Newspaper harvester file titles – how to reaggregate</p>
 </section>
 <section id="page-images-and-pdfs">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Page images and PDFs</a><a class="headerlink" href="#page-images-and-pdfs" title="Permalink to this heading">#</a></h2>
+<span id="id2"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">Page images and PDFs</a><a class="headerlink" href="#page-images-and-pdfs" title="Permalink to this heading">#</a></h2>
+<section id="download-a-page-image">
+<span id="id3"></span><h3><a class="toc-backref" href="#id15" role="doc-backlink">Download a page image</a><a class="headerlink" href="#download-a-page-image" title="Permalink to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -621,8 +725,6 @@ document.write(`
 <p>If you want to quickly get a page image from an article url, try the GLAM Workbench’s <a class="reference external" href="https://trove-newspaper-apps.uw.r.appspot.com/voila/render/Save-page-image.ipynb">Download a page image</a> app.</p>
 </div>
 </aside>
-<section id="download-a-page-image">
-<span id="id2"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Download a page image</a><a class="headerlink" href="#download-a-page-image" title="Permalink to this heading">#</a></h3>
 <p>Once you know the secret formula, getting page images is easy. You can download a page image using a url like this:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>https://trove.nla.gov.au/ndp/imageservice/nla.news-page[PAGE ID]/level[ZOOM LEVEL]
 </pre></div>
@@ -638,14 +740,109 @@ document.write(`
 <ul class="simple">
 <li><p>If you’re viewing an article in the web interface, click on the ‘Cite’ tab to display the full page identifier. Just copy the number at the end of the url.</p></li>
 <li><p>If you’re working with article records from the API, make sure you include the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> parameter with a value of <code class="docutils literal notranslate"><span class="pre">full</span></code>. The article records will then include a <code class="docutils literal notranslate"><span class="pre">trovePageUrl</span></code> value. Just copy the number at the end of the url.</p></li>
+<li><p>If you’ve obtained a list of page urls, such as <a class="reference internal" href="#get-a-list-of-front-page-urls"><span class="std std-ref">front pages from issues</span></a>, just copy the number at the end of the url.</p></li>
 </ul>
 </section>
-<section id="download-a-collection-of-page-images">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Download a collection of page images</a><a class="headerlink" href="#download-a-collection-of-page-images" title="Permalink to this heading">#</a></h3>
-<p>Perhaps you want to download all the front pages of a particular newspaper, or the front page of all newspapers on a particular date. Use one of the methods described above to get a list of page urls. Then loop through the list, extracting the page id, and constructing the image download url for each page. The GLAM Workbench provides an example of this in the <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#harvest-australian-womens-weekly-covers-or-the-front-pages-of-any-newspaper">Harvest Australian Women’s Weekly covers (or the front pages of any newspaper)</a> notebook.</p>
+<section id="download-a-page-as-a-pdf">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Download a page as a PDF</a><a class="headerlink" href="#download-a-page-as-a-pdf" title="Permalink to this heading">#</a></h3>
+<p>If you set the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">full</span></code> when requesting articles from the <code class="docutils literal notranslate"><span class="pre">/result</span></code> or <code class="docutils literal notranslate"><span class="pre">/newspaper</span></code> API endpoints, the metadata includes a <code class="docutils literal notranslate"><span class="pre">pdf</span></code> field with a list of urls. These urls can be used to download PDF versions of the page(s) on which the article was published. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># Set recelevel to full to include the pdf field</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;reclevel&quot;</span><span class="p">:</span> <span class="s2">&quot;full&quot;</span><span class="p">}</span>
+
+<span class="c1"># Supply API key using headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="c1"># Use the /newspaper endpoint to request metadata for the article with the id 162833980</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/newspaper/162833980&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># PDF urls can be found in the PDF field</span>
+<span class="n">pdfs</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;pdf&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pdfs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://trove.nla.gov.au/ndp/imageservice/nla.news-page16636766/print&#39;, &#39;https://trove.nla.gov.au/ndp/imageservice/nla.news-page16636767/print&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the example above you can see that the article (id <code class="docutils literal notranslate"><span class="pre">162833980</span></code>) was published across two pages:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://trove.nla.gov.au/ndp/imageservice/nla.news-page16636766/print">https://trove.nla.gov.au/ndp/imageservice/nla.news-page16636766/print</a></p></li>
+<li><p><a class="reference external" href="https://trove.nla.gov.au/ndp/imageservice/nla.news-page16636767/print">https://trove.nla.gov.au/ndp/imageservice/nla.news-page16636767/print</a></p></li>
+</ul>
+<p>Once you have the urls you can use them to download the PDFs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">:</span>
+    <span class="c1"># Extract the page identifier to use in the file name</span>
+    <span class="n">page_id</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;nla.news-page\d+&quot;</span><span class="p">,</span> <span class="n">pdf</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Download the pdf</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pdf</span><span class="p">)</span>
+
+    <span class="c1"># Save the PDF using the page_id as a filename</span>
+    <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">page_id</span><span class="si">}</span><span class="s2">.pdf&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you have a collection of page urls or identifiers (such as <a class="reference internal" href="#get-a-list-of-front-page-urls"><span class="std std-ref">front pages from issues</span></a>), you can construct your own urls to download pdfs using the format <code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/ndp/imageservice/nla.news-page[PAGE</span> <span class="pre">ID]/print</span></code>.</p>
 </section>
-<section id="page-as-pdf">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Page as PDF</a><a class="headerlink" href="#page-as-pdf" title="Permalink to this heading">#</a></h3>
+<section id="download-a-collection-of-page-images-or-pdfs">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Download a collection of page images or PDFs</a><a class="headerlink" href="#download-a-collection-of-page-images-or-pdfs" title="Permalink to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench provides an example of this in the <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#harvest-australian-womens-weekly-covers-or-the-front-pages-of-any-newspaper">Harvest Australian Women’s Weekly covers (or the front pages of any newspaper</a> notebook.</p>
+</div>
+</aside>
+<p>Perhaps you want to download all the front pages of a particular newspaper, the front page of all newspapers on a particular date, or the pages on which a collection of articles was published. Use one of the methods described above to get a list of page urls. Then loop through the list, extracting the page id, and constructing the image download url for each page. For example, using the list of issues we downloaded before, we can get images of all the front pages:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">issue</span> <span class="ow">in</span> <span class="n">issues</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="c1"># This request is getting a web page, so no params or headers required</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">issue</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+
+    <span class="c1"># The request has been redirected to the first page of the issue.</span>
+    <span class="c1"># We can get the new redirected url from the response object.</span>
+    <span class="n">page_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">url</span>
+
+    <span class="c1"># Extract the numeric id from the url</span>
+    <span class="n">page_id</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\/(\d+)\/?$&quot;</span><span class="p">,</span> <span class="n">page_url</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Construct the url you need to download an image of the page</span>
+    <span class="c1"># If you need different sizes, change `level4` to a number between 1 and 7 (7 is largest)</span>
+    <span class="n">image_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://trove.nla.gov.au/ndp/imageservice/nla.news-page</span><span class="si">{</span><span class="n">page_id</span><span class="si">}</span><span class="s2">/level4&quot;</span>
+
+    <span class="c1"># Download the image</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+
+    <span class="c1"># Save the image using the id in the file name</span>
+    <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;nla.news-page</span><span class="si">{</span><span class="n">page_id</span><span class="si">}</span><span class="s2">.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a89dfa54078a4482c4eaf01f52f8403081d1a289235c0fdbbab74d28fb06b456.jpg" src="../_images/a89dfa54078a4482c4eaf01f52f8403081d1a289235c0fdbbab74d28fb06b456.jpg" />
+<img alt="../_images/8c023819b27a22c027c4e1da423c6adbcbcd46a43d051f98ac8d54330172daf8.jpg" src="../_images/8c023819b27a22c027c4e1da423c6adbcbcd46a43d051f98ac8d54330172daf8.jpg" />
+<img alt="../_images/e6cc221aba6b48e8841be77c56872d8d2b638bf752d8a2bd943da5cfc10eea03.jpg" src="../_images/e6cc221aba6b48e8841be77c56872d8d2b638bf752d8a2bd943da5cfc10eea03.jpg" />
+<img alt="../_images/2b8d73ceba379979a2627266de2d257d44ea19b6e62d93759270ae0f0747298c.jpg" src="../_images/2b8d73ceba379979a2627266de2d257d44ea19b6e62d93759270ae0f0747298c.jpg" />
+<img alt="../_images/1f8c0db8191706da6aec6e1b328719f38268fc7b443e90bf63ea6e963499feff.jpg" src="../_images/1f8c0db8191706da6aec6e1b328719f38268fc7b443e90bf63ea6e963499feff.jpg" />
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -717,6 +914,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-pages">What are pages?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pages-are-groups-of-articles">Pages are groups of articles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pages-are-images">Pages are images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pages-are-entry-points">Pages are entry points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pages-are-sometimes-missing">Pages are sometimes missing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#page-links-and-identifiers">Page links and identifiers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-list-of-front-page-urls">Get a list of front page urls</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-page-url-for-a-specific-title-date-and-page">Get a page url for a specific title, date, and page</a></li>
@@ -725,8 +930,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#page-text">Page text</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#page-images-and-pdfs">Page images and PDFs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-page-image">Download a page image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-collection-of-page-images">Download a collection of page images</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-as-pdf">Page as PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-page-as-a-pdf">Download a page as a PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-collection-of-page-images-or-pdfs">Download a collection of page images or PDFs</a></li>
 </ul>
 </li>
 </ul>

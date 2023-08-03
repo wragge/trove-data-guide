@@ -43,6 +43,13 @@ This section is organised by **articles**, **pages**, **issues**, and **titles**
 
 - A title is a particular publication or masthead. Titles have their own identifiers and API endpoint.
 
-```{code-cell} ipython3
++++
 
-```
+Other issues:
+
+- missing pages, eg https://trove.nla.gov.au/newspaper/page/20232534
+- inconsistent page numbering
+
+Could I do some analysis to find titles with different page numbering. Eg the number of front pages for a given year should equal the number of issues.
+
+Any to get an idea of how many pages are missing? Search for articles in each issue, then look at page numbers in articles. A lot of processing, but quite important to know, particularly if they're spread unevenly.

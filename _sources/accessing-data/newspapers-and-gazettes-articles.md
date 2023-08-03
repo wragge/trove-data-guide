@@ -90,9 +90,9 @@ Links to newspaper **titles** are perhaps the most straightforward. Each article
 
 You can use the newspaper's `id` to request more information from the `newspaper/titles` API endpoint.
 
-There are no direct links from articles to newspaper **issues**. However, articles share a date with their parent issue, so it's possible to use the date to connect them. For example you can use a `date` search to find all the articles in an issue. 
+There are no direct links from articles to newspaper **issues**. However, articles share a date with their parent issue, so it's possible to use the date to connect them. For example you can use a `date` search to find all the articles in an issue.
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{admonition} But what about 'editions'?
 :class: note

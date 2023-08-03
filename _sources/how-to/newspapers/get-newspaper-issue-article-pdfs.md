@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.6
+    jupytext_version: 1.14.7
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -14,6 +14,15 @@ kernelspec:
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 # Get a newspaper issue or article as a PDF
+
+You can download PDFs of newspaper and gazette articles, pages, and issues from Trove's web interface – it's just a matter of clicking a button. But downloading PDFs using computational methods is not so straightforward. When you click on the buttons in the web interface, you don't download the PDF from a fixed url. There's a bit of Javascript code behind the button that asks for for the PDF to be compiled, then alerts the user when it's ready. To automate the download process, you need to reproduce these steps in your code. This how-to provides an example of how this can be done using Python.
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+```{admonition} But what about pages?
+:class: note
+Newspaper and gazette *pages* are treated slightly differently to articles and issues. If you know the page identifier, you can construct a url that will download that page as a PDF without any waiting!
+```
 
 ```{code-cell} ipython3
 import time

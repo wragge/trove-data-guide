@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/how-to/newspapers/get-newspaper-issue-article-pdfs.0dc1fd57-1ec0-4e49-8cfa-fe1541179d17.js"></script>
+    <script defer="defer" src="../../_static/tippy/how-to/newspapers/get-newspaper-issue-article-pdfs.ddf76559-44b7-4564-8f7f-f7400c608bba.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/newspapers/get-newspaper-issue-article-pdfs';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -429,6 +429,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="get-a-newspaper-issue-or-article-as-a-pdf">
 <h1><span class="section-number">13.2. </span>Get a newspaper issue or article as a PDF<a class="headerlink" href="#get-a-newspaper-issue-or-article-as-a-pdf" title="Permalink to this heading">#</a></h1>
+<p>You can download PDFs of newspaper and gazette articles, pages, and issues from Trove’s web interface – it’s just a matter of clicking a button. But downloading PDFs using computational methods is not so straightforward. When you click on the buttons in the web interface, you don’t download the PDF from a fixed url. There’s a bit of Javascript code behind the button that asks for for the PDF to be compiled, then alerts the user when it’s ready. To automate the download process, you need to reproduce these steps in your code. This how-to provides an example of how this can be done using Python.</p>
+<div class="note admonition">
+<p class="admonition-title">But what about pages?</p>
+<p>Newspaper and gazette <em>pages</em> are treated slightly differently to articles and issues. If you know the page identifier, you can construct a url that will download that page as a PDF without any waiting!</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
