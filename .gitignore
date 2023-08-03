@@ -3,3 +3,4 @@ _build
 *.sqlite
 .env
 *.pdf
+accessing-data/nla.news-page*
