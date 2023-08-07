@@ -150,7 +150,7 @@ The identifier of the page on which this article was published is included in th
 
 If you're just interested in front pages, there's also a [little trick you can use to get from issue to page identifiers](get-a-list-of-front-page-urls).
 
-A common task is to get from a web link to an image or PDF. You can do this by extracting the numeric part of the link with a regular expression, then using the number to construct a new url to download the format of your choice. 
+A common task is to get from a web link to an image or PDF. You can do this by extracting the numeric part of the link with a regular expression, then using the number to construct a new url to download the format of your choice.
 
 ```{code-cell} ipython3
 ---
@@ -187,7 +187,7 @@ Each newspaper and gazette page has a unique numeric identifier.
 (get-a-list-of-front-page-urls)=
 ### Get a list of front page urls
 
-As described below, you can get information about individual issues from the `newspaper/title` and `gazette/title` endpoints. The issue data includes a `date` and a `url`. If you request the url you are redirected to the first page of that issue. Therefore, by working through each issue, it's possible to get a list of all of the front page urls for a particular newspaper. Here's an example:
+As [described elsewhere](newspapers-and-gazettes-issues), you can get information about individual issues from the `newspaper/title` and `gazette/title` endpoints. The issue data includes a `date` and a `url`. If you request the url you are redirected to the first page of that issue. Therefore, by working through each issue, it's possible to get a list of all of the front page urls for a particular newspaper. Here's an example:
 
 ```{code-cell} ipython3
 ---
@@ -451,7 +451,7 @@ for issue in issues[:5]:
     # Save the image using the id in the file name
     Path(f"nla.news-page{page_id}.jpg").write_bytes(response.content)
 
-    display(Image(response.content, width=100))
+    # display(Image(response.content, width=100))
 ```
 
 ```{code-cell} ipython3
