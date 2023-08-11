@@ -180,7 +180,7 @@ There are more [examples of this below](page-images-and-pdfs).
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-There's no direct method for requesting metadata about a newspaper page in Trove. You can, however, get some information about pages from issues and articles.
+Unlike titles and articles, there's no direct method for requesting metadata about a newspaper page from the Trove API. You can, however, get some information about pages from issues and articles.
 
 Each newspaper and gazette page has a unique numeric identifier. 
 

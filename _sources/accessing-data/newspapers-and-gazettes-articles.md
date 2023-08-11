@@ -48,34 +48,13 @@ load_dotenv()
 YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 ```
 
+## What are articles?
+
 When you search in Trove's digitised newspapers, you're searching for *articles*. The boundaries of articles are defined as part of the {term}`OCR` process. In most cases they represent a single piece of content with a heading and some text (or an illustration). But sometimes blocks of content are grouped together. Advertisements, for example, are often grouped as a single 'article' headed 'Advertising'. Articles can also be split across multiple pages.
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## Metadata
-
-The {term}`metadata` associated with newspaper and gazette articles in Trove includes the basic information you'd expect to put in a citation, like the article's headline, publication date, newspaper, and page number. Additional fields are added by the OCR and data ingestion processes, such as internal links, the number of words, and the article category. User activity also adds data relating to tags, comments, lists, and corrections.
-
 +++
 
-```{admonition} Don't get your categories mixed up!
-:class: note
-The term `category` is used in two completely different contexts in Trove. It's used to describe the top-level groupings of resources, such as 'Newspapers & Gazettes', 'Books & Libraries', and 'Magazines & Newsletters'. But it's also used to describe different types of newspaper and gazette articles, such as 'Article', 'Advertising', and 'Family Notices'.
-```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-Before you dive straight into to the API documentation, remember that there are ways of getting article metadata from the Trove web interface. Each method has its own limitations, but depending on your needs they might do the job. See:
-
-- [](../how-to/web-interface/use-zotero)
-- [](../how-to/web-interface/use-lists)
-- [](../how-to/web-interface/use-bulk-export)
-
-See [](../how-to/create-newspaper-articles-dataset.md) for further tips.
-
-+++
-
-### Article links and connections
+## Article links and connections
 
 Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.
 
@@ -127,6 +106,29 @@ If you follow the url it will display the page in the Trove web interface, but t
 :class: note
 The `page` value in an article's metadata is only ever a single number. If an article is split over multiple pages, then the `page` value will indicate the page on which the article *begins*. The metadata doesn't include the numbers of any subsequent pages. You can, however, find out whether an article is split across pages by looking at the `pdf` field. This field contains a list of links to page PDFs. The number of links will tell you the number of pages the article appears on. (But note that the `pdf` field seems to be missing from *Australian Women's Weekly* articles.) The PDF links also include the page identifiers.
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Metadata
+
+The {term}`metadata` associated with newspaper and gazette articles in Trove includes the basic information you'd expect to put in a citation, like the article's headline, publication date, newspaper, and page number. Additional fields are added by the OCR and data ingestion processes, such as internal links, the number of words, and the article category. User activity also adds data relating to tags, comments, lists, and corrections.
+
++++
+
+```{admonition} Don't get your categories mixed up!
+:class: note
+The term `category` is used in two completely different contexts in Trove. It's used to describe the top-level groupings of resources, such as 'Newspapers & Gazettes', 'Books & Libraries', and 'Magazines & Newsletters'. But it's also used to describe different types of newspaper and gazette articles, such as 'Article', 'Advertising', and 'Family Notices'.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+Before you dive straight into to the API documentation, remember that there are ways of getting article metadata from the Trove web interface. Each method has its own limitations, but depending on your needs they might do the job. See:
+
+- [](../how-to/web-interface/use-zotero)
+- [](../how-to/web-interface/use-lists)
+- [](../how-to/web-interface/use-bulk-export)
+
+See [](../how-to/create-newspaper-articles-dataset.md) for further tips.
 
 +++
 
