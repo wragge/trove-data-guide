@@ -186,6 +186,8 @@ jupyterlab==4.0.2
     # via -r requirements.in
 jupyterlab-code-formatter==2.2.1
     # via -r requirements.in
+jupyterlab-code-snippets==2.2.1
+    # via -r requirements.in
 jupyterlab-myst==2.0.1
     # via -r requirements.in
 jupyterlab-pygments==0.2.2
