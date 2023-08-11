@@ -18,3 +18,11 @@ kernelspec:
 ```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
 ```
+
++++
+
+This section will expand on some of the issues and questions raised in [What is Trove?](/what-is-trove/trove-is/) section, looking in depth at what we can know about the contents of the different Trove cattgories and what this means for researchers.
+
+```{code-cell} ipython3
+
+```

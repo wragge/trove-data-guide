@@ -11,3 +11,4 @@ pandas
 python-dotenv
 requests-cache
 sphinx-tippy
+jupyterlab-code-snippets

@@ -21,6 +21,12 @@ parts:
     numbered: true
     chapters:
       - file: types-of-data/types-of-data
+  - caption: Understanding search
+    numbered: true
+    chapters:
+      - file: understanding-search/understanding-search
+        sections:
+          - file: understanding-search/simple-search-options
   - caption: Collections and contexts
     numbered: 2
     maxdepth: 3
@@ -28,13 +34,19 @@ parts:
       - file: collections-and-contexts/collections-and-contexts
       - file: collections-and-contexts/newspaper-corpus
         sections:
-          - file: collections-and-contexts/newspapers-missing-pages    
-  - caption: Understanding search
-    numbered: true
-    chapters:
-      - file: understanding-search/understanding-search
+          - file: collections-and-contexts/newspapers-change-over-time
+          - file: collections-and-contexts/newspapers-missing-pages
+          - file: collections-and-contexts/newspapers-non-english
+          - file: collections-and-contexts/newspapers-copyright
+          - file: collections-and-contexts/newspapers-ocr
+      - file: collections-and-contexts/digitised-collections
         sections:
-          - file: understanding-search/simple-search-options
+          - file: collections-and-contexts/digitised-collections-books
+          - file: collections-and-contexts/digitised-collections-journals
+          - file: collections-and-contexts/digitised-collections-maps
+          - file: collections-and-contexts/digitised-collections-manuscripts
+          - file: collections-and-contexts/digitised-collections-oral-history
+      - file: collections-and-contexts/aggregated-collections
   - caption: Accessing data
     numbered: 2
     maxdepth: 3
