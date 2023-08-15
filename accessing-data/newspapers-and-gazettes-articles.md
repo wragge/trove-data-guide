@@ -56,6 +56,14 @@ When you search in Trove's digitised newspapers, you're searching for *articles*
 
 ## Article links and connections
 
+Every newspaper article in Trove has its own unique identifier. This identifier is used in persistent links to articles on the Trove web site, and can be used with the `/newspaper` endpoint of the Trove API to retrieve metadata and full text. In the web interface, you can find the identifier under the article's 'Cite' tab, it'll look something like this `http://nla.gov.au/nla.news-article163325648`
+
+```{figure} ../images/article-cite.png
+:name: article-cite
+:width: 300
+Example of an article identifier found in the 'Cite' tab.
+```
+
 Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.
 
 Links to newspaper **titles** are perhaps the most straightforward. Each article is linked to a single newspaper title by the title's unique identifier. An article's metadata record includes a field for `title` that includes both the numeric identifier and the newspaper's masthead. for example:

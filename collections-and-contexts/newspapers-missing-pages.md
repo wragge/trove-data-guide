@@ -25,6 +25,10 @@ This section will attempt some analysis of missing pages and issues in Trove's n
 
 Here's a [quick example using the Canberra Times](https://hcommons.social/@wragge/110845292959103039).
 
++++
+
+Here's an issue that seems to have a lot of missing pages, but is actually out of order: <https://nla.gov.au/nla.news-issue2584973>
+
 ```{code-cell} ipython3
 
 ```

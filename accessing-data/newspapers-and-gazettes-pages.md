@@ -83,7 +83,7 @@ You can save and share links to pages. These links open the page in the Trove we
 
 ### Pages are sometimes missing
 
-Pages that were missing when a newspaper was digitised are marked by placeholder images. Missing pages, like other pages, have unique identifiers. You can construct links to them, and even download the placeholder, but they're *not really there*. Because the pages haven't gone through the OCR process, no articles from them will show up in search results. This raises the question, how many newspaper and gazette pages are missing from Trove?
+Pages that were missing when a newspaper was digitised are usually marked by placeholder images. These missing pages, like other pages, have unique identifiers. You can construct links to them, and even download the placeholder, but they're *not really there*. Because the pages haven't gone through the OCR process, no articles from them will show up in search results. This raises the question, how many newspaper and gazette pages are missing from Trove?
 
 
 ```{figure} ../images/missing-page.png
@@ -178,11 +178,11 @@ There are more [examples of this below](page-images-and-pdfs).
 
 ## Metadata
 
++++
+
+Unlike titles and articles, there's no direct method for requesting metadata about a newspaper page from the Trove API. You can, however, get some information about pages from issues and articles. 
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-Unlike titles and articles, there's no direct method for requesting metadata about a newspaper page from the Trove API. You can, however, get some information about pages from issues and articles.
-
-Each newspaper and gazette page has a unique numeric identifier. 
 
 (get-a-list-of-front-page-urls)=
 ### Get a list of front page urls

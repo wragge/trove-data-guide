@@ -26,6 +26,7 @@ parts:
     chapters:
       - file: understanding-search/understanding-search
         sections:
+          - file: understanding-search/discovery-versus-analysis
           - file: understanding-search/simple-search-options
   - caption: Collections and contexts
     numbered: 2
