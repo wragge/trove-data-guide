@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"#simple-search-options\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">7.1. </span>\u2018Simple\u2019 search options<a class=\"headerlink\" href=\"#simple-search-options\" title=\"Permalink to this heading\">#</a></h1><p><mark>==Include a note about <code class=\"docutils literal notranslate\"><span class=\"pre\">firstpageseq</span></code> and the fact that this will match pages from supplements as well. So supplements need to be filtered out after harvesting. Also note that not all issues start with page 1.==</mark></p>"}
+selector_to_html = {"a[href=\"#types-of-data\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">6. </span>Types of data<a class=\"headerlink\" href=\"#types-of-data\" title=\"Permalink to this heading\">#</a></h1><p>Types of data:</p>"}
 skip_classes = ["headerlink", "sd-stretched-link", "sd-rounded-pill"]
 
 window.onload = function () {

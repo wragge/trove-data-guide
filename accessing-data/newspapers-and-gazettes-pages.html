@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-pages.b297c0db-8171-47a5-ab3c-e784a56cfe7e.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-pages.0ab367e2-7468-4a92-99ce-1dd15d6ecfa8.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes-pages';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -185,7 +185,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding search</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../understanding-search/understanding-search.html">7. Understanding search</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../understanding-search/simple-search-options.html">7.1. ‘Simple’ search options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../understanding-search/discovery-versus-analysis.html">7.1. Discovery versus analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../understanding-search/simple-search-options.html">7.2. ‘Simple’ search options</a></li>
 </ul>
 </li>
 </ul>
@@ -524,11 +525,11 @@ document.write(`
 </section>
 <section id="pages-are-sometimes-missing">
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">Pages are sometimes missing</a><a class="headerlink" href="#pages-are-sometimes-missing" title="Permalink to this heading">#</a></h3>
-<p>Pages that were missing when a newspaper was digitised are marked by placeholder images. Missing pages, like other pages, have unique identifiers. You can construct links to them, and even download the placeholder, but they’re <em>not really there</em>. Because the pages haven’t gone through the OCR process, no articles from them will show up in search results. This raises the question, how many newspaper and gazette pages are missing from Trove?</p>
+<p>Pages that were missing when a newspaper was digitised are usually marked by placeholder images. These missing pages, like other pages, have unique identifiers. You can construct links to them, and even download the placeholder, but they’re <em>not really there</em>. Because the pages haven’t gone through the OCR process, no articles from them will show up in search results. This raises the question, how many newspaper and gazette pages are missing from Trove?</p>
 <figure class="align-default" id="missing-page">
 <a class="reference internal image-reference" href="../_images/missing-page.png"><img alt="../_images/missing-page.png" src="../_images/missing-page.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14.1 </span><span class="caption-text">Example of a missing page placeholder, from <a class="reference external" href="http://nla.gov.au/nla.news-page20232534">The Sydney Mail and New South Wales Advertiser, 6 January 1894, page 1</a></span><a class="headerlink" href="#missing-page" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14.2 </span><span class="caption-text">Example of a missing page placeholder, from <a class="reference external" href="http://nla.gov.au/nla.news-page20232534">The Sydney Mail and New South Wales Advertiser, 6 January 1894, page 1</a></span><a class="headerlink" href="#missing-page" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -540,7 +541,7 @@ document.write(`
 <figure class="align-default" id="article-cite">
 <a class="reference internal image-reference" href="../_images/article-cite.png"><img alt="../_images/article-cite.png" src="../_images/article-cite.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14.2 </span><span class="caption-text">Example of a page identifier found in an article’s ‘Cite’ tab.</span><a class="headerlink" href="#article-cite" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14.3 </span><span class="caption-text">Example of a page identifier found in an article’s ‘Cite’ tab.</span><a class="headerlink" href="#article-cite" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If you click on this link, you get redirected to a different url that looks like this <code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/newspaper/page/16635065</span></code>. Note that both urls contain the same number – this is the page’s numeric identifier.</p>
@@ -605,7 +606,6 @@ document.write(`
 <section id="metadata">
 <h2><a class="toc-backref" href="#id10" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h2>
 <p>Unlike titles and articles, there’s no direct method for requesting metadata about a newspaper page from the Trove API. You can, however, get some information about pages from issues and articles.</p>
-<p>Each newspaper and gazette page has a unique numeric identifier.</p>
 <section id="get-a-list-of-front-page-urls">
 <span id="id1"></span><h3><a class="toc-backref" href="#id11" role="doc-backlink">Get a list of front page urls</a><a class="headerlink" href="#get-a-list-of-front-page-urls" title="Permalink to this heading">#</a></h3>
 <p>As <a class="reference internal" href="newspapers-and-gazettes-issues.html"><span class="doc std std-doc">described elsewhere</span></a>, you can get information about individual issues from the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints. The issue data includes a <code class="docutils literal notranslate"><span class="pre">date</span></code> and a <code class="docutils literal notranslate"><span class="pre">url</span></code>. If you request the url you are redirected to the first page of that issue. Therefore, by working through each issue, it’s possible to get a list of all of the front page urls for a particular newspaper. Here’s an example:</p>

@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"../glossary.html#term-Metadata\"]": "<dt id=\"term-Metadata\">Metadata</dt><dd><p>An indented explanation of term 1</p></dd>", "a[href=\"#trove-is\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">1. </span>Trove is\u2026<a class=\"headerlink\" href=\"#trove-is\" title=\"Permalink to this heading\">#</a></h1>"}
+selector_to_html = {"a[href=\"#discovery-versus-analysis\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">7.1. </span>Discovery versus analysis<a class=\"headerlink\" href=\"#discovery-versus-analysis\" title=\"Permalink to this heading\">#</a></h1><p>Need to recognise that the aim of the search indexing is to present the user with items that <em>could be</em> of relevance, but this fuzziness might limit the usefulness of search results for analysis. Eg: user-added tags and comments are searched by default. Examine relevance ranking.</p>"}
 skip_classes = ["headerlink", "sd-stretched-link", "sd-rounded-pill"]
 
 window.onload = function () {

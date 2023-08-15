@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"#understanding-search\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">7. </span>Understanding search<a class=\"headerlink\" href=\"#understanding-search\" title=\"Permalink to this heading\">#</a></h1>"}
+selector_to_html = {"a[href=\"#understanding-search\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">7. </span>Understanding search<a class=\"headerlink\" href=\"#understanding-search\" title=\"Permalink to this heading\">#</a></h1><p>Searching collections of digital resources is a research method. Need to understand options and plan approach, recognising the limits of any search interface.</p><p>Search enables you to find items of relevance to your research and assemble a dataset for further analysis. Creating search queries is an iterative process \u2013 refining parameters, checking results etc.</p>"}
 skip_classes = ["headerlink", "sd-stretched-link", "sd-rounded-pill"]
 
 window.onload = function () {
