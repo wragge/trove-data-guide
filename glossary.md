@@ -13,4 +13,10 @@ Metadata
 
 CSV
   An indented explanation of term2
+
+Machine readable
+  definition
+
+Screen scraping
+  definition 
 ```

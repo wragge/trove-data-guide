@@ -22,7 +22,8 @@ parts:
     chapters:
       - file: types-of-data/types-of-data
   - caption: Understanding search
-    numbered: true
+    numbered: 2
+    maxdepth: 3
     chapters:
       - file: understanding-search/understanding-search
         sections:
@@ -53,7 +54,10 @@ parts:
     maxdepth: 3
     chapters:
       - file: accessing-data/data-access-options
-      - file: accessing-data/trove-api-intro
+        sections:
+          - file: accessing-data/using-web-interface
+          - file: accessing-data/trove-api-intro
+          - file: accessing-data/downloadable-datasets
       - file: accessing-data/newspapers-and-gazettes
         sections:
           - file: accessing-data/newspapers-and-gazettes-articles
