@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Get positional information from OCR
+# How to get information about the position of OCRd newspaper text
 
 +++
 

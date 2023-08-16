@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"#how-to-create-a-dataset-of-digitised-newspaper-articles\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">17.4. </span>How to create a dataset of digitised newspaper articles<a class=\"headerlink\" href=\"#how-to-create-a-dataset-of-digitised-newspaper-articles\" title=\"Permalink to this heading\">#</a></h1>"}
+selector_to_html = {"a[href=\"#how-to-create-a-dataset-of-digitised-newspaper-articles\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\"><span class=\"section-number\">16.4. </span>How to create a dataset of digitised newspaper articles<a class=\"headerlink\" href=\"#how-to-create-a-dataset-of-digitised-newspaper-articles\" title=\"Permalink to this heading\">#</a></h1>"}
 skip_classes = ["headerlink", "sd-stretched-link", "sd-rounded-pill"]
 
 window.onload = function () {

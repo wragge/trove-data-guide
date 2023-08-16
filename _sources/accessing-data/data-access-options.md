@@ -23,42 +23,19 @@ This guide is currently under development. For more information and discussion s
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-This section documents methods for obtaining {term}`machine-readable data` from Trove. You can manually download some types of data, such as images, from Trove's web interface. But the focus here is on reusable and extensible methods that can be used in a variety of workflows, such as the creation of datasets for further analysis.
+**This section documents ways of accessing {term}`machine-readable` data from Trove. The focus is on reusable and extensible methods that can be used in a variety of workflows, such as the creation of datasets for further analysis.**
 
-There are a number of ways in which you can access data from Trove:
+There are many different [types of data](types-of-data/types-of-data) available from Trove and many different ways of accessing it. You can manually download some data, such as images, from Trove's web interface. If you're creating small, selective datasets, these manual methods might be all you need.
 
-- using the web interface
-- downloading pre-harvested datasets
-- querying APIs
+But what if you want to save *all* the results from a search, automate downloading of images and text, or create a pipeline to feed Trove data into a specific tool for analysis? In these sorts of cases, you need access methods that are reusable and extensible – methods that can be invoked using code and that deliver data in a {term}`machine readable` format that computers can manipulate.
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
+The Trove {term}`Application Programming Interface (API)` is the main way of accessing machine-readable data using automated methods. Computer programs can request data from the API and have it delivered in a predictable, structured format. Using the API you can construct reusable data-processing workflows, and create datasets containing millions of items.
 
-## Using the web interface
+However, the Trove API does have a few gaps and inconsistencies. Sometimes there's just no convenient way of getting the data you want. In these cases you might need to resort to {term}`screen scraping` – a process of extracting structured data from regular web pages. Compared to API access, screen scraping tends to be inefficient and error prone. But it's a handy technique when other methods fail. See, for example: [](/how-to/newspapers/get-ocr-coordinates).
 
-- download images and text
-- download citations
-- scrape metadata
-- bulk export
-- download lists
+It's also possible that someone might have done all the work for you! There are a number of ready-made datasets available for you to download and explore. 
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Downloading pre-harvested datasets
-
-- [Sources of Australian GLAM data](https://glam-workbench.net/glam-data-list/)
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## Querying APIs
-
-- Introduction to APIs
-- Trove APIs overview
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-
+```{tableofcontents}
 ```
