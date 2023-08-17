@@ -206,6 +206,7 @@ You can also explore the characteristics of newspaper titles in Trove by using t
 ### Find catalogue entries for newspaper titles
 
 - use ISSNs to search in "Books & Libraries"
+- note that the `issn` field in API records doesn't always contain ISSNs
 - search for `format:Periodical/Newspaper`, add filters such as "nla.gov.au/nla.news" and "trove.nla.gov.au", weed out journals and eDeposit (how many are there?)
 
 +++

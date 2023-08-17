@@ -74,7 +74,8 @@ parts:
     chapters:
       - file: pathways/pathways
   - caption: How to...
-    numbered: true
+    numbered: 2
+    maxdepth: 3
     chapters:
       - file: how-to/newspapers/newspapers-and-gazettes
         sections:
@@ -82,6 +83,7 @@ parts:
           - file: how-to/newspapers/get-newspaper-issue-article-pdfs
           - file: how-to/newspapers/international-newspaper-titles
           - file: how-to/newspapers/create-newspaper-articles-dataset
+      - file: how-to/web-interface/download-higher-resolution-images
   - chapters:
     - file: glossary
     - file: genindex
