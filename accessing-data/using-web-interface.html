@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/using-web-interface.0f921ff0-19fe-44ff-9627-5901acbf8113.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/using-web-interface.923e08b1-034d-45c1-8e03-791dd6330f56.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/using-web-interface';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -241,6 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/create-newspaper-articles-dataset.html">16.4. How to create a dataset of digitised newspaper articles</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to/web-interface/download-higher-resolution-images.html">17. How to download higher resolution versions of images from the web interface</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -466,7 +467,8 @@ document.write(`
 <li><p>using Zotero (newspapers)</p></li>
 </ul>
 <section id="downloading-images-pdfs-text-and-audio">
-<h2>Downloading images, PDFs, text, and audio<a class="headerlink" href="#downloading-images-pdfs-text-and-audio" title="Permalink to this heading">#</a></h2>
+<span id="downloading-images-web-interface"></span><h2>Downloading images, PDFs, text, and audio<a class="headerlink" href="#downloading-images-pdfs-text-and-audio" title="Permalink to this heading">#</a></h2>
+<p>Items that have been digitised by the NLA and made available through one of Trove’s digitised item viewers can usually be downloaded in a variety of formats. This includes newspapers, books, journals, images, maps, manuscripts, and oral histories.</p>
 <p>The official Trove Help includes a page on <a class="reference external" href="https://trove.nla.gov.au/help/using-trove/downloading">Downloading</a> that describes the options available in the various Trove categories for downloading images, PDFs, text, and audio. Different formats have different viewers, but generally speaking you just need to find the download tab in the sidebar, select a format, and click the button.</p>
 <figure class="align-default" id="download-tag">
 <a class="reference internal image-reference" href="../_images/web-download-example.png"><img alt="../_images/web-download-example.png" src="../_images/web-download-example.png" style="width: 300px;" /></a>
@@ -474,7 +476,10 @@ document.write(`
 <p><span class="caption-number">Fig. 12.1 </span><span class="caption-text">Example of the download tab in the digitised magazines and newsletters viewer</span><a class="headerlink" href="#download-tag" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<table class="table">
+<p>Items that are arranged in hierarchical structures, such as some images, maps, and manuscripts, might have an option to download a ‘collection’. If so a <strong>Download</strong> button will appear on the collection page. This isn’t always available, and there can be limits on how many items in a collection you can download at once. To find the ‘collection’ page, try using the breadcrumb links to move up the hierarchy.</p>
+<p>While many of the same download options are available across different Trove categories, they don’t always mean the same thing! For example, the ‘text’ you get from newspapers is not the same as the ‘text’ you get from books. This table summarises what’s available and describes some of these oddities.</p>
+<table class="table" id="table-available-download-options">
+<caption><span class="caption-number">Table 12.1 </span><span class="caption-text">Available download options</span><a class="headerlink" href="#table-available-download-options" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Trove category</p></th>
 <th class="head"><p>Item type</p></th>
@@ -486,12 +491,12 @@ document.write(`
 <tr class="row-even"><td><p>Newspapers &amp; gazettes</p></td>
 <td><p>article</p></td>
 <td><p>image</p></td>
-<td><p>The ‘image’ option actually delivers an HTML page with embedded images. Long articles will often be sliced up in unfortunate ways to ‘fit’ an A4 page. To get the images themselves you need to extract them from the HTML and try to reassemble them. See… for alternatives</p></td>
+<td><p>The ‘image’ option actually delivers an HTML page with embedded images. Long articles will often be sliced up in unfortunate ways to ‘fit’ an A4 page. To get the images themselves you need to extract them from the HTML and try to reassemble them.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Newspapers &amp; gazettes</p></td>
 <td><p>article</p></td>
 <td><p>PDF</p></td>
-<td><p></p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>Newspapers &amp; gazettes</p></td>
 <td><p>article</p></td>
@@ -501,53 +506,133 @@ document.write(`
 <tr class="row-odd"><td><p>Newspapers &amp; gazettes</p></td>
 <td><p>page</p></td>
 <td><p>PDF</p></td>
-<td><p>Note that there’s no option to download a page as an image. See… for alternatives.</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>Newspapers &amp; gazettes</p></td>
 <td><p>issue</p></td>
 <td><p>PDF</p></td>
-<td><p></p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>Books &amp; libraries</p></td>
-<td><p>book (single page, range of pages, or complete)</p></td>
+<td><p>single page, range of pages, or complete book</p></td>
 <td><p>image</p></td>
-<td><p>Images (single or multiple) are downloaded in a zip file with a page of copyright information.</p></td>
+<td><p>Images (single or multiple) are packaged in a zip file with an additional page of copyright information.</p></td>
 </tr>
 <tr class="row-even"><td><p>Books &amp; libraries</p></td>
-<td><p>book (single page, range of pages, or complete)</p></td>
+<td><p>single page, range of pages, or complete book</p></td>
 <td><p>PDF</p></td>
-<td><p></p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>Books &amp; libraries</p></td>
-<td><p>book (single page, range of pages, or complete)</p></td>
+<td><p>single page, range of pages, or complete book</p></td>
 <td><p>text</p></td>
 <td><p>Unlike the newspapers, this is plain text with no formatting.</p></td>
 </tr>
-<tr class="row-even"><td><p>Magazines &amp; newsletters</p></td>
-<td><p>article</p></td>
-<td><p></p></td>
-<td><p>There’s no option to download individual articles as images or text. While you search for individual articles, the viewer only presents pages. This is different to the newspapers where the viewer presents individual articles.</p></td>
+<tr class="row-even"><td><p>Books &amp; libraries</p></td>
+<td><p>single page, range of pages, or complete book</p></td>
+<td><p>image</p></td>
+<td><p>Images (single or multiple) are packaged in a zip file with an additional page of copyright information.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Magazines &amp; newsletters</p></td>
-<td><p>single page, range of pages, or complete issue</p></td>
-<td><p>image</p></td>
-<td><p>Images (single or multiple) are downloaded in a zip file with a page of copyright information.</p></td>
-</tr>
-<tr class="row-even"><td><p>Magazines &amp; newsletters</p></td>
 <td><p>single page, range of pages, or complete issue</p></td>
 <td><p>PDF</p></td>
-<td><p></p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><p>Magazines &amp; newsletters</p></td>
+<tr class="row-even"><td><p>Magazines &amp; newsletters</p></td>
 <td><p>single page, range of pages, or complete issue</p></td>
 <td><p>text</p></td>
 <td><p>Unlike the newspapers, this is plain text with no formatting.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Images, maps, &amp; artefacts</p></td>
+<td><p>single item, range of items</p></td>
+<td><p>image</p></td>
+<td><p>Images are packaged in a zip file with an additional page of copyright information. As well as the standard JPEG format, some maps include an option to download high-resolution TIFF files.</p></td>
+</tr>
+<tr class="row-even"><td><p>Images, maps, &amp; artefacts</p></td>
+<td><p>single item, range of items</p></td>
+<td><p>PDF</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Images, maps, &amp; artefacts</p></td>
+<td><p>collection</p></td>
+<td><p>image</p></td>
+<td><p>A maximum of 20 images can be downloaded at one time.</p></td>
+</tr>
+<tr class="row-even"><td><p>Images, maps, &amp; artefacts</p></td>
+<td><p>collection</p></td>
+<td><p>PDF</p></td>
+<td><p>A maximum of 20 images can be included in the PDF.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Diaries, letters &amp; archives</p></td>
+<td><p>single page, range of pages</p></td>
+<td><p>image</p></td>
+<td><p>Images are packaged in a zip file with an additional page of copyright information.</p></td>
+</tr>
+<tr class="row-even"><td><p>Diaries, letters &amp; archives</p></td>
+<td><p>single page, range of pages</p></td>
+<td><p>PDF</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Diaries, letters &amp; archives</p></td>
+<td><p>collection</p></td>
+<td><p>image</p></td>
+<td><p>Images are packaged in a zip file with an additional page of copyright information.</p></td>
+</tr>
+<tr class="row-even"><td><p>Diaries, letters &amp; archives</p></td>
+<td><p>collection</p></td>
+<td><p>PDF</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Music, audio &amp; video</p></td>
+<td><p>oral history interview transcript</p></td>
+<td><p>text</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Music, audio &amp; video</p></td>
+<td><p>oral history interview transcript</p></td>
+<td><p>PDF</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Music, audio &amp; video</p></td>
+<td><p>oral history interview</p></td>
+<td><p>audio recording</p></td>
+<td><p>MP3 files available at a variety of bitrates (the higher the bitrate, the larger the file), eg: 48kbps, 128kbps, and 256kbps</p></td>
+</tr>
+</tbody>
+</table>
+<p>Some download options you might expect to find are not actually available. These are listed in the table below.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The <strong>GLAM Workbench</strong> provides some useful workarounds where download options are missing or don’t deliver data in useful formats. For example, there are web apps to help you <a class="reference external" href="https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image-app/">save a newspaper article as an image</a> and to <a class="reference external" href="https://glam-workbench.net/trove-newspapers/Save-page-image/">download a page as an image</a>. The <a class="reference external" href="https://glam-workbench.net/trove-harvester/">Trove Newspaper &amp; Gazette Harvester</a> cleans up article text and can download images as well.</p>
+</div>
+</aside>
+<table class="table" id="table-missing-download-formats">
+<caption><span class="caption-number">Table 12.2 </span><span class="caption-text">Missing download formats</span><a class="headerlink" href="#table-missing-download-formats" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Trove category</p></th>
+<th class="head"><p>Item type</p></th>
+<th class="head"><p>Download format</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Newspapers &amp; gazettes</p></td>
+<td><p>page</p></td>
+<td><p>image</p></td>
+<td><p>There’s no option to download a page as an image, just a page image embedded in a PDF.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Magazines &amp; newsletters</p></td>
+<td><p>article</p></td>
+<td><p>any</p></td>
+<td><p>There’s no option to download individual articles as images, PDFs, or text. While you search for individual articles, the viewer only presents pages. This is different to the newspapers where the viewer presents individual articles.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="note admonition">
 <p class="admonition-title">What about image resolutions?</p>
-<p>Describe variations…</p>
+<p>One confusing, and often frustrating, aspect of image downloads is their resolution. You can use the Trove image viewer to zoom right in to many photographs and manuscripts, enabling you to pick up fine details. But if you download the same image, you could find the resolution is much lower. This means you’re limited in how you can use the downloaded image. Perhaps that’s the intention. The available resolutions vary across categories and formats, and you really don’t know what you’ll get until you download it. Many manuscripts, in particular, seem to have low-resolution downloads, which doesn’t help you much when you’re trying to decipher someone’s handwriting! But never fear, there are a <a class="reference internal" href="../how-to/web-interface/download-higher-resolution-images.html"><span class="doc std std-doc">few hacks and work arounds</span></a> you can try to get higher resolution versions.</p>
 </div>
 </section>
 </section>
