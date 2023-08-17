@@ -49,7 +49,9 @@ The modified url loads the image in your browser. To save it, just right click o
 
 But what resolution is the saved image? Let's compare. I downloaded the same page using the 'Download' tab in the Trove image viewer. The resolution was 1000 × 1598 pixels. The version saved using the hacked url is 1896 × 3029 pixels – almost double the size.
 
-This hack works in digitised books and journals, as well as images and manuscripts, but the urls are a bit more complicated. If you're browsing through a book or journal, the url might look something like this: 
+This hack works in digitised books and journals, as well as images and manuscripts. You probably won't gain a higher resolution, as book and journal downloads already seem to provide images as their maximum size, but it's still a handy little hack.
+
+The urls created by Trove's books and journals viewer are a bit more complicated. If you're browsing through a book the url might look something like this: 
 
 `https://nla.gov.au/nla.obj-2921071294/view?partId=nla.obj-2921076647#page/n8/mode/1up` 
 
