@@ -1,6 +1,5 @@
 ---
 jupytext:
-  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
@@ -12,9 +11,9 @@ kernelspec:
   name: python3
 ---
 
-+++ {"user_expressions": []}
+# Finding digitised content you can download
 
-# Works and versions
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
@@ -22,9 +21,18 @@ This guide is currently under development. For more information and discussion s
 
 +++
 
-Problematic version groupings:
+Still much harder than it should be (except for `magazine` & `newspaper` categories of course).
 
-- Malcolm Fraser Electorate Talks - <https://trove.nla.gov.au/work/195160655>
+Various combinations of:
+
+- searching for "nla.obj"
+- `nuc:"ANL:TDL"`
+- NOT `nuc:"ANL:NED"`?
+- `fullTextInd:y` (not just NLA, not always accessible)
+- `l-availability` -- to get what's online
+- `has:correctabletext`
+
+Need to test these combinations to see what works...
 
 ```{code-cell} ipython3
 

@@ -1,6 +1,5 @@
 ---
 jupytext:
-  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
@@ -12,9 +11,9 @@ kernelspec:
   name: python3
 ---
 
-+++ {"user_expressions": []}
+# Books
 
-# Works and versions
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
@@ -22,9 +21,9 @@ This guide is currently under development. For more information and discussion s
 
 +++
 
-Problematic version groupings:
+You can get text via the API, but you have to add `include=workversions` then loop through versions, looking in the `description` field for a `value` with `"type": "open_fulltext"`.
 
-- Malcolm Fraser Electorate Talks - <https://trove.nla.gov.au/work/195160655>
+I think there are limits on the amount of text you can get from the API -- need to test this.
 
 ```{code-cell} ipython3
 
