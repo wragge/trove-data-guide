@@ -17,6 +17,7 @@ parts:
       - file: what-is-trove/metadata-and-digital-objects
       - file: what-is-trove/works-and-versions
       - file: what-is-trove/links-and-identifiers
+      - file: what-is-trove/trove-web-interface
   - caption: "Types of data"
     numbered: true
     chapters:
