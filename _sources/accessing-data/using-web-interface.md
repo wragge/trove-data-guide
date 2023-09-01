@@ -29,6 +29,10 @@ This guide is currently under development. For more information and discussion s
 
 +++
 
+See [](/what-is-trove/trove-web-interface) for a overview of the different components that make up the web interface. In particular, it's important to understand the difference between the main search interface and the digitised item viewers.
+
++++
+
 (downloading-images-web-interface)=
 ## Downloading images, PDFs, text, and audio
 
@@ -46,7 +50,7 @@ Example of the download tab in the digitised magazines and newsletters viewer
 
 +++
 
-Items that are arranged in hierarchical structures, such as some images, maps, and manuscripts, might have an option to download a 'collection'. If so a **Download** button will appear on the collection page. This isn't always available, and there can be limits on how many items in a collection you can download at once. To find the 'collection' page, try using the breadcrumb links to move up the hierarchy.
+Items that are arranged in hierarchical structures, such as some images, maps, and manuscripts, might have an option to download a 'collection'. If so a **Download** button will appear on the collection page. This isn't always available, and there can be limits on how many items in a collection you can download at once. To find the 'collection' page, try using the breadcrumb links to move up the record hierarchy.
 
 While many of the same download options are available across different Trove categories, they don't always mean the same thing! For example, the 'text' you get from newspapers is not the same as the 'text' you get from books. This table summarises what's available and describes some of these oddities.
 
@@ -178,7 +182,7 @@ The **GLAM Workbench** provides some useful workarounds where download options a
 ```{admonition} What about image resolutions?
 :class: note
 
-One confusing, and often frustrating, aspect of image downloads is their resolution. You can use the Trove image viewer to zoom right in to many photographs and manuscripts, enabling you to pick up fine details. But if you download the same image, you could find the resolution is much lower. This means you're limited in how you can use the downloaded image. The available resolutions vary across categories and formats, and you really don't know what you'll get until you download it. Many manuscripts, in particular, seem to have low-resolution downloads, which doesn't help you much when you're trying to decipher someone's handwriting! But never fear, there are a [few hacks and work arounds](/how-to/web-interface/download-higher-resolution-images) you can try to get higher resolution versions.
+One confusing, and often frustrating, aspect of image downloads is their resolution (or size). You can use the Trove image viewer to zoom in close to many photographs and manuscripts, enabling you to pick up fine details. But if you download the same image, you could find the resolution is much lower. This means you're limited in how you can use the downloaded image. The available resolutions vary across categories and formats, and you really don't know what you'll get until you download it. Many manuscripts, in particular, seem to have low-resolution downloads, which doesn't help you much when you're trying to decipher someone's handwriting! But never fear, there are a [few hacks and work arounds](/how-to/web-interface/download-higher-resolution-images) you can try to get higher resolution versions.
 ```
 
 +++
@@ -187,7 +191,7 @@ One confusing, and often frustrating, aspect of image downloads is their resolut
 
 BibTex is a [file format](https://www.bibtex.org/Format/) used to save structured information about references, and is used by many tools to manage citations and build bibliographies. You can download item metadata in BibTex format using Trove's 'Citation' tab.
 
-In the main search Trove interface, the 'Citation' tab includes a BibTex option. You can copy or download the BibTex record.
+In the main search interface, the 'Citation' tab includes a BibTex option. You can copy or download the BibTex record.
 
 ```{figure} ../images/trove-citation-tab.png
 :name: citation-tab
@@ -195,7 +199,7 @@ In the main search Trove interface, the 'Citation' tab includes a BibTex option.
 Example of the Citation tab with the BibTex option selected
 ```
 
-In the digitised newspaper iterface, the 'Citation' tab includes a button to download a BibTex record.
+In the digitised newspaper viewer, the 'Citation' tab includes a button to download a BibTex record.
 
 ```{figure} ../images/newspaper-citation-options.png
 :name: newspaper-citation-tab
@@ -206,6 +210,10 @@ Options for downloading newspaper citations
 The Trove viewers for digitised books, journals, images, and maps don't include a BibTex option.
 
 This is a simple way of capturing metadata in a structured format, but the BibTex records don't always include the full range of metadata available in Trove.
+
++++
+
+## Downloading lists
 
 ```{code-cell} ipython3
 
