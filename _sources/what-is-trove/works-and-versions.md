@@ -26,6 +26,12 @@ Problematic version groupings:
 
 - Malcolm Fraser Electorate Talks - <https://trove.nla.gov.au/work/195160655>
 
++++
+
+May need to unpack versions from works to get a full list of resources for exploration/analysis (eg ABC, Royal Society of Tasmania)
+
+PM Transcripts, eg: <https://trove.nla.gov.au/work/195172587>
+
 ```{code-cell} ipython3
 
 ```

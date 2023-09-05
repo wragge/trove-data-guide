@@ -1,0 +1,22 @@
+selector_to_html = {"a[href=\"#using-the-bulkharvest-parameter\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Using the <code class=\"docutils literal notranslate\"><span class=\"pre\">bulkHarvest</span></code> parameter<a class=\"headerlink\" href=\"#using-the-bulkharvest-parameter\" title=\"Permalink to this heading\">#</a></h2><p>If you\u2019re harvesting a large result set you need to set the <code class=\"docutils literal notranslate\"><span class=\"pre\">bulkHarvest</span></code> parameter to <code class=\"docutils literal notranslate\"><span class=\"pre\">true</span></code>. Why? By default, Trove returns search results in relevance order. However, assigning consistent relevance scores is tricky in massive collections like Trove, and the scores of individual records can vary between API requests. This means that if you harvest results in relevance order you can sometimes get duplicate records, or miss records completely. Setting <code class=\"docutils literal notranslate\"><span class=\"pre\">bulkHarvest=true</span></code> sorts records by their identifiers, rather than their relevance. This ensures that you get everything.</p>", "a[href=\"#understanding-pagination\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Understanding pagination<a class=\"headerlink\" href=\"#understanding-pagination\" title=\"Permalink to this heading\">#</a></h2><p>To harvest a large set of results you need to break it up into manageable chunks \u2013 requesting and downloading each chunk in turn. This is known as pagination. There are a couple of query parameters and results fields you need to understand to control the pagination process.</p><p>You can set the number of results in each chunk using the <code class=\"docutils literal notranslate\"><span class=\"pre\">n</span></code> parameter. The default is only <code class=\"docutils literal notranslate\"><span class=\"pre\">20</span></code>, so you probably want to increase that to <code class=\"docutils literal notranslate\"><span class=\"pre\">100</span></code>.</p>", "a[href=\"#full-example\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Full example<a class=\"headerlink\" href=\"#full-example\" title=\"Permalink to this heading\">#</a></h2>", "a[href=\"#harvest-a-complete-set-of-search-results-using-the-api\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">Harvest a complete set of search results using the API<a class=\"headerlink\" href=\"#harvest-a-complete-set-of-search-results-using-the-api\" title=\"Permalink to this heading\">#</a></h1><p>A common task you might want to undertake using the Trove API is to harvest a complete set of search results.</p>", "a[href=\"#handling-results\"]": "<h2 class=\"tippy-header\" style=\"margin-top: 0;\">Handling results<a class=\"headerlink\" href=\"#handling-results\" title=\"Permalink to this heading\">#</a></h2><p>If your aim is to download a complete set of search results, then obviously you need to have some way of saving the responses you get back from the Trove API! How you do this depends on the data you actually want and the form you want it in. For example, if you only wanted to save the titles and dates of newspaper articles, you might just extract them from the JSON responses and save them in a CSV file. There are many possibilities!</p><p>This example will save the complete JSON item records in a newline delimited JSON file (NDJSON). As the name suggests, NDJSON files have one JSON object per line. It\u2019s a convenient and scalable method as you can simply add each new record to the end of an existing file. You can decide later on what fields you want to extract from the JSON, or simply load the whole dataset into a tool like Pandas.</p>"}
+skip_classes = ["headerlink", "sd-stretched-link", "sd-rounded-pill"]
+
+window.onload = function () {
+    for (const [select, tip_html] of Object.entries(selector_to_html)) {
+        const links = document.querySelectorAll(`article.bd-article ${select}`);
+        for (const link of links) {
+            if (skip_classes.some(c => link.classList.contains(c))) {
+                continue;
+            }
+
+            tippy(link, {
+                content: tip_html,
+                allowHTML: true,
+                arrow: true,
+                placement: 'auto-start', maxWidth: 500, interactive: false,
+
+            });
+        };
+    };
+    console.log("tippy tips loaded!");
+};

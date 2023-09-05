@@ -23,6 +23,10 @@ This guide is currently under development. For more information and discussion s
 
 Need to recognise that the aim of the search indexing is to present the user with items that *could be* of relevance, but this fuzziness might limit the usefulness of search results for analysis. Eg: user-added tags and comments are searched by default. Examine relevance ranking.
 
++++
+
+Some notes on relevance from solr docs: <https://solr.apache.org/guide/solr/latest/deployment-guide/solrcloud-distributed-requests.html#distributedidf>
+
 ```{code-cell} ipython3
 
 ```
