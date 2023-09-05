@@ -30,6 +30,7 @@ parts:
         sections:
           - file: understanding-search/discovery-versus-analysis
           - file: understanding-search/simple-search-options
+          - file: facets
   - caption: Collections and contexts
     numbered: 2
     maxdepth: 3
@@ -75,7 +76,6 @@ parts:
     chapters:
       - file: pathways/pathways
   - caption: How to...
-    numbered: 2
     maxdepth: 3
     chapters:
       - file: how-to/newspapers/newspapers-and-gazettes
@@ -85,6 +85,7 @@ parts:
           - file: how-to/newspapers/international-newspaper-titles
           - file: how-to/newspapers/create-newspaper-articles-dataset
       - file: how-to/web-interface/download-higher-resolution-images
+      - file: how-to/harvest-complete-results
   - chapters:
     - file: glossary
     - file: genindex
