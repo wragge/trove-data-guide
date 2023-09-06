@@ -122,7 +122,9 @@ You can find variations on this approach throughout the Trove sections of the [G
 ```
 ````
 
-```{code-cell} ipython3
++++
+
+```python
 import json
 from pathlib import Path
 
@@ -176,11 +178,15 @@ with Path("results.ndjson").open("a") as ndjson_file:
             start = None
 ```
 
++++
+
 ## Harvesting from all categories
 
 This example sets the `category` parameter to `all` to harvest search results from *every* category (except web archives). Different categories deliver their results in different formats, so either you try to normalise these into some standard structure, or you save them into separate files. This example creates a separate NDJSON results file for each of these record types in the search results.
 
-```{code-cell} ipython3
++++
+
+```python
 import json
 from pathlib import Path
 

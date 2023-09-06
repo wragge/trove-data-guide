@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-articles.42618944-8c56-4bfd-88cc-e9a087bee35b.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-articles.5b688b30-f839-4944-ab60-9e728a86860f.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes-articles';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -447,21 +447,20 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-articles">What are articles?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-links-and-connections">Article links and connections</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-identifiers">Article identifiers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-and-newspaper-titless">Articles and newspaper titless</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-and-newspaper-titles">Articles and newspaper titles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-and-issues">Articles and issues</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-and-pages">Articles and pages</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-metadata">Article metadata</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-total-number-of-newspaper-gazette-articles">Find the total number of newspaper &amp; gazette articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-your-results-to-either-newspaper-or-gazette-articles">Limit your results to either newspaper <em>or</em> gazette articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-metadata-from-a-search">Save metadata from a search</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#include-extra-fields-in-the-metadata">Include extra fields in the metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-articles">Individual articles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">Search results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-extra-metadata-fields">Get extra metadata fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-total-number-of-articles-in-a-search">Find the total number of articles in a search</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets-to-get-aggregate-data-about-articles">Using facets to get aggregate data about articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination">Pagination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-positional-information-from-ocr">Get positional information from OCR</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-harvester">Trove Newspaper Harvester</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-for-an-individual-article">Get metadata for an individual article</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-positional-information-from-ocr">Get positional information from OCR</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a><ul class="nav section-nav flex-column">
@@ -493,30 +492,29 @@ document.write(`
 <li><p><a class="reference internal" href="#article-links-and-connections" id="id2">Article links and connections</a></p>
 <ul>
 <li><p><a class="reference internal" href="#article-identifiers" id="id3">Article identifiers</a></p></li>
-<li><p><a class="reference internal" href="#articles-and-newspaper-titless" id="id4">Articles and newspaper titless</a></p></li>
+<li><p><a class="reference internal" href="#articles-and-newspaper-titles" id="id4">Articles and newspaper titles</a></p></li>
 <li><p><a class="reference internal" href="#articles-and-issues" id="id5">Articles and issues</a></p></li>
 <li><p><a class="reference internal" href="#articles-and-pages" id="id6">Articles and pages</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference internal" href="#article-metadata" id="id7">Article metadata</a></p>
 <ul>
-<li><p><a class="reference internal" href="#find-the-total-number-of-newspaper-gazette-articles" id="id8">Find the total number of newspaper &amp; gazette articles</a></p></li>
-<li><p><a class="reference internal" href="#limit-your-results-to-either-newspaper-or-gazette-articles" id="id9">Limit your results to either newspaper <em>or</em> gazette articles</a></p></li>
-<li><p><a class="reference internal" href="#save-metadata-from-a-search" id="id10">Save metadata from a search</a></p></li>
-<li><p><a class="reference internal" href="#include-extra-fields-in-the-metadata" id="id11">Include extra fields in the metadata</a></p></li>
+<li><p><a class="reference internal" href="#individual-articles" id="id8">Individual articles</a></p></li>
+<li><p><a class="reference internal" href="#search-results" id="id9">Search results</a></p></li>
+<li><p><a class="reference internal" href="#get-extra-metadata-fields" id="id10">Get extra metadata fields</a></p></li>
+<li><p><a class="reference internal" href="#find-the-total-number-of-articles-in-a-search" id="id11">Find the total number of articles in a search</a></p></li>
 <li><p><a class="reference internal" href="#using-facets-to-get-aggregate-data-about-articles" id="id12">Using facets to get aggregate data about articles</a></p></li>
-<li><p><a class="reference internal" href="#pagination" id="id13">Pagination</a></p></li>
+<li><p><a class="reference internal" href="#get-positional-information-from-ocr" id="id13">Get positional information from OCR</a></p></li>
 <li><p><a class="reference internal" href="#trove-newspaper-harvester" id="id14">Trove Newspaper Harvester</a></p></li>
 <li><p><a class="reference internal" href="#get-metadata-for-an-individual-article" id="id15">Get metadata for an individual article</a></p></li>
-<li><p><a class="reference internal" href="#get-positional-information-from-ocr" id="id16">Get positional information from OCR</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#text" id="id17">Text</a></p>
+<li><p><a class="reference internal" href="#text" id="id16">Text</a></p>
 <ul>
-<li><p><a class="reference internal" href="#api" id="id18">API</a></p></li>
+<li><p><a class="reference internal" href="#api" id="id17">API</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#images-and-pdfs" id="id19">Images and PDFs</a></p></li>
+<li><p><a class="reference internal" href="#images-and-pdfs" id="id18">Images and PDFs</a></p></li>
 </ul>
 </nav>
 <section id="what-are-articles">
@@ -527,7 +525,7 @@ document.write(`
 <h2><a class="toc-backref" href="#id2" role="doc-backlink">Article links and connections</a><a class="headerlink" href="#article-links-and-connections" title="Permalink to this heading">#</a></h2>
 <p>Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.</p>
 <section id="article-identifiers">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Article identifiers</a><a class="headerlink" href="#article-identifiers" title="Permalink to this heading">#</a></h3>
+<span id="newspaper-article-identifiers"></span><h3><a class="toc-backref" href="#id3" role="doc-backlink">Article identifiers</a><a class="headerlink" href="#article-identifiers" title="Permalink to this heading">#</a></h3>
 <p>Every newspaper article in Trove has its own unique identifier. This identifier is used in persistent links to articles on the Trove web site. In the web interface, you can find the identifier under the article’s ‘Cite’ tab, it’ll look something like this <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.news-article163325648</span></code></p>
 <figure class="align-default" id="article-cite">
 <a class="reference internal image-reference" href="../_images/article-cite.png"><img alt="../_images/article-cite.png" src="../_images/article-cite.png" style="width: 300px;" /></a>
@@ -537,8 +535,8 @@ document.write(`
 </figure>
 <p>If you follow an article identifier you’ll get redirected to a different url that looks like this <code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/newspaper/article/163325648</span></code>. Notice that the number at the end of the identifier and the redirected url are the same, <code class="docutils literal notranslate"><span class="pre">163325648</span></code>. You can use this numeric identifier with the <code class="docutils literal notranslate"><span class="pre">/newspaper</span></code> endpoint of the Trove API to retrieve metadata and full text.</p>
 </section>
-<section id="articles-and-newspaper-titless">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Articles and newspaper titless</a><a class="headerlink" href="#articles-and-newspaper-titless" title="Permalink to this heading">#</a></h3>
+<section id="articles-and-newspaper-titles">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Articles and newspaper titles</a><a class="headerlink" href="#articles-and-newspaper-titles" title="Permalink to this heading">#</a></h3>
 <p>Links to newspaper <strong>titles</strong> are perhaps the most straightforward. Each article is linked to a single newspaper title by the title’s unique identifier. An article’s metadata record includes a field for <code class="docutils literal notranslate"><span class="pre">title</span></code> that includes both the numeric identifier and the newspaper’s masthead. for example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;101&quot;</span><span class="p">,</span>
@@ -580,87 +578,43 @@ document.write(`
 <section id="article-metadata">
 <h2><a class="toc-backref" href="#id7" role="doc-backlink">Article metadata</a><a class="headerlink" href="#article-metadata" title="Permalink to this heading">#</a></h2>
 <p>The <a class="reference internal" href="../glossary.html#term-Metadata"><span class="xref std std-term">metadata</span></a> associated with newspaper and gazette articles in Trove includes the basic information you’d expect to put in a citation, like the article’s headline, publication date, newspaper, and page number. Additional fields are added by the OCR and data ingestion processes, such as internal links, the number of words, and the article category. User activity also adds data relating to tags, comments, lists, and corrections.</p>
+<section id="individual-articles">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Individual articles</a><a class="headerlink" href="#individual-articles" title="Permalink to this heading">#</a></h3>
+<p>To access metadata relating to an individual article you need the <a class="reference internal" href="#newspaper-article-identifiers"><span class="std std-ref">article’s numeric identifier</span></a>. You can then construct an API request url by adding the identifier to the <code class="docutils literal notranslate"><span class="pre">/newspaper/</span></code> endpoint. For example, if the article identifier was <code class="docutils literal notranslate"><span class="pre">61389505</span></code>, the API request url would be:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://api.trove.nla.gov.au/v3/newspaper/61389505</span></code></p>
+<p>You can add additional parameters to the url if, for example, you want the metadata in JSON format.</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://api.trove.nla.gov.au/v3/newspaper/61389505?encoding=json</span></code></p>
+<p>Here’s the metadata returned by this request:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;61389505&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/newspaper/61389505&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;heading&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MR. WRAGGE&#39;S \&quot;WRAGGE.\&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Article&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;64&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Clarence and Richmond Examiner (Grafton, NSW : 1889 - 1915)&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1902-07-15&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pageSequence&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;troveUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://.nla.gov.au/nla.news-article61389505&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="search-results">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Search results</a><a class="headerlink" href="#search-results" title="Permalink to this heading">#</a></h3>
+<p>You can search for newspaper and gazette articles using the Trove API’s <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint, just set the <code class="docutils literal notranslate"><span class="pre">category</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>.</p>
 <div class="note admonition">
 <p class="admonition-title">Don’t get your categories mixed up!</p>
 <p>The term <code class="docutils literal notranslate"><span class="pre">category</span></code> is used in two completely different contexts in Trove. It’s used to describe the top-level groupings of resources, such as ‘Newspapers &amp; Gazettes’, ‘Books &amp; Libraries’, and ‘Magazines &amp; Newsletters’. But it’s also used to describe different types of newspaper and gazette articles, such as ‘Article’, ‘Advertising’, and ‘Family Notices’.</p>
 </div>
-<p>Before you dive straight into to the API documentation, remember that there are ways of getting article metadata from the Trove web interface. Each method has its own limitations, but depending on your needs they might do the job. See:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="../how-to/web-interface/use-zotero.html"><span class="doc std std-doc">Using Zotero to save items</span></a></p></li>
-<li><p><a class="reference internal" href="../how-to/web-interface/use-lists.html"><span class="doc std std-doc">Using Trove lists to create a dataset</span></a></p></li>
-<li><p><a class="reference internal" href="../how-to/web-interface/use-bulk-export.html"><span class="doc std std-doc">Use the bulk export option to save the results of a search</span></a></p></li>
-</ul>
-<p>See <span class="xref myst"></span> for further tips.</p>
-<section id="find-the-total-number-of-newspaper-gazette-articles">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Find the total number of newspaper &amp; gazette articles</a><a class="headerlink" href="#find-the-total-number-of-newspaper-gazette-articles" title="Permalink to this heading">#</a></h3>
-<p>You can retrieve newspaper and gazette articles using the Trove API’s <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint, just set the <code class="docutils literal notranslate"><span class="pre">category</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>.</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
-<p>If we don’t include any search parameters, you get everything! You can use this to find out the number of newspaper and gazette articles in Trove:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="c1"># Set n to 0 because we don&#39;t want any records</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">}</span>
-
-<span class="c1"># Supply API key using headers</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
-<span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-<span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;category&#39;: [{&#39;code&#39;: &#39;newspaper&#39;,
-   &#39;name&#39;: &#39;Newspapers &amp; Gazettes&#39;,
-   &#39;records&#39;: {&#39;s&#39;: &#39;*&#39;,
-    &#39;n&#39;: 0,
-    &#39;total&#39;: 244541650,
-    &#39;next&#39;: &#39;https://api.trove.nla.gov.au/v3/result?category=newspaper&amp;n=0&amp;encoding=json&amp;s=*&#39;,
-    &#39;nextStart&#39;: &#39;*&#39;}}]}
-</pre></div>
-</div>
-</div>
-</div>
-<p>Note that the example above doesn’t return any articles because it sets the <code class="docutils literal notranslate"><span class="pre">n</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">0</span></code>. The current number of newspaper and gazette articles is in the <code class="docutils literal notranslate"><span class="pre">total</span></code> field.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
-
-<span class="c1"># Get the total number of articles</span>
-<span class="n">total</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
-<span class="c1"># And today&#39;s date</span>
-<span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y&quot;</span><span class="p">)</span>
-
-<span class="c1"># Display the result</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;As of </span><span class="si">{</span><span class="n">today</span><span class="si">}</span><span class="s2">, there are </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> newspaper &amp; gazette articles in Trove&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 06 September 2023, there are 244,541,650 newspaper &amp; gazette articles in Trove
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="limit-your-results-to-either-newspaper-or-gazette-articles">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Limit your results to either newspaper <em>or</em> gazette articles</a><a class="headerlink" href="#limit-your-results-to-either-newspaper-or-gazette-articles" title="Permalink to this heading">#</a></h3>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">artType</span></code> facet to limit the results to either newspapers or gazettes:</p>
+<p>To limit search results to either newspapers or gazettes use the <code class="docutils literal notranslate"><span class="pre">artType</span></code> facet :</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">l-artType=newspapers</span></code> – <a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-artType%3Dnewspapers%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p></li>
 <li><p>or <code class="docutils literal notranslate"><span class="pre">l-artType=gazette</span></code> – <a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-artType%3Dgazette%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p></li>
 </ul>
 <p>Notice that <code class="docutils literal notranslate"><span class="pre">newspapers</span></code> is pluralised, but <code class="docutils literal notranslate"><span class="pre">gazette</span></code> is not.</p>
-</section>
-<section id="save-metadata-from-a-search">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Save metadata from a search</a><a class="headerlink" href="#save-metadata-from-a-search" title="Permalink to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -668,7 +622,7 @@ document.write(`
 <p>The <a class="reference external" href="https://wragge.github.io/trove_query_parser/">trove-query-parser</a> Python library makes it easy to translate searches for newspaper articles in Trove’s web interface into a form that the API can understand. Just give it the url of a newspaper search and it will generate the set of parameters you’ll need to replicate the search using the API.</p>
 </div>
 </aside>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter to supply search keywords. The query string can be anything you might include in Trove’s <a class="reference internal" href="../understanding-search/simple-search-options.html"><span class="doc std std-doc">‘simple’ search</span></a> box. Results can also be filtered using a number of facets, such as <code class="docutils literal notranslate"><span class="pre">category</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">illustrated</span></code>, and <code class="docutils literal notranslate"><span class="pre">decade</span></code>.</p>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter to supply search keywords. The query string can be anything you might include in Trove’s <a class="reference internal" href="../understanding-search/simple-search-options.html"><span class="doc std std-doc">‘simple’ search</span></a> box. Results can also be filtered using a number of facets, such as <code class="docutils literal notranslate"><span class="pre">category</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">illustrated</span></code>, and <code class="docutils literal notranslate"><span class="pre">decade</span></code>.</p>
 <p><mark>==More detail on constructing searches here or somewhere else?==</mark></p>
 <p>For example, to get the first 100 results of a search for <code class="docutils literal notranslate"><span class="pre">&quot;clement</span> <span class="pre">wragge&quot;</span> <span class="pre">AND</span> <span class="pre">cyclone</span></code>, limited to news articles published in Queensland, you would do something like:</p>
 <div class="cell docutils container">
@@ -718,40 +672,18 @@ document.write(`
  &#39;date&#39;: &#39;1927-03-08&#39;,
  &#39;page&#39;: &#39;3&#39;,
  &#39;pageSequence&#39;: &#39;3&#39;,
- &#39;relevance&#39;: {&#39;score&#39;: 540.2638549804688, &#39;value&#39;: &#39;very relevant&#39;},
+ &#39;relevance&#39;: {&#39;score&#39;: 540.29248046875, &#39;value&#39;: &#39;very relevant&#39;},
  &#39;snippet&#39;: &#39;&quot;Coyyan&quot; writes in the Cairns \&#39;Post\&#39;:-- Mr. Clement Wragge was generally referred to as the Inclement Wragge,&quot; purely on account of&#39;,
  &#39;troveUrl&#39;: &#39;https://.nla.gov.au/nla.news-article169851997?searchTerm=%22clement+wragge%22+AND+cyclone&#39;}
 </pre></div>
 </div>
 </div>
 </div>
-<p>To print the titles of the first 10 articles you could do something like:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;article&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">article</span><span class="p">[</span><span class="s2">&quot;heading&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CYCLONE FORECASTER. MR. CLEMENT WRAGGE.
-CLEMENT WRAGGE.
-CYCLONE FORECASTER. MR. CLEMENT WRAGGE. SOME PROOF.
-CYCLONE FORECASTER. MR. CLEMENT WRAGGE. SOME PROOF.
-MR. CLEMENT WRAGGE.
-MR. CLEMENT WRAGGE.
-CLEMENT WRAGGE&#39;S LATEST PREDICTION.
-Mr. Clement Wragge at Longreach
-METEOROLOGY. MR. CLEMENT WRAGGE&#39; PROPOSALS.
-Weather Wizard. Mr. Clement Wragge. Mount Wellington Observatory.
-</pre></div>
-</div>
-</div>
-</div>
+<p>You can request a maximum of 100 records with a single API request. To download metadata from <em>all</em> the articles in a set of search results you need to make multiple requests. See <a class="reference internal" href="../how-to/harvest-complete-results.html"><span class="doc std std-doc">HOW TO: Harvest a complete set of search results using the Trove API</span></a> for examples of how to do this.</p>
 </section>
-<section id="include-extra-fields-in-the-metadata">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Include extra fields in the metadata</a><a class="headerlink" href="#include-extra-fields-in-the-metadata" title="Permalink to this heading">#</a></h3>
-<p>You can use the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> and <code class="docutils literal notranslate"><span class="pre">include</span></code> parameters to control the amount of metadata provided about each article. For example:</p>
+<section id="get-extra-metadata-fields">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Get extra metadata fields</a><a class="headerlink" href="#get-extra-metadata-fields" title="Permalink to this heading">#</a></h3>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> and <code class="docutils literal notranslate"><span class="pre">include</span></code> parameters with either the <code class="docutils literal notranslate"><span class="pre">/newspaper</span></code> or <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoints to control the amount of metadata provided about each article. For example:</p>
 <p>Setting <code class="docutils literal notranslate"><span class="pre">reclevel=full</span></code> adds the following fields:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">trovePageUrl</span></code> – website url pointing to the page on which the article was published</p></li>
@@ -787,12 +719,71 @@ Weather Wizard. Mr. Clement Wragge. Mount Wellington Observatory.
 </div>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26include%3Dtags%26include%3Dcomments%26include%3Dlists%26encoding%3Djson#limit-to-articles-with-illustrations"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
 </section>
+<section id="find-the-total-number-of-articles-in-a-search">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Find the total number of articles in a search</a><a class="headerlink" href="#find-the-total-number-of-articles-in-a-search" title="Permalink to this heading">#</a></h3>
+<p>You can also access metadata <em>about</em> a search. API search results include a <code class="docutils literal notranslate"><span class="pre">total</span></code> value that tells you the number of articles matching your query. If we don’t include any search parameters, we can use this to find out the number of newspaper and gazette articles in the whole of Trove!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># Set n to 0 because we don&#39;t want any records</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">}</span>
+
+<span class="c1"># Supply API key using headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;category&#39;: [{&#39;code&#39;: &#39;newspaper&#39;,
+   &#39;name&#39;: &#39;Newspapers &amp; Gazettes&#39;,
+   &#39;records&#39;: {&#39;s&#39;: &#39;*&#39;,
+    &#39;n&#39;: 0,
+    &#39;total&#39;: 244541650,
+    &#39;next&#39;: &#39;https://api.trove.nla.gov.au/v3/result?category=newspaper&amp;n=0&amp;encoding=json&amp;s=*&#39;,
+    &#39;nextStart&#39;: &#39;*&#39;}}]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the example above doesn’t return any articles because it sets the <code class="docutils literal notranslate"><span class="pre">n</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>The current number of newspaper and gazette articles is in the <code class="docutils literal notranslate"><span class="pre">total</span></code> field.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="c1"># Get the total number of articles</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+<span class="c1"># And today&#39;s date</span>
+<span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;As of </span><span class="si">{</span><span class="n">today</span><span class="si">}</span><span class="s2">, there are </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> newspaper &amp; gazette articles in Trove&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 06 September 2023, there are 244,541,650 newspaper &amp; gazette articles in Trove
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="using-facets-to-get-aggregate-data-about-articles">
 <h3><a class="toc-backref" href="#id12" role="doc-backlink">Using facets to get aggregate data about articles</a><a class="headerlink" href="#using-facets-to-get-aggregate-data-about-articles" title="Permalink to this heading">#</a></h3>
 <p><mark>Links to QueryPic and other examples</mark></p>
 </section>
-<section id="pagination">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">Pagination</a><a class="headerlink" href="#pagination" title="Permalink to this heading">#</a></h3>
+<section id="get-positional-information-from-ocr">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Get positional information from OCR</a><a class="headerlink" href="#get-positional-information-from-ocr" title="Permalink to this heading">#</a></h3>
+<p>Additional metadata relating OCRd text to its position on a page can be scraped from the Trove web site, see <a class="reference internal" href="../how-to/newspapers/get-ocr-coordinates.html"><span class="doc std std-doc">How to get information about the position of OCRd newspaper text</span></a></p>
 </section>
 <section id="trove-newspaper-harvester">
 <h3><a class="toc-backref" href="#id14" role="doc-backlink">Trove Newspaper Harvester</a><a class="headerlink" href="#trove-newspaper-harvester" title="Permalink to this heading">#</a></h3>
@@ -806,16 +797,12 @@ Weather Wizard. Mr. Clement Wragge. Mount Wellington Observatory.
 <section id="get-metadata-for-an-individual-article">
 <h3><a class="toc-backref" href="#id15" role="doc-backlink">Get metadata for an individual article</a><a class="headerlink" href="#get-metadata-for-an-individual-article" title="Permalink to this heading">#</a></h3>
 </section>
-<section id="get-positional-information-from-ocr">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">Get positional information from OCR</a><a class="headerlink" href="#get-positional-information-from-ocr" title="Permalink to this heading">#</a></h3>
-<p>Additional metadata relating OCRd text to its position on a page can be scraped from the Trove web site, see <a class="reference internal" href="../how-to/newspapers/get-ocr-coordinates.html"><span class="doc std std-doc">How to get information about the position of OCRd newspaper text</span></a></p>
-</section>
 </section>
 <section id="text">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">Text</a><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Text</a><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h2>
 <p>Newspaper text is segmented by article. The text is generated by OCR, with manual corrections by volunteers.</p>
 <section id="api">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">API</a><a class="headerlink" href="#api" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">API</a><a class="headerlink" href="#api" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">include=articletext</span></code></p>
 <p>Note: includes html
 Note: not the AWW (have to scrape)</p>
@@ -823,7 +810,7 @@ Note: not the AWW (have to scrape)</p>
 </section>
 </section>
 <section id="images-and-pdfs">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Images and PDFs</a><a class="headerlink" href="#images-and-pdfs" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Images and PDFs</a><a class="headerlink" href="#images-and-pdfs" title="Permalink to this heading">#</a></h2>
 <p>PDF proxy</p>
 <p>Save articles as images</p>
 <p>Save just the illustrations as images</p>
@@ -901,21 +888,20 @@ Note: not the AWW (have to scrape)</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-articles">What are articles?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-links-and-connections">Article links and connections</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-identifiers">Article identifiers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-and-newspaper-titless">Articles and newspaper titless</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-and-newspaper-titles">Articles and newspaper titles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-and-issues">Articles and issues</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-and-pages">Articles and pages</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-metadata">Article metadata</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-total-number-of-newspaper-gazette-articles">Find the total number of newspaper &amp; gazette articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-your-results-to-either-newspaper-or-gazette-articles">Limit your results to either newspaper <em>or</em> gazette articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-metadata-from-a-search">Save metadata from a search</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#include-extra-fields-in-the-metadata">Include extra fields in the metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-articles">Individual articles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">Search results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-extra-metadata-fields">Get extra metadata fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-total-number-of-articles-in-a-search">Find the total number of articles in a search</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets-to-get-aggregate-data-about-articles">Using facets to get aggregate data about articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination">Pagination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-positional-information-from-ocr">Get positional information from OCR</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-harvester">Trove Newspaper Harvester</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-for-an-individual-article">Get metadata for an individual article</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-positional-information-from-ocr">Get positional information from OCR</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a><ul class="nav section-nav flex-column">

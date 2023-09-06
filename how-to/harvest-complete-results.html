@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/how-to/harvest-complete-results.a0374ea5-b9b2-4b1c-a154-009345d73a1d.js"></script>
+    <script defer="defer" src="../_static/tippy/how-to/harvest-complete-results.34a6373f-1efb-4a3d-a115-f536fbc4c22a.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/harvest-complete-results';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -527,9 +527,7 @@ document.write(`
 <p>You can find variations on this approach throughout the Trove sections of the <a class="reference external" href="https://glam-workbench.net/">GLAM Workbench</a>. For example <a class="reference external" href="https://glam-workbench.net/trove-lists/harvest-summary-data-from-lists/">Harvest summary data from Trove lists</a> and <a class="reference external" href="https://glam-workbench.net/trove-maps/exploring-digitised-maps/">Exploring digitised maps in Trove</a>.</p>
 </div>
 </aside>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -582,15 +580,11 @@ document.write(`
             <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
-</div>
-</div>
 </section>
 <section id="harvesting-from-all-categories">
 <h2>Harvesting from all categories<a class="headerlink" href="#harvesting-from-all-categories" title="Permalink to this heading">#</a></h2>
 <p>This example sets the <code class="docutils literal notranslate"><span class="pre">category</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">all</span></code> to harvest search results from <em>every</em> category (except web archives). Different categories deliver their results in different formats, so either you try to normalise these into some standard structure, or you save them into separate files. This example creates a separate NDJSON results file for each of these record types in the search results.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -647,8 +641,6 @@ document.write(`
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
