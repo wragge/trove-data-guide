@@ -58,6 +58,7 @@ When you search in Trove's digitised newspapers, you're searching for *articles*
 
 Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.
 
+(newspaper-article-identifiers)=
 ### Article identifiers
 
 Every newspaper article in Trove has its own unique identifier. This identifier is used in persistent links to articles on the Trove web site. In the web interface, you can find the identifier under the article's 'Cite' tab, it'll look something like this `http://nla.gov.au/nla.news-article163325648`
@@ -70,7 +71,7 @@ Example of an article identifier found in the 'Cite' tab.
 
 If you follow an article identifier you'll get redirected to a different url that looks like this `https://trove.nla.gov.au/newspaper/article/163325648`. Notice that the number at the end of the identifier and the redirected url are the same, `163325648`. You can use this numeric identifier with the `/newspaper` endpoint of the Trove API to retrieve metadata and full text.
 
-### Articles and newspaper titless
+### Articles and newspaper titles
 
 Links to newspaper **titles** are perhaps the most straightforward. Each article is linked to a single newspaper title by the title's unique identifier. An article's metadata record includes a field for `title` that includes both the numeric identifier and the newspaper's masthead. for example:
 
@@ -133,77 +134,56 @@ The {term}`metadata` associated with newspaper and gazette articles in Trove inc
 
 +++
 
+### Individual articles
+
+To access metadata relating to an individual article you need the [article's numeric identifier](newspaper-article-identifiers). You can then construct an API request url by adding the identifier to the `/newspaper/` endpoint. For example, if the article identifier was `61389505`, the API request url would be: 
+
+`https://api.trove.nla.gov.au/v3/newspaper/61389505` 
+
+You can add additional parameters to the url if, for example, you want the metadata in JSON format.
+
+`https://api.trove.nla.gov.au/v3/newspaper/61389505?encoding=json` 
+
+Here's the metadata returned by this request:
+
+```json
+{
+    "id": "61389505",
+    "url": "https://api.trove.nla.gov.au/v3/newspaper/61389505",
+    "heading": "MR. WRAGGE'S \"WRAGGE.\"",
+    "category": "Article",
+    "title": {
+        "id": "64",
+        "title": "Clarence and Richmond Examiner (Grafton, NSW : 1889 - 1915)"
+    },
+    "date": "1902-07-15",
+    "page": "4",
+    "pageSequence": "4",
+    "troveUrl": "https://.nla.gov.au/nla.news-article61389505"
+}
+```
+
++++
+
+### Search results
+
+You can search for newspaper and gazette articles using the Trove API's `/result` endpoint, just set the `category` parameter to `newspaper`. 
+
++++
+
 ```{admonition} Don't get your categories mixed up!
 :class: note
 The term `category` is used in two completely different contexts in Trove. It's used to describe the top-level groupings of resources, such as 'Newspapers & Gazettes', 'Books & Libraries', and 'Magazines & Newsletters'. But it's also used to describe different types of newspaper and gazette articles, such as 'Article', 'Advertising', and 'Family Notices'.
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-Before you dive straight into to the API documentation, remember that there are ways of getting article metadata from the Trove web interface. Each method has its own limitations, but depending on your needs they might do the job. See:
-
-- [](../how-to/web-interface/use-zotero)
-- [](../how-to/web-interface/use-lists)
-- [](../how-to/web-interface/use-bulk-export)
-
-See [](../how-to/create-newspaper-articles-dataset.md) for further tips.
-
 +++
 
-### Find the total number of newspaper & gazette articles
-
-You can retrieve newspaper and gazette articles using the Trove API's `/result` endpoint, just set the `category` parameter to `newspaper`.
-
-[![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26encoding%3Djson)
-
-If we don't include any search parameters, you get everything! You can use this to find out the number of newspaper and gazette articles in Trove:
-
-```{code-cell} ipython3
-import requests
-
-# Set n to 0 because we don't want any records
-params = {"category": "newspaper", "n": 0, "encoding": "json"}
-
-# Supply API key using headers
-headers = {"X-API-KEY": YOUR_API_KEY}
-
-response = requests.get(
-    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
-)
-
-data = response.json()
-
-data
-```
-
-Note that the example above doesn't return any articles because it sets the `n` parameter to `0`. The current number of newspaper and gazette articles is in the `total` field.
-
-```{code-cell} ipython3
-import datetime
-
-# Get the total number of articles
-total = data["category"][0]["records"]["total"]
-# And today's date
-today = datetime.datetime.now().strftime("%d %B %Y")
-
-# Display the result
-print(f"As of {today}, there are {total:,} newspaper & gazette articles in Trove")
-```
-
-### Limit your results to either newspaper *or* gazette articles
-
-+++
-
-Use the `artType` facet to limit the results to either newspapers or gazettes:
+To limit search results to either newspapers or gazettes use the `artType` facet :
 
 - `l-artType=newspapers` – [![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-artType%3Dnewspapers%26encoding%3Djson)
 - or `l-artType=gazette` – [![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-artType%3Dgazette%26encoding%3Djson)
 
 Notice that `newspapers` is pluralised, but `gazette` is not.
-
-+++
-
-### Save metadata from a search
 
 +++
 
@@ -215,7 +195,7 @@ The [trove-query-parser](https://wragge.github.io/trove_query_parser/) Python li
 
 +++
 
-Use the `q` parameter to supply search keywords. The query string can be anything you might include in Trove's ['simple' search](../understanding-search/simple-search-options.md) box. Results can also be filtered using a number of facets, such as `category`, `state`, `illustrated`, and `decade`.
+You can use the `q` parameter to supply search keywords. The query string can be anything you might include in Trove's ['simple' search](/understanding-search/simple-search-options) box. Results can also be filtered using a number of facets, such as `category`, `state`, `illustrated`, and `decade`.
 
 <mark>==More detail on constructing searches here or somewhere else?==</mark>
 
@@ -258,18 +238,15 @@ The list of article records can be found at `data["category"][0]["records"]["art
 data["category"][0]["records"]["article"][0]
 ```
 
-To print the titles of the first 10 articles you could do something like:
-
-```{code-cell} ipython3
-for article in data["category"][0]["records"]["article"][:10]:
-    print(article["heading"])
-```
-
-### Include extra fields in the metadata
+You can request a maximum of 100 records with a single API request. To download metadata from *all* the articles in a set of search results you need to make multiple requests. See [](/how-to/harvest-complete-results) for examples of how to do this.
 
 +++
 
-You can use the `reclevel` and `include` parameters to control the amount of metadata provided about each article. For example:
+### Get extra metadata fields
+
++++
+
+You can use the `reclevel` and `include` parameters with either the `/newspaper` or `/result` endpoints to control the amount of metadata provided about each article. For example:
 
 Setting `reclevel=full` adds the following fields:
 
@@ -316,13 +293,53 @@ Use the `include` parameter to add details about tags, comments, and lists. For 
 
 +++
 
+### Find the total number of articles in a search
+
+You can also access metadata *about* a search. API search results include a `total` value that tells you the number of articles matching your query. If we don't include any search parameters, we can use this to find out the number of newspaper and gazette articles in the whole of Trove!
+
+```{code-cell} ipython3
+import requests
+
+# Set n to 0 because we don't want any records
+params = {"category": "newspaper", "n": 0, "encoding": "json"}
+
+# Supply API key using headers
+headers = {"X-API-KEY": YOUR_API_KEY}
+
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
+
+data = response.json()
+
+data
+```
+
+Note that the example above doesn't return any articles because it sets the `n` parameter to `0`. 
+
+The current number of newspaper and gazette articles is in the `total` field.
+
+```{code-cell} ipython3
+import datetime
+
+# Get the total number of articles
+total = data["category"][0]["records"]["total"]
+# And today's date
+today = datetime.datetime.now().strftime("%d %B %Y")
+
+# Display the result
+print(f"As of {today}, there are {total:,} newspaper & gazette articles in Trove")
+```
+
 ### Using facets to get aggregate data about articles
 
 <mark>Links to QueryPic and other examples</mark>
 
 +++
 
-### Pagination
+### Get positional information from OCR
+
+Additional metadata relating OCRd text to its position on a page can be scraped from the Trove web site, see [](../how-to/newspapers/get-ocr-coordinates)
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -335,12 +352,6 @@ Use the `include` parameter to add details about tags, comments, and lists. For 
 - metadata file captures query details
 
 ### Get metadata for an individual article
-
-+++
-
-### Get positional information from OCR
-
-Additional metadata relating OCRd text to its position on a page can be scraped from the Trove web site, see [](../how-to/newspapers/get-ocr-coordinates)
 
 +++
 

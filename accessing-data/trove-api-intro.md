@@ -47,8 +47,7 @@ This guide is currently under development. For more information and discussion s
 ```{admonition} 19 million records later
 :class: seealso
 
-Trove's API makes it possible for you to compile *big* datasets. To explore the way newspaper front pages changed over time, I [downloaded the metadata from 19 million articles](https://updates.timsherratt.org/2023/08/08/exploring-the-front.html).
-
+Trove's API makes it possible for you to compile *big* datasets. [This project](https://updates.timsherratt.org/2023/08/08/exploring-the-front.html) downloaded metadata from 19 million articles to explore the way newspaper front pages changed over time.
 ```
 ````
 
