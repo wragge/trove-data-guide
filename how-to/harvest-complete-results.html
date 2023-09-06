@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Harvest a complete set of search results using the API &#8212; Trove Data Guide</title>
+    <title>HOW TO: Harvest a complete set of search results using the Trove API &#8212; Trove Data Guide</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/how-to/harvest-complete-results.daecc22d-bbc1-4c9e-bc4b-2560c618a5f1.js"></script>
+    <script defer="defer" src="../_static/tippy/how-to/harvest-complete-results.a0374ea5-b9b2-4b1c-a154-009345d73a1d.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/harvest-complete-results';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -244,7 +244,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="web-interface/download-higher-resolution-images.html">How to download higher resolution versions of images from the web interface</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Harvest a complete set of search results using the API</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">HOW TO: Harvest a complete set of search results using the Trove API</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -434,7 +434,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Harvest a complete set of search results using the API</h1>
+    <h1>HOW TO: Harvest a complete set of search results using the Trove API</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -446,8 +446,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-bulkharvest-parameter">Using the <code class="docutils literal notranslate"><span class="pre">bulkHarvest</span></code> parameter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-pagination">Understanding pagination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-categories">Managing categories</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-results">Handling results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-example">Full example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harvesting-from-a-single-category">Harvesting from a single category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harvesting-from-all-categories">Harvesting from all categories</a></li>
 </ul>
             </nav>
         </div>
@@ -459,9 +461,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="harvest-a-complete-set-of-search-results-using-the-api">
-<h1>Harvest a complete set of search results using the API<a class="headerlink" href="#harvest-a-complete-set-of-search-results-using-the-api" title="Permalink to this heading">#</a></h1>
-<p>A common task you might want to undertake using the Trove API is to harvest a complete set of search results.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-harvest-a-complete-set-of-search-results-using-the-trove-api">
+<h1>HOW TO: Harvest a complete set of search results using the Trove API<a class="headerlink" href="#how-to-harvest-a-complete-set-of-search-results-using-the-trove-api" title="Permalink to this heading">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
+</div>
+<p>See <a class="reference internal" href="../accessing-data/trove-api-intro.html"><span class="doc">Trove API introduction</span></a> for general information about using the Trove API.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="seealso admonition">
+<p class="admonition-title">Do you need to DIY?</p>
+<p>You might not need to write your own harvesting code. If you want to harvest metadata, text, and images from the digitised newspapers, you can use the <a class="reference external" href="https://wragge.github.io/trove-newspaper-harvester/">Trove Newspaper &amp; Gazette Harvester</a> instead.</p>
+<p>If your search has less than one million results and you only want the basic metadata, you can use Trove’s built-in <a class="reference internal" href="../accessing-data/using-web-interface.html#bulk-export"><span class="std std-ref">bulk export</span></a> option.</p>
+</div>
+</aside>
+<p>A common task you might want to undertake using the Trove API is to harvest a complete set of search results. This page explains what you need to know to undertake such a harvest, and provides some sample code.</p>
 <section id="using-the-bulkharvest-parameter">
 <h2>Using the <code class="docutils literal notranslate"><span class="pre">bulkHarvest</span></code> parameter<a class="headerlink" href="#using-the-bulkharvest-parameter" title="Permalink to this heading">#</a></h2>
 <p>If you’re harvesting a large result set you need to set the <code class="docutils literal notranslate"><span class="pre">bulkHarvest</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Why? By default, Trove returns search results in relevance order. However, assigning consistent relevance scores is tricky in massive collections like Trove, and the scores of individual records can vary between API requests. This means that if you harvest results in relevance order you can sometimes get duplicate records, or miss records completely. Setting <code class="docutils literal notranslate"><span class="pre">bulkHarvest=true</span></code> sorts records by their identifiers, rather than their relevance. This ensures that you get everything.</p>
@@ -469,7 +484,7 @@ document.write(`
 <section id="understanding-pagination">
 <h2>Understanding pagination<a class="headerlink" href="#understanding-pagination" title="Permalink to this heading">#</a></h2>
 <p>To harvest a large set of results you need to break it up into manageable chunks – requesting and downloading each chunk in turn. This is known as pagination. There are a couple of query parameters and results fields you need to understand to control the pagination process.</p>
-<p>You can set the number of results in each chunk using the <code class="docutils literal notranslate"><span class="pre">n</span></code> parameter. The default is only <code class="docutils literal notranslate"><span class="pre">20</span></code>, so you probably want to increase that to <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
+<p>You can set the number of results in each chunk using the <code class="docutils literal notranslate"><span class="pre">n</span></code> parameter. The default is only <code class="docutils literal notranslate"><span class="pre">20</span></code>, so you probably want to increase that to <code class="docutils literal notranslate"><span class="pre">100</span></code> (the maximum allowed).</p>
 <p>After you’ve harvested a chunk of results, your next API request needs to tell Trove <em>where you are</em> in the results set. Trove has no memory of your harvest. If you don’t tell it where to start from, you’ll get the same chunk over and over again. You can set the starting point using the <code class="docutils literal notranslate"><span class="pre">s</span></code> parameter, but what value do you give it?</p>
 <p>Search results from the Trove API include a field labelled <code class="docutils literal notranslate"><span class="pre">nextStart</span></code>. These values look like a random collection of letters, numbers, and punctuation, but they are actually tokens that pinpoint your current position within a set of results. To retrieve the next chunk of results from the API, you assign the <code class="docutils literal notranslate"><span class="pre">nextStart</span></code> value from the current chunk to the <code class="docutils literal notranslate"><span class="pre">s</span></code> parameter of your next request. Of course, you’ll have no <code class="docutils literal notranslate"><span class="pre">nextStart</span></code> value when you make your first request, so just set <code class="docutils literal notranslate"><span class="pre">s</span></code> to <code class="docutils literal notranslate"><span class="pre">*</span></code> (an asterisk).</p>
 <p>For example, your first request sets <code class="docutils literal notranslate"><span class="pre">s</span></code> to <code class="docutils literal notranslate"><span class="pre">*</span></code>:</p>
@@ -486,19 +501,40 @@ document.write(`
 </div>
 <p>And so on until you reach the end of the dataset. You’ll know you’ve reached the end when there’s no <code class="docutils literal notranslate"><span class="pre">nextStart</span></code> value in the API response.</p>
 </section>
+<section id="managing-categories">
+<h2>Managing categories<a class="headerlink" href="#managing-categories" title="Permalink to this heading">#</a></h2>
+<p>Because of the complexities of sorting and pagination, you’re limited in your ability to harvest records from multiple categories – either you select a <em>single</em> category, or you get <em>every</em> category by setting the <code class="docutils literal notranslate"><span class="pre">category</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">all</span></code>. If you use the <code class="docutils literal notranslate"><span class="pre">all</span></code> option, your results can include a mix of different record types, as different categories use different formats. The record types, grouped by category, are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">article</span></code> – Newspapers &amp; gazettes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">work</span></code> – Books &amp; libraries; Magazines &amp; newsletters; Images, maps &amp; artefacts; Research &amp; reports; Diaries, letters &amp; archives; Music, audio &amp; video</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">people</span></code> – People &amp; organisations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> – Lists</p></li>
+</ul>
+<p>You’ll need to take these differences into account as you process the results.</p>
+</section>
 <section id="handling-results">
 <h2>Handling results<a class="headerlink" href="#handling-results" title="Permalink to this heading">#</a></h2>
 <p>If your aim is to download a complete set of search results, then obviously you need to have some way of saving the responses you get back from the Trove API! How you do this depends on the data you actually want and the form you want it in. For example, if you only wanted to save the titles and dates of newspaper articles, you might just extract them from the JSON responses and save them in a CSV file. There are many possibilities!</p>
-<p>This example will save the complete JSON item records in a newline delimited JSON file (NDJSON). As the name suggests, NDJSON files have one JSON object per line. It’s a convenient and scalable method as you can simply add each new record to the end of an existing file. You can decide later on what fields you want to extract from the JSON, or simply load the whole dataset into a tool like Pandas.</p>
+<p>The examples below will save the complete JSON item records in a <a class="reference external" href="http://ndjson.org/">newline delimited JSON file (NDJSON)</a>. As the name suggests, NDJSON files have one JSON object per line. It’s a convenient and scalable method, as you can simply add each new record to the end of an existing file. You can decide later on what fields you want to extract from the JSON, or simply load the whole dataset into a tool like Pandas.</p>
 </section>
-<section id="full-example">
-<h2>Full example<a class="headerlink" href="#full-example" title="Permalink to this heading">#</a></h2>
+<section id="harvesting-from-a-single-category">
+<h2>Harvesting from a single category<a class="headerlink" href="#harvesting-from-a-single-category" title="Permalink to this heading">#</a></h2>
+<p>This example harvests all records containing the term ‘wragge’ from the <code class="docutils literal notranslate"><span class="pre">magazine</span></code> category and saves the results in a file called <code class="docutils literal notranslate"><span class="pre">results.ndjson</span></code>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can find variations on this approach throughout the Trove sections of the <a class="reference external" href="https://glam-workbench.net/">GLAM Workbench</a>. For example <a class="reference external" href="https://glam-workbench.net/trove-lists/harvest-summary-data-from-lists/">Harvest summary data from Trove lists</a> and <a class="reference external" href="https://glam-workbench.net/trove-maps/exploring-digitised-maps/">Exploring digitised maps in Trove</a>.</p>
+</div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
 <span class="kn">import</span> <span class="nn">requests</span>
 
+<span class="c1"># Set the query parameters</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;wragge&quot;</span><span class="p">,</span>
     <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;magazine&quot;</span><span class="p">,</span>
@@ -507,25 +543,109 @@ document.write(`
     <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
 <span class="p">}</span>
 
+<span class="c1"># Add your api key to the request headers</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">API_KEY</span><span class="p">}</span>
 
+<span class="c1"># Default `s` value</span>
 <span class="n">start</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
 
+<span class="c1"># Open a ndjson file to write the results to</span>
 <span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;results.ndjson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ndjson_file</span><span class="p">:</span>
+    <span class="c1"># Continue until there is no `nextStart` value</span>
     <span class="k">while</span> <span class="n">start</span><span class="p">:</span>
+        <span class="c1"># Set `s` value</span>
         <span class="n">params</span><span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span>
+
+        <span class="c1"># Make the API request</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
             <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
         <span class="p">)</span>
+
+        <span class="c1"># Extract JSON from API response</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="c1"># Get the list of records</span>
+        <span class="c1"># Using `get` with [] default here because there is currently an API bug,</span>
+        <span class="c1"># which can return empty results sets</span>
         <span class="n">records</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;work&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="c1"># Loop through the records, writing them to the NDJSON file</span>
         <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
             <span class="n">ndjson_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">record</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Try to get the `nextStart` value</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">start</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;nextStart&quot;</span><span class="p">]</span>
+
+            <span class="c1"># If there&#39;s no `nextStart` value the harvest is finished</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span>
-    
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="harvesting-from-all-categories">
+<h2>Harvesting from all categories<a class="headerlink" href="#harvesting-from-all-categories" title="Permalink to this heading">#</a></h2>
+<p>This example sets the <code class="docutils literal notranslate"><span class="pre">category</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">all</span></code> to harvest search results from <em>every</em> category (except web archives). Different categories deliver their results in different formats, so either you try to normalise these into some standard structure, or you save them into separate files. This example creates a separate NDJSON results file for each of these record types in the search results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># Set the query parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;&quot;clement wragge&quot;&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bulkHarvest&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Add your api key to the request headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">API_KEY</span><span class="p">}</span>
+
+<span class="c1"># Default `s` value</span>
+<span class="n">start</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+
+<span class="c1"># Continue until there is no `nextStart` value</span>
+<span class="k">while</span> <span class="n">start</span><span class="p">:</span>
+    <span class="c1"># Set `s` value</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span>
+
+    <span class="c1"># Make the API request</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Extract JSON from API response</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="c1"># All of the different record types are grouped together under &#39;item&#39;</span>
+    <span class="c1"># Using `get` with [] default here because there is currently an API bug,</span>
+    <span class="c1"># which can return empty results sets</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+    <span class="c1"># Loop through the item results</span>
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        
+        <span class="c1"># Each result is an object (dict) with the record_type as the key</span>
+        <span class="c1"># and the record data as the value.</span>
+        <span class="k">for</span> <span class="n">record_type</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            
+            <span class="c1"># Append each record to a file according to the record type</span>
+            <span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;results-</span><span class="si">{</span><span class="n">record_type</span><span class="si">}</span><span class="s2">.ndjson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ndjson_file</span><span class="p">:</span>
+                <span class="n">ndjson_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">record</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Try to get the `nextStart` value</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;nextStart&quot;</span><span class="p">]</span>
+
+        <span class="c1"># If there&#39;s no `nextStart` value the harvest is finished</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -602,8 +722,10 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-bulkharvest-parameter">Using the <code class="docutils literal notranslate"><span class="pre">bulkHarvest</span></code> parameter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-pagination">Understanding pagination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-categories">Managing categories</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-results">Handling results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-example">Full example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harvesting-from-a-single-category">Harvesting from a single category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harvesting-from-all-categories">Harvesting from all categories</a></li>
 </ul>
   </nav></div>
 

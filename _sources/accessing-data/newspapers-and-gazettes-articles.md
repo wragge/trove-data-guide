@@ -50,13 +50,17 @@ YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 
 ## What are articles?
 
-When you search in Trove's digitised newspapers, you're searching for *articles*. The boundaries of articles are defined as part of the {term}`OCR` process. In most cases they represent a single piece of content with a heading and some text (or an illustration). But sometimes blocks of content are grouped together. Advertisements, for example, are often grouped as a single 'article' headed 'Advertising'. Articles can also be split across multiple pages.
+When you search in Trove's digitised newspapers, you're searching for *articles*. The boundaries of articles are defined as part of the {term}`OCR` process. In most cases they represent a single piece of content with a heading and some text (or an illustration). But sometimes blocks of content are grouped together. Advertisements, for example, are often grouped as a single 'article' headed 'Advertising'. A single article can also be split across multiple pages.
 
 +++
 
 ## Article links and connections
 
-Every newspaper article in Trove has its own unique identifier. This identifier is used in persistent links to articles on the Trove web site, and can be used with the `/newspaper` endpoint of the Trove API to retrieve metadata and full text. In the web interface, you can find the identifier under the article's 'Cite' tab, it'll look something like this `http://nla.gov.au/nla.news-article163325648`
+Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.
+
+### Article identifiers
+
+Every newspaper article in Trove has its own unique identifier. This identifier is used in persistent links to articles on the Trove web site. In the web interface, you can find the identifier under the article's 'Cite' tab, it'll look something like this `http://nla.gov.au/nla.news-article163325648`
 
 ```{figure} ../images/article-cite.png
 :name: article-cite
@@ -64,7 +68,9 @@ Every newspaper article in Trove has its own unique identifier. This identifier 
 Example of an article identifier found in the 'Cite' tab.
 ```
 
-Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.
+If you follow an article identifier you'll get redirected to a different url that looks like this `https://trove.nla.gov.au/newspaper/article/163325648`. Notice that the number at the end of the identifier and the redirected url are the same, `163325648`. You can use this numeric identifier with the `/newspaper` endpoint of the Trove API to retrieve metadata and full text.
+
+### Articles and newspaper titless
 
 Links to newspaper **titles** are perhaps the most straightforward. Each article is linked to a single newspaper title by the title's unique identifier. An article's metadata record includes a field for `title` that includes both the numeric identifier and the newspaper's masthead. for example:
 
@@ -77,6 +83,8 @@ Links to newspaper **titles** are perhaps the most straightforward. Each article
 
 You can use the newspaper's `id` to request more information from the `newspaper/titles` API endpoint.
 
+### Articles and issues
+
 There are no direct links from articles to newspaper **issues**. However, articles share a date with their parent issue, so it's possible to use the date to connect them. For example you can use a `date` search to find all the articles in an issue.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
@@ -87,6 +95,8 @@ One problem in trying to link articles with issues is that newspapers often publ
 ```
 
 +++
+
+### Articles and pages
 
 There are two ways in which articles are linked to **pages**. The first is simply by the `page` value, which is a number indicating the sequence of a page within an issue. This *usually* corresponds to the page number printed on the page, however, sometimes issues include separately numbered supplements. You can tell if a page is part of a supplement by looking at the confusingly-named `pageSequence` value – it will typically include an 'S' after the page number. There might also be a `pageLabel` value that provides the number printed on the page within the supplement.
 
@@ -100,7 +110,7 @@ Here's [an advertisement for abstestos cement](https://trove.nla.gov.au/newspape
 
 This means the article is on the 82nd page of the issue, but this page is within a supplement and is numbered '2' on the printed page.
 
-The second way articles are linked to pages is by the page's unique identifier. If you set `reclevel` to `full` when requesting article records, the metadata will include a `trovePageUrl` value, for example:
+The second way articles are linked to pages is by the page's unique identifier. If you set `reclevel` to `full` when requesting article records from the API, the metadata will include a `trovePageUrl` value, for example:
 
 ```json
 "trovePageUrl": "https://nla.gov.au/nla.news-page5417618"
@@ -112,12 +122,12 @@ If you follow the url it will display the page in the Trove web interface, but t
 
 ```{admonition} What happens when articles are split over multiple pages?
 :class: note
-The `page` value in an article's metadata is only ever a single number. If an article is split over multiple pages, then the `page` value will indicate the page on which the article *begins*. The metadata doesn't include the numbers of any subsequent pages. You can, however, find out whether an article is split across pages by looking at the `pdf` field. This field contains a list of links to page PDFs. The number of links will tell you the number of pages the article appears on. (But note that the `pdf` field seems to be missing from *Australian Women's Weekly* articles.) The PDF links also include the page identifiers.
+The `page` value in an article's metadata is only ever a single number. If an article is split over multiple pages, then the `page` value will indicate the page on which the article *begins*. The metadata doesn't include the numbers of any subsequent pages. You can, however, find out whether an article is split across pages by looking at the `pdf` field. This field contains a list of links to page PDFs. The number of links will tell you the number of pages the article appears on. (But note that the `pdf` field seems to be missing from *Australian Women's Weekly* articles.) The PDF links also include the numeric identifiers for each page.
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Metadata
+## Article metadata
 
 The {term}`metadata` associated with newspaper and gazette articles in Trove includes the basic information you'd expect to put in a citation, like the article's headline, publication date, newspaper, and page number. Additional fields are added by the OCR and data ingestion processes, such as internal links, the number of words, and the article category. User activity also adds data relating to tags, comments, lists, and corrections.
 
