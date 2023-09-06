@@ -218,3 +218,10 @@ This is a simple way of capturing metadata in a structured format, but the BibTe
 ```{code-cell} ipython3
 
 ```
+
+(bulk-export)=
+## Bulk export
+
+```{code-cell} ipython3
+
+```
