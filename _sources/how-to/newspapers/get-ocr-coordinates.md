@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# How to get information about the position of OCRd newspaper text
+# HOW TO: Get information about the position of OCRd newspaper text
 
 +++
 
@@ -88,7 +88,7 @@ You can see that the `<span>` element includes the same set of `data` attributes
 
 In theory, you could write some code that gets the positions of every word in an article by looping through the words, adding each one to the page url's `searchTerm` parameter so that it's highlighted, then grabbing the coordinates from the `<span>`. It would be rather inefficient though.
 
-As described below, you can use this information to save images of individual words.
+You can use this information to save images of individual words.
 
 ```{code-cell} ipython3
 

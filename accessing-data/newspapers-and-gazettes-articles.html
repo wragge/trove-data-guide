@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-articles.5b688b30-f839-4944-ab60-9e728a86860f.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-articles.1dc7fcc7-a687-4456-b79d-8009651bc6a8.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes-articles';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -238,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../how-to/newspapers/newspapers-and-gazettes.html">Newspaper and gazettes how to…</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/querypic.html">Visualising newspaper searches with QueryPic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/get-newspaper-issue-article-pdfs.html">Get a newspaper issue or article as a PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/get-newspaper-issue-article-pdfs.html">HOW TO: Get a newspaper issue or article as a PDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/international-newspaper-titles.html">Get a list of ‘International’ newspapers and gazettes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how-to/newspapers/create-newspaper-articles-dataset.html">How to create a dataset of digitised newspaper articles</a></li>
 </ul>
@@ -455,19 +455,23 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-metadata">Article metadata</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-articles">Individual articles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">Search results</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-extra-metadata-fields">Get extra metadata fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-extra-metadata-fields">Add extra metadata fields</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-total-number-of-articles-in-a-search">Find the total number of articles in a search</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets-to-get-aggregate-data-about-articles">Using facets to get aggregate data about articles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-positional-information-from-ocr">Get positional information from OCR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-harvester">Trove Newspaper Harvester</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-for-an-individual-article">Get metadata for an individual article</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text">Article text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-article-text-in-api-results">Including article text in API results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">Images and PDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs-of-articles">Images and PDFs of articles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-article-pdfs">Downloading article PDFs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-articles-as-images">Save articles as images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-article-illustrations-as-images">Save article illustrations as images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-words-as-images">Save words as images</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -501,20 +505,25 @@ document.write(`
 <ul>
 <li><p><a class="reference internal" href="#individual-articles" id="id8">Individual articles</a></p></li>
 <li><p><a class="reference internal" href="#search-results" id="id9">Search results</a></p></li>
-<li><p><a class="reference internal" href="#get-extra-metadata-fields" id="id10">Get extra metadata fields</a></p></li>
+<li><p><a class="reference internal" href="#add-extra-metadata-fields" id="id10">Add extra metadata fields</a></p></li>
 <li><p><a class="reference internal" href="#find-the-total-number-of-articles-in-a-search" id="id11">Find the total number of articles in a search</a></p></li>
 <li><p><a class="reference internal" href="#using-facets-to-get-aggregate-data-about-articles" id="id12">Using facets to get aggregate data about articles</a></p></li>
 <li><p><a class="reference internal" href="#get-positional-information-from-ocr" id="id13">Get positional information from OCR</a></p></li>
-<li><p><a class="reference internal" href="#trove-newspaper-harvester" id="id14">Trove Newspaper Harvester</a></p></li>
-<li><p><a class="reference internal" href="#get-metadata-for-an-individual-article" id="id15">Get metadata for an individual article</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#text" id="id16">Text</a></p>
+<li><p><a class="reference internal" href="#article-text" id="id14">Article text</a></p>
 <ul>
-<li><p><a class="reference internal" href="#api" id="id17">API</a></p></li>
+<li><p><a class="reference internal" href="#including-article-text-in-api-results" id="id15">Including article text in API results</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#images-and-pdfs" id="id18">Images and PDFs</a></p></li>
+<li><p><a class="reference internal" href="#images-and-pdfs-of-articles" id="id16">Images and PDFs of articles</a></p>
+<ul>
+<li><p><a class="reference internal" href="#downloading-article-pdfs" id="id17">Downloading article PDFs</a></p></li>
+<li><p><a class="reference internal" href="#save-articles-as-images" id="id18">Save articles as images</a></p></li>
+<li><p><a class="reference internal" href="#save-article-illustrations-as-images" id="id19">Save article illustrations as images</a></p></li>
+<li><p><a class="reference internal" href="#save-words-as-images" id="id20">Save words as images</a></p></li>
+</ul>
+</li>
 </ul>
 </nav>
 <section id="what-are-articles">
@@ -672,7 +681,7 @@ document.write(`
  &#39;date&#39;: &#39;1927-03-08&#39;,
  &#39;page&#39;: &#39;3&#39;,
  &#39;pageSequence&#39;: &#39;3&#39;,
- &#39;relevance&#39;: {&#39;score&#39;: 540.29248046875, &#39;value&#39;: &#39;very relevant&#39;},
+ &#39;relevance&#39;: {&#39;score&#39;: 540.2970581054688, &#39;value&#39;: &#39;very relevant&#39;},
  &#39;snippet&#39;: &#39;&quot;Coyyan&quot; writes in the Cairns \&#39;Post\&#39;:-- Mr. Clement Wragge was generally referred to as the Inclement Wragge,&quot; purely on account of&#39;,
  &#39;troveUrl&#39;: &#39;https://.nla.gov.au/nla.news-article169851997?searchTerm=%22clement+wragge%22+AND+cyclone&#39;}
 </pre></div>
@@ -681,8 +690,8 @@ document.write(`
 </div>
 <p>You can request a maximum of 100 records with a single API request. To download metadata from <em>all</em> the articles in a set of search results you need to make multiple requests. See <a class="reference internal" href="../how-to/harvest-complete-results.html"><span class="doc std std-doc">HOW TO: Harvest a complete set of search results using the Trove API</span></a> for examples of how to do this.</p>
 </section>
-<section id="get-extra-metadata-fields">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Get extra metadata fields</a><a class="headerlink" href="#get-extra-metadata-fields" title="Permalink to this heading">#</a></h3>
+<section id="add-extra-metadata-fields">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Add extra metadata fields</a><a class="headerlink" href="#add-extra-metadata-fields" title="Permalink to this heading">#</a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> and <code class="docutils literal notranslate"><span class="pre">include</span></code> parameters with either the <code class="docutils literal notranslate"><span class="pre">/newspaper</span></code> or <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoints to control the amount of metadata provided about each article. For example:</p>
 <p>Setting <code class="docutils literal notranslate"><span class="pre">reclevel=full</span></code> adds the following fields:</p>
 <ul class="simple">
@@ -694,7 +703,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">commentCount</span></code> – number of tags attached to this article</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">listCount</span></code> – number of lists this article has been added to</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">lastCorrection</span></code> – details of last OCR correction, includes date and user name</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pdf</span></code> – link to download a PDF version of the page this article was published on</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdf</span></code> – link(s) to download a PDF version of the page (or pages) this article was published on</p></li>
 </ul>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26encoding%3Djson"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
 <div class="admonition warning">
@@ -747,7 +756,7 @@ document.write(`
    &#39;name&#39;: &#39;Newspapers &amp; Gazettes&#39;,
    &#39;records&#39;: {&#39;s&#39;: &#39;*&#39;,
     &#39;n&#39;: 0,
-    &#39;total&#39;: 244541650,
+    &#39;total&#39;: 244581125,
     &#39;next&#39;: &#39;https://api.trove.nla.gov.au/v3/result?category=newspaper&amp;n=0&amp;encoding=json&amp;s=*&#39;,
     &#39;nextStart&#39;: &#39;*&#39;}}]}
 </pre></div>
@@ -771,7 +780,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 06 September 2023, there are 244,541,650 newspaper &amp; gazette articles in Trove
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 07 September 2023, there are 244,581,125 newspaper &amp; gazette articles in Trove
 </pre></div>
 </div>
 </div>
@@ -779,42 +788,202 @@ document.write(`
 </section>
 <section id="using-facets-to-get-aggregate-data-about-articles">
 <h3><a class="toc-backref" href="#id12" role="doc-backlink">Using facets to get aggregate data about articles</a><a class="headerlink" href="#using-facets-to-get-aggregate-data-about-articles" title="Permalink to this heading">#</a></h3>
-<p><mark>Links to QueryPic and other examples</mark></p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="seealso admonition">
+<p class="admonition-title">Create big pictures with QueryPic</p>
+<p><a class="reference external" href="https://glam-workbench.net/trove-newspapers/querypic/">QueryPic</a> visualises Trove newspaper search results, showing the number of matching articles per year. It does this by retrieving data from the <code class="docutils literal notranslate"><span class="pre">decade</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code> facets.</p>
+<iframe width="80%" src="https://www.youtube.com/embed/vdyKNowv9gw?si=DoWEYE5oV1K662Jc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</aside>
+<p><a class="reference internal" href="../understanding-search/facets.html"><span class="doc std std-doc">Search facets</span></a> are another source of useful metadata. Using them, you can slice a results set in different ways to reveal large-scale patterns. Facets available in the <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> category include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">decade</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, &amp; <code class="docutils literal notranslate"><span class="pre">month</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">category</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">illustrationType</span></code></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Date facet tricks</p>
+<p>The date facets, <code class="docutils literal notranslate"><span class="pre">decade</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, &amp; <code class="docutils literal notranslate"><span class="pre">month</span></code>, are interdependent. To get data from the <code class="docutils literal notranslate"><span class="pre">year</span></code> facet, you first need to limit the query to a specific decade using the <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> parameter. In other words, you can only get one decade’s worth of <code class="docutils literal notranslate"><span class="pre">year</span></code> values at a time. Similarly, to get <code class="docutils literal notranslate"><span class="pre">month</span></code> values, you have to use the <code class="docutils literal notranslate"><span class="pre">l-year</span></code> parameter to limit results to a particular year.</p>
+<p>To retrieve data for <em>every</em> year, you need to loop through all the decades, gathering the <code class="docutils literal notranslate"><span class="pre">year</span></code> values for each decade in turn, then combining the results. There are examples of this in the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/visualise-searches-over-time/">Visualise Trove newspaper searches over time</a>.</p>
+</div>
+<p>To retrieve facet data from a search, just add the <code class="docutils literal notranslate"><span class="pre">facet</span></code> parameter. For example, adding <code class="docutils literal notranslate"><span class="pre">facet=state</span></code> to your request will break down the number of results by the place of publication. If you don’t provide any search terms, you can find the number of articles from each state across the whole of Trove’s newspapers.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dall%26facet%3Dformat%26n%3D0%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Set n to 0 because we don&#39;t want any records</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;facet&quot;</span><span class="p">:</span> <span class="s2">&quot;state&quot;</span><span class="p">}</span>
+
+<span class="c1"># Supply API key using headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Perhaps the trickiest thing is actually getting to where the facet terms are</span>
+<span class="n">facets</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;facets&quot;</span><span class="p">][</span><span class="s2">&quot;facet&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;term&quot;</span><span class="p">]</span>
+
+<span class="c1"># Get the facet label and count from each facet</span>
+<span class="n">facet_counts</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;search&quot;</span><span class="p">],</span> <span class="s2">&quot;total_articles&quot;</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]}</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">facets</span><span class="p">]</span>
+
+<span class="c1"># Use Pandas to display the results in a table</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">facet_counts</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thousands</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_475c7">
+  <thead>
+    <tr>
+      <th id="T_475c7_level0_col0" class="col_heading level0 col0" >state</th>
+      <th id="T_475c7_level0_col1" class="col_heading level0 col1" >total_articles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_475c7_row0_col0" class="data row0 col0" >ACT</td>
+      <td id="T_475c7_row0_col1" class="data row0 col1" >3,296,997</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row1_col0" class="data row1 col0" >International</td>
+      <td id="T_475c7_row1_col1" class="data row1 col1" >916,795</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row2_col0" class="data row2 col0" >National</td>
+      <td id="T_475c7_row2_col1" class="data row2 col1" >1,739,802</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row3_col0" class="data row3 col0" >New South Wales</td>
+      <td id="T_475c7_row3_col1" class="data row3 col1" >86,101,879</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row4_col0" class="data row4 col0" >Northern Territory</td>
+      <td id="T_475c7_row4_col1" class="data row4 col1" >409,433</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row5_col0" class="data row5 col0" >Queensland</td>
+      <td id="T_475c7_row5_col1" class="data row5 col1" >41,131,526</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row6_col0" class="data row6 col0" >South Australia</td>
+      <td id="T_475c7_row6_col1" class="data row6 col1" >25,007,977</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row7_col0" class="data row7 col0" >Tasmania</td>
+      <td id="T_475c7_row7_col1" class="data row7 col1" >15,850,246</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row8_col0" class="data row8 col0" >Victoria</td>
+      <td id="T_475c7_row8_col1" class="data row8 col1" >44,756,839</td>
+    </tr>
+    <tr>
+      <td id="T_475c7_row9_col0" class="data row9 col0" >Western Australia</td>
+      <td id="T_475c7_row9_col1" class="data row9 col1" >25,369,631</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>You can also combine facets to analyse results from multiple perspectives. For example, perhaps you’d like to find out how the numbers of different illustration types varies over time. One way of doing this would be loop through a series of nested queries.</p>
+<ul class="simple">
+<li><p>first loop through the different illustration types (“Cartoon”, “Graph”, “Illustration”, “Map”, “Photo”), setting them as the value of the <code class="docutils literal notranslate"><span class="pre">l-illustrationType</span></code> parameter</p></li>
+<li><p>then loop through the desired decades (eg “180” to “202”) setting them as the value of the <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> parameter</p></li>
+<li><p>for each combination of the above, set the <code class="docutils literal notranslate"><span class="pre">facet</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">year</span></code></p></li>
+<li><p>collect the facet results by <code class="docutils literal notranslate"><span class="pre">illustrationType</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code></p></li>
+</ul>
+<p>A further enhancement would be to harvest the <em>total</em> number of articles for each year, so that you could calculate the proportion of articles each year containing each illustration type.</p>
+<p>There’s a full example of this in the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/visualise-searches-over-time/">Visualise Trove newspaper searches over time</a>.</p>
+<p>Here’s a visualisation of the results. The first chart shows the raw number of each illustration type, while the second displays them as a proportion of the total number of articles per year. You can see that the proportion of articles containing photographs increases steadily from the 1920s!</p>
+<figure class="align-default" id="newspaper-illustration-types-over-time">
+<img alt="../_images/newspaper-illustration-types.svg" src="../_images/newspaper-illustration-types.svg" /><figcaption>
+<p><span class="caption-number">Fig. 15.2 </span><span class="caption-text">Visualisation of the numbers of different illustration types in Trove newspaper articles over time.</span><a class="headerlink" href="#newspaper-illustration-types-over-time" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="get-positional-information-from-ocr">
 <h3><a class="toc-backref" href="#id13" role="doc-backlink">Get positional information from OCR</a><a class="headerlink" href="#get-positional-information-from-ocr" title="Permalink to this heading">#</a></h3>
-<p>Additional metadata relating OCRd text to its position on a page can be scraped from the Trove web site, see <a class="reference internal" href="../how-to/newspapers/get-ocr-coordinates.html"><span class="doc std std-doc">How to get information about the position of OCRd newspaper text</span></a></p>
+<p>The OCR process generates some article metadata that is not available through the Trove API. As well as extracting text from the page images, the OCR process captures positional information that relates blocks of text to their location within the original image.</p>
+<p>Some of this positional information can be scraped from the Trove web site, enabling you to locate individual lines of text, and, by combining their coordinates, draw a bounding box around a complete article. This method is explained in <a class="reference internal" href="../how-to/newspapers/get-ocr-coordinates.html"><span class="doc std std-doc">HOW TO: Get information about the position of OCRd newspaper text</span></a>.</p>
+<figure class="align-default" id="newspaper-article-coords">
+<a class="reference internal image-reference" href="../_images/article-coords-example.jpg"><img alt="../_images/article-coords-example.jpg" src="../_images/article-coords-example.jpg" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15.3 </span><span class="caption-text">Example of a bounding box around an article, created by scraping positional information from the Trove web site.</span><a class="headerlink" href="#newspaper-article-coords" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can use this positional information to <a class="reference internal" href="#articles-as-images"><span class="std std-ref">extract images of articles</span></a>, or even <a class="reference internal" href="#words-as-images"><span class="std std-ref">individual words</span></a>, as explained below.</p>
 </section>
-<section id="trove-newspaper-harvester">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink">Trove Newspaper Harvester</a><a class="headerlink" href="#trove-newspaper-harvester" title="Permalink to this heading">#</a></h3>
-<p><mark>==Where should this go?==</mark></p>
+</section>
+<section id="article-text">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Article text</a><a class="headerlink" href="#article-text" title="Permalink to this heading">#</a></h2>
+<p>Trove provides the full text of articles for download. This makes it possible to use natural language processing and other computational methods to analyse the contents of newspapers.</p>
+<p>There are actually three sources of newspaper article text:</p>
 <ul class="simple">
-<li><p>metadata, text, images, PDFs</p></li>
-<li><p>no limit</p></li>
-<li><p>metadata file captures query details</p></li>
+<li><p>the title and first four lines of articles (except for advertisements) are transcribed by human operators as part of the ingest process</p></li>
+<li><p>the full text of articles is extracted from the page image using optical character recognition (OCR)</p></li>
+<li><p>the OCRd text is corrected by Trove users</p></li>
 </ul>
+<p>The article title displayed in the web interface and available from the <code class="docutils literal notranslate"><span class="pre">heading</span></code> field in API results is the manually transcribed version, while the full text download is the OCRd text with any user corrections. That’s why there can be differences between the two.</p>
+<section id="including-article-text-in-api-results">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Including article text in API results</a><a class="headerlink" href="#including-article-text-in-api-results" title="Permalink to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="seealso admonition">
+<p class="admonition-title">The Trove Newspaper &amp; Gazette Harvester makes it easy!</p>
+<p>If you want to harvest newspaper article metadata, full text, and even images and PDFS, the <a class="reference external" href="https://wragge.github.io/trove-newspaper-harvester/">Trove Newspaper &amp; Gazette Harvester</a> can help. It incorporates many of the workarounds mentioned in this section, stripping tags from the OCRd text, scraping text from the Australian Women’s Weekly, cropping article images from pages, and downloading PDFs. You can use it as a Python library, a command-line tool, or run it as a <a class="reference external" href="https://glam-workbench.net/trove-harvester/harvester-web-app/">simple web app</a> through the GLAM Workbench.</p>
+</div>
+</aside>
+<p>The transcribed article title is available in the <code class="docutils literal notranslate"><span class="pre">heading</span></code> field of the API results. There’s no direct way to access the transcribed text from first four lines of articles. However, if you access articles via the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint without supplying any search terms, the <code class="docutils literal notranslate"><span class="pre">snippet</span></code> field should display the transcribed text.</p>
+<p>To include the full OCRd/corrected text in API results you just need to set the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">articleText</span></code>.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2F217926119%3Fencoding%3Djson%26include%3DarticleText&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>The full text will be available in the <code class="docutils literal notranslate"><span class="pre">articleText</span></code> field of the API response. This works with both single articles from the <code class="docutils literal notranslate"><span class="pre">/newspaper</span></code> endpoint and search results from the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint.</p>
+<p>However, the full text that’s provided by the API is actually an HTML fragment, containing <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> tags. The <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> tags identify line breaks within the text. Depending on what you want to do with the text, you might need to strip out all the tags, and/or replace the <code class="docutils literal notranslate"><span class="pre">&lt;/span&gt;</span></code> tags with a simple line break character (<code class="docutils literal notranslate"><span class="pre">\n</span></code>). If you don’t want to fiddle around with regular expressions, you could use something like the <a class="reference external" href="https://pypi.org/project/html2text/">html2text</a> Python package to do the job.</p>
+<div class="note admonition">
+<p class="admonition-title">But what about the Australian Women’s Weekly?</p>
+<p>Unfortunately, adding <code class="docutils literal notranslate"><span class="pre">include=articleText</span></code> doesn’t work with the Australian Women’s Weekly as a decision was made early on to exclude AWW text from the API results. If you want the full text of AWW articles you need to scrape it from the web page. The good news is that the <a class="reference external" href="https://wragge.github.io/trove-newspaper-harvester/">Trove Newspaper and Gazette Harvester</a> will do this for you automatically!</p>
+</div>
 </section>
-<section id="get-metadata-for-an-individual-article">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">Get metadata for an individual article</a><a class="headerlink" href="#get-metadata-for-an-individual-article" title="Permalink to this heading">#</a></h3>
 </section>
+<section id="images-and-pdfs-of-articles">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Images and PDFs of articles</a><a class="headerlink" href="#images-and-pdfs-of-articles" title="Permalink to this heading">#</a></h2>
+<p>While you can download article images (embedded in an HTML page) and PDFs from the Trove web interface, there’s no direct mechanism for accessing them via the API. This makes it difficult to automate downloads, assemble image datasets, and build image processing pipelines. Fortunately, there are a few handy workarounds you can use.</p>
+<section id="downloading-article-pdfs">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Downloading article PDFs</a><a class="headerlink" href="#downloading-article-pdfs" title="Permalink to this heading">#</a></h3>
+<p>Getting PDFs of full newspaper pages is easy. If you set the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">full</span></code> in your API request, the response will include a <code class="docutils literal notranslate"><span class="pre">pdf</span></code> field with direct links to download the PDFs of all pages on which the article appeared.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2F217926119%3Fencoding%3Djson%26reclevel%3Dfull&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>But what if you don’t want the complete page? Unfortunately, it’s not just a matter of finding the right url. If you peek behind the web interface to see what happens when you click the download button, you’ll see that it’s a multi-step process. First the interface sends off a request to generate the article PDF and gets back a token. It then uses that token to check with the Trove backend to see when the PDF generation is finished. When the backend signals the PDF is ready, the interface uses the token to download it. Complicated huh?</p>
+<p>If you want to automate the download of article PDFs, you’ll need to reproduce these steps. There’s an example of how to do this with Python in <a class="reference internal" href="../how-to/newspapers/get-newspaper-issue-article-pdfs.html"><span class="doc std std-doc">HOW TO: Get a newspaper issue or article as a PDF</span></a>.</p>
 </section>
-<section id="text">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Text</a><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h2>
-<p>Newspaper text is segmented by article. The text is generated by OCR, with manual corrections by volunteers.</p>
-<section id="api">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">API</a><a class="headerlink" href="#api" title="Permalink to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">include=articletext</span></code></p>
-<p>Note: includes html
-Note: not the AWW (have to scrape)</p>
-<p>Trove Newspaper Harvester (including AWW)</p>
+<section id="save-articles-as-images">
+<span id="articles-as-images"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink">Save articles as images</a><a class="headerlink" href="#save-articles-as-images" title="Permalink to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>If you need an automated method for downloading images of newspaper articles, have a look at the <a class="reference external" href="https://wragge.github.io/trove_newspaper_images/">trove-newspaper-images</a> Python package. You can use it as a library or a command-line tool. Just give it a newspaper article identifier, and it downloads a high-res image. It’s also built-in to the <a class="reference external" href="https://wragge.github.io/trove-newspaper-harvester/">Trove Newspaper &amp; Gazette Harvester</a>.</p>
+</div>
+</aside>
+<p>The ‘images’ of articles you download from the web interface are actually HTML pages with embedded images. The embedded images themselves are often sliced up to fit on a page, and there’s no straightforward way of putting them back together. This means there’s no point trying to download images by duplicating what the web interface does. Fortunately, there’s an alternative.</p>
+<p>As described above, it’s possible the extract the positional coordinates of an article from the web interface. It’s also possible to download a high-resolution image of a page. By putting the two together you can crop an article image from the full page. This <a class="reference external" href="https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image/">method is fully documented</a> in the GLAM Workbench.</p>
 </section>
+<section id="save-article-illustrations-as-images">
+<span id="illustrations-as-images"></span><h3><a class="toc-backref" href="#id19" role="doc-backlink">Save article illustrations as images</a><a class="headerlink" href="#save-article-illustrations-as-images" title="Permalink to this heading">#</a></h3>
+<p><mark>==I should probably add a GW notebook for this – some of the necessary code is in the save a thumbnail nb==</mark></p>
 </section>
-<section id="images-and-pdfs">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Images and PDFs</a><a class="headerlink" href="#images-and-pdfs" title="Permalink to this heading">#</a></h2>
-<p>PDF proxy</p>
-<p>Save articles as images</p>
-<p>Save just the illustrations as images</p>
-<p>Save words as images</p>
+<section id="save-words-as-images">
+<span id="words-as-images"></span><h3><a class="toc-backref" href="#id20" role="doc-backlink">Save words as images</a><a class="headerlink" href="#save-words-as-images" title="Permalink to this heading">#</a></h3>
+<p>By using a variation on the method described above, you can even save images of individual words! As explained in <a class="reference internal" href="../how-to/newspapers/get-ocr-coordinates.html"><span class="doc std std-doc">HOW TO: Get information about the position of OCRd newspaper text</span></a>, the secret is to modify an article’s url and set the <code class="docutils literal notranslate"><span class="pre">searchTerm</span></code> parameter to the word you want to save. This will highlight the word wherever it appears in the article. You can then scrape the coordinates of the highlighted words, and crop them from the full page image. This method is used in the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/trove-newspapers-scissors-and-paste/">Create ‘scissors and paste’ messages from Trove newspaper articles</a> to generate images like this!</p>
+<p><img alt="Scissors and paste style message created from snipped words: &quot;Help trapped inside Trove cannot escape.&quot;" src="../_images/trapped-trove.jpg" /></p>
+</section>
 </section>
 </section>
 
@@ -896,19 +1065,23 @@ Note: not the AWW (have to scrape)</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-metadata">Article metadata</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-articles">Individual articles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">Search results</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-extra-metadata-fields">Get extra metadata fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-extra-metadata-fields">Add extra metadata fields</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-total-number-of-articles-in-a-search">Find the total number of articles in a search</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets-to-get-aggregate-data-about-articles">Using facets to get aggregate data about articles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-positional-information-from-ocr">Get positional information from OCR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-harvester">Trove Newspaper Harvester</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-for-an-individual-article">Get metadata for an individual article</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#article-text">Article text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-article-text-in-api-results">Including article text in API results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">Images and PDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs-of-articles">Images and PDFs of articles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-article-pdfs">Downloading article PDFs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-articles-as-images">Save articles as images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-article-illustrations-as-images">Save article illustrations as images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-words-as-images">Save words as images</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
