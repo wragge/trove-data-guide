@@ -13,7 +13,7 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# Get a newspaper issue or article as a PDF
+# HOW TO: Get a newspaper issue or article as a PDF
 
 You can download PDFs of newspaper and gazette articles, pages, and issues from Trove's web interface – it's just a matter of clicking a button. But downloading PDFs using computational methods is not so straightforward. When you click on the buttons in the web interface, you don't download the PDF from a fixed url. There's a bit of Javascript code behind the button that asks for for the PDF to be compiled, then alerts the user when it's ready. To automate the download process, you need to reproduce these steps in your code. This how-to provides an example of how this can be done using Python.
 

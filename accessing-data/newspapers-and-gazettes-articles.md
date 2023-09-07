@@ -242,7 +242,7 @@ You can request a maximum of 100 records with a single API request. To download 
 
 +++
 
-### Get extra metadata fields
+### Add extra metadata fields
 
 +++
 
@@ -258,7 +258,7 @@ Setting `reclevel=full` adds the following fields:
 - `commentCount` – number of tags attached to this article
 - `listCount` – number of lists this article has been added to
 - `lastCorrection` – details of last OCR correction, includes date and user name
-- `pdf` – link to download a PDF version of the page this article was published on
+- `pdf` – link(s) to download a PDF version of the page (or pages) this article was published on
 
 [![Try it!](../images/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26encoding%3Djson)
 
@@ -333,56 +333,180 @@ print(f"As of {today}, there are {total:,} newspaper & gazette articles in Trove
 
 ### Using facets to get aggregate data about articles
 
-<mark>Links to QueryPic and other examples</mark>
+````{margin}
+```{admonition} Create big pictures with QueryPic
+:class: seealso
+
+[QueryPic](https://glam-workbench.net/trove-newspapers/querypic/) visualises Trove newspaper search results, showing the number of matching articles per year. It does this by retrieving data from the `decade` and `year` facets.
+
+<iframe width="80%" src="https://www.youtube.com/embed/vdyKNowv9gw?si=DoWEYE5oV1K662Jc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+```
+````
+
+[Search facets](/understanding-search/facets) are another source of useful metadata. Using them, you can slice a results set in different ways to reveal large-scale patterns. Facets available in the `newspaper` category include:
+
+- `decade`, `year`, & `month`
+- `title`
+- `category`
+- `state`
+- `illustrationType`
+
+```{admonition} Date facet tricks
+:class: note
+
+The date facets, `decade`, `year`, & `month`, are interdependent. To get data from the `year` facet, you first need to limit the query to a specific decade using the `l-decade` parameter. In other words, you can only get one decade's worth of `year` values at a time. Similarly, to get `month` values, you have to use the `l-year` parameter to limit results to a particular year.
+
+To retrieve data for *every* year, you need to loop through all the decades, gathering the `year` values for each decade in turn, then combining the results. There are examples of this in the GLAM Workbench notebook [Visualise Trove newspaper searches over time](https://glam-workbench.net/trove-newspapers/visualise-searches-over-time/).
+```
+
+To retrieve facet data from a search, just add the `facet` parameter. For example, adding `facet=state` to your request will break down the number of results by the place of publication. If you don't provide any search terms, you can find the number of articles from each state across the whole of Trove's newspapers.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dall%26facet%3Dformat%26n%3D0%26encoding%3Djson&comment=)
+
+```{code-cell} ipython3
+import requests
+import pandas as pd
+
+# Set n to 0 because we don't want any records
+params = {"category": "newspaper", "n": 0, "encoding": "json", "facet": "state"}
+
+# Supply API key using headers
+headers = {"X-API-KEY": YOUR_API_KEY}
+
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
+
+data = response.json()
+
+# Perhaps the trickiest thing is actually getting to where the facet terms are
+facets = data["category"][0]["facets"]["facet"][0]["term"]
+
+# Get the facet label and count from each facet
+facet_counts = [{"state": f["search"], "total_articles": f["count"]} for f in facets]
+
+# Use Pandas to display the results in a table
+pd.DataFrame(facet_counts).sort_values("state").style.format(thousands=",").hide()
+```
+
+You can also combine facets to analyse results from multiple perspectives. For example, perhaps you'd like to find out how the numbers of different illustration types varies over time. One way of doing this would be loop through a series of nested queries.
+
+- first loop through the different illustration types ("Cartoon", "Graph", "Illustration", "Map", "Photo"), setting them as the value of the `l-illustrationType` parameter
+- then loop through the desired decades (eg "180" to "202") setting them as the value of the `l-decade` parameter
+- for each combination of the above, set the `facet` parameter to `year`
+- collect the facet results by `illustrationType` and `year`
+
+A further enhancement would be to harvest the *total* number of articles for each year, so that you could calculate the proportion of articles each year containing each illustration type.
+
+There's a full example of this in the GLAM Workbench notebook [Visualise Trove newspaper searches over time](https://glam-workbench.net/trove-newspapers/visualise-searches-over-time/). 
+
+Here's a visualisation of the results. The first chart shows the raw number of each illustration type, while the second displays them as a proportion of the total number of articles per year. You can see that the proportion of articles containing photographs increases steadily from the 1920s!
+
+```{figure} /images/newspaper-illustration-types.svg
+:name: newspaper-illustration-types-over-time
+Visualisation of the numbers of different illustration types in Trove newspaper articles over time.
+```
 
 +++
 
 ### Get positional information from OCR
 
-Additional metadata relating OCRd text to its position on a page can be scraped from the Trove web site, see [](../how-to/newspapers/get-ocr-coordinates)
+The OCR process generates some article metadata that is not available through the Trove API. As well as extracting text from the page images, the OCR process captures positional information that relates blocks of text to their location within the original image.
+
+Some of this positional information can be scraped from the Trove web site, enabling you to locate individual lines of text, and, by combining their coordinates, draw a bounding box around a complete article. This method is explained in [](/how-to/newspapers/get-ocr-coordinates).
+
+```{figure} /images/article-coords-example.jpg
+:name: newspaper-article-coords
+:width: 400
+Example of a bounding box around an article, created by scraping positional information from the Trove web site.
+```
+
+You can use this positional information to [extract images of articles](articles-as-images), or even [individual words](words-as-images), as explained below.
+
++++
+
+## Article text
+
++++
+
+Trove provides the full text of articles for download. This makes it possible to use natural language processing and other computational methods to analyse the contents of newspapers.
+
+There are actually three sources of newspaper article text:
+
+- the title and first four lines of articles (except for advertisements) are transcribed by human operators as part of the ingest process
+- the full text of articles is extracted from the page image using optical character recognition (OCR)
+- the OCRd text is corrected by Trove users
+
+The article title displayed in the web interface and available from the `heading` field in API results is the manually transcribed version, while the full text download is the OCRd text with any user corrections. That's why there can be differences between the two.
+
+### Including article text in API results
+
+````{margin}
+```{admonition} The Trove Newspaper & Gazette Harvester makes it easy!
+:class: seealso
+
+If you want to harvest newspaper article metadata, full text, and even images and PDFS, the [Trove Newspaper & Gazette Harvester](https://wragge.github.io/trove-newspaper-harvester/) can help. It incorporates many of the workarounds mentioned in this section, stripping tags from the OCRd text, scraping text from the Australian Women's Weekly, cropping article images from pages, and downloading PDFs. You can use it as a Python library, a command-line tool, or run it as a [simple web app](https://glam-workbench.net/trove-harvester/harvester-web-app/) through the GLAM Workbench.
+
+```
+````
+
+The transcribed article title is available in the `heading` field of the API results. There's no direct way to access the transcribed text from first four lines of articles. However, if you access articles via the `/result` endpoint without supplying any search terms, the `snippet` field should display the transcribed text. 
+
+To include the full OCRd/corrected text in API results you just need to set the `include` parameter to `articleText`.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2F217926119%3Fencoding%3Djson%26include%3DarticleText&comment=)
+
+The full text will be available in the `articleText` field of the API response. This works with both single articles from the `/newspaper` endpoint and search results from the `/result` endpoint.
+
+However, the full text that's provided by the API is actually an HTML fragment, containing `<p>` and `<span>` tags. The `<span>` tags identify line breaks within the text. Depending on what you want to do with the text, you might need to strip out all the tags, and/or replace the `</span>` tags with a simple line break character (`\n`). If you don't want to fiddle around with regular expressions, you could use something like the [html2text](https://pypi.org/project/html2text/) Python package to do the job.
+
+```{admonition} But what about the Australian Women's Weekly?
+:class: note
+Unfortunately, adding `include=articleText` doesn't work with the Australian Women's Weekly as a decision was made early on to exclude AWW text from the API results. If you want the full text of AWW articles you need to scrape it from the web page. The good news is that the [Trove Newspaper and Gazette Harvester](https://wragge.github.io/trove-newspaper-harvester/) will do this for you automatically!
+```
+
++++
+
+## Images and PDFs of articles
+
+While you can download article images (embedded in an HTML page) and PDFs from the Trove web interface, there's no direct mechanism for accessing them via the API. This makes it difficult to automate downloads, assemble image datasets, and build image processing pipelines. Fortunately, there are a few handy workarounds you can use.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-### Trove Newspaper Harvester
+### Downloading article PDFs
 
-<mark>==Where should this go?==</mark>
+Getting PDFs of full newspaper pages is easy. If you set the `reclevel` parameter to `full` in your API request, the response will include a `pdf` field with direct links to download the PDFs of all pages on which the article appeared.
 
-- metadata, text, images, PDFs
-- no limit
-- metadata file captures query details
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2F217926119%3Fencoding%3Djson%26reclevel%3Dfull&comment=)
 
-### Get metadata for an individual article
+But what if you don't want the complete page? Unfortunately, it's not just a matter of finding the right url. If you peek behind the web interface to see what happens when you click the download button, you'll see that it's a multi-step process. First the interface sends off a request to generate the article PDF and gets back a token. It then uses that token to check with the Trove backend to see when the PDF generation is finished. When the backend signals the PDF is ready, the interface uses the token to download it. Complicated huh?
 
-+++
+If you want to automate the download of article PDFs, you'll need to reproduce these steps. There's an example of how to do this with Python in [](/how-to/newspapers/get-newspaper-issue-article-pdfs).
 
-## Text
+(articles-as-images)=
+### Save articles as images
 
-+++
+````{margin}
+```{seealso} 
+If you need an automated method for downloading images of newspaper articles, have a look at the [trove-newspaper-images](https://wragge.github.io/trove_newspaper_images/) Python package. You can use it as a library or a command-line tool. Just give it a newspaper article identifier, and it downloads a high-res image. It's also built-in to the [Trove Newspaper & Gazette Harvester](https://wragge.github.io/trove-newspaper-harvester/).
+```
+````
 
-Newspaper text is segmented by article. The text is generated by OCR, with manual corrections by volunteers.
+The 'images' of articles you download from the web interface are actually HTML pages with embedded images. The embedded images themselves are often sliced up to fit on a page, and there's no straightforward way of putting them back together. This means there's no point trying to download images by duplicating what the web interface does. Fortunately, there's an alternative.
 
-### API
+As described above, it's possible the extract the positional coordinates of an article from the web interface. It's also possible to download a high-resolution image of a page. By putting the two together you can crop an article image from the full page. This [method is fully documented](https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image/) in the GLAM Workbench.
 
-`include=articletext`
+(illustrations-as-images)=
+### Save article illustrations as images
 
-Note: includes html
-Note: not the AWW (have to scrape)
+<mark>==I should probably add a GW notebook for this -- some of the necessary code is in the save a thumbnail nb==</mark>
 
-Trove Newspaper Harvester (including AWW)
+(words-as-images)=
+### Save words as images
 
-+++
+By using a variation on the method described above, you can even save images of individual words! As explained in [](/how-to/newspapers/get-ocr-coordinates), the secret is to modify an article's url and set the `searchTerm` parameter to the word you want to save. This will highlight the word wherever it appears in the article. You can then scrape the coordinates of the highlighted words, and crop them from the full page image. This method is used in the GLAM Workbench notebook [Create 'scissors and paste' messages from Trove newspaper articles](https://glam-workbench.net/trove-newspapers/trove-newspapers-scissors-and-paste/) to generate images like this!
 
-## Images and PDFs
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-PDF proxy
-
-Save articles as images
-
-Save just the illustrations as images
-
-Save words as images
+![Scissors and paste style message created from snipped words: "Help trapped inside Trove cannot escape."](/images/trapped-trove.jpg)
 
 ```{code-cell} ipython3
 
