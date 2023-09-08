@@ -61,6 +61,10 @@ click==8.1.4
     #   sphinx-external-toc
 comm==0.1.3
     # via ipykernel
+contourpy==1.1.0
+    # via matplotlib
+cycler==0.11.0
+    # via matplotlib
 debugpy==1.6.7
     # via ipykernel
 decorator==5.1.1
@@ -84,10 +88,14 @@ executing==1.2.0
     # via stack-data
 fastjsonschema==2.17.1
     # via nbformat
+fonttools==4.42.1
+    # via matplotlib
 fqdn==1.5.1
     # via jsonschema
 greenlet==2.0.2
     # via sqlalchemy
+html2text==2020.1.16
+    # via -r requirements.in
 idna==3.4
     # via
     #   anyio
@@ -111,6 +119,7 @@ importlib-resources==6.0.0
     #   jsonschema
     #   jsonschema-specifications
     #   jupyterlab
+    #   matplotlib
     #   sphinx-jupyterbook-latex
 ipykernel==6.24.0
     # via
@@ -196,6 +205,8 @@ jupyterlab-server==2.23.0
     # via jupyterlab
 jupytext==1.14.7
     # via -r requirements.in
+kiwisolver==1.4.5
+    # via matplotlib
 latexcodec==2.0.1
     # via pybtex
 linkify-it-py==2.0.2
@@ -209,6 +220,8 @@ markupsafe==2.1.3
     # via
     #   jinja2
     #   nbconvert
+matplotlib==3.7.2
+    # via wordcloud
 matplotlib-inline==0.1.6
     # via
     #   ipykernel
@@ -249,7 +262,10 @@ notebook-shim==0.2.3
 numpy==1.24.4
     # via
     #   altair
+    #   contourpy
+    #   matplotlib
     #   pandas
+    #   wordcloud
 overrides==7.3.1
     # via jupyter-server
 packaging==23.1
@@ -260,6 +276,7 @@ packaging==23.1
     #   jupyterlab
     #   jupyterlab-code-formatter
     #   jupyterlab-server
+    #   matplotlib
     #   nbconvert
     #   pydata-sphinx-theme
     #   sphinx
@@ -277,6 +294,10 @@ pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
     # via ipython
+pillow==10.0.0
+    # via
+    #   matplotlib
+    #   wordcloud
 pkgutil-resolve-name==1.3.10
     # via jsonschema
 platformdirs==3.8.1
@@ -313,10 +334,12 @@ pygments==2.15.1
     #   nbconvert
     #   pydata-sphinx-theme
     #   sphinx
+pyparsing==3.0.9
+    # via matplotlib
 python-dateutil==2.8.2
     # via
-    #   arrow
     #   jupyter-client
+    #   matplotlib
     #   pandas
 python-dotenv==1.0.0
     # via -r requirements.in
@@ -510,6 +533,8 @@ websocket-client==1.6.1
     # via jupyter-server
 wheel==0.40.0
     # via sphinx-togglebutton
+wordcloud==1.9.2
+    # via -r requirements.in
 zipp==3.16.0
     # via
     #   importlib-metadata
