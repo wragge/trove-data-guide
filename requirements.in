@@ -12,3 +12,5 @@ python-dotenv
 requests-cache
 sphinx-tippy
 jupyterlab-code-snippets
+wordcloud
+html2text
