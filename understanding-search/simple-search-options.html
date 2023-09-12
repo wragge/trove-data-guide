@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.dcb42833-534e-4420-9815-cb276ccbc2c9.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.8dd1c9bc-72c7-4a04-b32c-8df3c100c3c5.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/simple-search-options';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Collections and contexts" href="../collections-and-contexts/collections-and-contexts.html" />
+    <link rel="next" title="9.3. Facets" href="facets.html" />
     <link rel="prev" title="9.1. Discovery versus analysis" href="discovery-versus-analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -189,6 +189,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="understanding-search.html">9. Understanding search</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="discovery-versus-analysis.html">9.1. Discovery versus analysis</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">9.2. ‘Simple’ search options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="facets.html">9.3. Facets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="date-searches.html">9.4. Date searches</a></li>
 </ul>
 </li>
 </ul>
@@ -421,7 +423,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -437,6 +441,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-indexes">Available indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-on-a-specific-page">Searching for articles on a specific page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-within-a-given-date-range">Searching for articles within a given date range</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -453,6 +467,44 @@ document.write(`
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
 <p><mark>==Include a note about <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> and the fact that this will match pages from supplements as well. So supplements need to be filtered out after harvesting. Also note that not all issues start with page 1.==</mark></p>
+<section id="available-indexes">
+<h2>Available indexes<a class="headerlink" href="#available-indexes" title="Permalink to this heading">#</a></h2>
+<table class="table" id="table-available-search-indexes">
+<caption><span class="caption-number">Table 9.1 </span><span class="caption-text">Available search indexes</span><a class="headerlink" href="#table-available-search-indexes" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td><p>Search for articles within a given date range</p></td>
+<td><p>Example</p></td>
+<td><p>Notes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code></p></td>
+<td><p>Search for a specific page number</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">firstpageseq:2</span></code> – find articles published on page two</p></td>
+<td><p>Results combine newspaper body and separately-numbered supplements, so searches can return articles from multiple pages</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">fullTextInd</span></code> can be misleading and inaccurate – doesn’t always link to fulltext version, text not always available. Can be restricted (eg NED publications) or from a contributor where fulltext links are sometimes wrong. Need to combine with something like “nla.obj”, and exclude NED, to find digitised resources reliably.</p>
+</section>
+<section id="searching-for-articles-on-a-specific-page">
+<span id="search-indexes-firstpageseq"></span><h2>Searching for articles on a specific page<a class="headerlink" href="#searching-for-articles-on-a-specific-page" title="Permalink to this heading">#</a></h2>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> index to search for articles published on a particular page. For example, include <code class="docutils literal notranslate"><span class="pre">firstpageseq:1</span></code> in your query to find articles on page one. This works in both the web interface’s simple search box and the <code class="docutils literal notranslate"><span class="pre">q</span></code> value of the API.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A//api.trove.nla.gov.au/v3/result%3Fq%3Dfirstpageseq%3A1%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some newspapers include supplements that have their own independent pagination. This means, for example, that an issue could contain multiple pages numbered <code class="docutils literal notranslate"><span class="pre">1</span></code>. The <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> index searches <em>both</em> the main body of the newspaper <em>and</em> any supplements, so the results could include articles published on more than one page within an issue. There’s no way of searching just in the main body or in supplements, but you can filter the results after you’ve retrieved them from the API. Article results include fields labelled <code class="docutils literal notranslate"><span class="pre">page</span></code> and <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code>. The <code class="docutils literal notranslate"><span class="pre">page</span></code> field contains just numbers, but if the page comes from a supplement, the <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code> field will include an <code class="docutils literal notranslate"><span class="pre">S</span></code> after the number. You can use this to keep or discard articles from supplements. <a class="reference internal" href="../accessing-data/newspapers-and-gazettes-pages.html#get-page-identifier-from-search"><span class="std std-ref">Get the identifier of a specific page by searching for articles</span></a> provides an example of filtering results using the <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code> value.</p>
+</div>
+</section>
+<section id="searching-for-articles-within-a-given-date-range">
+<h2>Searching for articles within a given date range<a class="headerlink" href="#searching-for-articles-within-a-given-date-range" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -496,11 +548,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../collections-and-contexts/collections-and-contexts.html"
+       href="facets.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Collections and contexts</p>
+        <p class="prev-next-title"><span class="section-number">9.3. </span>Facets</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -513,6 +565,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-indexes">Available indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-on-a-specific-page">Searching for articles on a specific page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-within-a-given-date-range">Searching for articles within a given date range</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -63,9 +63,9 @@ YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 
 Printed newspaper pages are easy to understand. You can read them, you can turn them, you can wrap your fish and chips in them. Digitised newspaper pages in Trove are a bit more complex and exist in several related forms.
 
-### Pages are groups of articles
+### Pages are metadata
 
-Every digitised article has a page reference that tells you the number of the page on which the article was published. Page numbers are displayed in the Trove web interface and included in article metadata. They generally correspond to the numbers printed on the original pages. You can search for articles on a specific page using the `firstpageseq` index.
+In printed newspapers, pages are the main means of navigation. But in Trove, users search for articles, and have to browse up along the breadcrumbs path to find the current page. Every digitised article has a metadata field that records the number of the page on which the article was published. That number is displayed in the web interface and included in article records delivered through the Trove API. The `page` metadata generally corresponds to the numbers printed on the original pages. You can search for articles on a specific page using the `firstpageseq` index.
 
 ```{admonition} Beware these page peculiarities!
 :class: warning
@@ -178,7 +178,7 @@ There are more [examples of this below](page-images-and-pdfs).
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Metadata
+## Page metadata
 
 +++
 
@@ -203,7 +203,7 @@ The newspaper title is set using the `l-title` parameter. For example, the ident
 
 The date is set using the `date` index within the `q` (query) parameter. You use the `date` index by supplying a date range. If you want a single day, the first date in the range should be the day **before** the date you want. The dates need to be in ISO format – `YYYY-MM-DDT00:00:00Z`. For example, if we wanted a page from 2 November 1942, we'd set the `q` parameter to `date:[1942-11-01T00:00:00Z TO 1942-11-02T00:00:00Z]`.
 
-To request a specific page number, you use the `firstpageseq` index in the `q` parameter. To find page 3, you'd add `firstpageseq:3` to the value for `q`.
+To request a specific page number, [you use the `firstpageseq` index](search-indexes-firstpageseq) in the `q` parameter. To find page 3, you'd add `firstpageseq:3` to the value for `q`.
 
 Finally, you need to add `reclevel=full` to the request. This asks for additional metadata about the article, including the page identifier.
 
@@ -329,7 +329,7 @@ The number at the end of the page url uniquely identifies that page. It can be u
 
 +++
 
-To get the full text content of a page, you need to aggregate the content of all the articles published on that page. The method is much the same as that [described above](get-page-identifier-from-search) – you search for articles on a specific page by specifiying the newspaper, date and page. You also need to set `include` to `articleText` to add the full text to the article records. You can then collect the text content of each article. Here's an example that collects the article texts from a page and uses them to create a wordcloud using the [WordCloud package](https://github.com/amueller/word_cloud).
+To get the full text content of a page, you need to aggregate the content of all the articles published on that page. The method is much the same as that [described above](get-page-identifier-from-search) – you search for articles on a specific page by specifying the newspaper, date and page. You also need to set `include` to `articleText` to add the full text to the article records. You can then collect the text content of each article. Here's an example that collects the article texts from a page and uses them to create a wordcloud using the [WordCloud package](https://github.com/amueller/word_cloud).
 
 ```{code-cell} ipython3
 import requests
