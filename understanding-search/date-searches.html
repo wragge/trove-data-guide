@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/date-searches.264276f5-1c01-41e1-bef5-519ce3ff6e1c.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/date-searches.3399bce1-9cc1-48f2-9af3-390a44186b40.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/date-searches';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -447,8 +447,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-and-consistency-of-metadata">Accuracy and consistency of metadata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#works-versions-and-date-ranges">Works versions and date ranges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-facets">Date facets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-date-facets">Using date facets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-date-index">Using the date index</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#works-versions-and-dates">Works, versions, and dates</a></li>
 </ul>
             </nav>
         </div>
@@ -472,26 +475,27 @@ document.write(`
 <p><mark>==I suspect this section might get moved to the contexts section later on. Also need to note that the facets in the book zone don’t display dates past today, even though they are there. I think this is an attempt to clean up the interface, but just hides the problem rather than fixing it.==</mark></p>
 <p>Trove’s aggregated metadata can include errors, either because of data entry problems or formatting inconsistencies. Problems with dates can seem more obvious than other types of metadata because we expect them to fall within a specific range – it’s unlikely Australian libraries will hold books from the year 9000! You can use the <code class="docutils literal notranslate"><span class="pre">decade</span></code> facet to reveal some of these problems.</p>
 <p>Here, for example, is the distribution by decade of works in the ‘Research &amp; reports’ category. Most publications are dated between 1800 and 2100, as you would expect, but there are more than a hundred in the first century, and even an outlier in the 9000s.</p>
+<p><mark>==Explain dates in people category==</mark></p>
 <figure class="align-default" id="research-decades-chart" style="width: 600px">
 <div class="output text_html">
 <style>
-  #altair-viz-b4f13e07471e47f7b07671cb60b8f355.vega-embed {
+  #altair-viz-7f199f10e3f244558a29c2cba143857c.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-b4f13e07471e47f7b07671cb60b8f355.vega-embed details,
-  #altair-viz-b4f13e07471e47f7b07671cb60b8f355.vega-embed details summary {
+  #altair-viz-7f199f10e3f244558a29c2cba143857c.vega-embed details,
+  #altair-viz-7f199f10e3f244558a29c2cba143857c.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-b4f13e07471e47f7b07671cb60b8f355"></div>
+<div id="altair-viz-7f199f10e3f244558a29c2cba143857c"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b4f13e07471e47f7b07671cb60b8f355") {
-      outputDiv = document.getElementById("altair-viz-b4f13e07471e47f7b07671cb60b8f355");
+    if (outputDiv.id !== "altair-viz-7f199f10e3f244558a29c2cba143857c") {
+      outputDiv = document.getElementById("altair-viz-7f199f10e3f244558a29c2cba143857c");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -537,7 +541,7 @@ document.write(`
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-2f75772cd77480377a65cb1bfcd81c35"}, "mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "c"}, "bin": {"step": 100}, "field": "decade", "title": "decade (binned by century)", "type": "quantitative"}, "y": {"field": "total_works", "scale": {"type": "log"}, "title": "number of works (log scale)", "type": "quantitative"}}, "height": 250, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-2f75772cd77480377a65cb1bfcd81c35": [{"decade": 9970, "total_works": 2}, {"decade": 6660, "total_works": 3}, {"decade": 5550, "total_works": 1}, {"decade": 5380, "total_works": 4}, {"decade": 5130, "total_works": 2}, {"decade": 5000, "total_works": 2}, {"decade": 4990, "total_works": 1}, {"decade": 4390, "total_works": 2}, {"decade": 3330, "total_works": 3}, {"decade": 3070, "total_works": 1}, {"decade": 3010, "total_works": 1}, {"decade": 3000, "total_works": 1}, {"decade": 2990, "total_works": 2}, {"decade": 2840, "total_works": 1}, {"decade": 2310, "total_works": 1}, {"decade": 2300, "total_works": 2}, {"decade": 2290, "total_works": 4}, {"decade": 2200, "total_works": 2}, {"decade": 2180, "total_works": 5}, {"decade": 2110, "total_works": 1}, {"decade": 2100, "total_works": 61}, {"decade": 2090, "total_works": 34}, {"decade": 2080, "total_works": 761}, {"decade": 2070, "total_works": 3}, {"decade": 2060, "total_works": 1}, {"decade": 2050, "total_works": 4}, {"decade": 2040, "total_works": 7}, {"decade": 2030, "total_works": 14}, {"decade": 2020, "total_works": 694125}, {"decade": 2010, "total_works": 1785737}, {"decade": 2000, "total_works": 1404138}, {"decade": 1990, "total_works": 770334}, {"decade": 1980, "total_works": 610988}, {"decade": 1970, "total_works": 431450}, {"decade": 1960, "total_works": 258027}, {"decade": 1950, "total_works": 182167}, {"decade": 1940, "total_works": 154351}, {"decade": 1930, "total_works": 115090}, {"decade": 1920, "total_works": 106195}, {"decade": 1910, "total_works": 97057}, {"decade": 1900, "total_works": 110380}, {"decade": 1890, "total_works": 30619}, {"decade": 1880, "total_works": 29340}, {"decade": 1870, "total_works": 23074}, {"decade": 1860, "total_works": 23171}, {"decade": 1850, "total_works": 22286}, {"decade": 1840, "total_works": 15610}, {"decade": 1830, "total_works": 14665}, {"decade": 1820, "total_works": 10496}, {"decade": 1810, "total_works": 14157}, {"decade": 1800, "total_works": 9442}, {"decade": 1790, "total_works": 9129}, {"decade": 1780, "total_works": 3862}, {"decade": 1770, "total_works": 3201}, {"decade": 1760, "total_works": 2224}, {"decade": 1750, "total_works": 2128}, {"decade": 1740, "total_works": 1683}, {"decade": 1730, "total_works": 1415}, {"decade": 1720, "total_works": 1693}, {"decade": 1710, "total_works": 1628}, {"decade": 1700, "total_works": 1788}, {"decade": 1690, "total_works": 1061}, {"decade": 1680, "total_works": 1161}, {"decade": 1670, "total_works": 741}, {"decade": 1660, "total_works": 874}, {"decade": 1650, "total_works": 1052}, {"decade": 1640, "total_works": 2462}, {"decade": 1630, "total_works": 403}, {"decade": 1620, "total_works": 465}, {"decade": 1610, "total_works": 396}, {"decade": 1600, "total_works": 390}, {"decade": 1590, "total_works": 218}, {"decade": 1580, "total_works": 422}, {"decade": 1570, "total_works": 257}, {"decade": 1560, "total_works": 261}, {"decade": 1550, "total_works": 186}, {"decade": 1540, "total_works": 173}, {"decade": 1530, "total_works": 133}, {"decade": 1520, "total_works": 77}, {"decade": 1510, "total_works": 68}, {"decade": 1500, "total_works": 179}, {"decade": 1490, "total_works": 52}, {"decade": 1480, "total_works": 48}, {"decade": 1470, "total_works": 21}, {"decade": 1460, "total_works": 16}, {"decade": 1450, "total_works": 21}, {"decade": 1440, "total_works": 14}, {"decade": 1430, "total_works": 15}, {"decade": 1420, "total_works": 12}, {"decade": 1410, "total_works": 15}, {"decade": 1400, "total_works": 166}, {"decade": 1390, "total_works": 12}, {"decade": 1380, "total_works": 12}, {"decade": 1370, "total_works": 14}, {"decade": 1360, "total_works": 13}, {"decade": 1350, "total_works": 13}, {"decade": 1340, "total_works": 13}, {"decade": 1330, "total_works": 14}, {"decade": 1320, "total_works": 10}, {"decade": 1310, "total_works": 9}, {"decade": 1300, "total_works": 112}, {"decade": 1290, "total_works": 6}, {"decade": 1280, "total_works": 7}, {"decade": 1270, "total_works": 5}, {"decade": 1260, "total_works": 6}, {"decade": 1250, "total_works": 3}, {"decade": 1240, "total_works": 5}, {"decade": 1230, "total_works": 4}, {"decade": 1220, "total_works": 5}, {"decade": 1210, "total_works": 4}, {"decade": 1200, "total_works": 99}, {"decade": 1190, "total_works": 32}, {"decade": 1180, "total_works": 2}, {"decade": 1170, "total_works": 1}, {"decade": 1160, "total_works": 1}, {"decade": 1150, "total_works": 1}, {"decade": 1140, "total_works": 1}, {"decade": 1130, "total_works": 1}, {"decade": 1120, "total_works": 1}, {"decade": 1110, "total_works": 1}, {"decade": 1100, "total_works": 31}, {"decade": 1090, "total_works": 5}, {"decade": 1080, "total_works": 3}, {"decade": 1070, "total_works": 2}, {"decade": 1060, "total_works": 1}, {"decade": 1050, "total_works": 1}, {"decade": 1040, "total_works": 2}, {"decade": 1030, "total_works": 1}, {"decade": 1020, "total_works": 6}, {"decade": 1010, "total_works": 28}, {"decade": 1000, "total_works": 21}, {"decade": 910, "total_works": 2}, {"decade": 690, "total_works": 2}, {"decade": 670, "total_works": 1}, {"decade": 660, "total_works": 1}, {"decade": 650, "total_works": 1}, {"decade": 640, "total_works": 1}, {"decade": 630, "total_works": 1}, {"decade": 620, "total_works": 1}, {"decade": 610, "total_works": 1}, {"decade": 600, "total_works": 1}, {"decade": 590, "total_works": 1}, {"decade": 580, "total_works": 1}, {"decade": 570, "total_works": 1}, {"decade": 560, "total_works": 1}, {"decade": 550, "total_works": 1}, {"decade": 540, "total_works": 1}, {"decade": 530, "total_works": 1}, {"decade": 520, "total_works": 1}, {"decade": 510, "total_works": 1}, {"decade": 500, "total_works": 1}, {"decade": 490, "total_works": 2}, {"decade": 480, "total_works": 1}, {"decade": 470, "total_works": 1}, {"decade": 460, "total_works": 1}, {"decade": 450, "total_works": 1}, {"decade": 440, "total_works": 1}, {"decade": 430, "total_works": 1}, {"decade": 420, "total_works": 1}, {"decade": 410, "total_works": 1}, {"decade": 400, "total_works": 1}, {"decade": 390, "total_works": 1}, {"decade": 380, "total_works": 1}, {"decade": 370, "total_works": 1}, {"decade": 360, "total_works": 1}, {"decade": 350, "total_works": 1}, {"decade": 340, "total_works": 1}, {"decade": 330, "total_works": 1}, {"decade": 320, "total_works": 1}, {"decade": 310, "total_works": 1}, {"decade": 300, "total_works": 1}, {"decade": 290, "total_works": 1}, {"decade": 280, "total_works": 1}, {"decade": 270, "total_works": 1}, {"decade": 260, "total_works": 3}, {"decade": 250, "total_works": 1}, {"decade": 240, "total_works": 1}, {"decade": 230, "total_works": 1}, {"decade": 220, "total_works": 2}, {"decade": 210, "total_works": 2}, {"decade": 200, "total_works": 17}, {"decade": 190, "total_works": 18}, {"decade": 180, "total_works": 2}, {"decade": 170, "total_works": 1}, {"decade": 160, "total_works": 1}, {"decade": 150, "total_works": 1}, {"decade": 140, "total_works": 1}, {"decade": 130, "total_works": 1}, {"decade": 120, "total_works": 1}, {"decade": 110, "total_works": 5}, {"decade": 100, "total_works": 2}, {"decade": 90, "total_works": 2}, {"decade": 70, "total_works": 3}, {"decade": 60, "total_works": 1}, {"decade": 50, "total_works": 1}, {"decade": 40, "total_works": 1}, {"decade": 30, "total_works": 7}, {"decade": 20, "total_works": 31}, {"decade": 10, "total_works": 66}, {"decade": 0, "total_works": 289}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-5f9abbf21efc27440923b064a5f565aa"}, "mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "c"}, "bin": {"step": 100}, "field": "decade", "title": "decade (binned by century)", "type": "quantitative"}, "y": {"field": "total_works", "scale": {"type": "log"}, "title": "number of works (log scale)", "type": "quantitative"}}, "height": 250, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-5f9abbf21efc27440923b064a5f565aa": [{"decade": 9970, "total_works": 2}, {"decade": 6660, "total_works": 3}, {"decade": 5550, "total_works": 1}, {"decade": 5380, "total_works": 4}, {"decade": 5130, "total_works": 2}, {"decade": 5000, "total_works": 2}, {"decade": 4990, "total_works": 1}, {"decade": 4390, "total_works": 2}, {"decade": 3330, "total_works": 3}, {"decade": 3070, "total_works": 1}, {"decade": 3010, "total_works": 1}, {"decade": 3000, "total_works": 1}, {"decade": 2990, "total_works": 2}, {"decade": 2840, "total_works": 1}, {"decade": 2310, "total_works": 1}, {"decade": 2300, "total_works": 2}, {"decade": 2290, "total_works": 4}, {"decade": 2200, "total_works": 2}, {"decade": 2180, "total_works": 5}, {"decade": 2110, "total_works": 1}, {"decade": 2100, "total_works": 61}, {"decade": 2090, "total_works": 34}, {"decade": 2080, "total_works": 761}, {"decade": 2070, "total_works": 3}, {"decade": 2060, "total_works": 1}, {"decade": 2050, "total_works": 4}, {"decade": 2040, "total_works": 7}, {"decade": 2030, "total_works": 14}, {"decade": 2020, "total_works": 696218}, {"decade": 2010, "total_works": 1786746}, {"decade": 2000, "total_works": 1404460}, {"decade": 1990, "total_works": 770510}, {"decade": 1980, "total_works": 611102}, {"decade": 1970, "total_works": 431643}, {"decade": 1960, "total_works": 258135}, {"decade": 1950, "total_works": 182195}, {"decade": 1940, "total_works": 154358}, {"decade": 1930, "total_works": 115090}, {"decade": 1920, "total_works": 106196}, {"decade": 1910, "total_works": 97063}, {"decade": 1900, "total_works": 110391}, {"decade": 1890, "total_works": 30620}, {"decade": 1880, "total_works": 29340}, {"decade": 1870, "total_works": 23074}, {"decade": 1860, "total_works": 23171}, {"decade": 1850, "total_works": 22286}, {"decade": 1840, "total_works": 15610}, {"decade": 1830, "total_works": 14665}, {"decade": 1820, "total_works": 10496}, {"decade": 1810, "total_works": 14157}, {"decade": 1800, "total_works": 9442}, {"decade": 1790, "total_works": 9129}, {"decade": 1780, "total_works": 3862}, {"decade": 1770, "total_works": 3201}, {"decade": 1760, "total_works": 2224}, {"decade": 1750, "total_works": 2128}, {"decade": 1740, "total_works": 1683}, {"decade": 1730, "total_works": 1415}, {"decade": 1720, "total_works": 1693}, {"decade": 1710, "total_works": 1628}, {"decade": 1700, "total_works": 1788}, {"decade": 1690, "total_works": 1061}, {"decade": 1680, "total_works": 1161}, {"decade": 1670, "total_works": 741}, {"decade": 1660, "total_works": 874}, {"decade": 1650, "total_works": 1052}, {"decade": 1640, "total_works": 2462}, {"decade": 1630, "total_works": 403}, {"decade": 1620, "total_works": 465}, {"decade": 1610, "total_works": 396}, {"decade": 1600, "total_works": 390}, {"decade": 1590, "total_works": 218}, {"decade": 1580, "total_works": 422}, {"decade": 1570, "total_works": 257}, {"decade": 1560, "total_works": 261}, {"decade": 1550, "total_works": 186}, {"decade": 1540, "total_works": 173}, {"decade": 1530, "total_works": 133}, {"decade": 1520, "total_works": 77}, {"decade": 1510, "total_works": 68}, {"decade": 1500, "total_works": 179}, {"decade": 1490, "total_works": 52}, {"decade": 1480, "total_works": 48}, {"decade": 1470, "total_works": 21}, {"decade": 1460, "total_works": 16}, {"decade": 1450, "total_works": 21}, {"decade": 1440, "total_works": 14}, {"decade": 1430, "total_works": 15}, {"decade": 1420, "total_works": 12}, {"decade": 1410, "total_works": 15}, {"decade": 1400, "total_works": 166}, {"decade": 1390, "total_works": 12}, {"decade": 1380, "total_works": 12}, {"decade": 1370, "total_works": 14}, {"decade": 1360, "total_works": 13}, {"decade": 1350, "total_works": 13}, {"decade": 1340, "total_works": 13}, {"decade": 1330, "total_works": 14}, {"decade": 1320, "total_works": 10}, {"decade": 1310, "total_works": 9}, {"decade": 1300, "total_works": 112}, {"decade": 1290, "total_works": 6}, {"decade": 1280, "total_works": 7}, {"decade": 1270, "total_works": 5}, {"decade": 1260, "total_works": 6}, {"decade": 1250, "total_works": 3}, {"decade": 1240, "total_works": 5}, {"decade": 1230, "total_works": 4}, {"decade": 1220, "total_works": 5}, {"decade": 1210, "total_works": 4}, {"decade": 1200, "total_works": 99}, {"decade": 1190, "total_works": 32}, {"decade": 1180, "total_works": 2}, {"decade": 1170, "total_works": 1}, {"decade": 1160, "total_works": 1}, {"decade": 1150, "total_works": 1}, {"decade": 1140, "total_works": 1}, {"decade": 1130, "total_works": 1}, {"decade": 1120, "total_works": 1}, {"decade": 1110, "total_works": 1}, {"decade": 1100, "total_works": 31}, {"decade": 1090, "total_works": 5}, {"decade": 1080, "total_works": 3}, {"decade": 1070, "total_works": 2}, {"decade": 1060, "total_works": 1}, {"decade": 1050, "total_works": 1}, {"decade": 1040, "total_works": 2}, {"decade": 1030, "total_works": 1}, {"decade": 1020, "total_works": 6}, {"decade": 1010, "total_works": 28}, {"decade": 1000, "total_works": 21}, {"decade": 910, "total_works": 2}, {"decade": 690, "total_works": 2}, {"decade": 670, "total_works": 1}, {"decade": 660, "total_works": 1}, {"decade": 650, "total_works": 1}, {"decade": 640, "total_works": 1}, {"decade": 630, "total_works": 1}, {"decade": 620, "total_works": 1}, {"decade": 610, "total_works": 1}, {"decade": 600, "total_works": 1}, {"decade": 590, "total_works": 1}, {"decade": 580, "total_works": 1}, {"decade": 570, "total_works": 1}, {"decade": 560, "total_works": 1}, {"decade": 550, "total_works": 1}, {"decade": 540, "total_works": 1}, {"decade": 530, "total_works": 1}, {"decade": 520, "total_works": 1}, {"decade": 510, "total_works": 1}, {"decade": 500, "total_works": 1}, {"decade": 490, "total_works": 2}, {"decade": 480, "total_works": 1}, {"decade": 470, "total_works": 1}, {"decade": 460, "total_works": 1}, {"decade": 450, "total_works": 1}, {"decade": 440, "total_works": 1}, {"decade": 430, "total_works": 1}, {"decade": 420, "total_works": 1}, {"decade": 410, "total_works": 1}, {"decade": 400, "total_works": 1}, {"decade": 390, "total_works": 1}, {"decade": 380, "total_works": 1}, {"decade": 370, "total_works": 1}, {"decade": 360, "total_works": 1}, {"decade": 350, "total_works": 1}, {"decade": 340, "total_works": 1}, {"decade": 330, "total_works": 1}, {"decade": 320, "total_works": 1}, {"decade": 310, "total_works": 1}, {"decade": 300, "total_works": 1}, {"decade": 290, "total_works": 1}, {"decade": 280, "total_works": 1}, {"decade": 270, "total_works": 1}, {"decade": 260, "total_works": 3}, {"decade": 250, "total_works": 1}, {"decade": 240, "total_works": 1}, {"decade": 230, "total_works": 1}, {"decade": 220, "total_works": 2}, {"decade": 210, "total_works": 2}, {"decade": 200, "total_works": 17}, {"decade": 190, "total_works": 18}, {"decade": 180, "total_works": 2}, {"decade": 170, "total_works": 1}, {"decade": 160, "total_works": 1}, {"decade": 150, "total_works": 1}, {"decade": 140, "total_works": 1}, {"decade": 130, "total_works": 1}, {"decade": 120, "total_works": 1}, {"decade": 110, "total_works": 5}, {"decade": 100, "total_works": 2}, {"decade": 90, "total_works": 2}, {"decade": 70, "total_works": 3}, {"decade": 60, "total_works": 1}, {"decade": 50, "total_works": 1}, {"decade": 40, "total_works": 1}, {"decade": 30, "total_works": 7}, {"decade": 20, "total_works": 31}, {"decade": 10, "total_works": 66}, {"decade": 0, "total_works": 289}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
 <p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Distribution of publication dates of works in the ‘Research &amp; reports’ category</span><a class="headerlink" href="#research-decades-chart" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -547,23 +551,23 @@ document.write(`
 <figure class="align-default" id="magazine-decades-chart" style="width: 600px">
 <div class="output text_html">
 <style>
-  #altair-viz-9646e8a3767b461d9ae6bdc713de364f.vega-embed {
+  #altair-viz-f3105bd92dd149078011f265332658ad.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-9646e8a3767b461d9ae6bdc713de364f.vega-embed details,
-  #altair-viz-9646e8a3767b461d9ae6bdc713de364f.vega-embed details summary {
+  #altair-viz-f3105bd92dd149078011f265332658ad.vega-embed details,
+  #altair-viz-f3105bd92dd149078011f265332658ad.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-9646e8a3767b461d9ae6bdc713de364f"></div>
+<div id="altair-viz-f3105bd92dd149078011f265332658ad"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9646e8a3767b461d9ae6bdc713de364f") {
-      outputDiv = document.getElementById("altair-viz-9646e8a3767b461d9ae6bdc713de364f");
+    if (outputDiv.id !== "altair-viz-f3105bd92dd149078011f265332658ad") {
+      outputDiv = document.getElementById("altair-viz-f3105bd92dd149078011f265332658ad");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -609,19 +613,15 @@ document.write(`
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-4354200e9bc3c668e8ee0c5bda26b4c3"}, "mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "c"}, "bin": {"step": 100}, "field": "decade", "title": "decade (binned by century)", "type": "quantitative"}, "y": {"field": "total_works", "scale": {"type": "log"}, "title": "number of works (log scale)", "type": "quantitative"}}, "height": 250, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-4354200e9bc3c668e8ee0c5bda26b4c3": [{"decade": 2030, "total_works": 2}, {"decade": 2020, "total_works": 323}, {"decade": 2010, "total_works": 30087}, {"decade": 2000, "total_works": 71860}, {"decade": 1990, "total_works": 103937}, {"decade": 1980, "total_works": 127063}, {"decade": 1970, "total_works": 131178}, {"decade": 1960, "total_works": 124873}, {"decade": 1950, "total_works": 185746}, {"decade": 1940, "total_works": 219483}, {"decade": 1930, "total_works": 248685}, {"decade": 1920, "total_works": 206612}, {"decade": 1910, "total_works": 132198}, {"decade": 1900, "total_works": 73865}, {"decade": 1890, "total_works": 53211}, {"decade": 1880, "total_works": 48664}, {"decade": 1870, "total_works": 16992}, {"decade": 1860, "total_works": 10343}, {"decade": 1850, "total_works": 5051}, {"decade": 1840, "total_works": 10716}, {"decade": 1830, "total_works": 3483}, {"decade": 1820, "total_works": 2167}, {"decade": 1810, "total_works": 537}, {"decade": 1800, "total_works": 61}, {"decade": 1780, "total_works": 8}, {"decade": 1760, "total_works": 25}, {"decade": 850, "total_works": 68}, {"decade": 200, "total_works": 2}, {"decade": 190, "total_works": 20}, {"decade": 10, "total_works": 7}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-e7ff6bbea3d5e727691d8e20f06303c0"}, "mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "c"}, "bin": {"step": 100}, "field": "decade", "title": "decade (binned by century)", "type": "quantitative"}, "y": {"field": "total_works", "scale": {"type": "log"}, "title": "number of works (log scale)", "type": "quantitative"}}, "height": 250, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-e7ff6bbea3d5e727691d8e20f06303c0": [{"decade": 2030, "total_works": 2}, {"decade": 2020, "total_works": 323}, {"decade": 2010, "total_works": 30087}, {"decade": 2000, "total_works": 71860}, {"decade": 1990, "total_works": 103937}, {"decade": 1980, "total_works": 127063}, {"decade": 1970, "total_works": 131178}, {"decade": 1960, "total_works": 124873}, {"decade": 1950, "total_works": 185746}, {"decade": 1940, "total_works": 219523}, {"decade": 1930, "total_works": 248645}, {"decade": 1920, "total_works": 206612}, {"decade": 1910, "total_works": 132196}, {"decade": 1900, "total_works": 73865}, {"decade": 1890, "total_works": 53209}, {"decade": 1880, "total_works": 48664}, {"decade": 1870, "total_works": 16992}, {"decade": 1860, "total_works": 10343}, {"decade": 1850, "total_works": 5051}, {"decade": 1840, "total_works": 10716}, {"decade": 1830, "total_works": 3483}, {"decade": 1820, "total_works": 2167}, {"decade": 1810, "total_works": 537}, {"decade": 1800, "total_works": 61}, {"decade": 1780, "total_works": 8}, {"decade": 1760, "total_works": 25}, {"decade": 850, "total_works": 68}, {"decade": 200, "total_works": 2}, {"decade": 190, "total_works": 20}, {"decade": 10, "total_works": 7}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
 <p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Distribution of publication dates of works in the ‘Magazines &amp; newsletters’ category</span><a class="headerlink" href="#magazine-decades-chart" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="works-versions-and-date-ranges">
-<h2>Works versions and date ranges<a class="headerlink" href="#works-versions-and-date-ranges" title="Permalink to this heading">#</a></h2>
-<p>Grouping of works/versions – can filter in web interface. In API need to get workVersions and look at separate issued dates.</p>
-</section>
-<section id="date-facets">
-<h2>Date facets<a class="headerlink" href="#date-facets" title="Permalink to this heading">#</a></h2>
-<p>There are three facets you can use to limit search results by date.</p>
+<section id="using-date-facets">
+<h2>Using date facets<a class="headerlink" href="#using-date-facets" title="Permalink to this heading">#</a></h2>
+<p>There are three facets you can use to limit search results by date: <code class="docutils literal notranslate"><span class="pre">decade</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, and <code class="docutils literal notranslate"><span class="pre">month</span></code>. The <code class="docutils literal notranslate"><span class="pre">month</span></code> facet is only available in the <em>Newspapers &amp; Gazettes</em> category.</p>
 <table class="table" id="table-available-search-indexes">
 <caption><span class="caption-number">Table 9.2 </span><span class="caption-text">Date facets</span><a class="headerlink" href="#table-available-search-indexes" title="Permalink to this table">#</a></caption>
 <thead>
@@ -649,10 +649,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<div class="note admonition">
-<p class="admonition-title">Using date facets in newspapers and gazettes</p>
-<p>You can only apply the <code class="docutils literal notranslate"><span class="pre">l-year</span></code> facet in the Newspapers &amp; Gazettes category if you’ve already set <code class="docutils literal notranslate"><span class="pre">l-decade</span></code>. Similarly, you can only apply the <code class="docutils literal notranslate"><span class="pre">l-month</span></code> facet if you’ve already set <code class="docutils literal notranslate"><span class="pre">l-year</span></code> and <code class="docutils literal notranslate"><span class="pre">l-decade</span></code>.</p>
-</div>
+<p>In some cases these facets need to be used in combination. You can only apply the <code class="docutils literal notranslate"><span class="pre">l-year</span></code> facet in the <em>Newspapers &amp; Gazettes</em> category if you’ve already set <code class="docutils literal notranslate"><span class="pre">l-decade</span></code>. Similarly, you can only apply the <code class="docutils literal notranslate"><span class="pre">l-month</span></code> facet if you’ve already set <code class="docutils literal notranslate"><span class="pre">l-year</span></code> and <code class="docutils literal notranslate"><span class="pre">l-decade</span></code>.</p>
 <p>For example, to search for newspaper articles published in 1914 you’d set <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> to <code class="docutils literal notranslate"><span class="pre">191</span></code> and <code class="docutils literal notranslate"><span class="pre">l-year</span></code> to <code class="docutils literal notranslate"><span class="pre">1914</span></code>.</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-decade%3D191%26l-year%3D1914%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>To search for books published in 1914 using the API you can just set <code class="docutils literal notranslate"><span class="pre">l-year</span></code> to <code class="docutils literal notranslate"><span class="pre">1914</span></code>.</p>
@@ -662,6 +659,130 @@ document.write(`
 <p>Keep in mind that the web interface works a bit differently than the API. It seems you need to use <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> and <code class="docutils literal notranslate"><span class="pre">l-year</span></code> together in <em>all categories</em> when using the web interface, not just the newspapers. This is only really an issue if you’re manually constructing search urls.</p>
 <p>Also, in those cases where you do need <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> and <code class="docutils literal notranslate"><span class="pre">l-year</span></code> together, leaving out <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> returns results without any date limits, rather than no results at all. This means it can look like the facet is working when it’s actually not.</p>
 </div>
+<section id="using-the-date-index">
+<span id="id1"></span><h3>Using the date index<a class="headerlink" href="#using-the-date-index" title="Permalink to this heading">#</a></h3>
+<p>If you want to search for a range of dates you can use the <code class="docutils literal notranslate"><span class="pre">date</span></code> index. Queries using the <code class="docutils literal notranslate"><span class="pre">date</span></code> index look something like this: <code class="docutils literal notranslate"><span class="pre">date:[STARTDATE</span> <span class="pre">TO</span> <span class="pre">ENDDATE]</span></code>. For example, to include records from 1914 to 1918 (inclusive) in your search, you’d use <code class="docutils literal notranslate"><span class="pre">date:[1914</span> <span class="pre">TO</span> <span class="pre">1918]</span></code>. You can add date index queries to the search box in the web interface, or include them in the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter of an API request.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1914+TO+1918%5D%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>To set <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> or <code class="docutils literal notranslate"><span class="pre">ENDDATE</span></code> to the limit of the available date range, use a value of <code class="docutils literal notranslate"><span class="pre">*</span></code> (an asterisk). For example, to search for records published in 1900 or earlier, you’d use <code class="docutils literal notranslate"><span class="pre">date:[*</span> <span class="pre">TO</span> <span class="pre">1900]</span></code>.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B*+TO+1900%5D%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>To search for results from a single year, you can set <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> and <code class="docutils literal notranslate"><span class="pre">ENDDATE</span></code> to the same value, for example, <code class="docutils literal notranslate"><span class="pre">date:[1914</span> <span class="pre">TO</span> <span class="pre">1914]</span></code>. This is the same as setting the <code class="docutils literal notranslate"><span class="pre">l-year</span></code> facet to <code class="docutils literal notranslate"><span class="pre">1914</span></code>.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1914+TO+1914%5D%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>In the <em>Newspapers &amp; Gazettes</em> category, the values of <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> and <code class="docutils literal notranslate"><span class="pre">ENDDATE</span></code> can be days, rather than years. But there are a few tricks. To specify a day, you need to provide a full ISO-formatted date, complete with time and timezone, even though the time component is ignored. For example: <code class="docutils literal notranslate"><span class="pre">1901-01-01T00:00:00Z</span></code>.</p>
+<p>Also, when you use days rather than years, the date range is <strong>not</strong> inclusive. <strong>You have to set <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> to the day before the one you you want.</strong> For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date[1914</span> <span class="pre">TO</span> <span class="pre">1914]</span></code> – returns results from 1914 (range is inclusive)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date[1914-01-01T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1914-01-01T00:00:00Z]</span></code> – returns zero results (range is not inclusive)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date[1913-12-31T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1914-01-01T00:00:00Z]</span></code> – returns results from 1 January 1914</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date[1913-12-30T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1914-01-01T00:00:00Z]</span></code> – returns results from 31 December 1913 to 1 January 1914</p></li>
+</ul>
+<p>This means that if you want to search for newspaper or gazette articles from a <em>specific day</em>, you need to set the the <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> value to the day before the one you want. For example, to find articles published on 2 November 1944, the <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> would be <code class="docutils literal notranslate"><span class="pre">1944-11-01T00:00:00Z</span></code> and the full query would be <code class="docutils literal notranslate"><span class="pre">date:[1944-11-01T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1944-11-02T00:00:00Z]</span></code>.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1944-11-01T00%3A00%3A00Z+TO+1944-11-02T00%3A00%3A00Z%5D%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>We can do a little test of this behaviour by trying different <code class="docutils literal notranslate"><span class="pre">date</span></code> queries and using the <code class="docutils literal notranslate"><span class="pre">year</span></code> facet to check the range of our results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">get_year_facets</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;date:[</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2"> TO </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;facet&quot;</span><span class="p">:</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Supply API key using headers</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+    
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+    <span class="p">)</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">facets</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;facets&quot;</span><span class="p">][</span><span class="s2">&quot;facet&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;term&quot;</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="n">facets</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">[</span><span class="s2">&quot;search&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">facets</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">years</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the start and end dates are the same there are no results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_year_facets</span><span class="p">(</span><span class="s2">&quot;1914-01-01T00:00:00Z&quot;</span><span class="p">,</span> <span class="s2">&quot;1914-01-01T00:00:00Z&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get results from 1 January 1914 we set the start date to the 31 December 1913. Note that despite the start date being in 1913, there are only results from 1914.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_year_facets</span><span class="p">(</span><span class="s2">&quot;1913-12-31T00:00:00Z&quot;</span><span class="p">,</span> <span class="s2">&quot;1914-01-01T00:00:00Z&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1914&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setting the start date back another day means we get results from both 1913 and 1914.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_year_facets</span><span class="p">(</span><span class="s2">&quot;1913-12-30T00:00:00Z&quot;</span><span class="p">,</span> <span class="s2">&quot;1914-01-01T00:00:00Z&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1914&#39;, &#39;1913&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you’re developing an automated process that searches for newspaper articles from a list of dates, you’ll need to find some way of reliably subtracting a day from the date you want (dates are always more complicated than you expect). Here’s one approach:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="n">desired_date</span> <span class="o">=</span> <span class="s2">&quot;1944-12-01&quot;</span>
+
+<span class="c1"># Convert the date string to a datetime object</span>
+<span class="n">desired_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">desired_date</span><span class="p">)</span>
+
+<span class="c1"># Subtract a day from the datetime</span>
+<span class="n">start_datetime</span> <span class="o">=</span> <span class="n">desired_datetime</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Format the start date</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">start_datetime</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="si">}</span><span class="s2">Z&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1944-11-30T00:00:00Z
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="works-versions-and-dates">
+<h2>Works, versions, and dates<a class="headerlink" href="#works-versions-and-dates" title="Permalink to this heading">#</a></h2>
+<p>Date searches can produce odd results when you’re working with aggregated content (as in the <em>Books &amp; Libraries</em> category). What do you think happens if you set the <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> facet to <code class="docutils literal notranslate"><span class="pre">200</span></code> (ie 2000 to 2009) and the <code class="docutils literal notranslate"><span class="pre">l-year</span></code> facet to <code class="docutils literal notranslate"><span class="pre">1900</span></code>? In the <em>Newspapers &amp; Gazettes</em> category you get no results, as you would expect. But in <em>Books &amp; Libraries</em> you get more than a million results!</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dbook%26l-decade%3D200%26l-year%3D1900%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>How is this possible? How can both facet values be true? The answer lies in the way <span class="xref myst">versions of publications are grouped together as works</span>. If there are multiple versions of a work with different publication dates, the date of the work in Trove will be a range encompassing all the version dates. For example, a work that has versions published in <code class="docutils literal notranslate"><span class="pre">1900</span></code> and <code class="docutils literal notranslate"><span class="pre">2022</span></code> will have an <code class="docutils literal notranslate"><span class="pre">issued</span></code> value of <code class="docutils literal notranslate"><span class="pre">1900-2022</span></code>. Because Trove searches for works rather than versions, a search for any date within the <code class="docutils literal notranslate"><span class="pre">issued</span></code> date range will return the work. So the same work can be published between 2000 and 2009, and also in 1900.</p>
+<p>But what if you want to find a version published on a specific date? The Trove web interface has an option to filter a work’s ‘editions’ (aka versions) by date. If you’re using the API, you’ll first have to requests details of all versions by setting the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">workversions</span></code>. Then you’ll need to loop through all the versions, checking their individual <code class="docutils literal notranslate"><span class="pre">issued</span></code> dates.</p>
+<p><mark>==Include some example code?==</mark></p>
 </section>
 </section>
 
@@ -733,8 +854,11 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-and-consistency-of-metadata">Accuracy and consistency of metadata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#works-versions-and-date-ranges">Works versions and date ranges</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-facets">Date facets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-date-facets">Using date facets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-date-index">Using the date index</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#works-versions-and-dates">Works, versions, and dates</a></li>
 </ul>
   </nav></div>
 

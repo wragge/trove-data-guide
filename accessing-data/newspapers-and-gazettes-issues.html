@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-issues.066ba940-2a78-4c49-ab1b-d80876825e87.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-issues.529cad8f-d822-4cee-b49e-1a025e4f5321.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes-issues';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -446,14 +446,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-issues">What are issues?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-links-and-identifiers">Issue links and identifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-metadata">Issue metadata</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-number-of-issues-per-year-for-a-title">Get the number of issues per year for a title</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-of-issues-within-a-date-range">Details of issues within a date range</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-in-an-issue">Articles in an issue</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">Images and PDFs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-an-issue-as-a-pdf">Get an issue as a PDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-text">Issue text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdfs-of-issues">PDFs of issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-an-issue-as-a-pdf">Download an issue as a PDF</a></li>
 </ul>
 </li>
 </ul>
@@ -475,24 +478,46 @@ document.write(`
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#metadata" id="id1">Metadata</a></p>
+<li><p><a class="reference internal" href="#what-are-issues" id="id3">What are issues?</a></p></li>
+<li><p><a class="reference internal" href="#issue-links-and-identifiers" id="id4">Issue links and identifiers</a></p></li>
+<li><p><a class="reference internal" href="#issue-metadata" id="id5">Issue metadata</a></p>
 <ul>
-<li><p><a class="reference internal" href="#get-the-number-of-issues-per-year-for-a-title" id="id2">Get the number of issues per year for a title</a></p></li>
-<li><p><a class="reference internal" href="#details-of-issues-within-a-date-range" id="id3">Details of issues within a date range</a></p></li>
+<li><p><a class="reference internal" href="#get-the-number-of-issues-per-year-for-a-title" id="id6">Get the number of issues per year for a title</a></p></li>
+<li><p><a class="reference internal" href="#details-of-issues-within-a-date-range" id="id7">Details of issues within a date range</a></p></li>
+<li><p><a class="reference internal" href="#articles-in-an-issue" id="id8">Articles in an issue</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#text" id="id4">Text</a></p></li>
-<li><p><a class="reference internal" href="#images-and-pdfs" id="id5">Images and PDFs</a></p>
+<li><p><a class="reference internal" href="#issue-text" id="id9">Issue text</a></p></li>
+<li><p><a class="reference internal" href="#pdfs-of-issues" id="id10">PDFs of issues</a></p>
 <ul>
-<li><p><a class="reference internal" href="#get-an-issue-as-a-pdf" id="id6">Get an issue as a PDF</a></p></li>
+<li><p><a class="reference internal" href="#download-an-issue-as-a-pdf" id="id11">Download an issue as a PDF</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
-<section id="metadata">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h2>
+<section id="what-are-issues">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">What are issues?</a><a class="headerlink" href="#what-are-issues" title="Permalink to this heading">#</a></h2>
+<p>An issue is a single edition of a newspaper published on a particular date. Some newspapers published multiple editions each day, however, Trove holds only one edition per day for each newspaper. This means that issues in Trove can be identified and analysed by date.</p>
+</section>
+<section id="issue-links-and-identifiers">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Issue links and identifiers</a><a class="headerlink" href="#issue-links-and-identifiers" title="Permalink to this heading">#</a></h2>
+<p>Issues also have their own unique identifiers assigned by Trove. These identifiers don’t appear anywhere within the Trove web interface, but you can <a class="reference internal" href="#issues-within-a-date-range"><span class="std std-ref">find them using the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints</span></a> as described below. Issue identifiers look like this: <code class="docutils literal notranslate"><span class="pre">https://nla.gov.au/nla.news-issue55379</span></code>.</p>
+<p>Issues don’t have their own landing pages, or API endpoints. If you plug an issue identifier into your web browser you’ll be redirected to the first page of that issue. This provides a useful mechanism for finding the front pages of issues.</p>
+<p>The only instance where an issue exists as a separate entity is if you <a class="reference internal" href="#download-issue-as-pdf"><span class="std std-ref">download an issue as a PDF</span></a>. This can be automated by using the issue’s numeric identifier.</p>
+<p>Article records don’t include issue identifiers, but articles can be linked to issues through their date.</p>
+</section>
+<section id="issue-metadata">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Issue metadata</a><a class="headerlink" href="#issue-metadata" title="Permalink to this heading">#</a></h2>
+<p>Some issue metadata is available via the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints. You can also find details of articles published within an issue by searching for a specific day and newspaper using the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint.</p>
 <section id="get-the-number-of-issues-per-year-for-a-title">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">Get the number of issues per year for a title</a><a class="headerlink" href="#get-the-number-of-issues-per-year-for-a-title" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Get the number of issues per year for a title</a><a class="headerlink" href="#get-the-number-of-issues-per-year-for-a-title" title="Permalink to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/harvest_newspaper_issues/">Harvest information about newspaper issues</a> includes more information about harvesting issue details from the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints.</p>
+</div>
+</aside>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints to get the total number of digitised issues per year for a newspaper or gazette title. You just add the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter and set its value to <code class="docutils literal notranslate"><span class="pre">years</span></code>.</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitle%2F11%3Fencoding%3Djson%26include%3Dyears"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
 <p>Here’s an example getting the number of issues per year from the <em>Canberra Times</em> (whose title identifier is <code class="docutils literal notranslate"><span class="pre">11</span></code>).</p>
@@ -500,6 +525,9 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title_id</span> <span class="o">=</span> <span class="s2">&quot;11&quot;</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;include&quot;</span><span class="p">:</span> <span class="s2">&quot;years&quot;</span><span class="p">}</span>
+
+<span class="c1"># Supply API key using headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/newspaper/title/</span><span class="si">{</span><span class="n">title_id</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -512,16 +540,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;include&quot;</span><span class="p">:</span> <span class="s2">&quot;years&quot;</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/newspaper/title/</span><span class="si">{</span><span class="n">title_id</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">year_totals</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;headers&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;date&#39;: &#39;1926&#39;, &#39;issuecount&#39;: 18},
+ {&#39;date&#39;: &#39;1927&#39;, &#39;issuecount&#39;: 86},
+ {&#39;date&#39;: &#39;1928&#39;, &#39;issuecount&#39;: 285},
+ {&#39;date&#39;: &#39;1929&#39;, &#39;issuecount&#39;: 312},
+ {&#39;date&#39;: &#39;1930&#39;, &#39;issuecount&#39;: 311}]
 </pre></div>
 </div>
 </div>
@@ -537,10 +560,91 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22148
+</pre></div>
 </div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench includes a <a class="reference external" href="https://glam-workbench.net/examples/trove_newspaper_issues_per_day.html">visualisation of the number of issues per day</a> across all of Trove’s newspapers.</p>
+<a class="reference internal image-reference" href="../_images/issues-per-day.png"><img alt="Screencapture of calendar-style visualisation showing the number of issues per day." class="align-center" src="../_images/issues-per-day.png" style="width: 80%;" /></a>
+</div>
+</aside>
+<p>You can use the issue counts to explore changes in the publication frequency of a newspaper. This chart shows the number of issues of the <em>Canberra Times</em> published each year. Can you work out when the <em>Canberra Times</em> started publishing seven days a week?</p>
+<figure class="align-default">
+<div class="output text_html">
+<style>
+  #altair-viz-9948106e8ffc442cb70f3a8b4f015264.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-9948106e8ffc442cb70f3a8b4f015264.vega-embed details,
+  #altair-viz-9948106e8ffc442cb70f3a8b4f015264.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-9948106e8ffc442cb70f3a8b4f015264"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-9948106e8ffc442cb70f3a8b4f015264") {
+      outputDiv = document.getElementById("altair-viz-9948106e8ffc442cb70f3a8b4f015264");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-a3eb0f21e56b85303bfda2cddd61ac45"}, "mark": {"type": "bar", "size": 7}, "encoding": {"tooltip": [{"field": "date", "type": "temporal"}, {"field": "issuecount", "type": "quantitative"}], "x": {"field": "date", "type": "temporal"}, "y": {"field": "issuecount", "title": "number of issues", "type": "quantitative"}}, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-a3eb0f21e56b85303bfda2cddd61ac45": [{"date": "1926", "issuecount": 18}, {"date": "1927", "issuecount": 86}, {"date": "1928", "issuecount": 285}, {"date": "1929", "issuecount": 312}, {"date": "1930", "issuecount": 311}, {"date": "1931", "issuecount": 311}, {"date": "1932", "issuecount": 312}, {"date": "1933", "issuecount": 310}, {"date": "1934", "issuecount": 311}, {"date": "1935", "issuecount": 311}, {"date": "1936", "issuecount": 312}, {"date": "1937", "issuecount": 311}, {"date": "1938", "issuecount": 311}, {"date": "1939", "issuecount": 310}, {"date": "1940", "issuecount": 312}, {"date": "1941", "issuecount": 311}, {"date": "1942", "issuecount": 311}, {"date": "1943", "issuecount": 311}, {"date": "1944", "issuecount": 311}, {"date": "1945", "issuecount": 311}, {"date": "1946", "issuecount": 311}, {"date": "1947", "issuecount": 311}, {"date": "1948", "issuecount": 312}, {"date": "1949", "issuecount": 311}, {"date": "1950", "issuecount": 310}, {"date": "1951", "issuecount": 311}, {"date": "1952", "issuecount": 312}, {"date": "1953", "issuecount": 311}, {"date": "1954", "issuecount": 311}, {"date": "1955", "issuecount": 311}, {"date": "1956", "issuecount": 309}, {"date": "1957", "issuecount": 311}, {"date": "1958", "issuecount": 310}, {"date": "1959", "issuecount": 310}, {"date": "1960", "issuecount": 312}, {"date": "1961", "issuecount": 310}, {"date": "1962", "issuecount": 311}, {"date": "1963", "issuecount": 311}, {"date": "1964", "issuecount": 309}, {"date": "1965", "issuecount": 310}, {"date": "1966", "issuecount": 311}, {"date": "1967", "issuecount": 311}, {"date": "1968", "issuecount": 312}, {"date": "1969", "issuecount": 311}, {"date": "1970", "issuecount": 312}, {"date": "1971", "issuecount": 312}, {"date": "1972", "issuecount": 312}, {"date": "1973", "issuecount": 310}, {"date": "1974", "issuecount": 311}, {"date": "1975", "issuecount": 311}, {"date": "1976", "issuecount": 311}, {"date": "1977", "issuecount": 311}, {"date": "1978", "issuecount": 333}, {"date": "1979", "issuecount": 363}, {"date": "1980", "issuecount": 365}, {"date": "1981", "issuecount": 364}, {"date": "1982", "issuecount": 364}, {"date": "1983", "issuecount": 364}, {"date": "1984", "issuecount": 364}, {"date": "1985", "issuecount": 362}, {"date": "1986", "issuecount": 363}, {"date": "1987", "issuecount": 363}, {"date": "1988", "issuecount": 365}, {"date": "1989", "issuecount": 364}, {"date": "1990", "issuecount": 364}, {"date": "1991", "issuecount": 364}, {"date": "1992", "issuecount": 365}, {"date": "1993", "issuecount": 364}, {"date": "1994", "issuecount": 365}, {"date": "1995", "issuecount": 365}]}}, {"mode": "vega-lite"});
+</script></div></figure>
 </section>
 <section id="details-of-issues-within-a-date-range">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Details of issues within a date range</a><a class="headerlink" href="#details-of-issues-within-a-date-range" title="Permalink to this heading">#</a></h3>
+<span id="issues-within-a-date-range"></span><h3><a class="toc-backref" href="#id7" role="doc-backlink">Details of issues within a date range</a><a class="headerlink" href="#details-of-issues-within-a-date-range" title="Permalink to this heading">#</a></h3>
 <p>You can also use the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints to get some details about individual issues, including their date and identifier. To do this you add the <code class="docutils literal notranslate"><span class="pre">range</span></code> parameter to your request, and set its value to a date range using the format <code class="docutils literal notranslate"><span class="pre">YYYYMMDD-YYYYMMDD</span></code>. For example to find issues published between 1930 and 1935, you’d set the <code class="docutils literal notranslate"><span class="pre">range</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">19300101-19351231</span></code>.</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitle%2F11%3Fencoding%3Djson%26include%3Dyears%26range%3D19300101-19351231"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
 <p>You could use the title’s <code class="docutils literal notranslate"><span class="pre">startDate</span></code> and <code class="docutils literal notranslate"><span class="pre">endDate</span></code> values to construct the range. However, keep in mind that if a newspaper was published daily over a long period you might be asking for a lot of data in one hit. It might be better to request the data in chunks, such as a year at a time. The GLAM Workbench provides an example of this in the <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#harvest-information-about-newspaper-issues">Harvest information about newspaper issues</a> notebook.</p>
@@ -568,20 +672,104 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;id&#39;: &#39;55379&#39;,
+  &#39;date&#39;: &#39;1930-01-01&#39;,
+  &#39;url&#39;: &#39;https://nla.gov.au/nla.news-issue55379&#39;},
+ {&#39;id&#39;: &#39;55380&#39;,
+  &#39;date&#39;: &#39;1930-01-02&#39;,
+  &#39;url&#39;: &#39;https://nla.gov.au/nla.news-issue55380&#39;},
+ {&#39;id&#39;: &#39;55381&#39;,
+  &#39;date&#39;: &#39;1930-01-03&#39;,
+  &#39;url&#39;: &#39;https://nla.gov.au/nla.news-issue55381&#39;},
+ {&#39;id&#39;: &#39;55382&#39;,
+  &#39;date&#39;: &#39;1930-01-04&#39;,
+  &#39;url&#39;: &#39;https://nla.gov.au/nla.news-issue55382&#39;},
+ {&#39;id&#39;: &#39;55383&#39;,
+  &#39;date&#39;: &#39;1930-01-06&#39;,
+  &#39;url&#39;: &#39;https://nla.gov.au/nla.news-issue55383&#39;}]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You might be wondering where an issue’s <code class="docutils literal notranslate"><span class="pre">url</span></code> actually goes to, as there’s no issue landing page in Trove. If you try clicking on one of the links, you’ll notice that you’re redirected from the issue url to a url that points to the first page of that issue. This provides a useful shortcut if you want to assemble a collection of front pages (<a class="reference internal" href="newspapers-and-gazettes-pages.html#get-a-list-of-front-page-urls"><span class="std std-ref">see below for details</span></a>).</p>
 </div>
 </section>
+<section id="articles-in-an-issue">
+<span id="id1"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Articles in an issue</a><a class="headerlink" href="#articles-in-an-issue" title="Permalink to this heading">#</a></h3>
+<p>To get details of all the articles within an issue, you need to construct a search for articles using the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint that specifies the title (the newspaper name) and the publication date.</p>
+<p>The newspaper title is set using the <code class="docutils literal notranslate"><span class="pre">l-title</span></code> parameter. For example, the identifier for the <em>Canberra Times</em> is <code class="docutils literal notranslate"><span class="pre">11</span></code>, so to limit your search to the <em>Canberra Times</em> you’d set <code class="docutils literal notranslate"><span class="pre">l-title</span></code> to <code class="docutils literal notranslate"><span class="pre">11</span></code>.</p>
+<p>The date is set <a class="reference internal" href="../understanding-search/date-searches.html#using-the-date-index"><span class="std std-ref">using the <code class="docutils literal notranslate"><span class="pre">date</span></code> index</span></a> within the <code class="docutils literal notranslate"><span class="pre">q</span></code> (query) parameter. You use the <code class="docutils literal notranslate"><span class="pre">date</span></code> index by supplying a date range. To limit results to a single day you need to set the first date in the range to the day <strong>before</strong> the date you want. The dates need to be in ISO format – <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDT00:00:00Z</span></code>. For example, if we wanted an articles from 2 November 1942, we’d set the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">date:[1942-11-01T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1942-11-02T00:00:00Z]</span></code>.</p>
+<p>So to find all articles from the 2 November 1942 issue of the <em>Canberra Times</em>, you’d set the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">category=newspaper</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l-title=11</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">q=date:[1942-11-01T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1942-11-02T00:00:00Z]</span></code></p></li>
+</ul>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1942-11-01T00%3A00%3A00Z+TO+1942-11-02T00%3A00%3A00Z%5D%26category%3Dnewspaper%26l-title%3D11%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>This search returns 71 results, fewer than the maximum number of results per request which you can set to <code class="docutils literal notranslate"><span class="pre">100</span></code> using the <code class="docutils literal notranslate"><span class="pre">n</span></code> parameter. This means you can get all the results with one API request. However, many issues will have more than 100 results, in which case you’ll need to make multiple API requests. See <a class="reference internal" href="../how-to/harvest-complete-results.html"><span class="doc std std-doc">HOW TO: Harvest a complete set of search results using the Trove API</span></a> for more information.</p>
+<p>An alternative approach would be to harvest results from a particular newspaper across a larger date range (months or years) and then aggregate the results by date. <mark>==Create an example of this using the Newspaper Harvester?==</mark></p>
 </section>
-<section id="text">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Text</a><a class="headerlink" href="#text" title="Permalink to this heading">#</a></h2>
 </section>
-<section id="images-and-pdfs">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Images and PDFs</a><a class="headerlink" href="#images-and-pdfs" title="Permalink to this heading">#</a></h2>
-<section id="get-an-issue-as-a-pdf">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Get an issue as a PDF</a><a class="headerlink" href="#get-an-issue-as-a-pdf" title="Permalink to this heading">#</a></h3>
+<section id="issue-text">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Issue text</a><a class="headerlink" href="#issue-text" title="Permalink to this heading">#</a></h2>
+<p>To get the full text of an issue you can <a class="reference internal" href="#articles-in-an-issue"><span class="std std-ref">search for articles</span></a> within that issue and aggregate the text of all the individual articles. You’ll need to set the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">articleText</span></code> to add the OCRd text to the results. Here’s an example that collects the article texts from an issue and uses them to create a wordcloud using the <a class="reference external" href="https://github.com/amueller/word_cloud">WordCloud package</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">html2text</span> <span class="kn">import</span> <span class="n">html2text</span>
+<span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+
+<span class="c1"># Search parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;date:[1942-11-01T00:00:00Z TO 1942-11-02T00:00:00Z]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;l-title&quot;</span><span class="p">:</span> <span class="s2">&quot;11&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;include&quot;</span><span class="p">:</span> <span class="s2">&quot;articleText&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Supply API key using headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="c1"># Make the request</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+
+<span class="c1"># Get the results as JSON</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">page_text</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># As noted, this can return pages in supplements, so we&#39;ll try to exclude them</span>
+<span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;article&quot;</span><span class="p">]:</span>
+    <span class="c1"># Make sure there&#39;s not an &quot;S&quot; in the pageSequence field by checking if the value is a number</span>
+    <span class="k">if</span> <span class="n">article</span><span class="p">[</span><span class="s2">&quot;pageSequence&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">():</span>
+        <span class="c1"># It&#39;s not in a supplement, so let&#39;s add the text</span>
+        <span class="c1"># The full text include HTML tags so we&#39;ll strip them out with html2text</span>
+        <span class="n">page_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">html2text</span><span class="p">(</span><span class="n">article</span><span class="p">[</span><span class="s2">&quot;articleText&quot;</span><span class="p">]))</span>
+
+<span class="c1"># Generate a word cloud</span>
+<span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">page_text</span><span class="p">))</span><span class="o">.</span><span class="n">to_image</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="id2">
+<img alt="../_images/36194360cfc6ac345095661d3667e7bb21cf8fafe854a42ebc382aef22680207.png" src="../_images/36194360cfc6ac345095661d3667e7bb21cf8fafe854a42ebc382aef22680207.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.8 </span><span class="caption-text">Word cloud from the text content of the <em>Canberra Times</em>, 2 November 1942.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="pdfs-of-issues">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">PDFs of issues</a><a class="headerlink" href="#pdfs-of-issues" title="Permalink to this heading">#</a></h2>
+<section id="download-an-issue-as-a-pdf">
+<span id="download-issue-as-pdf"></span><h3><a class="toc-backref" href="#id11" role="doc-backlink">Download an issue as a PDF</a><a class="headerlink" href="#download-an-issue-as-a-pdf" title="Permalink to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -589,19 +777,8 @@ document.write(`
 <p>To download all the issues of a newspaper within a specified date range as PDFs see the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#harvest-the-issues-of-a-newspaper-as-pdfs">Harvest the issues of a newspaper as PDFs</a>.</p>
 </div>
 </aside>
-<p>You can download a newspaper or gazette issue as a PDF from the web interface.</p>
-<ul class="simple">
-<li><p>click on the <strong>Download</strong> tab</p></li>
-<li><p>select ‘Issue’ from the dropdown list</p></li>
-<li><p>when PDF generation is complete, click on the <strong>View PDF</strong> button</p></li>
-</ul>
-<p>Downloading issue PDFs automatically using code is a bit more complicated. There are three steps:</p>
-<ul class="simple">
-<li><p>ask for a PDF to be generated for a particular issue ID</p></li>
-<li><p>ping Trove at regular intervals to check whether the PDF is ready</p></li>
-<li><p>once the PDF is ready, download it</p></li>
-</ul>
-<p>See <span class="xref myst">How to get a newspaper issue or article as a PDF</span> for a full example.</p>
+<p>You can download PDFs of newspaper issues from the Trove web interface. However, automating this process is difficult. If you peek behind the web interface to see what happens when you click the download button, you’ll see that it’s a multi-step process. First the interface sends off a request to generate the issue PDF and gets back a token. It then uses that token to check with the Trove backend to see when the PDF generation is finished. When the backend signals the PDF is ready, the interface uses the token to download it. Complicated huh?</p>
+<p>If you want to automate the download of article PDFs, you’ll need to reproduce these steps. There’s an example of how to do this with Python in <a class="reference internal" href="../how-to/newspapers/get-newspaper-issue-article-pdfs.html"><span class="doc std std-doc">HOW TO: Get a newspaper issue or article as a PDF</span></a>.</p>
 </section>
 </section>
 </section>
@@ -673,14 +850,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-issues">What are issues?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-links-and-identifiers">Issue links and identifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-metadata">Issue metadata</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-number-of-issues-per-year-for-a-title">Get the number of issues per year for a title</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-of-issues-within-a-date-range">Details of issues within a date range</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#articles-in-an-issue">Articles in an issue</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">Images and PDFs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-an-issue-as-a-pdf">Get an issue as a PDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-text">Issue text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdfs-of-issues">PDFs of issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-an-issue-as-a-pdf">Download an issue as a PDF</a></li>
 </ul>
 </li>
 </ul>

@@ -65,7 +65,7 @@ Printed newspaper pages are easy to understand. You can read them, you can turn 
 
 ### Pages are metadata
 
-In printed newspapers, pages are the main means of navigation. But in Trove, users search for articles, and have to browse up along the breadcrumbs path to find the current page. Every digitised article has a metadata field that records the number of the page on which the article was published. That number is displayed in the web interface and included in article records delivered through the Trove API. The `page` metadata generally corresponds to the numbers printed on the original pages. You can search for articles on a specific page using the `firstpageseq` index.
+In printed newspapers, pages are the main means of navigation. But in Trove, users search for articles, and have to browse up along the breadcrumbs trail to find the current page. Every digitised article has a metadata field that records the number of the page on which the article was published. That number is displayed in the web interface and included in article records delivered through the Trove API. The `page` metadata generally corresponds to the numbers printed on the original pages. You can search for articles on a specific page using the `firstpageseq` index.
 
 ```{admonition} Beware these page peculiarities!
 :class: warning
@@ -184,7 +184,7 @@ There are more [examples of this below](page-images-and-pdfs).
 
 Unlike titles and articles, there's no direct method for requesting metadata about a newspaper page from the Trove API. You can't, for example, submit a page identifier to the API and get back its publication date, the newspaper it came from, or a list of articles published on it. Pages are linked to articles and issues, but you can only access those links from the other end – from article and issue records.
 
-As described above, you can get page identifiers from an article record simply by setting the `reclevel` parameter to `full`. But how can you go in the other direction, and get the identifier for a specific page?
+As [described above](newspaper-page-links), you can get page identifiers from an article record simply by setting the `reclevel` parameter to `full`. But how can you go in the other direction, and get the identifier for a specific page?
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -201,7 +201,7 @@ To get the identifier of a specific page, you need to construct a very precise s
 
 The newspaper title is set using the `l-title` parameter. For example, the identifier for the *Canberra Times* is `11`, so to limit your search to the *Canberra Times* you'd set `l-title` to `11`.
 
-The date is set using the `date` index within the `q` (query) parameter. You use the `date` index by supplying a date range. If you want a single day, the first date in the range should be the day **before** the date you want. The dates need to be in ISO format – `YYYY-MM-DDT00:00:00Z`. For example, if we wanted a page from 2 November 1942, we'd set the `q` parameter to `date:[1942-11-01T00:00:00Z TO 1942-11-02T00:00:00Z]`.
+The date is set [using the `date` index](using-the-date-index) within the `q` (query) parameter. You use the `date` index by supplying a date range. If you want a single day, the first date in the range should be the day **before** the date you want. The dates need to be in ISO format – `YYYY-MM-DDT00:00:00Z`. For example, if we wanted a page from 2 November 1942, we'd set the `q` parameter to `date:[1942-11-01T00:00:00Z TO 1942-11-02T00:00:00Z]`.
 
 To request a specific page number, [you use the `firstpageseq` index](search-indexes-firstpageseq) in the `q` parameter. To find page 3, you'd add `firstpageseq:3` to the value for `q`.
 
@@ -322,6 +322,14 @@ for issue in issues[:5]:
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 The number at the end of the page url uniquely identifies that page. It can be used to [download an image of the page](download-a-page-image). While this method is a bit inefficient, forcing us to fire off a request for every issue, it does enable us to link three important pieces of page metadata – the *date*, the *page number*, and the *page identifier*.
+
++++
+
+### Scraping article metadata from a page
+
+While there's no direct method for requesting information about a page from the API, there is some useful metadata embedded in the HTML of the Trove web site. If you have a page identifier, you can load the web page and extract a list of articles, including their identifiers, categories, titles, and word count. You can even find the positional coordinates of each article on the page. 
+
+<mark>==Link to HOW TO or GW notebook==</mark>
 
 +++
 
