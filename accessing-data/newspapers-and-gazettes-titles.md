@@ -44,11 +44,57 @@ YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-'Titles' in this context refers to the names of the publications whose articles are digitised in Trove. For example: *Canberra Times*, *Sydney Morning Herald*, or *Commonwealth of Australia Gazette*.
+## What's a title?
+
+'Titles' in this context refers to the names and details of the publications whose articles are digitised in Trove's *Newspapers & Gazette's* category. For example: *Canberra Times*, *Sydney Morning Herald*, or *Commonwealth of Australia Gazette*.
 
 +++
 
-## Metadata
+(title-links-and-identifiers)=
+## Title links and identifiers
+
+Every title in Trove's *Newspapers & Gazette's* category has it's own unique identifier. You can find this identifier in the web interface and by using the Trove API.
+
+You can browse a full list of titles in the web interface. Click on the 🛈 icon next to a title's name to open its landing page.
+
+```{figure} /images/title-browse-link.png
+:name: title-browse-link
+:width: 500
+Click on the 🛈 icon to open a title's landing page
+```
+
+If you're viewing an article, you can get to the title's landing page by hovering over the title in the breadcrumbs, and clicking on the 'View title info' link.
+
+```{figure} /images/newspaper-title-link.png
+:name: title-article-link
+:width: 500
+Hover over the breadcrumbs to reveal a link to the title's landing page
+```
+
+The identifier is displayed on the title's landing page and has the form: `http://nla.gov.au/nla.news-title1406`. 
+
+```{figure} /images/trove-title-id.png
+:name: title-id
+:width: 500
+The title's identifier is displayed on the landing page
+```
+
+If you load the identifier in your web browser, you'll be redirected to the landing page. You'll notice that the numeric part of the identifier is also in the url of the landing page.
+
+You can access identifiers for all titles from the `/newspaper/titles` and `/gazette/titles` endpoints. You can also find them in the `title` field of an article record. For example:
+
+```json
+"title": {
+    "id": "1406",
+    "title": "Daily Advertiser (Geraldton, WA : 1890 - 1893)"
+},
+```
+
+The `title["id"]` field contains the title's numeric identifier. By appending it to `http://nla.gov.au/nla.news-title` you can create a link to the title's landing page, or by using it with the `/newspaper/title` endpoint you can download the title's metadata from the Trove API.
+
++++
+
+## Title metadata
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -152,6 +198,7 @@ You can filter the list of titles by adding the `state` parameter. Possible valu
 - `wa` – [![Try it!](https://img.shields.io/badge/Try_it!-Trove_API_Console-blue)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitles%3Fstate%3Dwa%26encoding%3Djson)
 - `vic` – [![Try it!](https://img.shields.io/badge/Try_it!-Trove_API_Console-blue)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitles%3Fstate%3Dvic%26encoding%3Djson)
 - `national` – [![Try it!](https://img.shields.io/badge/Try_it!-Trove_API_Console-blue)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitles%3Fstate%3Dnational%26encoding%3Djson)
+- `international` – [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitles%3Fstate%3Dinternational%26encoding%3Djson&comment=)
 
 Here's an example showing how to get only newspapers published in Victoria.
 
@@ -177,23 +224,13 @@ newspapers[0]
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-```{warning}
-The `state` value of some titles is 'International', but the API won't accept 'international' as a value for the `state` parameter – adding `&state=international` to a request results in a nasty `400` error.
-
-To get a list of just the international titles, you'd need to get the full list and then filter the results based on the `state` field. [Here's an example](../how-to/international-newspaper-titles).
-```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
 ### Get details of a single newspaper or gazette title
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-To retrieve information about an individual title, use the `newspaper/title` or `gazette/title` endpoints with a title identifier.
+To retrieve information about an individual title, use the `newspaper/title` or `gazette/title` endpoints with a [title identifier](title-links-and-identifiers). To construct the request url, add the title's numeric identifier to the endpoint: `https://api.trove.nla.gov.au/v3/newspaper/[TITLE ID]`. For example, to request metadata about the *Canberra Times* you'd use:  `https://api.trove.nla.gov.au/v3/newspaper/11`
 
-You can find a title's identifier in the Trove web interface. Go to the [Digitised Newspapers and Gazettes in Trove](https://trove.nla.gov.au/newspaper/about) and select a title to view more information about it. The title's `id` is the number at the end of the url of the information page. For example, the [page about the Canberra Times](https://trove.nla.gov.au/newspaper/title/11) has the url `https://trove.nla.gov.au/newspaper/title/11`, so the title's `id` is `11`.
-
-If you're working with article records from the API, you can find the title identifier in the `title["id"]` field.
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitle%2F11%2F%3Fencoding%3Djson&comment=)
 
 +++
 
