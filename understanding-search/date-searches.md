@@ -54,6 +54,8 @@ Trove's aggregated metadata can include errors, either because of data entry pro
 
 Here, for example, is the distribution by decade of works in the 'Research & reports' category. Most publications are dated between 1800 and 2100, as you would expect, but there are more than a hundred in the first century, and even an outlier in the 9000s.
 
+<mark>==Explain dates in people category==</mark>
+
 ```{code-cell} ipython3
 ---
 editable: true
@@ -160,19 +162,13 @@ glue("magazine_decade_chart", magazine_chart, display=False)
 Distribution of publication dates of works in the 'Magazines & newsletters' category
 ```
 
-+++
-
-## Works versions and date ranges
-
-Grouping of works/versions -- can filter in web interface. In API need to get workVersions and look at separate issued dates.
-
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Date facets
+## Using date facets
 
 +++
 
-There are three facets you can use to limit search results by date.
+There are three facets you can use to limit search results by date: `decade`, `year`, and `month`. The `month` facet is only available in the *Newspapers & Gazettes* category.
 
 ```{list-table} Date facets
 :header-rows: 1
@@ -195,10 +191,7 @@ There are three facets you can use to limit search results by date.
   - Applicable only to Newspapers & Gazettes category
 ```
 
-```{admonition} Using date facets in newspapers and gazettes
-:class: note
-You can only apply the `l-year` facet in the Newspapers & Gazettes category if you've already set `l-decade`. Similarly, you can only apply the `l-month` facet if you've already set `l-year` and `l-decade`.
-```
+In some cases these facets need to be used in combination. You can only apply the `l-year` facet in the *Newspapers & Gazettes* category if you've already set `l-decade`. Similarly, you can only apply the `l-month` facet if you've already set `l-year` and `l-decade`.
 
 For example, to search for newspaper articles published in 1914 you'd set `l-decade` to `191` and `l-year` to `1914`.
 
@@ -215,3 +208,114 @@ Also, in those cases where you do need `l-decade` and `l-year` together, leaving
 ```
 
 +++
+
+(using-the-date-index)=
+### Using the date index
+
+If you want to search for a range of dates you can use the `date` index. Queries using the `date` index look something like this: `date:[STARTDATE TO ENDDATE]`. For example, to include records from 1914 to 1918 (inclusive) in your search, you'd use `date:[1914 TO 1918]`. You can add date index queries to the search box in the web interface, or include them in the `q` parameter of an API request.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1914+TO+1918%5D%26category%3Dnewspaper%26encoding%3Djson&comment=)
+
+To set `STARTDATE` or `ENDDATE` to the limit of the available date range, use a value of `*` (an asterisk). For example, to search for records published in 1900 or earlier, you'd use `date:[* TO 1900]`.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B*+TO+1900%5D%26category%3Dnewspaper%26encoding%3Djson&comment=)
+
+To search for results from a single year, you can set `STARTDATE` and `ENDDATE` to the same value, for example, `date:[1914 TO 1914]`. This is the same as setting the `l-year` facet to `1914`.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1914+TO+1914%5D%26category%3Dnewspaper%26encoding%3Djson&comment=)
+
+In the *Newspapers & Gazettes* category, the values of `STARTDATE` and `ENDDATE` can be days, rather than years. But there are a few tricks. To specify a day, you need to provide a full ISO-formatted date, complete with time and timezone, even though the time component is ignored. For example: `1901-01-01T00:00:00Z`.
+
+Also, when you use days rather than years, the date range is **not** inclusive. **You have to set `STARTDATE` to the day before the one you you want.** For example:
+
+- `date[1914 TO 1914]` – returns results from 1914 (range is inclusive)
+- `date[1914-01-01T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns zero results (range is not inclusive)
+- `date[1913-12-31T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns results from 1 January 1914
+- `date[1913-12-30T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns results from 31 December 1913 to 1 January 1914
+
+This means that if you want to search for newspaper or gazette articles from a *specific day*, you need to set the the `STARTDATE` value to the day before the one you want. For example, to find articles published on 2 November 1944, the `STARTDATE` would be `1944-11-01T00:00:00Z` and the full query would be `date:[1944-11-01T00:00:00Z TO 1944-11-02T00:00:00Z]`.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1944-11-01T00%3A00%3A00Z+TO+1944-11-02T00%3A00%3A00Z%5D%26category%3Dnewspaper%26encoding%3Djson&comment=)
+
+We can do a little test of this behaviour by trying different `date` queries and using the `year` facet to check the range of our results.
+
+```{code-cell} ipython3
+import requests
+
+def get_year_facets(start_date, end_date):
+    params = {
+        "q": f"date:[{start_date} TO {end_date}]", 
+        "category": "newspaper",
+        "facet": "year",
+        "encoding": "json",
+        "n": 0
+    }
+    
+    # Supply API key using headers
+    headers = {"X-API-KEY": YOUR_API_KEY}
+    
+    response = requests.get(
+        "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+    )
+    
+    data = response.json()
+    try:
+        facets = data["category"][0]["facets"]["facet"][0]["term"]
+    except KeyError:
+        facets = []
+
+    years = [f["search"] for f in facets]
+    return years
+```
+
+If the start and end dates are the same there are no results.
+
+```{code-cell} ipython3
+get_year_facets("1914-01-01T00:00:00Z", "1914-01-01T00:00:00Z")
+```
+
+To get results from 1 January 1914 we set the start date to the 31 December 1913. Note that despite the start date being in 1913, there are only results from 1914.
+
+```{code-cell} ipython3
+get_year_facets("1913-12-31T00:00:00Z", "1914-01-01T00:00:00Z")
+```
+
+Setting the start date back another day means we get results from both 1913 and 1914.
+
+```{code-cell} ipython3
+get_year_facets("1913-12-30T00:00:00Z", "1914-01-01T00:00:00Z")
+```
+
+If you're developing an automated process that searches for newspaper articles from a list of dates, you'll need to find some way of reliably subtracting a day from the date you want (dates are always more complicated than you expect). Here's one approach:
+
+```{code-cell} ipython3
+from datetime import datetime, timedelta
+
+desired_date = "1944-12-01"
+
+# Convert the date string to a datetime object
+desired_datetime = datetime.fromisoformat(desired_date)
+
+# Subtract a day from the datetime
+start_datetime = desired_datetime - timedelta(days=1)
+
+# Format the start date
+start_date = f"{start_datetime.isoformat()}Z"
+print(start_date)
+```
+
+## Works, versions, and dates
+
+Date searches can produce odd results when you're working with aggregated content (as in the *Books & Libraries* category). What do you think happens if you set the `l-decade` facet to `200` (ie 2000 to 2009) and the `l-year` facet to `1900`? In the *Newspapers & Gazettes* category you get no results, as you would expect. But in *Books & Libraries* you get more than a million results!
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dbook%26l-decade%3D200%26l-year%3D1900%26encoding%3Djson&comment=)
+
+How is this possible? How can both facet values be true? The answer lies in the way [versions of publications are grouped together as works](what-is-trove/works-and-versions). If there are multiple versions of a work with different publication dates, the date of the work in Trove will be a range encompassing all the version dates. For example, a work that has versions published in `1900` and `2022` will have an `issued` value of `1900-2022`. Because Trove searches for works rather than versions, a search for any date within the `issued` date range will return the work. So the same work can be published between 2000 and 2009, and also in 1900.
+
+But what if you want to find a version published on a specific date? The Trove web interface has an option to filter a work's 'editions' (aka versions) by date. If you're using the API, you'll first have to requests details of all versions by setting the `include` parameter to `workversions`. Then you'll need to loop through all the versions, checking their individual `issued` dates.
+
+<mark>==Include some example code?==</mark>
+
+```{code-cell} ipython3
+
+```
