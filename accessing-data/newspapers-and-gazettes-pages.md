@@ -495,6 +495,7 @@ If you have a collection of page urls or identifiers (such as [front pages from 
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(download-collection-page-images)=
 ### Download a collection of page images or PDFs
 
 ````{margin}
@@ -516,21 +517,15 @@ from pathlib import Path
 
 import requests
 
-selected_issues = [
-    "https://nla.gov.au/nla.news-issue55379",
-    "https://nla.gov.au/nla.news-issue55380",
-    "https://nla.gov.au/nla.news-issue55381",
-    "https://nla.gov.au/nla.news-issue55382",
-    "https://nla.gov.au/nla.news-issue55383",
+selected_pages = [
+    "https://trove.nla.gov.au/newspaper/page/517916",
+    "https://trove.nla.gov.au/newspaper/page/517925",
+    "https://trove.nla.gov.au/newspaper/page/517940",
+    "https://trove.nla.gov.au/newspaper/page/517954",
+    "https://trove.nla.gov.au/newspaper/page/517967",
 ]
 
-for issue in selected_issues:
-    # This request is getting a web page, so no params or headers required
-    response = requests.get(issue)
-
-    # The request has been redirected to the first page of the issue.
-    # We can get the new redirected url from the response object.
-    page_url = response.url
+for page_url in selected_pages:
 
     # Extract the numeric id from the url
     page_id = re.search(r"\/(\d+)\/?$", page_url).group(1)
@@ -556,12 +551,12 @@ slideshow:
 tags: [remove-cell]
 ---
 glue("front_page", Image(response.content), display=False)
-glue("issue_url", issue, display=False)
+glue("page_url", page_url, display=False)
 ```
 
 ```{glue:figure} front_page
 :figwidth: 400px
 :name: "front-page-example"
 
-Front page downloaded by the code above: [{glue:text}`issue_url`]({glue:text}`issue_url`)
+Front page downloaded by the code above: [{glue:text}`page_url`]({glue:text}`page_url`)
 ```

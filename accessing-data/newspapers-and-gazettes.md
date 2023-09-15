@@ -29,27 +29,4 @@ This section is organised by **articles**, **pages**, **issues**, and **titles**
 ```{tableofcontents}
 ```
 
-<mark>==Not sure where these bits go yet...==</mark>
-
-
-
 <mark>==Somewhere -- perhaps in the search section -- need to talk about things like editorial pages with long lists of short news items, often grouped as a single article. What are the implications of this for relevance, and reuse.==</mark>
-
-- Articles are linked to pages and titles. A single article can be split across multiple pages. 
-
-- Pages have unique identifiers and can be browsed using the web interface, but they don't exist as separate entities within the API. You can't search for a page, only for articles published on a page.
-
-- An issue is a publication of a particular title on a particular date. Issues have identifiers, and are linked to titles. In the web interface, issue identifiers resolve to the first page of that issue, providing an indirect way of linking titles and issues to pages. Articles are indirectly linked to issues through their publication date.
-
-- A title is a particular publication or masthead. Titles have their own identifiers and API endpoint.
-
-+++
-
-Other issues:
-
-- missing pages, eg https://trove.nla.gov.au/newspaper/page/20232534
-- inconsistent page numbering
-
-Could I do some analysis to find titles with different page numbering. Eg the number of front pages for a given year should equal the number of issues.
-
-Any to get an idea of how many pages are missing? Search for articles in each issue, then look at page numbers in articles. A lot of processing, but quite important to know, particularly if they're spread unevenly.
