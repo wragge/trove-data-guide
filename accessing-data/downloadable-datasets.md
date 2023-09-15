@@ -21,4 +21,9 @@ This guide is currently under development. For more information and discussion s
 
 +++
 
+- [Government Gazette downloads](https://trove.nla.gov.au/about/create-something/bulk-download-gazettes/australian-government-gazettes-1832-1968)
 - [Sources of Australian GLAM data](https://glam-workbench.net/glam-data-list/)
+
+```{code-cell} ipython3
+
+```

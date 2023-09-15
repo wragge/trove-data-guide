@@ -66,6 +66,7 @@ Some issue metadata is available via the `newspaper/title` and `gazette/title` e
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(title-issues-per-year)=
 ### Get the number of issues per year for a title
 
 ````{margin}
@@ -224,6 +225,7 @@ An alternative approach would be to harvest results from a particular newspaper 
 
 +++
 
+(issue-text)=
 ## Issue text
 
 To get the full text of an issue you can [search for articles](articles-in-an-issue) within that issue and aggregate the text of all the individual articles. You'll need to set the `include` parameter to `articleText` to add the OCRd text to the results. Here's an example that collects the article texts from an issue and uses them to create a wordcloud using the [WordCloud package](https://github.com/amueller/word_cloud).
