@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/data-access-options.ff3da4a7-11a7-4b04-9292-d33e701ed838.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/data-access-options.d165d8ed-842a-408d-afbb-ed8975a4c7aa.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/data-access-options';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -454,7 +454,6 @@ document.write(`
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
-<p><strong>This section documents ways of accessing <span class="xref std std-term">machine-readable</span> data from Trove. The focus is on reusable and extensible methods that can be used in a variety of workflows, such as the creation of datasets for further analysis.</strong></p>
 <p>There are many different <span class="xref myst">types of data</span> available from Trove and many different ways of accessing it. You can manually download some data, such as images, from Trove’s web interface. If you’re creating small, selective datasets, these manual methods might be all you need.</p>
 <p>But what if you want to save <em>all</em> the results from a search, automate downloading of images and text, or create a pipeline to feed Trove data into a specific tool for analysis? In these sorts of cases, you need access methods that are reusable and extensible – methods that can be invoked using code and that deliver data in a <a class="reference internal" href="../glossary.html#term-Machine-readable"><span class="xref std std-term">machine readable</span></a> format that computers can manipulate.</p>
 <p>The Trove <a class="reference internal" href="../glossary.html#term-Application-Programming-Interface-API"><span class="xref std std-term">Application Programming Interface (API)</span></a> is the main way of accessing machine-readable data using automated methods. Computer programs can request data from the API and have it delivered in a predictable, structured format. Using the API you can construct reusable data-processing workflows, and create datasets containing millions of items.</p>

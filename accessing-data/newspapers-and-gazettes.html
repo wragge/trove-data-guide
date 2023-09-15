@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes.fdfe6ee8-e547-41b7-acb6-bce80ad7aea2.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes.dcbea9d6-9371-4936-8bb3-ff6156cd534f.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -465,21 +465,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="newspapers-and-gazettes-titles.html">15.4. Titles</a></li>
 </ul>
 </div>
-<p><mark>==Not sure where these bits go yet…==</mark></p>
 <p><mark>==Somewhere – perhaps in the search section – need to talk about things like editorial pages with long lists of short news items, often grouped as a single article. What are the implications of this for relevance, and reuse.==</mark></p>
-<ul class="simple">
-<li><p>Articles are linked to pages and titles. A single article can be split across multiple pages.</p></li>
-<li><p>Pages have unique identifiers and can be browsed using the web interface, but they don’t exist as separate entities within the API. You can’t search for a page, only for articles published on a page.</p></li>
-<li><p>An issue is a publication of a particular title on a particular date. Issues have identifiers, and are linked to titles. In the web interface, issue identifiers resolve to the first page of that issue, providing an indirect way of linking titles and issues to pages. Articles are indirectly linked to issues through their publication date.</p></li>
-<li><p>A title is a particular publication or masthead. Titles have their own identifiers and API endpoint.</p></li>
-</ul>
-<p>Other issues:</p>
-<ul class="simple">
-<li><p>missing pages, eg <a class="reference external" href="https://trove.nla.gov.au/newspaper/page/20232534">https://trove.nla.gov.au/newspaper/page/20232534</a></p></li>
-<li><p>inconsistent page numbering</p></li>
-</ul>
-<p>Could I do some analysis to find titles with different page numbering. Eg the number of front pages for a given year should equal the number of issues.</p>
-<p>Any to get an idea of how many pages are missing? Search for articles in each issue, then look at page numbers in articles. A lot of processing, but quite important to know, particularly if they’re spread unevenly.</p>
 </section>
 
     <script type="text/x-thebe-config">

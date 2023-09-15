@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-issues.529cad8f-d822-4cee-b49e-1a025e4f5321.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/newspapers-and-gazettes-issues.5ca2e413-73bd-4bd6-aeaf-6776de6f60ba.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/newspapers-and-gazettes-issues';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -478,39 +478,39 @@ document.write(`
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#what-are-issues" id="id3">What are issues?</a></p></li>
-<li><p><a class="reference internal" href="#issue-links-and-identifiers" id="id4">Issue links and identifiers</a></p></li>
-<li><p><a class="reference internal" href="#issue-metadata" id="id5">Issue metadata</a></p>
+<li><p><a class="reference internal" href="#what-are-issues" id="id4">What are issues?</a></p></li>
+<li><p><a class="reference internal" href="#issue-links-and-identifiers" id="id5">Issue links and identifiers</a></p></li>
+<li><p><a class="reference internal" href="#issue-metadata" id="id6">Issue metadata</a></p>
 <ul>
-<li><p><a class="reference internal" href="#get-the-number-of-issues-per-year-for-a-title" id="id6">Get the number of issues per year for a title</a></p></li>
-<li><p><a class="reference internal" href="#details-of-issues-within-a-date-range" id="id7">Details of issues within a date range</a></p></li>
-<li><p><a class="reference internal" href="#articles-in-an-issue" id="id8">Articles in an issue</a></p></li>
+<li><p><a class="reference internal" href="#get-the-number-of-issues-per-year-for-a-title" id="id7">Get the number of issues per year for a title</a></p></li>
+<li><p><a class="reference internal" href="#details-of-issues-within-a-date-range" id="id8">Details of issues within a date range</a></p></li>
+<li><p><a class="reference internal" href="#articles-in-an-issue" id="id9">Articles in an issue</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#issue-text" id="id9">Issue text</a></p></li>
-<li><p><a class="reference internal" href="#pdfs-of-issues" id="id10">PDFs of issues</a></p>
+<li><p><a class="reference internal" href="#issue-text" id="id10">Issue text</a></p></li>
+<li><p><a class="reference internal" href="#pdfs-of-issues" id="id11">PDFs of issues</a></p>
 <ul>
-<li><p><a class="reference internal" href="#download-an-issue-as-a-pdf" id="id11">Download an issue as a PDF</a></p></li>
+<li><p><a class="reference internal" href="#download-an-issue-as-a-pdf" id="id12">Download an issue as a PDF</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="what-are-issues">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">What are issues?</a><a class="headerlink" href="#what-are-issues" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">What are issues?</a><a class="headerlink" href="#what-are-issues" title="Permalink to this heading">#</a></h2>
 <p>An issue is a single edition of a newspaper published on a particular date. Some newspapers published multiple editions each day, however, Trove holds only one edition per day for each newspaper. This means that issues in Trove can be identified and analysed by date.</p>
 </section>
 <section id="issue-links-and-identifiers">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Issue links and identifiers</a><a class="headerlink" href="#issue-links-and-identifiers" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Issue links and identifiers</a><a class="headerlink" href="#issue-links-and-identifiers" title="Permalink to this heading">#</a></h2>
 <p>Issues also have their own unique identifiers assigned by Trove. These identifiers don’t appear anywhere within the Trove web interface, but you can <a class="reference internal" href="#issues-within-a-date-range"><span class="std std-ref">find them using the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints</span></a> as described below. Issue identifiers look like this: <code class="docutils literal notranslate"><span class="pre">https://nla.gov.au/nla.news-issue55379</span></code>.</p>
 <p>Issues don’t have their own landing pages, or API endpoints. If you plug an issue identifier into your web browser you’ll be redirected to the first page of that issue. This provides a useful mechanism for finding the front pages of issues.</p>
 <p>The only instance where an issue exists as a separate entity is if you <a class="reference internal" href="#download-issue-as-pdf"><span class="std std-ref">download an issue as a PDF</span></a>. This can be automated by using the issue’s numeric identifier.</p>
 <p>Article records don’t include issue identifiers, but articles can be linked to issues through their date.</p>
 </section>
 <section id="issue-metadata">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Issue metadata</a><a class="headerlink" href="#issue-metadata" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Issue metadata</a><a class="headerlink" href="#issue-metadata" title="Permalink to this heading">#</a></h2>
 <p>Some issue metadata is available via the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints. You can also find details of articles published within an issue by searching for a specific day and newspaper using the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint.</p>
 <section id="get-the-number-of-issues-per-year-for-a-title">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Get the number of issues per year for a title</a><a class="headerlink" href="#get-the-number-of-issues-per-year-for-a-title" title="Permalink to this heading">#</a></h3>
+<span id="title-issues-per-year"></span><h3><a class="toc-backref" href="#id7" role="doc-backlink">Get the number of issues per year for a title</a><a class="headerlink" href="#get-the-number-of-issues-per-year-for-a-title" title="Permalink to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -578,23 +578,23 @@ document.write(`
 <figure class="align-default">
 <div class="output text_html">
 <style>
-  #altair-viz-9948106e8ffc442cb70f3a8b4f015264.vega-embed {
+  #altair-viz-a4295e38aacc4565b0c34bdf37a71367.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-9948106e8ffc442cb70f3a8b4f015264.vega-embed details,
-  #altair-viz-9948106e8ffc442cb70f3a8b4f015264.vega-embed details summary {
+  #altair-viz-a4295e38aacc4565b0c34bdf37a71367.vega-embed details,
+  #altair-viz-a4295e38aacc4565b0c34bdf37a71367.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-9948106e8ffc442cb70f3a8b4f015264"></div>
+<div id="altair-viz-a4295e38aacc4565b0c34bdf37a71367"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9948106e8ffc442cb70f3a8b4f015264") {
-      outputDiv = document.getElementById("altair-viz-9948106e8ffc442cb70f3a8b4f015264");
+    if (outputDiv.id !== "altair-viz-a4295e38aacc4565b0c34bdf37a71367") {
+      outputDiv = document.getElementById("altair-viz-a4295e38aacc4565b0c34bdf37a71367");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -644,7 +644,7 @@ document.write(`
 </script></div></figure>
 </section>
 <section id="details-of-issues-within-a-date-range">
-<span id="issues-within-a-date-range"></span><h3><a class="toc-backref" href="#id7" role="doc-backlink">Details of issues within a date range</a><a class="headerlink" href="#details-of-issues-within-a-date-range" title="Permalink to this heading">#</a></h3>
+<span id="issues-within-a-date-range"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Details of issues within a date range</a><a class="headerlink" href="#details-of-issues-within-a-date-range" title="Permalink to this heading">#</a></h3>
 <p>You can also use the <code class="docutils literal notranslate"><span class="pre">newspaper/title</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette/title</span></code> endpoints to get some details about individual issues, including their date and identifier. To do this you add the <code class="docutils literal notranslate"><span class="pre">range</span></code> parameter to your request, and set its value to a date range using the format <code class="docutils literal notranslate"><span class="pre">YYYYMMDD-YYYYMMDD</span></code>. For example to find issues published between 1930 and 1935, you’d set the <code class="docutils literal notranslate"><span class="pre">range</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">19300101-19351231</span></code>.</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitle%2F11%3Fencoding%3Djson%26include%3Dyears%26range%3D19300101-19351231"><img alt="Try it!" src="../_images/try-trove-api-console.svg" /></a></p>
 <p>You could use the title’s <code class="docutils literal notranslate"><span class="pre">startDate</span></code> and <code class="docutils literal notranslate"><span class="pre">endDate</span></code> values to construct the range. However, keep in mind that if a newspaper was published daily over a long period you might be asking for a lot of data in one hit. It might be better to request the data in chunks, such as a year at a time. The GLAM Workbench provides an example of this in the <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#harvest-information-about-newspaper-issues">Harvest information about newspaper issues</a> notebook.</p>
@@ -698,7 +698,7 @@ document.write(`
 </div>
 </section>
 <section id="articles-in-an-issue">
-<span id="id1"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Articles in an issue</a><a class="headerlink" href="#articles-in-an-issue" title="Permalink to this heading">#</a></h3>
+<span id="id1"></span><h3><a class="toc-backref" href="#id9" role="doc-backlink">Articles in an issue</a><a class="headerlink" href="#articles-in-an-issue" title="Permalink to this heading">#</a></h3>
 <p>To get details of all the articles within an issue, you need to construct a search for articles using the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint that specifies the title (the newspaper name) and the publication date.</p>
 <p>The newspaper title is set using the <code class="docutils literal notranslate"><span class="pre">l-title</span></code> parameter. For example, the identifier for the <em>Canberra Times</em> is <code class="docutils literal notranslate"><span class="pre">11</span></code>, so to limit your search to the <em>Canberra Times</em> you’d set <code class="docutils literal notranslate"><span class="pre">l-title</span></code> to <code class="docutils literal notranslate"><span class="pre">11</span></code>.</p>
 <p>The date is set <a class="reference internal" href="../understanding-search/date-searches.html#using-the-date-index"><span class="std std-ref">using the <code class="docutils literal notranslate"><span class="pre">date</span></code> index</span></a> within the <code class="docutils literal notranslate"><span class="pre">q</span></code> (query) parameter. You use the <code class="docutils literal notranslate"><span class="pre">date</span></code> index by supplying a date range. To limit results to a single day you need to set the first date in the range to the day <strong>before</strong> the date you want. The dates need to be in ISO format – <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDT00:00:00Z</span></code>. For example, if we wanted an articles from 2 November 1942, we’d set the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">date:[1942-11-01T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1942-11-02T00:00:00Z]</span></code>.</p>
@@ -714,7 +714,7 @@ document.write(`
 </section>
 </section>
 <section id="issue-text">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Issue text</a><a class="headerlink" href="#issue-text" title="Permalink to this heading">#</a></h2>
+<span id="id2"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">Issue text</a><a class="headerlink" href="#issue-text" title="Permalink to this heading">#</a></h2>
 <p>To get the full text of an issue you can <a class="reference internal" href="#articles-in-an-issue"><span class="std std-ref">search for articles</span></a> within that issue and aggregate the text of all the individual articles. You’ll need to set the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">articleText</span></code> to add the OCRd text to the results. Here’s an example that collects the article texts from an issue and uses them to create a wordcloud using the <a class="reference external" href="https://github.com/amueller/word_cloud">WordCloud package</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -759,17 +759,17 @@ document.write(`
 </div>
 </div>
 </div>
-<figure class="align-default" id="id2">
-<img alt="../_images/36194360cfc6ac345095661d3667e7bb21cf8fafe854a42ebc382aef22680207.png" src="../_images/36194360cfc6ac345095661d3667e7bb21cf8fafe854a42ebc382aef22680207.png" />
+<figure class="align-default" id="id3">
+<img alt="../_images/f993c2787c071c9a6559a36898e556f9056d6e3b5b5e8d7e3311b3a140ea1492.png" src="../_images/f993c2787c071c9a6559a36898e556f9056d6e3b5b5e8d7e3311b3a140ea1492.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15.8 </span><span class="caption-text">Word cloud from the text content of the <em>Canberra Times</em>, 2 November 1942.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15.8 </span><span class="caption-text">Word cloud from the text content of the <em>Canberra Times</em>, 2 November 1942.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="pdfs-of-issues">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">PDFs of issues</a><a class="headerlink" href="#pdfs-of-issues" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">PDFs of issues</a><a class="headerlink" href="#pdfs-of-issues" title="Permalink to this heading">#</a></h2>
 <section id="download-an-issue-as-a-pdf">
-<span id="download-issue-as-pdf"></span><h3><a class="toc-backref" href="#id11" role="doc-backlink">Download an issue as a PDF</a><a class="headerlink" href="#download-an-issue-as-a-pdf" title="Permalink to this heading">#</a></h3>
+<span id="download-issue-as-pdf"></span><h3><a class="toc-backref" href="#id12" role="doc-backlink">Download an issue as a PDF</a><a class="headerlink" href="#download-an-issue-as-a-pdf" title="Permalink to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">

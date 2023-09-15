@@ -90,7 +90,7 @@ You can access identifiers for all titles from the `/newspaper/titles` and `/gaz
 },
 ```
 
-The `title["id"]` field contains the title's numeric identifier. By appending it to `http://nla.gov.au/nla.news-title` you can create a link to the title's landing page, or by using it with the `/newspaper/title` endpoint you can download the title's metadata from the Trove API.
+The `title["id"]` field contains the title's numeric identifier. By appending it to `http://nla.gov.au/nla.news-title` you can create a link to the title's landing page, or by [using it with the `/newspaper/title` endpoint](details-single-title) you can download the title's metadata from the Trove API.
 
 +++
 
@@ -161,6 +161,8 @@ slideshow:
 tags: [remove-cell]
 ---
 newspapers_df = pd.DataFrame(newspapers)
+
+alt.renderers.set_embed_options(actions=False)
 chart = (
     alt.Chart(newspapers_df)
     .mark_bar()
@@ -168,23 +170,24 @@ chart = (
         x="state:N",
         y=alt.Y("count():Q", title="number of titles"),
         color=alt.Color("state:N", legend=None),
+        tooltip=["state:N", alt.Tooltip("count():Q", title="total")],
     )
-    .properties(width=150)
+    .properties(width="container", padding=10)
 )
-glue("titles-by-state-chart", chart)
+glue("titles_by_state_chart", chart, display=True)
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ### Get a list of newspaper titles from a particular state
 
-`````{margin}
-````{admonition} Newspapers by state
-:class: note
-```{glue:} titles-by-state-chart
+````{margin}
+```{glue:figure} titles_by_state_chart
+:name: titles-by-state
+:align: center
+Number of newspapers by state. See the [Trove Newspapers Data Dashboard](https://wragge.github.io/trove-newspaper-totals/#Newspaper-titles) for current totals.
 ```
 ````
-`````
 
 You can filter the list of titles by adding the `state` parameter. Possible values for `state` are: 
 
@@ -208,8 +211,13 @@ editable: true
 slideshow:
   slide_type: ''
 ---
+import requests
+
 # Add the state parameter and set it to 'vic' to get titles from Victoria
 params = {"encoding": "json", "state": "vic"}
+
+# Supply API key using headers
+headers = {"X-API-KEY": YOUR_API_KEY}
 
 response = requests.get(
     "https://api.trove.nla.gov.au/v3/newspaper/titles", params=params, headers=headers
@@ -224,23 +232,96 @@ newspapers[0]
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(details-single-title)=
 ### Get details of a single newspaper or gazette title
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-To retrieve information about an individual title, use the `newspaper/title` or `gazette/title` endpoints with a [title identifier](title-links-and-identifiers). To construct the request url, add the title's numeric identifier to the endpoint: `https://api.trove.nla.gov.au/v3/newspaper/[TITLE ID]`. For example, to request metadata about the *Canberra Times* you'd use:  `https://api.trove.nla.gov.au/v3/newspaper/11`
+To retrieve information about an individual title, use the `newspaper/title` or `gazette/title` endpoints with a [title identifier](title-links-and-identifiers). To construct the request url, add the title's numeric identifier to the endpoint: 
+
+`https://api.trove.nla.gov.au/v3/newspaper/title/[TITLE ID]`. 
+
+For example, to request metadata about the *Canberra Times* you'd use:
+
+`https://api.trove.nla.gov.au/v3/newspaper/title/11`
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitle%2F11%2F%3Fencoding%3Djson&comment=)
 
+Here's how you'd retrieve metadata describing the *Canberra Times*:
+
+```{code-cell} ipython3
+import requests
+
+# Numeric id of the title you want
+title_id = "11"
+
+request_url = f"https://api.trove.nla.gov.au/v3/newspaper/title/{title_id}"
+
+# Add the state parameter and set it to 'vic' to get titles from Victoria
+params = {"encoding": "json"}
+
+# Supply API key using headers
+headers = {"X-API-KEY": YOUR_API_KEY}
+
+# Make the API request
+response = requests.get(request_url, params=params, headers=headers)
+
+# Extract the JSON data
+data = response.json()
+
+data
+```
+
+You can use the `newspaper/title` and `gazette/title` endpoints to get information on what issues of a particular newspaper are available on Trove. By setting the `include` parameter to `years`, you get the [total number of issues per year](title-issues-per-year). 
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2Ftitle%2F11%3Finclude%3Dyears%26encoding%3Djson&comment=)
+
+If you want more [information on individual issues](issues-within-a-date-range) you need to set the `range` parameter to a specific date range.
+
 +++
 
-### Aggregate search results by title using the `title` facet
+### Aggregate search results by title using the `l-title` facet
 
-You can also explore the characteristics of newspaper titles in Trove by using the API's `/result` endpoint with the `title` facet.
+You can also explore the characteristics of newspaper titles in Trove by using the API's `/result` endpoint with `category` set to `newspaper`, and `l-title` set to the numeric identifier of a title. For example, to find out how many digitised articles from the *Canberra Times* are available on Trove, you can just make an API request without any search terms:
+
+```{code-cell} ipython3
+import requests
+
+# Set the `l-title` parameter to a title's numeric id
+params = {"category": "newspaper", "l-title": "11", "encoding": "json"}
+
+# Supply API key using headers
+headers = {"X-API-KEY": YOUR_API_KEY}
+
+# Make the API request
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
+
+# Extract the JSON data
+data = response.json()
+
+# Find and display the total number of articles
+total = data["category"][0]["records"]["total"]
+
+print(f"There are {total:,} articles from the Canberra Times in Trove.")
+```
+
+You can use facets such as `decade`, `year`, `category`, and `illustrationType` to examine other characteristics of an individual title.
+
+The GLAM Workbench notebook [Visualise Trove newspaper searches over time](https://glam-workbench.net/trove-newspapers/visualise-searches-over-time/) shows how you can use the `decade` and `year` facets with `l-title` to explore changes in a title over time, and even compare the content of different titles. This chart shows the number of articles containing the term 'worker' in three different newspapers, the *Tribune*, the *Sydney Morning Herald*, and the *Sydney Sun*. 
+
+```{figure} /images/compare-title-queries.png
+:name: compare-title-queries
+
+The raw number and proportion of articles containing the term 'worker' by year in the *Tribune*, *Sydney Morning Herald*, and *Sydney Sun*
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ### Find catalogue entries for newspaper titles
+
+<mark>==Update this section once search and books sections are done==</mark>
 
 - use ISSNs to search in "Books & Libraries"
 - note that the `issn` field in API records doesn't always contain ISSNs
@@ -248,12 +329,27 @@ You can also explore the characteristics of newspaper titles in Trove by using t
 
 +++
 
-## Text
+## Title text
+
+With the exception of some Government Gazettes which are available as [bulk downloads](/accessing-data/downloadable-datasets), there's no direct way of accessing all the text of a title. You'd need to use the `/result` endpoint to assemble a collection of articles and then aggregate the OCRd text from the individual articles. This could be done [issue by issue](https://glam-workbench.net/trove-harvester/), or by setting the `l-title` facet without a search query, and then [harvesting the complete result set](/how-to/harvest-complete-results).
+
+Depending on the title, this could take a significant amount of time and generate a large amount of data. You might want to use the [Trove Newspaper & Gazette Harvester](https://wragge.github.io/trove-newspaper-harvester/) for a job like this.
 
 +++
 
-## Images and PDFs
+## Images and PDFs from titles
 
-```{code-cell} ipython3
+There's no direct method for downloading all the images or PDFs from a newspaper title in Trove. However, there are methods for getting issues as PDFs and assembling a collection of front page images.
 
-```
+### Downloading every issues as a PDF
+
+If you have an issue's identifier you can [download it as a PDF](download-issue-as-pdf). You can get a complete list of issue identifiers for a title [from the `/newspaper/title` endpoint](issues-within-a-date-range). So it's possible to work through all the issue identifiers to download every issue of a title as a PDF. This method is documented in the GLAM Workbench notebook [Harvest the issues of a newspaper as PDFs](https://glam-workbench.net/trove-newspapers/#harvest-the-issues-of-a-newspaper-as-pdfs).
+
+### Downloading pages as images or PDFs
+
+To download pages from a newspaper in Trove, you'd need to assemble a collection of [page identifiers](newspaper-page-links). If all you want are the front pages of a newspaper, you can 
+[obtain the page identifiers from the issue metadata](get-a-list-of-front-page-urls).
+
+If you want more pages, you'd could try using the `/result` endpoint with the `l-title` facet to download the metadata from every article in a newspaper. You'd also need to set the `reclevel` parameter to `full` to include the page identifiers in the article records. You could then extract the page identifiers from the article records and remove any duplicates. However, there's no guarantee that this method will find every page as it depends on how the articles are indexed.
+
+Once you have assembled a collection of page identifiers you can [download the pages as images or PDFs](download-collection-page-images).
