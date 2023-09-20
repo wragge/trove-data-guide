@@ -28,6 +28,6 @@ This section will examine the way in which the Trove newspaper corpus has been c
 ```{tableofcontents}
 ```
 
-```{code-cell} ipython3
++++
 
-```
+- Example of a single advertising 'article' that spans multiple pages and includes many individual ads: https://trove.nla.gov.au/newspaper/article/101752752/10453662
