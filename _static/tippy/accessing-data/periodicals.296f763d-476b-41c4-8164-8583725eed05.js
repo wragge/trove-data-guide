@@ -1,4 +1,4 @@
-selector_to_html = {"a[href=\"#finding-digitised-content-you-can-download\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">Finding digitised content you can download<a class=\"headerlink\" href=\"#finding-digitised-content-you-can-download\" title=\"Permalink to this heading\">#</a></h1><p>Still much harder than it should be (except for <code class=\"docutils literal notranslate\"><span class=\"pre\">magazine</span></code> &amp; <code class=\"docutils literal notranslate\"><span class=\"pre\">newspaper</span></code> categories of course).</p><p>Various combinations of:</p>"}
+selector_to_html = {"a[href=\"#periodicals\"]": "<h1 class=\"tippy-header\" style=\"margin-top: 0;\">Periodicals<a class=\"headerlink\" href=\"#periodicals\" title=\"Permalink to this heading\">#</a></h1><p><code class=\"docutils literal notranslate\"><span class=\"pre\">bibliographicCitation</span></code> in article records has structured publication metadata</p>"}
 skip_classes = ["headerlink", "sd-stretched-link", "sd-rounded-pill"]
 
 window.onload = function () {
