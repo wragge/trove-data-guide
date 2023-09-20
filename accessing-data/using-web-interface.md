@@ -42,7 +42,7 @@ The official Trove Help includes a page on [Downloading](https://trove.nla.gov.a
 
 +++
 
-```{figure} ../images/web-download-example.png
+```{figure} /images/web-download-example.png
 :name: download-tab
 :width: 300
 Example of the download tab in the digitised magazines and newsletters viewer

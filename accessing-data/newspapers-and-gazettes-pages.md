@@ -554,9 +554,11 @@ glue("front_page", Image(response.content), display=False)
 glue("page_url", page_url, display=False)
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 ```{glue:figure} front_page
 :figwidth: 400px
 :name: "front-page-example"
 
-Front page downloaded by the code above: [{glue:text}`page_url`]({glue:text}`page_url`)
+Front page downloaded by the code above: [{glue:text}`page_url`]({glue:text}`issue_url`)
 ```
