@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/finding-digitised-content.c362b441-d89b-4f7b-9f5e-552a17525e91.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/finding-digitised-content.8f4c27aa-9f51-4a1c-aa31-00f4194dc0e9.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/finding-digitised-content';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -444,11 +444,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-results-to-the-trove-digital-library">Limit results to the ‘Trove Digital Library’</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-records-including-nla-obj">Search for records including <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-options">Other options</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fulltextind-y"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#journal-articles">Journal articles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-options">Other options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-results-to-the-trove-digital-library">Limit results to the ‘Trove Digital Library’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fulltextind-y"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#has-correctabletext"><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imageind"><code class="docutils literal notranslate"><span class="pre">imageInd</span></code></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -492,18 +495,10 @@ document.write(`
 </div>
 </div>
 <p>Trove provides a platform for the delivery of digitised content from the National Library of Australia and its partners. This digitised content is easy to find in the <em>Newspapers &amp; gazettes</em> and <em>Magazines &amp; newsletters</em> categories – they’re full of it! But it’s not so easy to find digitised content in other categories where it’s mixed with works aggregated from a range of different sources.</p>
-<p>There are a few different approaches to finding digitised content. They all have potential problems, so it’s a matter of working out what will best meet your research needs.</p>
-<section id="limit-results-to-the-trove-digital-library">
-<h2>Limit results to the ‘Trove Digital Library’<a class="headerlink" href="#limit-results-to-the-trove-digital-library" title="Permalink to this heading">#</a></h2>
-<p>In the Advanced Search form for the <em>Books &amp; Libraries</em>, <em>Research &amp; Reports</em>, <em>Images, Maps &amp; Artefacts</em>, <em>Diaries, Letters &amp; Archives</em>, and <em>Music, Audio &amp; Video</em> categories, there’s an option to limit the source of the records in your results by selecting from a list of ‘Organisations’. Hidden away in this list is the ‘Trove Digital Library’. Unfortunately, selecting ‘Trove Digital Library’ in Advanced Search doesn’t work at the moment because of a bug in the web interface, but once you know it exists you can manually add it to your searches.</p>
-<figure class="align-default" id="advanced-search-orgs">
-<a class="reference internal image-reference" href="../_images/advanced_search_orgs.png"><img alt="../_images/advanced_search_orgs.png" src="../_images/advanced_search_orgs.png" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-text">Selecting ‘Trove Digital Library’ in the Advanced Search form – note the NUC identifier in brackets</span><a class="headerlink" href="#advanced-search-orgs" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Like other contributing organisations, the ‘Trove Digital Library’ has it’s own NUC identifier: <code class="docutils literal notranslate"><span class="pre">ANL:DL</span></code>. You can use this to limit your search by adding <code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:DL&quot;</span></code> to the simple search box in the web interface, or to the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter in an API request.</p>
-<p>Here’s the number of results per category on <span class="pasted-text">20 September 2023</span>:</p>
+<p>There are a few different approaches to finding digitised content, but they all have potential problems. While I highlight what I think is the most reliable option, it’s really a matter of working out what will best meet your research needs.</p>
+<section id="search-for-records-including-nla-obj">
+<h2>Search for records including <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code><a class="headerlink" href="#search-for-records-including-nla-obj" title="Permalink to this heading">#</a></h2>
+<p>All of the digitised resources in Trove (except for <em>Newspapers &amp; Gazettes</em>) have NLA identifiers of the form <code class="docutils literal notranslate"><span class="pre">nla.obj-[NUMBER]</span></code>. So a search for <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code> should return all digitised resources. Here’s the results of running this search across all categories:</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -511,74 +506,7 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;nuc:&quot;ANL:DL&quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
-<span class="n">totals_anl_dl</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
-<span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]:</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">total</span><span class="p">:</span>
-        <span class="n">totals_anl_dl</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">],</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">})</span>
-<span class="n">df_anl_dl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">totals_anl_dl</span><span class="p">)</span>
-
-<span class="n">df_anl_dl</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thousands</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_a5332">
-  <thead>
-    <tr>
-      <th id="T_a5332_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_a5332_level0_col1" class="col_heading level0 col1" >total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_a5332_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_a5332_row0_col1" class="data row0 col1" >30,269</td>
-    </tr>
-    <tr>
-      <td id="T_a5332_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_a5332_row1_col1" class="data row1 col1" >38,898</td>
-    </tr>
-    <tr>
-      <td id="T_a5332_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_a5332_row2_col1" class="data row2 col1" >36,163</td>
-    </tr>
-    <tr>
-      <td id="T_a5332_row3_col0" class="data row3 col0" >magazine</td>
-      <td id="T_a5332_row3_col1" class="data row3 col1" >1,807,248</td>
-    </tr>
-    <tr>
-      <td id="T_a5332_row4_col0" class="data row4 col0" >music</td>
-      <td id="T_a5332_row4_col1" class="data row4 col1" >17,850</td>
-    </tr>
-    <tr>
-      <td id="T_a5332_row5_col0" class="data row5 col0" >research</td>
-      <td id="T_a5332_row5_col1" class="data row5 col1" >277,379</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3A%22ANL%3ADL%22%26category%3Dall%26encoding%3Djson%26n%3D0&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
-<p>The results look ok, but the problem is that there are some digitised publications that aren’t part of the ‘Trove Digital Library’ – here’s <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ADL%22%20NOT%20nuc%3A%22ANL%3ANED%22&amp;l-availability=y%2Ff">some examples</a> from the <em>Books &amp; Libraries</em> category. It’s just not clear what a search for <code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:DL&quot;</span></code> actually includes (or excludes).</p>
-</section>
-<section id="search-for-records-including-nla-obj">
-<h2>Search for records including <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code><a class="headerlink" href="#search-for-records-including-nla-obj" title="Permalink to this heading">#</a></h2>
-<p>All of the digitised resources in Trove (except for <em>Newspapers &amp; Gazettes</em>) have NLA identifiers of the form <code class="docutils literal notranslate"><span class="pre">nla.obj-[NUMBER]</span></code>. So a search for <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> should return all digitised resources.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;text:&quot;nla.obj&quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;&quot;nla.obj&quot;&#39;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
 <span class="n">totals_nlaobj</span> <span class="o">=</span> <span class="p">[]</span>
@@ -597,181 +525,266 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_38c00">
+<table id="T_9eab8">
   <thead>
     <tr>
-      <th id="T_38c00_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_38c00_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_9eab8_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_9eab8_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_38c00_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_38c00_row0_col1" class="data row0 col1" >637,998</td>
+      <td id="T_9eab8_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_9eab8_row0_col1" class="data row0 col1" >637,839</td>
     </tr>
     <tr>
-      <td id="T_38c00_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_38c00_row1_col1" class="data row1 col1" >163,867</td>
+      <td id="T_9eab8_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_9eab8_row1_col1" class="data row1 col1" >164,920</td>
     </tr>
     <tr>
-      <td id="T_38c00_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_38c00_row2_col1" class="data row2 col1" >281,885</td>
+      <td id="T_9eab8_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_9eab8_row2_col1" class="data row2 col1" >281,881</td>
     </tr>
     <tr>
-      <td id="T_38c00_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_38c00_row3_col1" class="data row3 col1" >4</td>
+      <td id="T_9eab8_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_9eab8_row3_col1" class="data row3 col1" >4</td>
     </tr>
     <tr>
-      <td id="T_38c00_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_38c00_row4_col1" class="data row4 col1" >1,807,247</td>
+      <td id="T_9eab8_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_9eab8_row4_col1" class="data row4 col1" >1,807,257</td>
     </tr>
     <tr>
-      <td id="T_38c00_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_38c00_row5_col1" class="data row5 col1" >57,408</td>
+      <td id="T_9eab8_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_9eab8_row5_col1" class="data row5 col1" >57,408</td>
     </tr>
     <tr>
-      <td id="T_38c00_row6_col0" class="data row6 col0" >people</td>
-      <td id="T_38c00_row6_col1" class="data row6 col1" >38</td>
+      <td id="T_9eab8_row6_col0" class="data row6 col0" >newspaper</td>
+      <td id="T_9eab8_row6_col1" class="data row6 col1" >1,853</td>
     </tr>
     <tr>
-      <td id="T_38c00_row7_col0" class="data row7 col0" >research</td>
-      <td id="T_38c00_row7_col1" class="data row7 col1" >361,275</td>
+      <td id="T_9eab8_row7_col0" class="data row7 col0" >people</td>
+      <td id="T_9eab8_row7_col1" class="data row7 col1" >38</td>
+    </tr>
+    <tr>
+      <td id="T_9eab8_row8_col0" class="data row8 col0" >research</td>
+      <td id="T_9eab8_row8_col1" class="data row8 col1" >361,316</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
-<p>The problem with this approach is not that things are missing from the results, but that so much is included. There are significantly more resources in most categories than were returned by the <code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:DL&quot;</span></code>, but the appearance of the <code class="docutils literal notranslate"><span class="pre">people</span></code> and <code class="docutils literal notranslate"><span class="pre">list</span></code> categories indicates that this search is pulling in some records that don’t describe digitised works.</p>
-<p>If you look closer at the <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22">results for the <em>Book &amp; Libraries</em> category</a> you’ll see that most of the works are ‘Not available online’. That seems weird. Digging deeper, it seems that some of them have been digitised but not made available online. These records include a note saying something like ‘Digital master available ; National Library of Australia’ with a <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier. But the majority of the ‘not online’ records are actually empty – ghostly remnants of some past processing failure.</p>
-<p>If your aim is to harvest details of all digitised works in Trove, you’d probably want to exclude the ‘not online’ records. One way to do this is to set the <code class="docutils literal notranslate"><span class="pre">l-availability</span></code> facet to <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
-<p>Another potential problem is that a search for <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> returns born digital works submitted through the National E-Deposit scheme, as well as digitised resources. Some of the NED resources can only be viewed onsite at a participating library. To exclude these from your results you can set <code class="docutils literal notranslate"><span class="pre">l-availability</span></code> to <code class="docutils literal notranslate"><span class="pre">y/f</span></code> (free access).</p>
-<p>Other NED resources are freely accessible, but only available as PDFs or in an e-book format. If you’re collecting data about digitised resources that you plan to harvest images or text from, then you might want to exclude <em>all</em> NED resources. The NED collection has its own NUC identifier, so you can exclude it from your search by adding <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">nuc:&quot;ANL:NED&quot;</span></code> to the simple search box, or to the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter in an API request.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22%26category%3Dall%26encoding%3Djson%26n%3D0&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>The problem with this approach is that includes a certain amount of ‘noise’. For example, there are no digitised resources in the <code class="docutils literal notranslate"><span class="pre">people</span></code> and <code class="docutils literal notranslate"><span class="pre">list</span></code> categories, and the <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> category uses different identifiers. Any matches in these categories are probably because digitised items are referenced within records or user annotations.</p>
+<p>You might also wonder about the large number of results in the <em>Books &amp; Libraries</em> category – are there really that many digitised books? Probably not. If you look closer at the <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22">results for the <em>Book &amp; Libraries</em> category</a> you’ll see that most of the works are ‘Not available online’. Digging deeper, it seems that some of these have been digitised by the NLA, but the digitised version has not been published online. These records include a note saying something like ‘Digital master available ; National Library of Australia’ with a <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier. However, the majority of the ‘not online’ records are actually empty – ghostly remnants of some past processing failure.</p>
+<p>If your aim is to harvest details of all the NLA digitised works that are available online, you’ll probably want to exclude all the ‘not online’ records. One way to do this is to set the <code class="docutils literal notranslate"><span class="pre">l-availability</span></code> facet to <code class="docutils literal notranslate"><span class="pre">y</span></code>. Here’s how that affects the number of results:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;&quot;nla.obj&quot;&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;l-availability&quot;</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+<span class="n">totals</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]:</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">total</span><span class="p">:</span>
+        <span class="n">totals</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">],</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">})</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thousands</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_0c920">
+  <thead>
+    <tr>
+      <th id="T_0c920_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_0c920_level0_col1" class="col_heading level0 col1" >total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_0c920_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_0c920_row0_col1" class="data row0 col1" >97,836</td>
+    </tr>
+    <tr>
+      <td id="T_0c920_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_0c920_row1_col1" class="data row1 col1" >101,927</td>
+    </tr>
+    <tr>
+      <td id="T_0c920_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_0c920_row2_col1" class="data row2 col1" >247,347</td>
+    </tr>
+    <tr>
+      <td id="T_0c920_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_0c920_row3_col1" class="data row3 col1" >4</td>
+    </tr>
+    <tr>
+      <td id="T_0c920_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_0c920_row4_col1" class="data row4 col1" >1,807,257</td>
+    </tr>
+    <tr>
+      <td id="T_0c920_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_0c920_row5_col1" class="data row5 col1" >39,691</td>
+    </tr>
+    <tr>
+      <td id="T_0c920_row6_col0" class="data row6 col0" >people</td>
+      <td id="T_0c920_row6_col1" class="data row6 col1" >38</td>
+    </tr>
+    <tr>
+      <td id="T_0c920_row7_col0" class="data row7 col0" >research</td>
+      <td id="T_0c920_row7_col1" class="data row7 col1" >357,875</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22%26category%3Dall%26l-availability%3Dy%26encoding%3Djson%26n%3D0&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>Another potential problem is that a search for <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code> returns digitised resources as well as born digital works submitted through the National E-Deposit scheme (NED). Some of the NED resources can only be viewed onsite at a participating library, so they’re not really online. To exclude these from your results you can set <code class="docutils literal notranslate"><span class="pre">l-availability</span></code> to <code class="docutils literal notranslate"><span class="pre">y/f</span></code> (free access):</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;&quot;nla.obj&quot;&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;l-availability&quot;</span><span class="p">:</span> <span class="s2">&quot;y/f&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+<span class="n">totals</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]:</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">total</span><span class="p">:</span>
+        <span class="n">totals</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">],</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">})</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">totals</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thousands</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_a335f">
+  <thead>
+    <tr>
+      <th id="T_a335f_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_a335f_level0_col1" class="col_heading level0 col1" >total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_a335f_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_a335f_row0_col1" class="data row0 col1" >60,112</td>
+    </tr>
+    <tr>
+      <td id="T_a335f_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_a335f_row1_col1" class="data row1 col1" >101,778</td>
+    </tr>
+    <tr>
+      <td id="T_a335f_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_a335f_row2_col1" class="data row2 col1" >245,542</td>
+    </tr>
+    <tr>
+      <td id="T_a335f_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_a335f_row3_col1" class="data row3 col1" >4</td>
+    </tr>
+    <tr>
+      <td id="T_a335f_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_a335f_row4_col1" class="data row4 col1" >1,807,257</td>
+    </tr>
+    <tr>
+      <td id="T_a335f_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_a335f_row5_col1" class="data row5 col1" >32,623</td>
+    </tr>
+    <tr>
+      <td id="T_a335f_row6_col0" class="data row6 col0" >people</td>
+      <td id="T_a335f_row6_col1" class="data row6 col1" >38</td>
+    </tr>
+    <tr>
+      <td id="T_a335f_row7_col0" class="data row7 col0" >research</td>
+      <td id="T_a335f_row7_col1" class="data row7 col1" >354,724</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>While other NED resources are freely accessible, most are only available as PDFs or in an e-book format. If you’re collecting data about digitised works from which you plan to harvest images or text, then you might want to exclude <em>all</em> NED resources. The NED collection has its own NUC identifier, so you can exclude it from your search by adding <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">nuc:&quot;ANL:NED&quot;</span></code> to the simple search box, or to the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter in an API request.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>It’s possible that by excluding all NED resources, you might lose some of the NLA’s digitised works. This could happen if there were multiple versions of a work, one of which had been digitised, and another that had been submitted via the National E-Deposit service. Setting <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">nuc:&quot;ANL:NED&quot;</span></code> would exclude <em>all</em> versions from your results.</p>
+<p>Trove’s grouping of versions into works can cause unexpected results. It’s possible that by excluding all NED resources, you might lose some of the NLA’s digitised works. This could happen if there were multiple versions of a single work, including one that has been digitised, and another that has been submitted via the National E-Deposit service. In this case, setting <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">nuc:&quot;ANL:NED&quot;</span></code> would exclude the work and <em>all</em> its versions from your results.</p>
 </div>
-<p>So what’s the best approach? I’d suggest starting with</p>
-<p>Putting this all together, one way of searching for all resources digitised by the NLA would be to use the query <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span> <span class="pre">NOT</span> <span class="pre">nuc:&quot;ANL:NED&quot;</span></code> and set <code class="docutils literal notranslate"><span class="pre">l-availability</span></code> to <code class="docutils literal notranslate"><span class="pre">y/f</span></code>.</p>
-<p>Discovery or analysis?</p>
+<p><strong>So what’s the best approach?</strong> I’d suggest starting broad by using the query <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code> and setting <code class="docutils literal notranslate"><span class="pre">l-availability</span></code> to <code class="docutils literal notranslate"><span class="pre">y</span></code>. This gives your best chance of finding all online digitised resources. If this is generating too much noise, you can add further limits – though be aware of unintended consequences!</p>
+<p>If you’re using the API to create a dataset of digitised resources, you can inspect metadata records after you’ve downloaded them to decide whether or not to add them to your dataset. This gives you more fine-grained control than you can get by tweaking the search parameters. For example, if an item has been digitised and published online, the <code class="docutils literal notranslate"><span class="pre">identifiers</span></code> field in the metadata should include a url containing ‘nla.obj’ with the <code class="docutils literal notranslate"><span class="pre">linktype</span></code> of <code class="docutils literal notranslate"><span class="pre">fulltext</span></code>. <mark>==Link to accessing data section for more?==</mark></p>
 </section>
 <section id="other-options">
 <h2>Other options<a class="headerlink" href="#other-options" title="Permalink to this heading">#</a></h2>
-<p>There are a couple of other search indexes that can help identify digitised content:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">fullTextInd</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ImageInd</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code></p></li>
-</ul>
-<p>Still much harder than it should be (except for <code class="docutils literal notranslate"><span class="pre">magazine</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> categories of course).</p>
-<p>Various combinations of:</p>
-<ul class="simple">
-<li><p>searching for “nla.obj”</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:DL&quot;</span></code></p></li>
-<li><p>NOT <code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:NED&quot;</span></code>?</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code> (not just NLA, not always accessible)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l-availability</span></code> – to get what’s online</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code></p></li>
-</ul>
-<p>Need to test these combinations to see what works…</p>
+<p>There are a few other ways of finding digitised content, but they’re not as reliable as searching for “nla.obj”. There’s no public documentation about how these indexes are created, so it’s difficult to interpret the results they return. But they might be useful in some circumstances.</p>
+<section id="limit-results-to-the-trove-digital-library">
+<h3>Limit results to the ‘Trove Digital Library’<a class="headerlink" href="#limit-results-to-the-trove-digital-library" title="Permalink to this heading">#</a></h3>
+<p>In the Advanced Search form for the <em>Books &amp; Libraries</em>, <em>Research &amp; Reports</em>, <em>Images, Maps &amp; Artefacts</em>, <em>Diaries, Letters &amp; Archives</em>, and <em>Music, Audio &amp; Video</em> categories, there’s an option to limit the source of the records in your results by selecting from a list of ‘Organisations’. Hidden away in this list is the ‘Trove Digital Library’. Unfortunately, selecting ‘Trove Digital Library’ in Advanced Search doesn’t work at the moment because of a bug in the web interface, but once you know it exists you can manually add it to your searches.</p>
+<figure class="align-default" id="advanced-search-orgs">
+<a class="reference internal image-reference" href="../_images/advanced_search_orgs.png"><img alt="../_images/advanced_search_orgs.png" src="../_images/advanced_search_orgs.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Selecting ‘Trove Digital Library’ in the Advanced Search form – note the NUC identifier in brackets</span><a class="headerlink" href="#advanced-search-orgs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Like other contributing organisations, the ‘Trove Digital Library’ has it’s own NUC identifier: <code class="docutils literal notranslate"><span class="pre">ANL:DL</span></code>. You can use this to limit your search by adding <code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:DL&quot;</span></code> to the simple search box in the web interface, or to the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter in an API request.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3A%22ANL%3ADL%22%26category%3Dall%26encoding%3Djson%26n%3D0&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>The results look ok, but the problem is that some digitised publications aren’t included in the ‘Trove Digital Library’ – here’s <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ADL%22%20NOT%20nuc%3A%22ANL%3ANED%22&amp;l-availability=y%2Ff">some examples</a> from the <em>Books &amp; Libraries</em> category. It’s not clear why this is, and what a search for <code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:DL&quot;</span></code> actually includes (or excludes).</p>
 </section>
 <section id="fulltextind-y">
-<h2><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code><a class="headerlink" href="#fulltextind-y" title="Permalink to this heading">#</a></h2>
-<p>The API Version 2.1 introduction noted that this index allowed you to:</p>
-<blockquote>
-<div><p>Locate items that include full text in Trove that you can access directly in the API record,
-particularly digitised books and journal articles</p>
-</div></blockquote>
-<p>However, only journal articles have full text in their API records. Access to full text of other resources is variable. Includes NED, repositories, Google Books, Internet Archive etc. Not clear when/why this index is checked.</p>
-<p>Current docs:</p>
+<h3><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code><a class="headerlink" href="#fulltextind-y" title="Permalink to this heading">#</a></h3>
+<p>The Trove documentation states that by adding <code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code> to your query you can:</p>
 <blockquote>
 <div><p>find digitised or born digital items that include full text, particularly digitised books &amp; journal articles</p>
 </div></blockquote>
-<p>Searches in books:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=fullTextInd%3Ay"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code></a>: 2,804,463 results</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=fullTextInd%3Ay%20AND%20has%3Acorrectabletext"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span> <span class="pre">AND</span> <span class="pre">has:correctabletext</span></code></a>: 27,161 results</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext"><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code></a>: 41,189 results</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext%20NOT%20fullTextInd%3Ay"><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span> <span class="pre">NOT</span> <span class="pre">fullTextInd:y</span></code></a>: 14,028 results (most empty, not online)</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext%20NOT%20fullTextInd%3Ay&amp;l-availability=n"><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span> <span class="pre">NOT</span> <span class="pre">fullTextInd:y</span></code> and <code class="docutils literal notranslate"><span class="pre">l-availablity:n</span></code></a>: 13,905 (all empty)</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext%20NOT%20fullTextInd%3Ay&amp;l-availability=y"><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span> <span class="pre">NOT</span> <span class="pre">fullTextInd:y</span></code> and <code class="docutils literal notranslate"><span class="pre">l-availablity:y</span></code></a>: 123 (these are digitised and could have text)</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ANED%22&amp;l-availability=y"><code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span> <span class="pre">NOT</span> <span class="pre">nuc:&quot;ANL:NED&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">l-availablity:y</span></code></a>: 39,292</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20has%3Acorrectabletext"><code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span> <span class="pre">has:correctabletext</span></code></a>: 41,189</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20fullTextInd%3Ay"><code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span> <span class="pre">fullTextInd:y</span></code></a>: 57,898 (includes NED content without accessible text)</p></li>
-<li><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=nuc%3A%22ANL%3ADL%22"><code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:DL&quot;</span></code></a>: 30,268</p></li>
-</ul>
-<p>So fullTextInd not much use, lots of stuff without accessible text
-correctabletext seems pretty good? But not in diary category.
-nla.obj plus not NED also ok?
-ANL:DL gets some but not all</p>
-<p>Does <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span> <span class="pre">NOT</span> <span class="pre">nuc:&quot;ANL:NED&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">l-availability=y</span></code> work best across all cats? Need the availability facet because of works that have a “digital master” and an “nla.obj” id but are not online</p>
-<p>Some nla.obj have been digitised but not put online</p>
-<p>fullTextInd:</p>
-<ul class="simple">
-<li><p>NLA digitised with OCRd text?</p></li>
-<li><p>aggregated context with fulltext links?</p></li>
-</ul>
-<table class="table" id="finding-digitised-content">
-<caption><span class="caption-text">Finding digitised content</span><a class="headerlink" href="#finding-digitised-content" title="Permalink to this table">#</a></caption>
-<thead>
-<tr class="row-odd"><th class="head"><p>Category</p></th>
-<th class="head"><p>Query</p></th>
-<th class="head"><p>Results</p></th>
-<th class="head"><p>Notes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>book</p></td>
-<td><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=fullTextInd%3Ay"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code></a></p></td>
-<td><p>2,804,463</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>book</p></td>
-<td><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext"><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code></a></p></td>
-<td><p>41,189</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>book</p></td>
-<td><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22"><code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code></a></p></td>
-<td><p>603,141</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>book</p></td>
-<td><p><a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=fullTextInd%3Ay%20AND%20has%3Acorrectabletext"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span> <span class="pre">AND</span> <span class="pre">has:correctabletext</span></code></a></p></td>
-<td><p>27,161</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>image</p></td>
-<td><p><a class="reference external" href="https://trove.nla.gov.au/search/category/images?keyword=fullTextInd%3Ay"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code></a></p></td>
-<td><p>75,950</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>image</p></td>
-<td><p><a class="reference external" href="https://trove.nla.gov.au/search/category/images?keyword=has%3Acorrectabletext"><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code></a></p></td>
-<td><p>100</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>image</p></td>
-<td><p><a class="reference external" href="https://trove.nla.gov.au/search/category/images?keyword=%22nla.obj%22"><code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code></a></p></td>
-<td><p>281,890</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>image</p></td>
-<td><p><a class="reference external" href="https://trove.nla.gov.au/search/category/images?keyword=%22nla.obj%22&amp;l-availability=y"><code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">l-availability=y</span></code></a></p></td>
-<td><p>247,356</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>It’s not obvious from this description, but this includes much more than just NLA digitised resources and publications submitted through NED. Using <code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code> without other filters will return a wide range of content aggregated from multiple sources, including full-text publications that require authentication to access. Many of these will be in PDF format. It’s not a reliable way of finding digitised items with downloadable text.</p>
+<p>Furthermore, <code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code> doesn’t seem to consistently applied to NLA’s own digitised resources. For example, it seems to exclude a number of periodicals with digitised issues. Compare this search for <em>Platt’s Almanac</em> <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22Platt%27s%20almanac,%20diary,%20and%20South%20Australian%20directory%22%20fullTextInd%3Ay">with</a> and <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22Platt%27s%20almanac,%20diary,%20and%20South%20Australian%20directory%22&amp;l-availability=y">without</a> <code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code>.</p>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code> does seem to exclude NLA digitised resources that have no OCRd text. This might be useful in combination with a “nla.obj” search, but again there might be unintended consequences.</p>
 </section>
-<section id="journal-articles">
-<h2>Journal articles<a class="headerlink" href="#journal-articles" title="Permalink to this heading">#</a></h2>
-<p>Advertisements on multiple pages in an issue grouped as a single work record for discovery: <a class="reference external" href="https://trove.nla.gov.au/work/232859472?keyword=fullTextInd%3Ay">https://trove.nla.gov.au/work/232859472?keyword=fullTextInd%3Ay</a></p>
-<p>Can access as separate versions via the API: <a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F232859472%3Fencoding%3Djson%26include%3Dall&amp;amp;comment=">https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F232859472%3Fencoding%3Djson%26include%3Dall&amp;comment=</a></p>
-<p>Digitised version doesn’t load: <a class="reference external" href="https://trove.nla.gov.au/work/6827686/version/266742058">https://trove.nla.gov.au/work/6827686/version/266742058</a></p>
-<p>492,000 ghost records: <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ANED%22&amp;amp;l-availability=n&amp;amp;l-format=Article%2FOther%20article">https://trove.nla.gov.au/search/category/books?keyword=”nla.obj” NOT nuc%3A”ANL%3ANED”&amp;l-availability=n&amp;l-format=Article%2FOther article</a></p>
+<section id="has-correctabletext">
+<h3><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code><a class="headerlink" href="#has-correctabletext" title="Permalink to this heading">#</a></h3>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code> to your query limits the results to works that have OCRd text you can correct in the Trove web interface.</p>
+<p>If the text content of a resource is ‘correctable’ then you’d expect it to be an NLA digitised item with OCRd text you can download. So adding <code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code> to your query <em>should</em> limit the results to digitised items with downloadable text. This seems to be the case (though watch out for more ghost records), but again it’s not clear what you are excluding – is every item with OCRd text correctable?</p>
+</section>
+<section id="imageind">
+<h3><code class="docutils literal notranslate"><span class="pre">imageInd</span></code><a class="headerlink" href="#imageind" title="Permalink to this heading">#</a></h3>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">imageInd:thumbnail</span></code> to your query limits results to works that have a thumbnail image.</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code> and <code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code> filter records based on whether they have accessible text. But there are many digitised resources that either contain no text at all, or have no text that can be extracted by OCR. Adding <code class="docutils literal notranslate"><span class="pre">imageInd:thumbnail</span></code> to your search can help find these items. However, like <code class="docutils literal notranslate"><span class="pre">fullTextInd</span></code> this index is applied to aggregated collections as well as digitised resources, so your results can include all sorts of content, from book covers to pictures of politicians. There’s also no guarantee that an item with a thumbnail will provide a larger image for download.</p>
+</section>
 </section>
 </section>
 
@@ -824,11 +837,14 @@ ANL:DL gets some but not all</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-results-to-the-trove-digital-library">Limit results to the ‘Trove Digital Library’</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-records-including-nla-obj">Search for records including <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-options">Other options</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fulltextind-y"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#journal-articles">Journal articles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-options">Other options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-results-to-the-trove-digital-library">Limit results to the ‘Trove Digital Library’</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fulltextind-y"><code class="docutils literal notranslate"><span class="pre">fullTextInd:y</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#has-correctabletext"><code class="docutils literal notranslate"><span class="pre">has:correctabletext</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imageind"><code class="docutils literal notranslate"><span class="pre">imageInd</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
