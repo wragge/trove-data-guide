@@ -45,21 +45,13 @@ glue("today", today, display=False)
 
 Trove provides a platform for the delivery of digitised content from the National Library of Australia and its partners. This digitised content is easy to find in the *Newspapers & gazettes* and *Magazines & newsletters* categories – they're full of it! But it's not so easy to find digitised content in other categories where it's mixed with works aggregated from a range of different sources.
 
-There are a few different approaches to finding digitised content. They all have potential problems, so it's a matter of working out what will best meet your research needs.
+There are a few different approaches to finding digitised content, but they all have potential problems. While I highlight what I think is the most reliable option, it's really a matter of working out what will best meet your research needs.
 
-### Limit results to the 'Trove Digital Library'
++++
 
-In the Advanced Search form for the *Books & Libraries*, *Research & Reports*, *Images, Maps & Artefacts*, *Diaries, Letters & Archives*, and *Music, Audio & Video* categories, there's an option to limit the source of the records in your results by selecting from a list of 'Organisations'. Hidden away in this list is the 'Trove Digital Library'. Unfortunately, selecting 'Trove Digital Library' in Advanced Search doesn't work at the moment because of a bug in the web interface, but once you know it exists you can manually add it to your searches.
+### Search for records including `nla.obj`
 
-```{figure} /images/advanced_search_orgs.png
-:name: advanced-search-orgs
-:width: 600
-Selecting 'Trove Digital Library' in the Advanced Search form – note the NUC identifier in brackets
-```
-
-Like other contributing organisations, the 'Trove Digital Library' has it's own NUC identifier: `ANL:DL`. You can use this to limit your search by adding `nuc:"ANL:DL"` to the simple search box in the web interface, or to the `q` parameter in an API request.
-
-Here's the number of results per category on {glue:text}`today`:
+All of the digitised resources in Trove (except for *Newspapers & Gazettes*) have NLA identifiers of the form `nla.obj-[NUMBER]`. So a search for `"nla.obj"` should return all digitised resources. Here's the results of running this search across all categories:
 
 ```{code-cell} ipython3
 ---
@@ -68,36 +60,7 @@ slideshow:
   slide_type: ''
 tags: [hide-input]
 ---
-params = {"q": 'nuc:"ANL:DL"', "category": "all", "encoding": "json", "n": 0}
-
-headers = {"X-API-KEY": YOUR_API_KEY}
-totals_anl_dl = []
-
-response = requests.get(
-    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
-)
-data = response.json()
-for cat in data["category"]:
-    total = cat["records"]["total"]
-    if total:
-        totals_anl_dl.append({"category": cat["code"], "total": total})
-df_anl_dl = pd.DataFrame(totals_anl_dl)
-
-df_anl_dl.style.format(thousands=",").hide()
-```
-
-[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3A%22ANL%3ADL%22%26category%3Dall%26encoding%3Djson%26n%3D0&comment=)
-
-The results look ok, but the problem is that there are some digitised publications that aren't part of the 'Trove Digital Library' – here's [some examples](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ADL%22%20NOT%20nuc%3A%22ANL%3ANED%22&l-availability=y%2Ff) from the *Books & Libraries* category. It's just not clear what a search for `nuc:"ANL:DL"` actually includes (or excludes).
-
-+++
-
-### Search for records including `nla.obj`
-
-All of the digitised resources in Trove (except for *Newspapers & Gazettes*) have NLA identifiers of the form `nla.obj-[NUMBER]`. So a search for `nla.obj` should return all digitised resources.
-
-```{code-cell} ipython3
-params = {"q": 'text:"nla.obj"', "category": "all", "encoding": "json", "n": 0}
+params = {"q": '"nla.obj"', "category": "all", "encoding": "json", "n": 0}
 
 headers = {"X-API-KEY": YOUR_API_KEY}
 totals_nlaobj = []
@@ -115,149 +78,137 @@ df_nlaobj = pd.DataFrame(totals_nlaobj)
 df_nlaobj.style.format(thousands=",").hide()
 ```
 
-The problem with this approach is not that things are missing from the results, but that so much is included. There are significantly more resources in most categories than were returned by the `nuc:"ANL:DL"`, but the appearance of the `people` and `list` categories indicates that this search is pulling in some records that don't describe digitised works.
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-If you look closer at the [results for the *Book & Libraries* category](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22) you'll see that most of the works are 'Not available online'. That seems weird. Digging deeper, it seems that some of them have been digitised but not made available online. These records include a note saying something like 'Digital master available ; National Library of Australia' with a `nla.obj` identifier. But the majority of the 'not online' records are actually empty – ghostly remnants of some past processing failure.
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22%26category%3Dall%26encoding%3Djson%26n%3D0&comment=)
 
-If your aim is to harvest details of all digitised works in Trove, you'd probably want to exclude the 'not online' records. One way to do this is to set the `l-availability` facet to `y`.
+The problem with this approach is that includes a certain amount of 'noise'. For example, there are no digitised resources in the `people` and `list` categories, and the `newspaper` category uses different identifiers. Any matches in these categories are probably because digitised items are referenced within records or user annotations.
 
-Another potential problem is that a search for `nla.obj` returns born digital works submitted through the National E-Deposit scheme, as well as digitised resources. Some of the NED resources can only be viewed onsite at a participating library. To exclude these from your results you can set `l-availability` to `y/f` (free access).
+You might also wonder about the large number of results in the *Books & Libraries* category – are there really that many digitised books? Probably not. If you look closer at the [results for the *Book & Libraries* category](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22) you'll see that most of the works are 'Not available online'. Digging deeper, it seems that some of these have been digitised by the NLA, but the digitised version has not been published online. These records include a note saying something like 'Digital master available ; National Library of Australia' with a `nla.obj` identifier. However, the majority of the 'not online' records are actually empty – ghostly remnants of some past processing failure.
 
-Other NED resources are freely accessible, but only available as PDFs or in an e-book format. If you're collecting data about digitised resources that you plan to harvest images or text from, then you might want to exclude *all* NED resources. The NED collection has its own NUC identifier, so you can exclude it from your search by adding `NOT nuc:"ANL:NED"` to the simple search box, or to the `q` parameter in an API request.
+If your aim is to harvest details of all the NLA digitised works that are available online, you'll probably want to exclude all the 'not online' records. One way to do this is to set the `l-availability` facet to `y`. Here's how that affects the number of results:
 
-```{warning}
-It's possible that by excluding all NED resources, you might lose some of the NLA's digitised works. This could happen if there were multiple versions of a work, one of which had been digitised, and another that had been submitted via the National E-Deposit service. Setting `NOT nuc:"ANL:NED"` would exclude *all* versions from your results.
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+params = {
+    "q": '"nla.obj"',
+    "category": "all",
+    "l-availability": "y",
+    "encoding": "json",
+    "n": 0,
+}
+
+headers = {"X-API-KEY": YOUR_API_KEY}
+totals = []
+
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
+data = response.json()
+for cat in data["category"]:
+    total = cat["records"]["total"]
+    if total:
+        totals.append({"category": cat["code"], "total": total})
+
+pd.DataFrame(totals).style.format(thousands=",").hide()
 ```
 
-So what's the best approach? I'd suggest starting with 
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22%26category%3Dall%26l-availability%3Dy%26encoding%3Djson%26n%3D0&comment=)
 
-Putting this all together, one way of searching for all resources digitised by the NLA would be to use the query `"nla.obj" NOT nuc:"ANL:NED"` and set `l-availability` to `y/f`.
+Another potential problem is that a search for `"nla.obj"` returns digitised resources as well as born digital works submitted through the National E-Deposit scheme (NED). Some of the NED resources can only be viewed onsite at a participating library, so they're not really online. To exclude these from your results you can set `l-availability` to `y/f` (free access):
 
-Discovery or analysis?
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+params = {
+    "q": '"nla.obj"',
+    "category": "all",
+    "l-availability": "y/f",
+    "encoding": "json",
+    "n": 0,
+}
+
+headers = {"X-API-KEY": YOUR_API_KEY}
+totals = []
+
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
+data = response.json()
+for cat in data["category"]:
+    total = cat["records"]["total"]
+    if total:
+        totals.append({"category": cat["code"], "total": total})
+
+pd.DataFrame(totals).style.format(thousands=",").hide()
+```
+
+While other NED resources are freely accessible, most are only available as PDFs or in an e-book format. If you're collecting data about digitised works from which you plan to harvest images or text, then you might want to exclude *all* NED resources. The NED collection has its own NUC identifier, so you can exclude it from your search by adding `NOT nuc:"ANL:NED"` to the simple search box, or to the `q` parameter in an API request.
+
+```{warning}
+Trove's grouping of versions into works can cause unexpected results. It's possible that by excluding all NED resources, you might lose some of the NLA's digitised works. This could happen if there were multiple versions of a single work, including one that has been digitised, and another that has been submitted via the National E-Deposit service. In this case, setting `NOT nuc:"ANL:NED"` would exclude the work and *all* its versions from your results. 
+```
+
+**So what's the best approach?** I'd suggest starting broad by using the query `"nla.obj"` and setting `l-availability` to `y`. This gives your best chance of finding all online digitised resources. If this is generating too much noise, you can add further limits – though be aware of unintended consequences!
+
+If you're using the API to create a dataset of digitised resources, you can inspect metadata records after you've downloaded them to decide whether or not to add them to your dataset. This gives you more fine-grained control than you can get by tweaking the search parameters. For example, if an item has been digitised and published online, the `identifiers` field in the metadata should include a url containing 'nla.obj' with the `linktype` of `fulltext`. <mark>==Link to accessing data section for more?==</mark>
 
 +++
 
-### Other options
+## Other options
 
-There are a couple of other search indexes that can help identify digitised content:
+There are a few other ways of finding digitised content, but they're not as reliable as searching for "nla.obj". There's no public documentation about how these indexes are created, so it's difficult to interpret the results they return. But they might be useful in some circumstances.
 
-- `fullTextInd`
-- `ImageInd`
-- `has:correctabletext`
+### Limit results to the 'Trove Digital Library'
 
+In the Advanced Search form for the *Books & Libraries*, *Research & Reports*, *Images, Maps & Artefacts*, *Diaries, Letters & Archives*, and *Music, Audio & Video* categories, there's an option to limit the source of the records in your results by selecting from a list of 'Organisations'. Hidden away in this list is the 'Trove Digital Library'. Unfortunately, selecting 'Trove Digital Library' in Advanced Search doesn't work at the moment because of a bug in the web interface, but once you know it exists you can manually add it to your searches.
 
-+++
+```{figure} /images/advanced_search_orgs.png
+:name: advanced-search-orgs
+:width: 600
+Selecting 'Trove Digital Library' in the Advanced Search form – note the NUC identifier in brackets
+```
 
-Still much harder than it should be (except for `magazine` & `newspaper` categories of course).
+Like other contributing organisations, the 'Trove Digital Library' has it's own NUC identifier: `ANL:DL`. You can use this to limit your search by adding `nuc:"ANL:DL"` to the simple search box in the web interface, or to the `q` parameter in an API request.
 
-Various combinations of:
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3A%22ANL%3ADL%22%26category%3Dall%26encoding%3Djson%26n%3D0&comment=)
 
-- searching for "nla.obj"
-- `nuc:"ANL:DL"` 
-- NOT `nuc:"ANL:NED"`?
-- `fullTextInd:y` (not just NLA, not always accessible)
-- `l-availability` -- to get what's online
-- `has:correctabletext`
-
-Need to test these combinations to see what works...
+The results look ok, but the problem is that some digitised publications aren't included in the 'Trove Digital Library' – here's [some examples](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ADL%22%20NOT%20nuc%3A%22ANL%3ANED%22&l-availability=y%2Ff) from the *Books & Libraries* category. It's not clear why this is, and what a search for `nuc:"ANL:DL"` actually includes (or excludes).
 
 +++
 
-## `fullTextInd:y`
+### `fullTextInd:y`
 
-The API Version 2.1 introduction noted that this index allowed you to:
-
-> Locate items that include full text in Trove that you can access directly in the API record,
-particularly digitised books and journal articles
-
-However, only journal articles have full text in their API records. Access to full text of other resources is variable. Includes NED, repositories, Google Books, Internet Archive etc. Not clear when/why this index is checked.
-
-Current docs:
+The Trove documentation states that by adding `fullTextInd:y` to your query you can:
 
 > find digitised or born digital items that include full text, particularly digitised books & journal articles
 
-Searches in books:
+It's not obvious from this description, but this includes much more than just NLA digitised resources and publications submitted through NED. Using `fullTextInd:y` without other filters will return a wide range of content aggregated from multiple sources, including full-text publications that require authentication to access. Many of these will be in PDF format. It's not a reliable way of finding digitised items with downloadable text.
 
-- [`fullTextInd:y`](https://trove.nla.gov.au/search/category/books?keyword=fullTextInd%3Ay): 2,804,463 results
-- [`fullTextInd:y AND has:correctabletext`](https://trove.nla.gov.au/search/category/books?keyword=fullTextInd%3Ay%20AND%20has%3Acorrectabletext): 27,161 results
-- [`has:correctabletext`](https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext): 41,189 results
-- [`has:correctabletext NOT fullTextInd:y`](https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext%20NOT%20fullTextInd%3Ay): 14,028 results (most empty, not online)
-- [`has:correctabletext NOT fullTextInd:y` and `l-availablity:n`](https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext%20NOT%20fullTextInd%3Ay&l-availability=n): 13,905 (all empty)
-- [`has:correctabletext NOT fullTextInd:y` and `l-availablity:y`](https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext%20NOT%20fullTextInd%3Ay&l-availability=y): 123 (these are digitised and could have text)
-- [`"nla.obj" NOT nuc:"ANL:NED"` and `l-availablity:y`](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ANED%22&l-availability=y): 39,292
-- [`"nla.obj" has:correctabletext`](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20has%3Acorrectabletext): 41,189
-- [`"nla.obj" fullTextInd:y`](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20fullTextInd%3Ay): 57,898 (includes NED content without accessible text)
-- [`nuc:"ANL:DL"`](https://trove.nla.gov.au/search/category/books?keyword=nuc%3A%22ANL%3ADL%22): 30,268
+Furthermore, `fullTextInd:y` doesn't seem to consistently applied to NLA's own digitised resources. For example, it seems to exclude a number of periodicals with digitised issues. Compare this search for *Platt's Almanac* [with](https://trove.nla.gov.au/search/category/books?keyword=%22Platt%27s%20almanac,%20diary,%20and%20South%20Australian%20directory%22%20fullTextInd%3Ay) and [without](https://trove.nla.gov.au/search/category/books?keyword=%22Platt%27s%20almanac,%20diary,%20and%20South%20Australian%20directory%22&l-availability=y) `fullTextInd:y`.
 
-So fullTextInd not much use, lots of stuff without accessible text
-correctabletext seems pretty good? But not in diary category.
-nla.obj plus not NED also ok?
-ANL:DL gets some but not all
+Adding `fullTextInd:y` does seem to exclude NLA digitised resources that have no OCRd text. This might be useful in combination with a "nla.obj" search, but again there might be unintended consequences.
 
-Does `"nla.obj" NOT nuc:"ANL:NED"` and `l-availability=y` work best across all cats? Need the availability facet because of works that have a "digital master" and an "nla.obj" id but are not online
+### `has:correctabletext`
 
-Some nla.obj have been digitised but not put online
+Adding `has:correctabletext` to your query limits the results to works that have OCRd text you can correct in the Trove web interface.
 
-fullTextInd:
+If the text content of a resource is 'correctable' then you'd expect it to be an NLA digitised item with OCRd text you can download. So adding `has:correctabletext` to your query *should* limit the results to digitised items with downloadable text. This seems to be the case (though watch out for more ghost records), but again it's not clear what you are excluding – is every item with OCRd text correctable? 
 
-- NLA digitised with OCRd text?
-- aggregated context with fulltext links?
+### `imageInd`
 
+Adding `imageInd:thumbnail` to your query limits results to works that have a thumbnail image.
 
-```{list-table} Finding digitised content
-:header-rows: 1
-:name: finding-digitised-content
-* - Category
-  - Query
-  - Results
-  - Notes
-* - book
-  - [`fullTextInd:y`](https://trove.nla.gov.au/search/category/books?keyword=fullTextInd%3Ay)
-  - 2,804,463
-  - 
-* - book
-  - [`has:correctabletext`](https://trove.nla.gov.au/search/category/books?keyword=has%3Acorrectabletext)
-  - 41,189
-  -
-* - book
-  - [`"nla.obj"`](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22)
-  - 603,141
-  - 
-* - book
-  - [`fullTextInd:y AND has:correctabletext`](https://trove.nla.gov.au/search/category/books?keyword=fullTextInd%3Ay%20AND%20has%3Acorrectabletext)
-  - 27,161
-  - 
-* - image
-  - [`fullTextInd:y`](https://trove.nla.gov.au/search/category/images?keyword=fullTextInd%3Ay)
-  - 75,950
-  - 
-* - image
-  - [`has:correctabletext`](https://trove.nla.gov.au/search/category/images?keyword=has%3Acorrectabletext)
-  - 100
-  -
-* - image
-  - [`"nla.obj"`](https://trove.nla.gov.au/search/category/images?keyword=%22nla.obj%22)
-  - 281,890
-  - 
-* - image
-  - [`"nla.obj"` and `l-availability=y`](https://trove.nla.gov.au/search/category/images?keyword=%22nla.obj%22&l-availability=y)
-  - 247,356
-  - 
-```
-
-+++
-
-## Journal articles
-
-Advertisements on multiple pages in an issue grouped as a single work record for discovery: https://trove.nla.gov.au/work/232859472?keyword=fullTextInd%3Ay
-
-Can access as separate versions via the API: https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F232859472%3Fencoding%3Djson%26include%3Dall&comment=
-
-+++
-
-Digitised version doesn't load: https://trove.nla.gov.au/work/6827686/version/266742058
-
-492,000 ghost records: https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ANED%22&l-availability=n&l-format=Article%2FOther%20article
+Both `fullTextInd:y` and `has:correctabletext` filter records based on whether they have accessible text. But there are many digitised resources that either contain no text at all, or have no text that can be extracted by OCR. Adding `imageInd:thumbnail` to your search can help find these items. However, like `fullTextInd` this index is applied to aggregated collections as well as digitised resources, so your results can include all sorts of content, from book covers to pictures of politicians. There's also no guarantee that an item with a thumbnail will provide a larger image for download.
 
 ```{code-cell} ipython3
 
