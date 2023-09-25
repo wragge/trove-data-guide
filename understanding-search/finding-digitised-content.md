@@ -20,6 +20,12 @@ This guide is currently under development. For more information and discussion s
 ```
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
 import os
 from datetime import datetime
 
@@ -37,6 +43,7 @@ YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 editable: true
 slideshow:
   slide_type: ''
+tags: [remove-cell]
 ---
 today = datetime.now().strftime("%d %B %Y")
 

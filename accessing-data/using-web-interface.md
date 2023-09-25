@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Downloading data from the Trove web interface
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
@@ -48,7 +50,7 @@ The official Trove Help includes a page on [Downloading](https://trove.nla.gov.a
 Example of the download tab in the digitised magazines and newsletters viewer
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 Items that are arranged in hierarchical structures, such as some images, maps, and manuscripts, might have an option to download a 'collection'. If so a **Download** button will appear on the collection page. This isn't always available, and there can be limits on how many items in a collection you can download at once. To find the 'collection' page, try using the breadcrumb links to move up the record hierarchy.
 
@@ -132,7 +134,7 @@ While many of the same download options are available across different Trove cat
 * - Diaries, letters & archives
   - collection
   - image
-  - Images are packaged in a zip file with an additional page of copyright information.
+  - Images are packaged in a zip file with an additional page of copyright information. <mark>==Need to explain that you only get top images at that level in the collection (not the collections/images below the current level)==</mark>
 * - Diaries, letters & archives
   - collection
   - PDF
@@ -177,7 +179,7 @@ The **GLAM Workbench** provides some useful workarounds where download options a
   - There's no option to download individual articles as images, PDFs, or text. While you search for individual articles, the viewer only presents pages. This is different to the newspapers where the viewer presents individual articles.
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{admonition} What about image resolutions?
 :class: note

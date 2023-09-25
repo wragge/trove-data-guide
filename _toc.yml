@@ -32,6 +32,7 @@ parts:
           - file: understanding-search/simple-search-options
           - file: understanding-search/facets
           - file: understanding-search/date-searches
+          - file: understanding-search/finding-digitised-content
   - caption: Collections and contexts
     numbered: 2
     maxdepth: 3
