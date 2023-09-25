@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Finding NLA digitised content you can download &#8212; Trove Data Guide</title>
+    <title>9.5. Finding NLA digitised content you can download &#8212; Trove Data Guide</title>
   
   
   
@@ -65,10 +65,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/finding-digitised-content.8f4c27aa-9f51-4a1c-aa31-00f4194dc0e9.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/finding-digitised-content.2e388a46-9f67-4fc5-9849-44be39b6a7ef.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/finding-digitised-content';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Collections and contexts" href="../collections-and-contexts/collections-and-contexts.html" />
+    <link rel="prev" title="9.4. Date searches" href="date-searches.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,12 +185,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../types-of-data/types-of-data.html">8. Types of data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding search</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="understanding-search.html">9. Understanding search</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="understanding-search.html">9. Understanding search</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="discovery-versus-analysis.html">9.1. Discovery versus analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="simple-search-options.html">9.2. ‘Simple’ search options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="facets.html">9.3. Facets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="date-searches.html">9.4. Date searches</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.5. Finding NLA digitised content you can download</a></li>
 </ul>
 </li>
 </ul>
@@ -464,35 +467,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="finding-nla-digitised-content-you-can-download">
-<h1>Finding NLA digitised content you can download<a class="headerlink" href="#finding-nla-digitised-content-you-can-download" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9.5. </span>Finding NLA digitised content you can download<a class="headerlink" href="#finding-nla-digitised-content-you-can-download" title="Permalink to this heading">#</a></h1>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
-<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-
-<span class="n">load_dotenv</span><span class="p">()</span>
-<span class="n">YOUR_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TROVE_API_KEY&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %B %Y&quot;</span><span class="p">)</span>
-
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;today&quot;</span><span class="p">,</span> <span class="n">today</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 <p>Trove provides a platform for the delivery of digitised content from the National Library of Australia and its partners. This digitised content is easy to find in the <em>Newspapers &amp; gazettes</em> and <em>Magazines &amp; newsletters</em> categories – they’re full of it! But it’s not so easy to find digitised content in other categories where it’s mixed with works aggregated from a range of different sources.</p>
 <p>There are a few different approaches to finding digitised content, but they all have potential problems. While I highlight what I think is the most reliable option, it’s really a matter of working out what will best meet your research needs.</p>
@@ -529,49 +507,49 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_9eab8">
+<table id="T_edf71">
   <thead>
     <tr>
-      <th id="T_9eab8_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_9eab8_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_edf71_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_edf71_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_9eab8_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_9eab8_row0_col1" class="data row0 col1" >637,839</td>
+      <td id="T_edf71_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_edf71_row0_col1" class="data row0 col1" >638,292</td>
     </tr>
     <tr>
-      <td id="T_9eab8_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_9eab8_row1_col1" class="data row1 col1" >164,920</td>
+      <td id="T_edf71_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_edf71_row1_col1" class="data row1 col1" >165,380</td>
     </tr>
     <tr>
-      <td id="T_9eab8_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_9eab8_row2_col1" class="data row2 col1" >281,881</td>
+      <td id="T_edf71_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_edf71_row2_col1" class="data row2 col1" >281,893</td>
     </tr>
     <tr>
-      <td id="T_9eab8_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_9eab8_row3_col1" class="data row3 col1" >4</td>
+      <td id="T_edf71_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_edf71_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_9eab8_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_9eab8_row4_col1" class="data row4 col1" >1,807,257</td>
+      <td id="T_edf71_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_edf71_row4_col1" class="data row4 col1" >1,807,138</td>
     </tr>
     <tr>
-      <td id="T_9eab8_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_9eab8_row5_col1" class="data row5 col1" >57,408</td>
+      <td id="T_edf71_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_edf71_row5_col1" class="data row5 col1" >57,420</td>
     </tr>
     <tr>
-      <td id="T_9eab8_row6_col0" class="data row6 col0" >newspaper</td>
-      <td id="T_9eab8_row6_col1" class="data row6 col1" >1,853</td>
+      <td id="T_edf71_row6_col0" class="data row6 col0" >newspaper</td>
+      <td id="T_edf71_row6_col1" class="data row6 col1" >1,853</td>
     </tr>
     <tr>
-      <td id="T_9eab8_row7_col0" class="data row7 col0" >people</td>
-      <td id="T_9eab8_row7_col1" class="data row7 col1" >38</td>
+      <td id="T_edf71_row7_col0" class="data row7 col0" >people</td>
+      <td id="T_edf71_row7_col1" class="data row7 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_9eab8_row8_col0" class="data row8 col0" >research</td>
-      <td id="T_9eab8_row8_col1" class="data row8 col1" >361,316</td>
+      <td id="T_edf71_row8_col0" class="data row8 col0" >research</td>
+      <td id="T_edf71_row8_col1" class="data row8 col1" >362,632</td>
     </tr>
   </tbody>
 </table>
@@ -616,45 +594,45 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_0c920">
+<table id="T_b9f8f">
   <thead>
     <tr>
-      <th id="T_0c920_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_0c920_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_b9f8f_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_b9f8f_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_0c920_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_0c920_row0_col1" class="data row0 col1" >97,836</td>
+      <td id="T_b9f8f_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_b9f8f_row0_col1" class="data row0 col1" >97,923</td>
     </tr>
     <tr>
-      <td id="T_0c920_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_0c920_row1_col1" class="data row1 col1" >101,927</td>
+      <td id="T_b9f8f_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_b9f8f_row1_col1" class="data row1 col1" >102,172</td>
     </tr>
     <tr>
-      <td id="T_0c920_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_0c920_row2_col1" class="data row2 col1" >247,347</td>
+      <td id="T_b9f8f_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_b9f8f_row2_col1" class="data row2 col1" >247,359</td>
     </tr>
     <tr>
-      <td id="T_0c920_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_0c920_row3_col1" class="data row3 col1" >4</td>
+      <td id="T_b9f8f_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_b9f8f_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_0c920_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_0c920_row4_col1" class="data row4 col1" >1,807,257</td>
+      <td id="T_b9f8f_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_b9f8f_row4_col1" class="data row4 col1" >1,807,138</td>
     </tr>
     <tr>
-      <td id="T_0c920_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_0c920_row5_col1" class="data row5 col1" >39,691</td>
+      <td id="T_b9f8f_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_b9f8f_row5_col1" class="data row5 col1" >39,703</td>
     </tr>
     <tr>
-      <td id="T_0c920_row6_col0" class="data row6 col0" >people</td>
-      <td id="T_0c920_row6_col1" class="data row6 col1" >38</td>
+      <td id="T_b9f8f_row6_col0" class="data row6 col0" >people</td>
+      <td id="T_b9f8f_row6_col1" class="data row6 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_0c920_row7_col0" class="data row7 col0" >research</td>
-      <td id="T_0c920_row7_col1" class="data row7 col1" >357,875</td>
+      <td id="T_b9f8f_row7_col0" class="data row7 col0" >research</td>
+      <td id="T_b9f8f_row7_col1" class="data row7 col1" >359,191</td>
     </tr>
   </tbody>
 </table>
@@ -697,45 +675,45 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_a335f">
+<table id="T_338b0">
   <thead>
     <tr>
-      <th id="T_a335f_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_a335f_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_338b0_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_338b0_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_a335f_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_a335f_row0_col1" class="data row0 col1" >60,112</td>
+      <td id="T_338b0_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_338b0_row0_col1" class="data row0 col1" >60,164</td>
     </tr>
     <tr>
-      <td id="T_a335f_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_a335f_row1_col1" class="data row1 col1" >101,778</td>
+      <td id="T_338b0_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_338b0_row1_col1" class="data row1 col1" >102,023</td>
     </tr>
     <tr>
-      <td id="T_a335f_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_a335f_row2_col1" class="data row2 col1" >245,542</td>
+      <td id="T_338b0_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_338b0_row2_col1" class="data row2 col1" >245,555</td>
     </tr>
     <tr>
-      <td id="T_a335f_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_a335f_row3_col1" class="data row3 col1" >4</td>
+      <td id="T_338b0_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_338b0_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_a335f_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_a335f_row4_col1" class="data row4 col1" >1,807,257</td>
+      <td id="T_338b0_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_338b0_row4_col1" class="data row4 col1" >1,807,138</td>
     </tr>
     <tr>
-      <td id="T_a335f_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_a335f_row5_col1" class="data row5 col1" >32,623</td>
+      <td id="T_338b0_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_338b0_row5_col1" class="data row5 col1" >32,627</td>
     </tr>
     <tr>
-      <td id="T_a335f_row6_col0" class="data row6 col0" >people</td>
-      <td id="T_a335f_row6_col1" class="data row6 col1" >38</td>
+      <td id="T_338b0_row6_col0" class="data row6 col0" >people</td>
+      <td id="T_338b0_row6_col1" class="data row6 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_a335f_row7_col0" class="data row7 col0" >research</td>
-      <td id="T_a335f_row7_col1" class="data row7 col1" >354,724</td>
+      <td id="T_338b0_row7_col0" class="data row7 col0" >research</td>
+      <td id="T_338b0_row7_col1" class="data row7 col1" >356,040</td>
     </tr>
   </tbody>
 </table>
@@ -758,7 +736,7 @@ document.write(`
 <figure class="align-default" id="advanced-search-orgs">
 <a class="reference internal image-reference" href="../_images/advanced_search_orgs.png"><img alt="../_images/advanced_search_orgs.png" src="../_images/advanced_search_orgs.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Selecting ‘Trove Digital Library’ in the Advanced Search form – note the NUC identifier in brackets</span><a class="headerlink" href="#advanced-search-orgs" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Selecting ‘Trove Digital Library’ in the Advanced Search form – note the NUC identifier in brackets</span><a class="headerlink" href="#advanced-search-orgs" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Like other contributing organisations, the ‘Trove Digital Library’ has it’s own NUC identifier: <code class="docutils literal notranslate"><span class="pre">ANL:DL</span></code>. You can use this to limit your search by adding <code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANL:DL&quot;</span></code> to the simple search box in the web interface, or to the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter in an API request.</p>
@@ -819,6 +797,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="date-searches.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.4. </span>Date searches</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../collections-and-contexts/collections-and-contexts.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Collections and contexts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
