@@ -78,16 +78,27 @@ parts:
     chapters:
       - file: pathways/pathways
   - caption: How to...
+    numbered: 2
     maxdepth: 3
     chapters:
       - file: how-to/newspapers/newspapers-and-gazettes
         sections:
           - file: how-to/newspapers/querypic
           - file: how-to/newspapers/get-newspaper-issue-article-pdfs
-          - file: how-to/newspapers/international-newspaper-titles
+          - file: how-to/newspapers/get-ocr-coordinates
           - file: how-to/newspapers/create-newspaper-articles-dataset
-      - file: how-to/web-interface/download-higher-resolution-images
-      - file: how-to/harvest-complete-results
+      - file: how-to/web-interface/web-interface
+        sections:
+          - file: how-to/web-interface/download-higher-resolution-images
+          - file: how-to/web-interface/use-bulk-export
+          - file: how-to/web-interface/use-lists
+          - file: how-to/web-interface/use-zotero
+      - file: how-to/api/api
+        sections:
+          - file: how-to/api/harvest-complete-results
+      - file: how-to/digitised/digitised-resources
+        sections:
+          - file: how-to/digitised/get-collection-items
   - chapters:
     - file: glossary
     - file: genindex
