@@ -11,9 +11,121 @@ kernelspec:
   name: python3
 ---
 
+# Digitised resources
+
+Resources (other than newspapers and gazettes) that have been digitised by the NLA and partners and delivered through Trove.
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# Digitised resources
+```{attention}
+This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+Introduce the complexities of categories and formats.
+
+[](/understanding-search/finding-digitised-content.md)
+
+Explain differences between items and collections.
+
+
+Categories containing digitised resources (other than newspapers):
+
+- Books & Libraries
+- Magazines & Newsletters
+- Images, Maps & Artefacts
+- Research & Reports
+- Diaries, Letters & Archives
+- Music, Audio & Video
+
+Viewers for digitised content:
+
+- Books/Journals
+- Images/Maps
+- Audio
+- Born digital
+
+Formats:
+
+- Book
+- Photo
+- map etc
+
+HOW TO on subsets?
+
+- ephemera
+- government publications
+- oral histories
+
+Books & Libraries
+
+- Books
+- Multi-volume books
+- Government publications -- collections and single items
+- Emphemera
+- Periodical titles
+
+
+Problems
+
+- aggregated versions -- mixing of formats
+- posters? can be images or ephemera (in book or image viewer)
+
+
+### Books, pamphlets, print music -- collections and items
+
+- in Books & Libraries, Research, Music
+- print publications
+- single or multi-pages
+- collections (eg multi volume books) or items
+- Use book viewer
+- pages -- children of publications
+- chapters?
+
+#### Metadata
+
+- work records
+- embedded metadata
+  - pages
+  - chapters
+- lists of items in collections
+
+
+### Periodicals
+
+- titles -- collections in Books & Libraries
+- issues -- items in collections
+- pages -- children of issues
+- articles -- in Magazines & Newsletters
+
+### Government publications
+
+- Books, Research
+- can be periodicals (eg annual reports)
+- collections and items 
+- book viewer
+
+### Posters and ephemera
+
+- posters in finding aid: https://nla.gov.au/nla.obj-2590804313/findingaid?digitised=y
+
+### Photos
+
+### Oral histories
+
+
+
+- Government publications -- collections and items
+- Periodicals -- collections
+- Images -- collections and items
+- Maps -- collections and items
+- Oral history
+- Finding aids, manuscripts -- collections and items
+
+
+
+
 
 Other than newspapers.
 
@@ -57,7 +169,9 @@ Entry points:
 - items in a collection can themselves be a collection (eg a letter with multiple pages)
 - download options vary according to where you are and only provide top images of items/collections at that level (so you might think you're getting everything, but you're not)
 - an item that has multiple pages, doesn't have the pages in the item metadata, eg: https://nla.gov.au/nla.obj-226146469/
-- finding aid 'item' that is actually a collection: https://nla.gov.au/nla.obj-226146469/ (to browse all images you need to go down a level, can)
+- finding aid 'item' that is actually a collection: https://nla.gov.au/nla.obj-226146469/ (to browse all images you need to go down a level, but to download all images you need to be at collection level), also https://nla.gov.au/nla.obj-3199144271/view
+- collections/items and how you browse/download each is very confusing in manscripts and finding aids
+- at a collection level you only see the first image but can download all, at item level you can browse all images but only download one (need to add something about this to the web interface section)
 
 
 Other notes:
