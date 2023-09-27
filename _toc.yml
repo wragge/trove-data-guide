@@ -99,6 +99,7 @@ parts:
       - file: how-to/digitised/digitised-resources
         sections:
           - file: how-to/digitised/get-collection-items
+          - file: how-to/digitised/download-items-text-images
   - chapters:
     - file: glossary
     - file: genindex
