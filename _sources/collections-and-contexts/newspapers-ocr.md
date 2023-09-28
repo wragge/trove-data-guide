@@ -25,6 +25,6 @@ This section will examine how the quality of OCR varies across the corpus and th
 
 See: [Analyse rates of OCR correction](https://glam-workbench.net/trove-newspapers/Analysing_OCR_corrections/)
 
-```{code-cell} ipython3
++++
 
-```
+Bad image example: https://trove.nla.gov.au/newspaper/article/98069317
