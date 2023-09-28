@@ -72,6 +72,9 @@ parts:
             title: Issues
           - file: accessing-data/newspapers-and-gazettes-titles
             title: Titles
+      - file: accessing-data/digitised-resources
+        sections:
+          - file: accessing-data/digitised-resources-books
       - file: accessing-data/trove-lists
   - caption: Research pathways
     numbered: true

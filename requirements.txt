@@ -203,7 +203,7 @@ jupyterlab-pygments==0.2.2
     # via nbconvert
 jupyterlab-server==2.23.0
     # via jupyterlab
-jupytext==1.14.7
+jupytext==1.15.2
     # via -r requirements.in
 kiwisolver==1.4.5
     # via matplotlib
