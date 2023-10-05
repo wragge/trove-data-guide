@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -46,6 +46,7 @@ This guide is currently under development. For more information and discussion s
 
 Note that `fullTextInd` can be misleading and inaccurate -- doesn't always link to fulltext version, text not always available. Can be restricted (eg NED publications) or from a contributor where fulltext links are sometimes wrong. Need to combine with something like "nla.obj", and exclude NED, to find digitised resources reliably.
 
+
 +++
 
 (search-indexes-firstpageseq)=
@@ -64,7 +65,6 @@ Some newspapers include supplements that have their own independent pagination. 
 +++
 
 ## Searching for articles within a given date range
-
 
 ```{code-cell} ipython3
 

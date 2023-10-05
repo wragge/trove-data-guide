@@ -23,6 +23,8 @@ Can be individual items or collections of items (eg multi-volume books).
 
 ## Metadata
 
+There seem to be a lot of duplicate records -- Libraries Australia and Trove DL (why not merged?)
+
 - work records (via search and `/work/` endpoints)
 - embedded metadata
     - pages (number of pages important for text, images, pdf)
@@ -37,7 +39,7 @@ Search and formats/categories
 
 Facets -- eg language? (but usual work/version problems)
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Text
 
@@ -55,6 +57,10 @@ Once you have number of pages can download --> how to
 
 Some allow view but not download: https://nla.gov.au/nla.obj-2490195342/view
 
-```{code-cell} ipython3
++++
 
-```
+## Oddities
+
+This is a collection, but instead of the items in the collection having their own work records, they're versions of the work. This makes it hard to get at the individual items via the API.
+
+https://trove.nla.gov.au/work/12938999/

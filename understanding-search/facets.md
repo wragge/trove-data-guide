@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -60,6 +60,6 @@ Magazines and newsletters:
 
 - difference between `title` and `contribCollection` facets
 
-```{code-cell} ipython3
++++
 
-```
+`contribcollection` -- search for things like "ABC Radio National. RN Breakfast" from inpartof don't seem to work, need to use `contribcollection` facet instead
