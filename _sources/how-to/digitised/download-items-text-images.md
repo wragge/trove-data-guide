@@ -4,16 +4,18 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # HOW TO: Automate the download of digitised items as text, images, or PDFs
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 You can download text, images, and PDFs from individual digitised items [using the Trove web interface](accessing-data/using-web-interface.md). But only the text of periodical articles is available for machine access through the Trove API. This makes it difficult to assemble datasets, or build processing pipelines involving digitised resources. This page documents a series of work arounds that enable you to automate the download of digitised items as text, images, or PDFs.
 
@@ -36,7 +38,7 @@ This method also works with collections of items that don't have numbered pages.
 <https://nla.gov.au/nla.obj-141170265/download?downloadOption=pdf&firstPage=0&lastPage=150>
 
 ```{note}
-If you're downloading a collection of images you might notice that you get the first image twice. This is because the first image is associated with the collection container itself, as well as being a child of the collection. When you download, you get the collection container and it's contents, so the first image appears twice with different identifiers.
+If you're downloading a collection of images you might notice that you get the first image twice. This is because the first image is used as a 'cover image' for the collection, as well as being a child of the collection. When you download, you get the collection container and it's contents, so the first image appears twice with different identifiers.
 ```
 
 This method is consistent across most formats, so you can develop processes that construct urls like these from a list of NLA identifiers and download their contents automatically. But if you want to get the *complete* contents, you need some way of discovering the total number of pages or images to set the `lastPage` value. You can find this value embedded in the code of the web page, though it's location varies:

@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/digitised-resources-books.2e8795c1-87f9-47f6-a620-2d88290371e7.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/digitised-resources-books.7c137b96-98c5-4788-8e7d-630e13ba2db1.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/digitised-resources-books';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -468,6 +468,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdf">Images and PDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oddities">Oddities</a></li>
 </ul>
             </nav>
         </div>
@@ -485,6 +486,7 @@ document.write(`
 <p>Can be individual items or collections of items (eg multi-volume books).</p>
 <section id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h2>
+<p>There seem to be a lot of duplicate records – Libraries Australia and Trove DL (why not merged?)</p>
 <ul class="simple">
 <li><p>work records (via search and <code class="docutils literal notranslate"><span class="pre">/work/</span></code> endpoints)</p></li>
 <li><p>embedded metadata</p>
@@ -510,6 +512,11 @@ document.write(`
 <h2>Images and PDF<a class="headerlink" href="#images-and-pdf" title="Permalink to this heading">#</a></h2>
 <p>Once you have number of pages can download –&gt; how to</p>
 <p>Some allow view but not download: <a class="reference external" href="https://nla.gov.au/nla.obj-2490195342/view">https://nla.gov.au/nla.obj-2490195342/view</a></p>
+</section>
+<section id="oddities">
+<h2>Oddities<a class="headerlink" href="#oddities" title="Permalink to this heading">#</a></h2>
+<p>This is a collection, but instead of the items in the collection having their own work records, they’re versions of the work. This makes it hard to get at the individual items via the API.</p>
+<p><a class="reference external" href="https://trove.nla.gov.au/work/12938999/">https://trove.nla.gov.au/work/12938999/</a></p>
 </section>
 </section>
 
@@ -583,6 +590,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdf">Images and PDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oddities">Oddities</a></li>
 </ul>
   </nav></div>
 

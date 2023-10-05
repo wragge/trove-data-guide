@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/how-to/digitised/download-items-text-images.e47d69f6-d658-4147-960e-04567f928501.js"></script>
+    <script defer="defer" src="../../_static/tippy/how-to/digitised/download-items-text-images.cfbb7478-4552-4fa9-845a-f4688e311c5b.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/digitised/download-items-text-images';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -496,7 +496,7 @@ document.write(`
 <p><a class="reference external" href="https://nla.gov.au/nla.obj-141170265/download?downloadOption=pdf&amp;amp;firstPage=0&amp;amp;lastPage=150">https://nla.gov.au/nla.obj-141170265/download?downloadOption=pdf&amp;firstPage=0&amp;lastPage=150</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you’re downloading a collection of images you might notice that you get the first image twice. This is because the first image is associated with the collection container itself, as well as being a child of the collection. When you download, you get the collection container and it’s contents, so the first image appears twice with different identifiers.</p>
+<p>If you’re downloading a collection of images you might notice that you get the first image twice. This is because the first image is used as a ‘cover image’ for the collection, as well as being a child of the collection. When you download, you get the collection container and it’s contents, so the first image appears twice with different identifiers.</p>
 </div>
 <p>This method is consistent across most formats, so you can develop processes that construct urls like these from a list of NLA identifiers and download their contents automatically. But if you want to get the <em>complete</em> contents, you need some way of discovering the total number of pages or images to set the <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> value. You can find this value embedded in the code of the web page, though it’s location varies:</p>
 <ul class="simple">

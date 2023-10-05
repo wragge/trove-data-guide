@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -16,9 +16,189 @@ kernelspec:
 
 # Works and versions
 
+And editions and collections
+
 ```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
 ```
+
+The organisation of resources into 'works' and 'versions' (now called 'editions') is one of the most confusing aspects of Trove. 
+
++++
+
+
+
+## The concept
+
+The idea is simple enough – bring all the versions of a publication together under a single heading to simplify a user's search results. Instead of having to wade through a long list of near-identical results, a user can quickly focus in on a title of interest, and drill down to find a specific version at a specific library. This idea is based on the [Functional Requirements for Bibliographic Records](https://www.ifla.org/references/best-practice-for-national-bibliographic-agencies-in-a-digital-age/resource-description-and-standards/bibliographic-control/functional-requirements-the-frbr-family-of-models/functional-requirements-for-bibliographic-records-frbr/) (FRBR). The FRBR data model describes four entities: 'work', 'expression', 'manifestation', and 'item':
+
+> - Work is defined as the intellectual or artistic content of a distinct creation. It refers to a very abstract idea of a creation e.g. Shakespeare’s Romeo and Juliet and not a specific expression. 
+> - Expression is the intellectual or artistic realization of a work. The realization may take the form of text, sound, image, object, movement, etc., or any combination of such forms.
+> - Manifestation is the embodiment of an expression of a work. For example a particular edition of a book or a specific music recording. 
+> - Item is a single exemplar of a manifestation. Cataloguing is generally done, based on an item directly available to a cataloguer 
+
+Trove uses a FRBR-ish model with 'works' and 'versions' which combine aspects of 'expression' and 'manifestation'.{cite:p}`cathroDevelopingTrovePolicy2010`
+
+To create the work groupings, Trove inspects each metadata record, comparing identifiers like ISBNs, as well as fields such as `title` and `creator`. Points are assigned for matches between records, and if the points total exceeds a threshold score, the records are grouped as versions within a work. Another round of grouping looks at a work's versions in more detail to find and cluster closely-matched records that describe the same edition. As a result, each work can contain multiple versions, and each version can contain multiple records.
+
+    work
+      -- versions
+        -- version 1
+          -- records
+            -- record 1
+            -- record 2
+        -- version 2
+          -- records
+            -- record 3
+
+Selected metadata from the version records is used to populate fields at the top-level of the work record, such as `title` and `contributor`. The work's `issued` field will typically display a date range encompassing the dates of all contained versions.
+
+```{figure} /images/work-record-ui.png
+:name: work-record-ui
+
+Display of work record in search results. The date range encompasses the dates of the work versions.
+```
+
+Searches using either Trove's web interface or the API will return work-level records. In the web interface, versions are displayed on a work's page as a list of 'editions' that can be filtered by format, language, and date. If you're using the API, version details are not included by default – you need to set the `include` parameter to `workversions`. ==<mark>Link here to accessing data==</mark>
+
+```{figure} /images/work-editions.png
+:name: work-editions
+
+Display of editions (versions) on a work page. You can filter by type, language, and date.
+```
+
++++
+
+## Problems
+
+Grouping versions into works promises users cleaner search results, but the reality is more complex and confusing. You don't have to look around too much to find problems with the way Trove's groupings are implemented.
+
+This 'work' is titled [The Wiggles](https://trove.nla.gov.au/work/158465667) and has 31 'editions' listed in Trove. The problem is that most of those editions are actually different works, a mix of books, CDs, and DVDs. Presumably the grouping algorithm is connecting them because of the appearance of 'The Wiggles' somewhere in the title, but it's hard to know for sure as the scoring mechanism isn't publicly available.
+
+```{figure} /images/wiggles-versions.png
+:name: wiggles-versions
+
+These different Wiggles publications are grouped as a single 'work'.
+```
+
+Perhaps this is an extreme example, but grouping errors are common. In the *Hamlet* example I used above, the work record was titled 'Hamlet / William Shakespeare ; [edited and with introduction by G.B. Harrison]'. But the grouped versions include introductions and commentaries by a range of different scholars, not just G.B. Harrison. Perhaps the algorithm is working as expected – they're all copies of *Hamlet* after all. But if you were searching for a copy of *Hamlet* with notes by Mike Gould, would you think to click on the G.B. Harrison result?
+
+Search operates across all the versions in a work, so any variations in titles and authors will be indexed as expected. They're all in there somewhere. But search results deliver *work-level* records, the details of which might not reflect the version that matched your query. At best this might cause some momentary confusion before you click through to the work page, at worst you might simply ignore the result as some sort of error. Grouping by work simplifies the search experience in Trove by reducing the number of similar results. But this grouping can obscure important differences between versions, making it harder to interpret the results returned.
+
+Grouping also has an impact on other navigation components, blurring the boundaries of [Trove's categories](/what-is-trove/categories-and-zones.md) and facets. For example, books can turn up in the *Music, Audio, & Video* category because they've been grouped with an audio recording. This can improve discoverability across categories, but it can also be confusing when your music search returns a list of books. The [usefulness of facets](/understanding-search/facets.md) can be compromised by large, diverse groupings. For example, if you use the `decade` and `year` facets to try to find a publication from a particular date, your results will include any work grouping whose date range encompasses your period of interest. Similarly it can be difficult to refine your search to include only online resources when they're grouped with versions that aren't accessible.
+
+User testing on early versions of Trove showed that the 'core conceptual model of FRBR' was 'largely not understood'.{cite:p}`holleyResourceSharingAustralia2011` Over the years there have been changes to the grouping algorithm, and to the way versions are presented in the web interface, but it's still a challenge for users to understand what's going on. Perhaps this is an inevitable result of trying to bolt a FRBR-ish system on top of an aggregated collection – it's hard to make effective and consistent rules when merging metadata from multiple sources.
+
+The challenges are magnified when working with resources that don't come from standard library systems. For example, Trove indexes speeches and interviews by Australian Prime Ministers from the [PM Transcripts](https://pmtranscripts.pmc.gov.au/) site. As a result, you can find transcripts of 106 different press conferences by John Howard grouped as a single work!
+
+```{figure} /images/john-howard-transcripts.png
+:name: john-howard-transcripts
+
+Too many John Howards
+```
+
+Trove indexes both the metadata and full text of the press releases (or at least the first 30,000 characters). That's awesome, because your Trove search actually looks inside the press releases. But if your search returns this collection of press releases as a single 'work', how do you find which of the 106 documents matched your query? You can't. You have to inspect each press release individually on the PM Transcripts site. An opportunity for rich, deep discovery of aggregated resources is foiled by the grouping algorithm.
+
+There are a number of other aggregated collections that contribute different full text content under recurring titles. For example the [Parliamentary Library's database of press releases](https://trove.nla.gov.au/search/advanced/category/books?nuc=%22APAR%3APR%22), and [ABC Radio National](https://trove.nla.gov.au/search/category/music?keyword=nuc%3A%22ABC%3ARN%22). 
+
+Researchers need to factor both the FRBR concept, and Trove's implementation of it, into their search strategies – recognising that there will be errors and inconsistencies in the way versions are grouped together.
+
+## Digitised works
+
+
+
+## Research implications
+
+- search
+- stats, facet data
+- harvesting versions
+
+The challenges
+
+User confusion - noted early on, various changes. Needs to be factored into search strategies.
+
+Aim is to improve search experience
+
+Impact of findability -- might reject work results, or be confused by their inclusion. Gains by grouping, diluted by confusion?
+
+Does it matter? 
+
+Problems of aggregation from multiple sources, no control.
+
+Pulltion of categories, numbers, stats, facets
+
+Data -- counts, stats, and facets
+
++++
+
+
+
+## The reality
+
+That's the theory. The reality is more complex and confusing.
+
+
+
+## Implications for research
+
+- records invisible to search
+- need to unpack versions from API
+
+
+Work has metadata extracted from versions.
+
+
+
+More problems with non-library type collections
+
+The idea:
+
+- a FRBR-ish system, grouping together different versions of the same work (to save you having to wade through hundred of editions of Macbeth
+
+> The FRBR conceptual model is intended to meet the end users’ needs. This data model proposes the creation of bibliographic concepts (“work”, “expression”, “manifestation” and “item”) and a new way to formalise relations between these bibliographic entities.  The so called WEMI-Model (Work, Expression, Manifestation and Item model) tries to identify the core aspects of publications and is the foundation of the FRBR family. 
+>
+> - Work is defined as the intellectual or artistic content of a distinct creation. It refers to a very abstract idea of a creation e.g. Shakespeare’s Romeo and Juliet and not a specific expression. 
+> - Expression is the intellectual or artistic realization of a work. The realization may take the form of text, sound, image, object, movement, etc., or any combination of such forms.
+> - Manifestation is the embodiment of an expression of a work. For example a particular edition of a book or a specific music recording. 
+> - Item is a single exemplar of a manifestation. Cataloguing is generally done, based on an item directly available to a cataloguer 
+
+-- IFLA, [Functional Requirements for Bibliographic Records (FRBR)](https://www.ifla.org/references/best-practice-for-national-bibliographic-agencies-in-a-digital-age/resource-description-and-standards/bibliographic-control/functional-requirements-the-frbr-family-of-models/functional-requirements-for-bibliographic-records-frbr/)
+
+But Trove trying to group records using metadata it doesn't create or control.
+
+Thw Wiggles - https://trove.nla.gov.au/work/158465667
+
+Groups defined at different levels:
+
+- Libraries Australia
+- Trove harvester (aggregated content)
+- digitised content 
+
+Mostly ok for published works?
+
+- but theses?
+
+Problems:
+
+- muddy metadata -- multiple (sometimes misleading) formats that don't always align with categories
+- grouping together of things which have the same title, but are not the same!
+- use for collections of things (inconsistent)
+- attempt to use works/versions for hierarchical structures
+- search operates at work level
+- some duplicates not grouped
+
+Examples:
+
+- Multiple digitised versions & odd version groupings - The famous Mount Morgan gold mine, <https://trove.nla.gov.au/work/12445906> [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F12445906%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=) -- one version is parent record, other version combines records
+- Versions are distinct items in digitised collection - National Anti-Sweating League of Victoria, <https://trove.nla.gov.au/work/163048354> [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F163048354%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=) -- format is Multi-volume book, titles of individual items are only in `linktext` of identifier
+- PM Transcripts, eg: https://​trove​.nla​.gov​.au​/work​/195172587 [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F195172587%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=) -- lots of John Howards, these all have indexed fulltext, but search only operates at work level, so no way of knowing which version matches your search
+- Fraser electorate talks - <https://trove.nla.gov.au/work/195160655> [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F195160655%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=)
+- "Politics with Paul Bongiorno" (ABC RN) <https://trove.nla.gov.au/work/188217416>
+- Collection with individual records for items: https://trove.nla.gov.au/work/19748499 but items have two versions eg: https://trove.nla.gov.au/work/172653701 [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F172653701%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=) -- one via Libraries Australia and another via ANL:DL
+- Bad groupings: <https://trove.nla.gov.au/work/7857744> <https://trove.nla.gov.au/work/13791197>
+- Collection with one item (and 3 versions) <https://trove.nla.gov.au/work/11648908> (also this is in M&N category as well as B&L - 3 records returned)
+- Another collection where items are versions and not individually findable: <https://trove.nla.gov.au/work/12938999/>
+- Advertising posters (a book!) goes to finding aid: <https://trove.nla.gov.au/work/239465235> (individual items in pictures eg: https://trove.nla.gov.au/work/6115600 -- no ispartof to link to collection / also https://trove.nla.gov.au/work/248470051 where there is a ispartof, but this is a 'photograph')
 
 +++
 
@@ -31,6 +211,21 @@ Problematic version groupings:
 May need to unpack versions from works to get a full list of resources for exploration/analysis (eg ABC, Royal Society of Tasmania)
 
 PM Transcripts, eg: <https://trove.nla.gov.au/work/195172587>
+
++++
+
+Grouping on aggregated metadata, but metadata not good enough
+
+
+## Implications for data
+
+Invisibility of versions -- need to unpack works
+
++++
+
+## Indexing of full text from aggregated collections
+
+> Description: An account of the resource. Description may include an abstract, a byline or a free-text account of the resource. When the fulltext of an article is available, include it in a description field with the additional attribute type=”fulltext”. Trove will index this text (return the record for a search on a word in the fulltext) but only display the first 200 characters. Users will need to visit your site to view the fulltext. Trove will only index the first 30,000 characters of a description field. -- <https://trove.nla.gov.au/partners/partner-services/contribute/trove-data-dictionary>
 
 ```{code-cell} ipython3
 
