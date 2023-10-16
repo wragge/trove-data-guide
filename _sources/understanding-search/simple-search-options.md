@@ -46,6 +46,7 @@ This guide is currently under development. For more information and discussion s
 
 Note that `fullTextInd` can be misleading and inaccurate -- doesn't always link to fulltext version, text not always available. Can be restricted (eg NED publications) or from a contributor where fulltext links are sometimes wrong. Need to combine with something like "nla.obj", and exclude NED, to find digitised resources reliably.
 
+<mark>==`series:`? Seems to work. Is it different to `contribcollection`?==</mark>
 
 +++
 
