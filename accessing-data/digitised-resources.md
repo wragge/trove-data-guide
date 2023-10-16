@@ -150,6 +150,7 @@ Problems
 - can be periodicals (eg annual reports)
 - collections and items 
 - book viewer
+- search for `series:"Parliamentary paper (Australia. Parliament)"` seems more effective that using format "government Publication"
 
 ### Posters and ephemera
 
