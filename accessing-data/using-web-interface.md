@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -223,6 +223,16 @@ This is a simple way of capturing metadata in a structured format, but the BibTe
 
 (bulk-export)=
 ## Bulk export
+
+```{code-cell} ipython3
+
+```
+
+## Map search?
+
+Can download geo-rectified TIFFs
+
+<https://mapsearch.nla.gov.au/>
 
 ```{code-cell} ipython3
 

@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -46,6 +46,8 @@ Ever wondered why the *Australian Women’s Weekly* is found in the Newspapers c
 +++
 
 ### Working notes
+
+Zones were called "collection views" in development. More accurate.
 
 Exploration of overlaps
 

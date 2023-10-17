@@ -46,12 +46,6 @@ parts:
           - file: collections-and-contexts/newspapers-copyright
           - file: collections-and-contexts/newspapers-ocr
       - file: collections-and-contexts/digitised-collections
-        sections:
-          - file: collections-and-contexts/digitised-collections-books
-          - file: collections-and-contexts/digitised-collections-journals
-          - file: collections-and-contexts/digitised-collections-maps
-          - file: collections-and-contexts/digitised-collections-manuscripts
-          - file: collections-and-contexts/digitised-collections-oral-history
       - file: collections-and-contexts/aggregated-collections
   - caption: Accessing data
     numbered: 2
