@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/links-and-identifiers.32dcc8bf-4e3e-40b4-960c-4a19af605e1e.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/links-and-identifiers.f4f634a4-9cf0-4deb-bf76-b7fccf390ca8.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/links-and-identifiers';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -435,7 +435,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -451,6 +453,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newspapers">6.1. Newspapers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-and-version-records">6.2. Work and version records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-resources">6.3. Digitised resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#people-and-orgs">6.4. People and orgs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-archives">6.5. Web archives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-links">6.6. Transforming links</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -466,9 +481,104 @@ document.write(`
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
-<p>obj ids can be anything</p>
-<p><a class="reference external" href="https://nla.gov.au/anbd.bib-an000069848008">https://nla.gov.au/anbd.bib-an000069848008</a></p>
+<p>As you navigate around Trove you’ll find a range of url patterns pointing to different types of resources. Some examples are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/newspaper/article/61389505</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.news-page5417618</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/work/1144040</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.news-title246</span></code></p></li>
+</ul>
+<p>Some of these urls are ‘identifiers’, maintained by the NLA as persistent links to resources. These identifiers are independent of the platform used to deliver content, so should persist across site redesigns and technology upgrades. This built-in persistence is why identifiers are recommended for use in citations. When you ‘resolve’ a persistent identifier by plugging it into your web browser you often end up at a different url. This is because the identifier redirects you to the appropriate page in the current site structure.</p>
+<div class="note admonition">
+<p class="admonition-title">Use the cite tab Luke!</p>
+<p>When you want to save a link it’s tempting just to copy the url in your browser’s address bar, but it’s better to use the persistent identifier if one is available. Most of the time you can find the persistent identifier by clicking on the <strong>Cite</strong> tab in the Trove web interface. If you’re using the API (since version 3), persistent identifiers will be automatically included in results.</p>
+</div>
+<p>NLA identifiers generally start with <code class="docutils literal notranslate"><span class="pre">https://nla.gov.au/nla.</span></code>. For example, a newspaper article identifier looks like this: <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.news-article61389505</span></code>. Notice that this identifier includes a numeric id as well as information about the type of thing this is – <code class="docutils literal notranslate"><span class="pre">news-article</span></code>.</p>
+<p>The identifiers used for other digitised resources have a more generic form, starting with <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.obj</span></code>. Digitised books, individual pages in a book, photos, periodicals, periodical issues, finding aids all share the same basic pattern. You can’t tell by looking at one of these identifiers what it actually points to – you have to follow it and find out!</p>
+<p>Not everything in Trove has a persistent identifier. Works, for example, only have a url of the form <code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/work/1144040</span></code>. This identifies a work within the context of Trove, but there’s no guarantee of persistence. Work records are aggregated from a range of sources, and can be withdrawn or deleted by the contributing organisation.</p>
+<p>Some identifiers lead outside of Trove to other NLA systems such as Libraries Australia and the main catalogue.</p>
+<section id="newspapers">
+<h2><span class="section-number">6.1. </span>Newspapers<a class="headerlink" href="#newspapers" title="Permalink to this heading">#</a></h2>
+<p>Digitised newspapers have the most highly-structured and consistent identifier scheme.</p>
+<table class="table" id="newspaper-identifiers">
+<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Newspaper identifiers</span><a class="headerlink" href="#newspaper-identifiers" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entity type</p></th>
+<th class="head"><p>Identifier format</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Resolves to url</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>title</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nla.news-title[NUMERIC_ID]</span></code></p></td>
+<td><p><a class="reference external" href="http://nla.gov.au/nla.news-title246">http://nla.gov.au/nla.news-title246</a></p></td>
+<td><p><a class="reference external" href="https://trove.nla.gov.au/newspaper/title/246">https://trove.nla.gov.au/newspaper/title/246</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>issue</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nla.news-issue[NUMERIC_ID]</span></code></p></td>
+<td><p><a class="reference external" href="https://nla.gov.au/nla.news-issue120169">https://nla.gov.au/nla.news-issue120169</a></p></td>
+<td><p><a class="reference external" href="https://trove.nla.gov.au/newspaper/page/1216627">https://trove.nla.gov.au/newspaper/page/1216627</a></p></td>
+</tr>
+<tr class="row-even"><td><p>page</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nla.news-page[NUMERIC_ID]</span></code></p></td>
+<td><p><a class="reference external" href="http://nla.gov.au/nla.news-page8164936">http://nla.gov.au/nla.news-page8164936</a></p></td>
+<td><p><a class="reference external" href="https://trove.nla.gov.au/newspaper/page/8164936">https://trove.nla.gov.au/newspaper/page/8164936</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>article</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nla.news-article[NUMERIC_ID]</span></code></p></td>
+<td><p><a class="reference external" href="http://nla.gov.au/nla.news-article89701669">http://nla.gov.au/nla.news-article89701669</a></p></td>
+<td><p><a class="reference external" href="https://trove.nla.gov.au/newspaper/article/89701669/">https://trove.nla.gov.au/newspaper/article/89701669/</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>You’ll probably only find issue identifiers in results from the API’s <code class="docutils literal notranslate"><span class="pre">/newspaper/title</span></code> endpoint. They resolve to the <strong>first page</strong> of the issue, as issues have no separate landing page.</p>
+<p>You might also find a few newspaper links in the wild that were generated by older versions of the digitised newspapers platform, for example things like: <code class="docutils literal notranslate"><span class="pre">http://trove.nla.gov.au/ndp/del/article/19983475</span></code>. These should be redirected to the current urls.</p>
+</section>
+<section id="work-and-version-records">
+<h2><span class="section-number">6.2. </span>Work and version records<a class="headerlink" href="#work-and-version-records" title="Permalink to this heading">#</a></h2>
+<p>As noted above, works don’t have persistent identifiers, but they do use a standard url format.</p>
+<table class="table" id="work-urls">
+<caption><span class="caption-number">Table 6.2 </span><span class="caption-text">Work urls</span><a class="headerlink" href="#work-urls" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entity type</p></th>
+<th class="head"><p>URL format</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>work</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">work/[NUMERIC_ID]</span></code></p></td>
+<td><p><a class="reference external" href="https://trove.nla.gov.au/work/1144040">https://trove.nla.gov.au/work/1144040</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>version/edition of a work</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">work/[WORK_ID]/version[VERSION_ID]</span></code></p></td>
+<td><p><a class="reference external" href="https://trove.nla.gov.au/work/1144040/version/25729065">https://trove.nla.gov.au/work/1144040/version/25729065</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Some work records include numeric identifiers from Libraries Australia and the Australian National Bibliographic Database (ANBD). These numeric values can be used to construct persistent identifiers for the linked records, which then resolve to the Trove work page. For example, <a class="reference external" href="https://trove.nla.gov.au/work/1144040/version/25729065">this version</a> includes a Libraries Australia numeric identifier with the value <code class="docutils literal notranslate"><span class="pre">2767186</span></code>. Using this you can construct a persistent link of the form: <a class="reference external" href="https://nla.gov.au/anbd.bib-an2767186">https://nla.gov.au/anbd.bib-an2767186</a>. This link will take you to the version in Trove.</p>
+</section>
+<section id="digitised-resources">
+<h2><span class="section-number">6.3. </span>Digitised resources<a class="headerlink" href="#digitised-resources" title="Permalink to this heading">#</a></h2>
+<p>All the</p>
+<p>Collection
+Journal title - <a class="reference external" href="https://nla.gov.au/nla.obj-244631375">https://nla.gov.au/nla.obj-244631375</a> - goes to collection page
+Book/Issue
+Page
+Article</p>
 <p><a class="reference external" href="https://nla.gov.au/nla.cat-vn2761394">https://nla.gov.au/nla.cat-vn2761394</a></p>
+</section>
+<section id="people-and-orgs">
+<h2><span class="section-number">6.4. </span>People and orgs<a class="headerlink" href="#people-and-orgs" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="web-archives">
+<h2><span class="section-number">6.5. </span>Web archives<a class="headerlink" href="#web-archives" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="transforming-links">
+<h2><span class="section-number">6.6. </span>Transforming links<a class="headerlink" href="#transforming-links" title="Permalink to this heading">#</a></h2>
+<p>Taking the numeric part and doing things. Link to a</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -529,6 +639,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newspapers">6.1. Newspapers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-and-version-records">6.2. Work and version records</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-resources">6.3. Digitised resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#people-and-orgs">6.4. People and orgs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-archives">6.5. Web archives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-links">6.6. Transforming links</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
