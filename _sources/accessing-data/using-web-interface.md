@@ -31,7 +31,7 @@ This guide is currently under development. For more information and discussion s
 
 +++
 
-See [](/what-is-trove/trove-web-interface) for a overview of the different components that make up the web interface. In particular, it's important to understand the difference between the main search interface and the digitised item viewers.
+See [](/what-is-trove/interfaces) for a overview of the different components that make up the web interface. In particular, it's important to understand the difference between the main search interface and the digitised item viewers.
 
 +++
 
@@ -184,7 +184,7 @@ The **GLAM Workbench** provides some useful workarounds where download options a
 ```{admonition} What about image resolutions?
 :class: note
 
-One confusing, and often frustrating, aspect of image downloads is their resolution (or size). You can use the Trove image viewer to zoom in close to many photographs and manuscripts, enabling you to pick up fine details. But if you download the same image, you could find the resolution is much lower. This means you're limited in how you can use the downloaded image. The available resolutions vary across categories and formats, and you really don't know what you'll get until you download it. Many manuscripts, in particular, seem to have low-resolution downloads, which doesn't help you much when you're trying to decipher someone's handwriting! But never fear, there are a [few hacks and work arounds](/how-to/web-interface/download-higher-resolution-images) you can try to get higher resolution versions.
+One confusing, and often frustrating, aspect of image downloads is their resolution (or size). You can use the Trove image viewer to zoom in close to many photographs and manuscripts, enabling you to pick up fine details. But if you download the same image, you could find the resolution is much lower. This means you're limited in how you can use the downloaded image. The available resolutions vary across categories and formats, and you really don't know what you'll get until you download it. Many manuscripts, in particular, seem to have low-resolution downloads, which doesn't help you much when you're trying to decipher someone's handwriting! But never fear, there are a [few hacks and work arounds](/accessing-data/how-to/download-higher-resolution-images) you can try to get higher resolution versions.
 ```
 
 +++

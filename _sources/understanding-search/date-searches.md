@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -310,7 +310,7 @@ Date searches can produce odd results when you're working with aggregated conten
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dbook%26l-decade%3D200%26l-year%3D1900%26encoding%3Djson&comment=)
 
-How is this possible? How can both facet values be true? The answer lies in the way [versions of publications are grouped together as works](what-is-trove/works-and-versions). If there are multiple versions of a work with different publication dates, the date of the work in Trove will be a range encompassing all the version dates. For example, a work that has versions published in `1900` and `2022` will have an `issued` value of `1900-2022`. Because Trove searches for works rather than versions, a search for any date within the `issued` date range will return the work. So the same work can be published between 2000 and 2009, and also in 1900.
+How is this possible? How can both facet values be true? The answer lies in the way [versions of publications are grouped together as works](/what-is-trove/works-and-versions). If there are multiple versions of a work with different publication dates, the date of the work in Trove will be a range encompassing all the version dates. For example, a work that has versions published in `1900` and `2022` will have an `issued` value of `1900-2022`. Because Trove searches for works rather than versions, a search for any date within the `issued` date range will return the work. So the same work can be published between 2000 and 2009, and also in 1900.
 
 But what if you want to find a version published on a specific date? The Trove web interface has an option to filter a work's 'editions' (aka versions) by date. If you're using the API, you'll first have to requests details of all versions by setting the `include` parameter to `workversions`. Then you'll need to loop through all the versions, checking their individual `issued` dates.
 

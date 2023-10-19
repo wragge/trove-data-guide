@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -95,13 +95,13 @@ There are three main types of data you can request from the Trove API:
 
 Each type of data has its own address, or **endpoint**, that you need to include in the request url so that your parameters get sent to the right place. The addresses all share the same base url (the `v3` at the end is the current version of the Trove API):
 
-```http
+```
 https://api.trove.nla.gov.au/v3
 ```
 
 You can ask for a search using the `/result` endpoint, so you just add `/result` to the base url:
 
-```http
+```
 https://api.trove.nla.gov.au/v3/result
 ```
 
@@ -186,7 +186,7 @@ There are two ways of adding your key to an API request:
 
 Using the `key` parameter is easy, but can be insecure. If your key was `mySeCReTkEy`, your request url would look like this:
 
-```http
+```
 https://api.trove.nla.gov.au/v3/result?q=wragge&category=newspaper&encoding=json&key=mySeCReTkEy
 ```
 
