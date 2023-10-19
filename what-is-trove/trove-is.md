@@ -22,7 +22,7 @@ This guide is currently under development. For more information and discussion s
 
 +++
 
-**Trove is not one thing**. On the [technical front](https://trove.nla.gov.au/about/what-trove/technical-ecosystem), Trove is a combination of many interconnected systems, data sources, and interfaces, each with its own individual history. But Trove is also an idea, an ambition, an attempt to provide Australians with facilitated access to research and heritage collections from across the country. That idea, expressed through policy documents, strategic plans, resource allocations, and collaborative agreements has also evolved over the past 15 years. At the same time, Trove has been enriched by its community of users, both by submitting annotations and corrections through the web interface, and by sharing their own research, methods, tools, and discoveries across the web. Trove now is the product of these entwined histories – technology, policy, and community. 
+**Trove is not one thing**. On the [technical side](https://trove.nla.gov.au/about/what-trove/technical-ecosystem), Trove is a combination of many interconnected systems, data sources, and interfaces, each with its own individual history. But Trove is also an idea, an ambition, an attempt to provide Australians with facilitated access to research and heritage collections from across the country. That idea, expressed through policy documents, strategic plans, resource allocations, and collaborative agreements has also evolved over the past 15 years. At the same time, Trove has been enriched by its community of users, both by submitting annotations and corrections through the web interface, and by sharing their own research, methods, tools, and discoveries across the web. Trove now is the product of these entwined histories – technology, policy, and community. 
 
 ```{figure} /images/trove-data-flows-2010-cathro-collier.png
 :width: 600px
@@ -30,7 +30,7 @@ This guide is currently under development. For more information and discussion s
 Trove Data Flows, 2010, licensed CC-BY-NC. {cite:p}`cathroDevelopingTrovePolicy2010` See the Trove help documentation for [information about the current configuration](https://trove.nla.gov.au/about/what-trove/technical-ecosystem).
 ```
 
-This Data Guide aims to help researchers make efficient and innovative use of Trove by documenting how it works and what it provides. But the complexity of Trove, and its evolution over time, makes it difficult to nail down its precise contents, limits, and structures. The simple question, 'What's in Trove?', is not easily answered. As I've grappled with topics such as Trove's [works and versions](/what-is-trove/works-and-versions.md), and struggled to quantify measures like the [number of pages missing from digitised newspapers](/collections-and-contexts/newspapers-missing-pages.md), I've come to realise that Trove, as a whole, is effectively unknowable. It's too big, too complex, and too inconsistent to yield to precise analysis. It's also changing constantly, so any attempt to capture its contents will be immediately out of date. The best we can hope for are a series of blurry snapshots that help us understand the characteristics of Trove, even though some of the fine details remain out of focus.
+This Data Guide aims to help researchers make efficient and innovative use of Trove by documenting how it works and what it provides. But the complexity of Trove, and its evolution over time, makes it difficult to nail down its precise contents, limits, and structures. The simple question, 'What's in Trove?', is not easily answered. As I've grappled with topics such as Trove's [works and versions](/what-is-trove/works-and-versions), and struggled to quantify measures like the [number of pages missing from digitised newspapers](/newspapers-and-gazettes/newspapers-missing-pages), I've come to realise that Trove, as a whole, is effectively unknowable. It's too big, too complex, and too inconsistent to yield to precise analysis. It's also changing constantly, so any attempt to capture its contents will be immediately out of date. The best we can hope for are a series of blurry snapshots that help us understand the characteristics of Trove, even though some of the fine details remain out of focus.
 
 +++
 
@@ -47,11 +47,12 @@ This Data Guide aims to help researchers make efficient and innovative use of Tr
     - manuscripts
     - oral histories
 - an archive of Australian web content from 1996 onwards
+- people and orgs
 - born-digital publications submitted via the electronic legal deposit scheme (access may be restricted)
 - a platform for user engagement via tags, comments, lists, and OCR corrections
 - a series of APIs for delivering machine-actionable data
 
-More information in [collections and contexts](/collections-and-contexts/collections-and-contexts.md).
+More information in pages for specific formats.
 
 +++
 

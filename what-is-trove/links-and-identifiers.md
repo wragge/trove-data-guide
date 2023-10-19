@@ -130,4 +130,4 @@ https://nla.gov.au/nla.cat-vn2761394
 
 ## Transforming links
 
-Taking the numeric part and doing things. Link to a
+Taking the numeric part and doing things. Link to accessing data.
