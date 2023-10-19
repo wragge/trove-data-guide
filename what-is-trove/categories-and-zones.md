@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"user_expressions": []}
 
-## Categories and zones
+# Categories and zones
 
 ```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
@@ -45,7 +45,7 @@ Ever wondered why the *Australian Women’s Weekly* is found in the Newspapers c
 
 +++
 
-### Working notes
+## Working notes
 
 Zones were called "collection views" in development. More accurate.
 
@@ -76,10 +76,6 @@ So that means the `format` facet doesn’t provide a complete list of formats. I
 Oddities:
 
 - https://trove.nla.gov.au/work/36446349 – annual reports of the Royal Society of Tasmania, multiple years as ‘editions’, description is taken from one and used across all. API records contain 2 versions for each edition. 
-
-
-
-
 
 ## Categories
 

@@ -17,6 +17,9 @@ CSV
 Machine readable
   definition
 
+OCR
+  Optical Character Recognition
+
 Screen scraping
   definition 
 
