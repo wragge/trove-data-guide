@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/categories-and-zones.a5cb953d-2831-47b6-b5be-ebba5988e0c6.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/categories-and-zones.f031570f-df1f-4d0a-a32c-ff93383a3585.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/categories-and-zones';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -459,8 +459,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-notes">2.1. Working notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">2.2. Categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-categories-are-not-the-same">2.1. All categories are not the same</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexts-not-collections">2.2. Contexts not collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-ends-up-where">2.3. What ends up where?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-contents-of-categories">2.4. Exploring the contents of categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-notes">2.5. Working notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">2.6. Categories</a></li>
 </ul>
             </nav>
         </div>
@@ -481,44 +485,61 @@ document.write(`
 <p>Trove’s resources are divided into <strong>categories</strong>. Understanding the nature and content of these categories will help you construct effective searches and access useful data.</p>
 <p>There are nine categories in Trove:</p>
 <ul class="simple">
-<li><p>Books and libraries</p></li>
-<li><p>Diaries, letters and archives</p></li>
-<li><p>Images, maps and artefacts</p></li>
-<li><p>Magazines and newsletters</p></li>
-<li><p>Music, audio and video</p></li>
-<li><p>Newspapers and gazettes</p></li>
-<li><p>People and organisations</p></li>
-<li><p>Research and reports</p></li>
-<li><p>Websites</p></li>
+<li><p>Books &amp; Libraries</p></li>
+<li><p>Diaries, Letters &amp; Archives</p></li>
+<li><p>Images, Maps &amp; Artefacts</p></li>
+<li><p>Lists</p></li>
+<li><p>Magazines &amp; Newsletters</p></li>
+<li><p>Music, Audio &amp; Video</p></li>
+<li><p>Newspapers &amp; Gazettes</p></li>
+<li><p>People &amp; Organisations</p></li>
+<li><p>Research &amp; Reports</p></li>
 </ul>
-<p>On the surface they seem to based on the format of resources – books in one category, newspapers in another. But it’s a bit more complicated than that. Categories are determined both by the format of a resource and the way data about that resource is managed within Trove. For example, newspaper articles are obviously in the Newspapers category, but part of the reason is that newspaper articles are added, described, and managed within their own separate system.</p>
+<p>On the surface they seem to based on the format of resources – books in one category, newspapers in another. But it’s a bit more complicated than that. Categories are determined by the format of a resource, the source of data about the resource, and the way that data is managed within Trove. For example, newspaper articles are obviously in the Newspapers category, but part of the reason is that newspaper articles are added, described, and managed within their own separate system.</p>
 <div class="tip admonition">
 <p class="admonition-title">The mysterious case of the Australian Women’s Weekly</p>
-<p>Ever wondered why the <em>Australian Women’s Weekly</em> is found in the Newspapers category and not with the Magazines? It’s because when the Women’s Weekly was digitised, the only way for Trove to ingest digitised publications was through the newspapers pipeline. Systems for managing magazines, journals, books, images, and other digitised content came later.</p>
+<p>Ever wondered why the <em>Australian Women’s Weekly</em> is found in the Newspapers category and not with the Magazines? It’s because when the Women’s Weekly was digitised, the only way for Trove to ingest digitised publications was through the newspapers pipeline. Comparable systems for managing magazines, journals, books, images, and other digitised content came later.</p>
 </div>
-<section id="working-notes">
-<h2><span class="section-number">2.1. </span>Working notes<a class="headerlink" href="#working-notes" title="Permalink to this heading">#</a></h2>
-<p>Zones were called “collection views” in development. More accurate.</p>
-<p>Exploration of overlaps</p>
-<p>Contributors per zone (facets, point to more complete data)</p>
-<p>Research and repositories</p>
-<p>Note that work records don’t tell you what category they’re in (infer from <code class="docutils literal notranslate"><span class="pre">type</span></code>?). Categories manage searches, they’re (mostly) not collections in themselves. <strong>Categories are contexts for discovery.</strong></p>
-<p>Categories affected by <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">format</span></code>, and also the grouping of versions into works (eg an article and book with the same name and author might be grouped). Also the source.</p>
-<p>Is research the default for IRs?</p>
-<p>Newspapers, web archive, and people separate.</p>
-<p>Note that you can’t combine facet values etc because of overlaps.</p>
-<p>Categories contain a range of formats that aren’t included in the format facet – eg Book in the magazine category. Can illustrate by searching for <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">format:”Book”</span></code>. They’re less obvious in results but still there.</p>
-<p>It looks like ‘Book/Illustrated’ for examples doesn’t go into Image. The ones in their seem to have something like ‘Art work’ or ‘map’ included.</p>
-<p>Also ‘formats’ are actually ‘types’ in the metadata. The format field includes physical description info. Perhaps confusing.</p>
-<p>So that means the <code class="docutils literal notranslate"><span class="pre">format</span></code> facet doesn’t provide a complete list of formats. It also means you might get formats you don’t expect if you harvest from a category (eg books in images)</p>
-<p>Oddities:</p>
+<section id="all-categories-are-not-the-same">
+<h2><span class="section-number">2.1. </span>All categories are not the same<a class="headerlink" href="#all-categories-are-not-the-same" title="Permalink to this heading">#</a></h2>
+<p>Broadly speaking, there are two types of categories in Trove: those that aggregate content, in various formats, from range of organisations and sources; and those that are limited to a specific type of resource created or managed by the NLA.</p>
+<p>Categories that contain aggregated content in a variety of formats:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://trove.nla.gov.au/work/36446349">https://trove.nla.gov.au/work/36446349</a> – annual reports of the Royal Society of Tasmania, multiple years as ‘editions’, description is taken from one and used across all. API records contain 2 versions for each edition.</p></li>
+<li><p>Books &amp; Libraries</p></li>
+<li><p>Diaries, Letters &amp;  Archives</p></li>
+<li><p>Images, Maps &amp; Artefacts</p></li>
+<li><p>Music, Audio &amp; Video</p></li>
+<li><p>Research &amp; Reports</p></li>
 </ul>
+<p>Categories limited to a specific type of resource:</p>
+<ul class="simple">
+<li><p>Lists – created by Trove users</p></li>
+<li><p>Magazines &amp; Newsletters – digitised periodical articles</p></li>
+<li><p>Newspapers &amp; Gazettes – digitised newspapers</p></li>
+<li><p>People &amp; Organisations – identity records</p></li>
+<li><p>Websites ­– archived copies of born-digital resources</p></li>
+</ul>
+<p>Trove being Trove, this distinction is not always clear cut. While newspapers and periodical articles have their own dedicated categories, the rest of the NLA’s digitised content (books, maps, photographs etc) are lumped into the general resource pool. The <strong>Magazines &amp; Newsletters</strong> category <em>almost</em> exclusively contains articles from periodicals digitised by the NLA, but if you <a class="reference external" href="https://trove.nla.gov.au/search/category/magazines?keyword=NOT%20%22nla.obj%22">search for <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">&quot;nla.obj&quot;</span></code></a> you’ll find a small amount of content from other sources – mostly issues of the <em>Tattersall’s Club Magazine</em>. And while the ‘People &amp; Organisations’ category only contains identity records minted by the NLA, these records aggregate and disambiguate data from a number of other sources. Nonetheless, the distinction mostly holds, and it’s useful to keep in mind when you start exploring how categories actually work in Trove.</p>
 </section>
-<section id="categories">
-<h2><span class="section-number">2.2. </span>Categories<a class="headerlink" href="#categories" title="Permalink to this heading">#</a></h2>
-<p>Books &amp; libraries is the default, then use type.</p>
+<section id="contexts-not-collections">
+<h2><span class="section-number">2.2. </span>Contexts not collections<a class="headerlink" href="#contexts-not-collections" title="Permalink to this heading">#</a></h2>
+<p>The categories that contain a specific type of resource, such as <strong>Newspapers &amp; Gazettes</strong>, are relatively easy to understand – they operate as distinct collections with clear boundaries. But the categories that contain aggregated content are more complicated, and sometimes confusing.</p>
+<p>The first thing to note is that individual resources can appear in more than one of these categories. For example, if you search for <a class="reference external" href="https://trove.nla.gov.au/search?keyword=title%3A%22Tasmania%20mineral%20chart%20series%22">“Tasmanian Mineral Chart Series”</a> you’ll be presented with the same set of results in both the <strong>Research &amp; Reports</strong> and <strong>Images, Maps &amp; Artefacts</strong> categories. Why does this happen? The clue is in the formats of the matched resources – all of them are described both as <code class="docutils literal notranslate"><span class="pre">Map</span></code> and <code class="docutils literal notranslate"><span class="pre">Government</span> <span class="pre">publication</span></code>. Unsuprisingly, resources with the format <code class="docutils literal notranslate"><span class="pre">Map</span></code> end up in the <strong>Images, Maps &amp; Artefacts</strong> category. But those described as <code class="docutils literal notranslate"><span class="pre">Government</span> <span class="pre">publication</span></code> are routed to <strong>Research &amp; Reports</strong>. Rather than choosing between competing categories, Trove adds them to both.</p>
+<p>Similarly, a <a class="reference external" href="https://trove.nla.gov.au/search?keyword=title%3A%22Atlas%20of%20Australia%20with%20all%20the%20gold%20regions%22">search for the book <em>Atlas of Australia with all the gold regions</em></a> returns five results in <strong>Books &amp; Libraries</strong>, with three of those results duplicated in <strong>Images, Maps &amp; Artefacts</strong>. All of them have the format <code class="docutils literal notranslate"><span class="pre">Book</span></code>, but the three in <strong>Images, Maps &amp; Artefacts</strong> also have the format <code class="docutils literal notranslate"><span class="pre">Map</span></code>.</p>
+<p>There are many examples where resources have multiple, competing formats:</p>
+<ul class="simple">
+<li><p>3,000 resources are both <code class="docutils literal notranslate"><span class="pre">Book</span></code> (Books &amp; Libraries) and <code class="docutils literal notranslate"><span class="pre">Art</span> <span class="pre">work</span></code> (Images, Maps &amp; Artefacts)</p></li>
+<li><p>22,000 resources are <code class="docutils literal notranslate"><span class="pre">Government</span> <span class="pre">publication</span></code> (Research &amp; Reports) and <code class="docutils literal notranslate"><span class="pre">Video</span></code> (Music, Audio &amp; Video)</p></li>
+<li><p>1,000 resources are <code class="docutils literal notranslate"><span class="pre">Object</span></code> (Images, Maps &amp; Artefacts) and <code class="docutils literal notranslate"><span class="pre">Unpublished</span></code> (Diaries, Letters &amp;  Archives)</p></li>
+</ul>
+<p>These overlaps become even more complex when mixed with Trove’s <a class="reference internal" href="works-and-versions.html"><span class="doc std std-doc">grouping of works and versions</span></a>.</p>
+<p>By duplicating results across categories, Trove is trying to make these resources easier to find, and that’s good! The problem really is with the <em>idea</em> of ‘categories’. Until 2020, Trove’s categories were called ‘zones’, but during the initial design process they were referred to as ‘collection views’.<span id="id1">[<a class="reference internal" href="../references.html#id21" title="Warwick Cathro and Susan Collier. Developing Trove: the policy and technical challenges. In VALA2010. 2010.">Cathro and Collier, 2010</a>]</span> The ‘collection view’ label provides a much clearer indication of the purpose of these top-level groupings – <strong>they’re not collections, they’re contexts for discovery</strong>.</p>
+<p>They key point is that aggregated resources don’t really <em>belong</em> to a category. You might have noticed that individual work records in both the web interface and the API, don’t tell you the category (or categories) that work belongs to. If you have a work record, the only way to find its associated categories is to run a search for it. Categories only make sense when you’re searching. They’re not buckets of content, they’re windows onto a big pool of aggregated resources.</p>
+<p><mark>==Note about the implications of working with data. Using the ‘all’ option with harvests.==</mark></p>
+</section>
+<section id="what-ends-up-where">
+<h2><span class="section-number">2.3. </span>What ends up where?<a class="headerlink" href="#what-ends-up-where" title="Permalink to this heading">#</a></h2>
+<p>But how do formats get associated with categories? The following table is included in the <a class="reference external" href="https://trove.nla.gov.au/partners/partner-services/contribute/trove-data-dictionary">Trove Data Dictionary</a> to help contributors prepare their metadata for ingest. The contents of the <code class="docutils literal notranslate"><span class="pre">type</span></code> field are used to determine categories, with <strong>Books &amp; Libraries</strong> the default destination.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Category</p></th>
@@ -543,7 +564,38 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>– from <a class="reference external" href="https://trove.nla.gov.au/partners/partner-services/contribute/trove-data-dictionary">Trove Data Dictionary</a></p>
+<div class="admonition-confused-about-types-and-formats admonition">
+<p class="admonition-title">Confused about types and formats?</p>
+<p>Beware that <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">format</span></code> can have different meanings depending on where you are in Trove! In the web interface, ‘Type’ is used to distinguish between ‘sub categories’ such as <code class="docutils literal notranslate"><span class="pre">Newspaper'</span> <span class="pre">and</span> </code>Gazette<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">while</span> <span class="pre">'Format'</span> <span class="pre">describes</span> <span class="pre">the</span> <span class="pre">resource's</span> <span class="pre">format.</span> <span class="pre">In</span> <span class="pre">the</span> <span class="pre">API,</span> <span class="pre">the</span> <span class="pre">format</span> <span class="pre">values</span> <span class="pre">are</span> <span class="pre">in</span> <span class="pre">the</span> </code>type<code class="docutils literal notranslate"><span class="pre">field,</span> <span class="pre">although</span> <span class="pre">you</span> <span class="pre">use</span> <span class="pre">them</span> <span class="pre">with</span> <span class="pre">the</span></code>format<code class="docutils literal notranslate"><span class="pre">facet.</span> <span class="pre">There</span> <span class="pre">can</span> <span class="pre">also</span> <span class="pre">be</span> <span class="pre">a</span> <span class="pre">separate</span></code>format` field in work and version records that contains a physical description.</p>
+</div>
+</section>
+<section id="exploring-the-contents-of-categories">
+<h2><span class="section-number">2.4. </span>Exploring the contents of categories<a class="headerlink" href="#exploring-the-contents-of-categories" title="Permalink to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">format</span></code> facet.</p>
+<p>Main contributors.</p>
+</section>
+<section id="working-notes">
+<h2><span class="section-number">2.5. </span>Working notes<a class="headerlink" href="#working-notes" title="Permalink to this heading">#</a></h2>
+<p>Zones were called “collection views” in development. More accurate.</p>
+<p>Exploration of overlaps</p>
+<p>Contributors per zone (facets, point to more complete data)</p>
+<p>Research and repositories</p>
+<p>Note that work records don’t tell you what category they’re in (infer from <code class="docutils literal notranslate"><span class="pre">type</span></code>?). Categories manage searches, they’re (mostly) not collections in themselves. <strong>Categories are contexts for discovery.</strong></p>
+<p>Categories affected by <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">format</span></code>, and also the grouping of versions into works (eg an article and book with the same name and author might be grouped). Also the source.</p>
+<p>Is research the default for IRs?</p>
+<p>Newspapers, web archive, and people separate.</p>
+<p>Note that you can’t combine facet values etc because of overlaps.</p>
+<p>Categories contain a range of formats that aren’t included in the format facet – eg Book in the magazine category. Can illustrate by searching for <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">format:”Book”</span></code>. They’re less obvious in results but still there.</p>
+<p>It looks like ‘Book/Illustrated’ for examples doesn’t go into Image. The ones in their seem to have something like ‘Art work’ or ‘map’ included.</p>
+<p>Also ‘formats’ are actually ‘types’ in the metadata. The format field includes physical description info. Perhaps confusing.</p>
+<p>So that means the <code class="docutils literal notranslate"><span class="pre">format</span></code> facet doesn’t provide a complete list of formats. It also means you might get formats you don’t expect if you harvest from a category (eg books in images)</p>
+<p>Oddities:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://trove.nla.gov.au/work/36446349">https://trove.nla.gov.au/work/36446349</a> – annual reports of the Royal Society of Tasmania, multiple years as ‘editions’, description is taken from one and used across all. API records contain 2 versions for each edition.</p></li>
+</ul>
+</section>
+<section id="categories">
+<h2><span class="section-number">2.6. </span>Categories<a class="headerlink" href="#categories" title="Permalink to this heading">#</a></h2>
 <p>But why does <a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F9439997%3Freclevel%3Dfull%26include%3Dworkversions%2Choldings">this work</a> show up in Research? No mention of data sets or theses, and not held by an IR. Because it’s a ‘Government publication’?</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F81126945%3Freclevel%3Dfull%26include%3Dworkversions">This record</a> combines a book with a chapter from the book (held in an IR).</p>
 </section>
@@ -616,8 +668,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-notes">2.1. Working notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">2.2. Categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-categories-are-not-the-same">2.1. All categories are not the same</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexts-not-collections">2.2. Contexts not collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-ends-up-where">2.3. What ends up where?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-contents-of-categories">2.4. Exploring the contents of categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-notes">2.5. Working notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">2.6. Categories</a></li>
 </ul>
   </nav></div>
 
