@@ -14,3 +14,4 @@ sphinx-tippy
 jupyterlab-code-snippets
 wordcloud
 html2text
+sphinxcontrib-mermaid

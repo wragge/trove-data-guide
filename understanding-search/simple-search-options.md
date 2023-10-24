@@ -48,6 +48,10 @@ Note that `fullTextInd` can be misleading and inaccurate -- doesn't always link 
 
 <mark>==`series:`? Seems to work. Is it different to `contribcollection`?==</mark>
 
+Difference between `format:Book` and `l-format=Book`. Index search seems to search within the format value -- so `Book` matches `Book chapter`?
+
+Note differences in using "" and () in index/field queries
+
 +++
 
 (search-indexes-firstpageseq)=
