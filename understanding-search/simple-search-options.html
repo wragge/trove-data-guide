@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.efffe24a-dfdc-4d9a-a39a-5861078a15a5.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.7e963d5b-b995-4d4a-bb92-56d8958e6fde.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/simple-search-options';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -506,6 +506,8 @@ document.write(`
 </table>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">fullTextInd</span></code> can be misleading and inaccurate – doesn’t always link to fulltext version, text not always available. Can be restricted (eg NED publications) or from a contributor where fulltext links are sometimes wrong. Need to combine with something like “nla.obj”, and exclude NED, to find digitised resources reliably.</p>
 <p><mark>==<code class="docutils literal notranslate"><span class="pre">series:</span></code>? Seems to work. Is it different to <code class="docutils literal notranslate"><span class="pre">contribcollection</span></code>?==</mark></p>
+<p>Difference between <code class="docutils literal notranslate"><span class="pre">format:Book</span></code> and <code class="docutils literal notranslate"><span class="pre">l-format=Book</span></code>. Index search seems to search within the format value – so <code class="docutils literal notranslate"><span class="pre">Book</span></code> matches <code class="docutils literal notranslate"><span class="pre">Book</span> <span class="pre">chapter</span></code>?</p>
+<p>Note differences in using “” and () in index/field queries</p>
 </section>
 <section id="searching-for-articles-on-a-specific-page">
 <span id="search-indexes-firstpageseq"></span><h2><span class="section-number">10.2. </span>Searching for articles on a specific page<a class="headerlink" href="#searching-for-articles-on-a-specific-page" title="Permalink to this heading">#</a></h2>

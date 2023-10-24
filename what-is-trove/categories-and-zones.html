@@ -65,7 +65,9 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/categories-and-zones.f031570f-df1f-4d0a-a32c-ff93383a3585.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/categories-and-zones.7d78439b-b8ab-4eee-ad08-ccf7ded7cf56.js"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/categories-and-zones';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -462,9 +464,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-categories-are-not-the-same">2.1. All categories are not the same</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexts-not-collections">2.2. Contexts not collections</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-ends-up-where">2.3. What ends up where?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-contents-of-categories">2.4. Exploring the contents of categories</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-notes">2.5. Working notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">2.6. Categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-zones-to-categories">2.4. From zones to categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-resources-in-each-category">2.5. Number of resources in each category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-formats-across-categories">2.6. Distribution of formats across categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories-and-contributors">2.7. Categories and contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-notes">2.8. Working notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">2.9. Categories</a></li>
 </ul>
             </nav>
         </div>
@@ -482,8 +487,36 @@ document.write(`
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">JSON</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YOUR_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TROVE_API_KEY&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Trove’s resources are divided into <strong>categories</strong>. Understanding the nature and content of these categories will help you construct effective searches and access useful data.</p>
-<p>There are nine categories in Trove:</p>
+<p>There are ten categories in Trove:</p>
 <ul class="simple">
 <li><p>Books &amp; Libraries</p></li>
 <li><p>Diaries, Letters &amp; Archives</p></li>
@@ -494,6 +527,7 @@ document.write(`
 <li><p>Newspapers &amp; Gazettes</p></li>
 <li><p>People &amp; Organisations</p></li>
 <li><p>Research &amp; Reports</p></li>
+<li><p>Websites</p></li>
 </ul>
 <p>On the surface they seem to based on the format of resources – books in one category, newspapers in another. But it’s a bit more complicated than that. Categories are determined by the format of a resource, the source of data about the resource, and the way that data is managed within Trove. For example, newspaper articles are obviously in the Newspapers category, but part of the reason is that newspaper articles are added, described, and managed within their own separate system.</p>
 <div class="tip admonition">
@@ -501,7 +535,7 @@ document.write(`
 <p>Ever wondered why the <em>Australian Women’s Weekly</em> is found in the Newspapers category and not with the Magazines? It’s because when the Women’s Weekly was digitised, the only way for Trove to ingest digitised publications was through the newspapers pipeline. Comparable systems for managing magazines, journals, books, images, and other digitised content came later.</p>
 </div>
 <section id="all-categories-are-not-the-same">
-<h2><span class="section-number">2.1. </span>All categories are not the same<a class="headerlink" href="#all-categories-are-not-the-same" title="Permalink to this heading">#</a></h2>
+<span id="all-categories-not-the-same"></span><h2><span class="section-number">2.1. </span>All categories are not the same<a class="headerlink" href="#all-categories-are-not-the-same" title="Permalink to this heading">#</a></h2>
 <p>Broadly speaking, there are two types of categories in Trove: those that aggregate content, in various formats, from range of organisations and sources; and those that are limited to a specific type of resource created or managed by the NLA.</p>
 <p>Categories that contain aggregated content in a variety of formats:</p>
 <ul class="simple">
@@ -522,7 +556,7 @@ document.write(`
 <p>Trove being Trove, this distinction is not always clear cut. While newspapers and periodical articles have their own dedicated categories, the rest of the NLA’s digitised content (books, maps, photographs etc) are lumped into the general resource pool. The <strong>Magazines &amp; Newsletters</strong> category <em>almost</em> exclusively contains articles from periodicals digitised by the NLA, but if you <a class="reference external" href="https://trove.nla.gov.au/search/category/magazines?keyword=NOT%20%22nla.obj%22">search for <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">&quot;nla.obj&quot;</span></code></a> you’ll find a small amount of content from other sources – mostly issues of the <em>Tattersall’s Club Magazine</em>. And while the ‘People &amp; Organisations’ category only contains identity records minted by the NLA, these records aggregate and disambiguate data from a number of other sources. Nonetheless, the distinction mostly holds, and it’s useful to keep in mind when you start exploring how categories actually work in Trove.</p>
 </section>
 <section id="contexts-not-collections">
-<h2><span class="section-number">2.2. </span>Contexts not collections<a class="headerlink" href="#contexts-not-collections" title="Permalink to this heading">#</a></h2>
+<span id="id1"></span><h2><span class="section-number">2.2. </span>Contexts not collections<a class="headerlink" href="#contexts-not-collections" title="Permalink to this heading">#</a></h2>
 <p>The categories that contain a specific type of resource, such as <strong>Newspapers &amp; Gazettes</strong>, are relatively easy to understand – they operate as distinct collections with clear boundaries. But the categories that contain aggregated content are more complicated, and sometimes confusing.</p>
 <p>The first thing to note is that individual resources can appear in more than one of these categories. For example, if you search for <a class="reference external" href="https://trove.nla.gov.au/search?keyword=title%3A%22Tasmania%20mineral%20chart%20series%22">“Tasmanian Mineral Chart Series”</a> you’ll be presented with the same set of results in both the <strong>Research &amp; Reports</strong> and <strong>Images, Maps &amp; Artefacts</strong> categories. Why does this happen? The clue is in the formats of the matched resources – all of them are described both as <code class="docutils literal notranslate"><span class="pre">Map</span></code> and <code class="docutils literal notranslate"><span class="pre">Government</span> <span class="pre">publication</span></code>. Unsuprisingly, resources with the format <code class="docutils literal notranslate"><span class="pre">Map</span></code> end up in the <strong>Images, Maps &amp; Artefacts</strong> category. But those described as <code class="docutils literal notranslate"><span class="pre">Government</span> <span class="pre">publication</span></code> are routed to <strong>Research &amp; Reports</strong>. Rather than choosing between competing categories, Trove adds them to both.</p>
 <p>Similarly, a <a class="reference external" href="https://trove.nla.gov.au/search?keyword=title%3A%22Atlas%20of%20Australia%20with%20all%20the%20gold%20regions%22">search for the book <em>Atlas of Australia with all the gold regions</em></a> returns five results in <strong>Books &amp; Libraries</strong>, with three of those results duplicated in <strong>Images, Maps &amp; Artefacts</strong>. All of them have the format <code class="docutils literal notranslate"><span class="pre">Book</span></code>, but the three in <strong>Images, Maps &amp; Artefacts</strong> also have the format <code class="docutils literal notranslate"><span class="pre">Map</span></code>.</p>
@@ -533,7 +567,7 @@ document.write(`
 <li><p>1,000 resources are <code class="docutils literal notranslate"><span class="pre">Object</span></code> (Images, Maps &amp; Artefacts) and <code class="docutils literal notranslate"><span class="pre">Unpublished</span></code> (Diaries, Letters &amp;  Archives)</p></li>
 </ul>
 <p>These overlaps become even more complex when mixed with Trove’s <a class="reference internal" href="works-and-versions.html"><span class="doc std std-doc">grouping of works and versions</span></a>.</p>
-<p>By duplicating results across categories, Trove is trying to make these resources easier to find, and that’s good! The problem really is with the <em>idea</em> of ‘categories’. Until 2020, Trove’s categories were called ‘zones’, but during the initial design process they were referred to as ‘collection views’.<span id="id1">[<a class="reference internal" href="../references.html#id21" title="Warwick Cathro and Susan Collier. Developing Trove: the policy and technical challenges. In VALA2010. 2010.">Cathro and Collier, 2010</a>]</span> The ‘collection view’ label provides a much clearer indication of the purpose of these top-level groupings – <strong>they’re not collections, they’re contexts for discovery</strong>.</p>
+<p>By duplicating results across categories, Trove is trying to make these resources easier to find, and that’s good! The problem really is with the <em>idea</em> of ‘categories’. Until 2020, Trove’s categories were called ‘zones’, but during the initial design process they were referred to as ‘collection views’.<span id="id2">[<a class="reference internal" href="../references.html#id21" title="Warwick Cathro and Susan Collier. Developing Trove: the policy and technical challenges. In VALA2010. 2010.">Cathro and Collier, 2010</a>]</span> The ‘collection view’ label provides a much clearer indication of the purpose of these top-level groupings – <strong>they’re not collections, they’re contexts for discovery</strong>.</p>
 <p>They key point is that aggregated resources don’t really <em>belong</em> to a category. You might have noticed that individual work records in both the web interface and the API, don’t tell you the category (or categories) that work belongs to. If you have a work record, the only way to find its associated categories is to run a search for it. Categories only make sense when you’re searching. They’re not buckets of content, they’re windows onto a big pool of aggregated resources.</p>
 <p><mark>==Note about the implications of working with data. Using the ‘all’ option with harvests.==</mark></p>
 </section>
@@ -566,16 +600,664 @@ document.write(`
 </table>
 <div class="admonition-confused-about-types-and-formats admonition">
 <p class="admonition-title">Confused about types and formats?</p>
-<p>Beware that <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">format</span></code> can have different meanings depending on where you are in Trove! In the web interface, ‘Type’ is used to distinguish between ‘sub categories’ such as <code class="docutils literal notranslate"><span class="pre">Newspaper'</span> <span class="pre">and</span> </code>Gazette<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">while</span> <span class="pre">'Format'</span> <span class="pre">describes</span> <span class="pre">the</span> <span class="pre">resource's</span> <span class="pre">format.</span> <span class="pre">In</span> <span class="pre">the</span> <span class="pre">API,</span> <span class="pre">the</span> <span class="pre">format</span> <span class="pre">values</span> <span class="pre">are</span> <span class="pre">in</span> <span class="pre">the</span> </code>type<code class="docutils literal notranslate"><span class="pre">field,</span> <span class="pre">although</span> <span class="pre">you</span> <span class="pre">use</span> <span class="pre">them</span> <span class="pre">with</span> <span class="pre">the</span></code>format<code class="docutils literal notranslate"><span class="pre">facet.</span> <span class="pre">There</span> <span class="pre">can</span> <span class="pre">also</span> <span class="pre">be</span> <span class="pre">a</span> <span class="pre">separate</span></code>format` field in work and version records that contains a physical description.</p>
+<p>Beware that <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">format</span></code> can have different meanings depending on where you are in Trove! In the web interface, the facet headed ‘Type’ is used to distinguish between ‘sub categories’ such as <code class="docutils literal notranslate"><span class="pre">newspaper</span></code> and <code class="docutils literal notranslate"><span class="pre">gazette</span></code>, while ‘Format’ describes the resource’s format. In the API, the format values are in the <code class="docutils literal notranslate"><span class="pre">type</span></code> field, although you use them with the <code class="docutils literal notranslate"><span class="pre">format</span></code> facet! There can also be a separate <code class="docutils literal notranslate"><span class="pre">format</span></code> field in work and version records that contains a physical description.</p>
+</div>
+<p>Table misses things like articles and gov publications which seem to go to research</p>
+</section>
+<section id="from-zones-to-categories">
+<h2><span class="section-number">2.4. </span>From zones to categories<a class="headerlink" href="#from-zones-to-categories" title="Permalink to this heading">#</a></h2>
+<p>Trove originally delivered resources through ‘zones’ rather than ‘categories’. Trove’s 2020 update introduced ‘categories’ and redistributed content across them. However, this change only applied to the web interface – the API continued to use zones until the introduction of API version 3 in 2023.</p>
+<div class="mermaid">
+            graph LR
+  Books --&gt; Books &amp; Libraries
+  Journals -- NLA digitised articles --&gt; Magazines &amp; Newsletters
+  Journals -- other articles and reports --&gt; Research &amp; Reports
+  
+  maps --&gt; image
+  picture --&gt; image
+        </div></section>
+<section id="number-of-resources-in-each-category">
+<h2><span class="section-number">2.5. </span>Number of resources in each category<a class="headerlink" href="#number-of-resources-in-each-category" title="Permalink to this heading">#</a></h2>
+<p>We can use the Trove API to access data about most categories. For example, here’s the total number of resources per category.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>  <span class="c1"># By setting category to all, we get data from all categories</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Get name and total results from each category</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]}</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># Convert to a Pandas DataFrame</span>
+<span class="n">df_cats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span>
+
+<span class="c1"># Display as a table</span>
+<span class="n">df_cats</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thousands</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_ebf93">
+  <thead>
+    <tr>
+      <th id="T_ebf93_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_ebf93_level0_col1" class="col_heading level0 col1" >total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_ebf93_row0_col0" class="data row0 col0" >Books & Libraries</td>
+      <td id="T_ebf93_row0_col1" class="data row0 col1" >26,837,640</td>
+    </tr>
+    <tr>
+      <td id="T_ebf93_row1_col0" class="data row1 col0" >Diaries, Letters & Archives</td>
+      <td id="T_ebf93_row1_col1" class="data row1 col1" >5,055,075</td>
+    </tr>
+    <tr>
+      <td id="T_ebf93_row2_col0" class="data row2 col0" >Images, Maps & Artefacts</td>
+      <td id="T_ebf93_row2_col1" class="data row2 col1" >5,958,300</td>
+    </tr>
+    <tr>
+      <td id="T_ebf93_row3_col0" class="data row3 col0" >Lists</td>
+      <td id="T_ebf93_row3_col1" class="data row3 col1" >110,075</td>
+    </tr>
+    <tr>
+      <td id="T_ebf93_row4_col0" class="data row4 col0" >Magazines & Newsletters</td>
+      <td id="T_ebf93_row4_col1" class="data row4 col1" >1,807,848</td>
+    </tr>
+    <tr>
+      <td id="T_ebf93_row5_col0" class="data row5 col0" >Music, Audio & Video</td>
+      <td id="T_ebf93_row5_col1" class="data row5 col1" >3,289,288</td>
+    </tr>
+    <tr>
+      <td id="T_ebf93_row6_col0" class="data row6 col0" >Newspapers & Gazettes</td>
+      <td id="T_ebf93_row6_col1" class="data row6 col1" >245,547,193</td>
+    </tr>
+    <tr>
+      <td id="T_ebf93_row7_col0" class="data row7 col0" >People & Organisations</td>
+      <td id="T_ebf93_row7_col1" class="data row7 col1" >1,324,436</td>
+    </tr>
+    <tr>
+      <td id="T_ebf93_row8_col0" class="data row8 col0" >Research & Reports</td>
+      <td id="T_ebf93_row8_col1" class="data row8 col1" >5,516,852</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_cats</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;,d&quot;</span><span class="p">)),</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;category:N&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;category:N&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;category:N&quot;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;,d&quot;</span><span class="p">)],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-710c7d1a4d504f3faedf418903539d2b.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-710c7d1a4d504f3faedf418903539d2b.vega-embed details,
+  #altair-viz-710c7d1a4d504f3faedf418903539d2b.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-710c7d1a4d504f3faedf418903539d2b"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-710c7d1a4d504f3faedf418903539d2b") {
+      outputDiv = document.getElementById("altair-viz-710c7d1a4d504f3faedf418903539d2b");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-1b072cb0a2a1191d0edb7e6ff01de76f"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "category", "legend": null, "type": "nominal"}, "tooltip": [{"field": "category", "type": "nominal"}, {"field": "total", "format": ",d", "type": "quantitative"}], "x": {"axis": {"format": ",d"}, "field": "total", "type": "quantitative"}, "y": {"field": "category", "type": "nominal"}}, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-1b072cb0a2a1191d0edb7e6ff01de76f": [{"category": "Books & Libraries", "total": 26837640}, {"category": "Diaries, Letters & Archives", "total": 5055075}, {"category": "Images, Maps & Artefacts", "total": 5958300}, {"category": "Lists", "total": 110075}, {"category": "Magazines & Newsletters", "total": 1807848}, {"category": "Music, Audio & Video", "total": 3289288}, {"category": "Newspapers & Gazettes", "total": 245547193}, {"category": "People & Organisations", "total": 1324436}, {"category": "Research & Reports", "total": 5516852}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Some caution is needed when interpreting these figures. As noted above, there are overlaps between categories so some resources will be counted twice. On the other hand, there’ll be resources that are not individually counted because they’ve been wrongly grouped into a ‘work’. The numbers are useful for comparison and in observing trends over time, but they don’t accurately represent the number of unique resources described in Trove.</p>
+<p>There’s no data about archived websites available through the main API so it doesn’t appear in this chart. If it did, it would dramatically reshape the results as it contains billions of website captures.</p>
+<p>If you’re interested in how these totals change over time, the <a class="reference external" href="https://github.com/wragge/trove-zone-totals">trove-zone-totals</a> repository harvests and saves the data every week.</p>
+</section>
+<section id="distribution-of-formats-across-categories">
+<h2><span class="section-number">2.6. </span>Distribution of formats across categories<a class="headerlink" href="#distribution-of-formats-across-categories" title="Permalink to this heading">#</a></h2>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">format</span></code> facet to see how different types of resources are grouped within categories. Here’s the number of different formats in each category according to the <code class="docutils literal notranslate"><span class="pre">format</span></code> facet.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="n">term</span><span class="p">):</span>
+    <span class="n">facets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">child_term</span> <span class="ow">in</span> <span class="n">term</span><span class="p">[</span><span class="s2">&quot;term&quot;</span><span class="p">]:</span>
+        <span class="n">facets</span> <span class="o">+=</span> <span class="n">get_term</span><span class="p">(</span><span class="n">child_term</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">facets</span>
+
+
+<span class="k">def</span> <span class="nf">get_term</span><span class="p">(</span><span class="n">term</span><span class="p">):</span>
+    <span class="n">facets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">facets</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="n">term</span><span class="p">[</span><span class="s2">&quot;search&quot;</span><span class="p">],</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">term</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">])})</span>
+    <span class="k">if</span> <span class="s2">&quot;term&quot;</span> <span class="ow">in</span> <span class="n">term</span><span class="p">:</span>
+        <span class="n">facets</span> <span class="o">+=</span> <span class="n">get_children</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">facets</span>
+
+
+<span class="k">def</span> <span class="nf">get_formats</span><span class="p">(</span><span class="n">category</span><span class="p">):</span>
+    <span class="n">facets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">category</span><span class="p">[</span><span class="s2">&quot;facets&quot;</span><span class="p">][</span><span class="s2">&quot;facet&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;term&quot;</span><span class="p">]:</span>
+            <span class="n">facets</span> <span class="o">+=</span> <span class="n">get_term</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">formats</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s2">&quot;category_name&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;category_code&quot;</span><span class="p">:</span> <span class="n">category</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">]}</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">facets</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">formats</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">,</span>
+    <span class="s2">&quot;facet&quot;</span><span class="p">:</span> <span class="s2">&quot;format&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">formats</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]:</span>
+    <span class="n">formats</span> <span class="o">+=</span> <span class="n">get_formats</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+
+<span class="n">df_formats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">formats</span><span class="p">)</span>
+
+<span class="n">df_formats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_formats</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;category_name&quot;</span><span class="p">)[</span><span class="s2">&quot;format&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>category_name</th>
+      <th>format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Books &amp; Libraries</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Diaries, Letters &amp; Archives</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Images, Maps &amp; Artefacts</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Lists</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Magazines &amp; Newsletters</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Music, Audio &amp; Video</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Newspapers &amp; Gazettes</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Research &amp; Reports</td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><a class="reference external" href="https://trove.nla.gov.au/about/create-something/using-api/api-technical-guide#formats">Formats in Trove</a> are arranged hierarchically, with values such as <code class="docutils literal notranslate"><span class="pre">Book</span></code> and <code class="docutils literal notranslate"><span class="pre">Article</span></code> subdivided into groups like <code class="docutils literal notranslate"><span class="pre">Book/Illustrated</span></code> and <code class="docutils literal notranslate"><span class="pre">Article/Report</span></code>. This chart groups formats by their top-level heading (<code class="docutils literal notranslate"><span class="pre">Book</span></code>, <code class="docutils literal notranslate"><span class="pre">Article</span></code> etc) and displays the mix of formats in each category.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_formats</span><span class="p">[</span><span class="s2">&quot;format_group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_formats</span><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">df_format_group_totals</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_formats</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;category_name&quot;</span><span class="p">,</span> <span class="s2">&quot;format_group&quot;</span><span class="p">])[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_format_group_totals</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;category_name:N&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s2">&quot;normalize&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;format_group:N&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;category20&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">),</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;format_group:N&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">)],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-2d64e26bc11f4aba94f8b150591c7443.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-2d64e26bc11f4aba94f8b150591c7443.vega-embed details,
+  #altair-viz-2d64e26bc11f4aba94f8b150591c7443.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-2d64e26bc11f4aba94f8b150591c7443"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-2d64e26bc11f4aba94f8b150591c7443") {
+      outputDiv = document.getElementById("altair-viz-2d64e26bc11f4aba94f8b150591c7443");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b58b57a57dbbdf928e39a69b429325dc"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "format_group", "scale": {"scheme": "category20"}, "title": "format", "type": "nominal"}, "tooltip": [{"field": "format_group", "title": "format", "type": "nominal"}], "x": {"axis": {"labels": false, "ticks": false}, "field": "total", "stack": "normalize", "title": null, "type": "quantitative"}, "y": {"field": "category_name", "title": null, "type": "nominal"}}, "height": 300, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-b58b57a57dbbdf928e39a69b429325dc": [{"category_name": "Books & Libraries", "format_group": "Archived website", "total": 33076}, {"category_name": "Books & Libraries", "format_group": "Article", "total": 15030869}, {"category_name": "Books & Libraries", "format_group": "Audio book", "total": 319175}, {"category_name": "Books & Libraries", "format_group": "Book", "total": 24936407}, {"category_name": "Books & Libraries", "format_group": "Conference Proceedings", "total": 479547}, {"category_name": "Books & Libraries", "format_group": "Data set", "total": 27}, {"category_name": "Books & Libraries", "format_group": "Government publication", "total": 222926}, {"category_name": "Books & Libraries", "format_group": "Microform", "total": 952087}, {"category_name": "Books & Libraries", "format_group": "Periodical", "total": 3944657}, {"category_name": "Books & Libraries", "format_group": "Thesis", "total": 35136}, {"category_name": "Diaries, Letters & Archives", "format_group": "Government publication", "total": 2794}, {"category_name": "Diaries, Letters & Archives", "format_group": "Published", "total": 271576}, {"category_name": "Diaries, Letters & Archives", "format_group": "Unpublished", "total": 4783349}, {"category_name": "Images, Maps & Artefacts", "format_group": "Art work", "total": 257490}, {"category_name": "Images, Maps & Artefacts", "format_group": "Government publication", "total": 178331}, {"category_name": "Images, Maps & Artefacts", "format_group": "Map", "total": 692893}, {"category_name": "Images, Maps & Artefacts", "format_group": "Microform", "total": 15381}, {"category_name": "Images, Maps & Artefacts", "format_group": "Object", "total": 578961}, {"category_name": "Images, Maps & Artefacts", "format_group": "Photograph", "total": 4617029}, {"category_name": "Images, Maps & Artefacts", "format_group": "Poster, chart, other", "total": 238377}, {"category_name": "Lists", "format_group": "List", "total": 110075}, {"category_name": "Magazines & Newsletters", "format_group": "Article", "total": 3614329}, {"category_name": "Magazines & Newsletters", "format_group": "Conference Proceedings", "total": 10}, {"category_name": "Magazines & Newsletters", "format_group": "Government publication", "total": 231}, {"category_name": "Magazines & Newsletters", "format_group": "Periodical", "total": 1422}, {"category_name": "Music, Audio & Video", "format_group": "Audio book", "total": 319289}, {"category_name": "Music, Audio & Video", "format_group": "Government publication", "total": 28869}, {"category_name": "Music, Audio & Video", "format_group": "Microform", "total": 5439}, {"category_name": "Music, Audio & Video", "format_group": "Printed music", "total": 637710}, {"category_name": "Music, Audio & Video", "format_group": "Sound", "total": 2786574}, {"category_name": "Music, Audio & Video", "format_group": "Video", "total": 1099791}, {"category_name": "Newspapers & Gazettes", "format_group": "Article", "total": 245547193}, {"category_name": "Research & Reports", "format_group": "Article", "total": 5694713}, {"category_name": "Research & Reports", "format_group": "Book", "total": 1955818}, {"category_name": "Research & Reports", "format_group": "Conference Proceedings", "total": 71733}, {"category_name": "Research & Reports", "format_group": "Data set", "total": 246238}, {"category_name": "Research & Reports", "format_group": "Government publication", "total": 2004960}, {"category_name": "Research & Reports", "format_group": "Microform", "total": 309727}, {"category_name": "Research & Reports", "format_group": "Periodical", "total": 492691}, {"category_name": "Research & Reports", "format_group": "Thesis", "total": 660060}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Once again <strong>Websites</strong> are missing as there’s no API data available. <strong>People &amp; Organisations</strong> are also missing from this chart, as identity records have no <code class="docutils literal notranslate"><span class="pre">format</span></code>. Of the categories that remain, <strong>Lists</strong>, <strong>Magazines &amp; Newsletters</strong>, and <strong>Newspapers &amp; Gazettes</strong> contain a single record format. The other categories have a mix of formats. This reflects the division, <a class="reference internal" href="#all-categories-not-the-same"><span class="std std-ref">noted above</span></a>, between categories that contain aggregated content, and those that are limited to a specific type of resource managed by the NLA.</p>
+<p>Looking more closely at the aggregated categories you can see there’s a general alignment between each category’s name and focus and the formats it contains. <strong>Books &amp; Libraries</strong> is mostly books, <strong>Images, Maps, &amp; Artefacts</strong> mostly photos, and <strong>Music, Audio, &amp; Video</strong> mostly sound and video. <strong>Research &amp; Reports</strong> contains mostly articles, books, and government publications. It all seems to make sense.</p>
+<p>However, <a class="reference internal" href="#contexts-not-collections"><span class="std std-ref">as noted above</span></a>, there are significant overlaps between categories. Why are no books showing up in <strong>Images, Maps, &amp; Artefacts</strong>, or maps in <strong>Books &amp; Libraries</strong>? It turns out that some facet values are hidden, both in the web interface and the API. You can test this for yourself. This blank search in <strong>Images, Maps, &amp; Artefacts</strong> doesn’t include <code class="docutils literal notranslate"><span class="pre">Book</span></code> in the list of formats.</p>
+<p>But if you add <code class="docutils literal notranslate"><span class="pre">&amp;l-format=Book</span></code> to the url, 51,000 books magically appear amongst the formats.</p>
+<p>I suspect this has been done to simplify the web interface and avoid confusion. But the fact that this carries over to the API results means that <code class="docutils literal notranslate"><span class="pre">format</span></code> facet can’t be relied upon in an analysis of the contents of categories. The workaround is run a separate search for each format value and compile the results.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">df_harvested_formats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/wragge/trove-zone-totals/main/data/trove-category-formats.csv&quot;</span><span class="p">)</span>
+<span class="n">formats</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_harvested_formats</span><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_harvested_formats</span><span class="p">[</span><span class="s2">&quot;category_code&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="c1"># Using category=all in this case causes a 500 error</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">,</span>
+<span class="p">}</span>
+
+               
+<span class="n">format_counts</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
+    <span class="k">for</span> <span class="nb">format</span> <span class="ow">in</span> <span class="n">formats</span><span class="p">:</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">category</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;l-format&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">format</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cat</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># These are likely 500 errors -- seems to be an API bug when setting l-format in categories like List</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># 500 errors are returned quickly so can go over rate limit</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+        <span class="n">format_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;category_name&quot;</span><span class="p">:</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;category_code&quot;</span><span class="p">:</span> <span class="n">cat</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="nb">format</span><span class="p">,</span>
+                <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+<span class="n">df_all_formats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">format_counts</span><span class="p">)</span>
+
+<span class="n">df_all_formats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_all_formats</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;category_name&quot;</span><span class="p">)[</span><span class="s2">&quot;format&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>category_name</th>
+      <th>format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Books &amp; Libraries</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Diaries, Letters &amp; Archives</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Images, Maps &amp; Artefacts</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Lists</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Magazines &amp; Newsletters</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Music, Audio &amp; Video</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Newspapers &amp; Gazettes</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Research &amp; Reports</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_all_formats</span><span class="p">[</span><span class="s2">&quot;format_group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_all_formats</span><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">df_all_format_group_totals</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_all_formats</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;category_name&quot;</span><span class="p">,</span> <span class="s2">&quot;format_group&quot;</span><span class="p">])[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df_all_format_group_totals</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;category_name:N&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s2">&quot;normalize&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;format_group:N&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;category20&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">),</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;format_group:N&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">)],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-f58b980962be4e459d4518e61f2afbe7.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-f58b980962be4e459d4518e61f2afbe7.vega-embed details,
+  #altair-viz-f58b980962be4e459d4518e61f2afbe7.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-f58b980962be4e459d4518e61f2afbe7"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-f58b980962be4e459d4518e61f2afbe7") {
+      outputDiv = document.getElementById("altair-viz-f58b980962be4e459d4518e61f2afbe7");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b54bd04f499c6485b3743c5f3f4f2fc5"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "format_group", "scale": {"scheme": "category20"}, "title": "format", "type": "nominal"}, "tooltip": [{"field": "format_group", "title": "format", "type": "nominal"}], "x": {"axis": {"labels": false, "ticks": false}, "field": "total", "stack": "normalize", "title": null, "type": "quantitative"}, "y": {"field": "category_name", "title": null, "type": "nominal"}}, "height": 300, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-b54bd04f499c6485b3743c5f3f4f2fc5": [{"category_name": "Books & Libraries", "format_group": "Archived website", "total": 33076}, {"category_name": "Books & Libraries", "format_group": "Art work", "total": 3704}, {"category_name": "Books & Libraries", "format_group": "Article", "total": 15030869}, {"category_name": "Books & Libraries", "format_group": "Audio book", "total": 319175}, {"category_name": "Books & Libraries", "format_group": "Book", "total": 24936407}, {"category_name": "Books & Libraries", "format_group": "Conference Proceedings", "total": 479547}, {"category_name": "Books & Libraries", "format_group": "Data set", "total": 27}, {"category_name": "Books & Libraries", "format_group": "Government publication", "total": 222926}, {"category_name": "Books & Libraries", "format_group": "List", "total": 0}, {"category_name": "Books & Libraries", "format_group": "Map", "total": 70420}, {"category_name": "Books & Libraries", "format_group": "Microform", "total": 952087}, {"category_name": "Books & Libraries", "format_group": "Object", "total": 2953}, {"category_name": "Books & Libraries", "format_group": "Periodical", "total": 3944657}, {"category_name": "Books & Libraries", "format_group": "Photograph", "total": 39668}, {"category_name": "Books & Libraries", "format_group": "Poster, chart, other", "total": 9704}, {"category_name": "Books & Libraries", "format_group": "Printed music", "total": 1901}, {"category_name": "Books & Libraries", "format_group": "Published", "total": 3367}, {"category_name": "Books & Libraries", "format_group": "Sound", "total": 27586}, {"category_name": "Books & Libraries", "format_group": "Thesis", "total": 35136}, {"category_name": "Books & Libraries", "format_group": "Unpublished", "total": 13587}, {"category_name": "Books & Libraries", "format_group": "Video", "total": 2415}, {"category_name": "Diaries, Letters & Archives", "format_group": "Archived website", "total": 79}, {"category_name": "Diaries, Letters & Archives", "format_group": "Art work", "total": 12}, {"category_name": "Diaries, Letters & Archives", "format_group": "Article", "total": 4997}, {"category_name": "Diaries, Letters & Archives", "format_group": "Audio book", "total": 378}, {"category_name": "Diaries, Letters & Archives", "format_group": "Book", "total": 20683}, {"category_name": "Diaries, Letters & Archives", "format_group": "Conference Proceedings", "total": 81}, {"category_name": "Diaries, Letters & Archives", "format_group": "Data set", "total": 5}, {"category_name": "Diaries, Letters & Archives", "format_group": "Government publication", "total": 2794}, {"category_name": "Diaries, Letters & Archives", "format_group": "List", "total": 0}, {"category_name": "Diaries, Letters & Archives", "format_group": "Map", "total": 130}, {"category_name": "Diaries, Letters & Archives", "format_group": "Microform", "total": 6730}, {"category_name": "Diaries, Letters & Archives", "format_group": "Object", "total": 8160}, {"category_name": "Diaries, Letters & Archives", "format_group": "Periodical", "total": 94}, {"category_name": "Diaries, Letters & Archives", "format_group": "Photograph", "total": 129}, {"category_name": "Diaries, Letters & Archives", "format_group": "Poster, chart, other", "total": 10}, {"category_name": "Diaries, Letters & Archives", "format_group": "Printed music", "total": 17}, {"category_name": "Diaries, Letters & Archives", "format_group": "Published", "total": 271576}, {"category_name": "Diaries, Letters & Archives", "format_group": "Sound", "total": 41}, {"category_name": "Diaries, Letters & Archives", "format_group": "Thesis", "total": 56}, {"category_name": "Diaries, Letters & Archives", "format_group": "Unpublished", "total": 4783349}, {"category_name": "Diaries, Letters & Archives", "format_group": "Video", "total": 4}, {"category_name": "Images, Maps & Artefacts", "format_group": "Archived website", "total": 12}, {"category_name": "Images, Maps & Artefacts", "format_group": "Art work", "total": 257490}, {"category_name": "Images, Maps & Artefacts", "format_group": "Article", "total": 19392}, {"category_name": "Images, Maps & Artefacts", "format_group": "Audio book", "total": 312}, {"category_name": "Images, Maps & Artefacts", "format_group": "Book", "total": 62865}, {"category_name": "Images, Maps & Artefacts", "format_group": "Conference Proceedings", "total": 51}, {"category_name": "Images, Maps & Artefacts", "format_group": "Data set", "total": 34}, {"category_name": "Images, Maps & Artefacts", "format_group": "Government publication", "total": 178331}, {"category_name": "Images, Maps & Artefacts", "format_group": "List", "total": 0}, {"category_name": "Images, Maps & Artefacts", "format_group": "Map", "total": 692893}, {"category_name": "Images, Maps & Artefacts", "format_group": "Microform", "total": 15381}, {"category_name": "Images, Maps & Artefacts", "format_group": "Object", "total": 578961}, {"category_name": "Images, Maps & Artefacts", "format_group": "Periodical", "total": 172}, {"category_name": "Images, Maps & Artefacts", "format_group": "Photograph", "total": 4617029}, {"category_name": "Images, Maps & Artefacts", "format_group": "Poster, chart, other", "total": 238377}, {"category_name": "Images, Maps & Artefacts", "format_group": "Printed music", "total": 217}, {"category_name": "Images, Maps & Artefacts", "format_group": "Published", "total": 6816}, {"category_name": "Images, Maps & Artefacts", "format_group": "Sound", "total": 9282}, {"category_name": "Images, Maps & Artefacts", "format_group": "Thesis", "total": 684}, {"category_name": "Images, Maps & Artefacts", "format_group": "Unpublished", "total": 1426}, {"category_name": "Images, Maps & Artefacts", "format_group": "Video", "total": 1986}, {"category_name": "Lists", "format_group": "List", "total": 110075}, {"category_name": "Lists", "format_group": "Printed music", "total": 0}, {"category_name": "Lists", "format_group": "Sound", "total": 0}, {"category_name": "Lists", "format_group": "Video", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Archived website", "total": 4}, {"category_name": "Magazines & Newsletters", "format_group": "Art work", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Article", "total": 3614329}, {"category_name": "Magazines & Newsletters", "format_group": "Audio book", "total": 2}, {"category_name": "Magazines & Newsletters", "format_group": "Book", "total": 1067}, {"category_name": "Magazines & Newsletters", "format_group": "Conference Proceedings", "total": 10}, {"category_name": "Magazines & Newsletters", "format_group": "Data set", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Government publication", "total": 231}, {"category_name": "Magazines & Newsletters", "format_group": "List", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Map", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Microform", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Object", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Periodical", "total": 1422}, {"category_name": "Magazines & Newsletters", "format_group": "Photograph", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Poster, chart, other", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Printed music", "total": 0}, {"category_name": "Magazines & Newsletters", "format_group": "Published", "total": 1}, {"category_name": "Magazines & Newsletters", "format_group": "Sound", "total": 12}, {"category_name": "Magazines & Newsletters", "format_group": "Thesis", "total": 1}, {"category_name": "Magazines & Newsletters", "format_group": "Unpublished", "total": 3}, {"category_name": "Magazines & Newsletters", "format_group": "Video", "total": 0}, {"category_name": "Music, Audio & Video", "format_group": "Archived website", "total": 24}, {"category_name": "Music, Audio & Video", "format_group": "Art work", "total": 298}, {"category_name": "Music, Audio & Video", "format_group": "Article", "total": 3301}, {"category_name": "Music, Audio & Video", "format_group": "Audio book", "total": 319289}, {"category_name": "Music, Audio & Video", "format_group": "Book", "total": 349279}, {"category_name": "Music, Audio & Video", "format_group": "Conference Proceedings", "total": 591}, {"category_name": "Music, Audio & Video", "format_group": "Data set", "total": 98}, {"category_name": "Music, Audio & Video", "format_group": "Government publication", "total": 28869}, {"category_name": "Music, Audio & Video", "format_group": "List", "total": 0}, {"category_name": "Music, Audio & Video", "format_group": "Map", "total": 1474}, {"category_name": "Music, Audio & Video", "format_group": "Microform", "total": 5439}, {"category_name": "Music, Audio & Video", "format_group": "Object", "total": 3279}, {"category_name": "Music, Audio & Video", "format_group": "Periodical", "total": 569}, {"category_name": "Music, Audio & Video", "format_group": "Photograph", "total": 2047}, {"category_name": "Music, Audio & Video", "format_group": "Poster, chart, other", "total": 531}, {"category_name": "Music, Audio & Video", "format_group": "Printed music", "total": 637710}, {"category_name": "Music, Audio & Video", "format_group": "Published", "total": 161}, {"category_name": "Music, Audio & Video", "format_group": "Sound", "total": 2786574}, {"category_name": "Music, Audio & Video", "format_group": "Thesis", "total": 634}, {"category_name": "Music, Audio & Video", "format_group": "Unpublished", "total": 255}, {"category_name": "Music, Audio & Video", "format_group": "Video", "total": 1099791}, {"category_name": "Newspapers & Gazettes", "format_group": "Archived website", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Art work", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Article", "total": 245547193}, {"category_name": "Newspapers & Gazettes", "format_group": "Audio book", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Conference Proceedings", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Data set", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Government publication", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "List", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Map", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Microform", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Object", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Periodical", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Photograph", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Poster, chart, other", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Printed music", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Published", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Sound", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Thesis", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Unpublished", "total": 0}, {"category_name": "Newspapers & Gazettes", "format_group": "Video", "total": 0}, {"category_name": "Research & Reports", "format_group": "Archived website", "total": 21837}, {"category_name": "Research & Reports", "format_group": "Art work", "total": 2323}, {"category_name": "Research & Reports", "format_group": "Article", "total": 5694713}, {"category_name": "Research & Reports", "format_group": "Audio book", "total": 2050}, {"category_name": "Research & Reports", "format_group": "Book", "total": 1955818}, {"category_name": "Research & Reports", "format_group": "Conference Proceedings", "total": 71733}, {"category_name": "Research & Reports", "format_group": "Data set", "total": 246238}, {"category_name": "Research & Reports", "format_group": "Government publication", "total": 2004960}, {"category_name": "Research & Reports", "format_group": "List", "total": 0}, {"category_name": "Research & Reports", "format_group": "Map", "total": 340152}, {"category_name": "Research & Reports", "format_group": "Microform", "total": 309727}, {"category_name": "Research & Reports", "format_group": "Object", "total": 3231}, {"category_name": "Research & Reports", "format_group": "Periodical", "total": 492691}, {"category_name": "Research & Reports", "format_group": "Photograph", "total": 172121}, {"category_name": "Research & Reports", "format_group": "Poster, chart, other", "total": 5006}, {"category_name": "Research & Reports", "format_group": "Printed music", "total": 1345}, {"category_name": "Research & Reports", "format_group": "Published", "total": 1346}, {"category_name": "Research & Reports", "format_group": "Sound", "total": 22302}, {"category_name": "Research & Reports", "format_group": "Thesis", "total": 660060}, {"category_name": "Research & Reports", "format_group": "Unpublished", "total": 4130}, {"category_name": "Research & Reports", "format_group": "Video", "total": 25683}]}}, {"mode": "vega-lite"});
+</script></div></div>
 </div>
 </section>
-<section id="exploring-the-contents-of-categories">
-<h2><span class="section-number">2.4. </span>Exploring the contents of categories<a class="headerlink" href="#exploring-the-contents-of-categories" title="Permalink to this heading">#</a></h2>
-<p>Use <code class="docutils literal notranslate"><span class="pre">format</span></code> facet.</p>
-<p>Main contributors.</p>
+<section id="categories-and-contributors">
+<h2><span class="section-number">2.7. </span>Categories and contributors<a class="headerlink" href="#categories-and-contributors" title="Permalink to this heading">#</a></h2>
+<p>Mix of contributors will also be different</p>
 </section>
 <section id="working-notes">
-<h2><span class="section-number">2.5. </span>Working notes<a class="headerlink" href="#working-notes" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.8. </span>Working notes<a class="headerlink" href="#working-notes" title="Permalink to this heading">#</a></h2>
 <p>Zones were called “collection views” in development. More accurate.</p>
 <p>Exploration of overlaps</p>
 <p>Contributors per zone (facets, point to more complete data)</p>
@@ -595,7 +1277,7 @@ document.write(`
 </ul>
 </section>
 <section id="categories">
-<h2><span class="section-number">2.6. </span>Categories<a class="headerlink" href="#categories" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.9. </span>Categories<a class="headerlink" href="#categories" title="Permalink to this heading">#</a></h2>
 <p>But why does <a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F9439997%3Freclevel%3Dfull%26include%3Dworkversions%2Choldings">this work</a> show up in Research? No mention of data sets or theses, and not held by an IR. Because it’s a ‘Government publication’?</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F81126945%3Freclevel%3Dfull%26include%3Dworkversions">This record</a> combines a book with a chapter from the book (held in an IR).</p>
 </section>
@@ -671,9 +1353,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-categories-are-not-the-same">2.1. All categories are not the same</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexts-not-collections">2.2. Contexts not collections</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-ends-up-where">2.3. What ends up where?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-contents-of-categories">2.4. Exploring the contents of categories</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-notes">2.5. Working notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">2.6. Categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-zones-to-categories">2.4. From zones to categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-resources-in-each-category">2.5. Number of resources in each category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-formats-across-categories">2.6. Distribution of formats across categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories-and-contributors">2.7. Categories and contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-notes">2.8. Working notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">2.9. Categories</a></li>
 </ul>
   </nav></div>
 
