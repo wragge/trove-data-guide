@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -31,6 +31,7 @@ Types of data:
 - people & orgs (authority records)
 - user generated content (lists, tags, comments, corrections
 - system statistics
+- contributors
 
 ```{code-cell} ipython3
 
