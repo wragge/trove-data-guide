@@ -21,6 +21,12 @@ This guide is currently under development. For more information and discussion s
 ```
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
 import os
 import time
 
@@ -34,10 +40,16 @@ load_dotenv()
 ```
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
 YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 ```
 
-+++ {"user_expressions": []}
++++ {"user_expressions": [], "editable": true, "slideshow": {"slide_type": ""}}
 
 Trove’s resources are divided into **categories**. Understanding the nature and content of these categories will help you construct effective searches and access useful data.
 
@@ -113,6 +125,7 @@ They key point is that aggregated resources don't really *belong* to a category.
 
 +++
 
+(what-ends-up-where)=
 ## What ends up where?
 
 But how do formats get associated with categories? The following table is included in the [Trove Data Dictionary](https://trove.nla.gov.au/partners/partner-services/contribute/trove-data-dictionary) to help contributors prepare their metadata for ingest. The contents of the `type` field are used to determine categories, with **Books & Libraries** the default destination.
@@ -201,7 +214,7 @@ alt.Chart(df_cats).mark_bar().encode(
     y="category:N",
     color=alt.Color("category:N", legend=None),
     tooltip=["category:N", alt.Tooltip("total:Q", format=",d")],
-).properties(width="container")
+).properties(width="container", height=300)
 ```
 
 Some caution is needed when interpreting these figures. As noted above, there are overlaps between categories so some resources will be counted twice. On the other hand, there'll be resources that are not individually counted because they've been wrongly grouped into a 'work'. The numbers are useful for comparison and in observing trends over time, but they don't accurately represent the number of unique resources described in Trove.
@@ -214,7 +227,7 @@ If you're interested in how these totals change over time, the [trove-zone-total
 
 ## Distribution of formats across categories
 
-You can use the `format` facet to see how different types of resources are grouped within categories. Here's the number of different formats in each category according to the `format` facet.
+As [noted above](what-ends-up-where), categories are linked to particular formats. To explore these links further, you can use the `format` facet to see which types of resources are grouped within each category. Currently there are 46 different format values used within Trove. Here's the number of different formats in each category according to the `format` facet.
 
 ```{code-cell} ipython3
 ---
@@ -257,6 +270,7 @@ def get_formats(category):
     ]
     return formats
 
+
 headers = {"X-API-KEY": YOUR_API_KEY}
 
 params = {
@@ -269,19 +283,23 @@ params = {
 }
 
 formats = []
-response = requests.get("https://api.trove.nla.gov.au/v3/result", params=params, headers=headers)
+response = requests.get(
+    "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+)
 data = response.json()
 for category in data["category"]:
     formats += get_formats(category)
 
 df_formats = pd.DataFrame(formats)
 
-df_formats.loc[df_formats["total"] > 0].groupby("category_name")["format"].nunique().to_frame().reset_index()
+df_formats.loc[df_formats["total"] > 0].groupby("category_name")[
+    "format"
+].nunique().to_frame().reset_index()
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
+Once again **Websites** are missing as there's no API data available. **People & Organisations** are also missing from this chart, as identity records have no `format`. Of the categories that remain, **Lists** and **Newspapers & Gazettes** contain a single record format. The other categories have a mix of formats. This generally reflects the division, [noted above](all-categories-not-the-same), between categories that contain aggregated content, and those that are limited to a specific type of resource managed by the NLA.
 
-[Formats in Trove](https://trove.nla.gov.au/about/create-something/using-api/api-technical-guide#formats) are arranged hierarchically, with values such as `Book` and `Article` subdivided into groups like `Book/Illustrated` and `Article/Report`. This chart groups formats by their top-level heading (`Book`, `Article` etc) and displays the mix of formats in each category.
+However, there's a problem with this data. Here's a list of formats associated with  **Images, Maps & Artefacts**. What's missing?
 
 ```{code-cell} ipython3
 ---
@@ -290,88 +308,85 @@ slideshow:
   slide_type: ''
 tags: [hide-input]
 ---
-df_formats["format_group"] = df_formats["format"].apply(lambda x: x.split("/")[0])
+df_formats.loc[df_formats["category_code"] == "image"][
+    ["format", "total"]
+].style.format(thousands=",").hide()
+```
 
-df_format_group_totals = (
-    df_formats.groupby(["category_name", "format_group"])["total"]
-    .sum()
-    .to_frame()
-    .reset_index()
+[As noted above](contexts-not-collections), there are significant overlaps between categories, including 3,000 resources that are described as both books and artworks. So why are no books showing up in **Images, Maps, & Artefacts**? It turns out that some facet values are hidden, both in the web interface and the API. You can test this for yourself. This [blank search](https://trove.nla.gov.au/search/category/images?keyword=) in **Images, Maps, & Artefacts** doesn't include `Book` in the list of formats.
+
+```{figure} /images/image-category-formats.png
+:name: image-category-formats
+:width: 300px
+Default list of formats in **Images, Maps, & Artefacts** category
+```
+
+But if you [add `&l-format=Book` to the url](https://trove.nla.gov.au/search/category/images?keyword=&l-format=Book), 51,000 books magically appear!
+
+```{figure} /images/image-category-formats-with-books.png
+:name: image-category-formats-with-books
+:width: 300px
+List of formats in **Images, Maps, & Artefacts** category when `l-format=Book` is applied
+```
+
+I suspect this has been done to simplify the web interface and avoid confusion – it presents a somewhat idealised version of categories, where the grouping of formats aligns with user expectations. But the fact that this carries over to the API results means that `format` facet can't be relied upon in an analysis of the contents of categories.
+
+The workaround is run a separate search for each format value and compile the results. The number of formats in each category changes significantly.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+import pandas as pd
+import requests
+
+df_harvested_formats = pd.read_csv(
+    "https://raw.githubusercontent.com/wragge/trove-zone-totals/main/data/trove-category-formats.csv"
 )
-
-alt.Chart(df_format_group_totals).mark_bar().encode(
-    y=alt.Y("category_name:N").title(None),
-    x=alt.X("total:Q").title(None).stack("normalize").axis(labels=False, ticks=False),
-    color=alt.Color("format_group:N").scale(scheme="category20").title("format"),
-    tooltip=[alt.Tooltip("format_group:N").title("format")],
-).properties(width="container", height=300, padding=20)
-```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-Once again **Websites** are missing as there's no API data available. **People & Organisations** are also missing from this chart, as identity records have no `format`. Of the categories that remain, **Lists**, **Magazines & Newsletters**, and **Newspapers & Gazettes** contain a single record format. The other categories have a mix of formats. This reflects the division, [noted above](all-categories-not-the-same), between categories that contain aggregated content, and those that are limited to a specific type of resource managed by the NLA.
-
-Looking more closely at the aggregated categories you can see there's a general alignment between each category's name and focus and the formats it contains. **Books & Libraries** is mostly books, **Images, Maps, & Artefacts** mostly photos, and **Music, Audio, & Video** mostly sound and video. **Research & Reports** contains mostly articles, books, and government publications. It all seems to make sense.
-
-However, [as noted above](contexts-not-collections), there are significant overlaps between categories. Why are no books showing up in **Images, Maps, & Artefacts**, or maps in **Books & Libraries**? It turns out that some facet values are hidden, both in the web interface and the API. You can test this for yourself. This blank search in **Images, Maps, & Artefacts** doesn't include `Book` in the list of formats.
-
-But if you add `&l-format=Book` to the url, 51,000 books magically appear amongst the formats.
-
-I suspect this has been done to simplify the web interface and avoid confusion. But the fact that this carries over to the API results means that `format` facet can't be relied upon in an analysis of the contents of categories. The workaround is run a separate search for each format value and compile the results. 
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
-tags: [hide-input]
----
-import time
-
-df_harvested_formats = pd.read_csv("https://raw.githubusercontent.com/wragge/trove-zone-totals/main/data/trove-category-formats.csv")
 formats = list(df_harvested_formats["format"].unique())
-categories = list(df_harvested_formats["category_code"].unique())
 
 headers = {"X-API-KEY": YOUR_API_KEY}
 
-# Using category=all in this case causes a 500 error
 params = {
+    "category": "all",
     "encoding": "json",
-    "n": 0,
+    "n": 1,  # If you set n=0 here you get a 500 error
     "key": YOUR_API_KEY,
 }
 
-               
 format_counts = []
 
-for category in categories:
-    for format in formats:
-        params["category"] = category
-        params["l-format"] = format
-        response = requests.get("https://api.trove.nla.gov.au/v3/result", params=params, headers=headers)
-        data = response.json()
-        try:
-            cat = data["category"][0]
-        # These are likely 500 errors -- seems to be an API bug when setting l-format in categories like List
-        except KeyError:
-            total = 0
-            # 500 errors are returned quickly so can go over rate limit
-            time.sleep(0.2)
-        else:
-            total = cat["records"]["total"]
+for format in formats:
+    params["l-format"] = format
+    response = requests.get(
+        "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+    )
+    data = response.json()
+    for cat in data["category"]:
         format_counts.append(
             {
                 "category_name": cat["name"],
                 "category_code": cat["code"],
                 "format": format,
-                "total": total,
+                "total": cat["records"]["total"],
             }
         )
 
 df_all_formats = pd.DataFrame(format_counts)
 
-df_all_formats.loc[df_all_formats["total"] > 0].groupby("category_name")["format"].nunique().to_frame().reset_index()
+df_all_formats.loc[df_all_formats["total"] > 0].groupby("category_name")[
+    "format"
+].nunique().to_frame().reset_index()
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+With the blinkers removed, you can see that most categories contain most formats. Indeed, **Books & Libraries**, **Images, Maps & Artefacts**, and **Research & Reports** contain a mix of every format (excluding `List`).
+
+One surprise is that **Magazines & Newsletters** contains 20 different formats even though it almost exclusively contains periodical articles digitised by the NLA and partners. 
 
 ```{code-cell} ipython3
 ---
@@ -380,7 +395,25 @@ slideshow:
   slide_type: ''
 tags: [hide-input]
 ---
-df_all_formats["format_group"] = df_all_formats["format"].apply(lambda x: x.split("/")[0])
+df_all_formats.loc[
+    (df_all_formats["total"] > 0) & (df_all_formats["category_code"] == "magazine")
+][["format", "total"]].style.hide()
+```
+
+As you can see, some of this is because there are multiple `Article` formats in use, such as `Article/Report`, and `Article/Other article`. The inclusion of non-article formats is likely due to digitised articles being grouped into works with versions that have been assigned other formats.
+
+Formats in Trove are arranged hierarchically, with values such as Book and Article subdivided into groups like Book/Illustrated and Article/Report. This can be a bit misleading as resources can be assigned multiple formats from the same hierarchy. But by grouping formats by their top-level heading (`Book`, `Article` etc) you can display the mix of formats in each category.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+df_all_formats["format_group"] = df_all_formats["format"].apply(
+    lambda x: x.split("/")[0]
+)
 
 df_all_format_group_totals = (
     df_all_formats.groupby(["category_name", "format_group"])["total"]
@@ -390,61 +423,114 @@ df_all_format_group_totals = (
 )
 
 alt.Chart(df_all_format_group_totals).mark_bar().encode(
-    y=alt.Y("category_name:N").title(None),
-    x=alt.X("total:Q").title(None).stack("normalize").axis(labels=False, ticks=False),
+    y=alt.Y("category_name:N").title(None).axis(grid=False),
+    x=alt.X("total:Q")
+    .title(None)
+    .stack("normalize")
+    .axis(labels=False, ticks=False, grid=False),
     color=alt.Color("format_group:N").scale(scheme="category20").title("format"),
     tooltip=[alt.Tooltip("format_group:N").title("format")],
-).properties(width="container", height=300, padding=20)
+).properties(width="container", height=300, padding=20).interactive()
 ```
-
-## Categories and contributors
-
-Mix of contributors will also be different
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Working notes
+*This chart is interactive – scroll to zoom in and inspect the different bands; double click to reset.*
 
-Zones were called "collection views" in development. More accurate.
+The chart above offers a handy overview of the way formats are distributed across categories, but it needs some qualification. The sizes of the bars are normalised to make it easier to see the mix of formats, but this means you can't meaningfully compare the numbers of resources across categories. In any case, because multiple formats can be associated with a single resource, the band widths really represent the number of times each format appears in resource descriptions, rather than the number of resources described. This is further complicated by grouping the formats by their top-level heading.
 
-Exploration of overlaps
-
-Contributors per zone (facets, point to more complete data)
-
-Research and repositories
-
-Note that work records don’t tell you what category they’re in (infer from `type`?). Categories manage searches, they’re (mostly) not collections in themselves. **Categories are contexts for discovery.** 
-
-Categories affected by `type`, `format`, and also the grouping of versions into works (eg an article and book with the same name and author might be grouped). Also the source.
-
-Is research the default for IRs?
-
-Newspapers, web archive, and people separate.
-
-Note that you can’t combine facet values etc because of overlaps.
-
-Categories contain a range of formats that aren’t included in the format facet – eg Book in the magazine category. Can illustrate by searching for `NOT format:”Book”`. They’re less obvious in results but still there.
-
-It looks like ‘Book/Illustrated’ for examples doesn’t go into Image. The ones in their seem to have something like ‘Art work’ or ‘map’ included.
-
-Also ‘formats’ are actually ‘types’ in the metadata. The format field includes physical description info. Perhaps confusing.
-
-So that means the `format` facet doesn’t provide a complete list of formats. It also means you might get formats you don’t expect if you harvest from a category (eg books in images)
-
-Oddities:
-
-- https://trove.nla.gov.au/work/36446349 – annual reports of the Royal Society of Tasmania, multiple years as ‘editions’, description is taken from one and used across all. API records contain 2 versions for each edition. 
-
-## Categories
-
-
-
-
-
-But why does [this work](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F9439997%3Freclevel%3Dfull%26include%3Dworkversions%2Choldings) show up in Research? No mention of data sets or theses, and not held by an IR. Because it’s a ‘Government publication’?
-
-[This record](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F81126945%3Freclevel%3Dfull%26include%3Dworkversions) combines a book with a chapter from the book (held in an IR).
+An alternative approach is to display how each individual format is distributed across the categories. Once again the bars are normalised so comparing counts across formats is fairly meaningless. But it does provide a useful guide to where you might expect to find particular formats in Trove.
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+alt.Chart(
+    df_all_formats.loc[~df_all_formats["category_code"].isin(["newspaper", "people"])]
+).mark_bar().encode(
+    y=alt.Y("format:N").title(None),
+    x=alt.X("total:Q").stack("normalize").title(None).axis(labels=False, ticks=False),
+    color=alt.Color("category_name:N").title("category"),
+    tooltip=[alt.Tooltip("category_name:N").title("category")],
+).properties(
+    width="container", padding=20
+).interactive()
+```
+
+*This chart is interactive – scroll to zoom in and inspect the different bands; double click to reset.*
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Categories and contributors
+
+Each category also has a different mix of contributors, depending on the types of resources in their collections.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+df_con = pd.read_csv(
+    "https://raw.githubusercontent.com/wragge/trove-contributor-totals/main/data/trove-contributors-categories.csv"
+)
+df_con = df_con.loc[df_con["total"] > 0]
+
+df_con.groupby("category_code")["nuc"].nunique()
+
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+df_irs = df_con.loc[
+    (df_con["total"] > 0)
+    & (df_con["nuc"].notnull())
+    & (df_con["nuc"].str.contains(":IR"))
+]
+
+df_irs.groupby("category_code")["total"].sum().to_frame().reset_index()
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+from altair import datum
+
+def truncate(value, length):
+    if len(value) > length:
+        return f"{value[:length]}..."
+    return value
+
+contrib_nucs = list(df_con["nuc"].unique())
+contrib_names = [truncate(n, 80) for n in list(df_con["name"].unique())]
+
+dropdown = alt.binding_select(
+    options=contrib_nucs, labels=contrib_names, name="Contributor: "
+)
+selection = alt.selection_point(fields=["nuc"], bind=dropdown, value="VPWLH")
+
+alt.Chart(df_con).mark_bar().encode(
+    y=alt.Y("category_name:N").title(""), x="total:Q", color=alt.Color("category_name:N").legend(None)
+).add_params(selection).transform_filter(selection).properties(width="container", padding=20)
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 
 ```

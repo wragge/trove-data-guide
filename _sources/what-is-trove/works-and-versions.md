@@ -141,8 +141,6 @@ Data -- counts, stats, and facets
 
 +++
 
-
-
 ## The reality
 
 That's the theory. The reality is more complex and confusing.
@@ -215,6 +213,8 @@ Examples:
 Problematic version groupings:
 
 - Malcolm Fraser Electorate Talks - <https://trove.nla.gov.au/work/195160655>
+- https://trove.nla.gov.au/work/36446349 – annual reports of the Royal Society of Tasmania, multiple years as ‘editions’, description is taken from one and used across all. API records contain 2 versions for each edition.
+- [This record](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F81126945%3Freclevel%3Dfull%26include%3Dworkversions) combines a book with a chapter from the book (held in an IR).
 
 +++
 
