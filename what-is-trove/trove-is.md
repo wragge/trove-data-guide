@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-+++ {"user_expressions": []}
++++ {"user_expressions": [], "editable": true, "slideshow": {"slide_type": ""}}
 
 # Trove is...
 
