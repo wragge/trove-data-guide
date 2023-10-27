@@ -33,8 +33,8 @@ jobs:
     - name: Build the book
       run: |
         DATE=$(date +'%d %B %Y')
-        sed "s/Version: .*$/Version: ${{  github.ref_name }} ($DATE)/" _config_publish.yml
-        jupyter-book build . --config _config_public.yml --toc _toc_publish.yml
+        sed -i "s/Version: .*$/Version: ${{  github.ref_name }} ($DATE)/" _config_publish.yml
+        jupyter-book build . --config _config_publish.yml --toc _toc_publish.yml
       env:
         TROVE_API_KEY: ${{ secrets.TROVE_API_KEY }}
     
