@@ -47,8 +47,8 @@ This Data Guide aims to help researchers make efficient and innovative use of Tr
     - manuscripts
     - oral histories
 - an archive of Australian web content from 1996 onwards
-- people and orgs
-- born-digital publications submitted via the electronic legal deposit scheme (access may be restricted)
+- aggregated identity records for people and organisations
+- born-digital publications submitted via the electronic legal deposit scheme (access may be restricted to on-site use)
 - a platform for user engagement via tags, comments, lists, and OCR corrections
 - a series of APIs for delivering machine-actionable data
 

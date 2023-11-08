@@ -33,7 +33,3 @@ Topics:
 - Using facets
 - Date searching – might be worth a separate section as there are a few complexities and different ways of achieving the same result
 - What are you searching? – leads on to next section on contexts and collections
-
-```{code-cell} ipython3
-
-```
