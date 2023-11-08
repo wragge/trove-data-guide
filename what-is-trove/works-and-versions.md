@@ -119,6 +119,8 @@ No individual metadata -- titles, dates in linktext. Not individually searchable
 
 Also duplicates.
 
+PP divided in sections - sections of a publication (eg the title page) grouped with the actual publication
+
 ## Research implications
 
 - search
