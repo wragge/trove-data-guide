@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/other-digitised-resources/digitised-resources.1116a9c5-2c97-47ee-906e-87d6b4380765.js"></script>
+    <script defer="defer" src="../_static/tippy/other-digitised-resources/digitised-resources.ba2faf23-5bc1-4242-b473-b01d4beead06.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/digitised-resources';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -612,6 +612,8 @@ document.write(`
 <li><p>collections and items</p></li>
 <li><p>book viewer</p></li>
 <li><p>search for <code class="docutils literal notranslate"><span class="pre">series:&quot;Parliamentary</span> <span class="pre">paper</span> <span class="pre">(Australia.</span> <span class="pre">Parliament)&quot;</span></code> seems more effective that using format “government Publication”</p></li>
+<li><p>seems that many gov publications have fulltext urls that actually point to a section id, rather than the actual publication: eg nla.obj-1363948030 is report but the link from work/10116167 goes to <a class="reference external" href="https://nla.gov.au/nla.obj-1520761853">https://nla.gov.au/nla.obj-1520761853</a> which is a section of the report. See <a class="reference external" href="https://api.trove.nla.gov.au/v3/work/10116167?encoding=json&amp;amp;include=workversions,links">https://api.trove.nla.gov.au/v3/work/10116167?encoding=json&amp;include=workversions,links</a>. I think this is because the PPs are being treated as journal issues – so there are links to articles, not issues.</p></li>
+<li><p>weird version  groupings: <a class="reference external" href="https://trove.nla.gov.au/work/237938382/version/264507446%20264507456%20264507464%20264507475%20264507479%20264507486%20264507502%20264507507%20264507518%20264507589%20264507600%20264507607%20264507615%20264507622%20264507634%20264507640%20264507642%20264507648%20264507663%20264507890%20264507896%20264508005%20264508009%20264508015%20264508025%20264508041%20264508046%20264508054%20264508062%20264508074%20264508269%20264508275%20264508291%20264508303%20264508309%20264508316%20264508333%20264508385%20264508478%20264508484%20264508494%20264508502%20264508518%20264508530%20264508532">https://trove.nla.gov.au/work/237938382/version/264507446 264507456 264507464 264507475 264507479 264507486 264507502 264507507 264507518 264507589 264507600 264507607 264507615 264507622 264507634 264507640 264507642 264507648 264507663 264507890 264507896 264508005 264508009 264508015 264508025 264508041 264508046 264508054 264508062 264508074 264508269 264508275 264508291 264508303 264508309 264508316 264508333 264508385 264508478 264508484 264508494 264508502 264508518 264508530 264508532</a></p></li>
 </ul>
 </section>
 <section id="posters-and-ephemera">
