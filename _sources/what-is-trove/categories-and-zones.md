@@ -45,7 +45,6 @@ load_dotenv()
 editable: true
 slideshow:
   slide_type: ''
-tags: [remove-cell]
 ---
 YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 ```
