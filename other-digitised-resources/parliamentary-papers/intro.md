@@ -50,12 +50,13 @@ YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 
 ## Finding Parliamentary Papers
 
-As documented in [](/understanding-search/finding-digitised-content), you can find NLA digitised resources by searching for `"nla.obj"` and selecting the 'Online' facet (if you're using the API set `l-availability` to `y`). To further limit the results to Parliamentary Papers there are a couple of possibilities:
+As documented in [](/understanding-search/finding-digitised-content), you can find NLA digitised resources by searching for `"nla.obj"` and selecting the 'Online' facet (if you're using the API set `l-availability` to `y`). To further limit the results to digitised Parliamentary Papers the best option seems to be adding `series:"Parliamentary paper (Australia. Parliament)` to your search query.
 
-- Use the 'Format' facet to select `Government publication` (in the API set `l-format` to `Government publication` – this will return many Parliamentary Papers, but it will also include other digitised resources (such as maps) that have been created by government agencies.
-- Add `series:"Parliamentary paper (Australia. Parliament)` to your search query – this searches the `isPartOf` field and seems to return more Parliamentary Papers and much less noise.
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22+series%3A%22Parliamentary+paper+%28Australia.+Parliament%29%22%26category%3Dall%26l-availability%3Dy%26encoding%3Djson%26bulkHarvest%3Dtrue&comment=)
 
-Using the latter method, you can find the total number of work-level records describing digitised Parliamentary Papers in Trove.
+The `series` index is generated from the `isPartOf` field. This approach seems to return more Parliamentary Papers and much less noise than other options, such as setting `format` to `Government publication`.
+
+Using this query, you can find the total number of work-level records describing digitised Parliamentary Papers in Trove.
 
 ```{code-cell} ipython3
 ---
@@ -117,7 +118,7 @@ pd.DataFrame(totals).style.format(thousands=",").hide()
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-And here's the number of records by format. Remember that digitised resources can be [merged with other versions into works](what-is-trove/works-and-versions), resulting in an odd mix of formats.
+And here's the number of records by format. Remember that digitised resources can be [merged with other versions into works](/what-is-trove/works-and-versions), resulting in an odd mix of formats.
 
 ```{code-cell} ipython3
 ---
@@ -150,17 +151,17 @@ pd.DataFrame(facets).style.format(thousands=",").hide()
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-From the tables above, it seems that most of the records relating to Parliamentary Papers describe resources in `Article` format and can be found in the **Magazines & Newsletters** category. It also looks like many of these records are duplicated in **Research & Reports**.
+Looking at the tables above, you can see that most of the records relating to Parliamentary Papers have been assigned the `Article` format and can be found in the **Magazines & Newsletters** category. It also looks like many of these records are duplicated in **Research & Reports**.
 
-This seems a bit odd. Why would Parliamentary Papers be described as 'articles'? If you look at the results in the **Magazines & Newsletters** category, you'll see that the records describe *sections* of Parliamentary Papers, not complete publications. In other words, **the Parliamentary Papers are being treated like issues of a periodical** – the contents of each paper is being split up into sections, and a record is being created for each individual section.
+You might be wondering why Parliamentary Papers would be described as 'articles'. If you look at [the results in the **Magazines & Newsletters** category](https://trove.nla.gov.au/search/category/magazines?keyword=%22nla.obj%22%20series%3A%22Parliamentary%20paper%20%28Australia.%20Parliament%29%22&l-availability=y), you'll see that the records describe *sections* of Parliamentary Papers, not complete publications. In other words, **the Parliamentary Papers are being treated like issues of a periodical** – the contents of each paper is being split up into sections (like articles in a journal), and a record is being created for each individual section.
 
-This generates some odd 'articles', like contents pages and appendices. When combined with the grouping of versions into works, it can also have some unfortunate consequences. For example, [here's a record](https://trove.nla.gov.au/work/237938382) where the 'Table of contents' sections of different Parliamentary Papers have been grouped as a single work. 
+This generates some odd 'articles', such as contents pages and appendices. When combined with the grouping of versions into works, it can also have some unfortunate consequences. For example, [here's a record](https://trove.nla.gov.au/work/237938382) where the 'Table of contents' sections of different Parliamentary Papers have been grouped as a single work!
 
-It also explains why there are so many records! The total number of Parliamentary Papers will be considerably less than the total number of work-level records.
+The splitting of Parliamentary Papers into 'articles' also inflates the number of records. As a result, the total number of Parliamentary Papers will be considerably less than the total number of work-level records. 
 
-How then do we limit the search to only show complete Parliamentary Papers and exclude the 'articles'? I don't think you can. If you add `NOT format:Article` to your search you'll exclude reports with the format `Article/Report`, and probably lose other publications that are grouped with `Article` records. You could just ignore the **Magazines & Newsletters** category, but many of the 'articles' are also in **Research & Reports** where they're mixed with other publication formats. There's no way to drop the 'articles' without losing other, more relevant, records.
+How then can you limit the search to only show complete Parliamentary Papers and exclude the 'articles'? I don't think you can. If you add `NOT format:Article` to your search you'll exclude reports with the format `Article/Report`, and probably lose other publications that are grouped with `Article` records. You could just ignore the **Magazines & Newsletters** category, but many of the 'articles' are also in **Research & Reports** where they're mixed with other publication formats. There's no way to drop the 'articles' without losing other, more relevant, records.
 
-To create a dataset that only contains details of complete Parliamentary Papers, you need to harvest metadata from the search above, and then inspect the details of each record to exclude the ones you don't want. This is further complicated by the different ways Parliamentary Papers are grouped and described in Trove.
+To create a dataset that only contains details of complete Parliamentary Papers, you need to harvest metadata from the search above and then inspect the details of each record to exclude the ones you don't want. But this is further complicated by the different ways Parliamentary Papers are grouped and described in Trove.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -170,7 +171,9 @@ The way digitised Parliamentary Papers are grouped and described in Trove is inc
 
 As noted above, individual Parliamentary Papers are often treated as issues of a periodical. But not always. Sometimes they are described as standalone works. This [report by the Australian Science and Technology Council on 'Marine sciences and technologies in Australia'](https://trove.nla.gov.au/work/9710970?) is treated like a book, and is linked to a single digitised resource. It might have been grouped with a [follow-up report from the next year](https://trove.nla.gov.au/work/9988298), but it doesn't really matter as they're both easily discoverable.
 
-[](/what-is-trove/collections) outlines the different ways Trove tries to represent collections of resources. Where Parliamentary Papers are grouped together as 'issues', they're generally created as collections within the digitised item viewer. For example, the work record for [Report of the Senate Select Committee on Superannuation](https://trove.nla.gov.au/work/22095680) links to a page with a **Browse this collection** button. Clicking on the button displays details of 28 different reports published between 1992 and 2001.
+Sometimes individual Parliamentary Papers are not described at all. While attempting to harvest a full list of Parliamentary Papers, I noticed that I couldn't find the parent publications of some 'articles'. These publications are digitised and accessible, but they don't turn up in Trove's search results. The only way to find them, in either the web interface or API, is to navigate upwards from an 'article'.
+
+Trove represents collections of resources in [a number of different ways](/what-is-trove/collections). Where Parliamentary Papers are grouped together as 'issues' (for example, all the annual reports of an agency), they're generally created as collections within the digitised item viewer. For example, the work record for [Report of the Senate Select Committee on Superannuation](https://trove.nla.gov.au/work/22095680) links to a page with a **Browse this collection** button. Clicking on the button displays details of 28 different reports published between 1992 and 2001.
 
 In this case, both the collection and the individual reports within it have their own separate work records. So the digitised version of the 1993 report on the *Super Complaints Tribunal* can be accessed directly from [this work record](https://trove.nla.gov.au/work/237349942), or by using the **Browse this collection** page.
 
@@ -235,5 +238,41 @@ editable: true
 slideshow:
   slide_type: ''
 ---
+df = pd.read_csv("https://github.com/GLAM-Workbench/trove-parliamentary-papers-data/raw/main/trove-parliamentary-papers.csv")
+```
+
+```{code-cell} ipython3
+subjects = df["subject"].str.split("|").explode().to_frame()
+subjects["subject"] = subjects["subject"].str.strip(".")
+subjects["subject"].value_counts().to_frame().reset_index()[:20].style.format(thousands=",").hide()
+```
+
+```{code-cell} ipython3
+def clean_contributor(value):
+    if cleaned := re.search(r"(.*?) [0-9]+ [0-9a-z\-]+$", str(value)):
+        return cleaned.group(1).strip(".")
+    else:
+        return str(value).strip(".")
+
+import re
+contributors = df["contributor"].str.split("|").explode().to_frame()
+contributors["cleaned"] = contributors["contributor"]
+contributors["cleaned"] = contributors["contributor"].apply(clean_contributor)
+contributors.dropna()["cleaned"].value_counts().to_frame().reset_index()[:20].style.format(thousands=",").hide()
+```
+
+```{code-cell} ipython3
+import altair as alt
+
+df["year"] = df["date"].str.extract(r"\b(\d{4})$")
+years = df["year"].value_counts().to_frame().reset_index()
+
+alt.Chart(years).mark_bar().encode(
+    x="year:T",
+    y="count:Q"
+).properties(width="container")
+```
+
+```{code-cell} ipython3
 
 ```
