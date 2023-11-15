@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/other-digitised-resources/digitised-resources.9ca0cbc3-506c-4fb2-8fe6-5ced97d44153.js"></script>
+    <script defer="defer" src="../_static/tippy/other-digitised-resources/digitised-resources.42602e5d-ca4f-442e-9711-f5ec0652e9a9.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/digitised-resources';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -242,8 +242,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="periodicals/accessing-data.html">30.1. Accessing data from periodicals</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="parliamentary-papers/intro.html">31. Parliamentary papers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="how-to/digitised-resources.html">32. How to</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="parliamentary-papers/index.html">31. Parliamentary papers</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="parliamentary-papers/overview.html">31.1. Overview of Parliamentary Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parliamentary-papers/finding-pp.html">31.2. Finding Parliamentary Papers in Trove</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="how-to/digitised-resources.html">32. How to</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="how-to/get-collection-items.html">32.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how-to/download-items-text-images.html">32.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how-to/extract-embedded-metadata.html">32.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
@@ -460,19 +464,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#books-pamphlets-print-music-collections-and-items">28.1. Books, pamphlets, print music – collections and items</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodicals">28.2. Periodicals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#government-publications">28.3. Government publications</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#posters-and-ephemera">28.4. Posters and ephemera</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#photos">28.5. Photos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oral-histories">28.6. Oral histories</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">28.7. Metadata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-text-images-and-pdfs">28.8. Downloading text images and PDFs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-you-might-want-to-do">28.9. Things you might want to do</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-tos">28.10. How tos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">28.1. Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-text-images-and-pdfs">28.2. Downloading text images and PDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-you-might-want-to-do">28.3. Things you might want to do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-tos">28.4. How tos</a></li>
 </ul>
             </nav>
         </div>
@@ -528,226 +523,19 @@ document.write(`
 <li><p>Manuscripts</p></li>
 </ul>
 <p><mark>==Need to mention the different uses of <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">format</span></code> in UI and API==</mark></p>
-<p>Introduce the complexities of categories and formats.</p>
-<p>Explain differences between items and collections.</p>
-<p>Categories containing digitised resources (other than newspapers):</p>
-<ul class="simple">
-<li><p>Books &amp; Libraries</p></li>
-<li><p>Magazines &amp; Newsletters</p></li>
-<li><p>Images, Maps &amp; Artefacts</p></li>
-<li><p>Research &amp; Reports</p></li>
-<li><p>Diaries, Letters &amp; Archives</p></li>
-<li><p>Music, Audio &amp; Video</p></li>
-</ul>
-<p>Viewers for digitised content:</p>
-<ul class="simple">
-<li><p>Books/Journals</p></li>
-<li><p>Images/Maps</p></li>
-<li><p>Audio</p></li>
-<li><p>Born digital</p></li>
-</ul>
-<p>Formats:</p>
-<ul class="simple">
-<li><p>Book</p></li>
-<li><p>Photo</p></li>
-<li><p>map etc</p></li>
-</ul>
-<p>HOW TO on subsets?</p>
-<ul class="simple">
-<li><p>ephemera</p></li>
-<li><p>government publications</p></li>
-<li><p>oral histories</p></li>
-</ul>
-<p>Books &amp; Libraries</p>
-<ul class="simple">
-<li><p>Books</p></li>
-<li><p>Multi-volume books</p></li>
-<li><p>Government publications – collections and single items</p></li>
-<li><p>Emphemera</p></li>
-<li><p>Periodical titles</p></li>
-</ul>
-<p>Problems</p>
-<ul class="simple">
-<li><p>aggregated versions – mixing of formats</p></li>
-<li><p>posters? can be images or ephemera (in book or image viewer)</p></li>
-</ul>
-<section id="books-pamphlets-print-music-collections-and-items">
-<h2><span class="section-number">28.1. </span>Books, pamphlets, print music – collections and items<a class="headerlink" href="#books-pamphlets-print-music-collections-and-items" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>in Books &amp; Libraries, Research, Music</p></li>
-<li><p>print publications</p></li>
-<li><p>single or multi-pages</p></li>
-<li><p>collections (eg multi volume books) or items</p></li>
-<li><p>Use book viewer</p></li>
-<li><p>pages – children of publications</p></li>
-<li><p>chapters?</p></li>
-</ul>
 <section id="metadata">
-<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>work records</p></li>
-<li><p>embedded metadata</p>
-<ul>
-<li><p>pages</p></li>
-<li><p>chapters</p></li>
-</ul>
-</li>
-<li><p>lists of items in collections</p></li>
-</ul>
-</section>
-</section>
-<section id="periodicals">
-<h2><span class="section-number">28.2. </span>Periodicals<a class="headerlink" href="#periodicals" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>titles – collections in Books &amp; Libraries</p></li>
-<li><p>issues – items in collections</p></li>
-<li><p>pages – children of issues</p></li>
-<li><p>articles – in Magazines &amp; Newsletters</p></li>
-</ul>
-</section>
-<section id="government-publications">
-<h2><span class="section-number">28.3. </span>Government publications<a class="headerlink" href="#government-publications" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Books, Research</p></li>
-<li><p>can be periodicals (eg annual reports)</p></li>
-<li><p>collections and items</p></li>
-<li><p>book viewer</p></li>
-<li><p>search for <code class="docutils literal notranslate"><span class="pre">series:&quot;Parliamentary</span> <span class="pre">paper</span> <span class="pre">(Australia.</span> <span class="pre">Parliament)&quot;</span></code> seems more effective that using format “government Publication”</p></li>
-<li><p>seems that many gov publications have fulltext urls that actually point to a section id, rather than the actual publication: eg nla.obj-1363948030 is report but the link from work/10116167 goes to <a class="reference external" href="https://nla.gov.au/nla.obj-1520761853">https://nla.gov.au/nla.obj-1520761853</a> which is a section of the report. See <a class="reference external" href="https://api.trove.nla.gov.au/v3/work/10116167?encoding=json&amp;amp;include=workversions,links">https://api.trove.nla.gov.au/v3/work/10116167?encoding=json&amp;include=workversions,links</a>. I think this is because the PPs are being treated as journal issues – so there are links to articles, not issues.</p></li>
-<li><p>weird version  groupings: <a class="reference external" href="https://trove.nla.gov.au/work/237938382/version/264507446%20264507456%20264507464%20264507475%20264507479%20264507486%20264507502%20264507507%20264507518%20264507589%20264507600%20264507607%20264507615%20264507622%20264507634%20264507640%20264507642%20264507648%20264507663%20264507890%20264507896%20264508005%20264508009%20264508015%20264508025%20264508041%20264508046%20264508054%20264508062%20264508074%20264508269%20264508275%20264508291%20264508303%20264508309%20264508316%20264508333%20264508385%20264508478%20264508484%20264508494%20264508502%20264508518%20264508530%20264508532">https://trove.nla.gov.au/work/237938382/version/264507446 264507456 264507464 264507475 264507479 264507486 264507502 264507507 264507518 264507589 264507600 264507607 264507615 264507622 264507634 264507640 264507642 264507648 264507663 264507890 264507896 264508005 264508009 264508015 264508025 264508041 264508046 264508054 264508062 264508074 264508269 264508275 264508291 264508303 264508309 264508316 264508333 264508385 264508478 264508484 264508494 264508502 264508518 264508530 264508532</a></p></li>
-</ul>
-</section>
-<section id="posters-and-ephemera">
-<h2><span class="section-number">28.4. </span>Posters and ephemera<a class="headerlink" href="#posters-and-ephemera" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>posters in finding aid: <a class="reference external" href="https://nla.gov.au/nla.obj-2590804313/findingaid?digitised=y">https://nla.gov.au/nla.obj-2590804313/findingaid?digitised=y</a></p></li>
-</ul>
-</section>
-<section id="photos">
-<h2><span class="section-number">28.5. </span>Photos<a class="headerlink" href="#photos" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="oral-histories">
-<h2><span class="section-number">28.6. </span>Oral histories<a class="headerlink" href="#oral-histories" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Government publications – collections and items</p></li>
-<li><p>Periodicals – collections</p></li>
-<li><p>Images – collections and items</p></li>
-<li><p>Maps – collections and items</p></li>
-<li><p>Oral history</p></li>
-<li><p>Finding aids, manuscripts – collections and items</p></li>
-</ul>
-<p>Other than newspapers.</p>
-<p>Metadata available from the main search index – so <em>mostly</em> the same as aggregated metadata</p>
-<p>Exceptions:</p>
-<ul class="simple">
-<li><p>magazine &amp; newsletter titles endpoint</p></li>
-<li><p>lists of items in collection (except for periodicals) – need to be scraped</p></li>
-<li><p>pages in a book or issue – scrape internal metadata</p></li>
-<li><p>finding aids</p></li>
-</ul>
-<p>Entry points:</p>
-<ul class="simple">
-<li><p>book record: <a class="reference external" href="https://trove.nla.gov.au/work/8264204">https://trove.nla.gov.au/work/8264204</a></p></li>
-<li><p>book view (single not in collection): <a class="reference external" href="https://nla.gov.au/nla.obj-13818998/">https://nla.gov.au/nla.obj-13818998/</a> (redirects to item/page url)</p></li>
-<li><p>book item/page: <a class="reference external" href="https://nla.gov.au/nla.obj-13818998/view?partId=nla.obj-13952005">https://nla.gov.au/nla.obj-13818998/view?partId=nla.obj-13952005</a> (partid is page id)</p></li>
-<li><p>book page: <a class="reference external" href="https://nla.gov.au/nla.obj-13952005">https://nla.gov.au/nla.obj-13952005</a> (redirected to item/page url)</p></li>
-<li><p>book page image: <a class="reference external" href="https://nla.gov.au/nla.obj-13952005/image">https://nla.gov.au/nla.obj-13952005/image</a></p></li>
-<li><p>article -&gt; page</p></li>
-<li><p>single item (not in collection): <a class="reference external" href="https://nla.gov.au/nla.obj-133260135/">https://nla.gov.au/nla.obj-133260135/</a> (photo), <a class="reference external" href="https://nla.gov.au/nla.obj-710156106/">https://nla.gov.au/nla.obj-710156106/</a> (map)</p></li>
-<li><p>collection (photos): <a class="reference external" href="https://nla.gov.au/nla.obj-150592172">https://nla.gov.au/nla.obj-150592172</a></p></li>
-<li><p>item in this collection: <a class="reference external" href="https://nla.gov.au/nla.obj-150592180">https://nla.gov.au/nla.obj-150592180</a> (note just item id unlike periodicals)</p></li>
-<li><p>item image: <a class="reference external" href="https://nla.gov.au/nla.obj-150592180/image">https://nla.gov.au/nla.obj-150592180/image</a></p></li>
-<li><p>periodical work record: <a class="reference external" href="https://trove.nla.gov.au/work/19159055">https://trove.nla.gov.au/work/19159055</a></p></li>
-<li><p>periodical collection: <a class="reference external" href="https://nla.gov.au/nla.obj-1740320424">https://nla.gov.au/nla.obj-1740320424</a></p></li>
-<li><p>periodical issue: <a class="reference external" href="https://nla.gov.au/nla.obj-537658376/">https://nla.gov.au/nla.obj-537658376/</a> – issue url redirects to page</p></li>
-<li><p>periodical issue/page: <a class="reference external" href="https://nla.gov.au/nla.obj-537658376/view?partId=nla.obj-537659506">https://nla.gov.au/nla.obj-537658376/view?partId=nla.obj-537659506</a> (part id is the page identifier) – the page part of this is updated as you move through the issue</p></li>
-<li><p>periodical page: <a class="reference external" href="https://nla.gov.au/nla.obj-537659506">https://nla.gov.au/nla.obj-537659506</a> (redirects to the issue/page url)</p></li>
-<li><p>periodical page image: <a class="reference external" href="https://nla.gov.au/nla.obj-537660437/image">https://nla.gov.au/nla.obj-537660437/image</a></p></li>
-<li><p>going up from periodical title to work record? Search for id (can return preceding/succeeding titles eg: <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj-1740320424%22">https://trove.nla.gov.au/search/category/books?keyword=”nla.obj-1740320424”</a>)</p></li>
-<li><p>map series: <a class="reference external" href="https://nla.gov.au/nla.obj-234270965/">https://nla.gov.au/nla.obj-234270965/</a></p></li>
-<li><p>finding aids produce multiple level hierarchies</p></li>
-<li><p>each level in the hierarchy (a collection) can contain items or collections</p></li>
-<li><p>items in a collection can themselves be a collection (eg a letter with multiple pages)</p></li>
-<li><p>download options vary according to where you are and only provide top images of items/collections at that level (so you might think you’re getting everything, but you’re not)</p></li>
-<li><p>an item that has multiple pages, doesn’t have the pages in the item metadata, eg: <a class="reference external" href="https://nla.gov.au/nla.obj-226146469/">https://nla.gov.au/nla.obj-226146469/</a></p></li>
-<li><p>finding aid ‘item’ that is actually a collection: <a class="reference external" href="https://nla.gov.au/nla.obj-226146469/">https://nla.gov.au/nla.obj-226146469/</a> (to browse all images you need to go down a level, but to download all images you need to be at collection level), also <a class="reference external" href="https://nla.gov.au/nla.obj-3199144271/view">https://nla.gov.au/nla.obj-3199144271/view</a></p></li>
-<li><p>collections/items and how you browse/download each is very confusing in manscripts and finding aids</p></li>
-<li><p>at a collection level you only see the first image but can download all, at item level you can browse all images but only download one (need to add something about this to the web interface section)</p></li>
-</ul>
-<p>Other notes:</p>
-<ul class="simple">
-<li><p>PDF viewer - down a level shows image of first page of PDF (always?)</p></li>
-<li><p>individual photos in collections are indexed</p></li>
-</ul>
-<p>Downloading a range of images:</p>
-<p><code class="docutils literal notranslate"><span class="pre">https://nla.gov.au/nla.obj-[ID]/download?downloadOption=[FORMAT]&amp;firstPage=[FIRST</span> <span class="pre">PAGE]&amp;lastPage=[LAST</span> <span class="pre">PAGE]</span></code></p>
-<p>Formats are <code class="docutils literal notranslate"><span class="pre">ocr</span></code>, <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, <code class="docutils literal notranslate"><span class="pre">zip</span></code> (images), and <code class="docutils literal notranslate"><span class="pre">tif</span></code> (on some things, check)</p>
-<p>Where do you get the page numbers from?</p>
-<ul class="simple">
-<li><p>in books, periodicals it’s in the embedded JSON metadata</p></li>
-<li><p>in manuscripts (and images in collections?) it’s harcoded in the JS eg: <code class="docutils literal notranslate"><span class="pre">maxNumOfChildDownloads</span> <span class="pre">=</span> <span class="pre">40;</span></code></p></li>
-<li><p>page numbers are zero indexes so first page is <code class="docutils literal notranslate"><span class="pre">0</span></code>, last page in the example above is <code class="docutils literal notranslate"><span class="pre">39</span></code></p></li>
-<li><p>can override the ui max of 20 images from collections</p></li>
-<li><p>if you download collection, first image is included twice – once as the collection image and then as child</p></li>
-</ul>
-<p>Getting children of publications/collections:</p>
-<ul class="simple">
-<li><p>publications have list of pages in embedded JSON metadata</p></li>
-<li><p>multi-volume publications - scrape individiual vols from the Browse page</p></li>
-<li><p>collections - scrape item details from Browse page</p></li>
-<li><p>map series - scrape item details from Browse page</p></li>
-<li><p>periodical issue ids from the <code class="docutils literal notranslate"><span class="pre">title</span></code> endpoint</p></li>
-</ul>
-<p>Embedded JSOn metdata for publications also includes</p>
-<ul class="simple">
-<li><p>lists of articles and chapters (check).</p></li>
-<li><p>previous / susequent titles (see: <a class="reference external" href="https://nla.gov.au/nla.obj-1740320424">https://nla.gov.au/nla.obj-1740320424</a>)</p></li>
-</ul>
-<p>Example of article detail in publication issue embedded JSON (from: <a class="reference external" href="https://nla.gov.au/nla.obj-537658376">https://nla.gov.au/nla.obj-537658376</a>)</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;58791853&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;subType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;article&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;pid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-587918530&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PRINCIPAL&#39;S MESSAGE&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;bibLevel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Section&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;existson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;53765989&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-537659897&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;53766003&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-537660039&quot;</span>
-<span class="w">                    </span><span class="p">},</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;53766016&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-537660164&quot;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-</pre></div>
-</div>
-<p>So publication metadata available (via embedded JSON):</p>
-<ul class="simple">
-<li><p>pages</p></li>
-<li><p>book chapters</p></li>
-<li><p>articles in an issue (including page ids)</p></li>
-</ul>
-</section>
-<section id="id1">
-<h2><span class="section-number">28.7. </span>Metadata<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">28.1. </span>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h2>
 <p>Get children of collections by scraping browse list, except for periodicals.</p>
 <p>Get pages (also chapters, articles) of publications from JSON metadata</p>
 <p>Get articles from search</p>
 <p>MARC data in embedded JSON sometimes richer than API</p>
 </section>
 <section id="downloading-text-images-and-pdfs">
-<h2><span class="section-number">28.8. </span>Downloading text images and PDFs<a class="headerlink" href="#downloading-text-images-and-pdfs" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">28.2. </span>Downloading text images and PDFs<a class="headerlink" href="#downloading-text-images-and-pdfs" title="Permalink to this heading">#</a></h2>
 <p>Method is the same across different format types, but the results differ depending on whether it’s a collection, publication etc.</p>
 </section>
 <section id="things-you-might-want-to-do">
-<h2><span class="section-number">28.9. </span>Things you might want to do<a class="headerlink" href="#things-you-might-want-to-do" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">28.3. </span>Things you might want to do<a class="headerlink" href="#things-you-might-want-to-do" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>finding digitised resources</p></li>
 <li><p>Get all issues of a journal as PDFs</p></li>
@@ -759,7 +547,7 @@ document.write(`
 </ul>
 </section>
 <section id="how-tos">
-<h2><span class="section-number">28.10. </span>How tos<a class="headerlink" href="#how-tos" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">28.4. </span>How tos<a class="headerlink" href="#how-tos" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Get a a list of items in a collection of digitised items (recursive for nested collections?)</p></li>
 </ul>
@@ -833,19 +621,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#books-pamphlets-print-music-collections-and-items">28.1. Books, pamphlets, print music – collections and items</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodicals">28.2. Periodicals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#government-publications">28.3. Government publications</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#posters-and-ephemera">28.4. Posters and ephemera</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#photos">28.5. Photos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oral-histories">28.6. Oral histories</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">28.7. Metadata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-text-images-and-pdfs">28.8. Downloading text images and PDFs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-you-might-want-to-do">28.9. Things you might want to do</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-tos">28.10. How tos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">28.1. Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-text-images-and-pdfs">28.2. Downloading text images and PDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-you-might-want-to-do">28.3. Things you might want to do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-tos">28.4. How tos</a></li>
 </ul>
   </nav></div>
 

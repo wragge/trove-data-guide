@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Harvest digitised resources &#8212; Trove Data Guide</title>
+    <title>HOW TO: Harvest data relating to digitised resources &#8212; Trove Data Guide</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/harvest-digitised-resources.9bfdb56e-8f34-4bf1-9b02-ff384bb9f0c2.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/harvest-digitised-resources.ce38c51a-bf20-4c9c-9de1-1bdc4f677e85.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/harvest-digitised-resources';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -240,8 +240,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../periodicals/accessing-data.html">30.1. Accessing data from periodicals</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../parliamentary-papers/intro.html">31. Parliamentary papers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="digitised-resources.html">32. How to</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../parliamentary-papers/index.html">31. Parliamentary papers</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../parliamentary-papers/overview.html">31.1. Overview of Parliamentary Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parliamentary-papers/finding-pp.html">31.2. Finding Parliamentary Papers in Trove</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="digitised-resources.html">32. How to</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">32.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">32.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">32.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
@@ -448,7 +452,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Harvest digitised resources</h1>
+    <h1>HOW TO: Harvest data relating to digitised resources</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -458,8 +462,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline-of-harvesting-method">Outline of harvesting method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harvest-metadata-from-api">Harvest metadata from API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enrich-dataset-using-embedded-metadata">Enrich dataset using embedded metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-missing-records">Check for ‘missing’ records</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-remove-duplicates-from-dataset">Merge/remove duplicates from dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-text">Download text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-images">Download images</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-from-api">Get metadata from API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enrich-dataset-using-embedded-metadata">Enrich dataset using embedded metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Enrich dataset using embedded metadata</a></li>
 </ul>
             </nav>
         </div>
@@ -471,45 +484,69 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="harvest-digitised-resources">
-<h1>Harvest digitised resources<a class="headerlink" href="#harvest-digitised-resources" title="Permalink to this heading">#</a></h1>
-<p>Not straightforward because of the different ways resources are grouped into collections.</p>
-<p>Basic strategy is to harvest as many records as possible, following all the possible routes. This may result in duplicates, but these can be dealt with later. In any case, Trove contains a large number of duplicate records that need to be dealt with.</p>
-<p>Get metadata from API:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-harvest-data-relating-to-digitised-resources">
+<h1>HOW TO: Harvest data relating to digitised resources<a class="headerlink" href="#how-to-harvest-data-relating-to-digitised-resources" title="Permalink to this heading">#</a></h1>
+<p>Harvesting data relating to digitised resources (other than newspapers) in Trove is not as simple as making a few API requests. The major problem is that digitised resources are often assembled into groups or collections, and the full details of these groupings are not available through the Trove API. This means that simply harvesting results from an API query will miss many digitised resources. In addition, the way resources are described and arranged is often inconsistent, so you can’t assume that a particular type of resource will be grouped in a particular way.</p>
+<p>As a result of these problems, a ‘belts and braces’ approach seems best – follow every possible route and harvest as many records as possible. This may result in duplicates, but these can be dealt with later. In any case, Trove already contains a large number of duplicate records for digitised resources, so some form of merging or de-duplication will always be required.</p>
+<section id="outline-of-harvesting-method">
+<h2>Outline of harvesting method<a class="headerlink" href="#outline-of-harvesting-method" title="Permalink to this heading">#</a></h2>
+<section id="harvest-metadata-from-api">
+<h3>Harvest metadata from API<a class="headerlink" href="#harvest-metadata-from-api" title="Permalink to this heading">#</a></h3>
+<p>Searches using the API return work-level records. Sometimes digitised resources are grouped as versions of a work, even though they’re quite different. To make sure you get everything, you need to work your way down through through the hierarchy of work -&gt; version -&gt; sub-version (labelled ‘record’ in API responses), harvesting every relevant record.</p>
 <ul class="simple">
-<li><p>Get work records from search results</p></li>
-<li><p>Get versions/sub-version records from work</p></li>
-<li><p>Loop through all versions/sub-versions checking to see if they have an NLA fulltext link</p></li>
-<li><p>If they do, get the metadata from the sub-version and add to dataset. Sometimes records will have multiple fulltext urls, if so, add a record for each url to the dataset. Sometimes subversions don’t have fulltext links, but parent version does. If so add fulltext links from parent version to subversion metadata.</p></li>
+<li><p>get work records from search results</p></li>
+<li><p>get version/sub-version records from each work</p></li>
+<li><p>loop through all versions/sub-versions checking to see if they have an NLA fulltext link (indicating that a digitised version is available)</p></li>
+<li><p>if they do, get the metadata from the sub-version and add to dataset</p>
+<ul>
+<li><p>sometimes records will have multiple fulltext urls, if so, add a record for each url to the dataset</p></li>
+<li><p>sometimes sub-versions don’t have fulltext links but the parent version does – if so add fulltext links from parent version to sub-version metadata</p></li>
 </ul>
-<p>Enrich dataset using embedded metadata:</p>
+</li>
+</ul>
+</section>
+<section id="enrich-dataset-using-embedded-metadata">
+<h3>Enrich dataset using embedded metadata<a class="headerlink" href="#enrich-dataset-using-embedded-metadata" title="Permalink to this heading">#</a></h3>
+<p>As noted in <a class="reference internal" href="extract-embedded-metadata.html"><span class="doc std std-doc">HOW TO: Extract additional metadata from the web page of a digitised work</span></a>, most of Trove’s digitised resource viewers embed useful metadata in the HTML of their web pages. You can use this to determine whether a fulltext url points to a single resource or a collection, and to enrich the metadata you obtained from the API.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="extract-embedded-metadata.html"><span class="doc std std-doc">Scrape metadata</span></a> from fulltext url page</p></li>
-<li><p>If no list of pages in metadata, it’s probably a collection page – try to <a class="reference internal" href="get-collection-items.html"><span class="doc std std-doc">harvest a list of collection items</span></a>, scrape metadata for each item, and add to dataset</p></li>
-<li><p>Get number of pages</p></li>
-<li><p>Add or update fields using scraped metadata (eg subunit values)</p></li>
+<li><p>scrape metadata from the page returned by each fulltext url in the dataset</p></li>
+<li><p>if the metadata doesn’t include a list of pages then it’s probably a collection page</p>
+<ul>
+<li><p>if so <a class="reference internal" href="get-collection-items.html"><span class="doc std std-doc">harvest a list of collection items</span></a> and add them to the dataset</p></li>
 </ul>
-<p>Download text:</p>
+</li>
+<li><p>get the number of pages in the resource (or optionally a list of page identifiers) – this information can be used to download OCRd text and images from a resource</p></li>
+<li><p>add or update fields using scraped metadata (eg add sub unit values)</p></li>
+</ul>
+</section>
+<section id="check-for-missing-records">
+<h3>Check for ‘missing’ records<a class="headerlink" href="#check-for-missing-records" title="Permalink to this heading">#</a></h3>
+<p>Some of the records in the dataset will represent <em>parts</em> of resources, such as the sections of a Parliamentary Paper. The identifiers of the parent resources are added to the child records in the previous processing step. You can check the parent identifiers to make sure they’re already included in the dataset.</p>
 <ul class="simple">
-<li><p>Using the number of pages attempt to <a class="reference internal" href="download-items-text-images.html"><span class="doc std std-doc">download text from publication</span></a></p></li>
-<li><p>If successful add text file name to dataset</p></li>
+<li><p>compare the list of parent identifiers in the dataset with the fulltext urls</p></li>
+<li><p>if a parent identifier is missing, scrape metadata about it and add to the dataset</p></li>
 </ul>
-<p>Merge/remove duplicates from dataset:</p>
+</section>
+<section id="merge-remove-duplicates-from-dataset">
+<h3>Merge/remove duplicates from dataset<a class="headerlink" href="#merge-remove-duplicates-from-dataset" title="Permalink to this heading">#</a></h3>
+<p>The aim of this step is to de-duplicate the harvested records, while preserving all the harvested metadata. The result is a dataset with one record for each fulltext url. If there are multiple values in any column, these will merged into a single list.</p>
 <ul class="simple">
-<li><p>Identify columns that can contain only one value (eg fulltext_url, and text_file)</p></li>
-<li><p>Identify columns that could contain multiple values</p></li>
-<li><p>Merge values of columns with multiple values into new dataframes</p></li>
-<li><p>Merge dataframe with single value columns together with all the new dataframes, linking on the text_file field</p></li>
+<li><p>identify columns that can contain only one value (eg fulltext_url) and create a de-duplicated dataframe containing these columns</p></li>
+<li><p>identify columns that could contain multiple values that need to be de-duplicated</p></li>
+<li><p>merge values of columns with multiple values into new dataframes</p></li>
+<li><p>merge dataframe with single value columns together with all the new dataframes, linking on the <code class="docutils literal notranslate"><span class="pre">fulltext_url</span></code> field</p></li>
 </ul>
-<p>Uses:</p>
+</section>
+<section id="download-text">
+<h3>Download text<a class="headerlink" href="#download-text" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="get-collection-items.html"><span class="doc std std-doc">HOW TO: Get a list of items in a digitised collection</span></a></p></li>
-<li><p><a class="reference internal" href="extract-embedded-metadata.html"><span class="doc std std-doc">HOW TO: Extract additional metadata from the web page of a digitised work</span></a></p></li>
-<li><p><a class="reference internal" href="download-items-text-images.html"><span class="doc std std-doc">HOW TO: Automate the download of digitised items as text, images, or PDFs</span></a></p></li>
+<li><p>using the number of pages attempt to <a class="reference internal" href="download-items-text-images.html"><span class="doc std std-doc">download text from publication</span></a></p></li>
+<li><p>if successful add text file name to dataset</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+</section>
+<section id="download-images">
+<h3>Download images<a class="headerlink" href="#download-images" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">requests_cache</span>
 <span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
@@ -524,37 +561,10 @@ document.write(`
 <span class="n">s</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="n">retries</span><span class="p">))</span>
 <span class="n">s</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="n">retries</span><span class="p">))</span>
 
-<span class="n">load_dotenv</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">re</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">requests_cache</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="kn">import</span> <span class="n">HTTPAdapter</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tqdm&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert your Trove API key</span>
-<span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;YOUR API KEY&quot;</span>
-
-<span class="c1"># Use api key value from environment variables if it is available</span>
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TROVE_API_KEY&quot;</span><span class="p">):</span>
-    <span class="n">API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TROVE_API_KEY&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+</section>
 <section id="get-metadata-from-api">
 <h2>Get metadata from API<a class="headerlink" href="#get-metadata-from-api" title="Permalink to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_total_results</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
@@ -725,12 +735,8 @@ document.write(`
                                     <span class="c1"># we can sort that out later. Aim here is to try and not miss any possible</span>
                                     <span class="c1"># routes to digitised publications!</span>
                                     <span class="n">urls</span> <span class="o">=</span> <span class="n">get_fulltext_url</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">])</span>
-                                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                                        <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;troveUrl&quot;</span><span class="p">))</span>
-                                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                                         <span class="n">urls</span> <span class="o">=</span> <span class="n">get_fulltext_url</span><span class="p">(</span><span class="n">version</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">])</span>
-                                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                                            <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;troveUrl&quot;</span><span class="p">))</span>
                                     <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
                                         <span class="n">work</span> <span class="o">=</span> <span class="p">{</span>
                                             <span class="c1"># This is not the full set of available fields,</span>
@@ -782,8 +788,8 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="enrich-dataset-using-embedded-metadata">
-<h2>Enrich dataset using embedded metadata<a class="headerlink" href="#enrich-dataset-using-embedded-metadata" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>Enrich dataset using embedded metadata<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_work_data</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extract work data in a JSON string from the work&#39;s HTML page.</span>
@@ -810,6 +816,7 @@ document.write(`
     <span class="k">try</span><span class="p">:</span>
         <span class="n">pages</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">work</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;page&quot;</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="c1"># TO-DO: for images need to look for maxNumOfChildDownloads</span>
         <span class="n">pages</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">pages</span>
 
@@ -881,6 +888,7 @@ document.write(`
                     <span class="n">work</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
                     <span class="c1"># Multi volume books are containers with child volumes</span>
                     <span class="c1"># so we have to get the ids of each individual volume and process them</span>
+                    <span class="c1"># TO-DO: check this will work for images -- perhaps check if pid and topLevelCollection values are the same</span>
                     <span class="k">if</span> <span class="n">pages</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">form</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Multi Volume Book&quot;</span><span class="p">,</span> <span class="s2">&quot;Journal&quot;</span><span class="p">]:</span>
                         <span class="c1"># Get child volumes</span>
                         <span class="n">volumes</span> <span class="o">=</span> <span class="n">get_volumes</span><span class="p">(</span><span class="n">trove_id</span><span class="p">)</span>
@@ -969,8 +977,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline-of-harvesting-method">Outline of harvesting method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harvest-metadata-from-api">Harvest metadata from API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enrich-dataset-using-embedded-metadata">Enrich dataset using embedded metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-missing-records">Check for ‘missing’ records</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-remove-duplicates-from-dataset">Merge/remove duplicates from dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-text">Download text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-images">Download images</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-from-api">Get metadata from API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enrich-dataset-using-embedded-metadata">Enrich dataset using embedded metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Enrich dataset using embedded metadata</a></li>
 </ul>
   </nav></div>
 

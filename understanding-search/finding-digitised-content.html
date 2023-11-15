@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/finding-digitised-content.1a839dcd-3fbc-4dda-8fe4-dd3f86cb126e.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/finding-digitised-content.835dca10-ec08-47c0-a8dc-d1574436a5e7.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/finding-digitised-content';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -242,8 +242,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/periodicals/accessing-data.html">30.1. Accessing data from periodicals</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/intro.html">31. Parliamentary papers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/how-to/digitised-resources.html">32. How to</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/index.html">31. Parliamentary papers</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/overview.html">31.1. Overview of Parliamentary Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/finding-pp.html">31.2. Finding Parliamentary Papers in Trove</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/how-to/digitised-resources.html">32. How to</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-collection-items.html">32.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/download-items-text-images.html">32.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/extract-embedded-metadata.html">32.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
@@ -485,6 +489,22 @@ document.write(`
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>
+<span class="n">YOUR_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TROVE_API_KEY&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Trove provides a platform for the delivery of digitised content from the National Library of Australia and its partners. This digitised content is easy to find in the <em>Newspapers &amp; gazettes</em> and <em>Magazines &amp; newsletters</em> categories – they’re full of it! But it’s not so easy to find digitised content in other categories where it’s mixed with works aggregated from a range of different sources.</p>
 <p>There are a few different approaches to finding digitised content, but they all have potential problems. While I highlight what I think is the most reliable option, it’s really a matter of working out what will best meet your research needs.</p>
 <section id="search-for-records-including-nla-obj">
@@ -520,49 +540,49 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_f5929">
+<table id="T_1e062">
   <thead>
     <tr>
-      <th id="T_f5929_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_f5929_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_1e062_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_1e062_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_f5929_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_f5929_row0_col1" class="data row0 col1" >645,190</td>
+      <td id="T_1e062_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_1e062_row0_col1" class="data row0 col1" >645,310</td>
     </tr>
     <tr>
-      <td id="T_f5929_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_f5929_row1_col1" class="data row1 col1" >180,088</td>
+      <td id="T_1e062_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_1e062_row1_col1" class="data row1 col1" >180,097</td>
     </tr>
     <tr>
-      <td id="T_f5929_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_f5929_row2_col1" class="data row2 col1" >285,648</td>
+      <td id="T_1e062_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_1e062_row2_col1" class="data row2 col1" >285,652</td>
     </tr>
     <tr>
-      <td id="T_f5929_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_f5929_row3_col1" class="data row3 col1" >5</td>
+      <td id="T_1e062_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_1e062_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_f5929_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_f5929_row4_col1" class="data row4 col1" >1,807,121</td>
+      <td id="T_1e062_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_1e062_row4_col1" class="data row4 col1" >1,807,121</td>
     </tr>
     <tr>
-      <td id="T_f5929_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_f5929_row5_col1" class="data row5 col1" >57,575</td>
+      <td id="T_1e062_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_1e062_row5_col1" class="data row5 col1" >57,651</td>
     </tr>
     <tr>
-      <td id="T_f5929_row6_col0" class="data row6 col0" >newspaper</td>
-      <td id="T_f5929_row6_col1" class="data row6 col1" >1,853</td>
+      <td id="T_1e062_row6_col0" class="data row6 col0" >newspaper</td>
+      <td id="T_1e062_row6_col1" class="data row6 col1" >1,853</td>
     </tr>
     <tr>
-      <td id="T_f5929_row7_col0" class="data row7 col0" >people</td>
-      <td id="T_f5929_row7_col1" class="data row7 col1" >38</td>
+      <td id="T_1e062_row7_col0" class="data row7 col0" >people</td>
+      <td id="T_1e062_row7_col1" class="data row7 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_f5929_row8_col0" class="data row8 col0" >research</td>
-      <td id="T_f5929_row8_col1" class="data row8 col1" >363,952</td>
+      <td id="T_1e062_row8_col0" class="data row8 col0" >research</td>
+      <td id="T_1e062_row8_col1" class="data row8 col1" >363,976</td>
     </tr>
   </tbody>
 </table>
@@ -607,45 +627,45 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_5cbc1">
+<table id="T_4037e">
   <thead>
     <tr>
-      <th id="T_5cbc1_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_5cbc1_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_4037e_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_4037e_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_5cbc1_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_5cbc1_row0_col1" class="data row0 col1" >99,221</td>
+      <td id="T_4037e_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_4037e_row0_col1" class="data row0 col1" >99,273</td>
     </tr>
     <tr>
-      <td id="T_5cbc1_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_5cbc1_row1_col1" class="data row1 col1" >114,603</td>
+      <td id="T_4037e_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_4037e_row1_col1" class="data row1 col1" >114,610</td>
     </tr>
     <tr>
-      <td id="T_5cbc1_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_5cbc1_row2_col1" class="data row2 col1" >250,521</td>
+      <td id="T_4037e_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_4037e_row2_col1" class="data row2 col1" >250,524</td>
     </tr>
     <tr>
-      <td id="T_5cbc1_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_5cbc1_row3_col1" class="data row3 col1" >5</td>
+      <td id="T_4037e_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_4037e_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_5cbc1_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_5cbc1_row4_col1" class="data row4 col1" >1,807,121</td>
+      <td id="T_4037e_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_4037e_row4_col1" class="data row4 col1" >1,807,121</td>
     </tr>
     <tr>
-      <td id="T_5cbc1_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_5cbc1_row5_col1" class="data row5 col1" >39,887</td>
+      <td id="T_4037e_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_4037e_row5_col1" class="data row5 col1" >39,963</td>
     </tr>
     <tr>
-      <td id="T_5cbc1_row6_col0" class="data row6 col0" >people</td>
-      <td id="T_5cbc1_row6_col1" class="data row6 col1" >38</td>
+      <td id="T_4037e_row6_col0" class="data row6 col0" >people</td>
+      <td id="T_4037e_row6_col1" class="data row6 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_5cbc1_row7_col0" class="data row7 col0" >research</td>
-      <td id="T_5cbc1_row7_col1" class="data row7 col1" >360,515</td>
+      <td id="T_4037e_row7_col0" class="data row7 col0" >research</td>
+      <td id="T_4037e_row7_col1" class="data row7 col1" >360,539</td>
     </tr>
   </tbody>
 </table>
@@ -688,45 +708,45 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_c8087">
+<table id="T_981b4">
   <thead>
     <tr>
-      <th id="T_c8087_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_c8087_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_981b4_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_981b4_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_c8087_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_c8087_row0_col1" class="data row0 col1" >60,920</td>
+      <td id="T_981b4_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_981b4_row0_col1" class="data row0 col1" >60,957</td>
     </tr>
     <tr>
-      <td id="T_c8087_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_c8087_row1_col1" class="data row1 col1" >114,454</td>
+      <td id="T_981b4_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_981b4_row1_col1" class="data row1 col1" >114,461</td>
     </tr>
     <tr>
-      <td id="T_c8087_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_c8087_row2_col1" class="data row2 col1" >248,712</td>
+      <td id="T_981b4_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_981b4_row2_col1" class="data row2 col1" >248,715</td>
     </tr>
     <tr>
-      <td id="T_c8087_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_c8087_row3_col1" class="data row3 col1" >5</td>
+      <td id="T_981b4_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_981b4_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_c8087_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_c8087_row4_col1" class="data row4 col1" >1,807,121</td>
+      <td id="T_981b4_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_981b4_row4_col1" class="data row4 col1" >1,807,121</td>
     </tr>
     <tr>
-      <td id="T_c8087_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_c8087_row5_col1" class="data row5 col1" >32,693</td>
+      <td id="T_981b4_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_981b4_row5_col1" class="data row5 col1" >32,699</td>
     </tr>
     <tr>
-      <td id="T_c8087_row6_col0" class="data row6 col0" >people</td>
-      <td id="T_c8087_row6_col1" class="data row6 col1" >38</td>
+      <td id="T_981b4_row6_col0" class="data row6 col0" >people</td>
+      <td id="T_981b4_row6_col1" class="data row6 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_c8087_row7_col0" class="data row7 col0" >research</td>
-      <td id="T_c8087_row7_col1" class="data row7 col1" >357,367</td>
+      <td id="T_981b4_row7_col0" class="data row7 col0" >research</td>
+      <td id="T_981b4_row7_col1" class="data row7 col1" >357,390</td>
     </tr>
   </tbody>
 </table>
