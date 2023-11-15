@@ -13,8 +13,11 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# Oral histories
+# Digitised oral histories
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
+Description of capabilities of player
 
-To get a list of audio files (and other info), load JS from url like this: https://nla.gov.au/tarkine/listen/transcript/nla.obj-219744819.js (changing the ID as required)
+Types of data:
+
+- metadata
+- timed summaries and transcripts

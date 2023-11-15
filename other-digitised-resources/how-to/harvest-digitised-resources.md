@@ -13,50 +13,63 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# Harvest digitised resources
+# HOW TO: Harvest data relating to digitised resources
 
-Not straightforward because of the different ways resources are grouped into collections.
+Harvesting data relating to digitised resources (other than newspapers) in Trove is not as simple as making a few API requests. The major problem is that digitised resources are often assembled into groups or collections, and the full details of these groupings are not available through the Trove API. This means that simply harvesting results from an API query will miss many digitised resources. In addition, the way resources are described and arranged is often inconsistent, so you can't assume that a particular type of resource will be grouped in a particular way.
 
-Basic strategy is to harvest as many records as possible, following all the possible routes. This may result in duplicates, but these can be dealt with later. In any case, Trove contains a large number of duplicate records that need to be dealt with.
+As a result of these problems, a 'belts and braces' approach seems best – follow every possible route and harvest as many records as possible. This may result in duplicates, but these can be dealt with later. In any case, Trove already contains a large number of duplicate records for digitised resources, so some form of merging or de-duplication will always be required.
 
-Get metadata from API:
+## Outline of harvesting method
 
-- Get work records from search results
-- Get versions/sub-version records from work
-- Loop through all versions/sub-versions checking to see if they have an NLA fulltext link
-- If they do, get the metadata from the sub-version and add to dataset. Sometimes records will have multiple fulltext urls, if so, add a record for each url to the dataset. Sometimes subversions don't have fulltext links, but parent version does. If so add fulltext links from parent version to subversion metadata.
+### Harvest metadata from API
 
-Enrich dataset using embedded metadata:
+Searches using the API return work-level records. Sometimes digitised resources are grouped as versions of a work, even though they're quite different. To make sure you get everything, you need to work your way down through through the hierarchy of work -> version -> sub-version (labelled 'record' in API responses), harvesting every relevant record.
 
-- [Scrape metadata](/other-digitised-resources/how-to/extract-embedded-metadata) from fulltext url page
-- If no list of pages in metadata, it's probably a collection page -- try to [harvest a list of collection items](/other-digitised-resources/how-to/get-collection-items), scrape metadata for each item, and add to dataset
-- Get number of pages
-- Add or update fields using scraped metadata (eg subunit values)
+- get work records from search results
+- get version/sub-version records from each work
+- loop through all versions/sub-versions checking to see if they have an NLA fulltext link (indicating that a digitised version is available)
+- if they do, get the metadata from the sub-version and add to dataset
+    - sometimes records will have multiple fulltext urls, if so, add a record for each url to the dataset
+    - sometimes sub-versions don't have fulltext links but the parent version does – if so add fulltext links from parent version to sub-version metadata
 
-Download text:
+### Enrich dataset using embedded metadata
 
-- Using the number of pages attempt to [download text from publication](/other-digitised-resources/how-to/download-items-text-images)
-- If successful add text file name to dataset
+As noted in [](/other-digitised-resources/how-to/extract-embedded-metadata), most of Trove's digitised resource viewers embed useful metadata in the HTML of their web pages. You can use this to determine whether a fulltext url points to a single resource or a collection, and to enrich the metadata you obtained from the API.
 
-Merge/remove duplicates from dataset:
+- scrape metadata from the page returned by each fulltext url in the dataset
+- if the metadata doesn't include a list of pages then it's probably a collection page
+    - if so [harvest a list of collection items](/other-digitised-resources/how-to/get-collection-items) and add them to the dataset
+- get the number of pages in the resource (or optionally a list of page identifiers) – this information can be used to download OCRd text and images from a resource
+- add or update fields using scraped metadata (eg add sub unit values)
 
-- Identify columns that can contain only one value (eg fulltext_url, and text_file)
-- Identify columns that could contain multiple values
-- Merge values of columns with multiple values into new dataframes
-- Merge dataframe with single value columns together with all the new dataframes, linking on the text_file field
+### Check for 'missing' records
 
-Uses:
+Some of the records in the dataset will represent *parts* of resources, such as the sections of a Parliamentary Paper. The identifiers of the parent resources are added to the child records in the previous processing step. You can check the parent identifiers to make sure they're already included in the dataset.
 
-- [](/other-digitised-resources/how-to/get-collection-items)
-- [](/other-digitised-resources/how-to/extract-embedded-metadata)
-- [](/other-digitised-resources/how-to/download-items-text-images)
+- compare the list of parent identifiers in the dataset with the fulltext urls
+- if a parent identifier is missing, scrape metadata about it and add to the dataset
 
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
+### Merge/remove duplicates from dataset
+
+The aim of this step is to de-duplicate the harvested records, while preserving all the harvested metadata. The result is a dataset with one record for each fulltext url. If there are multiple values in any column, these will merged into a single list.
+
+- identify columns that can contain only one value (eg fulltext_url) and create a de-duplicated dataframe containing these columns
+- identify columns that could contain multiple values that need to be de-duplicated
+- merge values of columns with multiple values into new dataframes
+- merge dataframe with single value columns together with all the new dataframes, linking on the `fulltext_url` field
+
+### Download text
+
+- using the number of pages attempt to [download text from publication](/other-digitised-resources/how-to/download-items-text-images)
+- if successful add text file name to dataset
+
+### Download images
+
+
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+```python
 import os
 import re
 import requests_cache
@@ -72,21 +85,6 @@ retries = Retry(total=5, backoff_factor=1, status_forcelist=[502, 503, 504])
 s.mount("https://", HTTPAdapter(max_retries=retries))
 s.mount("http://", HTTPAdapter(max_retries=retries))
 
-load_dotenv()
-```
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-# Insert your Trove API key
-API_KEY = "YOUR API KEY"
-
-# Use api key value from environment variables if it is available
-if os.getenv("TROVE_API_KEY"):
-    API_KEY = os.getenv("TROVE_API_KEY")
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
@@ -264,12 +262,8 @@ def harvest_works(params):
                                     # we can sort that out later. Aim here is to try and not miss any possible
                                     # routes to digitised publications!
                                     urls = get_fulltext_url(metadata["identifier"])
-                                    if len(urls) > 1:
-                                        print(record.get("troveUrl"))
-                                    elif len(urls) == 0:
+                                    if len(urls) == 0:
                                         urls = get_fulltext_url(version["identifier"])
-                                        if len(urls) > 1:
-                                            print(record.get("troveUrl"))
                                     for url in urls:
                                         work = {
                                             # This is not the full set of available fields,
@@ -324,7 +318,7 @@ def harvest_works(params):
 
 ## Enrich dataset using embedded metadata
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```python
 def get_work_data(url):
@@ -353,6 +347,7 @@ def get_pages(work):
     try:
         pages = len(work["children"]["page"])
     except KeyError:
+        # TO-DO: for images need to look for maxNumOfChildDownloads
         pages = 0
     return pages
 
@@ -424,6 +419,7 @@ def add_pages():
                     work["children"] = ""
                     # Multi volume books are containers with child volumes
                     # so we have to get the ids of each individual volume and process them
+                    # TO-DO: check this will work for images -- perhaps check if pid and topLevelCollection values are the same
                     if pages == 0 and form in ["Multi Volume Book", "Journal"]:
                         # Get child volumes
                         volumes = get_volumes(trove_id)
@@ -461,5 +457,10 @@ def add_pages():
 ```
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 
 ```
