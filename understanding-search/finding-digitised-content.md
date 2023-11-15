@@ -26,7 +26,6 @@ This guide is currently under development. For more information and discussion s
 editable: true
 slideshow:
   slide_type: ''
-tags: [remove-cell]
 ---
 import os
 from datetime import datetime
