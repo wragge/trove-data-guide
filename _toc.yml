@@ -96,6 +96,12 @@ parts:
         sections:
           - file: other-digitised-resources/parliamentary-papers/overview
           - file: other-digitised-resources/parliamentary-papers/finding-pp
+          - file: other-digitised-resources/parliamentary-papers/accessing-data
+      - file: other-digitised-resources/oral-histories/index
+        title: Oral histories
+        sections:
+          - file: other-digitised-resources/oral-histories/overview
+          - file: other-digitised-resources/oral-histories/accessing-data
       - file: other-digitised-resources/how-to/digitised-resources
         title: How to
         sections:

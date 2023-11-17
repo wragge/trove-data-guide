@@ -224,7 +224,6 @@ The `subject` field contains a list of standard(ish) subject headings. Here's th
 editable: true
 slideshow:
   slide_type: ''
-tags: [hide-input]
 ---
 subjects = df["subject"].str.split("|").explode().to_frame()
 # Remove trailing full stops
