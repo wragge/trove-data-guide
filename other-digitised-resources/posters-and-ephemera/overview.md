@@ -25,6 +25,8 @@ even better just `series:ephemera` across all categories
 
 <https://trove.nla.gov.au/search/category/correspondence?keyword=series%3Aephemera>
 
+Sometimes items are identified as ephemera in `callNumber` field -- eg: https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F10271929%3Fencoding%3Djson%26include%3Dworkversions%2Clinks%2Choldings&comment=
+
 
 This link goes to two finding aids with lots of digitised resources: <https://trove.nla.gov.au/work/20934136>
 
@@ -34,3 +36,7 @@ For finding aids:
 
 - use current code to scrape FA
 - to get images use node id to request, eg: https://nla.gov.au/nla.obj-2956520256/findingaid/nla.obj-2956524425/thumbnailList (first id is FA, second is node) -- rturns html list of thumnails, can extract image ids
+
+```{code-cell} ipython3
+
+```
