@@ -24,11 +24,11 @@ The National Library of Australia holds over [55,000 hours of oral history and f
 (finding-oral-histories)=
 ## Finding oral histories
 
-Items from the NLA's oral history collection can be found in Trove's **Music, Audio, & Video** category. If you're only interested in what's available online, the standard approach to finding digitised resources seems to work effectively – [search in **Music, Audio, & Video** category](https://trove.nla.gov.au/search/category/music?keyword=%22nla.obj%22&l-format=Sound%2FInterview,%20lecture,%20talk&l-availability=y) for `"nla.obj"`, with the `availability` facet set to `y`, and the `format` facet set to `Sound/Interview, lecture, talk`.
+Items from the NLA's oral history collection can be found in Trove's **Music, Audio, & Video** category. If you're only interested in what's available online, the standard approach to finding digitised resources seems to work effectively – [search in **Music, Audio, & Video** category for `"nla.obj"`, with the `availability` facet set to `y`, and the `format` facet set to `Sound/Interview, lecture, talk`](https://trove.nla.gov.au/search/category/music?keyword=%22nla.obj%22&l-format=Sound%2FInterview,%20lecture,%20talk&l-availability=y).
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22%26category%3Dmusic%26l-format%3DSound%2FInterview%2C+lecture%2C+talk%26l-availability%3Dy%26encoding%3Djson&comment=)
 
-If you're also interested in oral histories that aren't yet online, you can use the `nuc` index instead of `"nla.obj"` to find all oral histories in the NLA collection – [search in the **Music, Audio, & Video** category](https://trove.nla.gov.au/search/category/music?keyword=nuc%3AANL%20OR%20nuc%3A%22ANL%3ADL%22&l-format=Sound%2FInterview,%20lecture,%20talk) for `nuc:ANL OR nuc:"ANL:DL"` with the `format` facet set to `Sound/Interview, lecture, talk`.
+If you're also interested in oral histories that aren't yet online, you can use the `nuc` index instead of `"nla.obj"` to find all oral histories in the NLA collection – [search in the **Music, Audio, & Video** category for `nuc:ANL OR nuc:"ANL:DL"` with the `format` facet set to `Sound/Interview, lecture, talk`](https://trove.nla.gov.au/search/category/music?keyword=nuc%3AANL%20OR%20nuc%3A%22ANL%3ADL%22&l-format=Sound%2FInterview,%20lecture,%20talk).
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3AANL+OR+nuc%3A%22ANL%3ADL%22%26category%3Dmusic%26l-format%3DSound%2FInterview%2C+lecture%2C+talk%26encoding%3Djson&comment=)
 
@@ -163,7 +163,7 @@ The `subject` field contains standard(ish) subject headings that provide an insi
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-Here's the top ten subjects of oral histories that are not online.
+Here's the top ten subjects of oral histories that are not online. The formatting of the `--` separators has been normalised, and final fullstops removed.
 
 ```{code-cell} ipython3
 ---
@@ -174,7 +174,7 @@ tags: [hide-input]
 ---
 def split_and_clean(value):
     values = value.split(" | ")
-    return [re.sub(r"(\w)--(\w)", r"\1 -- \2", v).strip(".") for v in values if v]
+    return list(set([re.sub(r"(\w)--(\w)", r"\1 -- \2", v).strip(".") for v in values if v]))
 
 df["subject"] = df["subject"].apply(split_and_clean)
 
@@ -185,7 +185,7 @@ subjects.loc[(subjects["online_status"] == "not online")]["subject"].value_count
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-Here's the top ten subjects of oral histories that are *are* online.
+Here's the top ten subjects of oral histories that are *are* online. The formatting of the `--` separators has been normalised, and final fullstops removed.
 
 ```{code-cell} ipython3
 ---
@@ -201,7 +201,7 @@ subjects.loc[subjects["online_status"] == "online"]["subject"].value_counts().to
 
 ## What collections do the oral histories belong to?
 
-You can use the `isPartOf` field in the record metadata to examine thematic collections within the larger oral history collection.
+You can use the `isPartOf` field in the record metadata to examine thematic collections within the larger oral history collection. Here's the top twenty `series` values from the `isPartOf` field. The values have been normalised by removing the final full stops.
 
 ```{code-cell} ipython3
 ---
@@ -212,5 +212,14 @@ tags: [hide-input]
 ---
 df["is_part_of"] = df["is_part_of"].apply(split_and_clean)
 
-df["is_part_of"].explode().value_counts().to_frame().reset_index()[:20].style.hide()
+series = df["is_part_of"].explode().value_counts().to_frame().reset_index()
+
+# Show series only (not publication)
+series.dropna().loc[series["is_part_of"].str.startswith("series")][:20].style.hide()
+```
+
+A complete list of series values is available in [this text file](https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-history-series.txt). You can use these values with the `series` index to find all the oral histories within a collection. For example, [searching for `series:"Hazel de Berg collection"`](https://trove.nla.gov.au/search/category/music?keyword=series%3A%22Hazel%20de%20Berg%20collection%22&l-format=Sound%2FInterview,%20lecture,%20talk) will find all the interviews in the Hazel de Berg collection.
+
+```{code-cell} ipython3
+
 ```

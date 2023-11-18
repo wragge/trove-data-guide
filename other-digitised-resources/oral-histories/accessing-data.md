@@ -39,7 +39,7 @@ If you're using the API, the digital object url will be in the `identifier` fiel
 
 You can use this identifier to access additional metadata and download transcripts.
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Types of data
 
@@ -67,7 +67,11 @@ As [described elsewhere](finding-oral-histories), you can find details of oral h
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22%26category%3Dmusic%26l-format%3DSound%2FInterview%2C+lecture%2C+talk%26l-availability%3Dy%26encoding%3Djson&comment=)
 
-Start with this search then add additional keywords to filter the results according to your research needs.
+Start with this search then add additional keywords or filters to limit the results according to your research needs. For example, you could use the `series` index to find results from the Hazel de Berg collection.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dseries%3A%22Hazel+de+Berg+collection%22%26category%3Dmusic%26l-format%3DSound%2FInterview%2C+lecture%2C+talk%26l-availability%3Dy%26encoding%3Djson&comment=)
+
+A complete list of series values is available in [this text file](https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-history-series.txt).
 
 As with other digitised resources there are some inconsistencies in the description and arrangement of oral histories in Trove. A few things I've noticed are:
 

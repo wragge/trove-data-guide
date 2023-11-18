@@ -63,3 +63,11 @@ Magazines and newsletters:
 +++
 
 `contribcollection` -- search for things like "ABC Radio National. RN Breakfast" from inpartof don't seem to work, need to use `contribcollection` facet instead
+
++++
+
+geocoverage values: <https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3F%26category%3Dall%26facet%3Dgeocoverage%26encoding%3Djson%26bulkHarvest%3Dtrue%26n%3D0&comment=>
+
+```{code-cell} ipython3
+
+```
