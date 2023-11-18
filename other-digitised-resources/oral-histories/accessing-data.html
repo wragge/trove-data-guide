@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/oral-histories/accessing-data.3f3e4672-1f54-4b2b-8a9c-34cd81c75a21.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/oral-histories/accessing-data.95cb1623-1f8b-4097-bd6c-63ba66425e2d.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/oral-histories/accessing-data';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -544,7 +544,9 @@ document.write(`
 <h3><a class="toc-backref" href="#id6" role="doc-backlink">Search results from the API</a><a class="headerlink" href="#search-results-from-the-api" title="Permalink to this heading">#</a></h3>
 <p>As <a class="reference internal" href="overview.html#finding-oral-histories"><span class="std std-ref">described elsewhere</span></a>, you can find details of oral histories from the NLA collection that are available online by searching for <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code> in the <code class="docutils literal notranslate"><span class="pre">music</span></code> category, with the <code class="docutils literal notranslate"><span class="pre">availability</span></code> facet set to <code class="docutils literal notranslate"><span class="pre">y</span></code>, and the <code class="docutils literal notranslate"><span class="pre">format</span></code> facet set to <code class="docutils literal notranslate"><span class="pre">Sound/Interview,</span> <span class="pre">lecture,</span> <span class="pre">talk</span></code>.</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22%26category%3Dmusic%26l-format%3DSound%2FInterview%2C+lecture%2C+talk%26l-availability%3Dy%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
-<p>Start with this search then add additional keywords to filter the results according to your research needs.</p>
+<p>Start with this search then add additional keywords or filters to limit the results according to your research needs. For example, you could use the <code class="docutils literal notranslate"><span class="pre">series</span></code> index to find results from the Hazel de Berg collection.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dseries%3A%22Hazel+de+Berg+collection%22%26category%3Dmusic%26l-format%3DSound%2FInterview%2C+lecture%2C+talk%26l-availability%3Dy%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>A complete list of series values is available in <a class="reference external" href="https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-history-series.txt">this text file</a>.</p>
 <p>As with other digitised resources there are some inconsistencies in the description and arrangement of oral histories in Trove. A few things I’ve noticed are:</p>
 <ul class="simple">
 <li><p>Different recordings with the same person can be grouped as a single work, for example <a class="reference external" href="https://trove.nla.gov.au/work/38468518">this work</a> combines recordings from 2010 and 2013.</p></li>
