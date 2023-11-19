@@ -19,13 +19,13 @@ parts:
       - file: what-is-trove/works-and-versions
       - file: what-is-trove/types-of-data
       - file: what-is-trove/links-and-identifiers
-      - file: what-is-trove/interfaces
+#      - file: what-is-trove/interfaces
   - caption: Understanding search
     numbered: 2
     maxdepth: 3
     chapters:
       - file: understanding-search/understanding-search
-      - file: understanding-search/discovery-versus-analysis
+#      - file: understanding-search/discovery-versus-analysis
       - file: understanding-search/simple-search-options
       - file: understanding-search/facets
       - file: understanding-search/date-searches
@@ -45,21 +45,21 @@ parts:
           - file: accessing-data/how-to/use-lists
           - file: accessing-data/how-to/use-zotero
           - file: accessing-data/how-to/harvest-complete-results
-  - caption: Collection metadata
-    numbered: 2
-    maxdepth: 3
-    chapters:
-      - file: metadata/aggregated-collections
+#  - caption: Collection metadata
+#    numbered: 2
+#    maxdepth: 3
+#    chapters:
+#      - file: metadata/aggregated-collections
   - caption: Digitised newspapers and gazettes
     numbered: 2
     maxdepth: 3
     chapters:
       - file: newspapers-and-gazettes/newspaper-corpus
-      - file: newspapers-and-gazettes/newspapers-change-over-time
-      - file: newspapers-and-gazettes/newspapers-missing-pages
-      - file: newspapers-and-gazettes/newspapers-non-english
+#     - file: newspapers-and-gazettes/newspapers-change-over-time
+#     - file: newspapers-and-gazettes/newspapers-missing-pages
+#      - file: newspapers-and-gazettes/newspapers-non-english
       - file: newspapers-and-gazettes/newspapers-copyright
-      - file: newspapers-and-gazettes/newspapers-ocr
+#      - file: newspapers-and-gazettes/newspapers-ocr
       - file: newspapers-and-gazettes/data/accessing-data
         title: Accessing data
         sections:
@@ -87,10 +87,10 @@ parts:
         title: Books
         sections:
           - file: other-digitised-resources/books/accessing-data
-      - file: other-digitised-resources/periodicals/intro
-        title: Periodicals
-        sections:
-          - file: other-digitised-resources/periodicals/accessing-data
+#      - file: other-digitised-resources/periodicals/intro
+#        title: Periodicals
+#        sections:
+#          - file: other-digitised-resources/periodicals/accessing-data
       - file: other-digitised-resources/parliamentary-papers/index
         title: Parliamentary papers
         sections:
@@ -108,16 +108,16 @@ parts:
           - file: other-digitised-resources/how-to/get-collection-items
           - file: other-digitised-resources/how-to/download-items-text-images
           - file: other-digitised-resources/how-to/extract-embedded-metadata
-  - caption: Web archives
-    numbered: 2
-    maxdepth: 3
-    chapters:
-      - file: web-archives/web-archives
-  - caption: User generated content
-    numbered: 2
-    maxdepth: 3
-    chapters:
-      - file: user-generated-data/trove-lists
+#  - caption: Web archives
+#    numbered: 2
+#    maxdepth: 3
+#    chapters:
+#      - file: web-archives/web-archives
+#  - caption: User generated content
+#    numbered: 2
+#    maxdepth: 3
+#    chapters:
+#      - file: user-generated-data/trove-lists
   - caption: Research pathways
     numbered: true
     chapters:
@@ -126,5 +126,5 @@ parts:
     - file: glossary
     - file: genindex
     - file: references
-    - file: demo
+#    - file: demo
 
