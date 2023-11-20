@@ -108,6 +108,7 @@ parts:
           - file: other-digitised-resources/how-to/get-collection-items
           - file: other-digitised-resources/how-to/download-items-text-images
           - file: other-digitised-resources/how-to/extract-embedded-metadata
+          - file: other-digitised-resources/how-to/harvest-digitised-resources
 #  - caption: Web archives
 #    numbered: 2
 #    maxdepth: 3
