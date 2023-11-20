@@ -101,7 +101,8 @@ slideshow:
 tags: [hide-input]
 ---
 df = pd.read_csv(
-    "https://github.com/GLAM-Workbench/trove-parliamentary-papers-data/raw/main/trove-parliamentary-papers.csv"
+    "https://github.com/GLAM-Workbench/trove-parliamentary-papers-data/raw/main/trove-parliamentary-papers.csv",
+    keep_default_na=False,
 )
 
 stats = [
@@ -124,7 +125,7 @@ stats_df.style.format(thousands=",", precision=0).hide().hide(axis=1).set_proper
 
 Most of the Parliamentary Papers in Trove were published before 2013. If you search in ParlInfo for [Parliamentary Papers published before 2013](https://parlinfo.aph.gov.au/parlInfo/search/summary/summary.w3p;adv=yes;orderBy=customrank;page=0;query=(Date%3A%20%3E%3E%2031%2F12%2F2012)%20Dataset%3AppSeries;resCount=Default) the total number of results is 25,853 – close, but not exactly the same. There could be publications missing from Trove, or duplicates in the ParlInfo results.
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## When were the Parliamentary Papers published?
 
@@ -224,8 +225,21 @@ The `subject` field contains a list of standard(ish) subject headings. Here's th
 editable: true
 slideshow:
   slide_type: ''
+tags: [hide-input]
 ---
-subjects = df["subject"].str.split("|").explode().to_frame()
+import re
+
+
+def split_and_clean(value):
+    values = value.split("|")
+    return list(
+        set([re.sub(r"(\w)--(\w)", r"\1 -- \2", v).strip(".") for v in values if v])
+    )
+
+
+df["subject"] = df["subject"].apply(split_and_clean)
+
+subjects = df["subject"].explode().to_frame()
 # Remove trailing full stops
 subjects["subject"] = subjects["subject"].str.strip(".")
 subjects["subject"].value_counts().to_frame().reset_index()[:20].style.format(
@@ -251,8 +265,6 @@ def clean_contributor(value):
         return str(value).strip(".")
 
 
-import re
-
 contributors = df["contributor"].str.split("|").explode().to_frame()
 contributors["cleaned name"] = contributors["contributor"]
 contributors["cleaned name"] = contributors["contributor"].apply(clean_contributor)
@@ -262,5 +274,10 @@ contributors.dropna()["cleaned name"].value_counts().to_frame().reset_index()[
 ```
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 
 ```
