@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Accessing data from books
 
 +++
@@ -53,7 +55,50 @@ You can get text via the API, but you have to add `include=workversions` then lo
 
 I think there are limits on the amount of text you can get from the API -- need to test this.
 
-+++
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+import requests
+import pandas as pd
+
+df = pd.read_csv("https://raw.githubusercontent.com/GLAM-Workbench/trove-books-data/main/trove-books.csv", keep_default_na=False)
+
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+from wordcloud import WordCloud
+from io import BytesIO
+
+book = df.loc[(df["text_file"] != "") & (df["pages"] > 50) & (df["language"].str.contains("English"))].sample(1)
+nla_id = book["fulltext_url"].iloc[0]
+print(nla_id)
+pages = book["pages"].iloc[0]
+
+params = {
+    "downloadOption": "ocr",
+    "firstPage": 0,
+    "lastPage": pages - 1
+}
+
+response = requests.get(f"{nla_id}/download", params=params)
+print(response.url)
+#print(response.text)
+wc = WordCloud(width=800, height=300)
+# just using response.text with wordcloud seems to cause encoding problems
+# using BytesIO and response.content seems to work ok
+wc.generate(BytesIO(response.content).getvalue().decode('UTF-8'))
+wc.to_image()
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Images and PDF
 
@@ -61,7 +106,7 @@ Once you have number of pages can download --> how to
 
 Some allow view but not download: https://nla.gov.au/nla.obj-2490195342/view
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Oddities
 
