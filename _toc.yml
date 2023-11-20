@@ -118,10 +118,10 @@ parts:
 #    maxdepth: 3
 #    chapters:
 #      - file: user-generated-data/trove-lists
-  - caption: Research pathways
-    numbered: true
-    chapters:
-      - file: pathways/pathways
+#  - caption: Research pathways
+#    numbered: true
+#    chapters:
+#      - file: pathways/pathways
   - chapters:
     - file: glossary
     - file: genindex
