@@ -218,6 +218,8 @@ series = df["is_part_of"].explode().value_counts().to_frame().reset_index()
 series.dropna().loc[series["is_part_of"].str.startswith("series")][:20].style.hide()
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 A complete list of series values is available in [this text file](https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-history-series.txt). You can use these values with the `series` index to find all the oral histories within a collection. For example, [searching for `series:"Hazel de Berg collection"`](https://trove.nla.gov.au/search/category/music?keyword=series%3A%22Hazel%20de%20Berg%20collection%22&l-format=Sound%2FInterview,%20lecture,%20talk) will find all the interviews in the Hazel de Berg collection.
 
 ```{code-cell} ipython3
