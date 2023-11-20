@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/books/accessing-data.65775576-72bf-4229-8195-d0e562d777b5.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/books/accessing-data.3c007137-7650-40c6-941c-6043a1d60af5.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/books/accessing-data';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -243,6 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../how-to/get-collection-items.html">5.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how-to/download-items-text-images.html">5.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how-to/extract-embedded-metadata.html">5.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/harvest-digitised-resources.html">5.4. HOW TO: Harvest data relating to digitised resources</a></li>
 </ul>
 </li>
 </ul>
@@ -489,6 +490,53 @@ document.write(`
 <p>Pre-harvested datasets</p>
 <p>You can get text via the API, but you have to add <code class="docutils literal notranslate"><span class="pre">include=workversions</span></code> then loop through versions, looking in the <code class="docutils literal notranslate"><span class="pre">description</span></code> field for a <code class="docutils literal notranslate"><span class="pre">value</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;type&quot;:</span> <span class="pre">&quot;open_fulltext&quot;</span></code>.</p>
 <p>I think there are limits on the amount of text you can get from the API – need to test this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/GLAM-Workbench/trove-books-data/main/trove-books.csv&quot;</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+
+<span class="n">book</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;text_file&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;language&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;English&quot;</span><span class="p">))]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">nla_id</span> <span class="o">=</span> <span class="n">book</span><span class="p">[</span><span class="s2">&quot;fulltext_url&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nla_id</span><span class="p">)</span>
+<span class="n">pages</span> <span class="o">=</span> <span class="n">book</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;downloadOption&quot;</span><span class="p">:</span> <span class="s2">&quot;ocr&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;firstPage&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;lastPage&quot;</span><span class="p">:</span> <span class="n">pages</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nla_id</span><span class="si">}</span><span class="s2">/download&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="c1">#print(response.text)</span>
+<span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="c1"># just using response.text with wordcloud seems to cause encoding problems</span>
+<span class="c1"># using BytesIO and response.content seems to work ok</span>
+<span class="n">wc</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">))</span>
+<span class="n">wc</span><span class="o">.</span><span class="n">to_image</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://nla.gov.au/nla.obj-1828735340
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://nla.gov.au/nla.obj-1828735340/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=171
+</pre></div>
+</div>
+<img alt="../../_images/6405b57652a33b8026896203c1a9ccd028b65da973bf22ed980f56e8a1138560.png" src="../../_images/6405b57652a33b8026896203c1a9ccd028b65da973bf22ed980f56e8a1138560.png" />
+</div>
+</div>
 </section>
 <section id="images-and-pdf">
 <h2>Images and PDF<a class="headerlink" href="#images-and-pdf" title="Permalink to this heading">#</a></h2>

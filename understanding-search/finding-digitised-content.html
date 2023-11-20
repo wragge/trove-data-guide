@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/finding-digitised-content.7e3bba76-8346-4a8b-a590-14a8ef5358e2.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/finding-digitised-content.65e57928-2f0d-4fb1-866a-1ff3a8c7a8e2.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/finding-digitised-content';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -243,6 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-collection-items.html">5.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/download-items-text-images.html">5.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/extract-embedded-metadata.html">5.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/harvest-digitised-resources.html">5.4. HOW TO: Harvest data relating to digitised resources</a></li>
 </ul>
 </li>
 </ul>
@@ -519,49 +520,49 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_a962c">
+<table id="T_3d231">
   <thead>
     <tr>
-      <th id="T_a962c_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_a962c_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_3d231_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_3d231_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_a962c_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_a962c_row0_col1" class="data row0 col1" >645,656</td>
+      <td id="T_3d231_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_3d231_row0_col1" class="data row0 col1" >646,094</td>
     </tr>
     <tr>
-      <td id="T_a962c_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_a962c_row1_col1" class="data row1 col1" >180,118</td>
+      <td id="T_3d231_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_3d231_row1_col1" class="data row1 col1" >180,121</td>
     </tr>
     <tr>
-      <td id="T_a962c_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_a962c_row2_col1" class="data row2 col1" >287,289</td>
+      <td id="T_3d231_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_3d231_row2_col1" class="data row2 col1" >287,289</td>
     </tr>
     <tr>
-      <td id="T_a962c_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_a962c_row3_col1" class="data row3 col1" >5</td>
+      <td id="T_3d231_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_3d231_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_a962c_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_a962c_row4_col1" class="data row4 col1" >1,807,140</td>
+      <td id="T_3d231_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_3d231_row4_col1" class="data row4 col1" >1,807,140</td>
     </tr>
     <tr>
-      <td id="T_a962c_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_a962c_row5_col1" class="data row5 col1" >57,660</td>
+      <td id="T_3d231_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_3d231_row5_col1" class="data row5 col1" >57,660</td>
     </tr>
     <tr>
-      <td id="T_a962c_row6_col0" class="data row6 col0" >newspaper</td>
-      <td id="T_a962c_row6_col1" class="data row6 col1" >1,853</td>
+      <td id="T_3d231_row6_col0" class="data row6 col0" >newspaper</td>
+      <td id="T_3d231_row6_col1" class="data row6 col1" >1,853</td>
     </tr>
     <tr>
-      <td id="T_a962c_row7_col0" class="data row7 col0" >people</td>
-      <td id="T_a962c_row7_col1" class="data row7 col1" >38</td>
+      <td id="T_3d231_row7_col0" class="data row7 col0" >people</td>
+      <td id="T_3d231_row7_col1" class="data row7 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_a962c_row8_col0" class="data row8 col0" >research</td>
-      <td id="T_a962c_row8_col1" class="data row8 col1" >364,013</td>
+      <td id="T_3d231_row8_col0" class="data row8 col0" >research</td>
+      <td id="T_3d231_row8_col1" class="data row8 col1" >364,038</td>
     </tr>
   </tbody>
 </table>
@@ -606,45 +607,45 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_1f68e">
+<table id="T_0a417">
   <thead>
     <tr>
-      <th id="T_1f68e_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_1f68e_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_0a417_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_0a417_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_1f68e_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_1f68e_row0_col1" class="data row0 col1" >99,386</td>
+      <td id="T_0a417_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_0a417_row0_col1" class="data row0 col1" >99,436</td>
     </tr>
     <tr>
-      <td id="T_1f68e_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_1f68e_row1_col1" class="data row1 col1" >114,597</td>
+      <td id="T_0a417_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_0a417_row1_col1" class="data row1 col1" >114,597</td>
     </tr>
     <tr>
-      <td id="T_1f68e_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_1f68e_row2_col1" class="data row2 col1" >251,767</td>
+      <td id="T_0a417_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_0a417_row2_col1" class="data row2 col1" >251,767</td>
     </tr>
     <tr>
-      <td id="T_1f68e_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_1f68e_row3_col1" class="data row3 col1" >5</td>
+      <td id="T_0a417_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_0a417_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_1f68e_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_1f68e_row4_col1" class="data row4 col1" >1,807,140</td>
+      <td id="T_0a417_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_0a417_row4_col1" class="data row4 col1" >1,807,140</td>
     </tr>
     <tr>
-      <td id="T_1f68e_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_1f68e_row5_col1" class="data row5 col1" >39,972</td>
+      <td id="T_0a417_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_0a417_row5_col1" class="data row5 col1" >39,972</td>
     </tr>
     <tr>
-      <td id="T_1f68e_row6_col0" class="data row6 col0" >people</td>
-      <td id="T_1f68e_row6_col1" class="data row6 col1" >38</td>
+      <td id="T_0a417_row6_col0" class="data row6 col0" >people</td>
+      <td id="T_0a417_row6_col1" class="data row6 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_1f68e_row7_col0" class="data row7 col0" >research</td>
-      <td id="T_1f68e_row7_col1" class="data row7 col1" >360,576</td>
+      <td id="T_0a417_row7_col0" class="data row7 col0" >research</td>
+      <td id="T_0a417_row7_col1" class="data row7 col1" >360,601</td>
     </tr>
   </tbody>
 </table>
@@ -687,45 +688,45 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_6747c">
+<table id="T_0bedb">
   <thead>
     <tr>
-      <th id="T_6747c_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_6747c_level0_col1" class="col_heading level0 col1" >total</th>
+      <th id="T_0bedb_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_0bedb_level0_col1" class="col_heading level0 col1" >total</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_6747c_row0_col0" class="data row0 col0" >book</td>
-      <td id="T_6747c_row0_col1" class="data row0 col1" >61,000</td>
+      <td id="T_0bedb_row0_col0" class="data row0 col0" >book</td>
+      <td id="T_0bedb_row0_col1" class="data row0 col1" >61,046</td>
     </tr>
     <tr>
-      <td id="T_6747c_row1_col0" class="data row1 col0" >diary</td>
-      <td id="T_6747c_row1_col1" class="data row1 col1" >114,448</td>
+      <td id="T_0bedb_row1_col0" class="data row1 col0" >diary</td>
+      <td id="T_0bedb_row1_col1" class="data row1 col1" >114,448</td>
     </tr>
     <tr>
-      <td id="T_6747c_row2_col0" class="data row2 col0" >image</td>
-      <td id="T_6747c_row2_col1" class="data row2 col1" >249,957</td>
+      <td id="T_0bedb_row2_col0" class="data row2 col0" >image</td>
+      <td id="T_0bedb_row2_col1" class="data row2 col1" >249,957</td>
     </tr>
     <tr>
-      <td id="T_6747c_row3_col0" class="data row3 col0" >list</td>
-      <td id="T_6747c_row3_col1" class="data row3 col1" >5</td>
+      <td id="T_0bedb_row3_col0" class="data row3 col0" >list</td>
+      <td id="T_0bedb_row3_col1" class="data row3 col1" >5</td>
     </tr>
     <tr>
-      <td id="T_6747c_row4_col0" class="data row4 col0" >magazine</td>
-      <td id="T_6747c_row4_col1" class="data row4 col1" >1,807,140</td>
+      <td id="T_0bedb_row4_col0" class="data row4 col0" >magazine</td>
+      <td id="T_0bedb_row4_col1" class="data row4 col1" >1,807,140</td>
     </tr>
     <tr>
-      <td id="T_6747c_row5_col0" class="data row5 col0" >music</td>
-      <td id="T_6747c_row5_col1" class="data row5 col1" >32,700</td>
+      <td id="T_0bedb_row5_col0" class="data row5 col0" >music</td>
+      <td id="T_0bedb_row5_col1" class="data row5 col1" >32,700</td>
     </tr>
     <tr>
-      <td id="T_6747c_row6_col0" class="data row6 col0" >people</td>
-      <td id="T_6747c_row6_col1" class="data row6 col1" >38</td>
+      <td id="T_0bedb_row6_col0" class="data row6 col0" >people</td>
+      <td id="T_0bedb_row6_col1" class="data row6 col1" >38</td>
     </tr>
     <tr>
-      <td id="T_6747c_row7_col0" class="data row7 col0" >research</td>
-      <td id="T_6747c_row7_col1" class="data row7 col1" >357,423</td>
+      <td id="T_0bedb_row7_col0" class="data row7 col0" >research</td>
+      <td id="T_0bedb_row7_col1" class="data row7 col1" >357,445</td>
     </tr>
   </tbody>
 </table>

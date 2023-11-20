@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>HOW TO: Harvest data relating to digitised resources &#8212; Trove Data Guide</title>
+    <title>5.4. HOW TO: Harvest data relating to digitised resources &#8212; Trove Data Guide</title>
   
   
   
@@ -65,10 +65,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/harvest-digitised-resources.6143156f-6f23-4381-9a8b-9830f4a4e3b3.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/harvest-digitised-resources.a3d83862-39bc-4823-a96f-790310090bb2.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/harvest-digitised-resources';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Glossary" href="../../glossary.html" />
+    <link rel="prev" title="5.3. HOW TO: Extract additional metadata from the web page of a digitised work" href="extract-embedded-metadata.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -220,7 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other digitised resources</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../digitised-resources.html">1. Understanding and using digitised resources</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../books/intro.html">2. Books</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../books/accessing-data.html">2.1. Accessing data from books</a></li>
@@ -237,10 +239,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../oral-histories/accessing-data.html">4.2. Accessing data from digitised oral histories</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="digitised-resources.html">5. How to</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="digitised-resources.html">5. How to</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">5.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">5.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">5.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.4. HOW TO: Harvest data relating to digitised resources</a></li>
 </ul>
 </li>
 </ul>
@@ -464,7 +467,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-harvest-data-relating-to-digitised-resources">
-<h1>HOW TO: Harvest data relating to digitised resources<a class="headerlink" href="#how-to-harvest-data-relating-to-digitised-resources" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">5.4. </span>HOW TO: Harvest data relating to digitised resources<a class="headerlink" href="#how-to-harvest-data-relating-to-digitised-resources" title="Permalink to this heading">#</a></h1>
 <p>Harvesting data relating to digitised resources (other than newspapers) in Trove is not as simple as making a few API requests. The major problem is that digitised resources are often assembled into groups or collections, and the full details of these groupings are not available through the Trove API. This means that simply harvesting results from an API query will miss many digitised resources. In addition, the way resources are described and arranged is often inconsistent, so you can’t assume that a particular type of resource will be grouped in a particular way.</p>
 <p>As a result of these problems, a ‘belts and braces’ approach seems best – follow every possible route and harvest as many records as possible. This may result in duplicates, but these can be dealt with later. In any case, Trove already contains a large number of duplicate records for digitised resources, so some form of merging or de-duplication will always be required.</p>
 <section id="outline-of-harvesting-method">
@@ -938,6 +941,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="extract-embedded-metadata.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5.3. </span>HOW TO: Extract additional metadata from the web page of a digitised work</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../glossary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Glossary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
