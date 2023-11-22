@@ -12,6 +12,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Types of data
 
 ```{attention}
@@ -33,6 +35,8 @@ Types of data:
 - system statistics
 - contributors
 
-```{code-cell} ipython3
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-```
+## Collection metadata
+
+Structured data that describes

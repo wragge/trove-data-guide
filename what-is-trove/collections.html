@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Collections within collections &#8212; Trove Data Guide</title>
+    <title>5. Collections within collections &#8212; Trove Data Guide</title>
   
   
   
@@ -65,10 +65,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/collections.44a2f7f9-d58f-4f2f-a051-80afdba74425.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/collections.1922235c-9ec2-4a8e-a2e3-bce6c8dcd43f.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/collections';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Types of data" href="types-of-data.html" />
+    <link rel="prev" title="4. Works and versions" href="works-and-versions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,13 +171,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">What is Trove?</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="trove-is.html">1. Trove is…</a></li>
 <li class="toctree-l1"><a class="reference internal" href="categories-and-zones.html">2. Categories and zones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metadata-and-digital-objects.html">3. Metadata and digital objects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="works-and-versions.html">4. Works and versions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types-of-data.html">5. Types of data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links-and-identifiers.html">6. Links and identifiers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Collections within collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types-of-data.html">6. Types of data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links-and-identifiers.html">7. Links and identifiers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding search</span></p>
 <ul class="nav bd-sidenav">
@@ -442,9 +445,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ispartof">isPartOf</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-collections">Digitised collections</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-aids">Finding aids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troves-categories">5.1. Trove’s categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#works-and-versions">5.2. Works and versions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections-by-contributor">5.3. Collections by contributor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ispartof">5.4. <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-collections">5.5. Digitised collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-aids">5.6. Finding aids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.7. isPartOf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.8. Digitised collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.9. Finding aids</a></li>
 </ul>
             </nav>
         </div>
@@ -457,24 +466,96 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="collections-within-collections">
-<h1>Collections within collections<a class="headerlink" href="#collections-within-collections" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Collections within collections<a class="headerlink" href="#collections-within-collections" title="Permalink to this heading">#</a></h1>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
 </div>
+<p>Trove is a collection of collections. Some of those collections are harvested into Trove from collaborating organisations. Other collections, such as the digitised newspapers, are a product of the NLA’s own processing pipeline. Within these broad groupings are a range of relationships that link parts together in different ways. For example, a newspaper article is part of an issue, a periodical issue is part of a title, a photograph might be part of an album, a book might be part of a series, and a letter might be part of a manuscript collection. These sorts of relationships help you navigate through the layers of collections, moving from whole to part and back again – they enable you to see everything in a group, or to focus in on a specific fragment. Unfortunately, Trove doesn’t have a standard way of representing these sorts of parent/child relationships. Instead, a variety of metadata fields, facets, hierarchical structures, and interfaces group things in inconsistent and sometimes confusing ways. This means that Trove search results often appear fragmented and the broader patterns are hard to see.</p>
+<section id="troves-categories">
+<h2><span class="section-number">5.1. </span>Trove’s categories<a class="headerlink" href="#troves-categories" title="Permalink to this heading">#</a></h2>
+<p>Trove’s top-level categories <em>look</em> like collections, but beware! While some categories, like <strong>Newspapers &amp; Gazettes</strong>, have clear cut boundaries, others don’t. As I’ve suggested in the <a class="reference internal" href="categories-and-zones.html#contexts-not-collections"><span class="std std-ref">section on categories and zones</span></a>, it’s best to think of the categories as contexts for discovery rather than collections.</p>
+</section>
+<section id="works-and-versions">
+<h2><span class="section-number">5.2. </span>Works and versions<a class="headerlink" href="#works-and-versions" title="Permalink to this heading">#</a></h2>
+<p>Trove creates many thousands of little collections by trying to <a class="reference internal" href="works-and-versions.html"><span class="doc std std-doc">group different versions of the same thing together as ‘works’</span></a>. This grouping operates on a couple of levels and results in a hierarchical structure where works contain versions, and versions contain the original metadata records. However, it’s <a class="reference internal" href="works-and-versions.html#muddy-metadata"><span class="std std-ref">not always successful</span></a>. As well as obvious grouping errors, works sometimes <a class="reference internal" href="works-and-versions.html#not-the-same"><span class="std std-ref">cram different members of a collection together</span></a>, as if they’re actually the <em>same thing</em>. Even more concerning, it seems that works and versions have sometimes been used deliberately to <a class="reference internal" href="works-and-versions.html#digitised-works-groups"><span class="std std-ref">describe collections of digitised resources</span></a>. The problem with this is that the members of these collections are difficult to find and use as their individual metadata has either not been recorded or has been munged together as a single ‘work’. In effect, <strong>work groupings hide collections</strong>. This is one of the reasons why I recommend unpacking all the versions from works and saving them individually when you’re harvesting data.</p>
+</section>
+<section id="collections-by-contributor">
+<h2><span class="section-number">5.3. </span>Collections by contributor<a class="headerlink" href="#collections-by-contributor" title="Permalink to this heading">#</a></h2>
+<p>You can explore the different collections harvested into Trove by filtering your search results according to the source of the metadata. Organisations contributing data to Trove are assigned a National Union Catalogue (NUC) identifier. You can find an organisation’s NUC by searching the <a class="reference external" href="http://www.nla.gov.au/apps/libraries/index.html">Australian Libraries Gateway</a>, or by looking in the dropdown list of ‘Organisations’ in Trove’s advanced search form (the NUC is in square brackets).</p>
+<figure class="align-default" id="nuc-dropdown">
+<a class="reference internal image-reference" href="../_images/nuc-dropdown.png"><img alt="../_images/nuc-dropdown.png" src="../_images/nuc-dropdown.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">NUC identifiers are displayed in square brackets</span><a class="headerlink" href="#nuc-dropdown" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="warning admonition">
+<p class="admonition-title">Advanced search for NUCs is broken!</p>
+<p>While you can use Trove’s advanced search to <em>find</em> a NUC, you can’t reliably use it to search for items using that NUC. There’s a longstanding bug that means if you select an organisation whose NUC includes a colon you’ll get <strong>no results</strong>. You can fix the broken url by simply putting double quotes around the NUC value, or use one of the methods below.</p>
+</div>
+<p>Once you have a NUC you can find records from that organisation by using either the <code class="docutils literal notranslate"><span class="pre">nuc:</span></code> index or the <code class="docutils literal notranslate"><span class="pre">partnerNuc</span></code> facet – as far as I can tell the results are the same. For example, to find records from the ANU’s institutional repository you’d <a class="reference external" href="https://trove.nla.gov.au/search/category/research?keyword=nuc%3A%22ANU%3AIR%22">search for <code class="docutils literal notranslate"><span class="pre">nuc:&quot;ANU:IR&quot;</span></code></a> (note the double quotes around the NUC value).</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3A%22ANU%3AIR%22%26category%3Dall%26l-availability%3Dy%26encoding%3Djson%26bulkHarvest%3Dtrue&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+</section>
 <section id="ispartof">
-<h2>isPartOf<a class="headerlink" href="#ispartof" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span><code class="docutils literal notranslate"><span class="pre">isPartOf</span></code><a class="headerlink" href="#ispartof" title="Permalink to this heading">#</a></h2>
+<p>Some parent/child relationships in Trove are documented using the Dublin Core <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> metadata field. This field can appear in records aggregated into Trove from other organisations, as well as in records of digitised resources created by the NLA itself. In the web interface, <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> values can be displayed under a variety of headings, including ‘Appears in’, ‘Part of’, and ‘Series’. Here’s an example linking an individual oral history interview to an oral history project:</p>
+<figure class="align-default" id="part-of-example">
+<a class="reference internal image-reference" href="../_images/part-of-example.png"><img alt="../_images/part-of-example.png" src="../_images/part-of-example.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Example of the way <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> values are displayed in the Trove web interface</span><a class="headerlink" href="#part-of-example" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Here’s how the same record appears in the API:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;isPartOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Australian women scientists oral history project [sound recording].&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;publication&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Australian women scientists oral history project.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;series&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F245550805%3Fencoding%3Djson%26include%3Dworkversions%2Clinks%2Choldings&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> is a text string rather than an identifier, so the connections can be a bit fuzzy. Also, a record can have multiple <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> values linking it to different points in a collection hierarchy – so a record might be linked both to its direct parent and the top-level collection record. This means you can’t reliably reconstruct a collection from the <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> values alone. Nonetheless, they can be useful in finding groupings of related resources.</p>
+<p>As you can see in the API example above, <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> values can be qualified by supplying a <code class="docutils literal notranslate"><span class="pre">type</span></code>. The most common types seem to be <code class="docutils literal notranslate"><span class="pre">series</span></code> and <code class="docutils literal notranslate"><span class="pre">publication</span></code>. The <a class="reference external" href="https://trove.nla.gov.au/partners/partner-services/contribute/trove-data-dictionary">Trove Data Dictionary</a> doesn’t explain how the <code class="docutils literal notranslate"><span class="pre">type</span></code> qualifiers are meant to be used, but it seems that <code class="docutils literal notranslate"><span class="pre">series</span></code> generally denotes a collection, while <code class="docutils literal notranslate"><span class="pre">publication</span></code> is a more restricted grouping, such as the title of a parent publication.</p>
+<p>To limit your search results to items with a particular <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> value, you can use either the <code class="docutils literal notranslate"><span class="pre">series:</span></code> index or the <code class="docutils literal notranslate"><span class="pre">contribcollection</span></code> facet, however, they behave slightly differently.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">contribcollection</span></code> facet seems to search all <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> values, irrespective of their <code class="docutils literal notranslate"><span class="pre">type</span></code>. However, <strong>the matches must be exact, and are case-sensitive</strong> – searching by <code class="docutils literal notranslate"><span class="pre">Annual</span> <span class="pre">report</span></code>, <code class="docutils literal notranslate"><span class="pre">Annual</span> <span class="pre">Report</span></code> and <code class="docutils literal notranslate"><span class="pre">Annual</span> <span class="pre">report.</span></code> will all produce different results! For example, to find more oral histories from the ‘Australian women scientists oral history project’ you could add <code class="docutils literal notranslate"><span class="pre">l-contribcollection=Australian</span> <span class="pre">women</span> <span class="pre">scientists</span> <span class="pre">oral</span> <span class="pre">history</span> <span class="pre">project.</span></code> to your query, but it only returns two results.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dmusic%26l-contribcollection%3DAustralian+women+scientists+oral+history+project.%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>If you remove the trailing full stop from the collection name, you’ll find another 22!</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dmusic%26l-contribcollection%3DAustralian+women+scientists+oral+history+project%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<div class="note admonition">
+<p class="admonition-title">Using <code class="docutils literal notranslate"><span class="pre">contribcollection</span></code> in the web interface</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">contribcollection</span></code> facet is not displayed in the web interface, so you can’t just check a box to filter results. To use it you’ll need to manually edit the search url adding <code class="docutils literal notranslate"><span class="pre">&amp;l-contribcollection=[YOUR</span> <span class="pre">IS_PART_OF</span> <span class="pre">VALUE]</span></code>.</p>
+</div>
+<p>Inconsistencies in the metadata, such as trailing full stops, and the unforgiving nature of the <code class="docutils literal notranslate"><span class="pre">contribcollection</span></code> facet makes it tricky to use. You need to know the exact <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> value in advance, and be prepared to make multiple queries to capture any variations.</p>
+<p>To complicate matters further, the <code class="docutils literal notranslate"><span class="pre">title</span></code> facet used in the <strong>Magazines &amp; Newsletters</strong> category also works with values from the <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> field. It seems to return a subset of the results you get from <code class="docutils literal notranslate"><span class="pre">contribcollection</span></code>, perhaps because it’s only using <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> values which have <code class="docutils literal notranslate"><span class="pre">type</span></code> set to <code class="docutils literal notranslate"><span class="pre">publication</span></code>. It’s also case-sensitive, and expects exact matches, but it looks like trailing full stops have been removed.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">series</span></code> index seems to only return records where the <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> type is <code class="docutils literal notranslate"><span class="pre">series</span></code>, but you can use it much more flexibly as it accepts partial matches and is case-insensitive. For example, a <a class="reference external" href="https://trove.nla.gov.au/search/category/music?keyword=series%3A%22Australian%20women%20scientists%20oral%20history%20project%22">search for <code class="docutils literal notranslate"><span class="pre">series:&quot;Australian</span> <span class="pre">women</span> <span class="pre">scientists</span> <span class="pre">oral</span> <span class="pre">history</span> <span class="pre">project&quot;</span></code></a> returns 25 results – no need to worry about trailing full stops!</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dseries%3A%22Australian+women+scientists+oral+history+project%22%26category%3Dmusic%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>Because it accepts partial matches, you can use the <code class="docutils literal notranslate"><span class="pre">series</span></code> index to search for items from collections that include certain keywords. For example, there’s a lots of separate ephemera collections from the NLA in Trove, to find items from all of them you can <a class="reference external" href="https://trove.nla.gov.au/?keyword=series%3Aephemera">search for <code class="docutils literal notranslate"><span class="pre">series:ephemera</span></code></a>.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dseries%3Aephemera%26category%3Dall%26encoding%3Djson%26include%3Dworkversions%26bulkHarvest%3Dtrue&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 </section>
 <section id="digitised-collections">
-<h2>Digitised collections<a class="headerlink" href="#digitised-collections" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>Digitised collections<a class="headerlink" href="#digitised-collections" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="finding-aids">
+<h2><span class="section-number">5.6. </span>Finding aids<a class="headerlink" href="#finding-aids" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id1">
+<h2><span class="section-number">5.7. </span>isPartOf<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2><span class="section-number">5.8. </span>Digitised collections<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>parts as versions in works</p></li>
 <li><p>digitised collections – with ‘Browse this collection’ buttons (can be nested)</p></li>
 <li><p>most relationships hidden in embedded metadata - multi-volume works, chapters in books, articles in journals, pages etc</p></li>
 </ul>
 </section>
-<section id="finding-aids">
-<h2>Finding aids<a class="headerlink" href="#finding-aids" title="Permalink to this heading">#</a></h2>
+<section id="id3">
+<h2><span class="section-number">5.9. </span>Finding aids<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>have their own hierarchical structure (inherited from EAD), see everything on one page</p></li>
 <li><p>but if you navigate down you end up in a series of nested collections</p></li>
@@ -536,6 +617,42 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YOUR_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TROVE_API_KEY&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;series:&quot;Australian women scientists oral history project&quot;&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;music&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;include&quot;</span><span class="p">:</span> <span class="s2">&quot;workversions&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+    <span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">work</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;work&quot;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">version</span> <span class="ow">in</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">version</span><span class="p">[</span><span class="s2">&quot;record&quot;</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">][</span><span class="s2">&quot;dc&quot;</span><span class="p">][</span><span class="s2">&quot;isPartOf&quot;</span><span class="p">]:</span>
+                <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
+<span class="nb">set</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Australian women scientists oral history project&#39;,
+ &#39;Australian women scientists oral history project [sound recording].&#39;,
+ &#39;Australian women scientists oral history project.&#39;}
 </pre></div>
 </div>
 </div>
@@ -976,6 +1093,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="works-and-versions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Works and versions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="types-of-data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Types of data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -994,9 +1129,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ispartof">isPartOf</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-collections">Digitised collections</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-aids">Finding aids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troves-categories">5.1. Trove’s categories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#works-and-versions">5.2. Works and versions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections-by-contributor">5.3. Collections by contributor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ispartof">5.4. <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-collections">5.5. Digitised collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-aids">5.6. Finding aids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.7. isPartOf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.8. Digitised collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.9. Finding aids</a></li>
 </ul>
   </nav></div>
 

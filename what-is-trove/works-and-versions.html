@@ -65,11 +65,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/works-and-versions.d41c0bb4-e3dd-406c-9a6c-3fa7d618192a.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/works-and-versions.5d685ea4-93eb-4092-aae4-64b50b8ce944.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/works-and-versions';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Types of data" href="types-of-data.html" />
+    <link rel="next" title="5. Collections within collections" href="collections.html" />
     <link rel="prev" title="3. Metadata and digital objects" href="metadata-and-digital-objects.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,8 +176,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="categories-and-zones.html">2. Categories and zones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metadata-and-digital-objects.html">3. Metadata and digital objects</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Works and versions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types-of-data.html">5. Types of data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links-and-identifiers.html">6. Links and identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">5. Collections within collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types-of-data.html">6. Types of data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links-and-identifiers.html">7. Links and identifiers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding search</span></p>
 <ul class="nav bd-sidenav">
@@ -465,7 +466,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="works-and-versions">
-<h1><span class="section-number">4. </span>Works and versions<a class="headerlink" href="#works-and-versions" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">4. </span>Works and versions<a class="headerlink" href="#works-and-versions" title="Permalink to this heading">#</a></h1>
 <p>And editions and collections</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -483,7 +484,7 @@ document.write(`
 <li><p>Item is a single exemplar of a manifestation. Cataloguing is generally done, based on an item directly available to a cataloguer</p></li>
 </ul>
 </div></blockquote>
-<p>Trove uses a simplified FRBR model with ‘works’ and ‘versions’. Trove’s versions combine aspects of FRBR’s ‘expression’ and ‘manifestation’.<span id="id1">[<a class="reference internal" href="../references.html#id21" title="Warwick Cathro and Susan Collier. Developing Trove: the policy and technical challenges. In VALA2010. 2010.">Cathro and Collier, 2010</a>]</span></p>
+<p>Trove uses a simplified FRBR model with ‘works’ and ‘versions’. Trove’s versions combine aspects of FRBR’s ‘expression’ and ‘manifestation’.<span id="id2">[<a class="reference internal" href="../references.html#id21" title="Warwick Cathro and Susan Collier. Developing Trove: the policy and technical challenges. In VALA2010. 2010.">Cathro and Collier, 2010</a>]</span></p>
 <p>To create the work groupings, Trove inspects each metadata record, comparing identifiers like ISBNs, as well as fields such as <code class="docutils literal notranslate"><span class="pre">title</span></code> and <code class="docutils literal notranslate"><span class="pre">creator</span></code>. Points are assigned for matches between records, and if the points total exceeds a threshold score, the records are grouped as versions within a work.</p>
 <p>A second round of grouping looks at all the versions in a work to find and cluster closely-matched records that describe the same edition. For example a work might contain three records with the same title and author. But if two of the records also have identical publication details, they’ll probably be grouped as a single version. As a result, the work will end up with two versions, though one of the versions will contain two records:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>work
@@ -514,7 +515,7 @@ document.write(`
 <p>KEY POINTS</p>
 </section>
 <section id="muddy-metadata">
-<h2><span class="section-number">4.2. </span>Muddy metadata<a class="headerlink" href="#muddy-metadata" title="Permalink to this heading">#</a></h2>
+<span id="id3"></span><h2><span class="section-number">4.2. </span>Muddy metadata<a class="headerlink" href="#muddy-metadata" title="Permalink to this heading">#</a></h2>
 <p>Grouping versions into works promises users cleaner search results, but the reality is more complex and confusing. You don’t have to look around too much to find problems with the way Trove’s groupings are implemented.</p>
 <p>This ‘work’ is titled <a class="reference external" href="https://trove.nla.gov.au/work/158465667">The Wiggles</a> and has 31 ‘editions’ listed in Trove. The problem is that most of those editions are actually different works, a mix of books, CDs, and DVDs. Presumably the grouping algorithm is connecting them because of the appearance of ‘The Wiggles’ somewhere in the title, but it’s hard to know for sure as the scoring mechanism isn’t publicly available.</p>
 <figure class="align-default" id="wiggles-versions">
@@ -526,10 +527,10 @@ document.write(`
 <p>Perhaps this is an extreme example, but grouping errors are common. In the <em>Hamlet</em> example I used above, the work record was titled ‘Hamlet / William Shakespeare ; [edited and with introduction by G.B. Harrison]’. But the grouped versions include introductions and commentaries by a range of different scholars, not just G.B. Harrison. Perhaps the algorithm is working as expected – they’re all copies of <em>Hamlet</em> after all. But if you were searching for a copy of <em>Hamlet</em> with notes by Mike Gould, would you think to click on the G.B. Harrison result?</p>
 <p>Search operates across all the versions in a work, so any variations in titles and authors will be indexed as expected. <em>They’re all in there somewhere.</em> But search results deliver <em>work-level</em> records, the details of which might not reflect the version that matched your query. At best this might cause some momentary confusion before you click through to the work page, at worst you might simply ignore the result as some sort of error. Grouping by work simplifies the search experience in Trove by reducing the number of similar results. But this grouping can obscure important differences between versions, making it harder to interpret the results returned.</p>
 <p>Grouping also has an impact on other navigation components, blurring the boundaries of <a class="reference internal" href="categories-and-zones.html"><span class="doc std std-doc">Trove’s categories</span></a> and facets. For example, books can turn up in the <em>Music, Audio, &amp; Video</em> category because they’ve been grouped with an audio recording. This can improve discoverability across categories, but it can also be confusing when your music search returns a list of books. The <a class="reference internal" href="../understanding-search/facets.html"><span class="doc std std-doc">usefulness of facets</span></a> can be compromised by large, diverse groupings. For example, if you use the <code class="docutils literal notranslate"><span class="pre">decade</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code> facets to try to find a publication from a particular date, your results will include any work grouping whose date range encompasses your period of interest.</p>
-<p>User testing on early versions of Trove showed that the ‘core conceptual model of FRBR’ was ‘largely not understood’.<span id="id2">[<a class="reference internal" href="../references.html#id22" title="Rose Holley. Resource Sharing in Australia: Find and Get in Trove - Making &quot;Getting&quot; Better. D-Lib Magazine, March 2011. doi:10.1045/march2011-holley.">Holley, 2011</a>]</span> Over the years there have been changes to the grouping algorithm, and to the way versions are presented in the web interface, but it’s still a challenge for users to understand what’s going on. Perhaps this is an inevitable result of trying to bolt a FRBR-ish system on top of an aggregated collection – it’s hard to make effective and consistent rules when merging metadata from multiple sources.</p>
+<p>User testing on early versions of Trove showed that the ‘core conceptual model of FRBR’ was ‘largely not understood’.<span id="id4">[<a class="reference internal" href="../references.html#id22" title="Rose Holley. Resource Sharing in Australia: Find and Get in Trove - Making &quot;Getting&quot; Better. D-Lib Magazine, March 2011. doi:10.1045/march2011-holley.">Holley, 2011</a>]</span> Over the years there have been changes to the grouping algorithm, and to the way versions are presented in the web interface, but it’s still a challenge for users to understand what’s going on. Perhaps this is an inevitable result of trying to bolt a FRBR-ish system on top of an aggregated collection – it’s hard to make effective and consistent rules when merging metadata from multiple sources.</p>
 </section>
 <section id="not-the-same">
-<h2><span class="section-number">4.3. </span>Not the same<a class="headerlink" href="#not-the-same" title="Permalink to this heading">#</a></h2>
+<span id="id5"></span><h2><span class="section-number">4.3. </span>Not the same<a class="headerlink" href="#not-the-same" title="Permalink to this heading">#</a></h2>
 <p>The challenges are magnified when working with resources that don’t come from standard library systems. For example, Trove indexes speeches and interviews by Australian Prime Ministers from the <a class="reference external" href="https://pmtranscripts.pmc.gov.au/">PM Transcripts</a> site. As a result, you can find transcripts of 106 different press conferences by John Howard grouped as a single work!</p>
 <figure class="align-default" id="john-howard-transcripts">
 <img alt="../_images/john-howard-transcripts.png" src="../_images/john-howard-transcripts.png" />
@@ -542,7 +543,7 @@ document.write(`
 <p>Researchers need to factor both the FRBR concept, and Trove’s implementation of it, into their search strategies – recognising that there will be errors and inconsistencies in the way versions are grouped together.</p>
 </section>
 <section id="digitised-works">
-<h2><span class="section-number">4.4. </span>Digitised works<a class="headerlink" href="#digitised-works" title="Permalink to this heading">#</a></h2>
+<span id="digitised-works-groups"></span><h2><span class="section-number">4.4. </span>Digitised works<a class="headerlink" href="#digitised-works" title="Permalink to this heading">#</a></h2>
 <p>You’d expect there to be fewer problems with work records related to Trove’s own digitised content, but there’s actually a few additional oddities. These stem from the use of works and versions to describe collections – the ‘work’ is used as a collection container and each ‘version’ is a separate item in that collection. It’s really not very FRBR-ish at all, and perhaps reflects the fact that Trove is severely limited in its ability to represent hierarchical data structures.</p>
 <p><a class="reference external" href="https://trove.nla.gov.au/work/163048354">This ‘work’</a> is actually a collection of ephemera relating to the National Anti-Sweating League of Victoria. There are nine items in this collection and they’re all quite different – they’re not versions or editions of a single work.</p>
 <p>No individual metadata – titles, dates in linktext. Not individually searchable. Not individually downloadable via API.</p>
@@ -688,11 +689,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="types-of-data.html"
+       href="collections.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Types of data</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Collections within collections</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
