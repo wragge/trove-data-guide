@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Understanding and using digitised resources
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
