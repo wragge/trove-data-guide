@@ -54,7 +54,7 @@ This Data Guide aims to help researchers make efficient and innovative use of Tr
 
 More information in pages for specific formats.
 
-+++
++++ {"jp-MarkdownHeadingCollapsed": true}
 
 ## Precursors and milestones
 

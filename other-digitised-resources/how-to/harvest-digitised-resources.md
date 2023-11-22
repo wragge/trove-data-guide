@@ -32,7 +32,7 @@ Searches using the API return work-level records. Sometimes digitised resources 
     - sometimes records will have multiple fulltext urls, if so, add a record for each url to the dataset
     - sometimes sub-versions don't have fulltext links but the parent version does – if so add fulltext links from parent version to sub-version metadata
 
-### Enrich dataset using embedded metadata
+### Expand collections and enrich dataset using embedded metadata
 
 As noted in [](/other-digitised-resources/how-to/extract-embedded-metadata), most of Trove's digitised resource viewers embed useful metadata in the HTML of their web pages. You can use this to determine whether a fulltext url points to a single resource or a collection, and to enrich the metadata you obtained from the API.
 
@@ -64,8 +64,6 @@ The aim of this step is to de-duplicate the harvested records, while preserving 
 - if successful add text file name to dataset
 
 ### Download images
-
-
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -205,6 +203,14 @@ def has_fulltext_link(links):
         ):
             return True
 
+def has_holding(holdings, nucs):
+    """
+    Check if a list of holdings includes one of the supplied nucs.
+    """
+    for holding in holdings:
+        if holding.get("nuc") in nucs:
+            return True
+
 
 def get_digitised_versions(work):
     """
@@ -217,23 +223,36 @@ def get_digitised_versions(work):
             versions.append(version)
     return versions
 
+def get_nuc_versions(work, nucs=["ANL", "ANL:DL"]):
+    """
+    Get the versions from the given work that are held by the NLA.
+    """
+    versions = []
+    for version in work["version"]:
+        if "holding" in version and has_holding(version["holding"], ["ANL", "ANL:DL"]):
+            versions.append(version)
+    return versions
 
-def harvest_works(params):
+
+def harvest_works(params, filter_by="url", nucs=["ANL", "ANL:DL"]):
     """
     Harvest metadata relating to digitised works.
+    The filter_by parameter selects records for inclusion in the dataset, options:
+        * url -- only include versions that have an NLA fulltext url
+        * nuc -- only include versions that have an NLA nuc (ANL or ANL:DL)
     """
     default_params = {
         "category": "all",
         "bulkHarvest": "true",
         "n": 100,
         "encoding": "json",
-        "include": ["links", "workversions"],
+        "include": ["links", "workversions", "holdings"],
     }
     params.update(default_params)
     headers = {"X-API-KEY": API_KEY}
     total = get_total_results(params, headers)
     start = "*"
-    with Path("pp-metadata.ndjson").open("w") as ndjson_file:
+    with Path("oral-histories-metadata.ndjson").open("w") as ndjson_file:
         with tqdm(total=total) as pbar:
             while start:
                 params["s"] = start
@@ -246,9 +265,11 @@ def harvest_works(params):
                 items = data["category"][0]["records"]["item"]
                 for item in items:
                     for category, record in item.items():
-                        # See if there's a link to the full text version.
-                        if category == "work" and "identifier" in record:
-                            versions = get_digitised_versions(record)
+                        if category == "work":
+                            if filter_by == "nuc":
+                                versions = get_nuc_versions(record, nucs) 
+                            else:
+                                versions = get_digitised_versions(record)
                             for version in versions:
                                 for sub_version in version["record"]:
                                     metadata = sub_version["metadata"]["dc"]
@@ -261,9 +282,11 @@ def harvest_works(params):
                                     # They could end up pointing to the same digitised publication, but
                                     # we can sort that out later. Aim here is to try and not miss any possible
                                     # routes to digitised publications!
-                                    urls = get_fulltext_url(metadata["identifier"])
+                                    urls = get_fulltext_url(metadata.get("identifier", []))
                                     if len(urls) == 0:
-                                        urls = get_fulltext_url(version["identifier"])
+                                        urls = get_fulltext_url(version.get("identifier", []))
+                                    if len(urls) == 0 and filter_by == "nuc":
+                                        urls = [{"url": "", "link_text": ""}]
                                     for url in urls:
                                         work = {
                                             # This is not the full set of available fields,
@@ -275,6 +298,9 @@ def harvest_works(params):
                                                 metadata,
                                                 ["creator", "contributor"],
                                                 ["value", "name"],
+                                            ),
+                                            "publisher": get_value(
+                                                metadata, "publisher"
                                             ),
                                             "date": merge_values(
                                                 metadata, ["date", "issued"]
@@ -289,6 +315,9 @@ def harvest_works(params):
                                             "extent": get_value(metadata, "extent"),
                                             "subject": merge_values(
                                                 metadata, ["subject"]
+                                            ),
+                                            "spatial": get_value(
+                                                metadata, "spatial"
                                             ),
                                             # Flattened type/value
                                             "is_part_of": flatten_values(
@@ -342,14 +371,24 @@ def get_work_data(url):
 
 def get_pages(work):
     """
-    Get the number of pages from the work data.
+    Get the number of pages from the work metadata.
     """
     try:
         pages = len(work["children"]["page"])
     except KeyError:
-        # TO-DO: for images need to look for maxNumOfChildDownloads
         pages = 0
     return pages
+
+
+def get_page_ids(work):
+    """
+    Get a list of page identifiers from the work metadata.
+    """
+    try:
+        page_ids = [p["pid"] for p in work["children"]["page"]]
+    except KeyError:
+        page_ids = []
+    return page_ids
 
 
 def get_volumes(parent_id):
@@ -387,12 +426,51 @@ def get_volumes(parent_id):
     return parts
 
 
-def add_pages():
+def add_metadata(work, metadata, pages, include_page_ids=False):
+    """
+    Add embedded metadata to existing record.
+    New values will be appended to existing list.
+    """
+    fields = [
+        {"to": "title", "from": "title"},
+        {"to": "contributor", "from": "creator"},
+        {"to": "publisher", "from": "publisherName"},
+        {"to": "format", "from": "form"},
+        {"to": "rights", "from": "copyrightPolicy"},
+        {"to": "extent", "from": "extent"},
+        {"to": "identifier", "from": "holdingNumber"},
+    ]
+    for field in fields:
+        value_from = metadata.get(field["from"])
+        if value_from:
+            try:
+                if value_from not in work[field["to"]]:
+                    work[field["to"]].append(metadata.get(field["from"]))
+            except KeyError:
+                work[field["to"]] = [metadata.get(field["from"])]
+            except AttributeError:
+                if value_from != work[field["to"]]:
+                    work[field["to"]] = [work[field["to"]], metadata.get(field["from"])]
+    work["sub_unit"] = " ".join(
+        [
+            metadata.get("subUnitType", ""),
+            metadata.get("subUnitNo", ""),
+        ]
+    ).strip()
+    if date := re.search(r"\b(\d{4})$", metadata.get("issueDate", "")):
+        work["date"] = date.group(1)
+    work["pages"] = pages
+    if include_page_ids:
+        work["page_ids"] = get_page_ids(metadata)
+    return work
+
+
+def add_pages(include_page_ids=False):
     """
     Add the number of pages to the metadata for each work.
     Add volumes from multi volume books.
     """
-    total = sum(1 for _ in open('pp-metadata.ndjson'))
+    total = sum(1 for _ in open("pp-metadata.ndjson"))
     with Path("pp-metadata.ndjson").open("r") as ndjson_in:
         with Path("pp-metadata-pages.ndjson").open("w") as ndjson_out:
             for line in tqdm(ndjson_in, total=total):
@@ -405,47 +483,42 @@ def add_pages():
                 if trove_id == metadata.get("pid"):
                     form = metadata.get("form")
                     pages = get_pages(metadata)
-                    title = metadata.get("title")
-                    sub_unit = metadata.get("subUnitNo", "")
-                    work["pages"] = pages
-                    work["format"].append(form)
-                    # Sometimes the work record has the subunit as its title, eg PP no. 5
-                    # I'm hoping this will get better titles
-                    if title and (work["title"] == sub_unit):
-                        work["title"] = title
-                    work["sub_unit"] = sub_unit
+                    work = add_metadata(work.copy(), metadata, pages, include_page_ids)
                     work["parent"] = ""
                     work["parent_url"] = ""
                     work["children"] = ""
                     # Multi volume books are containers with child volumes
                     # so we have to get the ids of each individual volume and process them
-                    # TO-DO: check this will work for images -- perhaps check if pid and topLevelCollection values are the same
                     if pages == 0 and form in ["Multi Volume Book", "Journal"]:
                         # Get child volumes
                         volumes = get_volumes(trove_id)
                         # For each volume get details and add as a new book entry
                         for volume_id in volumes:
-                            volume = work.copy()
-                            # Add link up to the container
-                            volume["parent"] = trove_id
-                            volume["parent_url"] = work["work_url"]
-                            volume["work_url"] = ""
-                            volume["fulltext_url"] = "https://nla.gov.au/{}".format(volume_id)
-                            # volume["trove_id"] = volume_id
+                            volume = {
+                                # Use values from parent
+                                # If there are additional values in embedded metadata,
+                                # they'll be added by add_metadata() below
+                                "format": work["format"],
+                                "subject": work["subject"],
+                                "language": work["language"],
+                                "is_part_of": work["is_part_of"],
+                                "identifier": work["identifier"],
+                                # Add link up to parent
+                                "parent": trove_id,
+                                "parent_url": work["work_url"],
+                                # Because this is a collection child it has no work url.
+                                # If there's an individual record for this publication
+                                # it'll be separately harvested and merged later.
+                                "work_url": "",
+                                "fulltext_url": "https://nla.gov.au/{}".format(
+                                    volume_id
+                                ),
+                            }
                             metadata = get_work_data(volume["fulltext_url"])
-                            if vol_title := metadata.get("title"):
-                                volume["title"] = vol_title
-                            volume["sub_unit"] = " ".join(
-                                [metadata.get("subUnitType", ""), metadata.get("subUnitNo", "")]
-                            ).strip()
-                            if not volume["rights"] and (vol_rights := metadata.get("copyrightPolicy", "")):
-                                volume["rights"] = vol_rights
-                            if not volume["date"] and (date := re.search(r"\b(\d{4})$", metadata.get("issueDate", ""))):
-                                volume["date"] = date.group(1)
-                            
                             pages = get_pages(metadata)
-                            volume["format"].append(metadata.get("form"))
-                            volume["pages"] = pages
+                            volume = add_metadata(
+                                volume, metadata, pages, include_page_ids
+                            )
                             # print(volume)
                             ndjson_out.write(f"{json.dumps(volume)}\n")
                         # Add links from container to volumes

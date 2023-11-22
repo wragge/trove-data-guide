@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-+++ {"user_expressions": []}
++++ {"user_expressions": [], "editable": true, "slideshow": {"slide_type": ""}}
 
 # Categories and zones
 
@@ -73,7 +73,7 @@ On the surface they seem to based on the format of resources – books in one ca
 Ever wondered why the *Australian Women’s Weekly* is found in the Newspapers category and not with the Magazines? It’s because when the Women’s Weekly was digitised, the only way for Trove to ingest digitised publications was through the newspapers pipeline. Comparable systems for managing magazines, journals, books, images, and other digitised content came later. 
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 (all-categories-not-the-same)=
 ## All categories are not the same
@@ -98,7 +98,7 @@ Categories limited to a specific type of resource:
 
 Trove being Trove, this distinction is not always clear cut. While newspapers and periodical articles have their own dedicated categories, the rest of the NLA's digitised content (books, maps, photographs etc) are lumped into the general resource pool. The **Magazines & Newsletters** category *almost* exclusively contains articles from periodicals digitised by the NLA, but if you [search for `NOT "nla.obj"`](https://trove.nla.gov.au/search/category/magazines?keyword=NOT%20%22nla.obj%22) you'll find a small amount of content from other sources – mostly issues of the *Tattersall's Club Magazine*. And while the 'People & Organisations' category only contains identity records minted by the NLA, these records aggregate and disambiguate data from a number of other sources. Nonetheless, the distinction mostly holds, and it's useful to keep in mind when you start exploring how categories actually work in Trove.
 
-+++ {"jp-MarkdownHeadingCollapsed": true}
++++ {"jp-MarkdownHeadingCollapsed": true, "editable": true, "slideshow": {"slide_type": ""}}
 
 (contexts-not-collections)=
 ## Contexts not collections

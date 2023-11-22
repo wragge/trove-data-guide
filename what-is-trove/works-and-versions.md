@@ -14,6 +14,7 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(works-and-versions)=
 # Works and versions
 
 And editions and collections
@@ -71,6 +72,7 @@ KEY POINTS
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(muddy-metadata)=
 ## Muddy metadata
 
 Grouping versions into works promises users cleaner search results, but the reality is more complex and confusing. You don't have to look around too much to find problems with the way Trove's groupings are implemented.
@@ -91,6 +93,7 @@ Grouping also has an impact on other navigation components, blurring the boundar
 
 User testing on early versions of Trove showed that the 'core conceptual model of FRBR' was 'largely not understood'.{cite:p}`holleyResourceSharingAustralia2011` Over the years there have been changes to the grouping algorithm, and to the way versions are presented in the web interface, but it's still a challenge for users to understand what's going on. Perhaps this is an inevitable result of trying to bolt a FRBR-ish system on top of an aggregated collection – it's hard to make effective and consistent rules when merging metadata from multiple sources.
 
+(not-the-same)=
 ## Not the same
 
 The challenges are magnified when working with resources that don't come from standard library systems. For example, Trove indexes speeches and interviews by Australian Prime Ministers from the [PM Transcripts](https://pmtranscripts.pmc.gov.au/) site. As a result, you can find transcripts of 106 different press conferences by John Howard grouped as a single work!
@@ -107,6 +110,7 @@ There are a number of other aggregated collections that contribute different ful
 
 Researchers need to factor both the FRBR concept, and Trove's implementation of it, into their search strategies – recognising that there will be errors and inconsistencies in the way versions are grouped together.
 
+(digitised-works-groups)=
 ## Digitised works
 
 You'd expect there to be fewer problems with work records related to Trove's own digitised content, but there's actually a few additional oddities. These stem from the use of works and versions to describe collections – the 'work' is used as a collection container and each 'version' is a separate item in that collection. It's really not very FRBR-ish at all, and perhaps reflects the fact that Trove is severely limited in its ability to represent hierarchical data structures.

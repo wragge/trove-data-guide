@@ -48,7 +48,7 @@ This method is consistent across most formats, so you can develop processes that
 
 <mark>==Code example==</mark>
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Downloading high-resolution images individually
 
