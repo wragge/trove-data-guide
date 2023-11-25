@@ -46,6 +46,16 @@ Page images
 
 API provides `/magazine/titles` and `/magazine/title/[ID]` endpoints 
 
+Been prodding the new `/magazine/title` endpoint that was added to #Trove API v3. It provides details on periodical titles and issues (other than newspapers). So it's very useful, but also very not...
+
+Of the 2,504 titles, 1,538 point to sets of parliamentary papers. I suppose annual reports count as periodicals, but it would be good to be able to separate them out. In any case I've already got a full harvest of PPs.
+
+Of the 966 left, 114 have no issues. That seems to be either because they're actually issues rather than titles, or they're just brokened. 
+
+Another 124 titles have incomplete lists of issues, either because some of the issues have no date, or they're just brokened.
+
+So as with just about everything involving Trove data, I'll have to develop a series of workarounds to deal with the problems and inconsistences. This is my life now. #TroveDataGuide #GLAM #digitalHumanities
+
 #### Format `periodical` and "nla.obj"
 
 There are 2,500 titles in the title endpoint, but only about 1,000 when you search for `"nla.obj"` & `l-format=periodical`. Is there any way to reconcile? Is it because of PP?
@@ -87,3 +97,7 @@ Example issue:
 },
 
 Issue id
+
+```{code-cell} ipython3
+
+```

@@ -1,0 +1,10 @@
+div.key-points {
+    border-left-color: rgba(40, 167, 69, 1);
+}
+div.key-points .admonition-title:before {
+    background-color: rgba(40, 167, 69, 1);
+}
+div.key-points .admonition-title:after {
+    color: rgba(40, 167, 69, 1);
+    content: '\e53d';  
+}
