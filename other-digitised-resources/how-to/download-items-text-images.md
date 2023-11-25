@@ -50,6 +50,7 @@ This method is consistent across most formats, so you can develop processes that
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(download-high-res-images)=
 ## Downloading high-resolution images individually
 
 The method described above has a couple of problems when it comes to downloading images. The first is that all the requested images are delivered in a single `zip` file. If you're requested images of all the pages in a book, this file could get very large. The second problem is that the built-in download link doesn't always provide images at the highest possible resolution.

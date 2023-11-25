@@ -8,6 +8,9 @@ This guide is currently under development. For more information and discussion s
 Application Programming Interface (API)
   definition
 
+Endpoint
+  The path to a specific API request, see [](/accessing-data/trove-api-intro).
+
 Metadata
   An indented explanation of term 1
 
