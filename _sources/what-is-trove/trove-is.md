@@ -22,6 +22,31 @@ This guide is currently under development. For more information and discussion s
 
 +++
 
+````{card} On this page
+This section looks at stuff.
+
+```{contents}
+:local:
+```
+````
+
++++
+
+```{admonition} Key points
+:class: key-points
+
+These are the important things...
+```
+
+Trove is:
+
+- always changing
+- frustratingly inconsistent
+- rabbit hole
+- 
+
++++
+
 **Trove is not one thing**. On the [technical side](https://trove.nla.gov.au/about/what-trove/technical-ecosystem), Trove is a combination of many interconnected systems, data sources, and interfaces, each with its own individual history. But Trove is also an idea, an ambition, an attempt to provide Australians with facilitated access to research and heritage collections from across the country. That idea, expressed through policy documents, strategic plans, resource allocations, and collaborative agreements has also evolved over the past 15 years. At the same time, Trove has been enriched by its community of users, both by submitting annotations and corrections through the web interface, and by sharing their own research, methods, tools, and discoveries across the web. Trove now is the product of these entwined histories – technology, policy, and community. 
 
 ```{figure} /images/trove-data-flows-2010-cathro-collier.png

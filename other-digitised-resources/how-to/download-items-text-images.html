@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tdg.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tippy.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
@@ -65,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/download-items-text-images.13a5d743-5cb8-4e2f-8253-205459ae5409.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/download-items-text-images.cf6bdda9-e216-4ccf-a375-9638858ecc3c.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/download-items-text-images';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -486,7 +487,7 @@ document.write(`
 <p><mark>==Code example==</mark></p>
 </section>
 <section id="downloading-high-resolution-images-individually">
-<h2>Downloading high-resolution images individually<a class="headerlink" href="#downloading-high-resolution-images-individually" title="Permalink to this heading">#</a></h2>
+<span id="download-high-res-images"></span><h2>Downloading high-resolution images individually<a class="headerlink" href="#downloading-high-resolution-images-individually" title="Permalink to this heading">#</a></h2>
 <p>The method described above has a couple of problems when it comes to downloading images. The first is that all the requested images are delivered in a single <code class="docutils literal notranslate"><span class="pre">zip</span></code> file. If you’re requested images of all the pages in a book, this file could get very large. The second problem is that the built-in download link doesn’t always provide images at the highest possible resolution.</p>
 <p>An alternative approach that avoids both of these problems is to construct a url for each individual page. All you need to do this is get the page identifier and tack <code class="docutils literal notranslate"><span class="pre">/image</span></code> on the end of the url.</p>
 <p>For example, this <a class="reference external" href="http://nla.gov.au/nla.obj-141171324">cute picture of a penguin</a> has the identifier <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.obj-141171324</span></code>. To download a high-resolution version, just add <code class="docutils literal notranslate"><span class="pre">/image</span></code>:</p>
