@@ -13,7 +13,31 @@ kernelspec:
 
 # 'Simple' search options
 
-+++
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+import requests
+import pandas as pd
+import os
+from myst_nb import glue
+from dotenv import load_dotenv
+
+load_dotenv()
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+YOUR_API_KEY = os.getenv("TROVE_API_KEY")
+```
 
 ```{attention}
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
@@ -22,6 +46,109 @@ This guide is currently under development. For more information and discussion s
 +++
 
 <mark>==Include a note about `firstpageseq` and the fact that this will match pages from supplements as well. So supplements need to be filtered out after harvesting. Also note that not all issues start with page 1.==</mark>
+
++++
+
+## Simple search isn't!
+
++++
+
+## Constructing queries
+
+Just point to docs
+
+## De-fuzzify
+
+
+
+
+```{code-cell} ipython3
+import requests
+
+
+
+def get_total(query):
+    params = {
+        "q": query,
+        "category": "newspaper",
+        "encoding": "json",
+        "n": 0
+    }
+    headers = {"X-API-KEY": YOUR_API_KEY}
+    response = response = requests.get(
+            "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+        )
+    data = response.json()
+    return data["category"][0]["records"]["total"]
+
+glue("wq", get_total("hobart"))
+glue("wq_wild", get_total("hobart*"))
+glue("wq_text", get_total("text:hobart"))
+glue("wq_title", get_total("title:hobart"))
+
+glue("q_or", get_total('white OR australia'))
+glue("q_and", get_total('white australia'))
+glue("q_phrase", get_total('"white australia"'))
+glue("q_text", get_total('text:"white australia"'))
+glue("q_zero", get_total('"white australia"'))
+glue("q_text_zero", get_total('text:"white australia"~0'))
+```
+
+```{list-table} De-fuzzify newspaper keyword searches
+:header-rows: 1
+:name: table-defuzzify-keyword
+* - Query
+  - Results
+  - Explanation
+* - `hobart`
+  - {glue:text}`wq:,`
+  - Searches article text, tags & comments (some fuzziness, terms are stemmed)
+* - `hobart*`
+  - {glue:text}`wq_wild:,`
+  - Searches article text, tags & comments (more fuzziness, wildcard matches zero or more characters)
+* - `"text:hobart"`
+  - {glue:text}`wq_text:,`
+  - Searches article text only (exact match, ignores tags & comments)
+* - `"title:hobart"`
+  - {glue:text}`wq_title:,`
+  - Searches headlines only
+
+```
+
+```{list-table} De-fuzzify newspaper phrase searches
+:header-rows: 1
+:name: table-defuzzify-phrases
+* - Query
+  - Results
+  - Explanation
+* - `white OR australia`
+  - {glue:text}`q_or:,`
+  - 
+* - `white australia`
+  - {glue:text}`q_and:,`
+  - Same as white AND australia
+* - `"white australia"`
+  - {glue:text}`q_phrase:,`
+  - Search for phrase (with stemming)
+* - `text:"white australia"`
+  - {glue:text}`q_text:,`
+  - Search for phrase (no stemming & ignores tags/comments)
+* - `"white australia"~0`
+  - {glue:text}`q_zero:,`
+  - Search for phrase (with stemming, no extra words)
+* - `text:"white australia"~0`
+  - {glue:text}`q_text_zero:,`
+  - Search for exact phrase (no extra words, no stemming, ignore tags/comments)
+
+```
+
++++
+
+## Using indexes
+
+Can use NOT (eg with formats)
+
+## Using facets
 
 +++
 
