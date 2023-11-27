@@ -55,6 +55,7 @@ A single oral history can be recorded across multiple sessions. There are separa
 
 ## Metadata
 
+(oral-histories-downloadable-data)=
 ### Downloadable dataset
 
 A CSV file containing details of oral histories from the NLA collection (both online and not online) harvested from Trove is available in [this GitHub repository](https://github.com/GLAM-Workbench/trove-oral-histories-data). You can [explore the data](https://glam-workbench.net/datasette-lite/?csv=https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-histories.csv#/data/trove-oral-histories) using Datasette.
