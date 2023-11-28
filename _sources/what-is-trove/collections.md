@@ -139,6 +139,7 @@ Inconsistencies in the metadata, such as trailing full stops, and the unforgivin
 
 To complicate matters further, the `title` facet used in the **Magazines & Newsletters** category also works with values from the `isPartOf` field. It seems to return a subset of the results you get from `contribcollection`, perhaps because it's only using `isPartOf` values which have `type` set to `publication`. It's also case-sensitive, and expects exact matches, but it looks like trailing full stops have been removed.
 
+(collections-ispartof-series)=
 ### Search the `isPartOf` field using the `series` index
 
 ````{margin}

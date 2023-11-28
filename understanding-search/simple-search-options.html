@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.fdc2502c-af67-47dd-954f-e1f5fbbe213b.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.986293df-bfb8-4212-8582-8a55da1111c9.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/simple-search-options';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -447,11 +447,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-search-isnt">2.1. Simple search isn’t!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-queries">2.2. Constructing queries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-fuzzify">2.3. De-fuzzify</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-indexes">2.4. Using indexes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets">2.5. Using facets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-indexes">2.6. Available indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-fuzzify-your-searches">2.2. De-fuzzify your searches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-oddities">2.3. Stemming oddities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proximity-searches">2.4. Proximity searches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-indexes">2.5. Using indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets">2.6. Using facets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-on-a-specific-page">2.7. Searching for articles on a specific page</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-within-a-given-date-range">2.8. Searching for articles within a given date range</a></li>
 </ul>
@@ -474,82 +474,27 @@ document.write(`
 <p><mark>==Include a note about <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> and the fact that this will match pages from supplements as well. So supplements need to be filtered out after harvesting. Also note that not all issues start with page 1.==</mark></p>
 <section id="simple-search-isnt">
 <h2><span class="section-number">2.1. </span>Simple search isn’t!<a class="headerlink" href="#simple-search-isnt" title="Permalink to this heading">#</a></h2>
+<p>The Trove web interface distinguishes between ‘Advanced’ and ‘Simple’ search. This is a bit misleading as you can construct complex queries using either. ‘Advanced’ search really just adds a structured interface over the ‘Simple’ search options. This Guide focuses on using ‘Simple’ search because it gives you more control, exposes more of the workings of the search index, and its queries can be easily translated to work with the Trove API.</p>
+<p>See <a class="reference external" href="https://trove.nla.gov.au/help/searching/constructing-complex-search-query">Constructing a complex search query</a> in the Trove help system for an introduction to:</p>
+<ul class="simple">
+<li><p>boolean searches (use <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">OR</span></code>, and <code class="docutils literal notranslate"><span class="pre">NOT</span></code> to combine search terms)</p></li>
+<li><p>phrase searches</p></li>
+<li><p>proximity searches (specify the number of words that can appear between search terms)</p></li>
+<li><p>some of the available indexes</p></li>
+</ul>
+<p>Below you’ll find information on some of the undocumented and potentially confusing aspects of Trove search.</p>
 </section>
-<section id="constructing-queries">
-<h2><span class="section-number">2.2. </span>Constructing queries<a class="headerlink" href="#constructing-queries" title="Permalink to this heading">#</a></h2>
-<p>Just point to docs</p>
-</section>
-<section id="de-fuzzify">
-<h2><span class="section-number">2.3. </span>De-fuzzify<a class="headerlink" href="#de-fuzzify" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-
-
-
-<span class="k">def</span> <span class="nf">get_total</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
-        <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span>
-    <span class="p">}</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
-        <span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">]</span>
-
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;wq&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s2">&quot;hobart&quot;</span><span class="p">))</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;wq_wild&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s2">&quot;hobart*&quot;</span><span class="p">))</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;wq_text&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s2">&quot;text:hobart&quot;</span><span class="p">))</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;wq_title&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s2">&quot;title:hobart&quot;</span><span class="p">))</span>
-
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;q_or&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s1">&#39;white OR australia&#39;</span><span class="p">))</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;q_and&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s1">&#39;white australia&#39;</span><span class="p">))</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;q_phrase&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s1">&#39;&quot;white australia&quot;&#39;</span><span class="p">))</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;q_text&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s1">&#39;text:&quot;white australia&quot;&#39;</span><span class="p">))</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;q_zero&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s1">&#39;&quot;white australia&quot;&#39;</span><span class="p">))</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;q_text_zero&quot;</span><span class="p">,</span> <span class="n">get_total</span><span class="p">(</span><span class="s1">&#39;text:&quot;white australia&quot;~0&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5829114
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5898779
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5545236
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>718234
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48724546
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5731679
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>159465
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>155209
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>159465
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>149690
-</pre></div>
-</div>
-</div>
-</div>
+<section id="de-fuzzify-your-searches">
+<h2><span class="section-number">2.2. </span>De-fuzzify your searches<a class="headerlink" href="#de-fuzzify-your-searches" title="Permalink to this heading">#</a></h2>
+<p>By default, Trove adds a bit of fuzziness to your searches to try and ensure you get back some useful results. This includes:</p>
+<ul class="simple">
+<li><p>stemming of your search terms (this reduces words to their base form, for example <code class="docutils literal notranslate"><span class="pre">computer</span></code> becomes <code class="docutils literal notranslate"><span class="pre">comput</span></code> matching ‘compute’, ‘computer’, ‘computing’ etc)</p></li>
+<li><p>allowing extra words in phrases (this is to match across line breaks where words are hyphenated)</p></li>
+<li><p>searching both full text (where available) and user-generated tags and comments</p></li>
+</ul>
+<p>It’s possible to modify some of these settings by changing the format of your query. Here are some examples using a single search term:</p>
 <table class="table" id="table-defuzzify-keyword">
-<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">De-fuzzify newspaper keyword searches</span><a class="headerlink" href="#table-defuzzify-keyword" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">De-fuzzify keyword searches</span><a class="headerlink" href="#table-defuzzify-keyword" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Query</p></th>
 <th class="head"><p>Results</p></th>
@@ -558,25 +503,26 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,829,114</span></p></td>
+<td><p><span class="pasted-text">5,829,407</span></p></td>
 <td><p>Searches article text, tags &amp; comments (some fuzziness, terms are stemmed)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hobart*</span></code></p></td>
-<td><p><span class="pasted-text">5,898,779</span></p></td>
+<td><p><span class="pasted-text">5,899,072</span></p></td>
 <td><p>Searches article text, tags &amp; comments (more fuzziness, wildcard matches zero or more characters)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;text:hobart&quot;</span></code></p></td>
-<td><p><span class="pasted-text">5,545,236</span></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:hobart</span></code></p></td>
+<td><p><span class="pasted-text">5,545,527</span></p></td>
 <td><p>Searches article text only (exact match, ignores tags &amp; comments)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;title:hobart&quot;</span></code></p></td>
-<td><p><span class="pasted-text">718,234</span></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title:hobart</span></code></p></td>
+<td><p><span class="pasted-text">718,236</span></p></td>
 <td><p>Searches headlines only</p></td>
 </tr>
 </tbody>
 </table>
+<p>Similarly you can adjust the fuzziness of phrase searches.</p>
 <table class="table" id="table-defuzzify-phrases">
-<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">De-fuzzify newspaper phrase searches</span><a class="headerlink" href="#table-defuzzify-phrases" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">De-fuzzify phrase searches</span><a class="headerlink" href="#table-defuzzify-phrases" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Query</p></th>
 <th class="head"><p>Results</p></th>
@@ -585,67 +531,182 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">OR</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">48,724,546</span></p></td>
+<td><p><span class="pasted-text">48,728,787</span></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">5,731,679</span></p></td>
+<td><p><span class="pasted-text">5,731,896</span></p></td>
 <td><p>Same as white AND australia</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
-<td><p><span class="pasted-text">159,465</span></p></td>
+<td><p><span class="pasted-text">159,498</span></p></td>
 <td><p>Search for phrase (with stemming)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
-<td><p><span class="pasted-text">155,209</span></p></td>
+<td><p><span class="pasted-text">155,242</span></p></td>
 <td><p>Search for phrase (no stemming &amp; ignores tags/comments)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;~0</span></code></p></td>
-<td><p><span class="pasted-text">159,465</span></p></td>
+<td><p><span class="pasted-text">159,498</span></p></td>
 <td><p>Search for phrase (with stemming, no extra words)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:&quot;white</span> <span class="pre">australia&quot;~0</span></code></p></td>
-<td><p><span class="pasted-text">149,690</span></p></td>
+<td><p><span class="pasted-text">149,723</span></p></td>
 <td><p>Search for exact phrase (no extra words, no stemming, ignore tags/comments)</p></td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="stemming-oddities">
+<h2><span class="section-number">2.3. </span>Stemming oddities<a class="headerlink" href="#stemming-oddities" title="Permalink to this heading">#</a></h2>
+<p>As noted above, Trove stems your search terms, trimming them back to their base form. It seems that Trove uses the Porter stemming algorithm. If you’d to see how stemming affects your query, you can use this <a class="reference external" href="http://text-processing.com/demo/stem/">online tool</a> to test the results of the Porter algorithm.</p>
+<p>I’ve noticed some oddities in handling <code class="docutils literal notranslate"><span class="pre">-ise</span></code> and <code class="docutils literal notranslate"><span class="pre">-ize</span></code> suffixes. For example:</p>
+<table class="table" id="table-stemming-oddities">
+<caption><span class="caption-number">Table 2.3 </span><span class="caption-text">Stemming variations</span><a class="headerlink" href="#table-stemming-oddities" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Query</p></th>
+<th class="head"><p>Results</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">naturalisation</span></code></p></td>
+<td><p><span class="pasted-text">245,114</span></p></td>
+<td><p>Stemmed to ‘naturalis’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">naturalization</span></code></p></td>
+<td><p><span class="pasted-text">15,260,449</span></p></td>
+<td><p>Stemmed to ‘natur’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalisation</span></code></p></td>
+<td><p><span class="pasted-text">245,114</span></p></td>
+<td><p>No stemming</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalization</span></code></p></td>
+<td><p><span class="pasted-text">15,260,449</span></p></td>
+<td><p>No stemming</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="proximity-searches">
+<h2><span class="section-number">2.4. </span>Proximity searches<a class="headerlink" href="#proximity-searches" title="Permalink to this heading">#</a></h2>
+<p>The defuzzify examples above use the proximity modifier (<code class="docutils literal notranslate"><span class="pre">~</span></code>) to remove extra words from a query, but you can also use it to set a maximum distance between search terms. One thing to note is that the order of the search terms makes a difference to your results, as reversing the order of your terms counts as a ‘word’. For example:</p>
+<table class="table" id="table-proximity-modifiers">
+<caption><span class="caption-number">Table 2.4 </span><span class="caption-text">Using proximity modifiers</span><a class="headerlink" href="#table-proximity-modifiers" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Query</p></th>
+<th class="head"><p>Results</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chinese</span> <span class="pre">tasmania</span></code></p></td>
+<td><p><span class="pasted-text">278,467</span></p></td>
+<td><p>articles contain both terms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;chinese</span> <span class="pre">tasmania&quot;~10</span></code></p></td>
+<td><p><span class="pasted-text">4,144</span></p></td>
+<td><p>articles where ‘tasmania’ is within 10 words of ‘chinese’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;tasmania</span> <span class="pre">chinese&quot;~10</span></code></p></td>
+<td><p><span class="pasted-text">4,160</span></p></td>
+<td><p>terms in reverse order are matched, but reversing counts towards the word distance so results can differ</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;tasmania</span> <span class="pre">chinese&quot;~10</span> <span class="pre">OR</span> <span class="pre">&quot;chinese</span> <span class="pre">tasmania&quot;~10</span></code></p></td>
+<td><p><span class="pasted-text">4,657</span></p></td>
+<td><p>10 word distance in either direction</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="using-indexes">
-<h2><span class="section-number">2.4. </span>Using indexes<a class="headerlink" href="#using-indexes" title="Permalink to this heading">#</a></h2>
-<p>Can use NOT (eg with formats)</p>
-</section>
-<section id="using-facets">
-<h2><span class="section-number">2.5. </span>Using facets<a class="headerlink" href="#using-facets" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="available-indexes">
-<h2><span class="section-number">2.6. </span>Available indexes<a class="headerlink" href="#available-indexes" title="Permalink to this heading">#</a></h2>
-<table class="table" id="table-available-search-indexes">
-<caption><span class="caption-number">Table 2.3 </span><span class="caption-text">Available search indexes</span><a class="headerlink" href="#table-available-search-indexes" title="Permalink to this table">#</a></caption>
+<h2><span class="section-number">2.5. </span>Using indexes<a class="headerlink" href="#using-indexes" title="Permalink to this heading">#</a></h2>
+<p>When you enter queries in the simple search box, or by using the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter in an API request, you’re searching across most metadata fields and any available full text. To control where and what you’re searching, you can specify the index you want Trove to use. For example, the query <code class="docutils literal notranslate"><span class="pre">title:wragge</span></code> will search only the <code class="docutils literal notranslate"><span class="pre">title</span></code> field for the term <code class="docutils literal notranslate"><span class="pre">wragge</span></code>.</p>
+<p>Other indexes mentioned in <a class="reference external" href="https://trove.nla.gov.au/help/searching/constructing-complex-search-query">Trove’s help documentation</a> are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subject</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">creator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">issn</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isbn</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nuc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">publictag</span></code></p></li>
+</ul>
+<p>A <a class="reference external" href="https://trove.nla.gov.au/about/create-something/using-api/v3/api-technical-guide#list-of-supported-indexes">more complete list of available indexes</a> is provided in the API technical documentation.</p>
+<p>Undocumented indexes include:</p>
+<table class="table" id="table-undocumented-search-indexes">
+<caption><span class="caption-number">Table 2.5 </span><span class="caption-text">Undocumented search indexes</span><a class="headerlink" href="#table-undocumented-search-indexes" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Index</p></th>
 <th class="head"><p>Description</p></th>
 <th class="head"><p>Example</p></th>
-<th class="head"><p>Notes</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
-<td><p>Search for articles within a given date range</p></td>
-<td><p>Example</p></td>
-<td><p>Notes</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">series</span></code></p></td>
+<td><p><a class="reference internal" href="../what-is-trove/collections.html#collections-ispartof-series"><span class="std std-ref">Search for resources that are part of a collection</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">series:&quot;Parliamentary</span> <span class="pre">paper</span> <span class="pre">(Australia.</span> <span class="pre">Parliament)</span></code> – find Parliamentary Papers</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code></p></td>
-<td><p>Search for a specific page number</p></td>
+<td><p>Search for newspaper articles published on a specific page</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">firstpageseq:2</span></code> – find articles published on page two</p></td>
-<td><p>Results combine newspaper body and separately-numbered supplements, so searches can return articles from multiple pages</p></td>
 </tr>
 </tbody>
 </table>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">fullTextInd</span></code> can be misleading and inaccurate – doesn’t always link to fulltext version, text not always available. Can be restricted (eg NED publications) or from a contributor where fulltext links are sometimes wrong. Need to combine with something like “nla.obj”, and exclude NED, to find digitised resources reliably.</p>
-<p><mark>==<code class="docutils literal notranslate"><span class="pre">series:</span></code>? Seems to work. Is it different to <code class="docutils literal notranslate"><span class="pre">contribcollection</span></code>?==</mark></p>
-<p>Difference between <code class="docutils literal notranslate"><span class="pre">format:Book</span></code> and <code class="docutils literal notranslate"><span class="pre">l-format=Book</span></code>. Index search seems to search within the format value – so <code class="docutils literal notranslate"><span class="pre">Book</span></code> matches <code class="docutils literal notranslate"><span class="pre">Book</span> <span class="pre">chapter</span></code>?</p>
-<p>Note differences in using “” and () in index/field queries</p>
+<p>You can use many of the standard search operators with index queries. For example:</p>
+<table class="table" id="table-index-operators">
+<caption><span class="caption-number">Table 2.6 </span><span class="caption-text">Using search operators with indexes</span><a class="headerlink" href="#table-index-operators" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Query</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subject:history</span></code></p></td>
+<td><p>Search for a keyword in the <code class="docutils literal notranslate"><span class="pre">subject</span></code> index</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subject:(history</span> <span class="pre">weather)</span></code></p></td>
+<td><p>Search for multiple keywords in the <code class="docutils literal notranslate"><span class="pre">subject</span></code> index</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subject:(history</span> <span class="pre">NOT</span> <span class="pre">australia)</span></code></p></td>
+<td><p>Search using boolean operators in <code class="docutils literal notranslate"><span class="pre">subject</span></code> index</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subject:&quot;Australian</span> <span class="pre">history&quot;</span></code></p></td>
+<td><p>Search for a phrase in the <code class="docutils literal notranslate"><span class="pre">subject</span></code> index</p></td>
+</tr>
+</tbody>
+</table>
+<p>There’s some overlap between indexes and facets. For example, there’s a <code class="docutils literal notranslate"><span class="pre">format</span></code> index and a <code class="docutils literal notranslate"><span class="pre">format</span></code> facet that both let you limit your search by format. However, indexes and facets behave differently – facets expect exact matches, while indexes are much more flexible. Also, you can use the <code class="docutils literal notranslate"><span class="pre">NOT</span></code> operator with indexes to exclude particular values. For example, to exclude books from your search you could add <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">format:Book</span></code> to your query. There’s no way of doing this with facets.</p>
+<p>Some indexes such as <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">lastupdated</span></code> expect a range of dates. Depending on the index and the category, the date values are either years or complete ISO formatted datetimes. For example:</p>
+<table class="table" id="table-date-index">
+<caption><span class="caption-number">Table 2.7 </span><span class="caption-text">Using the date index</span><a class="headerlink" href="#table-date-index" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Query</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date:[1901</span> <span class="pre">TO</span> <span class="pre">1904]</span></code></p></td>
+<td><p>1 January 1901 to 31 December 1904</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">date:[*</span> <span class="pre">TO</span> <span class="pre">1904]</span></code></p></td>
+<td><p>before 31 December 1904</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date:[1904</span> <span class="pre">TO</span> <span class="pre">1904]</span></code></p></td>
+<td><p>1 January 1904 to 31 December 1904</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">date:[1942-10-31T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1942-11-30T00:00:00Z]</span></code></p></td>
+<td><p>1 November 1942 to 31 November 1942 (newspapers only – dates need timezones, first date in range ignored)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date:[1942-11-09T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1942-11-10T00:00:00Z]</span></code></p></td>
+<td><p>10 November 1942 (newspapers only – dates need timezones, first date in range ignored)</p></td>
+</tr>
+</tbody>
+</table>
+<p>For more information see <a class="reference internal" href="date-searches.html"><span class="doc std std-doc">Date searches</span></a></p>
+</section>
+<section id="using-facets">
+<h2><span class="section-number">2.6. </span>Using facets<a class="headerlink" href="#using-facets" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="searching-for-articles-on-a-specific-page">
 <span id="search-indexes-firstpageseq"></span><h2><span class="section-number">2.7. </span>Searching for articles on a specific page<a class="headerlink" href="#searching-for-articles-on-a-specific-page" title="Permalink to this heading">#</a></h2>
@@ -729,11 +790,11 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-search-isnt">2.1. Simple search isn’t!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-queries">2.2. Constructing queries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-fuzzify">2.3. De-fuzzify</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-indexes">2.4. Using indexes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets">2.5. Using facets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-indexes">2.6. Available indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-fuzzify-your-searches">2.2. De-fuzzify your searches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-oddities">2.3. Stemming oddities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proximity-searches">2.4. Proximity searches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-indexes">2.5. Using indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets">2.6. Using facets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-on-a-specific-page">2.7. Searching for articles on a specific page</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-within-a-given-date-range">2.8. Searching for articles within a given date range</a></li>
 </ul>
