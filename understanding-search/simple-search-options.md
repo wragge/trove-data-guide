@@ -47,22 +47,40 @@ This guide is currently under development. For more information and discussion s
 
 <mark>==Include a note about `firstpageseq` and the fact that this will match pages from supplements as well. So supplements need to be filtered out after harvesting. Also note that not all issues start with page 1.==</mark>
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Simple search isn't!
 
-+++
+The Trove web interface distinguishes between 'Advanced' and 'Simple' search. This is a bit misleading as you can construct complex queries using either. 'Advanced' search really just adds a structured interface over the 'Simple' search options. This Guide focuses on using 'Simple' search because it gives you more control, exposes more of the workings of the search index, and its queries can be easily translated to work with the Trove API.
 
-## Constructing queries
+See [Constructing a complex search query](https://trove.nla.gov.au/help/searching/constructing-complex-search-query) in the Trove help system for an introduction to:
 
-Just point to docs
+- boolean searches (use `AND`, `OR`, and `NOT` to combine search terms)
+- phrase searches
+- proximity searches (specify the number of words that can appear between search terms)
+- some of the available indexes
 
-## De-fuzzify
+Below you'll find information on some of the undocumented and potentially confusing aspects of Trove search.
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+## De-fuzzify your searches
 
+By default, Trove adds a bit of fuzziness to your searches to try and ensure you get back some useful results. This includes:
+
+- stemming of your search terms (this reduces words to their base form, for example `computer` becomes `comput` matching 'compute', 'computer', 'computing' etc)
+- allowing extra words in phrases (this is to match across line breaks where words are hyphenated)
+- searching both full text (where available) and user-generated tags and comments
+
+It's possible to modify some of these settings by changing the format of your query. Here are some examples using a single search term:
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
 import requests
 
 
@@ -94,7 +112,9 @@ glue("q_zero", get_total('"white australia"'))
 glue("q_text_zero", get_total('text:"white australia"~0'))
 ```
 
-```{list-table} De-fuzzify newspaper keyword searches
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+```{list-table} De-fuzzify keyword searches
 :header-rows: 1
 :name: table-defuzzify-keyword
 * - Query
@@ -106,16 +126,20 @@ glue("q_text_zero", get_total('text:"white australia"~0'))
 * - `hobart*`
   - {glue:text}`wq_wild:,`
   - Searches article text, tags & comments (more fuzziness, wildcard matches zero or more characters)
-* - `"text:hobart"`
+* - `text:hobart`
   - {glue:text}`wq_text:,`
   - Searches article text only (exact match, ignores tags & comments)
-* - `"title:hobart"`
+* - `title:hobart`
   - {glue:text}`wq_title:,`
   - Searches headlines only
 
 ```
 
-```{list-table} De-fuzzify newspaper phrase searches
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+Similarly you can adjust the fuzziness of phrase searches.
+
+```{list-table} De-fuzzify phrase searches
 :header-rows: 1
 :name: table-defuzzify-phrases
 * - Query
@@ -142,42 +166,168 @@ glue("q_text_zero", get_total('text:"white australia"~0'))
 
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Stemming oddities
+
+As noted above, Trove stems your search terms, trimming them back to their base form. It seems that Trove uses the Porter stemming algorithm. If you'd to see how stemming affects your query, you can use this [online tool](http://text-processing.com/demo/stem/) to test the results of the Porter algorithm.
+
+I've noticed some oddities in handling `-ise` and `-ize` suffixes. For example:
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+glue("stem_ize", get_total("naturalization"))
+glue("stem_ise", get_total("naturalisation"))
+glue("text_ize", get_total("text:naturalization"))
+glue("text_ise", get_total("text:naturalisation"))
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+```{list-table} Stemming variations
+:header-rows: 1
+:name: table-stemming-oddities
+* - Query
+  - Results
+  - Explanation
+* - `naturalisation`
+  - {glue:text}`stem_ise:,`
+  - Stemmed to 'naturalis'
+* - `naturalization`
+  - {glue:text}`stem_ize:,`
+  - Stemmed to 'natur'
+* - `text:naturalisation`
+  - {glue:text}`stem_ise:,`
+  - No stemming
+* - `text:naturalization`
+  - {glue:text}`stem_ize:,`
+  - No stemming
+
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Proximity searches
+
+The defuzzify examples above use the proximity modifier (`~`) to remove extra words from a query, but you can also use it to set a maximum distance between search terms. One thing to note is that the order of the search terms makes a difference to your results, as reversing the order of your terms counts as a 'word'. For example:
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+glue("prox_none", get_total("chinese tasmania"))
+glue("prox_10", get_total('"chinese tasmania"~10'))
+glue("prox_10_reverse", get_total('"tasmania chinese"~10'))
+glue("prox_both", get_total('"tasmania chinese"~10 OR "chinese tasmania"~10'))
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+```{list-table} Using proximity modifiers
+:header-rows: 1
+:name: table-proximity-modifiers
+* - Query
+  - Results
+  - Explanation
+* - `chinese tasmania`
+  - {glue:text}`prox_none:,`
+  - articles contain both terms
+* - `"chinese tasmania"~10`
+  - {glue:text}`prox_10:,`
+  - articles where 'tasmania' is within 10 words of 'chinese'
+* - `"tasmania chinese"~10`
+  - {glue:text}`prox_10_reverse:,`
+  - terms in reverse order are matched, but reversing counts towards the word distance so results can differ
+* - `"tasmania chinese"~10 OR "chinese tasmania"~10`
+  - {glue:text}`prox_both:,`
+  - 10 word distance in either direction
+
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Using indexes
 
-Can use NOT (eg with formats)
+When you enter queries in the simple search box, or by using the `q` parameter in an API request, you're searching across most metadata fields and any available full text. To control where and what you're searching, you can specify the index you want Trove to use. For example, the query `title:wragge` will search only the `title` field for the term `wragge`.
 
-## Using facets
+Other indexes mentioned in [Trove's help documentation](https://trove.nla.gov.au/help/searching/constructing-complex-search-query) are:
 
-+++
+- `subject`
+- `creator`
+- `issn`
+- `isbn`
+- `nuc`
+- `publictag`
 
-## Available indexes
+A [more complete list of available indexes](https://trove.nla.gov.au/about/create-something/using-api/v3/api-technical-guide#list-of-supported-indexes) is provided in the API technical documentation.
 
-```{list-table} Available search indexes
+Undocumented indexes include:
+
+```{list-table} Undocumented search indexes
 :header-rows: 1
-:name: table-available-search indexes
+:name: table-undocumented-search-indexes
 * - Index
   - Description
   - Example
-  - Notes
-* - `date`
-  - Search for articles within a given date range
-  - Example
-  - Notes
+* - `series`
+  - [Search for resources that are part of a collection](collections-ispartof-series)
+  - `series:"Parliamentary paper (Australia. Parliament)` – find Parliamentary Papers
 * - `firstpageseq`
-  - Search for a specific page number
+  - Search for newspaper articles published on a specific page
   - `firstpageseq:2` – find articles published on page two
-  - Results combine newspaper body and separately-numbered supplements, so searches can return articles from multiple pages
 ```
 
-Note that `fullTextInd` can be misleading and inaccurate -- doesn't always link to fulltext version, text not always available. Can be restricted (eg NED publications) or from a contributor where fulltext links are sometimes wrong. Need to combine with something like "nla.obj", and exclude NED, to find digitised resources reliably.
+You can use many of the standard search operators with index queries. For example:
 
-<mark>==`series:`? Seems to work. Is it different to `contribcollection`?==</mark>
+```{list-table} Using search operators with indexes
+:header-rows: 1
+:name: table-index-operators
+* - Query
+  - Explanation
+* - `subject:history`
+  - Search for a keyword in the `subject` index
+* - `subject:(history weather)`
+  - Search for multiple keywords in the `subject` index
+* - `subject:(history NOT australia)`
+  - Search using boolean operators in `subject` index
+* - `subject:"Australian history"`
+  - Search for a phrase in the `subject` index
+```
 
-Difference between `format:Book` and `l-format=Book`. Index search seems to search within the format value -- so `Book` matches `Book chapter`?
+There's some overlap between indexes and facets. For example, there's a `format` index and a `format` facet that both let you limit your search by format. However, indexes and facets behave differently – facets expect exact matches, while indexes are much more flexible. Also, you can use the `NOT` operator with indexes to exclude particular values. For example, to exclude books from your search you could add `NOT format:Book` to your query. There's no way of doing this with facets.
 
-Note differences in using "" and () in index/field queries
+Some indexes such as `date` and `lastupdated` expect a range of dates. Depending on the index and the category, the date values are either years or complete ISO formatted datetimes. For example:
+
+```{list-table} Using the date index
+:header-rows: 1
+:name: table-date-index
+* - Query
+  - Explanation
+* - `date:[1901 TO 1904]`
+  - 1 January 1901 to 31 December 1904
+* - `date:[* TO 1904]` 	
+  - before 31 December 1904
+* - `date:[1904 TO 1904]`
+  - 1 January 1904 to 31 December 1904
+* - `date:[1942-10-31T00:00:00Z TO 1942-11-30T00:00:00Z]`
+  - 1 November 1942 to 31 November 1942 (newspapers only – dates need timezones, first date in range ignored)
+* - `date:[1942-11-09T00:00:00Z TO 1942-11-10T00:00:00Z]`
+  - 10 November 1942 (newspapers only – dates need timezones, first date in range ignored)
+```
+
+For more information see [](date-searches)
+
++++
+
+## Using facets
 
 +++
 
