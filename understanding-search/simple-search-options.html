@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.986293df-bfb8-4212-8582-8a55da1111c9.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.f58c443f-ae80-4c00-897b-2c89f249b2bf.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/simple-search-options';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -452,8 +452,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proximity-searches">2.4. Proximity searches</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-indexes">2.5. Using indexes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets">2.6. Using facets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-on-a-specific-page">2.7. Searching for articles on a specific page</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-within-a-given-date-range">2.8. Searching for articles within a given date range</a></li>
 </ul>
             </nav>
         </div>
@@ -467,13 +465,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="simple-search-options">
 <h1><span class="section-number">2. </span>‘Simple’ search options<a class="headerlink" href="#simple-search-options" title="Permalink to this heading">#</a></h1>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+On this page</div>
+<p class="sd-card-text">Learn about constructing searches in Trove, including the use of indexes and facets. Includes a variety of tips and tricks, focusing on undocumented or potentially confusing aspects of the Trove search system.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#simple-search-isnt" id="id2">Simple search isn’t!</a></p></li>
+<li><p><a class="reference internal" href="#de-fuzzify-your-searches" id="id3">De-fuzzify your searches</a></p></li>
+<li><p><a class="reference internal" href="#stemming-oddities" id="id4">Stemming oddities</a></p></li>
+<li><p><a class="reference internal" href="#proximity-searches" id="id5">Proximity searches</a></p></li>
+<li><p><a class="reference internal" href="#using-indexes" id="id6">Using indexes</a></p></li>
+<li><p><a class="reference internal" href="#using-facets" id="id7">Using facets</a></p></li>
+</ul>
+</nav>
 </div>
-<p><mark>==Include a note about <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> and the fact that this will match pages from supplements as well. So supplements need to be filtered out after harvesting. Also note that not all issues start with page 1.==</mark></p>
+</div>
 <section id="simple-search-isnt">
-<h2><span class="section-number">2.1. </span>Simple search isn’t!<a class="headerlink" href="#simple-search-isnt" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">2.1. </span>Simple search isn’t!</a><a class="headerlink" href="#simple-search-isnt" title="Permalink to this heading">#</a></h2>
 <p>The Trove web interface distinguishes between ‘Advanced’ and ‘Simple’ search. This is a bit misleading as you can construct complex queries using either. ‘Advanced’ search really just adds a structured interface over the ‘Simple’ search options. This Guide focuses on using ‘Simple’ search because it gives you more control, exposes more of the workings of the search index, and its queries can be easily translated to work with the Trove API.</p>
 <p>See <a class="reference external" href="https://trove.nla.gov.au/help/searching/constructing-complex-search-query">Constructing a complex search query</a> in the Trove help system for an introduction to:</p>
 <ul class="simple">
@@ -482,10 +492,11 @@ document.write(`
 <li><p>proximity searches (specify the number of words that can appear between search terms)</p></li>
 <li><p>some of the available indexes</p></li>
 </ul>
+<p>It can also be useful to poke around the <a class="reference external" href="https://solr.apache.org/guide/8_11/the-standard-query-parser.html">Solr query parser documentation</a>. Solr is the indexing software used by Trove, so many of the query formats described will work in Trove.</p>
 <p>Below you’ll find information on some of the undocumented and potentially confusing aspects of Trove search.</p>
 </section>
 <section id="de-fuzzify-your-searches">
-<h2><span class="section-number">2.2. </span>De-fuzzify your searches<a class="headerlink" href="#de-fuzzify-your-searches" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">2.2. </span>De-fuzzify your searches</a><a class="headerlink" href="#de-fuzzify-your-searches" title="Permalink to this heading">#</a></h2>
 <p>By default, Trove adds a bit of fuzziness to your searches to try and ensure you get back some useful results. This includes:</p>
 <ul class="simple">
 <li><p>stemming of your search terms (this reduces words to their base form, for example <code class="docutils literal notranslate"><span class="pre">computer</span></code> becomes <code class="docutils literal notranslate"><span class="pre">comput</span></code> matching ‘compute’, ‘computer’, ‘computing’ etc)</p></li>
@@ -503,15 +514,15 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,829,407</span></p></td>
+<td><p><span class="pasted-text">5,829,414</span></p></td>
 <td><p>Searches article text, tags &amp; comments (some fuzziness, terms are stemmed)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hobart*</span></code></p></td>
-<td><p><span class="pasted-text">5,899,072</span></p></td>
+<td><p><span class="pasted-text">5,899,079</span></p></td>
 <td><p>Searches article text, tags &amp; comments (more fuzziness, wildcard matches zero or more characters)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,545,527</span></p></td>
+<td><p><span class="pasted-text">5,545,542</span></p></td>
 <td><p>Searches article text only (exact match, ignores tags &amp; comments)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title:hobart</span></code></p></td>
@@ -531,11 +542,11 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">OR</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">48,728,787</span></p></td>
+<td><p><span class="pasted-text">48,728,852</span></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">5,731,896</span></p></td>
+<td><p><span class="pasted-text">5,731,886</span></p></td>
 <td><p>Same as white AND australia</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
@@ -558,7 +569,7 @@ document.write(`
 </table>
 </section>
 <section id="stemming-oddities">
-<h2><span class="section-number">2.3. </span>Stemming oddities<a class="headerlink" href="#stemming-oddities" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">2.3. </span>Stemming oddities</a><a class="headerlink" href="#stemming-oddities" title="Permalink to this heading">#</a></h2>
 <p>As noted above, Trove stems your search terms, trimming them back to their base form. It seems that Trove uses the Porter stemming algorithm. If you’d to see how stemming affects your query, you can use this <a class="reference external" href="http://text-processing.com/demo/stem/">online tool</a> to test the results of the Porter algorithm.</p>
 <p>I’ve noticed some oddities in handling <code class="docutils literal notranslate"><span class="pre">-ise</span></code> and <code class="docutils literal notranslate"><span class="pre">-ize</span></code> suffixes. For example:</p>
 <table class="table" id="table-stemming-oddities">
@@ -575,7 +586,7 @@ document.write(`
 <td><p>Stemmed to ‘naturalis’</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">naturalization</span></code></p></td>
-<td><p><span class="pasted-text">15,260,449</span></p></td>
+<td><p><span class="pasted-text">15,260,470</span></p></td>
 <td><p>Stemmed to ‘natur’</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalisation</span></code></p></td>
@@ -583,14 +594,14 @@ document.write(`
 <td><p>No stemming</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalization</span></code></p></td>
-<td><p><span class="pasted-text">15,260,449</span></p></td>
+<td><p><span class="pasted-text">15,260,470</span></p></td>
 <td><p>No stemming</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="proximity-searches">
-<h2><span class="section-number">2.4. </span>Proximity searches<a class="headerlink" href="#proximity-searches" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">2.4. </span>Proximity searches</a><a class="headerlink" href="#proximity-searches" title="Permalink to this heading">#</a></h2>
 <p>The defuzzify examples above use the proximity modifier (<code class="docutils literal notranslate"><span class="pre">~</span></code>) to remove extra words from a query, but you can also use it to set a maximum distance between search terms. One thing to note is that the order of the search terms makes a difference to your results, as reversing the order of your terms counts as a ‘word’. For example:</p>
 <table class="table" id="table-proximity-modifiers">
 <caption><span class="caption-number">Table 2.4 </span><span class="caption-text">Using proximity modifiers</span><a class="headerlink" href="#table-proximity-modifiers" title="Permalink to this table">#</a></caption>
@@ -602,7 +613,7 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chinese</span> <span class="pre">tasmania</span></code></p></td>
-<td><p><span class="pasted-text">278,467</span></p></td>
+<td><p><span class="pasted-text">278,471</span></p></td>
 <td><p>articles contain both terms</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;chinese</span> <span class="pre">tasmania&quot;~10</span></code></p></td>
@@ -621,7 +632,7 @@ document.write(`
 </table>
 </section>
 <section id="using-indexes">
-<h2><span class="section-number">2.5. </span>Using indexes<a class="headerlink" href="#using-indexes" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">2.5. </span>Using indexes</a><a class="headerlink" href="#using-indexes" title="Permalink to this heading">#</a></h2>
 <p>When you enter queries in the simple search box, or by using the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter in an API request, you’re searching across most metadata fields and any available full text. To control where and what you’re searching, you can specify the index you want Trove to use. For example, the query <code class="docutils literal notranslate"><span class="pre">title:wragge</span></code> will search only the <code class="docutils literal notranslate"><span class="pre">title</span></code> field for the term <code class="docutils literal notranslate"><span class="pre">wragge</span></code>.</p>
 <p>Other indexes mentioned in <a class="reference external" href="https://trove.nla.gov.au/help/searching/constructing-complex-search-query">Trove’s help documentation</a> are:</p>
 <ul class="simple">
@@ -633,6 +644,13 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">publictag</span></code></p></li>
 </ul>
 <p>A <a class="reference external" href="https://trove.nla.gov.au/about/create-something/using-api/v3/api-technical-guide#list-of-supported-indexes">more complete list of available indexes</a> is provided in the API technical documentation.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">series</span></code> index you can explore the way Trove resources are <a class="reference internal" href="../what-is-trove/collections.html#collections-ispartof"><span class="std std-ref">grouped into collections</span></a>.</p>
+</div>
+</aside>
 <p>Undocumented indexes include:</p>
 <table class="table" id="table-undocumented-search-indexes">
 <caption><span class="caption-number">Table 2.5 </span><span class="caption-text">Undocumented search indexes</span><a class="headerlink" href="#table-undocumented-search-indexes" title="Permalink to this table">#</a></caption>
@@ -676,7 +694,15 @@ document.write(`
 </tr>
 </tbody>
 </table>
+<p>Unlike regular searches. stemming is not applied by default to index searches. If you want to use stemming, there are separate stemmed indexes for creator, subject, and title: <code class="docutils literal notranslate"><span class="pre">s_creator</span></code>, <code class="docutils literal notranslate"><span class="pre">s_subject</span></code>, and <code class="docutils literal notranslate"><span class="pre">s_title</span></code>.</p>
 <p>There’s some overlap between indexes and facets. For example, there’s a <code class="docutils literal notranslate"><span class="pre">format</span></code> index and a <code class="docutils literal notranslate"><span class="pre">format</span></code> facet that both let you limit your search by format. However, indexes and facets behave differently – facets expect exact matches, while indexes are much more flexible. Also, you can use the <code class="docutils literal notranslate"><span class="pre">NOT</span></code> operator with indexes to exclude particular values. For example, to exclude books from your search you could add <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">format:Book</span></code> to your query. There’s no way of doing this with facets.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The <a class="reference external" href="https://glam-workbench.net/trove-newspapers/#todays-news-yesterday">Today’s News Yesterday</a> notebook in the GLAM Workbench provides an example of using <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> to get the front pages of newspapers.</p>
+</div>
+</aside>
 <p>Some indexes such as <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">lastupdated</span></code> expect a range of dates. Depending on the index and the category, the date values are either years or complete ISO formatted datetimes. For example:</p>
 <table class="table" id="table-date-index">
 <caption><span class="caption-number">Table 2.7 </span><span class="caption-text">Using the date index</span><a class="headerlink" href="#table-date-index" title="Permalink to this table">#</a></caption>
@@ -706,19 +732,77 @@ document.write(`
 <p>For more information see <a class="reference internal" href="date-searches.html"><span class="doc std std-doc">Date searches</span></a></p>
 </section>
 <section id="using-facets">
-<h2><span class="section-number">2.6. </span>Using facets<a class="headerlink" href="#using-facets" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="searching-for-articles-on-a-specific-page">
-<span id="search-indexes-firstpageseq"></span><h2><span class="section-number">2.7. </span>Searching for articles on a specific page<a class="headerlink" href="#searching-for-articles-on-a-specific-page" title="Permalink to this heading">#</a></h2>
-<p>You can use the <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> index to search for articles published on a particular page. For example, include <code class="docutils literal notranslate"><span class="pre">firstpageseq:1</span></code> in your query to find articles on page one. This works in both the web interface’s simple search box and the <code class="docutils literal notranslate"><span class="pre">q</span></code> value of the API.</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A//api.trove.nla.gov.au/v3/result%3Fq%3Dfirstpageseq%3A1%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Some newspapers include supplements that have their own independent pagination. This means, for example, that an issue could contain multiple pages numbered <code class="docutils literal notranslate"><span class="pre">1</span></code>. The <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> index searches <em>both</em> the main body of the newspaper <em>and</em> any supplements, so the results could include articles published on more than one page within an issue. There’s no way of searching just in the main body or in supplements, but you can filter the results after you’ve retrieved them from the API. Article results include fields labelled <code class="docutils literal notranslate"><span class="pre">page</span></code> and <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code>. The <code class="docutils literal notranslate"><span class="pre">page</span></code> field contains just numbers, but if the page comes from a supplement, the <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code> field will include an <code class="docutils literal notranslate"><span class="pre">S</span></code> after the number. You can use this to keep or discard articles from supplements. <a class="reference internal" href="../newspapers-and-gazettes/data/pages.html#get-page-identifier-from-search"><span class="std std-ref">Get the identifier of a specific page by searching for articles</span></a> provides an example of filtering results using the <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code> value.</p>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">2.6. </span>Using facets</a><a class="headerlink" href="#using-facets" title="Permalink to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The display of facets in the web interface isn’t always accurate. In particular, it seems that <a class="reference internal" href="../what-is-trove/categories-and-zones.html#distribution-categories-formats"><span class="std std-ref">some <code class="docutils literal notranslate"><span class="pre">format</span></code> values are being hidden</span></a> to simplify the user experience.</p>
 </div>
-</section>
-<section id="searching-for-articles-within-a-given-date-range">
-<h2><span class="section-number">2.8. </span>Searching for articles within a given date range<a class="headerlink" href="#searching-for-articles-within-a-given-date-range" title="Permalink to this heading">#</a></h2>
+</aside>
+<p>Facets are a set of pre-determined values you can use to set limits on your search resuls. They allow you to take slices of your results.</p>
+<p>In the web interface, facets appear as a set of check boxes next to the list of results. You just click the box next to a facet value to apply it to your search. You can only select one facet value at a time.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/web-facets.png"><img alt="../_images/web-facets.png" src="../_images/web-facets.png" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.9 </span><span class="caption-text">Display of facets in the web interface</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Facets vary by category, but <a class="reference external" href="https://trove.nla.gov.au/about/create-something/using-api/v3/api-technical-guide#facetValues">a complete list</a> is available in the API technical documentation.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See the Newspapers and Gazettes section of the guide for <a class="reference internal" href="../newspapers-and-gazettes/data/titles.html#newspaper-titles-aggregate-facet"><span class="std std-ref">more information on using the <code class="docutils literal notranslate"><span class="pre">title</span></code> facet</span></a>.</p>
+</div>
+</aside>
+<p>To use facets to limit the results of your API query, you add a <code class="docutils literal notranslate"><span class="pre">l-[FACET</span> <span class="pre">NAME]</span></code> parameter and set to your desired value. For example, to limit a search of newspaper articles to those published in the <em>Sydney Morning Herald</em>, you add the <code class="docutils literal notranslate"><span class="pre">l-title</span></code> parameter and set it to <code class="docutils literal notranslate"><span class="pre">35</span></code> (the title identifier for the SMH).</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3F%26category%3Dnewspaper%26encoding%3Djson%26l-title%3D35&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>When you use the API you can apply multiple facet values. However, facet fields don’t all behave the same way when you select multiple values. In some cases, you’ll get back the <em>sum</em> of the requested slices, but in most you’ll only get the <em>intersection</em> of the slices.</p>
+<p>For example, if you use the <code class="docutils literal notranslate"><span class="pre">state</span></code> facet to request newspaper articles from both Victoria and NSW, you get back articles from either Victoria or NSW.</p>
+<table class="table" id="table-state-facet">
+<caption><span class="caption-number">Table 2.8 </span><span class="caption-text">Results for state facet combinations</span><a class="headerlink" href="#table-state-facet" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Facet</p></th>
+<th class="head"><p>Results</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=Victoria</span></code></p></td>
+<td><p><span class="pasted-text">45,003,638</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=New</span> <span class="pre">South</span> <span class="pre">Wales</span></code></p></td>
+<td><p><span class="pasted-text">87,719,391</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=Victoria&amp;l-state=New</span> <span class="pre">South</span> <span class="pre">Wales</span></code></p></td>
+<td><p><span class="pasted-text">132,723,029</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>On the other hand, if you use the <code class="docutils literal notranslate"><span class="pre">category</span></code> facet to request articles in the <code class="docutils literal notranslate"><span class="pre">Article</span></code> and <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> category, you’ll only get articles that are in both categories.</p>
+<table class="table" id="table-cat-facet">
+<caption><span class="caption-number">Table 2.9 </span><span class="caption-text">Results for <code class="docutils literal notranslate"><span class="pre">category</span></code> facet combinations</span><a class="headerlink" href="#table-cat-facet" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Facet</p></th>
+<th class="head"><p>Results</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Article</span></code></p></td>
+<td><p><span class="pasted-text">168,423,816</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Advertising</span></code></p></td>
+<td><p><span class="pasted-text">45,471,416</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Article&amp;l-category=Advertising</span></code></p></td>
+<td><p><span class="pasted-text">5,757</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="warning admonition">
+<p class="admonition-title">User added categories</p>
+<p>You might be thinking that the final result above should be zero, as newspaper articles are assigned to a single category – how can an article be in both the <code class="docutils literal notranslate"><span class="pre">Article</span></code> and <code class="docutils literal notranslate"><span class="pre">Advertising</span></code> categories? The answer is that Trove users can add extra categories to articles, and these user-added values are included in the facet counts. There doesn’t seem to be any way to exclude these values, so it’s something else to keep in mind if you’re working with the data!</p>
+</div>
 </section>
 </section>
 
@@ -795,8 +879,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proximity-searches">2.4. Proximity searches</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-indexes">2.5. Using indexes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-facets">2.6. Using facets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-on-a-specific-page">2.7. Searching for articles on a specific page</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-articles-within-a-given-date-range">2.8. Searching for articles within a given date range</a></li>
 </ul>
   </nav></div>
 

@@ -280,6 +280,7 @@ If you want more [information on individual issues](issues-within-a-date-range) 
 
 +++
 
+(newspaper-titles-aggregate-facet)=
 ### Aggregate search results by title using the `l-title` facet
 
 You can also explore the characteristics of newspaper titles in Trove by using the API's `/result` endpoint with `category` set to `newspaper`, and `l-title` set to the numeric identifier of a title. For example, to find out how many digitised articles from the *Canberra Times* are available on Trove, you can just make an API request without any search terms:

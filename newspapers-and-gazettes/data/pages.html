@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/pages.0cd0e3d6-d841-4c0a-880d-ea1ed1df172b.js"></script>
+    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/pages.1cebca13-002b-4f97-93bf-d979e1cccf28.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'newspapers-and-gazettes/data/pages';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -631,7 +631,7 @@ document.write(`
 <p>To get the identifier of a specific page, you need to construct a very precise search for articles published on that page using the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint. You can do this by specifying the title (the newspaper name), the publication date, and the page number. Once you have the search results, you can extract the page identifier from the article records.</p>
 <p>The newspaper title is set using the <code class="docutils literal notranslate"><span class="pre">l-title</span></code> parameter. For example, the identifier for the <em>Canberra Times</em> is <code class="docutils literal notranslate"><span class="pre">11</span></code>, so to limit your search to the <em>Canberra Times</em> you’d set <code class="docutils literal notranslate"><span class="pre">l-title</span></code> to <code class="docutils literal notranslate"><span class="pre">11</span></code>.</p>
 <p>The date is set <a class="reference internal" href="../../understanding-search/date-searches.html#using-the-date-index"><span class="std std-ref">using the <code class="docutils literal notranslate"><span class="pre">date</span></code> index</span></a> within the <code class="docutils literal notranslate"><span class="pre">q</span></code> (query) parameter. You use the <code class="docutils literal notranslate"><span class="pre">date</span></code> index by supplying a date range. If you want a single day, the first date in the range should be the day <strong>before</strong> the date you want. The dates need to be in ISO format – <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDT00:00:00Z</span></code>. For example, if we wanted a page from 2 November 1942, we’d set the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">date:[1942-11-01T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1942-11-02T00:00:00Z]</span></code>.</p>
-<p>To request a specific page number, <a class="reference internal" href="../../understanding-search/simple-search-options.html#search-indexes-firstpageseq"><span class="std std-ref">you use the <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> index</span></a> in the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter. To find page 3, you’d add <code class="docutils literal notranslate"><span class="pre">firstpageseq:3</span></code> to the value for <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+<p>To request a specific page number, <a class="reference internal" href="../../understanding-search/notes.html#search-indexes-firstpageseq"><span class="std std-ref">you use the <code class="docutils literal notranslate"><span class="pre">firstpageseq</span></code> index</span></a> in the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter. To find page 3, you’d add <code class="docutils literal notranslate"><span class="pre">firstpageseq:3</span></code> to the value for <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
 <p>Finally, you need to add <code class="docutils literal notranslate"><span class="pre">reclevel=full</span></code> to the request. This asks for additional metadata about the article, including the page identifier.</p>
 <p>So, in summary, if we wanted the identifier of page 3 of the <em>Canberra Times</em> from 2 November 1942, your request would include the following parameters:</p>
 <ul class="simple">
@@ -813,7 +813,7 @@ document.write(`
 </div>
 </div>
 <figure class="align-default" id="id3">
-<img alt="../../_images/b4bcc25db9796459487434caea49d16dcbc17cdbc48ce8229f9fa7e9ee26d35f.png" src="../../_images/b4bcc25db9796459487434caea49d16dcbc17cdbc48ce8229f9fa7e9ee26d35f.png" />
+<img alt="../../_images/c35ed3ebdf53f7aafbdb807bde9d75659ad74de64dd03d66a33b6f2b2ac16a31.png" src="../../_images/c35ed3ebdf53f7aafbdb807bde9d75659ad74de64dd03d66a33b6f2b2ac16a31.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">Word cloud from the text content of page 3 of the <em>Canberra Times</em>, 2 November 1942.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>

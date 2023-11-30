@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -19,7 +19,7 @@ kernelspec:
 This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 This section will examine how the contents of the newspaper corpus changes over time and the implications of this for researchers. This includes topics like:
 

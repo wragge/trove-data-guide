@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/collections.1fcd5ff5-5b7b-4334-9742-eec23c24c3e3.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/collections.34f5664d-656e-40c8-84b8-322b655316ed.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/collections';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -525,7 +525,7 @@ On this page</div>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3A%22ANU%3AIR%22%26category%3Dall%26l-availability%3Dy%26encoding%3Djson%26bulkHarvest%3Dtrue&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 </section>
 <section id="ispartof-relationships">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">5.5. </span><code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> relationships</a><a class="headerlink" href="#ispartof-relationships" title="Permalink to this heading">#</a></h2>
+<span id="collections-ispartof"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">5.5. </span><code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> relationships</a><a class="headerlink" href="#ispartof-relationships" title="Permalink to this heading">#</a></h2>
 <p>Some parent/child relationships in Trove are documented using the Dublin Core <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> metadata field. This field can appear in records aggregated into Trove from other organisations, as well as in records of digitised resources created by the NLA itself. In the web interface, <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> values can be displayed under a variety of headings, including ‘Appears in’, ‘Part of’, and ‘Series’. Here’s an example linking an individual oral history interview to an oral history project:</p>
 <figure class="align-default" id="part-of-example">
 <a class="reference internal image-reference" href="../_images/part-of-example.png"><img alt="../_images/part-of-example.png" src="../_images/part-of-example.png" style="width: 600px;" /></a>
@@ -609,7 +609,7 @@ On this page</div>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
         <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
     <span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -626,53 +626,53 @@ On this page</div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_5b888">
+<table id="T_e66c9">
   <thead>
     <tr>
-      <th id="T_5b888_level0_col0" class="col_heading level0 col0" >display</th>
-      <th id="T_5b888_level0_col1" class="col_heading level0 col1" >count</th>
+      <th id="T_e66c9_level0_col0" class="col_heading level0 col0" >display</th>
+      <th id="T_e66c9_level0_col1" class="col_heading level0 col1" >count</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_5b888_row0_col0" class="data row0 col0" >Hazel de Berg collection</td>
-      <td id="T_5b888_row0_col1" class="data row0 col1" >1266</td>
+      <td id="T_e66c9_row0_col0" class="data row0 col0" >Hazel de Berg collection</td>
+      <td id="T_e66c9_row0_col1" class="data row0 col1" >1266</td>
     </tr>
     <tr>
-      <td id="T_5b888_row1_col0" class="data row1 col0" >National Press Club luncheon address</td>
-      <td id="T_5b888_row1_col1" class="data row1 col1" >905</td>
+      <td id="T_e66c9_row1_col0" class="data row1 col0" >National Press Club luncheon address</td>
+      <td id="T_e66c9_row1_col1" class="data row1 col1" >905</td>
     </tr>
     <tr>
-      <td id="T_5b888_row2_col0" class="data row2 col0" >Rob and Olya Willis folklore collection</td>
-      <td id="T_5b888_row2_col1" class="data row2 col1" >760</td>
+      <td id="T_e66c9_row2_col0" class="data row2 col0" >Rob and Olya Willis folklore collection</td>
+      <td id="T_e66c9_row2_col1" class="data row2 col1" >760</td>
     </tr>
     <tr>
-      <td id="T_5b888_row3_col0" class="data row3 col0" >Australia 1938 oral history project</td>
-      <td id="T_5b888_row3_col1" class="data row3 col1" >584</td>
+      <td id="T_e66c9_row3_col0" class="data row3 col0" >Australia 1938 oral history project</td>
+      <td id="T_e66c9_row3_col1" class="data row3 col1" >584</td>
     </tr>
     <tr>
-      <td id="T_5b888_row4_col0" class="data row4 col0" >Cultural context of unemployment oral history project</td>
-      <td id="T_5b888_row4_col1" class="data row4 col1" >480</td>
+      <td id="T_e66c9_row4_col0" class="data row4 col0" >Cultural context of unemployment oral history project</td>
+      <td id="T_e66c9_row4_col1" class="data row4 col1" >480</td>
     </tr>
     <tr>
-      <td id="T_5b888_row5_col0" class="data row5 col0" >National Press Club luncheon address.</td>
-      <td id="T_5b888_row5_col1" class="data row5 col1" >438</td>
+      <td id="T_e66c9_row5_col0" class="data row5 col0" >National Press Club luncheon address.</td>
+      <td id="T_e66c9_row5_col1" class="data row5 col1" >438</td>
     </tr>
     <tr>
-      <td id="T_5b888_row6_col0" class="data row6 col0" >Menzies MS 4936 collection</td>
-      <td id="T_5b888_row6_col1" class="data row6 col1" >346</td>
+      <td id="T_e66c9_row6_col0" class="data row6 col0" >Menzies MS 4936 collection</td>
+      <td id="T_e66c9_row6_col1" class="data row6 col1" >346</td>
     </tr>
     <tr>
-      <td id="T_5b888_row7_col0" class="data row7 col0" >Bringing them home oral history project</td>
-      <td id="T_5b888_row7_col1" class="data row7 col1" >336</td>
+      <td id="T_e66c9_row7_col0" class="data row7 col0" >Bringing them home oral history project</td>
+      <td id="T_e66c9_row7_col1" class="data row7 col1" >336</td>
     </tr>
     <tr>
-      <td id="T_5b888_row8_col0" class="data row8 col0" >Australian generations oral history project</td>
-      <td id="T_5b888_row8_col1" class="data row8 col1" >297</td>
+      <td id="T_e66c9_row8_col0" class="data row8 col0" >Australian generations oral history project</td>
+      <td id="T_e66c9_row8_col1" class="data row8 col1" >297</td>
     </tr>
     <tr>
-      <td id="T_5b888_row9_col0" class="data row9 col0" >Chris Sullivan folklore collection</td>
-      <td id="T_5b888_row9_col1" class="data row9 col1" >266</td>
+      <td id="T_e66c9_row9_col0" class="data row9 col0" >Chris Sullivan folklore collection</td>
+      <td id="T_e66c9_row9_col1" class="data row9 col1" >266</td>
     </tr>
   </tbody>
 </table>

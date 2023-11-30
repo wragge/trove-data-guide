@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/newspapers-and-gazettes/newspaper-corpus.e71f9fc7-0395-4b98-8f6f-7d7807ebc412.js"></script>
+    <script defer="defer" src="../_static/tippy/newspapers-and-gazettes/newspaper-corpus.118b7ef4-c661-44e3-af31-f79bd62fee27.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'newspapers-and-gazettes/newspaper-corpus';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -423,7 +423,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -439,6 +441,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-newspaper-corpus-is-constructed">1.1. The newspaper corpus is constructed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-newspaper-corpus-has-a-history">1.2. The newspaper corpus has a history</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-the-newspapers-come-from">1.3. Where do the newspapers come from?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-missing">1.4. What’s missing?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ocr">1.5. OCR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#not-all-in-english">1.6. Not all in English</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -450,14 +465,629 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="understanding-the-newspaper-corpus">
 <h1><span class="section-number">1. </span>Understanding the newspaper corpus<a class="headerlink" href="#understanding-the-newspaper-corpus" title="Permalink to this heading">#</a></h1>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
-</div>
-<p>This section will examine the way in which the Trove newspaper corpus has been constructed, and how its contents have changed over time.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+On this page</div>
+<nav class="contents local" id="contents">
 <ul class="simple">
-<li><p>Example of a single advertising ‘article’ that spans multiple pages and includes many individual ads: <a class="reference external" href="https://trove.nla.gov.au/newspaper/article/101752752/10453662">https://trove.nla.gov.au/newspaper/article/101752752/10453662</a></p></li>
+<li><p><a class="reference internal" href="#the-newspaper-corpus-is-constructed" id="id4">The newspaper corpus is constructed</a></p></li>
+<li><p><a class="reference internal" href="#the-newspaper-corpus-has-a-history" id="id5">The newspaper corpus has a history</a></p></li>
+<li><p><a class="reference internal" href="#where-do-the-newspapers-come-from" id="id6">Where do the newspapers come from?</a></p></li>
+<li><p><a class="reference internal" href="#whats-missing" id="id7">What’s missing?</a></p></li>
+<li><p><a class="reference internal" href="#ocr" id="id8">OCR</a></p></li>
+<li><p><a class="reference internal" href="#not-all-in-english" id="id9">Not all in English</a></p></li>
 </ul>
+</nav>
+</div>
+</div>
+<section id="the-newspaper-corpus-is-constructed">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">1.1. </span>The newspaper corpus is constructed</a><a class="headerlink" href="#the-newspaper-corpus-is-constructed" title="Permalink to this heading">#</a></h2>
+<p>Trove’s collection of digitised newspapers has had a major impact on research in a number of HASS disciplines, particularly history. It’s important then for researchers to think critically about the newspaper corpus, as they would with any historical source. What’s available? What’s missing? How does it change over time?</p>
+<p>Here’s a chart that shows the number of digitised newspaper articles in Trove by year of publication.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;facet&quot;</span><span class="p">:</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">facets</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">decade</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">203</span><span class="p">):</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;l-decade&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">decade</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+    <span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">facets</span> <span class="o">+=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;search&quot;</span><span class="p">],</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]}</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;facets&quot;</span><span class="p">][</span><span class="s2">&quot;facet&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;term&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="n">facets</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">))</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">facets</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>You might be wondering about the peak in 1915 – is it because of World War I? Well, yes and no. In the lead up to the centenary of WWI, it was decided to focus digitision dollars on newspapers from the WWI period. The peak reflects decisions about funding, not the impact of historical events. And what about the dramatic collapse in the number of articles after 1954 – did the arrival of television send newspapers into a cataclysmic decline? No, it’s because of copyright. The NLA has chosen to manage some of the risks around copyright by limiting digitisation to newspaper issues published before 1955, unless there’s a special arrangement with the publisher.</p>
+<p>The obvious impact of these policy decisions is an important reminder that <strong>the Trove corpus is not unchanging or inevitable, it’s constructed</strong> – it’s the product of preservation decisions, funding priorities, library policies, digitisation technologies, professional practices, legal frameworks, and a fair bit of luck.</p>
+</section>
+<section id="the-newspaper-corpus-has-a-history">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">1.2. </span>The newspaper corpus has a history</a><a class="headerlink" href="#the-newspaper-corpus-has-a-history" title="Permalink to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more examples and discussion of the current composition of the Trove newspaper corpus, see the GLAM Workbench notebook, <a class="reference external" href="https://glam-workbench.net/trove-newspapers/visualise-total-newspaper-articles-by-state-year/">Visualise the total number of newspaper articles in Trove by year and state</a></p>
+</div>
+</aside>
+<p>Oddly enough, Trove is not very good at presenting its own history. While there are regular updates on newly-added titles, there’s no way of seeing when particular titles were added or the change in the number of articles over time. Earlier versions of Trove included a page of useful statistics, but this was removed in the 2020 update. To explore how Trove has changed over time, you need to piece together different data sources.</p>
+<p>I started analysing Trove searches back in 2011, and continued at irregular intervals to create charts showing the number of articles per year in Trove. I’ve extracted the data from these charts and compiled it into a dataset available from <a class="reference external" href="https://doi.org/10.5281/zenodo.6471544">Zenodo</a> and <a class="reference external" href="https://github.com/wragge/trove-newspaper-totals-historical">GitHub</a>. Using this data, you can visualise how Trove has changed between 2011 and 2022. For example, here’s the growth in the total number of articles</p>
+<div class="cell tag_remove-output tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="kn">import</span> <span class="nn">arrow</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">harvests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;20110412&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20110804&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20140912&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20151129&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20161214&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20190728&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20200710&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20210427&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20220121&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">harvest</span> <span class="ow">in</span> <span class="n">harvests</span><span class="p">:</span>
+    <span class="n">csv</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/wragge/trove-newspaper-totals-historical/master/data/total_articles_by_year_</span><span class="si">{</span><span class="n">harvest</span><span class="si">}</span><span class="s2">.csv&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv</span><span class="p">)</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">arrow</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">harvest</span><span class="p">,</span> <span class="s2">&quot;YYYYMMDD&quot;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;harvested&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;YYYY-MM-DD&quot;</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+<span class="n">df_all</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="n">harvest_totals</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;harvested&quot;</span><span class="p">)[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">harvest_totals</span><span class="p">[</span><span class="s2">&quot;harvested&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">harvest_totals</span><span class="p">[</span><span class="s2">&quot;harvested&quot;</span><span class="p">])</span>
+
+<span class="n">chart_all</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">harvest_totals</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_area</span><span class="p">(</span><span class="n">point</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;harvested:T&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;harvest date&quot;</span><span class="p">),</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;number of articles&quot;</span><span class="p">),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">),</span> <span class="s2">&quot;harvested:T&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">chart_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<figure class="align-default" id="chart-all">
+<div class="output text_html">
+<style>
+  #altair-viz-89817e728cd0483a8c237d9da6375d52.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-89817e728cd0483a8c237d9da6375d52.vega-embed details,
+  #altair-viz-89817e728cd0483a8c237d9da6375d52.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-89817e728cd0483a8c237d9da6375d52"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-89817e728cd0483a8c237d9da6375d52") {
+      outputDiv = document.getElementById("altair-viz-89817e728cd0483a8c237d9da6375d52");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-5bb4a3706227fc5ee19305e265ae0292"}, "mark": {"type": "area", "point": true}, "encoding": {"tooltip": [{"field": "total", "format": ",", "type": "quantitative"}, {"field": "harvested", "type": "temporal"}], "x": {"field": "harvested", "title": "harvest date", "type": "temporal"}, "y": {"field": "total", "title": "number of articles", "type": "quantitative"}}, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-5bb4a3706227fc5ee19305e265ae0292": [{"harvested": "2011-04-12T00:00:00", "total": 48481646}, {"harvested": "2011-08-04T00:00:00", "total": 52270588}, {"harvested": "2014-09-12T00:00:00", "total": 135040041}, {"harvested": "2015-11-29T00:00:00", "total": 188146445}, {"harvested": "2016-12-14T00:00:00", "total": 206655551}, {"harvested": "2019-07-28T00:00:00", "total": 224797939}, {"harvested": "2020-07-10T00:00:00", "total": 228011887}, {"harvested": "2021-04-27T00:00:00", "total": 232201965}, {"harvested": "2022-01-21T00:00:00", "total": 233666386}]}}, {"mode": "vega-lite"});
+</script></div><figcaption>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">Number of newspapers articles in Trove from 2011 to 2022</span><a class="headerlink" href="#chart-all" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Over the decade, <span class="pasted-text">185,184,740</span> newspaper articles were added to Trove.</p>
+<p>You can also examine how the distribution of articles by publication year changed across the same period.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chart_2011_2022</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+        <span class="n">df_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s2">&quot;harvested&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2011-04-12&quot;</span><span class="p">)</span>
+            <span class="o">|</span> <span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s2">&quot;harvested&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2022-01-21&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_line</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;year:T&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">labelOverlap</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;number of articles&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;harvested:N&quot;</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Order</span><span class="p">(</span><span class="s2">&quot;harvested:N&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s2">&quot;ascending&quot;</span><span class="p">),</span>
+        <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;year:T&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y&quot;</span><span class="p">),</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;harvested:N&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">chart_2011_2022</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-41c2581c63a74e11890b9a76680c089f.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-41c2581c63a74e11890b9a76680c089f.vega-embed details,
+  #altair-viz-41c2581c63a74e11890b9a76680c089f.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-41c2581c63a74e11890b9a76680c089f"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-41c2581c63a74e11890b9a76680c089f") {
+      outputDiv = document.getElementById("altair-viz-41c2581c63a74e11890b9a76680c089f");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-2098a6059144b7ec5661cde7f38b60c9"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "harvested", "type": "nominal"}, "order": {"field": "harvested", "sort": "ascending", "type": "nominal"}, "tooltip": [{"field": "year", "format": "%Y", "type": "temporal"}, {"field": "total", "format": ",", "type": "quantitative"}, {"field": "harvested", "type": "nominal"}], "x": {"axis": {"labelOverlap": true}, "field": "year", "type": "temporal"}, "y": {"field": "total", "title": "number of articles", "type": "quantitative"}}, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-2098a6059144b7ec5661cde7f38b60c9": [{"year": "1803", "total": 526, "harvested": "2011-04-12"}, {"year": "1804", "total": 619, "harvested": "2011-04-12"}, {"year": "1805", "total": 430, "harvested": "2011-04-12"}, {"year": "1806", "total": 367, "harvested": "2011-04-12"}, {"year": "1807", "total": 160, "harvested": "2011-04-12"}, {"year": "1808", "total": 155, "harvested": "2011-04-12"}, {"year": "1809", "total": 237, "harvested": "2011-04-12"}, {"year": "1810", "total": 269, "harvested": "2011-04-12"}, {"year": "1811", "total": 228, "harvested": "2011-04-12"}, {"year": "1812", "total": 208, "harvested": "2011-04-12"}, {"year": "1813", "total": 234, "harvested": "2011-04-12"}, {"year": "1814", "total": 201, "harvested": "2011-04-12"}, {"year": "1815", "total": 226, "harvested": "2011-04-12"}, {"year": "1816", "total": 644, "harvested": "2011-04-12"}, {"year": "1817", "total": 1068, "harvested": "2011-04-12"}, {"year": "1818", "total": 1249, "harvested": "2011-04-12"}, {"year": "1819", "total": 1152, "harvested": "2011-04-12"}, {"year": "1820", "total": 1275, "harvested": "2011-04-12"}, {"year": "1821", "total": 1007, "harvested": "2011-04-12"}, {"year": "1822", "total": 1033, "harvested": "2011-04-12"}, {"year": "1823", "total": 1161, "harvested": "2011-04-12"}, {"year": "1824", "total": 1648, "harvested": "2011-04-12"}, {"year": "1825", "total": 3175, "harvested": "2011-04-12"}, {"year": "1826", "total": 5201, "harvested": "2011-04-12"}, {"year": "1827", "total": 6162, "harvested": "2011-04-12"}, {"year": "1828", "total": 5566, "harvested": "2011-04-12"}, {"year": "1829", "total": 7395, "harvested": "2011-04-12"}, {"year": "1830", "total": 6651, "harvested": "2011-04-12"}, {"year": "1831", "total": 7746, "harvested": "2011-04-12"}, {"year": "1832", "total": 9542, "harvested": "2011-04-12"}, {"year": "1833", "total": 10188, "harvested": "2011-04-12"}, {"year": "1834", "total": 11922, "harvested": "2011-04-12"}, {"year": "1835", "total": 13529, "harvested": "2011-04-12"}, {"year": "1836", "total": 14347, "harvested": "2011-04-12"}, {"year": "1837", "total": 15297, "harvested": "2011-04-12"}, {"year": "1838", "total": 16226, "harvested": "2011-04-12"}, {"year": "1839", "total": 19062, "harvested": "2011-04-12"}, {"year": "1840", "total": 23997, "harvested": "2011-04-12"}, {"year": "1841", "total": 24922, "harvested": "2011-04-12"}, {"year": "1842", "total": 23962, "harvested": "2011-04-12"}, {"year": "1843", "total": 26346, "harvested": "2011-04-12"}, {"year": "1844", "total": 29256, "harvested": "2011-04-12"}, {"year": "1845", "total": 33004, "harvested": "2011-04-12"}, {"year": "1846", "total": 31464, "harvested": "2011-04-12"}, {"year": "1847", "total": 35613, "harvested": "2011-04-12"}, {"year": "1848", "total": 32222, "harvested": "2011-04-12"}, {"year": "1849", "total": 31940, "harvested": "2011-04-12"}, {"year": "1850", "total": 38428, "harvested": "2011-04-12"}, {"year": "1851", "total": 51180, "harvested": "2011-04-12"}, {"year": "1852", "total": 50346, "harvested": "2011-04-12"}, {"year": "1853", "total": 56376, "harvested": "2011-04-12"}, {"year": "1854", "total": 68014, "harvested": "2011-04-12"}, {"year": "1855", "total": 86651, "harvested": "2011-04-12"}, {"year": "1856", "total": 90067, "harvested": "2011-04-12"}, {"year": "1857", "total": 85773, "harvested": "2011-04-12"}, {"year": "1858", "total": 82438, "harvested": "2011-04-12"}, {"year": "1859", "total": 93920, "harvested": "2011-04-12"}, {"year": "1860", "total": 103148, "harvested": "2011-04-12"}, {"year": "1861", "total": 111878, "harvested": "2011-04-12"}, {"year": "1862", "total": 110563, "harvested": "2011-04-12"}, {"year": "1863", "total": 112997, "harvested": "2011-04-12"}, {"year": "1864", "total": 109900, "harvested": "2011-04-12"}, {"year": "1865", "total": 109314, "harvested": "2011-04-12"}, {"year": "1866", "total": 113425, "harvested": "2011-04-12"}, {"year": "1867", "total": 115903, "harvested": "2011-04-12"}, {"year": "1868", "total": 115563, "harvested": "2011-04-12"}, {"year": "1869", "total": 112000, "harvested": "2011-04-12"}, {"year": "1870", "total": 116364, "harvested": "2011-04-12"}, {"year": "1871", "total": 114021, "harvested": "2011-04-12"}, {"year": "1872", "total": 116830, "harvested": "2011-04-12"}, {"year": "1873", "total": 125620, "harvested": "2011-04-12"}, {"year": "1874", "total": 131676, "harvested": "2011-04-12"}, {"year": "1875", "total": 129996, "harvested": "2011-04-12"}, {"year": "1876", "total": 128129, "harvested": "2011-04-12"}, {"year": "1877", "total": 129860, "harvested": "2011-04-12"}, {"year": "1878", "total": 155459, "harvested": "2011-04-12"}, {"year": "1879", "total": 163896, "harvested": "2011-04-12"}, {"year": "1880", "total": 160516, "harvested": "2011-04-12"}, {"year": "1881", "total": 169269, "harvested": "2011-04-12"}, {"year": "1882", "total": 190956, "harvested": "2011-04-12"}, {"year": "1883", "total": 202498, "harvested": "2011-04-12"}, {"year": "1884", "total": 202273, "harvested": "2011-04-12"}, {"year": "1885", "total": 229163, "harvested": "2011-04-12"}, {"year": "1886", "total": 254079, "harvested": "2011-04-12"}, {"year": "1887", "total": 263513, "harvested": "2011-04-12"}, {"year": "1888", "total": 266780, "harvested": "2011-04-12"}, {"year": "1889", "total": 301193, "harvested": "2011-04-12"}, {"year": "1890", "total": 308556, "harvested": "2011-04-12"}, {"year": "1891", "total": 325815, "harvested": "2011-04-12"}, {"year": "1892", "total": 337244, "harvested": "2011-04-12"}, {"year": "1893", "total": 342571, "harvested": "2011-04-12"}, {"year": "1894", "total": 331666, "harvested": "2011-04-12"}, {"year": "1895", "total": 354437, "harvested": "2011-04-12"}, {"year": "1896", "total": 355734, "harvested": "2011-04-12"}, {"year": "1897", "total": 401583, "harvested": "2011-04-12"}, {"year": "1898", "total": 424928, "harvested": "2011-04-12"}, {"year": "1899", "total": 438446, "harvested": "2011-04-12"}, {"year": "1900", "total": 501918, "harvested": "2011-04-12"}, {"year": "1901", "total": 510347, "harvested": "2011-04-12"}, {"year": "1902", "total": 483019, "harvested": "2011-04-12"}, {"year": "1903", "total": 552381, "harvested": "2011-04-12"}, {"year": "1904", "total": 540591, "harvested": "2011-04-12"}, {"year": "1905", "total": 587430, "harvested": "2011-04-12"}, {"year": "1906", "total": 618564, "harvested": "2011-04-12"}, {"year": "1907", "total": 630540, "harvested": "2011-04-12"}, {"year": "1908", "total": 677907, "harvested": "2011-04-12"}, {"year": "1909", "total": 653099, "harvested": "2011-04-12"}, {"year": "1910", "total": 717452, "harvested": "2011-04-12"}, {"year": "1911", "total": 713994, "harvested": "2011-04-12"}, {"year": "1912", "total": 784980, "harvested": "2011-04-12"}, {"year": "1913", "total": 729652, "harvested": "2011-04-12"}, {"year": "1914", "total": 735979, "harvested": "2011-04-12"}, {"year": "1915", "total": 746671, "harvested": "2011-04-12"}, {"year": "1916", "total": 661232, "harvested": "2011-04-12"}, {"year": "1917", "total": 625631, "harvested": "2011-04-12"}, {"year": "1918", "total": 593258, "harvested": "2011-04-12"}, {"year": "1919", "total": 627045, "harvested": "2011-04-12"}, {"year": "1920", "total": 518700, "harvested": "2011-04-12"}, {"year": "1921", "total": 523745, "harvested": "2011-04-12"}, {"year": "1922", "total": 577202, "harvested": "2011-04-12"}, {"year": "1923", "total": 727563, "harvested": "2011-04-12"}, {"year": "1924", "total": 850476, "harvested": "2011-04-12"}, {"year": "1925", "total": 826068, "harvested": "2011-04-12"}, {"year": "1926", "total": 855399, "harvested": "2011-04-12"}, {"year": "1927", "total": 916092, "harvested": "2011-04-12"}, {"year": "1928", "total": 1007417, "harvested": "2011-04-12"}, {"year": "1929", "total": 1041220, "harvested": "2011-04-12"}, {"year": "1930", "total": 960811, "harvested": "2011-04-12"}, {"year": "1931", "total": 872700, "harvested": "2011-04-12"}, {"year": "1932", "total": 872772, "harvested": "2011-04-12"}, {"year": "1933", "total": 893540, "harvested": "2011-04-12"}, {"year": "1934", "total": 990929, "harvested": "2011-04-12"}, {"year": "1935", "total": 973706, "harvested": "2011-04-12"}, {"year": "1936", "total": 951758, "harvested": "2011-04-12"}, {"year": "1937", "total": 1014777, "harvested": "2011-04-12"}, {"year": "1938", "total": 1019574, "harvested": "2011-04-12"}, {"year": "1939", "total": 919081, "harvested": "2011-04-12"}, {"year": "1940", "total": 699847, "harvested": "2011-04-12"}, {"year": "1941", "total": 669937, "harvested": "2011-04-12"}, {"year": "1942", "total": 486675, "harvested": "2011-04-12"}, {"year": "1943", "total": 416819, "harvested": "2011-04-12"}, {"year": "1944", "total": 456142, "harvested": "2011-04-12"}, {"year": "1945", "total": 508031, "harvested": "2011-04-12"}, {"year": "1946", "total": 572718, "harvested": "2011-04-12"}, {"year": "1947", "total": 654681, "harvested": "2011-04-12"}, {"year": "1948", "total": 545258, "harvested": "2011-04-12"}, {"year": "1949", "total": 664742, "harvested": "2011-04-12"}, {"year": "1950", "total": 686944, "harvested": "2011-04-12"}, {"year": "1951", "total": 637851, "harvested": "2011-04-12"}, {"year": "1952", "total": 652022, "harvested": "2011-04-12"}, {"year": "1953", "total": 699821, "harvested": "2011-04-12"}, {"year": "1954", "total": 675151, "harvested": "2011-04-12"}, {"year": "1803", "total": 526, "harvested": "2022-01-21"}, {"year": "1804", "total": 619, "harvested": "2022-01-21"}, {"year": "1805", "total": 430, "harvested": "2022-01-21"}, {"year": "1806", "total": 367, "harvested": "2022-01-21"}, {"year": "1807", "total": 134, "harvested": "2022-01-21"}, {"year": "1808", "total": 155, "harvested": "2022-01-21"}, {"year": "1809", "total": 237, "harvested": "2022-01-21"}, {"year": "1810", "total": 274, "harvested": "2022-01-21"}, {"year": "1811", "total": 228, "harvested": "2022-01-21"}, {"year": "1812", "total": 215, "harvested": "2022-01-21"}, {"year": "1813", "total": 234, "harvested": "2022-01-21"}, {"year": "1814", "total": 239, "harvested": "2022-01-21"}, {"year": "1815", "total": 226, "harvested": "2022-01-21"}, {"year": "1816", "total": 644, "harvested": "2022-01-21"}, {"year": "1817", "total": 1068, "harvested": "2022-01-21"}, {"year": "1818", "total": 1249, "harvested": "2022-01-21"}, {"year": "1819", "total": 1152, "harvested": "2022-01-21"}, {"year": "1820", "total": 1275, "harvested": "2022-01-21"}, {"year": "1821", "total": 1005, "harvested": "2022-01-21"}, {"year": "1822", "total": 1033, "harvested": "2022-01-21"}, {"year": "1823", "total": 1156, "harvested": "2022-01-21"}, {"year": "1824", "total": 1646, "harvested": "2022-01-21"}, {"year": "1825", "total": 3366, "harvested": "2022-01-21"}, {"year": "1826", "total": 5201, "harvested": "2022-01-21"}, {"year": "1827", "total": 6618, "harvested": "2022-01-21"}, {"year": "1828", "total": 7335, "harvested": "2022-01-21"}, {"year": "1829", "total": 8935, "harvested": "2022-01-21"}, {"year": "1830", "total": 8977, "harvested": "2022-01-21"}, {"year": "1831", "total": 10989, "harvested": "2022-01-21"}, {"year": "1832", "total": 14814, "harvested": "2022-01-21"}, {"year": "1833", "total": 15622, "harvested": "2022-01-21"}, {"year": "1834", "total": 18704, "harvested": "2022-01-21"}, {"year": "1835", "total": 20389, "harvested": "2022-01-21"}, {"year": "1836", "total": 20553, "harvested": "2022-01-21"}, {"year": "1837", "total": 21805, "harvested": "2022-01-21"}, {"year": "1838", "total": 25911, "harvested": "2022-01-21"}, {"year": "1839", "total": 32876, "harvested": "2022-01-21"}, {"year": "1840", "total": 42411, "harvested": "2022-01-21"}, {"year": "1841", "total": 46377, "harvested": "2022-01-21"}, {"year": "1842", "total": 47934, "harvested": "2022-01-21"}, {"year": "1843", "total": 49913, "harvested": "2022-01-21"}, {"year": "1844", "total": 54331, "harvested": "2022-01-21"}, {"year": "1845", "total": 63389, "harvested": "2022-01-21"}, {"year": "1846", "total": 62153, "harvested": "2022-01-21"}, {"year": "1847", "total": 62767, "harvested": "2022-01-21"}, {"year": "1848", "total": 63463, "harvested": "2022-01-21"}, {"year": "1849", "total": 62794, "harvested": "2022-01-21"}, {"year": "1850", "total": 81624, "harvested": "2022-01-21"}, {"year": "1851", "total": 96566, "harvested": "2022-01-21"}, {"year": "1852", "total": 79960, "harvested": "2022-01-21"}, {"year": "1853", "total": 96033, "harvested": "2022-01-21"}, {"year": "1854", "total": 118883, "harvested": "2022-01-21"}, {"year": "1855", "total": 159947, "harvested": "2022-01-21"}, {"year": "1856", "total": 168695, "harvested": "2022-01-21"}, {"year": "1857", "total": 175343, "harvested": "2022-01-21"}, {"year": "1858", "total": 178765, "harvested": "2022-01-21"}, {"year": "1859", "total": 202996, "harvested": "2022-01-21"}, {"year": "1860", "total": 214554, "harvested": "2022-01-21"}, {"year": "1861", "total": 237976, "harvested": "2022-01-21"}, {"year": "1862", "total": 244694, "harvested": "2022-01-21"}, {"year": "1863", "total": 251706, "harvested": "2022-01-21"}, {"year": "1864", "total": 264282, "harvested": "2022-01-21"}, {"year": "1865", "total": 283302, "harvested": "2022-01-21"}, {"year": "1866", "total": 289342, "harvested": "2022-01-21"}, {"year": "1867", "total": 297136, "harvested": "2022-01-21"}, {"year": "1868", "total": 304914, "harvested": "2022-01-21"}, {"year": "1869", "total": 327192, "harvested": "2022-01-21"}, {"year": "1870", "total": 373286, "harvested": "2022-01-21"}, {"year": "1871", "total": 359781, "harvested": "2022-01-21"}, {"year": "1872", "total": 383784, "harvested": "2022-01-21"}, {"year": "1873", "total": 420951, "harvested": "2022-01-21"}, {"year": "1874", "total": 436788, "harvested": "2022-01-21"}, {"year": "1875", "total": 466891, "harvested": "2022-01-21"}, {"year": "1876", "total": 477911, "harvested": "2022-01-21"}, {"year": "1877", "total": 499944, "harvested": "2022-01-21"}, {"year": "1878", "total": 569203, "harvested": "2022-01-21"}, {"year": "1879", "total": 607530, "harvested": "2022-01-21"}, {"year": "1880", "total": 624376, "harvested": "2022-01-21"}, {"year": "1881", "total": 667930, "harvested": "2022-01-21"}, {"year": "1882", "total": 745914, "harvested": "2022-01-21"}, {"year": "1883", "total": 778865, "harvested": "2022-01-21"}, {"year": "1884", "total": 858553, "harvested": "2022-01-21"}, {"year": "1885", "total": 911515, "harvested": "2022-01-21"}, {"year": "1886", "total": 994828, "harvested": "2022-01-21"}, {"year": "1887", "total": 1043492, "harvested": "2022-01-21"}, {"year": "1888", "total": 1162025, "harvested": "2022-01-21"}, {"year": "1889", "total": 1252262, "harvested": "2022-01-21"}, {"year": "1890", "total": 1357654, "harvested": "2022-01-21"}, {"year": "1891", "total": 1429274, "harvested": "2022-01-21"}, {"year": "1892", "total": 1486705, "harvested": "2022-01-21"}, {"year": "1893", "total": 1510849, "harvested": "2022-01-21"}, {"year": "1894", "total": 1560809, "harvested": "2022-01-21"}, {"year": "1895", "total": 1678554, "harvested": "2022-01-21"}, {"year": "1896", "total": 1798582, "harvested": "2022-01-21"}, {"year": "1897", "total": 1918088, "harvested": "2022-01-21"}, {"year": "1898", "total": 2141840, "harvested": "2022-01-21"}, {"year": "1899", "total": 2308829, "harvested": "2022-01-21"}, {"year": "1900", "total": 2539736, "harvested": "2022-01-21"}, {"year": "1901", "total": 2618191, "harvested": "2022-01-21"}, {"year": "1902", "total": 2674429, "harvested": "2022-01-21"}, {"year": "1903", "total": 2713889, "harvested": "2022-01-21"}, {"year": "1904", "total": 2878677, "harvested": "2022-01-21"}, {"year": "1905", "total": 3009076, "harvested": "2022-01-21"}, {"year": "1906", "total": 3057500, "harvested": "2022-01-21"}, {"year": "1907", "total": 3205575, "harvested": "2022-01-21"}, {"year": "1908", "total": 3314151, "harvested": "2022-01-21"}, {"year": "1909", "total": 3379982, "harvested": "2022-01-21"}, {"year": "1910", "total": 3613826, "harvested": "2022-01-21"}, {"year": "1911", "total": 3740413, "harvested": "2022-01-21"}, {"year": "1912", "total": 3890753, "harvested": "2022-01-21"}, {"year": "1913", "total": 3957073, "harvested": "2022-01-21"}, {"year": "1914", "total": 4654167, "harvested": "2022-01-21"}, {"year": "1915", "total": 4751447, "harvested": "2022-01-21"}, {"year": "1916", "total": 4346277, "harvested": "2022-01-21"}, {"year": "1917", "total": 4239223, "harvested": "2022-01-21"}, {"year": "1918", "total": 4016436, "harvested": "2022-01-21"}, {"year": "1919", "total": 3486517, "harvested": "2022-01-21"}, {"year": "1920", "total": 3237978, "harvested": "2022-01-21"}, {"year": "1921", "total": 3435873, "harvested": "2022-01-21"}, {"year": "1922", "total": 3562135, "harvested": "2022-01-21"}, {"year": "1923", "total": 3828641, "harvested": "2022-01-21"}, {"year": "1924", "total": 4125328, "harvested": "2022-01-21"}, {"year": "1925", "total": 4086958, "harvested": "2022-01-21"}, {"year": "1926", "total": 4069533, "harvested": "2022-01-21"}, {"year": "1927", "total": 4126770, "harvested": "2022-01-21"}, {"year": "1928", "total": 4234586, "harvested": "2022-01-21"}, {"year": "1929", "total": 4460722, "harvested": "2022-01-21"}, {"year": "1930", "total": 4315190, "harvested": "2022-01-21"}, {"year": "1931", "total": 3941724, "harvested": "2022-01-21"}, {"year": "1932", "total": 3890710, "harvested": "2022-01-21"}, {"year": "1933", "total": 4069854, "harvested": "2022-01-21"}, {"year": "1934", "total": 4183589, "harvested": "2022-01-21"}, {"year": "1935", "total": 4271382, "harvested": "2022-01-21"}, {"year": "1936", "total": 4377987, "harvested": "2022-01-21"}, {"year": "1937", "total": 4371925, "harvested": "2022-01-21"}, {"year": "1938", "total": 4359675, "harvested": "2022-01-21"}, {"year": "1939", "total": 4140014, "harvested": "2022-01-21"}, {"year": "1940", "total": 3497071, "harvested": "2022-01-21"}, {"year": "1941", "total": 3082401, "harvested": "2022-01-21"}, {"year": "1942", "total": 2470102, "harvested": "2022-01-21"}, {"year": "1943", "total": 2191842, "harvested": "2022-01-21"}, {"year": "1944", "total": 2233365, "harvested": "2022-01-21"}, {"year": "1945", "total": 2412554, "harvested": "2022-01-21"}, {"year": "1946", "total": 2748052, "harvested": "2022-01-21"}, {"year": "1947", "total": 2851317, "harvested": "2022-01-21"}, {"year": "1948", "total": 2610229, "harvested": "2022-01-21"}, {"year": "1949", "total": 2867051, "harvested": "2022-01-21"}, {"year": "1950", "total": 2812464, "harvested": "2022-01-21"}, {"year": "1951", "total": 2554766, "harvested": "2022-01-21"}, {"year": "1952", "total": 2608800, "harvested": "2022-01-21"}, {"year": "1953", "total": 2755677, "harvested": "2022-01-21"}, {"year": "1954", "total": 2787339, "harvested": "2022-01-21"}, {"year": "1955", "total": 279909, "harvested": "2022-01-21"}, {"year": "1956", "total": 199416, "harvested": "2022-01-21"}, {"year": "1957", "total": 126201, "harvested": "2022-01-21"}, {"year": "1958", "total": 126115, "harvested": "2022-01-21"}, {"year": "1959", "total": 121259, "harvested": "2022-01-21"}, {"year": "1960", "total": 115050, "harvested": "2022-01-21"}, {"year": "1961", "total": 109239, "harvested": "2022-01-21"}, {"year": "1962", "total": 108575, "harvested": "2022-01-21"}, {"year": "1963", "total": 118702, "harvested": "2022-01-21"}, {"year": "1964", "total": 120392, "harvested": "2022-01-21"}, {"year": "1965", "total": 126432, "harvested": "2022-01-21"}, {"year": "1966", "total": 123452, "harvested": "2022-01-21"}, {"year": "1967", "total": 118503, "harvested": "2022-01-21"}, {"year": "1968", "total": 124919, "harvested": "2022-01-21"}, {"year": "1969", "total": 151689, "harvested": "2022-01-21"}, {"year": "1970", "total": 166785, "harvested": "2022-01-21"}, {"year": "1971", "total": 165077, "harvested": "2022-01-21"}, {"year": "1972", "total": 164687, "harvested": "2022-01-21"}, {"year": "1973", "total": 161814, "harvested": "2022-01-21"}, {"year": "1974", "total": 159025, "harvested": "2022-01-21"}, {"year": "1975", "total": 148204, "harvested": "2022-01-21"}, {"year": "1976", "total": 148816, "harvested": "2022-01-21"}, {"year": "1977", "total": 151194, "harvested": "2022-01-21"}, {"year": "1978", "total": 159199, "harvested": "2022-01-21"}, {"year": "1979", "total": 167101, "harvested": "2022-01-21"}, {"year": "1980", "total": 165664, "harvested": "2022-01-21"}, {"year": "1981", "total": 142781, "harvested": "2022-01-21"}, {"year": "1982", "total": 130222, "harvested": "2022-01-21"}, {"year": "1983", "total": 117491, "harvested": "2022-01-21"}, {"year": "1984", "total": 118615, "harvested": "2022-01-21"}, {"year": "1985", "total": 128586, "harvested": "2022-01-21"}, {"year": "1986", "total": 128312, "harvested": "2022-01-21"}, {"year": "1987", "total": 127591, "harvested": "2022-01-21"}, {"year": "1988", "total": 136944, "harvested": "2022-01-21"}, {"year": "1989", "total": 140206, "harvested": "2022-01-21"}, {"year": "1990", "total": 132596, "harvested": "2022-01-21"}, {"year": "1991", "total": 131729, "harvested": "2022-01-21"}, {"year": "1992", "total": 137422, "harvested": "2022-01-21"}, {"year": "1993", "total": 137978, "harvested": "2022-01-21"}, {"year": "1994", "total": 133420, "harvested": "2022-01-21"}, {"year": "1995", "total": 132425, "harvested": "2022-01-21"}, {"year": "1996", "total": 47101, "harvested": "2022-01-21"}, {"year": "1997", "total": 49822, "harvested": "2022-01-21"}, {"year": "1998", "total": 56947, "harvested": "2022-01-21"}, {"year": "1999", "total": 67005, "harvested": "2022-01-21"}, {"year": "2000", "total": 44770, "harvested": "2022-01-21"}, {"year": "2001", "total": 42081, "harvested": "2022-01-21"}, {"year": "2002", "total": 42631, "harvested": "2022-01-21"}, {"year": "2003", "total": 24075, "harvested": "2022-01-21"}, {"year": "2004", "total": 22072, "harvested": "2022-01-21"}, {"year": "2005", "total": 18071, "harvested": "2022-01-21"}, {"year": "2006", "total": 17708, "harvested": "2022-01-21"}, {"year": "2007", "total": 18719, "harvested": "2022-01-21"}, {"year": "2008", "total": 17059, "harvested": "2022-01-21"}, {"year": "2009", "total": 5762, "harvested": "2022-01-21"}, {"year": "2010", "total": 5794, "harvested": "2022-01-21"}, {"year": "2011", "total": 5386, "harvested": "2022-01-21"}, {"year": "2012", "total": 4832, "harvested": "2022-01-21"}, {"year": "2013", "total": 4904, "harvested": "2022-01-21"}, {"year": "2014", "total": 4718, "harvested": "2022-01-21"}, {"year": "2015", "total": 4819, "harvested": "2022-01-21"}, {"year": "2016", "total": 1422, "harvested": "2022-01-21"}, {"year": "2017", "total": 1094, "harvested": "2022-01-21"}, {"year": "2018", "total": 1100, "harvested": "2022-01-21"}, {"year": "2019", "total": 1153, "harvested": "2022-01-21"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</details>
+</div>
+<figure class="align-default" id="id1">
+<div class="output text_html">
+<style>
+  #altair-viz-f0013fb6c5cf48adb7469f9821a6a713.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-f0013fb6c5cf48adb7469f9821a6a713.vega-embed details,
+  #altair-viz-f0013fb6c5cf48adb7469f9821a6a713.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-f0013fb6c5cf48adb7469f9821a6a713"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-f0013fb6c5cf48adb7469f9821a6a713") {
+      outputDiv = document.getElementById("altair-viz-f0013fb6c5cf48adb7469f9821a6a713");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-2098a6059144b7ec5661cde7f38b60c9"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "harvested", "type": "nominal"}, "order": {"field": "harvested", "sort": "ascending", "type": "nominal"}, "tooltip": [{"field": "year", "format": "%Y", "type": "temporal"}, {"field": "total", "format": ",", "type": "quantitative"}, {"field": "harvested", "type": "nominal"}], "x": {"axis": {"labelOverlap": true}, "field": "year", "type": "temporal"}, "y": {"field": "total", "title": "number of articles", "type": "quantitative"}}, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-2098a6059144b7ec5661cde7f38b60c9": [{"year": "1803", "total": 526, "harvested": "2011-04-12"}, {"year": "1804", "total": 619, "harvested": "2011-04-12"}, {"year": "1805", "total": 430, "harvested": "2011-04-12"}, {"year": "1806", "total": 367, "harvested": "2011-04-12"}, {"year": "1807", "total": 160, "harvested": "2011-04-12"}, {"year": "1808", "total": 155, "harvested": "2011-04-12"}, {"year": "1809", "total": 237, "harvested": "2011-04-12"}, {"year": "1810", "total": 269, "harvested": "2011-04-12"}, {"year": "1811", "total": 228, "harvested": "2011-04-12"}, {"year": "1812", "total": 208, "harvested": "2011-04-12"}, {"year": "1813", "total": 234, "harvested": "2011-04-12"}, {"year": "1814", "total": 201, "harvested": "2011-04-12"}, {"year": "1815", "total": 226, "harvested": "2011-04-12"}, {"year": "1816", "total": 644, "harvested": "2011-04-12"}, {"year": "1817", "total": 1068, "harvested": "2011-04-12"}, {"year": "1818", "total": 1249, "harvested": "2011-04-12"}, {"year": "1819", "total": 1152, "harvested": "2011-04-12"}, {"year": "1820", "total": 1275, "harvested": "2011-04-12"}, {"year": "1821", "total": 1007, "harvested": "2011-04-12"}, {"year": "1822", "total": 1033, "harvested": "2011-04-12"}, {"year": "1823", "total": 1161, "harvested": "2011-04-12"}, {"year": "1824", "total": 1648, "harvested": "2011-04-12"}, {"year": "1825", "total": 3175, "harvested": "2011-04-12"}, {"year": "1826", "total": 5201, "harvested": "2011-04-12"}, {"year": "1827", "total": 6162, "harvested": "2011-04-12"}, {"year": "1828", "total": 5566, "harvested": "2011-04-12"}, {"year": "1829", "total": 7395, "harvested": "2011-04-12"}, {"year": "1830", "total": 6651, "harvested": "2011-04-12"}, {"year": "1831", "total": 7746, "harvested": "2011-04-12"}, {"year": "1832", "total": 9542, "harvested": "2011-04-12"}, {"year": "1833", "total": 10188, "harvested": "2011-04-12"}, {"year": "1834", "total": 11922, "harvested": "2011-04-12"}, {"year": "1835", "total": 13529, "harvested": "2011-04-12"}, {"year": "1836", "total": 14347, "harvested": "2011-04-12"}, {"year": "1837", "total": 15297, "harvested": "2011-04-12"}, {"year": "1838", "total": 16226, "harvested": "2011-04-12"}, {"year": "1839", "total": 19062, "harvested": "2011-04-12"}, {"year": "1840", "total": 23997, "harvested": "2011-04-12"}, {"year": "1841", "total": 24922, "harvested": "2011-04-12"}, {"year": "1842", "total": 23962, "harvested": "2011-04-12"}, {"year": "1843", "total": 26346, "harvested": "2011-04-12"}, {"year": "1844", "total": 29256, "harvested": "2011-04-12"}, {"year": "1845", "total": 33004, "harvested": "2011-04-12"}, {"year": "1846", "total": 31464, "harvested": "2011-04-12"}, {"year": "1847", "total": 35613, "harvested": "2011-04-12"}, {"year": "1848", "total": 32222, "harvested": "2011-04-12"}, {"year": "1849", "total": 31940, "harvested": "2011-04-12"}, {"year": "1850", "total": 38428, "harvested": "2011-04-12"}, {"year": "1851", "total": 51180, "harvested": "2011-04-12"}, {"year": "1852", "total": 50346, "harvested": "2011-04-12"}, {"year": "1853", "total": 56376, "harvested": "2011-04-12"}, {"year": "1854", "total": 68014, "harvested": "2011-04-12"}, {"year": "1855", "total": 86651, "harvested": "2011-04-12"}, {"year": "1856", "total": 90067, "harvested": "2011-04-12"}, {"year": "1857", "total": 85773, "harvested": "2011-04-12"}, {"year": "1858", "total": 82438, "harvested": "2011-04-12"}, {"year": "1859", "total": 93920, "harvested": "2011-04-12"}, {"year": "1860", "total": 103148, "harvested": "2011-04-12"}, {"year": "1861", "total": 111878, "harvested": "2011-04-12"}, {"year": "1862", "total": 110563, "harvested": "2011-04-12"}, {"year": "1863", "total": 112997, "harvested": "2011-04-12"}, {"year": "1864", "total": 109900, "harvested": "2011-04-12"}, {"year": "1865", "total": 109314, "harvested": "2011-04-12"}, {"year": "1866", "total": 113425, "harvested": "2011-04-12"}, {"year": "1867", "total": 115903, "harvested": "2011-04-12"}, {"year": "1868", "total": 115563, "harvested": "2011-04-12"}, {"year": "1869", "total": 112000, "harvested": "2011-04-12"}, {"year": "1870", "total": 116364, "harvested": "2011-04-12"}, {"year": "1871", "total": 114021, "harvested": "2011-04-12"}, {"year": "1872", "total": 116830, "harvested": "2011-04-12"}, {"year": "1873", "total": 125620, "harvested": "2011-04-12"}, {"year": "1874", "total": 131676, "harvested": "2011-04-12"}, {"year": "1875", "total": 129996, "harvested": "2011-04-12"}, {"year": "1876", "total": 128129, "harvested": "2011-04-12"}, {"year": "1877", "total": 129860, "harvested": "2011-04-12"}, {"year": "1878", "total": 155459, "harvested": "2011-04-12"}, {"year": "1879", "total": 163896, "harvested": "2011-04-12"}, {"year": "1880", "total": 160516, "harvested": "2011-04-12"}, {"year": "1881", "total": 169269, "harvested": "2011-04-12"}, {"year": "1882", "total": 190956, "harvested": "2011-04-12"}, {"year": "1883", "total": 202498, "harvested": "2011-04-12"}, {"year": "1884", "total": 202273, "harvested": "2011-04-12"}, {"year": "1885", "total": 229163, "harvested": "2011-04-12"}, {"year": "1886", "total": 254079, "harvested": "2011-04-12"}, {"year": "1887", "total": 263513, "harvested": "2011-04-12"}, {"year": "1888", "total": 266780, "harvested": "2011-04-12"}, {"year": "1889", "total": 301193, "harvested": "2011-04-12"}, {"year": "1890", "total": 308556, "harvested": "2011-04-12"}, {"year": "1891", "total": 325815, "harvested": "2011-04-12"}, {"year": "1892", "total": 337244, "harvested": "2011-04-12"}, {"year": "1893", "total": 342571, "harvested": "2011-04-12"}, {"year": "1894", "total": 331666, "harvested": "2011-04-12"}, {"year": "1895", "total": 354437, "harvested": "2011-04-12"}, {"year": "1896", "total": 355734, "harvested": "2011-04-12"}, {"year": "1897", "total": 401583, "harvested": "2011-04-12"}, {"year": "1898", "total": 424928, "harvested": "2011-04-12"}, {"year": "1899", "total": 438446, "harvested": "2011-04-12"}, {"year": "1900", "total": 501918, "harvested": "2011-04-12"}, {"year": "1901", "total": 510347, "harvested": "2011-04-12"}, {"year": "1902", "total": 483019, "harvested": "2011-04-12"}, {"year": "1903", "total": 552381, "harvested": "2011-04-12"}, {"year": "1904", "total": 540591, "harvested": "2011-04-12"}, {"year": "1905", "total": 587430, "harvested": "2011-04-12"}, {"year": "1906", "total": 618564, "harvested": "2011-04-12"}, {"year": "1907", "total": 630540, "harvested": "2011-04-12"}, {"year": "1908", "total": 677907, "harvested": "2011-04-12"}, {"year": "1909", "total": 653099, "harvested": "2011-04-12"}, {"year": "1910", "total": 717452, "harvested": "2011-04-12"}, {"year": "1911", "total": 713994, "harvested": "2011-04-12"}, {"year": "1912", "total": 784980, "harvested": "2011-04-12"}, {"year": "1913", "total": 729652, "harvested": "2011-04-12"}, {"year": "1914", "total": 735979, "harvested": "2011-04-12"}, {"year": "1915", "total": 746671, "harvested": "2011-04-12"}, {"year": "1916", "total": 661232, "harvested": "2011-04-12"}, {"year": "1917", "total": 625631, "harvested": "2011-04-12"}, {"year": "1918", "total": 593258, "harvested": "2011-04-12"}, {"year": "1919", "total": 627045, "harvested": "2011-04-12"}, {"year": "1920", "total": 518700, "harvested": "2011-04-12"}, {"year": "1921", "total": 523745, "harvested": "2011-04-12"}, {"year": "1922", "total": 577202, "harvested": "2011-04-12"}, {"year": "1923", "total": 727563, "harvested": "2011-04-12"}, {"year": "1924", "total": 850476, "harvested": "2011-04-12"}, {"year": "1925", "total": 826068, "harvested": "2011-04-12"}, {"year": "1926", "total": 855399, "harvested": "2011-04-12"}, {"year": "1927", "total": 916092, "harvested": "2011-04-12"}, {"year": "1928", "total": 1007417, "harvested": "2011-04-12"}, {"year": "1929", "total": 1041220, "harvested": "2011-04-12"}, {"year": "1930", "total": 960811, "harvested": "2011-04-12"}, {"year": "1931", "total": 872700, "harvested": "2011-04-12"}, {"year": "1932", "total": 872772, "harvested": "2011-04-12"}, {"year": "1933", "total": 893540, "harvested": "2011-04-12"}, {"year": "1934", "total": 990929, "harvested": "2011-04-12"}, {"year": "1935", "total": 973706, "harvested": "2011-04-12"}, {"year": "1936", "total": 951758, "harvested": "2011-04-12"}, {"year": "1937", "total": 1014777, "harvested": "2011-04-12"}, {"year": "1938", "total": 1019574, "harvested": "2011-04-12"}, {"year": "1939", "total": 919081, "harvested": "2011-04-12"}, {"year": "1940", "total": 699847, "harvested": "2011-04-12"}, {"year": "1941", "total": 669937, "harvested": "2011-04-12"}, {"year": "1942", "total": 486675, "harvested": "2011-04-12"}, {"year": "1943", "total": 416819, "harvested": "2011-04-12"}, {"year": "1944", "total": 456142, "harvested": "2011-04-12"}, {"year": "1945", "total": 508031, "harvested": "2011-04-12"}, {"year": "1946", "total": 572718, "harvested": "2011-04-12"}, {"year": "1947", "total": 654681, "harvested": "2011-04-12"}, {"year": "1948", "total": 545258, "harvested": "2011-04-12"}, {"year": "1949", "total": 664742, "harvested": "2011-04-12"}, {"year": "1950", "total": 686944, "harvested": "2011-04-12"}, {"year": "1951", "total": 637851, "harvested": "2011-04-12"}, {"year": "1952", "total": 652022, "harvested": "2011-04-12"}, {"year": "1953", "total": 699821, "harvested": "2011-04-12"}, {"year": "1954", "total": 675151, "harvested": "2011-04-12"}, {"year": "1803", "total": 526, "harvested": "2022-01-21"}, {"year": "1804", "total": 619, "harvested": "2022-01-21"}, {"year": "1805", "total": 430, "harvested": "2022-01-21"}, {"year": "1806", "total": 367, "harvested": "2022-01-21"}, {"year": "1807", "total": 134, "harvested": "2022-01-21"}, {"year": "1808", "total": 155, "harvested": "2022-01-21"}, {"year": "1809", "total": 237, "harvested": "2022-01-21"}, {"year": "1810", "total": 274, "harvested": "2022-01-21"}, {"year": "1811", "total": 228, "harvested": "2022-01-21"}, {"year": "1812", "total": 215, "harvested": "2022-01-21"}, {"year": "1813", "total": 234, "harvested": "2022-01-21"}, {"year": "1814", "total": 239, "harvested": "2022-01-21"}, {"year": "1815", "total": 226, "harvested": "2022-01-21"}, {"year": "1816", "total": 644, "harvested": "2022-01-21"}, {"year": "1817", "total": 1068, "harvested": "2022-01-21"}, {"year": "1818", "total": 1249, "harvested": "2022-01-21"}, {"year": "1819", "total": 1152, "harvested": "2022-01-21"}, {"year": "1820", "total": 1275, "harvested": "2022-01-21"}, {"year": "1821", "total": 1005, "harvested": "2022-01-21"}, {"year": "1822", "total": 1033, "harvested": "2022-01-21"}, {"year": "1823", "total": 1156, "harvested": "2022-01-21"}, {"year": "1824", "total": 1646, "harvested": "2022-01-21"}, {"year": "1825", "total": 3366, "harvested": "2022-01-21"}, {"year": "1826", "total": 5201, "harvested": "2022-01-21"}, {"year": "1827", "total": 6618, "harvested": "2022-01-21"}, {"year": "1828", "total": 7335, "harvested": "2022-01-21"}, {"year": "1829", "total": 8935, "harvested": "2022-01-21"}, {"year": "1830", "total": 8977, "harvested": "2022-01-21"}, {"year": "1831", "total": 10989, "harvested": "2022-01-21"}, {"year": "1832", "total": 14814, "harvested": "2022-01-21"}, {"year": "1833", "total": 15622, "harvested": "2022-01-21"}, {"year": "1834", "total": 18704, "harvested": "2022-01-21"}, {"year": "1835", "total": 20389, "harvested": "2022-01-21"}, {"year": "1836", "total": 20553, "harvested": "2022-01-21"}, {"year": "1837", "total": 21805, "harvested": "2022-01-21"}, {"year": "1838", "total": 25911, "harvested": "2022-01-21"}, {"year": "1839", "total": 32876, "harvested": "2022-01-21"}, {"year": "1840", "total": 42411, "harvested": "2022-01-21"}, {"year": "1841", "total": 46377, "harvested": "2022-01-21"}, {"year": "1842", "total": 47934, "harvested": "2022-01-21"}, {"year": "1843", "total": 49913, "harvested": "2022-01-21"}, {"year": "1844", "total": 54331, "harvested": "2022-01-21"}, {"year": "1845", "total": 63389, "harvested": "2022-01-21"}, {"year": "1846", "total": 62153, "harvested": "2022-01-21"}, {"year": "1847", "total": 62767, "harvested": "2022-01-21"}, {"year": "1848", "total": 63463, "harvested": "2022-01-21"}, {"year": "1849", "total": 62794, "harvested": "2022-01-21"}, {"year": "1850", "total": 81624, "harvested": "2022-01-21"}, {"year": "1851", "total": 96566, "harvested": "2022-01-21"}, {"year": "1852", "total": 79960, "harvested": "2022-01-21"}, {"year": "1853", "total": 96033, "harvested": "2022-01-21"}, {"year": "1854", "total": 118883, "harvested": "2022-01-21"}, {"year": "1855", "total": 159947, "harvested": "2022-01-21"}, {"year": "1856", "total": 168695, "harvested": "2022-01-21"}, {"year": "1857", "total": 175343, "harvested": "2022-01-21"}, {"year": "1858", "total": 178765, "harvested": "2022-01-21"}, {"year": "1859", "total": 202996, "harvested": "2022-01-21"}, {"year": "1860", "total": 214554, "harvested": "2022-01-21"}, {"year": "1861", "total": 237976, "harvested": "2022-01-21"}, {"year": "1862", "total": 244694, "harvested": "2022-01-21"}, {"year": "1863", "total": 251706, "harvested": "2022-01-21"}, {"year": "1864", "total": 264282, "harvested": "2022-01-21"}, {"year": "1865", "total": 283302, "harvested": "2022-01-21"}, {"year": "1866", "total": 289342, "harvested": "2022-01-21"}, {"year": "1867", "total": 297136, "harvested": "2022-01-21"}, {"year": "1868", "total": 304914, "harvested": "2022-01-21"}, {"year": "1869", "total": 327192, "harvested": "2022-01-21"}, {"year": "1870", "total": 373286, "harvested": "2022-01-21"}, {"year": "1871", "total": 359781, "harvested": "2022-01-21"}, {"year": "1872", "total": 383784, "harvested": "2022-01-21"}, {"year": "1873", "total": 420951, "harvested": "2022-01-21"}, {"year": "1874", "total": 436788, "harvested": "2022-01-21"}, {"year": "1875", "total": 466891, "harvested": "2022-01-21"}, {"year": "1876", "total": 477911, "harvested": "2022-01-21"}, {"year": "1877", "total": 499944, "harvested": "2022-01-21"}, {"year": "1878", "total": 569203, "harvested": "2022-01-21"}, {"year": "1879", "total": 607530, "harvested": "2022-01-21"}, {"year": "1880", "total": 624376, "harvested": "2022-01-21"}, {"year": "1881", "total": 667930, "harvested": "2022-01-21"}, {"year": "1882", "total": 745914, "harvested": "2022-01-21"}, {"year": "1883", "total": 778865, "harvested": "2022-01-21"}, {"year": "1884", "total": 858553, "harvested": "2022-01-21"}, {"year": "1885", "total": 911515, "harvested": "2022-01-21"}, {"year": "1886", "total": 994828, "harvested": "2022-01-21"}, {"year": "1887", "total": 1043492, "harvested": "2022-01-21"}, {"year": "1888", "total": 1162025, "harvested": "2022-01-21"}, {"year": "1889", "total": 1252262, "harvested": "2022-01-21"}, {"year": "1890", "total": 1357654, "harvested": "2022-01-21"}, {"year": "1891", "total": 1429274, "harvested": "2022-01-21"}, {"year": "1892", "total": 1486705, "harvested": "2022-01-21"}, {"year": "1893", "total": 1510849, "harvested": "2022-01-21"}, {"year": "1894", "total": 1560809, "harvested": "2022-01-21"}, {"year": "1895", "total": 1678554, "harvested": "2022-01-21"}, {"year": "1896", "total": 1798582, "harvested": "2022-01-21"}, {"year": "1897", "total": 1918088, "harvested": "2022-01-21"}, {"year": "1898", "total": 2141840, "harvested": "2022-01-21"}, {"year": "1899", "total": 2308829, "harvested": "2022-01-21"}, {"year": "1900", "total": 2539736, "harvested": "2022-01-21"}, {"year": "1901", "total": 2618191, "harvested": "2022-01-21"}, {"year": "1902", "total": 2674429, "harvested": "2022-01-21"}, {"year": "1903", "total": 2713889, "harvested": "2022-01-21"}, {"year": "1904", "total": 2878677, "harvested": "2022-01-21"}, {"year": "1905", "total": 3009076, "harvested": "2022-01-21"}, {"year": "1906", "total": 3057500, "harvested": "2022-01-21"}, {"year": "1907", "total": 3205575, "harvested": "2022-01-21"}, {"year": "1908", "total": 3314151, "harvested": "2022-01-21"}, {"year": "1909", "total": 3379982, "harvested": "2022-01-21"}, {"year": "1910", "total": 3613826, "harvested": "2022-01-21"}, {"year": "1911", "total": 3740413, "harvested": "2022-01-21"}, {"year": "1912", "total": 3890753, "harvested": "2022-01-21"}, {"year": "1913", "total": 3957073, "harvested": "2022-01-21"}, {"year": "1914", "total": 4654167, "harvested": "2022-01-21"}, {"year": "1915", "total": 4751447, "harvested": "2022-01-21"}, {"year": "1916", "total": 4346277, "harvested": "2022-01-21"}, {"year": "1917", "total": 4239223, "harvested": "2022-01-21"}, {"year": "1918", "total": 4016436, "harvested": "2022-01-21"}, {"year": "1919", "total": 3486517, "harvested": "2022-01-21"}, {"year": "1920", "total": 3237978, "harvested": "2022-01-21"}, {"year": "1921", "total": 3435873, "harvested": "2022-01-21"}, {"year": "1922", "total": 3562135, "harvested": "2022-01-21"}, {"year": "1923", "total": 3828641, "harvested": "2022-01-21"}, {"year": "1924", "total": 4125328, "harvested": "2022-01-21"}, {"year": "1925", "total": 4086958, "harvested": "2022-01-21"}, {"year": "1926", "total": 4069533, "harvested": "2022-01-21"}, {"year": "1927", "total": 4126770, "harvested": "2022-01-21"}, {"year": "1928", "total": 4234586, "harvested": "2022-01-21"}, {"year": "1929", "total": 4460722, "harvested": "2022-01-21"}, {"year": "1930", "total": 4315190, "harvested": "2022-01-21"}, {"year": "1931", "total": 3941724, "harvested": "2022-01-21"}, {"year": "1932", "total": 3890710, "harvested": "2022-01-21"}, {"year": "1933", "total": 4069854, "harvested": "2022-01-21"}, {"year": "1934", "total": 4183589, "harvested": "2022-01-21"}, {"year": "1935", "total": 4271382, "harvested": "2022-01-21"}, {"year": "1936", "total": 4377987, "harvested": "2022-01-21"}, {"year": "1937", "total": 4371925, "harvested": "2022-01-21"}, {"year": "1938", "total": 4359675, "harvested": "2022-01-21"}, {"year": "1939", "total": 4140014, "harvested": "2022-01-21"}, {"year": "1940", "total": 3497071, "harvested": "2022-01-21"}, {"year": "1941", "total": 3082401, "harvested": "2022-01-21"}, {"year": "1942", "total": 2470102, "harvested": "2022-01-21"}, {"year": "1943", "total": 2191842, "harvested": "2022-01-21"}, {"year": "1944", "total": 2233365, "harvested": "2022-01-21"}, {"year": "1945", "total": 2412554, "harvested": "2022-01-21"}, {"year": "1946", "total": 2748052, "harvested": "2022-01-21"}, {"year": "1947", "total": 2851317, "harvested": "2022-01-21"}, {"year": "1948", "total": 2610229, "harvested": "2022-01-21"}, {"year": "1949", "total": 2867051, "harvested": "2022-01-21"}, {"year": "1950", "total": 2812464, "harvested": "2022-01-21"}, {"year": "1951", "total": 2554766, "harvested": "2022-01-21"}, {"year": "1952", "total": 2608800, "harvested": "2022-01-21"}, {"year": "1953", "total": 2755677, "harvested": "2022-01-21"}, {"year": "1954", "total": 2787339, "harvested": "2022-01-21"}, {"year": "1955", "total": 279909, "harvested": "2022-01-21"}, {"year": "1956", "total": 199416, "harvested": "2022-01-21"}, {"year": "1957", "total": 126201, "harvested": "2022-01-21"}, {"year": "1958", "total": 126115, "harvested": "2022-01-21"}, {"year": "1959", "total": 121259, "harvested": "2022-01-21"}, {"year": "1960", "total": 115050, "harvested": "2022-01-21"}, {"year": "1961", "total": 109239, "harvested": "2022-01-21"}, {"year": "1962", "total": 108575, "harvested": "2022-01-21"}, {"year": "1963", "total": 118702, "harvested": "2022-01-21"}, {"year": "1964", "total": 120392, "harvested": "2022-01-21"}, {"year": "1965", "total": 126432, "harvested": "2022-01-21"}, {"year": "1966", "total": 123452, "harvested": "2022-01-21"}, {"year": "1967", "total": 118503, "harvested": "2022-01-21"}, {"year": "1968", "total": 124919, "harvested": "2022-01-21"}, {"year": "1969", "total": 151689, "harvested": "2022-01-21"}, {"year": "1970", "total": 166785, "harvested": "2022-01-21"}, {"year": "1971", "total": 165077, "harvested": "2022-01-21"}, {"year": "1972", "total": 164687, "harvested": "2022-01-21"}, {"year": "1973", "total": 161814, "harvested": "2022-01-21"}, {"year": "1974", "total": 159025, "harvested": "2022-01-21"}, {"year": "1975", "total": 148204, "harvested": "2022-01-21"}, {"year": "1976", "total": 148816, "harvested": "2022-01-21"}, {"year": "1977", "total": 151194, "harvested": "2022-01-21"}, {"year": "1978", "total": 159199, "harvested": "2022-01-21"}, {"year": "1979", "total": 167101, "harvested": "2022-01-21"}, {"year": "1980", "total": 165664, "harvested": "2022-01-21"}, {"year": "1981", "total": 142781, "harvested": "2022-01-21"}, {"year": "1982", "total": 130222, "harvested": "2022-01-21"}, {"year": "1983", "total": 117491, "harvested": "2022-01-21"}, {"year": "1984", "total": 118615, "harvested": "2022-01-21"}, {"year": "1985", "total": 128586, "harvested": "2022-01-21"}, {"year": "1986", "total": 128312, "harvested": "2022-01-21"}, {"year": "1987", "total": 127591, "harvested": "2022-01-21"}, {"year": "1988", "total": 136944, "harvested": "2022-01-21"}, {"year": "1989", "total": 140206, "harvested": "2022-01-21"}, {"year": "1990", "total": 132596, "harvested": "2022-01-21"}, {"year": "1991", "total": 131729, "harvested": "2022-01-21"}, {"year": "1992", "total": 137422, "harvested": "2022-01-21"}, {"year": "1993", "total": 137978, "harvested": "2022-01-21"}, {"year": "1994", "total": 133420, "harvested": "2022-01-21"}, {"year": "1995", "total": 132425, "harvested": "2022-01-21"}, {"year": "1996", "total": 47101, "harvested": "2022-01-21"}, {"year": "1997", "total": 49822, "harvested": "2022-01-21"}, {"year": "1998", "total": 56947, "harvested": "2022-01-21"}, {"year": "1999", "total": 67005, "harvested": "2022-01-21"}, {"year": "2000", "total": 44770, "harvested": "2022-01-21"}, {"year": "2001", "total": 42081, "harvested": "2022-01-21"}, {"year": "2002", "total": 42631, "harvested": "2022-01-21"}, {"year": "2003", "total": 24075, "harvested": "2022-01-21"}, {"year": "2004", "total": 22072, "harvested": "2022-01-21"}, {"year": "2005", "total": 18071, "harvested": "2022-01-21"}, {"year": "2006", "total": 17708, "harvested": "2022-01-21"}, {"year": "2007", "total": 18719, "harvested": "2022-01-21"}, {"year": "2008", "total": 17059, "harvested": "2022-01-21"}, {"year": "2009", "total": 5762, "harvested": "2022-01-21"}, {"year": "2010", "total": 5794, "harvested": "2022-01-21"}, {"year": "2011", "total": 5386, "harvested": "2022-01-21"}, {"year": "2012", "total": 4832, "harvested": "2022-01-21"}, {"year": "2013", "total": 4904, "harvested": "2022-01-21"}, {"year": "2014", "total": 4718, "harvested": "2022-01-21"}, {"year": "2015", "total": 4819, "harvested": "2022-01-21"}, {"year": "2016", "total": 1422, "harvested": "2022-01-21"}, {"year": "2017", "total": 1094, "harvested": "2022-01-21"}, {"year": "2018", "total": 1100, "harvested": "2022-01-21"}, {"year": "2019", "total": 1153, "harvested": "2022-01-21"}]}}, {"mode": "vega-lite"});
+</script></div><figcaption>
+<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Number of newspapers articles in Trove by publication year, showing the change from 2011 to 2022</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The focus on WWI-era newspapers didn’t start until after 2011, but the impact was clearly evident by 2022.</p>
+<p>It’s interesting to think about research using the newspapers that might have taken place between 2011 and 2022. How would a project started in 2011 differ to one initiated a decade later? But it’s not just a matter of the size of the corpus, it’s also important to consider the composition. Which newspapers were added and when? While this information isn’t directly available from Trove, by <a class="reference external" href="https://glam-workbench.net/trove-newspapers/historical-data-newspaper-titles/">harvesting data from web archive captures</a>, I’ve managed to assemble a <a class="reference external" href="https://gist.github.com/wragge/7d80507c3e7957e271c572b8f664031a">list of titles and the approximate date they were added</a>.</p>
+<p>To try and capture a more complete record of changes in the Trove newspaper corpus, I’ve set up an automated process to <a class="reference external" href="https://github.com/wragge/trove-newspaper-totals">harvest data every week</a> and display the results through the <a class="reference external" href="https://wragge.github.io/trove-newspaper-totals/">Trove Newspapers Data Dashboard</a>. It includes information on the number of articles, distribution by state and category, and additions to available titles.</p>
+<figure class="align-default" id="trove-data-dashboard">
+<a class="reference internal image-reference" href="../_images/trove-data-dashboard.png"><img alt="../_images/trove-data-dashboard.png" src="../_images/trove-data-dashboard.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Example of the data available from the Trove Newspaper Data Dashboard</span><a class="headerlink" href="#trove-data-dashboard" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="where-do-the-newspapers-come-from">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">1.3. </span>Where do the newspapers come from?</a><a class="headerlink" href="#where-do-the-newspapers-come-from" title="Permalink to this heading">#</a></h2>
+<p>Trove contains a number of different types of newspapers – as well as the familiar metropolitan dailies, there’s rural and regional newspapers from around Australia, political and religious newspapers, as well as community newspapers in a variety of languages.</p>
+<p><a class="reference external" href="https://troveplaces.herokuapp.com/all/">Trove Places</a> is a simple web app that lets you explore the geographic distribution of Trove’s newspapers by mapping places of publication and distribution.</p>
+<figure class="align-default" id="trove-places">
+<a class="reference internal image-reference" href="../_images/trove-places.png"><img alt="../_images/trove-places.png" src="../_images/trove-places.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Map from <a class="reference external" href="https://troveplaces.herokuapp.com/all/">Trove Places</a> showing the geographic distribution of Trove newspapers</span><a class="headerlink" href="#trove-places" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can also use Trove’s <code class="docutils literal notranslate"><span class="pre">state</span></code> facet to examine the number of titles published in each ‘state’ (the list of states also includes entries for ‘National’ and ‘International’).</p>
+<div class="cell tag_hide-cell tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/newspaper/titles&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">states</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;newspaper&quot;</span><span class="p">]:</span>
+    <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">states</span><span class="p">))</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">])</span>
+
+<span class="n">state_titles_chart</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;number of titles&quot;</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;state:N&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;state:N&quot;</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;state:N&quot;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">state_titles_chart</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<figure class="align-default" id="state-titles-chart">
+<div class="output text_html">
+<style>
+  #altair-viz-8aec3e39b36048448e62f6f5bae11700.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-8aec3e39b36048448e62f6f5bae11700.vega-embed details,
+  #altair-viz-8aec3e39b36048448e62f6f5bae11700.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-8aec3e39b36048448e62f6f5bae11700"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-8aec3e39b36048448e62f6f5bae11700") {
+      outputDiv = document.getElementById("altair-viz-8aec3e39b36048448e62f6f5bae11700");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-95cc76c312c9d52a0f9c6fb1fb8c7bb4"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "state", "type": "nominal"}, "tooltip": [{"field": "state", "type": "nominal"}, {"field": "total", "format": ",", "type": "quantitative"}], "x": {"field": "total", "title": "number of titles", "type": "quantitative"}, "y": {"field": "state", "type": "nominal"}}, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-95cc76c312c9d52a0f9c6fb1fb8c7bb4": [{"state": "ACT", "total": 8}, {"state": "International", "total": 13}, {"state": "National", "total": 9}, {"state": "New South Wales", "total": 551}, {"state": "Northern Territory", "total": 8}, {"state": "Queensland", "total": 107}, {"state": "South Australia", "total": 157}, {"state": "Tasmania", "total": 115}, {"state": "Victoria", "total": 440}, {"state": "Western Australia", "total": 382}]}}, {"mode": "vega-lite"});
+</script></div><figcaption>
+<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">Number of newspaper titles published in each <code class="docutils literal notranslate"><span class="pre">state</span></code></span><a class="headerlink" href="#state-titles-chart" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You might not be surprised to see that Trove contains more newspapers from NSW than any other state. But again, you should be careful about assuming that these differences are the product of Australia’s publishing history, rather than more recent decisions. For example, NSW invested large amounts of money in digitisation through the State Library’s ‘Digital Excellence’ program.</p>
+<div class="cell tag_hide-cell tag_remove-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;facet&quot;</span><span class="p">:</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;l-artType&quot;</span><span class="p">:</span> <span class="s2">&quot;newspaper&quot;</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
+<span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">facets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;search&quot;</span><span class="p">],</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;facets&quot;</span><span class="p">][</span><span class="s2">&quot;facet&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;term&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">facets</span><span class="p">)</span>
+
+<span class="n">state_articles_chart</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;number of articles&quot;</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;state:N&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;state:N&quot;</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;state:N&quot;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;total:Q&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">state_articles_chart</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Another approach is to look at the number of newspaper <em>articles</em> published in each state.</p>
+<figure class="align-default" id="state-articles-chart">
+<div class="output text_html">
+<style>
+  #altair-viz-1d678a677a2e404f8d5f1bb2cd67342c.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-1d678a677a2e404f8d5f1bb2cd67342c.vega-embed details,
+  #altair-viz-1d678a677a2e404f8d5f1bb2cd67342c.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-1d678a677a2e404f8d5f1bb2cd67342c"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-1d678a677a2e404f8d5f1bb2cd67342c") {
+      outputDiv = document.getElementById("altair-viz-1d678a677a2e404f8d5f1bb2cd67342c");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-e8b6cabc8f129497468500683b14e2db"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "state", "type": "nominal"}, "tooltip": [{"field": "state", "type": "nominal"}, {"field": "total", "format": ",", "type": "quantitative"}], "x": {"field": "total", "title": "number of articles", "type": "quantitative"}, "y": {"field": "state", "type": "nominal"}}, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-e8b6cabc8f129497468500683b14e2db": [{"state": "New South Wales", "total": 85322937}, {"state": "Victoria", "total": 45003638}, {"state": "Queensland", "total": 41131526}, {"state": "Western Australia", "total": 25369631}, {"state": "South Australia", "total": 25011982}, {"state": "Tasmania", "total": 15850246}, {"state": "ACT", "total": 3296997}, {"state": "International", "total": 854022}, {"state": "National", "total": 663996}, {"state": "Northern Territory", "total": 409433}]}}, {"mode": "vega-lite"});
+</script></div><figcaption>
+<p><span class="caption-number">Fig. 1.9 </span><span class="caption-text">Number of newspaper articles published in each <code class="docutils literal notranslate"><span class="pre">state</span></code></span><a class="headerlink" href="#state-articles-chart" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It’s interesting that the difference in the number of articles between NSW and Victoria is much greater than the difference in number of titles. It suggests that there might be underlying differences in the type of newspapers or their publication dates. This chart also indicates that about <strong>a third of all newspaper articles in Trove were published in NSW</strong>. How might that affect your research?</p>
+</section>
+<section id="whats-missing">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">1.4. </span>What’s missing?</a><a class="headerlink" href="#whats-missing" title="Permalink to this heading">#</a></h2>
+<p>It’s been estimated that around 7,700 print newspapers have been published in Australia. <span id="id2">[<a class="reference internal" href="../references.html#id23" title="Hilary Berthon and Wan Wong. Facing the future of Australian newspapers. In IFLA WLIC 2013. Singapore, July 2013.">Berthon and Wong, 2013</a>]</span> The number of titles in Trove currently stands at 1,790 – that’s a significant difference! This might again be due to digitisation funding priorities, or the fact that some short-lived newspapers just haven’t survived in any form.</p>
+<p>The Australian Newspaper Plan (ANPlan), a collaboration between National and State Libraries, worked to identity and preserve Australian newspapers, providing the foundation for Trove. ANPlan also compiled <a class="reference external" href="https://webarchive.nla.gov.au/awa/20180306065216/http://pandora.nla.gov.au/pan/161756/20180306-0810/www.nla.gov.au/australian-newspaper-plan/about/collect.html">useful lists of missing titles</a>. (Ironically, the ANPlan website has itself disappeared, but can be found in the Australian Web Archive.)</p>
+<p>Even when titles have been added to Trove, it’s not easy to tell if they are complete. Some newspapers published multiple editions throughout the day. Trove only includes a single edition, so it’s possible some content might be missing. A fascinating example of this is provided by Robert Phiddian, Stephanie Brookes, Lindsay Foyle and Richard Scully’s article ‘“For Gorsake, Stop Laughing: This is Serious!” — Australia’s Fragile Cartooning Archive’.<span id="id3">[<a class="reference internal" href="../references.html#id24" title="Robert Phiddian, Stephanie Brookes, Lindsay Foyle, and Richard Scully. “For Gorsake, Stop Laughing: This is Serious!”—Australia's Fragile Cartooning Archive. Journal of Australian Studies, 47(1):200–220, January 2023. doi:10.1080/14443058.2022.2124303.">Phiddian <em>et al.</em>, 2023</a>]</span> The article examines how Stan Cross’s famous ‘Stop Laughing’ cartoon, published in <em>Smith’s Weekly</em>, came to be missing from Trove, and explores some of the implications for researchers.</p>
+<p>Sometimes whole issues or individual pages can be missing from Trove. I’ve attempted to compile  data about missing pages, but inconsistencies in pagination make it difficult to be certain whether a page is actually missing or not. Here, for example, is <a class="reference external" href="https://trove.nla.gov.au/newspaper/page/28233310">an issue of the <em>The Albury Banner and Wodonga Express</em></a> which seems to have multiple pages missing, but is in fact just out of order.</p>
+<p>My rough data indicates about one in a thousand pages might be missing. What is perhaps more interesting is that these gaps are not evenly distributed. For example, the <em>WA Record</em> is missing about 5.5% of its pages, but most of these are pages two and three from issues published between 1897 and 1915. Similarly, the <em>King Island Times</em> is missing page five in most issues from the 1920s to the 1940s.</p>
+<p>There’s significant damage to the original copies of the <em>Queensland Times</em>, resulting in both missing and partial pages.</p>
+</section>
+<section id="ocr">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">1.5. </span>OCR</a><a class="headerlink" href="#ocr" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="not-all-in-english">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">1.6. </span>Not all in English</a><a class="headerlink" href="#not-all-in-english" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -518,6 +1148,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-newspaper-corpus-is-constructed">1.1. The newspaper corpus is constructed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-newspaper-corpus-has-a-history">1.2. The newspaper corpus has a history</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-the-newspapers-come-from">1.3. Where do the newspapers come from?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-missing">1.4. What’s missing?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ocr">1.5. OCR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#not-all-in-english">1.6. Not all in English</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
