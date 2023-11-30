@@ -13,6 +13,14 @@ kernelspec:
 
 # 'Simple' search options
 
+````{card} On this page
+Learn about constructing searches in Trove, including the use of indexes and facets. Includes a variety of tips and tricks, focusing on undocumented or potentially confusing aspects of the Trove search system.
+
+```{contents}
+:local:
+```
+````
+
 ```{code-cell} ipython3
 ---
 editable: true
@@ -39,14 +47,6 @@ tags: [remove-cell]
 YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 ```
 
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
-```
-
-+++
-
-<mark>==Include a note about `firstpageseq` and the fact that this will match pages from supplements as well. So supplements need to be filtered out after harvesting. Also note that not all issues start with page 1.==</mark>
-
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Simple search isn't!
@@ -59,6 +59,8 @@ See [Constructing a complex search query](https://trove.nla.gov.au/help/searchin
 - phrase searches
 - proximity searches (specify the number of words that can appear between search terms)
 - some of the available indexes
+
+It can also be useful to poke around the [Solr query parser documentation](https://solr.apache.org/guide/8_11/the-standard-query-parser.html). Solr is the indexing software used by Trove, so many of the query formats described will work in Trove. 
 
 Below you'll find information on some of the undocumented and potentially confusing aspects of Trove search.
 
@@ -269,6 +271,12 @@ Other indexes mentioned in [Trove's help documentation](https://trove.nla.gov.au
 
 A [more complete list of available indexes](https://trove.nla.gov.au/about/create-something/using-api/v3/api-technical-guide#list-of-supported-indexes) is provided in the API technical documentation.
 
+````{margin}
+```{seealso}
+Using the `series` index you can explore the way Trove resources are [grouped into collections](collections-ispartof).
+```
+````
+
 Undocumented indexes include:
 
 ```{list-table} Undocumented search indexes
@@ -302,7 +310,15 @@ You can use many of the standard search operators with index queries. For exampl
   - Search for a phrase in the `subject` index
 ```
 
+Unlike regular searches. stemming is not applied by default to index searches. If you want to use stemming, there are separate stemmed indexes for creator, subject, and title: `s_creator`, `s_subject`, and `s_title`.
+
 There's some overlap between indexes and facets. For example, there's a `format` index and a `format` facet that both let you limit your search by format. However, indexes and facets behave differently – facets expect exact matches, while indexes are much more flexible. Also, you can use the `NOT` operator with indexes to exclude particular values. For example, to exclude books from your search you could add `NOT format:Book` to your query. There's no way of doing this with facets.
+
+````{margin}
+```{seealso}
+The [Today's News Yesterday](https://glam-workbench.net/trove-newspapers/#todays-news-yesterday) notebook in the GLAM Workbench provides an example of using `date` and `firstpageseq` to get the front pages of newspapers.
+```
+````
 
 Some indexes such as `date` and `lastupdated` expect a range of dates. Depending on the index and the category, the date values are either years or complete ISO formatted datetimes. For example:
 
@@ -325,28 +341,129 @@ Some indexes such as `date` and `lastupdated` expect a range of dates. Depending
 
 For more information see [](date-searches)
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Using facets
 
-+++
+````{margin}
+```{seealso}
+The display of facets in the web interface isn't always accurate. In particular, it seems that [some `format` values are being hidden](distribution-categories-formats) to simplify the user experience.
+```
+````
 
-(search-indexes-firstpageseq)=
-## Searching for articles on a specific page
+Facets are a set of pre-determined values you can use to set limits on your search resuls. They allow you to take slices of your results.
 
-+++
+In the web interface, facets appear as a set of check boxes next to the list of results. You just click the box next to a facet value to apply it to your search. You can only select one facet value at a time.
 
-You can use the `firstpageseq` index to search for articles published on a particular page. For example, include `firstpageseq:1` in your query to find articles on page one. This works in both the web interface's simple search box and the `q` value of the API.
+```{figure} /images/web-facets.png
+:width: 200px
 
-[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A//api.trove.nla.gov.au/v3/result%3Fq%3Dfirstpageseq%3A1%26category%3Dnewspaper%26encoding%3Djson&comment=)
-
-```{warning}
-Some newspapers include supplements that have their own independent pagination. This means, for example, that an issue could contain multiple pages numbered `1`. The `firstpageseq` index searches *both* the main body of the newspaper *and* any supplements, so the results could include articles published on more than one page within an issue. There's no way of searching just in the main body or in supplements, but you can filter the results after you've retrieved them from the API. Article results include fields labelled `page` and `pageSequence`. The `page` field contains just numbers, but if the page comes from a supplement, the `pageSequence` field will include an `S` after the number. You can use this to keep or discard articles from supplements. [](get-page-identifier-from-search) provides an example of filtering results using the `pageSequence` value.
+Display of facets in the web interface
 ```
 
-+++
+Facets vary by category, but [a complete list](https://trove.nla.gov.au/about/create-something/using-api/v3/api-technical-guide#facetValues) is available in the API technical documentation.
 
-## Searching for articles within a given date range
+````{margin}
+```{seealso}
+See the Newspapers and Gazettes section of the guide for [more information on using the `title` facet](newspaper-titles-aggregate-facet).
+```
+````
+
+To use facets to limit the results of your API query, you add a `l-[FACET NAME]` parameter and set to your desired value. For example, to limit a search of newspaper articles to those published in the *Sydney Morning Herald*, you add the `l-title` parameter and set it to `35` (the title identifier for the SMH).
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3F%26category%3Dnewspaper%26encoding%3Djson%26l-title%3D35&comment=)
+
+When you use the API you can apply multiple facet values. However, facet fields don't all behave the same way when you select multiple values. In some cases, you'll get back the *sum* of the requested slices, but in most you'll only get the *intersection* of the slices.
+
+For example, if you use the `state` facet to request newspaper articles from both Victoria and NSW, you get back articles from either Victoria or NSW.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+def get_total_facets(facet="state", values=[]):
+    params = {
+        "category": "newspaper",
+        "encoding": "json",
+        "n": 0
+    }
+    params[f"l-{facet}"] = values
+    headers = {"X-API-KEY": YOUR_API_KEY}
+    response = response = requests.get(
+            "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+        )
+    data = response.json()
+    return data["category"][0]["records"]["total"]
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+glue("facet_state_vic", get_total_facets("state", ["Victoria"]))
+glue("facet_state_nsw", get_total_facets("state", ["New South Wales"]))
+glue("facet_state_both", get_total_facets("state", ["Victoria", "New South Wales"]))
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+```{list-table} Results for state facet combinations
+:header-rows: 1
+:name: table-state-facet
+* - Facet
+  - Results
+* - `l-state=Victoria`
+  - {glue:text}`facet_state_vic:,`
+* - `l-state=New South Wales`
+  - {glue:text}`facet_state_nsw:,`
+* - `l-state=Victoria&l-state=New South Wales`
+  - {glue:text}`facet_state_both:,`
+
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+On the other hand, if you use the `category` facet to request articles in the `Article` and `Advertising` category, you'll only get articles that are in both categories.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+glue("facet_cat_article", get_total_facets("category", ["Article"]))
+glue("facet_cat_advertising", get_total_facets("category", ["Advertising"]))
+glue("facet_cat_both", get_total_facets("category", ["Article", "Advertising"]))
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+:::{list-table} Results for `category` facet combinations
+:header-rows: 1
+:name: table-cat-facet
+* - Facet
+  - Results
+* - `l-category=Article`
+  - {glue:text}`facet_cat_article:,`
+* - `l-category=Advertising`
+  - {glue:text}`facet_cat_advertising:,`
+* - `l-category=Article&l-category=Advertising`
+  - {glue:text}`facet_cat_both:,`
+
+:::
+
+```{admonition} User added categories
+:class: warning
+
+You might be thinking that the final result above should be zero, as newspaper articles are assigned to a single category – how can an article be in both the `Article` and `Advertising` categories? The answer is that Trove users can add extra categories to articles, and these user-added values are included in the facet counts. There doesn't seem to be any way to exclude these values, so it's something else to keep in mind if you're working with the data!
+```
 
 ```{code-cell} ipython3
 

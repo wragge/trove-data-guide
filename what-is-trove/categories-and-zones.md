@@ -262,6 +262,7 @@ If you're interested in how these totals change over time, the [trove-zone-total
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(distribution-categories-formats)=
 ## Distribution of formats across categories
 
 As [noted above](what-ends-up-where), categories are linked to particular formats. To explore these links further, you can use the `format` facet to see which types of resources are grouped within each category. Currently there are 46 different format values used within Trove. Here's the number of different formats in each category according to the `format` facet.
