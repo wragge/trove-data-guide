@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Facets
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}

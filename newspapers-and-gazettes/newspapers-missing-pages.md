@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Missing newspaper pages and issues
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}

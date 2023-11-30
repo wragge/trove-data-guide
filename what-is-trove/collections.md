@@ -86,6 +86,7 @@ Once you have a NUC you can find records from that organisation by using either 
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3A%22ANU%3AIR%22%26category%3Dall%26l-availability%3Dy%26encoding%3Djson%26bulkHarvest%3Dtrue&comment=)
 
+(collections-ispartof)=
 ## `isPartOf` relationships
 
 Some parent/child relationships in Trove are documented using the Dublin Core `isPartOf` metadata field. This field can appear in records aggregated into Trove from other organisations, as well as in records of digitised resources created by the NLA itself. In the web interface, `isPartOf` values can be displayed under a variety of headings, including 'Appears in', 'Part of', and 'Series'. Here's an example linking an individual oral history interview to an oral history project:
@@ -189,7 +190,7 @@ params = {
 
 headers = {"X-API-KEY": YOUR_API_KEY}
 
-response = response = requests.get(
+response = requests.get(
         "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
     )
 data = response.json()
@@ -203,7 +204,7 @@ df[["display", "count"]][:10].style.hide()
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-To get a complete list of collections you'd need to harvest the `isPartOf` values from the full results set using the API. A method for doing this is described in [](/other-digitised-resources/how-to/harvest-digitised-resources). 
+To get a complete list of collections you'd need to harvest the `isPartOf` values from the full results set using the API. A method for doing this is described in [](/other-digitised-resources/how-to/harvest-digitised-resources).
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
