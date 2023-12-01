@@ -17,15 +17,19 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
+````{card} On this page
+
+```{contents}
+:local:
 ```
+````
 
 ```{code-cell} ipython3
 ---
 editable: true
 slideshow:
   slide_type: ''
+tags: [remove-cell]
 ---
 import os
 from datetime import datetime
@@ -192,7 +196,7 @@ Like other contributing organisations, the 'Trove Digital Library' has it's own 
 
 The results look ok, but the problem is that some digitised publications aren't included in the 'Trove Digital Library' – here's [some examples](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20nuc%3A%22ANL%3ADL%22%20NOT%20nuc%3A%22ANL%3ANED%22&l-availability=y%2Ff) from the *Books & Libraries* category. It's not clear why this is, and what a search for `nuc:"ANL:DL"` actually includes (or excludes).
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ### `fullTextInd:y`
 
@@ -217,7 +221,3 @@ If the text content of a resource is 'correctable' then you'd expect it to be an
 Adding `imageInd:thumbnail` to your query limits results to works that have a thumbnail image.
 
 Both `fullTextInd:y` and `has:correctabletext` filter records based on whether they have accessible text. But there are many digitised resources that either contain no text at all, or have no text that can be extracted by OCR. Adding `imageInd:thumbnail` to your search can help find these items. However, like `fullTextInd` this index is applied to aggregated collections as well as digitised resources, so your results can include all sorts of content, from book covers to pictures of politicians. There's also no guarantee that an item with a thumbnail will provide a larger image for download.
-
-```{code-cell} ipython3
-
-```

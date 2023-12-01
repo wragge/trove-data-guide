@@ -16,5 +16,10 @@ kernelspec:
 Example of a single advertising 'article' that spans multiple pages and includes many individual ads: https://trove.nla.gov.au/newspaper/article/101752752/10453662
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 
 ```

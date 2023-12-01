@@ -3,9 +3,9 @@
 
 format: jb-book
 root: home
-options:
-  numbered: 2
-  maxdepth: 3
+#options:
+#  numbered: 2
+#  maxdepth: 3
 parts:
   - chapters:
     - file: introduction/introduction
@@ -15,36 +15,36 @@ parts:
     chapters:
       - file: what-is-trove/trove-is
       - file: what-is-trove/categories-and-zones
-      - file: what-is-trove/metadata-and-digital-objects
+#      - file: what-is-trove/metadata-and-digital-objects
       - file: what-is-trove/works-and-versions
       - file: what-is-trove/collections
-      - file: what-is-trove/types-of-data
+#      - file: what-is-trove/types-of-data
       - file: what-is-trove/links-and-identifiers
 #      - file: what-is-trove/interfaces
   - caption: Understanding search
     numbered: 2
     maxdepth: 3
     chapters:
-      - file: understanding-search/understanding-search
+      - file: understanding-search/index
 #      - file: understanding-search/discovery-versus-analysis
       - file: understanding-search/simple-search-options
-      - file: understanding-search/facets
+#      - file: understanding-search/facets
       - file: understanding-search/date-searches
       - file: understanding-search/finding-digitised-content
   - caption: Accessing data
     numbered: 2
     maxdepth: 3
     chapters:
-      - file: accessing-data/data-access-options
+      - file: accessing-data/index
       - file: accessing-data/using-web-interface
       - file: accessing-data/trove-api-intro
-      - file: accessing-data/downloadable-datasets
+#      - file: accessing-data/downloadable-datasets
       - file: accessing-data/how-to/how-to
         sections:
           - file: accessing-data/how-to/download-higher-resolution-images
-          - file: accessing-data/how-to/use-bulk-export
-          - file: accessing-data/how-to/use-lists
-          - file: accessing-data/how-to/use-zotero
+#          - file: accessing-data/how-to/use-bulk-export
+#          - file: accessing-data/how-to/use-lists
+#          - file: accessing-data/how-to/use-zotero
           - file: accessing-data/how-to/harvest-complete-results
 #  - caption: Collection metadata
 #    numbered: 2
@@ -56,10 +56,10 @@ parts:
     maxdepth: 3
     chapters:
       - file: newspapers-and-gazettes/newspaper-corpus
-#     - file: newspapers-and-gazettes/newspapers-change-over-time
-#     - file: newspapers-and-gazettes/newspapers-missing-pages
+#      - file: newspapers-and-gazettes/newspapers-change-over-time
+#      - file: newspapers-and-gazettes/newspapers-missing-pages
 #      - file: newspapers-and-gazettes/newspapers-non-english
-      - file: newspapers-and-gazettes/newspapers-copyright
+#      - file: newspapers-and-gazettes/newspapers-copyright
 #      - file: newspapers-and-gazettes/newspapers-ocr
       - file: newspapers-and-gazettes/data/accessing-data
         title: Accessing data
@@ -83,7 +83,7 @@ parts:
     numbered: 2
     maxdepth: 3
     chapters:
-      - file: other-digitised-resources/digitised-resources
+      - file: other-digitised-resources/index
       - file: other-digitised-resources/books/intro
         title: Books
         sections:
@@ -106,6 +106,7 @@ parts:
       - file: other-digitised-resources/how-to/digitised-resources
         title: How to
         sections:
+#          - file: accessing-data/how-to/download-higher-resolution-images
           - file: other-digitised-resources/how-to/get-collection-items
           - file: other-digitised-resources/how-to/download-items-text-images
           - file: other-digitised-resources/how-to/extract-embedded-metadata

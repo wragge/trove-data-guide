@@ -82,6 +82,7 @@ The digitisation process creates an image of each newspaper page. These images c
 
 You can save and share links to pages. These links open the page in the Trove web interface and display a list of included articles. You can also find page links in the `trovePageUrl` field of an article's metadata. However, while you can view pages in the Trove web interface, you can't access information about individual pages using the API – they just don't exist as separate entities.
 
+(newspaper-data-pages-missing)=
 ### Pages are sometimes missing
 
 Pages that were missing when a newspaper was digitised are usually marked by placeholder images. These missing pages, like other pages, have unique identifiers. You can construct links to them, and even download the placeholder, but they're *not really there*. Because the pages haven't gone through the OCR process, no articles from them will show up in search results. This raises the question, how many newspaper and gazette pages are missing from Trove?
