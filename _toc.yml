@@ -75,7 +75,7 @@ parts:
       - file: newspapers-and-gazettes/how-to/newspapers-and-gazettes
         title: How to
         sections:
-          - file: newspapers-and-gazettes/how-to/querypic
+#          - file: newspapers-and-gazettes/how-to/querypic
           - file: newspapers-and-gazettes/how-to/get-newspaper-issue-article-pdfs
           - file: newspapers-and-gazettes/how-to/get-ocr-coordinates
           - file: newspapers-and-gazettes/how-to/create-newspaper-articles-dataset
@@ -83,8 +83,7 @@ parts:
     numbered: 2
     maxdepth: 3
     chapters:
-      - file: other-digitised-resources/index
-      - file: other-digitised-resources/books/intro
+      - file: other-digitised-resources/books/index
         title: Books
         sections:
           - file: other-digitised-resources/books/accessing-data
@@ -111,6 +110,7 @@ parts:
           - file: other-digitised-resources/how-to/download-items-text-images
           - file: other-digitised-resources/how-to/extract-embedded-metadata
           - file: other-digitised-resources/how-to/harvest-digitised-resources
+          - file: other-digitised-resources/how-to/scrape-metadata-audio-player
 #  - caption: Web archives
 #    numbered: 2
 #    maxdepth: 3

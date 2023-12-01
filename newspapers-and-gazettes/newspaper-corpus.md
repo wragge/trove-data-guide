@@ -66,6 +66,10 @@ slideshow:
   slide_type: ''
 tags: [hide-cell]
 ---
+import altair as alt
+import pandas as pd
+import requests
+
 params = {"category": "newspaper", "facet": "year", "encoding": "json", "n": 0}
 
 headers = {"X-API-KEY": YOUR_API_KEY}
@@ -84,13 +88,45 @@ for decade in range(180, 203):
     facets.sort(key=itemgetter("year"))
 
 df = pd.DataFrame(facets)
+
+chart_totals = (
+    alt.Chart(df)
+    .mark_line()
+    .encode(
+        x="year:T",
+        y=alt.Y("total:Q", title="total number of articles"),
+        tooltip=[
+            alt.Tooltip("year:T", format="%Y"),
+            alt.Tooltip("total:Q", format=","),
+        ],
+    )
+    .properties(width="container", padding=20)
+)
+
+display(chart_totals)
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+glue("chart_totals", chart_totals)
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-You might be wondering about the peak in 1915 – is it because of World War I? Well, yes and no. In the lead up to the centenary of WWI, it was decided to focus digitision dollars on newspapers from the WWI period. The peak reflects decisions about funding, not the impact of historical events. And what about the dramatic collapse in the number of articles after 1954 – did the arrival of television send newspapers into a cataclysmic decline? No, it's because of copyright. The NLA has chosen to manage some of the risks around copyright by limiting digitisation to newspaper issues published before 1955, unless there's a special arrangement with the publisher.
+```{glue:figure} chart_totals
+:width: 600
+```
 
-The obvious impact of these policy decisions is an important reminder that **the Trove corpus is not unchanging or inevitable, it's constructed** – it's the product of preservation decisions, funding priorities, library policies, digitisation technologies, professional practices, legal frameworks, and a fair bit of luck.
++++ {"editable": true, "slideshow": {"slide_type": ""}, "tags": ["hide-input", "remove-output"]}
+
+You might be wondering about the peak in 1915 – is it because of World War I? Well, yes and no. In the lead up to the centenary of WWI, it was decided to focus digitisation dollars on newspapers from the WWI period. The peak reflects decisions about funding, not the impact of historical events. And what about the dramatic collapse in the number of articles after 1954 – did the arrival of television send newspapers into a cataclysmic decline? No, it's because of copyright. The NLA has chosen to manage some of the risks around copyright by limiting digitisation to newspaper issues published before 1955, unless there's a special arrangement with the publisher.
+
+The impact of these policy decisions is an important reminder that **the Trove corpus is not unchanging or inevitable, it's constructed** – it's the product of preservation decisions, funding priorities, library policies, digitisation technologies, professional practices, legal frameworks, and a fair bit of luck.
 
 ## The newspaper corpus has a history
 
@@ -244,9 +280,11 @@ Number of newspapers articles in Trove by publication year, showing the change f
 
 The focus on WWI-era newspapers didn't start until after 2011, but the impact was clearly evident by 2022.
 
-It's interesting to think about research using the newspapers that might have taken place between 2011 and 2022. How would a project started in 2011 differ to one initiated a decade later? But it's not just a matter of the size of the corpus, it's also important to consider the composition. Which newspapers were added and when? While this information isn't directly available from Trove, by [harvesting data from web archive captures](https://glam-workbench.net/trove-newspapers/historical-data-newspaper-titles/), I've managed to assemble a [list of titles and the approximate date they were added](https://gist.github.com/wragge/7d80507c3e7957e271c572b8f664031a).
+It's interesting to think about research using the newspapers that might have taken place between 2011 and 2022. How would a project started in 2011 differ to one initiated a decade later?
 
-To try and capture a more complete record of changes in the Trove newspaper corpus, I've set up an automated process to [harvest data every week](https://github.com/wragge/trove-newspaper-totals) and display the results through the [Trove Newspapers Data Dashboard](https://wragge.github.io/trove-newspaper-totals/). It includes information on the number of articles, distribution by state and category, and additions to available titles.
+But it's not just a matter of the size of the corpus, it's also important to consider the composition. Which newspapers were added and when? While this information isn't directly available from Trove, by [harvesting data from web archive captures](https://glam-workbench.net/trove-newspapers/historical-data-newspaper-titles/), I've managed to assemble a [list of titles and the approximate date they were added](https://gist.github.com/wragge/7d80507c3e7957e271c572b8f664031a).
+
+To try and capture a more complete and up-to-date record of changes in the Trove newspaper corpus, I've set up an automated process to [harvest data every week](https://github.com/wragge/trove-newspaper-totals) and display the results through the [Trove Newspapers Data Dashboard](https://wragge.github.io/trove-newspaper-totals/). It includes information on the number of articles, distribution by state and category, and additions to newspaper titles.
 
 ```{figure} /images/trove-data-dashboard.png
 :name: trove-data-dashboard
@@ -413,7 +451,7 @@ It's been estimated that around 7,700 print newspapers have been published in Au
 
 The Australian Newspaper Plan (ANPlan), a collaboration between National and State Libraries, worked to identity and preserve Australian newspapers, providing the foundation for Trove. ANPlan also compiled [useful lists of missing titles](https://webarchive.nla.gov.au/awa/20180306065216/http://pandora.nla.gov.au/pan/161756/20180306-0810/www.nla.gov.au/australian-newspaper-plan/about/collect.html). (Ironically, the ANPlan website has itself disappeared, but can be found in the Australian Web Archive.)
 
-Even when titles have been added to Trove, it's not easy to tell if they are complete. Some newspapers published multiple editions throughout the day. Trove only includes a single edition, so it's possible some content might be missing. A fascinating example of this is provided by Robert Phiddian, Stephanie Brookes, Lindsay Foyle and Richard Scully's article '"For Gorsake, Stop Laughing: This is Serious!" — Australia's Fragile Cartooning Archive'.{cite:p}`phiddianGorsakeStopLaughing2023` The article examines how Stan Cross's famous 'Stop Laughing' cartoon, published in *Smith's Weekly*, came to be missing from Trove, and explores some of the implications for researchers.
+Even when titles have been added to Trove, it's not easy to tell if they are complete. Some newspapers published multiple editions throughout the day. Trove only includes a single edition, so it's possible some content might be missing. A fascinating example of this is provided by Robert Phiddian, Stephanie Brookes, Lindsay Foyle and Richard Scully's article '"For Gorsake, Stop Laughing: This is Serious!" — Australia's Fragile Cartooning Archive'.{cite:p}`phiddianGorsakeStopLaughing2023` The article examines how Stan Cross's famous 'Stop Laughing' cartoon, published in *Smith's Weekly*, came to be missing from Trove, and explores some of the implications for research.
 
 ```{figure} /images/missing-page.png
 :name: missing-page
@@ -423,7 +461,7 @@ Example of a missing page placeholder, from [The Sydney Mail and New South Wales
 
 Sometimes whole issues or [individual pages](newspaper-data-pages-missing) can be missing from Trove. I've attempted to compile  data about missing pages, but inconsistencies in pagination make it difficult to be certain whether a page is actually missing or not. Here, for example, is [an issue of the *The Albury Banner and Wodonga Express*](https://trove.nla.gov.au/newspaper/page/28233310) which seems to have multiple pages missing, but is in fact just out of order.
 
-My rough data indicates about one in a thousand pages might be missing. What is perhaps more interesting is that these gaps are not evenly distributed. For example, the *WA Record* is missing about 5.5% of its pages, but most of these are pages two and three from issues published between 1897 and 1915. Intriguingly, the *King Island Times* is missing page five in most issues from the 1920s to the 1940s. What was on page 5? There's also significant damage to the original print copies of the *Queensland Times*, resulting in both missing and partial pages.
+My rough data indicates about one in a thousand pages might be missing. What is perhaps more interesting is that these gaps are not evenly distributed. For example, the *WA Record* is missing about 5.5% of its pages, but most of these are pages two and three from issues published between 1897 and 1915. Intriguingly, the *King Island Times* is missing page five in most issues from the 1920s to the 1940s. What was on page five? There's also significant damage to the original print copies of the *Queensland Times*, resulting in both missing and partial pages.
 
 ```{figure} /images/9747704-level1.jpg
 :name: missing-page
@@ -500,6 +538,8 @@ total_articles = get_total(
 print(f"{total_with_corrections / total_articles:.2%} of articles have corrections")
 ```
 
-While users have made an important contribution to the quality of the text available from the newspapers, the task is huge. More than 93% of articles have no user corrections, and more are being added every week. This is not a job that will be completed by humans alone.
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+While users have made an important contribution to the quality of the text available from the newspapers, the task is huge. More than 93% of articles have no user corrections, and thousands more articles are being added every week. This is not a job that will be completed by humans alone.
 
 The NLA has already undertaken some trials using machine learning to correct OCR generated text. In June 2021, the Overproof system was used to [improve the accuracy of 10 million uncorrected articles](http://nla-overproof.projectcomputing.com/). This led to significant gains in search retrieval. The machine corrected texts have been added back into Trove, but don't seem to be included in the `has:corrections` results. It's also worth noting that the focus of Overproof is on improving search results, rather than correcting every word. This might have implications for projects using computational methods to analyse texts.
