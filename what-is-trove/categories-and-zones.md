@@ -16,9 +16,13 @@ kernelspec:
 
 # Categories and zones
 
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
+````{card} On this page
+Learn about Trove's top-level categories. What's in them and why?
+
+```{contents}
+:local:
 ```
+````
 
 ```{code-cell} ipython3
 ---

@@ -35,12 +35,6 @@ API_KEY = os.getenv("TROVE_API_KEY")
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
-```
-
-+++
-
 ## Why use the API?
 
 ````{margin}
@@ -246,7 +240,7 @@ data["category"][0]["records"]["article"][0]
 
 ## Endpoints
 
-<mark>==Link where appropriate to sections on specific categories/formats==</mark>
+<!---<mark>==Link where appropriate to sections on specific categories/formats==</mark>--->
 
 ### Search results
 
@@ -274,6 +268,7 @@ To request an individual record you need to know its numeric identifier. Then yo
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+<!---
 ## Parameters
 
 <mark>==How much detail do I go into? Do I just point to Trove docs?==</mark>
@@ -320,22 +315,29 @@ To request an individual record you need to know its numeric identifier. Then yo
   - 
 
 ```
+--->
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+<!---
 ## Translating a web query into an API query
 
 - trove-query-parser for newspapers
 - easier with 'simple' search
+--->
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+<!---
 ## API responses
 
 <mark>==Again how much details is required? Specific info can be provided in the sections about particular categories/formats==</mark>
 
+--->
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+<!---
 ## Harvesting a complete result set
 
 - Use of `bulkHarvest` parameter
@@ -345,12 +347,4 @@ To request an individual record you need to know its numeric identifier. Then yo
 Provide a basic code pattern for paginating through a result set.
 
 Saving results (ndjson, csv (with flattening) etc)
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-
-```
+--->

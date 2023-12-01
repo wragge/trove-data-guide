@@ -17,9 +17,13 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
+````{card} On this page
+Learn how to search for resources within a particular date range.
+
+```{contents}
+:local:
 ```
+````
 
 ```{code-cell} ipython3
 ---
@@ -48,13 +52,17 @@ You can limit your Trove searches by date in a number of ways. These options var
 
 ## Accuracy and consistency of metadata
 
+<!---
 <mark>==I suspect this section might get moved to the contexts section later on. Also need to note that the facets in the book zone don't display dates past today, even though they are there. I think this is an attempt to clean up the interface, but just hides the problem rather than fixing it.==</mark>
+--->
 
 Trove's aggregated metadata can include errors, either because of data entry problems or formatting inconsistencies. Problems with dates can seem more obvious than other types of metadata because we expect them to fall within a specific range – it's unlikely Australian libraries will hold books from the year 9000! You can use the `decade` facet to reveal some of these problems.
 
 Here, for example, is the distribution by decade of works in the 'Research & reports' category. Most publications are dated between 1800 and 2100, as you would expect, but there are more than a hundred in the first century, and even an outlier in the 9000s.
 
+<!---
 <mark>==Explain dates in people category==</mark>
+--->
 
 ```{code-cell} ipython3
 ---
@@ -240,6 +248,11 @@ This means that if you want to search for newspaper or gazette articles from a *
 We can do a little test of this behaviour by trying different `date` queries and using the `year` facet to check the range of our results.
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 import requests
 
 def get_year_facets(start_date, end_date):
@@ -304,6 +317,8 @@ start_date = f"{start_datetime.isoformat()}Z"
 print(start_date)
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 ## Works, versions, and dates
 
 Date searches can produce odd results when you're working with aggregated content (as in the *Books & Libraries* category). What do you think happens if you set the `l-decade` facet to `200` (ie 2000 to 2009) and the `l-year` facet to `1900`? In the *Newspapers & Gazettes* category you get no results, as you would expect. But in *Books & Libraries* you get more than a million results!
@@ -314,8 +329,6 @@ How is this possible? How can both facet values be true? The answer lies in the 
 
 But what if you want to find a version published on a specific date? The Trove web interface has an option to filter a work's 'editions' (aka versions) by date. If you're using the API, you'll first have to requests details of all versions by setting the `include` parameter to `workversions`. Then you'll need to loop through all the versions, checking their individual `issued` dates.
 
+<!---
 <mark>==Include some example code?==</mark>
-
-```{code-cell} ipython3
-
-```
+--->

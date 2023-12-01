@@ -13,9 +13,11 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# Understanding the newspaper corpus
+# Understanding the digitised newspapers
 
 ````{card} On this page
+Learn more about the history and characteristics of Trove's collection of digitised newspapers and the effects this might have on your research.
+
 ```{contents}
 :local:
 ```
@@ -275,10 +277,11 @@ slideshow:
   slide_type: ''
 tags: [hide-cell, remove-output]
 ---
+from collections import Counter
+
 import altair as alt
 import pandas as pd
 import requests
-from collections import Counter
 
 params = {"encoding": "json"}
 
@@ -296,12 +299,17 @@ for title in data["newspaper"]:
 
 df = pd.DataFrame(list(dict(Counter(states)).items()), columns=["state", "total"])
 
-state_titles_chart = alt.Chart(df).mark_bar().encode(
-    x=alt.X("total:Q", title="number of titles"),
-    y="state:N",
-    color="state:N",
-    tooltip=["state:N", alt.Tooltip("total:Q", format=",")]
-).properties(width="container")
+state_titles_chart = (
+    alt.Chart(df)
+    .mark_bar()
+    .encode(
+        x=alt.X("total:Q", title="number of titles"),
+        y="state:N",
+        color="state:N",
+        tooltip=["state:N", alt.Tooltip("total:Q", format=",")],
+    )
+    .properties(width="container")
+)
 
 display(state_titles_chart)
 ```
@@ -338,8 +346,13 @@ import altair as alt
 import pandas as pd
 import requests
 
-
-params = {"category": "newspaper", "facet": "state", "l-artType": "newspaper", "encoding": "json", "n": 0}
+params = {
+    "category": "newspaper",
+    "facet": "state",
+    "l-artType": "newspaper",
+    "encoding": "json",
+    "n": 0,
+}
 
 headers = {"X-API-KEY": YOUR_API_KEY}
 
@@ -354,12 +367,17 @@ facets = [
 
 df = pd.DataFrame(facets)
 
-state_articles_chart = alt.Chart(df).mark_bar().encode(
-    x=alt.X("total:Q", title="number of articles"),
-    y="state:N",
-    color="state:N",
-    tooltip=["state:N", alt.Tooltip("total:Q", format=",")]
-).properties(width="container")
+state_articles_chart = (
+    alt.Chart(df)
+    .mark_bar()
+    .encode(
+        x=alt.X("total:Q", title="number of articles"),
+        y="state:N",
+        color="state:N",
+        tooltip=["state:N", alt.Tooltip("total:Q", format=",")],
+    )
+    .properties(width="container")
+)
 
 display(state_articles_chart)
 ```
@@ -397,12 +415,91 @@ The Australian Newspaper Plan (ANPlan), a collaboration between National and Sta
 
 Even when titles have been added to Trove, it's not easy to tell if they are complete. Some newspapers published multiple editions throughout the day. Trove only includes a single edition, so it's possible some content might be missing. A fascinating example of this is provided by Robert Phiddian, Stephanie Brookes, Lindsay Foyle and Richard Scully's article '"For Gorsake, Stop Laughing: This is Serious!" — Australia's Fragile Cartooning Archive'.{cite:p}`phiddianGorsakeStopLaughing2023` The article examines how Stan Cross's famous 'Stop Laughing' cartoon, published in *Smith's Weekly*, came to be missing from Trove, and explores some of the implications for researchers.
 
-Sometimes whole issues or individual pages can be missing from Trove. I've attempted to compile  data about missing pages, but inconsistencies in pagination make it difficult to be certain whether a page is actually missing or not. Here, for example, is [an issue of the *The Albury Banner and Wodonga Express*](https://trove.nla.gov.au/newspaper/page/28233310) which seems to have multiple pages missing, but is in fact just out of order. 
+```{figure} /images/missing-page.png
+:name: missing-page
+:width: 300
+Example of a missing page placeholder, from [The Sydney Mail and New South Wales Advertiser, 6 January 1894, page 1](http://nla.gov.au/nla.news-page20232534)
+```
 
-My rough data indicates about one in a thousand pages might be missing. What is perhaps more interesting is that these gaps are not evenly distributed. For example, the *WA Record* is missing about 5.5% of its pages, but most of these are pages two and three from issues published between 1897 and 1915. Similarly, the *King Island Times* is missing page five in most issues from the 1920s to the 1940s.
+Sometimes whole issues or [individual pages](newspaper-data-pages-missing) can be missing from Trove. I've attempted to compile  data about missing pages, but inconsistencies in pagination make it difficult to be certain whether a page is actually missing or not. Here, for example, is [an issue of the *The Albury Banner and Wodonga Express*](https://trove.nla.gov.au/newspaper/page/28233310) which seems to have multiple pages missing, but is in fact just out of order.
 
-There's significant damage to the original copies of the *Queensland Times*, resulting in both missing and partial pages.
+My rough data indicates about one in a thousand pages might be missing. What is perhaps more interesting is that these gaps are not evenly distributed. For example, the *WA Record* is missing about 5.5% of its pages, but most of these are pages two and three from issues published between 1897 and 1915. Intriguingly, the *King Island Times* is missing page five in most issues from the 1920s to the 1940s. What was on page 5? There's also significant damage to the original print copies of the *Queensland Times*, resulting in both missing and partial pages.
 
-## OCR
+```{figure} /images/9747704-level1.jpg
+:name: missing-page
+:width: 400
+Example of a damaged page from the [*Queensland Times*, 2 January 1911, p. 3](http://nla.gov.au/nla.news-page9747704)
+```
 
-## Not all in English
+While Trove does include markers to indicate where issues and pages are missing, you can only find these by browsing. There are no measures of completeness displayed in the web interface or title metadata, and of course you can't find missing pages by searching. While the proportion of pages missing seems small, the uneven distribution could have an impact on some research projects.
+
+## Correcting OCR errors
+
+````{margin}
+```{seealso}
+For more analysis of OCR corrections in Trove newspapers see the GLAM Workbench notebook [Analyse rates of OCR correction](https://glam-workbench.net/trove-newspapers/Analysing_OCR_corrections/).
+```
+````
+
+Text is extracted from images of newspaper pages in Trove using Optical Character Recognition (OCR). This text is indexed to enable users to search the full content of articles. It's so easy and familiar that you can overlook how transformative this has been. Instead of working top-down though titles and indexes, browsing through endless rolls of microfilm, researchers can use a few keywords to find thousands of fragments of everyday life.
+
+The OCR-generated text can also be analysed at scale, using Natural Language Processing (NLP) to explore changing patterns in usage and meaning, opening up new possibilities for research.
+
+The problem is that the OCR-generated text is rarely 100% accurate. The NLA's early tests on Australian newspapers indicated that the OCR software's accuracy in recognising individual characters varied between 71% and 98.02%. {cite:p}`holleyHowGoodCan2009b` High OCR error rates have an impact on both the discovery and analysis of digitised newspaper articles.
+
+Concerns about OCR accuracy led the NLA to develop a system that allowed Trove users to correct the OCR-generated text. This has been very successful, with millions of lines of text corrected by a large community of volunteers. But it's important to put these efforts into context.
+
+Using the `has:corrections` index you can find the number of articles in Trove with corrections.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+import altair as alt
+import pandas as pd
+import requests
+
+
+def get_total(params):
+    headers = {"X-API-KEY": YOUR_API_KEY}
+    response = requests.get(
+        "https://api.trove.nla.gov.au/v3/result", params=params, headers=headers
+    )
+    data = response.json()
+    return data["category"][0]["records"]["total"]
+
+
+total_with_corrections = get_total(
+    {
+        "q": "has:corrections",
+        "l-artType": "newspaper",
+        "category": "newspaper",
+        "encoding": "json",
+    }
+)
+
+print(f"{total_with_corrections:,} articles have user corrections")
+```
+
+More than 15 million articles have user corrections! That's an impressive amount, but what proportion of the total number of articles does this represent?
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+total_articles = get_total(
+    {"l-artType": "newspaper", "category": "newspaper", "encoding": "json"}
+)
+
+print(f"{total_with_corrections / total_articles:.2%} of articles have corrections")
+```
+
+While users have made an important contribution to the quality of the text available from the newspapers, the task is huge. More than 93% of articles have no user corrections, and more are being added every week. This is not a job that will be completed by humans alone.
+
+The NLA has already undertaken some trials using machine learning to correct OCR generated text. In June 2021, the Overproof system was used to [improve the accuracy of 10 million uncorrected articles](http://nla-overproof.projectcomputing.com/). This led to significant gains in search retrieval. The machine corrected texts have been added back into Trove, but don't seem to be included in the `has:corrections` results. It's also worth noting that the focus of Overproof is on improving search results, rather than correcting every word. This might have implications for projects using computational methods to analyse texts.

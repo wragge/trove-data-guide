@@ -14,18 +14,17 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-(works-and-versions)=
 # Works and versions
 
-And editions and collections
-
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
-```
-
+````{card} On this page
 Many of Trove's categories contain things called 'works'. Works are not individual items, they're containers for related 'versions' (now called 'editions' in the web interface). Trove has a set of rules for grouping versions into works, but the logic is not always apparent to end users. As a result, it's easy to get confused. This section tries to explain the idea behind work groupings, as well as documenting some of the inconsistencies and errors. The grouping of versions into works has important implications for the research use of Trove's metadata.
 
-+++
+```{contents}
+:local:
+```
+````
+
++++ {"jp-MarkdownHeadingCollapsed": true}
 
 ## Grouping versions into works
 
@@ -116,134 +115,6 @@ Researchers need to factor both the FRBR concept, and Trove's implementation of 
 You'd expect there to be fewer problems with work records related to Trove's own digitised content, but there's actually a few additional oddities. These stem from the use of works and versions to describe collections – the 'work' is used as a collection container and each 'version' is a separate item in that collection. It's really not very FRBR-ish at all, and perhaps reflects the fact that Trove is severely limited in its ability to represent hierarchical data structures.
 
 [This 'work'](https://trove.nla.gov.au/work/163048354) is actually a collection of ephemera relating to the National Anti-Sweating League of Victoria. There are nine items in this collection and they're all quite different – they're not versions or editions of a single work. 
-
-No individual metadata -- titles, dates in linktext. Not individually searchable. Not individually downloadable via API.
-
-
-
-Also duplicates.
-
-PP divided in sections - sections of a publication (eg the title page) grouped with the actual publication
-
-## Research implications
-
-- search
-- stats, facet data
-- harvesting versions
-
-The challenges
-
-User confusion - noted early on, various changes. Needs to be factored into search strategies.
-
-Aim is to improve search experience
-
-Impact of findability -- might reject work results, or be confused by their inclusion. Gains by grouping, diluted by confusion?
-
-Does it matter? 
-
-Problems of aggregation from multiple sources, no control.
-
-Pulltion of categories, numbers, stats, facets
-
-Data -- counts, stats, and facets
-
-+++
-
-## The reality
-
-That's the theory. The reality is more complex and confusing.
-
-
-
-## Implications for research
-
-- records invisible to search
-- need to unpack versions from API
-
-
-Work has metadata extracted from versions.
-
-
-
-More problems with non-library type collections
-
-The idea:
-
-- a FRBR-ish system, grouping together different versions of the same work (to save you having to wade through hundred of editions of Macbeth
-
-> The FRBR conceptual model is intended to meet the end users’ needs. This data model proposes the creation of bibliographic concepts (“work”, “expression”, “manifestation” and “item”) and a new way to formalise relations between these bibliographic entities.  The so called WEMI-Model (Work, Expression, Manifestation and Item model) tries to identify the core aspects of publications and is the foundation of the FRBR family. 
->
-> - Work is defined as the intellectual or artistic content of a distinct creation. It refers to a very abstract idea of a creation e.g. Shakespeare’s Romeo and Juliet and not a specific expression. 
-> - Expression is the intellectual or artistic realization of a work. The realization may take the form of text, sound, image, object, movement, etc., or any combination of such forms.
-> - Manifestation is the embodiment of an expression of a work. For example a particular edition of a book or a specific music recording. 
-> - Item is a single exemplar of a manifestation. Cataloguing is generally done, based on an item directly available to a cataloguer 
-
--- IFLA, [Functional Requirements for Bibliographic Records (FRBR)](https://www.ifla.org/references/best-practice-for-national-bibliographic-agencies-in-a-digital-age/resource-description-and-standards/bibliographic-control/functional-requirements-the-frbr-family-of-models/functional-requirements-for-bibliographic-records-frbr/)
-
-But Trove trying to group records using metadata it doesn't create or control.
-
-Thw Wiggles - https://trove.nla.gov.au/work/158465667
-
-Groups defined at different levels:
-
-- Libraries Australia
-- Trove harvester (aggregated content)
-- digitised content 
-
-Mostly ok for published works?
-
-- but theses?
-
-Problems:
-
-- muddy metadata -- multiple (sometimes misleading) formats that don't always align with categories
-- grouping together of things which have the same title, but are not the same!
-- use for collections of things (inconsistent)
-- attempt to use works/versions for hierarchical structures
-- search operates at work level
-- some duplicates not grouped
-
-Examples:
-
-- Multiple digitised versions & odd version groupings - The famous Mount Morgan gold mine, <https://trove.nla.gov.au/work/12445906> [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F12445906%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=) -- one version is parent record, other version combines records
-- Versions are distinct items in digitised collection - National Anti-Sweating League of Victoria, <https://trove.nla.gov.au/work/163048354> [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F163048354%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=) -- format is Multi-volume book, titles of individual items are only in `linktext` of identifier
-- PM Transcripts, eg: https://​trove​.nla​.gov​.au​/work​/195172587 [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F195172587%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=) -- lots of John Howards, these all have indexed fulltext, but search only operates at work level, so no way of knowing which version matches your search
-- Fraser electorate talks - <https://trove.nla.gov.au/work/195160655> [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F195160655%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=)
-- "Politics with Paul Bongiorno" (ABC RN) <https://trove.nla.gov.au/work/188217416>
-- Collection with individual records for items: https://trove.nla.gov.au/work/19748499 but items have two versions eg: https://trove.nla.gov.au/work/172653701 [API](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F172653701%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions%2Clinks&comment=) -- one via Libraries Australia and another via ANL:DL
-- Bad groupings: <https://trove.nla.gov.au/work/7857744> <https://trove.nla.gov.au/work/13791197>
-- Collection with one item (and 3 versions) <https://trove.nla.gov.au/work/11648908> (also this is in M&N category as well as B&L - 3 records returned)
-- Another collection where items are versions and not individually findable: <https://trove.nla.gov.au/work/12938999/>
-- Advertising posters (a book!) goes to finding aid: <https://trove.nla.gov.au/work/239465235> (individual items in pictures eg: https://trove.nla.gov.au/work/6115600 -- no ispartof to link to collection / also https://trove.nla.gov.au/work/248470051 where there is a ispartof, but this is a 'photograph')
-
-+++
-
-Problematic version groupings:
-
-- Malcolm Fraser Electorate Talks - <https://trove.nla.gov.au/work/195160655>
-- https://trove.nla.gov.au/work/36446349 – annual reports of the Royal Society of Tasmania, multiple years as ‘editions’, description is taken from one and used across all. API records contain 2 versions for each edition.
-- [This record](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F81126945%3Freclevel%3Dfull%26include%3Dworkversions) combines a book with a chapter from the book (held in an IR).
-
-+++
-
-May need to unpack versions from works to get a full list of resources for exploration/analysis (eg ABC, Royal Society of Tasmania)
-
-PM Transcripts, eg: <https://trove.nla.gov.au/work/195172587>
-
-+++
-
-Grouping on aggregated metadata, but metadata not good enough
-
-
-## Implications for data
-
-Invisibility of versions -- need to unpack works
-
-+++
-
-## Indexing of full text from aggregated collections
-
-> Description: An account of the resource. Description may include an abstract, a byline or a free-text account of the resource. When the fulltext of an article is available, include it in a description field with the additional attribute type=”fulltext”. Trove will index this text (return the record for a search on a word in the fulltext) but only display the first 200 characters. Users will need to visit your site to view the fulltext. Trove will only index the first 30,000 characters of a description field. -- <https://trove.nla.gov.au/partners/partner-services/contribute/trove-data-dictionary>
 
 ```{code-cell} ipython3
 
