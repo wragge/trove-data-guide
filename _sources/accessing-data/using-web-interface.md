@@ -17,21 +17,9 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
-```
-
-+++
-
-- download images and text
-- download citations
-- bulk export
-- download lists
-- using Zotero (newspapers)
-
-+++
-
+<!---
 See [](/what-is-trove/interfaces) for a overview of the different components that make up the web interface. In particular, it's important to understand the difference between the main search interface and the digitised item viewers.
+--->
 
 +++
 
@@ -134,7 +122,7 @@ While many of the same download options are available across different Trove cat
 * - Diaries, letters & archives
   - collection
   - image
-  - Images are packaged in a zip file with an additional page of copyright information. <mark>==Need to explain that you only get top images at that level in the collection (not the collections/images below the current level)==</mark>
+  - Images are packaged in a zip file with an additional page of copyright information. Depending on where you are in the collection hierarchy, you might only get the top-level image.
 * - Diaries, letters & archives
   - collection
   - PDF
@@ -217,23 +205,39 @@ This is a simple way of capturing metadata in a structured format, but the BibTe
 
 ## Downloading lists
 
-```{code-cell} ipython3
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+````{margin}
+```{seealso}
+The GLAM Workbench notebook [Convert a Trove list into a CSV file](https://glam-workbench.net/trove-lists/convert-a-trove-list-into-a-csv-file/) will download detailed List metadata using the Trove API. It creates separate CSV files for newspaper articles and other works, and can even retrieve the full text of articles.
 ```
+````
+
+Trove Lists include a button to 'Download this List'. Once you click the button you can choose your desired output format: CSV, JSON, XML, or as a list of citations.
+
+The metadata provided by the List download option is quite limited. In particular, newspaper articles are missing information about titles, and the dates are not formatted according to the ISO standard. You can retrieve more and better metadata from Lists by using the Trove API.
+
++++
 
 (bulk-export)=
 ## Bulk export
 
-```{code-cell} ipython3
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-```
+Trove's new [Bulk Export](https://trove.nla.gov.au/about/create-something/bulk-download) feature makes it easy to save the results of a search. But it has a number of limitations:
 
+- Number of results limited to one million
+- Version information is not included with work records
+- Text is not included with newspaper articles
+
+For many research uses you'll be better off using the Trove API or a tool like the [Trove Newspaper Harvester](https://wragge.github.io/trove-newspaper-harvester/).
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+<!---
 ## Map search?
 
 Can download geo-rectified TIFFs
 
 <https://mapsearch.nla.gov.au/>
-
-```{code-cell} ipython3
-
-```
+--->
