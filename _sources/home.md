@@ -1,12 +1,6 @@
-# Welcome to the Trove Data Guide
+# Trove Data Guide
 
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
-```
-
-This guide will help you hone your data wrangling skills and develop a critical understanding of Trove as a source for digital research.
+This Guide explores the different types of data available from Trove – what it is, how you can access it, and what you can do with it. It aims to give researchers a critical understanding of Trove data, both its limits and its possibilities.
 
 ```{tableofcontents}
 ```
-
-Part of the [HASS Community Data Lab](https://ardc.edu.au/project/hass-community-data-lab/).
