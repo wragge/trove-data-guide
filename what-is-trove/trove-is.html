@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/trove-is.067c94f8-7bf9-4c66-8e81-d4db92ccf9bc.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/trove-is.d4e127f1-129b-4678-a20a-4e41be8ff7fd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/trove-is';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -246,7 +246,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../pathways/index.html">21. Research pathways</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -418,7 +417,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -434,6 +435,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-is-not-one-thing">1.1. Trove is not one thing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-is-unknowable">1.2. Trove is unknowable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-includes">1.3. Trove includes</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -445,21 +456,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="trove-is">
 <h1><span class="section-number">1. </span>Trove is…<a class="headerlink" href="#trove-is" title="Permalink to this heading">#</a></h1>
-<p>s guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>---&gt;
-
-+++
-
-````{card} On this page
-This section looks at stuff.
-
-```{contents}
-:local:
-</pre></div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+On this page</div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#trove-is-not-one-thing" id="id3">Trove is not one thing</a></p></li>
+<li><p><a class="reference internal" href="#trove-is-unknowable" id="id4">Trove is unknowable</a></p></li>
+<li><p><a class="reference internal" href="#trove-includes" id="id5">Trove includes</a></p></li>
+</ul>
+</nav>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-+++
-
+</div>
+<!---
 ```{admonition} Key points
 :class: key-points
 
@@ -472,43 +482,44 @@ Trove is:
 - frustratingly inconsistent
 - rabbit hole
 -
-
-+++
-
-**Trove is not one thing**. On the [technical side](https://trove.nla.gov.au/about/what-trove/technical-ecosystem), Trove is a combination of many interconnected systems, data sources, and interfaces, each with its own individual history. But Trove is also an idea, an ambition, an attempt to provide Australians with facilitated access to research and heritage collections from across the country. That idea, expressed through policy documents, strategic plans, resource allocations, and collaborative agreements has also evolved over the past 15 years. At the same time, Trove has been enriched by its community of users, both by submitting annotations and corrections through the web interface, and by sharing their own research, methods, tools, and discoveries across the web. Trove now is the product of these entwined histories – technology, policy, and community. 
-
-```{figure} /images/trove-data-flows-2010-cathro-collier.png
-:width: 600px
-
-Trove Data Flows, 2010, licensed CC-BY-NC. {cite:p}`cathroDevelopingTrovePolicy2010` See the Trove help documentation for [information about the current configuration](https://trove.nla.gov.au/about/what-trove/technical-ecosystem).
-```
-
-This Data Guide aims to help researchers make efficient and innovative use of Trove by documenting how it works and what it provides. But the complexity of Trove, and its evolution over time, makes it difficult to nail down its precise contents, limits, and structures. The simple question, &#39;What&#39;s in Trove?&#39;, is not easily answered. As I&#39;ve grappled with topics such as Trove&#39;s [works and versions](/what-is-trove/works-and-versions), and struggled to quantify measures like the [number of pages missing from digitised newspapers](/newspapers-and-gazettes/newspapers-missing-pages), I&#39;ve come to realise that Trove, as a whole, is effectively unknowable. It&#39;s too big, too complex, and too inconsistent to yield to precise analysis. It&#39;s also changing constantly, so any attempt to capture its contents will be immediately out of date. The best we can hope for are a series of blurry snapshots that help us understand the characteristics of Trove, even though some of the fine details remain out of focus.
-
-+++
-
-## Trove now
-
-- an aggregation of collection {term}`metadata` from Australian {abbr}`GLAM (Galleries, Libraries, Archives, and Museums)` and research organisations (includes pre-aggregated content through Libraries Australia as well as individually harvested collections)
-- a repository of digitised content from the NLA and partners, includes:
-    - newspapers
-    - journals and magazines
-    - books
-    - posters and ephemera
-    - photographs
-    - maps
-    - manuscripts
-    - oral histories
-- an archive of Australian web content from 1996 onwards
-- aggregated identity records for people and organisations
-- born-digital publications submitted via the electronic legal deposit scheme (access may be restricted to on-site use)
-- a platform for user engagement via tags, comments, lists, and OCR corrections
-- a series of APIs for delivering machine-actionable data
-
-More information in pages for specific formats.
-
-+++ {&quot;jp-MarkdownHeadingCollapsed&quot;: true}
-
+---><section id="trove-is-not-one-thing">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">1.1. </span>Trove is not one thing</a><a class="headerlink" href="#trove-is-not-one-thing" title="Permalink to this heading">#</a></h2>
+<p>On the <a class="reference external" href="https://trove.nla.gov.au/about/what-trove/technical-ecosystem">technical side</a>, Trove is a combination of many interconnected systems, data sources, and interfaces, each with its own individual history. But Trove is also an idea, an ambition, an attempt to provide Australians with facilitated access to research and heritage collections from across the country. That idea, expressed through policy documents, strategic plans, resource allocations, and collaborative agreements has also evolved over the past 15 years. At the same time, Trove has been enriched by its community of users, both by submitting annotations and corrections through the web interface, and by sharing their own research, methods, tools, and discoveries across the web. Trove now is the product of these entwined histories – technology, policy, and community.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/trove-data-flows-2010-cathro-collier.png"><img alt="../_images/trove-data-flows-2010-cathro-collier.png" src="../_images/trove-data-flows-2010-cathro-collier.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Trove Data Flows, 2010, licensed CC-BY-NC. <span id="id1">[<a class="reference internal" href="../references.html#id21" title="Warwick Cathro and Susan Collier. Developing Trove: the policy and technical challenges. In VALA2010. 2010.">Cathro and Collier, 2010</a>]</span> See the Trove help documentation for <a class="reference external" href="https://trove.nla.gov.au/about/what-trove/technical-ecosystem">information about the current configuration</a>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="trove-is-unknowable">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink"><span class="section-number">1.2. </span>Trove is unknowable</a><a class="headerlink" href="#trove-is-unknowable" title="Permalink to this heading">#</a></h2>
+<p>This Data Guide aims to help researchers make efficient and innovative use of Trove by documenting how it works and what it provides. But the complexity of Trove, and its evolution over time, makes it difficult to nail down its precise contents, limits, and structures. The simple question, ‘What’s in Trove?’, is not easily answered. As I’ve grappled with topics such as Trove’s <a class="reference internal" href="works-and-versions.html"><span class="doc std std-doc">works and versions</span></a>, and struggled to quantify measures like the <span class="xref myst">number of pages missing from digitised newspapers</span>, I’ve come to realise that Trove, as a whole, is effectively unknowable. It’s too big, too complex, and too inconsistent to yield to precise analysis. It’s also changing constantly, so any attempt to capture its contents will be immediately out of date. The best we can hope for are a series of blurry snapshots that help us understand the characteristics of Trove, even though some of the fine details remain out of focus.</p>
+</section>
+<section id="trove-includes">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">1.3. </span>Trove includes</a><a class="headerlink" href="#trove-includes" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>an aggregation of collection <span class="xref std std-term">metadata</span> from Australian <abbr title="Galleries, Libraries, Archives, and Museums">GLAM</abbr> and research organisations (includes pre-aggregated content through Libraries Australia as well as individually harvested collections)</p></li>
+<li><p>a repository of digitised content from the NLA and partners, includes:</p>
+<ul>
+<li><p>newspapers</p></li>
+<li><p>journals and magazines</p></li>
+<li><p>books</p></li>
+<li><p>posters and ephemera</p></li>
+<li><p>photographs</p></li>
+<li><p>maps</p></li>
+<li><p>manuscripts</p></li>
+<li><p>oral histories</p></li>
+</ul>
+</li>
+<li><p>an archive of Australian web content from 1996 onwards</p></li>
+<li><p>aggregated identity records for people and organisations</p></li>
+<li><p>born-digital publications submitted via the electronic legal deposit scheme (access may be restricted to on-site use)</p></li>
+<li><p>a platform for user engagement via tags, comments, lists, and OCR corrections</p></li>
+<li><p>a series of APIs for delivering machine-actionable data</p></li>
+</ul>
+<p>More information in pages for specific formats.</p>
+<!---
 ## Precursors and milestones
 
 Not a history. Idntifying major threads and changes that shape Trove now.
@@ -530,8 +541,7 @@ Changes:
 - OAISter and Gale
 - Pandora, AGWA
 -
-</pre></div>
-</div>
+---></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -592,6 +602,22 @@ Changes:
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-is-not-one-thing">1.1. Trove is not one thing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-is-unknowable">1.2. Trove is unknowable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-includes">1.3. Trove includes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
