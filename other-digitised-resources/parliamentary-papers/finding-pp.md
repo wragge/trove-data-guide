@@ -17,7 +17,7 @@ kernelspec:
 
 ## Finding Parliamentary Papers in Trove
 
-You can [find NLA digitised resources](/understanding-search/finding-digitised-content) by searching for `"nla.obj"` and selecting the 'Online' facet (if you're using the API set `l-availability` to `y`). To further limit the results to digitised Parliamentary Papers the best option seems to be adding `series:"Parliamentary paper (Australia. Parliament)` to [your search query](https://trove.nla.gov.au/search?keyword=%22nla.obj%22%20series%3A%22Parliamentary%20paper%20%28Australia.%20Parliament%29%22&l-availability=y).
+You can [find NLA digitised resources](/understanding-search/finding-digitised-content) by searching for `"nla.obj"` and selecting the 'Online' facet (if you're using the API set `l-availability` to `y`). To further limit the results to digitised Parliamentary Papers the best option seems to be adding `series:"Parliamentary paper (Australia. Parliament)"` to [your search query](https://trove.nla.gov.au/search?keyword=%22nla.obj%22%20series%3A%22Parliamentary%20paper%20%28Australia.%20Parliament%29%22&l-availability=y).
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22+series%3A%22Parliamentary+paper+%28Australia.+Parliament%29%22%26category%3Dall%26l-availability%3Dy%26encoding%3Djson%26bulkHarvest%3Dtrue&comment=)
 

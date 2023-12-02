@@ -14,11 +14,7 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# Introduction
-
-```{attention}
-This guide is currently under development. For more information and discussion see [the list of issues](https://github.com/wragge/trove-data-guide/issues) on GitHub. Comments are welcome.
-```
+# The possibilities of Trove data
 
 We all know how to use [Trove](https://trove.nla.gov.au/). You just type your search terms into the box and click the button. You then work your way through the first few pages of results, saving anything that looks useful. If, for example, I’m interested in the development of radio in Australia, I could search for the term ‘radio’ in Trove’s digitised newspapers. It’s easy! 
 
@@ -62,11 +58,9 @@ By accessing Trove’s search data directly, we can start to grapple with the ch
 
 But that’s just the beginning. If the resources we’re interested in are digitised, we can often access their *contents* as data – such as the text of a book, or a digital image of a photograph. We can use computational methods to analyse and compare these resources, looking in depth at their structure and form.
 
-Search results and digitised content are two types of data available from Trove, but there are more. This Guide describes [the different types of data](/what-is-trove/types-of-data) Trove provides, explains [how to access them](/accessing-data/data-access-options), and gives [some examples](/pathways/pathways) of what you can do with this data. What new types of questions can we ask?
+Search results and digitised content are two types of data available from Trove, but there are more. This Guide describes the different types of dataTrove provides, explains [how to access them](/accessing-data/data-access-options), and gives [some examples](/pathways/pathways) of what you can do with this data. What new types of questions can we ask?
 
 But there are new dangers and challenges too. If we look again at the charts created by QueryPic, we might wonder what the peaks and troughs actually mean. How are the results influenced by the number of newspapers published or digitised? If we’re going to use Trove as a source of research data, we need to ask critical questions about where that data comes from, what it represents, and what it is missing. That’s why this Guide starts by examining [the nature of Trove itself](/what-is-trove/trove-is). As researchers we should always seek to understand the context of our sources, whether a single handwritten letter, or a massive digital collection. 
-
-==Something about skills?==
 
 ```{code-cell} ipython3
 ---

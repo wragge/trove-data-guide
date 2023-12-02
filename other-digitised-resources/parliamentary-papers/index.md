@@ -17,8 +17,6 @@ kernelspec:
 
 The NLA has digitised a large collection of reports and papers presented to the Commonwealth Parliament. 
 
-![](/images/pp-macaroni.png)
-
 ```{tableofcontents}
 
 ```

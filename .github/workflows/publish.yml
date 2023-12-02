@@ -44,6 +44,6 @@ jobs:
         switches: -avzr --delete
         path: ./_build/html/
         remote_path: /var/www/html/
-        remote_host: trovedataguide.glamworkbench.cloud.edu.au
+        remote_host: tdg.glamworkbench.cloud.edu.au
         remote_user: github
         remote_key: ${{ secrets.DEPLOY_KEY }}
