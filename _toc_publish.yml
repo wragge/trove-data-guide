@@ -130,7 +130,7 @@ parts:
     chapters:
       - file: pathways/index
   - chapters:
-    - file: glossary
+#    - file: glossary
 #    - file: genindex
     - file: references
 #    - file: demo
