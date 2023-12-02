@@ -4,10 +4,12 @@
 format: jb-book
 root: home
 options:
-  numbered: 2
-  maxdepth: 3
+  
+#  numbered: 2
+#  maxdepth: 3
 parts:
   - chapters:
+    - file: about
     - file: introduction/introduction
   - caption: "What is Trove?"
     numbered: 2
@@ -15,51 +17,53 @@ parts:
     chapters:
       - file: what-is-trove/trove-is
       - file: what-is-trove/categories-and-zones
-      - file: what-is-trove/metadata-and-digital-objects
+#      - file: what-is-trove/metadata-and-digital-objects
       - file: what-is-trove/works-and-versions
-      - file: what-is-trove/types-of-data
+      - file: what-is-trove/collections
+#      - file: what-is-trove/types-of-data
       - file: what-is-trove/links-and-identifiers
-      - file: what-is-trove/interfaces
+#      - file: what-is-trove/interfaces
   - caption: Understanding search
     numbered: 2
     maxdepth: 3
     chapters:
-      - file: understanding-search/understanding-search
-      - file: understanding-search/discovery-versus-analysis
+      - file: understanding-search/index
+#      - file: understanding-search/discovery-versus-analysis
       - file: understanding-search/simple-search-options
-      - file: understanding-search/facets
+#      - file: understanding-search/facets
       - file: understanding-search/date-searches
       - file: understanding-search/finding-digitised-content
   - caption: Accessing data
     numbered: 2
     maxdepth: 3
     chapters:
-      - file: accessing-data/data-access-options
+      - file: accessing-data/index
       - file: accessing-data/using-web-interface
       - file: accessing-data/trove-api-intro
-      - file: accessing-data/downloadable-datasets
+#      - file: accessing-data/downloadable-datasets
       - file: accessing-data/how-to/how-to
+        title: How to
         sections:
           - file: accessing-data/how-to/download-higher-resolution-images
-          - file: accessing-data/how-to/use-bulk-export
-          - file: accessing-data/how-to/use-lists
-          - file: accessing-data/how-to/use-zotero
+#          - file: accessing-data/how-to/use-bulk-export
+#          - file: accessing-data/how-to/use-lists
+#          - file: accessing-data/how-to/use-zotero
           - file: accessing-data/how-to/harvest-complete-results
-  - caption: Collection metadata
-    numbered: 2
-    maxdepth: 3
-    chapters:
-      - file: metadata/aggregated-collections
+#  - caption: Collection metadata
+#    numbered: 2
+#    maxdepth: 3
+#    chapters:
+#      - file: metadata/aggregated-collections
   - caption: Digitised newspapers and gazettes
     numbered: 2
     maxdepth: 3
     chapters:
       - file: newspapers-and-gazettes/newspaper-corpus
-      - file: newspapers-and-gazettes/newspapers-change-over-time
-      - file: newspapers-and-gazettes/newspapers-missing-pages
-      - file: newspapers-and-gazettes/newspapers-non-english
-      - file: newspapers-and-gazettes/newspapers-copyright
-      - file: newspapers-and-gazettes/newspapers-ocr
+#      - file: newspapers-and-gazettes/newspapers-change-over-time
+#      - file: newspapers-and-gazettes/newspapers-missing-pages
+#      - file: newspapers-and-gazettes/newspapers-non-english
+#      - file: newspapers-and-gazettes/newspapers-copyright
+#      - file: newspapers-and-gazettes/newspapers-ocr
       - file: newspapers-and-gazettes/data/accessing-data
         title: Accessing data
         sections:
@@ -74,7 +78,7 @@ parts:
       - file: newspapers-and-gazettes/how-to/newspapers-and-gazettes
         title: How to
         sections:
-          - file: newspapers-and-gazettes/how-to/querypic
+#          - file: newspapers-and-gazettes/how-to/querypic
           - file: newspapers-and-gazettes/how-to/get-newspaper-issue-article-pdfs
           - file: newspapers-and-gazettes/how-to/get-ocr-coordinates
           - file: newspapers-and-gazettes/how-to/create-newspaper-articles-dataset
@@ -82,38 +86,52 @@ parts:
     numbered: 2
     maxdepth: 3
     chapters:
-      - file: other-digitised-resources/digitised-resources
-      - file: other-digitised-resources/books/intro
+      - file: other-digitised-resources/books/index
         title: Books
         sections:
-          - file: other-digitised-resources/books/accessing-data
-      - file: other-digitised-resources/periodicals/intro
-        title: Periodicals
+          - file: other-digitised-resources/books/overview
+#          - file: other-digitised-resources/books/accessing-data
+#      - file: other-digitised-resources/periodicals/intro
+#        title: Periodicals
+#        sections:
+#          - file: other-digitised-resources/periodicals/accessing-data
+      - file: other-digitised-resources/parliamentary-papers/index
+        title: Parliamentary papers
         sections:
-          - file: other-digitised-resources/periodicals/accessing-data
+          - file: other-digitised-resources/parliamentary-papers/overview
+          - file: other-digitised-resources/parliamentary-papers/finding-pp
+#          - file: other-digitised-resources/parliamentary-papers/accessing-data
+      - file: other-digitised-resources/oral-histories/index
+        title: Oral histories
+        sections:
+          - file: other-digitised-resources/oral-histories/overview
+          - file: other-digitised-resources/oral-histories/accessing-data
       - file: other-digitised-resources/how-to/digitised-resources
         title: How to
         sections:
+#          - file: accessing-data/how-to/download-higher-resolution-images
           - file: other-digitised-resources/how-to/get-collection-items
           - file: other-digitised-resources/how-to/download-items-text-images
           - file: other-digitised-resources/how-to/extract-embedded-metadata
-  - caption: Web archives
-    numbered: 2
-    maxdepth: 3
-    chapters:
-      - file: web-archives/web-archives
-  - caption: User generated content
-    numbered: 2
-    maxdepth: 3
-    chapters:
-      - file: user-generated-data/trove-lists
+          - file: other-digitised-resources/how-to/harvest-digitised-resources
+          - file: other-digitised-resources/how-to/scrape-metadata-audio-player
+#  - caption: Web archives
+#    numbered: 2
+#    maxdepth: 3
+#    chapters:
+#      - file: web-archives/web-archives
+#  - caption: User generated content
+#    numbered: 2
+#    maxdepth: 3
+#    chapters:
+#      - file: user-generated-data/trove-lists
   - caption: Research pathways
     numbered: true
     chapters:
-      - file: pathways/pathways
+      - file: pathways/index
   - chapters:
     - file: glossary
-    - file: genindex
+#    - file: genindex
     - file: references
-    - file: demo
+#    - file: demo
 

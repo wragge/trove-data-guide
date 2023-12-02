@@ -55,6 +55,7 @@ Trove's default behaviour helps people find relevant articles, leveraging the kn
 
 If you're going to use Trove data in your research, you need to think beyond the search box, to question your own assumptions, and think critically about the systems that deliver the data to you.
 
+(search-is-a-research-method)=
 ## Search is a research method
 
 If you're working in a physical archive you don't expect to just submit a query to the person on the desk and have every relevant record delivered to you. You have to learn about the provenance of the records and the way they're arranged and described. It takes time, but it's a key part of the research process.

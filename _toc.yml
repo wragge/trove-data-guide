@@ -3,11 +3,13 @@
 
 format: jb-book
 root: home
-#options:
+options:
+  
 #  numbered: 2
 #  maxdepth: 3
 parts:
   - chapters:
+    - file: about
     - file: introduction/introduction
   - caption: "What is Trove?"
     numbered: 2
@@ -40,6 +42,7 @@ parts:
       - file: accessing-data/trove-api-intro
 #      - file: accessing-data/downloadable-datasets
       - file: accessing-data/how-to/how-to
+        title: How to
         sections:
           - file: accessing-data/how-to/download-higher-resolution-images
 #          - file: accessing-data/how-to/use-bulk-export
@@ -86,7 +89,8 @@ parts:
       - file: other-digitised-resources/books/index
         title: Books
         sections:
-          - file: other-digitised-resources/books/accessing-data
+          - file: other-digitised-resources/books/overview
+#          - file: other-digitised-resources/books/accessing-data
 #      - file: other-digitised-resources/periodicals/intro
 #        title: Periodicals
 #        sections:
@@ -96,7 +100,7 @@ parts:
         sections:
           - file: other-digitised-resources/parliamentary-papers/overview
           - file: other-digitised-resources/parliamentary-papers/finding-pp
-          - file: other-digitised-resources/parliamentary-papers/accessing-data
+#          - file: other-digitised-resources/parliamentary-papers/accessing-data
       - file: other-digitised-resources/oral-histories/index
         title: Oral histories
         sections:
@@ -121,13 +125,13 @@ parts:
 #    maxdepth: 3
 #    chapters:
 #      - file: user-generated-data/trove-lists
-#  - caption: Research pathways
-#    numbered: true
-#    chapters:
-#      - file: pathways/pathways
+  - caption: Research pathways
+    numbered: true
+    chapters:
+      - file: pathways/index
   - chapters:
     - file: glossary
-    - file: genindex
+#    - file: genindex
     - file: references
 #    - file: demo
 
