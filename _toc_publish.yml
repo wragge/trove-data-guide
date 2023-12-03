@@ -86,6 +86,7 @@ parts:
     numbered: 2
     maxdepth: 3
     chapters:
+      - file: other-digitised-resources/index
       - file: other-digitised-resources/books/index
         title: Books
         sections:
