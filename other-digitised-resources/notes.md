@@ -240,3 +240,37 @@ So publication metadata available (via embedded JSON):
 - pages
 - book chapters
 - articles in an issue (including page ids)
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Metadata
+
+Get children of collections by scraping browse list, except for periodicals.
+
+Get pages (also chapters, articles) of publications from JSON metadata
+
+Get articles from search
+
+MARC data in embedded JSON sometimes richer than API
+
++++
+
+## Downloading text images and PDFs
+
+Method is the same across different format types, but the results differ depending on whether it's a collection, publication etc.
+
++++
+
+## Things you might want to do
+
+- finding digitised resources
+- Get all issues of a journal as PDFs
+- All the text of a book
+- Books with OCR
+- Maps relating to a region
+- images from a finding aid
+- all images under a specific collection (including any subcollections)
+
+## How tos
+
+- Get a a list of items in a collection of digitised items (recursive for nested collections?)
