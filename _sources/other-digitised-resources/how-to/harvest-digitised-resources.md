@@ -21,6 +21,8 @@ As a result of these problems, a 'belts and braces' approach seems best – foll
 
 ## Outline of harvesting method
 
+This method works currently with multi-page publications like books and parliamentary papers. A few adjustments will be necessary for other resource types.
+
 ### Harvest metadata from API
 
 Searches using the API return work-level records. Sometimes digitised resources are grouped as versions of a work, even though they're quite different. To make sure you get everything, you need to work your way down through through the hierarchy of work -> version -> sub-version (labelled 'record' in API responses), harvesting every relevant record.
@@ -40,7 +42,7 @@ As noted in [](/other-digitised-resources/how-to/extract-embedded-metadata), mos
 - if the metadata doesn't include a list of pages then it's probably a collection page
     - if so [harvest a list of collection items](/other-digitised-resources/how-to/get-collection-items) and add them to the dataset
 - get the number of pages in the resource (or optionally a list of page identifiers) – this information can be used to download OCRd text and images from a resource
-- add or update fields using scraped metadata (eg add sub unit values)
+- add or update fields using scraped metadata (eg add sub-unit values)
 
 ### Check for 'missing' records
 
@@ -51,19 +53,21 @@ Some of the records in the dataset will represent *parts* of resources, such as 
 
 ### Merge/remove duplicates from dataset
 
-The aim of this step is to de-duplicate the harvested records, while preserving all the harvested metadata. The result is a dataset with one record for each fulltext url. If there are multiple values in any column, these will merged into a single list.
+The aim of this step is to de-duplicate the harvested records while preserving all the harvested metadata. The result is a dataset with one record for each fulltext url. If there are multiple values in any column, these will merged into a single list.
 
-- identify columns that can contain only one value (eg fulltext_url) and create a de-duplicated dataframe containing these columns
+- identify columns that can contain only one value (eg `fulltext_url`) and create a de-duplicated dataframe containing these columns
 - identify columns that could contain multiple values that need to be de-duplicated
 - merge values of columns with multiple values into new dataframes
 - merge dataframe with single value columns together with all the new dataframes, linking on the `fulltext_url` field
 
 ### Download text
 
-- using the number of pages attempt to [download text from publication](/other-digitised-resources/how-to/download-items-text-images)
+- use the number of pages attempt to [download text from publication](/other-digitised-resources/how-to/download-items-text-images)
 - if successful add text file name to dataset
 
 ### Download images
+
+- use the number of pages or page identifiers to [download page images from a publication](/other-digitised-resources/how-to/download-items-text-images)
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -252,7 +256,7 @@ def harvest_works(params, filter_by="url", nucs=["ANL", "ANL:DL"]):
     headers = {"X-API-KEY": API_KEY}
     total = get_total_results(params, headers)
     start = "*"
-    with Path("oral-histories-metadata.ndjson").open("w") as ndjson_file:
+    with Path("harvested-metadata.ndjson").open("w") as ndjson_file:
         with tqdm(total=total) as pbar:
             while start:
                 params["s"] = start
@@ -471,8 +475,8 @@ def add_pages(include_page_ids=False):
     Add volumes from multi volume books.
     """
     total = sum(1 for _ in open("pp-metadata.ndjson"))
-    with Path("pp-metadata.ndjson").open("r") as ndjson_in:
-        with Path("pp-metadata-pages.ndjson").open("w") as ndjson_out:
+    with Path("harvested-metadata.ndjson").open("r") as ndjson_in:
+        with Path("harvested-metadata-pages.ndjson").open("w") as ndjson_out:
             for line in tqdm(ndjson_in, total=total):
                 work = json.loads(line)
                 # print(book['fulltext_url'])
@@ -529,11 +533,98 @@ def add_pages(include_page_ids=False):
                 ndjson_out.write(f"{json.dumps(work)}\n")
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Check for missing resources
+
+```python
+
+def get_missing_metadata(include_page_ids=False):
+    df = pd.read_json("harvested-metadata-pages.ndjson", lines=True, convert_dates=False)
+    parent_ids = list(df["parent"].unique())
+    fulltext_urls = list(df["fulltext_url"].unique())
+    fulltext_ids = [f.split("/")[-1] for f in fulltext_urls]
+    missing_ids = [m for m in list(set(parent_ids) - set(fulltext_ids)) if m != ""]
+    with Path("harvested-metadata-pages.ndjson").open("a") as ndjson_out:
+        for mid in tqdm(missing_ids):
+            fulltext_url = f"https://nla.gov.au/{mid}"
+            metadata = get_work_data(fulltext_url)
+            work = {
+                "fulltext_url": fulltext_url,
+            }
+            pages = get_pages(metadata)
+            work = add_metadata(work, metadata, pages, include_page_ids)
+            ndjson_out.write(f"{json.dumps(work)}\n")
+```
+
++++
+
+## Merge duplicate records
+
+```python
+
+def merge_column(columns):
+        values = []
+        for value in columns:
+            if isinstance(value, list):
+                values += [str(v) for v in value if v]
+            elif value:
+                values.append(str(value))
+        return " | ".join(sorted(set(values)))
+
+def merge_records(df):
+    df["pages"].fillna(0, inplace=True)
+    df.fillna("", inplace=True)
+    df["pages"] = df["pages"].astype("Int64")
+
+    # Add base dataset with columns that will always have only one value
+    dfs = [
+        df.loc[df["pages"] > 0][
+            ["fulltext_url", "pages", "sub_unit", "text_file"]
+        ].drop_duplicates()
+    ]
+
+    # Columns that potentially have multiple values which will be merged
+    columns = [
+        "title",
+        "work_url",
+        "work_type",
+        "contributor",
+        "publisher",
+        "date",
+        "type",
+        "format",
+        "extent",
+        "language",
+        "subject",
+        "spatial",
+        "is_part_of",
+        "identifier",
+        "rights",
+        "fulltext_url_text",
+        "catalogue_url",
+        "parent",
+        "parent_url",
+        "children",
+    ]
+
+    # Merge values from each column in turn, creating a new dataframe from each
+    for column in columns:
+        dfs.append(
+            df.groupby(["fulltext_url"])[column].apply(merge_column).reset_index()
+        )
+
+    # Merge all the individual dataframes into one, linking on `text_file` value
+    df_merged = reduce(
+        lambda left, right: pd.merge(left, right, on=["fulltext_url"], how="left"), dfs
+    )
+    return df_merged
+
+df = pd.read_json("harvested-metadata-pages-text.ndjson", lines=True, convert_dates=False)
+
+df_merged = merge_records(df)
+```
+
 ```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
 
 ```
