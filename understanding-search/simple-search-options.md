@@ -204,10 +204,10 @@ glue("text_ise", get_total("text:naturalisation"))
   - {glue:text}`stem_ize:,`
   - Stemmed to 'natur'
 * - `text:naturalisation`
-  - {glue:text}`stem_ise:,`
+  - {glue:text}`text_ise:,`
   - No stemming
 * - `text:naturalization`
-  - {glue:text}`stem_ize:,`
+  - {glue:text}`text_ize:,`
   - No stemming
 
 ```
