@@ -49,6 +49,7 @@ load_dotenv()
 editable: true
 slideshow:
   slide_type: ''
+tags: [remove-cell]
 ---
 YOUR_API_KEY = os.getenv("TROVE_API_KEY")
 ```
@@ -125,7 +126,7 @@ By duplicating results across categories, Trove is trying to make these resource
 
 They key point is that aggregated resources don't really *belong* to a category. You might have noticed that individual work records in both the web interface and the API, don't tell you the category (or categories) that work belongs to. If you have a work record, the only way to find its associated categories is to run a search for it. **Categories only make sense when you're searching.** They're not buckets of content, they're windows onto a big pool of aggregated resources.
 
-<mark>==Note about the implications of working with data. Using the 'all' option with harvests.==</mark>
+<!---<mark>==Note about the implications of working with data. Using the 'all' option with harvests.==</mark>--->
 
 +++
 
@@ -172,7 +173,7 @@ graph LR
   msv["Music, sound and video"] --> mav["Music, Audio & Video"]
 ```
 
-The most significant change was the break-up of the old **Journals, articles and data sets" zone. Its content has been split between **Books & Libraries** and the two new categories **Magazines & Newsletters** and **Research & Reports**.
+The most significant change was the break-up of the old **Journals, articles and data sets** zone. Its content has been split between **Books & Libraries** and the two new categories **Magazines & Newsletters** and **Research & Reports**.
 
 +++
 
