@@ -62,7 +62,8 @@ html:
     Version: v0.0 (27 October 2023)
     </p>
   comments:
-    hypothesis: true
+    utterances:
+      repo: "wragge/trove-data-guide"
 
 sphinx:
   recursive_update: true
