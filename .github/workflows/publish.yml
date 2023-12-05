@@ -44,6 +44,6 @@ jobs:
         switches: -avzr --delete
         path: ./_build/html/
         remote_path: /var/www/html/
-        remote_host: tdg.glamworkbench.cloud.edu.au
+        remote_host: 131.217.172.151
         remote_user: github
         remote_key: ${{ secrets.DEPLOY_KEY }}
