@@ -55,12 +55,16 @@ A single oral history can be recorded across multiple sessions. There are separa
 
 ## Metadata
 
+````{margin}
+```{seealso}
+The method used to create this dataset is documented in the GLAM Workbench notebook [Harvest oral histories metadata](https://glam-workbench.net/trove-music/harvest-oral-histories/). As well as downloading data from the Trove API, it uses the methods described below to [scrape additional metadata from the audio player](additional-metadata-audio-player) and [obtain details of downloadable files](details-of-available-downloads).
+```
+````
+
 (oral-histories-downloadable-data)=
 ### Downloadable dataset
 
-A CSV file containing details of oral histories from the NLA collection (both online and not online) harvested from Trove is available in [this GitHub repository](https://github.com/GLAM-Workbench/trove-oral-histories-data). You can [explore the data](https://glam-workbench.net/datasette-lite/?csv=https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-histories.csv#/data/trove-oral-histories) using Datasette.
-
-Additional documentation will be added to the GLAM Workbench in coming months.
+A [CSV file containing details of oral histories](https://glam-workbench.net/trove-music/trove-oral-histories/) from the NLA collection (both online and not online) harvested from Trove is available from the GLAM Workbench. You can also [explore the data](https://glam-workbench.net/datasette-lite/?csv=https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-histories.csv#/data/trove-oral-histories) using Datasette.
 
 ### Search results from the API
 
@@ -82,16 +86,8 @@ As with other digitised resources there are some inconsistencies in the descript
 
 To make sure you get all relevant results, I'd recommend harvesting all the version data from the work records and dealing with duplicates at the end. This strategy is described and documented in [](/other-digitised-resources/how-to/harvest-digitised-resources).
 
+(additional-metadata-audio-player)=
 ### Additional metadata from audio player
-
-````{margin}
-```{figure} /images/audio-player-metadata.png
-:width: 200
-:name: audio-player-metadata
-
-Example of the metadata displayed in Trove's audio player
-```
-````
 
 Trove's audio player displays some metadata that isn't included in the API records. This can include:
 
@@ -99,10 +95,14 @@ Trove's audio player displays some metadata that isn't included in the API recor
 - a note about the availability of transcripts
 - roles of the people involved – ie 'interviewer' and 'interviewee'
 
+```{figure} /images/audio-player-metadata.png
+:width: 200
+:name: audio-player-metadata
+
+Example of the metadata displayed in Trove's audio player
+```
 
 This information could be useful, and you might want to use it to enrich the records harvested from the API. Some example code that you can use to scrape this metadata using the digital object url of an oral history record is included in [](/other-digitised-resources/how-to/scrape-metadata-audio-player).
-
-<mark>==There's an example of enriching API results using this metadata in the GLAM Workbench.==</mark>
 
 (details-of-available-downloads)=
 ### Details of available downloads
@@ -231,6 +231,12 @@ print(f"\nTotal duration: {duration} seconds")
 
 (oral-histories-transcripts)=
 ## Transcripts and summaries
+
+````{margin}
+```{seealso}
+The GLAM Workbench notebook [Download summaries and transcripts from oral histories](https://glam-workbench.net/trove-music/download-transcripts/) demonstrates how you can automate the download of text transcripts.
+```
+````
 
 Each oral history record has a single text file combining summaries and transcripts for every session of the interview. The urls used to download this file have the pattern:
 

@@ -11,11 +11,9 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # HOW TO: Use the bulk export option to save the results of a search
-
-+++
-
-
 
 +++
 
