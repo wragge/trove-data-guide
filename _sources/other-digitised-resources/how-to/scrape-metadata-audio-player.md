@@ -15,6 +15,12 @@ kernelspec:
 
 # HOW TO: Scrape metadata from the Trove audio player
 
+````{margin}
+```{seealso}
+For an example of this code in action see the GLAM Workbench notebook [Harvest oral histories metadata](https://glam-workbench.net/trove-music/harvest-oral-histories/).
+```
+````
+
 Trove's audio player displays some metadata that isn't included in the API records. This can include:
 
 - a descriptive note with the date and place of the recording

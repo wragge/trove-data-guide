@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/oral-histories/accessing-data.9edda57e-ad28-41a6-a912-0638fabab3a1.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/oral-histories/accessing-data.486abe72-dda1-40da-84b1-508fdc551192.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/oral-histories/accessing-data';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -506,10 +506,16 @@ document.write(`
 </section>
 <section id="metadata">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The method used to create this dataset is documented in the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-music/harvest-oral-histories/">Harvest oral histories metadata</a>. As well as downloading data from the Trove API, it uses the methods described below to <a class="reference internal" href="#additional-metadata-audio-player"><span class="std std-ref">scrape additional metadata from the audio player</span></a> and <a class="reference internal" href="#details-of-available-downloads"><span class="std std-ref">obtain details of downloadable files</span></a>.</p>
+</div>
+</aside>
 <section id="downloadable-dataset">
 <span id="oral-histories-downloadable-data"></span><h3><a class="toc-backref" href="#id5" role="doc-backlink">Downloadable dataset</a><a class="headerlink" href="#downloadable-dataset" title="Permalink to this heading">#</a></h3>
-<p>A CSV file containing details of oral histories from the NLA collection (both online and not online) harvested from Trove is available in <a class="reference external" href="https://github.com/GLAM-Workbench/trove-oral-histories-data">this GitHub repository</a>. You can <a class="reference external" href="https://glam-workbench.net/datasette-lite/?csv=https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-histories.csv#/data/trove-oral-histories">explore the data</a> using Datasette.</p>
-<p>Additional documentation will be added to the GLAM Workbench in coming months.</p>
+<p>A <a class="reference external" href="https://glam-workbench.net/trove-music/trove-oral-histories/">CSV file containing details of oral histories</a> from the NLA collection (both online and not online) harvested from Trove is available from the GLAM Workbench. You can also <a class="reference external" href="https://glam-workbench.net/datasette-lite/?csv=https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-histories.csv#/data/trove-oral-histories">explore the data</a> using Datasette.</p>
 </section>
 <section id="search-results-from-the-api">
 <h3><a class="toc-backref" href="#id6" role="doc-backlink">Search results from the API</a><a class="headerlink" href="#search-results-from-the-api" title="Permalink to this heading">#</a></h3>
@@ -527,24 +533,20 @@ document.write(`
 <p>To make sure you get all relevant results, I’d recommend harvesting all the version data from the work records and dealing with duplicates at the end. This strategy is described and documented in <a class="reference internal" href="../how-to/harvest-digitised-resources.html"><span class="doc std std-doc">HOW TO: Harvest data relating to digitised resources</span></a>.</p>
 </section>
 <section id="additional-metadata-from-audio-player">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Additional metadata from audio player</a><a class="headerlink" href="#additional-metadata-from-audio-player" title="Permalink to this heading">#</a></h3>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<figure class="align-default" id="audio-player-metadata">
-<a class="reference internal image-reference" href="../../_images/audio-player-metadata.png"><img alt="../../_images/audio-player-metadata.png" src="../../_images/audio-player-metadata.png" style="width: 200px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 20.2 </span><span class="caption-text">Example of the metadata displayed in Trove’s audio player</span><a class="headerlink" href="#audio-player-metadata" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</aside>
+<span id="additional-metadata-audio-player"></span><h3><a class="toc-backref" href="#id7" role="doc-backlink">Additional metadata from audio player</a><a class="headerlink" href="#additional-metadata-from-audio-player" title="Permalink to this heading">#</a></h3>
 <p>Trove’s audio player displays some metadata that isn’t included in the API records. This can include:</p>
 <ul class="simple">
 <li><p>a descriptive note with the date and place of the recording</p></li>
 <li><p>a note about the availability of transcripts</p></li>
 <li><p>roles of the people involved – ie ‘interviewer’ and ‘interviewee’</p></li>
 </ul>
+<figure class="align-default" id="audio-player-metadata">
+<a class="reference internal image-reference" href="../../_images/audio-player-metadata.png"><img alt="../../_images/audio-player-metadata.png" src="../../_images/audio-player-metadata.png" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20.2 </span><span class="caption-text">Example of the metadata displayed in Trove’s audio player</span><a class="headerlink" href="#audio-player-metadata" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>This information could be useful, and you might want to use it to enrich the records harvested from the API. Some example code that you can use to scrape this metadata using the digital object url of an oral history record is included in <a class="reference internal" href="../how-to/scrape-metadata-audio-player.html"><span class="doc std std-doc">HOW TO: Scrape metadata from the Trove audio player</span></a>.</p>
-<p><mark>==There’s an example of enriching API results using this metadata in the GLAM Workbench.==</mark></p>
 </section>
 <section id="details-of-available-downloads">
 <span id="id1"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Details of available downloads</a><a class="headerlink" href="#details-of-available-downloads" title="Permalink to this heading">#</a></h3>
@@ -687,6 +689,13 @@ Total duration: 78024 seconds
 </section>
 <section id="transcripts-and-summaries">
 <span id="oral-histories-transcripts"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">Transcripts and summaries</a><a class="headerlink" href="#transcripts-and-summaries" title="Permalink to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-music/download-transcripts/">Download summaries and transcripts from oral histories</a> demonstrates how you can automate the download of text transcripts.</p>
+</div>
+</aside>
 <p>Each oral history record has a single text file combining summaries and transcripts for every session of the interview. The urls used to download this file have the pattern:</p>
 <p><code class="docutils literal notranslate"><span class="pre">https://nla.gov.au/tarkine/listen/download/transcript/[NLA.OBJ</span> <span class="pre">ID]</span></code></p>
 <p>In this case, you use the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier of the oral history record, for example:</p>
