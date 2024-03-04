@@ -4,7 +4,7 @@
 title: Trove Data Guide
 author: '<a href="https://timsherratt.org">Tim Sherratt</a>'
 logo: trove-words-1685171984-1000-1000.jpg
-copyright: "2023 Australian Research Data Commons"
+copyright: "2024 Australian Research Data Commons"
 exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", README.md]
 only_build_toc_files: true
 #######################################################################################

@@ -4,9 +4,9 @@
 title: Trove Data Guide
 author: '<a href="https://timsherratt.org">Tim Sherratt</a>'
 logo: trove-words-1685171984-1000-1000.jpg
-copyright: "2023 Australian Research Data Commons"
+copyright: "2024 Australian Research Data Commons"
 exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", README.md]
-only_build_toc_files: true
+only_build_toc_files: false
 #######################################################################################
 # Parse and render settings
 parse:
@@ -15,10 +15,10 @@ parse:
     - colon_fence
     - deflist
     - dollarmath
-    # - html_admonition
-    # - html_image
+    - html_admonition
+    - html_image
     - linkify
-    # - replacements
+    - replacements
     - smartquotes
     - substitution
     - tasklist
@@ -68,7 +68,7 @@ sphinx:
     - sphinx_tippy
     - sphinxcontrib.mermaid
   config:
-    #html_theme: sphinx_book_theme
+    html_theme: sphinx_book_theme
     #html_theme: pydata_sphinx_theme
     html_show_copyright: true
     #templates_path:

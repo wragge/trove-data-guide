@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -149,7 +149,7 @@ You can see that there overlaps between categories. For example, 'audio book' is
 Beware that `type` and `format` can have different meanings depending on where you are in Trove! In the web interface, the facet headed 'Type' is used to distinguish between 'sub categories' such as `newspaper` and `gazette`, while 'Format' describes the resource's format. In the API, the format values are in the `type` field, although you use them with the `format` facet! There can also be a separate `format` field in work and version records that contains a physical description. 
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## From zones to categories
 
@@ -175,7 +175,7 @@ graph LR
 
 The most significant change was the break-up of the old **Journals, articles and data sets** zone. Its content has been split between **Books & Libraries** and the two new categories **Magazines & Newsletters** and **Research & Reports**.
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Number of resources in each category
 
