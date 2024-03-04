@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>8. Date searches &#8212; Trove Data Guide</title>
   
@@ -19,54 +18,51 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/tdg.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/tippy.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/tdg.css?v=1b4bc755" />
+    <link rel="stylesheet" type="text/css" href="../_static/tippy.css?v=2687f39f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/date-searches.e1bceef6-49f9-4bb0-b14f-e927c991fbe4.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/date-searches.bb431407-c0bf-4880-86bf-b48ee541f798.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/date-searches';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -82,7 +78,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -123,11 +127,14 @@ const thebe_selector_output = ".output, .cell_output"
   </div>
 
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,9 +149,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../home.html">
+  
   
   
   
@@ -154,12 +163,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/trove-words-1685171984-1000-1000.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/trove-words-1685171984-1000-1000.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/trove-words-1685171984-1000-1000.jpg" class="logo__image only-light" alt="Trove Data Guide - Home"/>
+    <script>document.write(`<img src="../_static/trove-words-1685171984-1000-1000.jpg" class="logo__image only-dark" alt="Trove Data Guide - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -349,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/understanding-search/date-searches.md" target="_blank"
+      <li><a href="../_sources/understanding-search/date-searches.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -359,7 +379,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -401,20 +421,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -456,10 +478,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="date-searches">
-<h1><span class="section-number">8. </span>Date searches<a class="headerlink" href="#date-searches" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>Date searches<a class="headerlink" href="#date-searches" title="Link to this heading">#</a></h1>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
@@ -480,7 +502,7 @@ On this page</div>
 </div>
 <p>You can limit your Trove searches by date in a number of ways. These options vary across categories and can cause confusion. This section will attempt to document the possibilities and problems.</p>
 <section id="accuracy-and-consistency-of-metadata">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">8.1. </span>Accuracy and consistency of metadata</a><a class="headerlink" href="#accuracy-and-consistency-of-metadata" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink"><span class="section-number">8.1. </span>Accuracy and consistency of metadata</a><a class="headerlink" href="#accuracy-and-consistency-of-metadata" title="Link to this heading">#</a></h2>
 <!---
 <mark>==I suspect this section might get moved to the contexts section later on. Also need to note that the facets in the book zone don't display dates past today, even though they are there. I think this is an attempt to clean up the interface, but just hides the problem rather than fixing it.==</mark>
 --->
@@ -491,28 +513,28 @@ On this page</div>
 ---><figure class="align-default" id="research-decades-chart" style="width: 600px">
 <div class="output text_html">
 <style>
-  #altair-viz-0ee70cb24e55466e919d509cb1785175.vega-embed {
+  #altair-viz-1c9ed99261214d5ca04794d6f2f527b5.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-0ee70cb24e55466e919d509cb1785175.vega-embed details,
-  #altair-viz-0ee70cb24e55466e919d509cb1785175.vega-embed details summary {
+  #altair-viz-1c9ed99261214d5ca04794d6f2f527b5.vega-embed details,
+  #altair-viz-1c9ed99261214d5ca04794d6f2f527b5.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-0ee70cb24e55466e919d509cb1785175"></div>
+<div id="altair-viz-1c9ed99261214d5ca04794d6f2f527b5"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0ee70cb24e55466e919d509cb1785175") {
-      outputDiv = document.getElementById("altair-viz-0ee70cb24e55466e919d509cb1785175");
+    if (outputDiv.id !== "altair-viz-1c9ed99261214d5ca04794d6f2f527b5") {
+      outputDiv = document.getElementById("altair-viz-1c9ed99261214d5ca04794d6f2f527b5");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -548,43 +570,43 @@ On this page</div>
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-291682ca639b9215e9b6df01934e1ac5"}, "mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "c"}, "bin": {"step": 100}, "field": "decade", "title": "decade (binned by century)", "type": "quantitative"}, "y": {"field": "total_works", "scale": {"type": "log"}, "title": "number of works (log scale)", "type": "quantitative"}}, "height": 250, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-291682ca639b9215e9b6df01934e1ac5": [{"decade": 9970, "total_works": 2}, {"decade": 9520, "total_works": 2}, {"decade": 7500, "total_works": 2}, {"decade": 6660, "total_works": 3}, {"decade": 6580, "total_works": 2}, {"decade": 5550, "total_works": 2}, {"decade": 5380, "total_works": 4}, {"decade": 5130, "total_works": 2}, {"decade": 5000, "total_works": 3}, {"decade": 4390, "total_works": 4}, {"decade": 4270, "total_works": 1}, {"decade": 4250, "total_works": 2}, {"decade": 4240, "total_works": 1}, {"decade": 4210, "total_works": 1}, {"decade": 4180, "total_works": 1}, {"decade": 4150, "total_works": 1}, {"decade": 4120, "total_works": 1}, {"decade": 4090, "total_works": 1}, {"decade": 4060, "total_works": 1}, {"decade": 4030, "total_works": 1}, {"decade": 4000, "total_works": 1}, {"decade": 3970, "total_works": 1}, {"decade": 3940, "total_works": 1}, {"decade": 3910, "total_works": 1}, {"decade": 3880, "total_works": 1}, {"decade": 3850, "total_works": 1}, {"decade": 3820, "total_works": 1}, {"decade": 3780, "total_works": 1}, {"decade": 3410, "total_works": 1}, {"decade": 3330, "total_works": 3}, {"decade": 3320, "total_works": 1}, {"decade": 3070, "total_works": 1}, {"decade": 3010, "total_works": 1}, {"decade": 3000, "total_works": 1}, {"decade": 2990, "total_works": 2}, {"decade": 2840, "total_works": 1}, {"decade": 2750, "total_works": 1}, {"decade": 2430, "total_works": 1}, {"decade": 2350, "total_works": 1}, {"decade": 2310, "total_works": 1}, {"decade": 2300, "total_works": 2}, {"decade": 2290, "total_works": 4}, {"decade": 2200, "total_works": 2}, {"decade": 2180, "total_works": 4}, {"decade": 2170, "total_works": 1}, {"decade": 2110, "total_works": 2}, {"decade": 2100, "total_works": 65}, {"decade": 2090, "total_works": 34}, {"decade": 2080, "total_works": 761}, {"decade": 2070, "total_works": 3}, {"decade": 2060, "total_works": 1}, {"decade": 2050, "total_works": 5}, {"decade": 2040, "total_works": 7}, {"decade": 2030, "total_works": 15}, {"decade": 2020, "total_works": 742602}, {"decade": 2010, "total_works": 1799760}, {"decade": 2000, "total_works": 1417620}, {"decade": 1990, "total_works": 780111}, {"decade": 1980, "total_works": 617137}, {"decade": 1970, "total_works": 434609}, {"decade": 1960, "total_works": 260999}, {"decade": 1950, "total_works": 186182}, {"decade": 1940, "total_works": 156609}, {"decade": 1930, "total_works": 117871}, {"decade": 1920, "total_works": 108419}, {"decade": 1910, "total_works": 99809}, {"decade": 1900, "total_works": 113132}, {"decade": 1890, "total_works": 31136}, {"decade": 1880, "total_works": 29814}, {"decade": 1870, "total_works": 23634}, {"decade": 1860, "total_works": 23480}, {"decade": 1850, "total_works": 22509}, {"decade": 1840, "total_works": 15695}, {"decade": 1830, "total_works": 14763}, {"decade": 1820, "total_works": 10582}, {"decade": 1810, "total_works": 14218}, {"decade": 1800, "total_works": 9533}, {"decade": 1790, "total_works": 9175}, {"decade": 1780, "total_works": 3856}, {"decade": 1770, "total_works": 3196}, {"decade": 1760, "total_works": 2223}, {"decade": 1750, "total_works": 2128}, {"decade": 1740, "total_works": 1678}, {"decade": 1730, "total_works": 1413}, {"decade": 1720, "total_works": 1691}, {"decade": 1710, "total_works": 1625}, {"decade": 1700, "total_works": 1789}, {"decade": 1690, "total_works": 1063}, {"decade": 1680, "total_works": 1161}, {"decade": 1670, "total_works": 739}, {"decade": 1660, "total_works": 874}, {"decade": 1650, "total_works": 1048}, {"decade": 1640, "total_works": 2617}, {"decade": 1630, "total_works": 398}, {"decade": 1620, "total_works": 459}, {"decade": 1610, "total_works": 397}, {"decade": 1600, "total_works": 390}, {"decade": 1590, "total_works": 218}, {"decade": 1580, "total_works": 422}, {"decade": 1570, "total_works": 257}, {"decade": 1560, "total_works": 261}, {"decade": 1550, "total_works": 186}, {"decade": 1540, "total_works": 173}, {"decade": 1530, "total_works": 132}, {"decade": 1520, "total_works": 75}, {"decade": 1510, "total_works": 68}, {"decade": 1500, "total_works": 177}, {"decade": 1490, "total_works": 51}, {"decade": 1480, "total_works": 47}, {"decade": 1470, "total_works": 20}, {"decade": 1460, "total_works": 15}, {"decade": 1450, "total_works": 20}, {"decade": 1440, "total_works": 13}, {"decade": 1430, "total_works": 14}, {"decade": 1420, "total_works": 11}, {"decade": 1410, "total_works": 16}, {"decade": 1400, "total_works": 165}, {"decade": 1390, "total_works": 11}, {"decade": 1380, "total_works": 11}, {"decade": 1370, "total_works": 13}, {"decade": 1360, "total_works": 12}, {"decade": 1350, "total_works": 12}, {"decade": 1340, "total_works": 12}, {"decade": 1330, "total_works": 13}, {"decade": 1320, "total_works": 9}, {"decade": 1310, "total_works": 8}, {"decade": 1300, "total_works": 111}, {"decade": 1290, "total_works": 5}, {"decade": 1280, "total_works": 6}, {"decade": 1270, "total_works": 4}, {"decade": 1260, "total_works": 5}, {"decade": 1250, "total_works": 2}, {"decade": 1240, "total_works": 4}, {"decade": 1230, "total_works": 3}, {"decade": 1220, "total_works": 4}, {"decade": 1210, "total_works": 3}, {"decade": 1200, "total_works": 98}, {"decade": 1190, "total_works": 32}, {"decade": 1180, "total_works": 2}, {"decade": 1170, "total_works": 1}, {"decade": 1160, "total_works": 1}, {"decade": 1150, "total_works": 1}, {"decade": 1140, "total_works": 1}, {"decade": 1130, "total_works": 1}, {"decade": 1120, "total_works": 1}, {"decade": 1110, "total_works": 1}, {"decade": 1100, "total_works": 31}, {"decade": 1090, "total_works": 5}, {"decade": 1080, "total_works": 3}, {"decade": 1070, "total_works": 2}, {"decade": 1060, "total_works": 1}, {"decade": 1050, "total_works": 1}, {"decade": 1040, "total_works": 2}, {"decade": 1030, "total_works": 1}, {"decade": 1020, "total_works": 7}, {"decade": 1010, "total_works": 27}, {"decade": 1000, "total_works": 22}, {"decade": 910, "total_works": 2}, {"decade": 690, "total_works": 2}, {"decade": 490, "total_works": 2}, {"decade": 420, "total_works": 1}, {"decade": 410, "total_works": 1}, {"decade": 400, "total_works": 1}, {"decade": 390, "total_works": 1}, {"decade": 380, "total_works": 1}, {"decade": 370, "total_works": 1}, {"decade": 360, "total_works": 1}, {"decade": 350, "total_works": 1}, {"decade": 340, "total_works": 1}, {"decade": 330, "total_works": 1}, {"decade": 320, "total_works": 1}, {"decade": 310, "total_works": 1}, {"decade": 300, "total_works": 1}, {"decade": 290, "total_works": 1}, {"decade": 280, "total_works": 1}, {"decade": 270, "total_works": 1}, {"decade": 260, "total_works": 3}, {"decade": 250, "total_works": 1}, {"decade": 240, "total_works": 1}, {"decade": 230, "total_works": 1}, {"decade": 220, "total_works": 2}, {"decade": 210, "total_works": 2}, {"decade": 200, "total_works": 17}, {"decade": 190, "total_works": 18}, {"decade": 180, "total_works": 2}, {"decade": 170, "total_works": 1}, {"decade": 160, "total_works": 1}, {"decade": 150, "total_works": 1}, {"decade": 140, "total_works": 1}, {"decade": 130, "total_works": 1}, {"decade": 120, "total_works": 1}, {"decade": 110, "total_works": 5}, {"decade": 100, "total_works": 2}, {"decade": 90, "total_works": 2}, {"decade": 70, "total_works": 3}, {"decade": 40, "total_works": 1}, {"decade": 30, "total_works": 7}, {"decade": 20, "total_works": 32}, {"decade": 10, "total_works": 69}, {"decade": 0, "total_works": 311}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-bc581f64a43c1f114b689728aa24c79b"}, "mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "c"}, "bin": {"step": 100}, "field": "decade", "title": "decade (binned by century)", "type": "quantitative"}, "y": {"field": "total_works", "scale": {"type": "log"}, "title": "number of works (log scale)", "type": "quantitative"}}, "height": 250, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-bc581f64a43c1f114b689728aa24c79b": [{"decade": 9970, "total_works": 2}, {"decade": 6660, "total_works": 3}, {"decade": 5550, "total_works": 1}, {"decade": 5380, "total_works": 4}, {"decade": 5130, "total_works": 2}, {"decade": 5000, "total_works": 2}, {"decade": 4990, "total_works": 1}, {"decade": 4390, "total_works": 2}, {"decade": 3410, "total_works": 1}, {"decade": 3330, "total_works": 3}, {"decade": 3070, "total_works": 1}, {"decade": 3010, "total_works": 1}, {"decade": 3000, "total_works": 1}, {"decade": 2990, "total_works": 2}, {"decade": 2840, "total_works": 1}, {"decade": 2320, "total_works": 1}, {"decade": 2310, "total_works": 1}, {"decade": 2300, "total_works": 2}, {"decade": 2290, "total_works": 4}, {"decade": 2200, "total_works": 2}, {"decade": 2180, "total_works": 4}, {"decade": 2160, "total_works": 1}, {"decade": 2120, "total_works": 1}, {"decade": 2110, "total_works": 1}, {"decade": 2100, "total_works": 64}, {"decade": 2090, "total_works": 36}, {"decade": 2080, "total_works": 761}, {"decade": 2070, "total_works": 3}, {"decade": 2060, "total_works": 1}, {"decade": 2050, "total_works": 7}, {"decade": 2040, "total_works": 7}, {"decade": 2030, "total_works": 15}, {"decade": 2020, "total_works": 788558}, {"decade": 2010, "total_works": 1829827}, {"decade": 2000, "total_works": 1445537}, {"decade": 1990, "total_works": 805312}, {"decade": 1980, "total_works": 635448}, {"decade": 1970, "total_works": 450497}, {"decade": 1960, "total_works": 274093}, {"decade": 1950, "total_works": 198185}, {"decade": 1940, "total_works": 167955}, {"decade": 1930, "total_works": 128930}, {"decade": 1920, "total_works": 119740}, {"decade": 1910, "total_works": 110555}, {"decade": 1900, "total_works": 125624}, {"decade": 1890, "total_works": 31735}, {"decade": 1880, "total_works": 29894}, {"decade": 1870, "total_works": 23958}, {"decade": 1860, "total_works": 23738}, {"decade": 1850, "total_works": 22720}, {"decade": 1840, "total_works": 15879}, {"decade": 1830, "total_works": 14927}, {"decade": 1820, "total_works": 10727}, {"decade": 1810, "total_works": 14357}, {"decade": 1800, "total_works": 9685}, {"decade": 1790, "total_works": 9189}, {"decade": 1780, "total_works": 3864}, {"decade": 1770, "total_works": 3202}, {"decade": 1760, "total_works": 2227}, {"decade": 1750, "total_works": 2131}, {"decade": 1740, "total_works": 1681}, {"decade": 1730, "total_works": 1416}, {"decade": 1720, "total_works": 1695}, {"decade": 1710, "total_works": 1628}, {"decade": 1700, "total_works": 1791}, {"decade": 1690, "total_works": 1064}, {"decade": 1680, "total_works": 1162}, {"decade": 1670, "total_works": 739}, {"decade": 1660, "total_works": 875}, {"decade": 1650, "total_works": 1049}, {"decade": 1640, "total_works": 2618}, {"decade": 1630, "total_works": 399}, {"decade": 1620, "total_works": 460}, {"decade": 1610, "total_works": 398}, {"decade": 1600, "total_works": 391}, {"decade": 1590, "total_works": 219}, {"decade": 1580, "total_works": 423}, {"decade": 1570, "total_works": 258}, {"decade": 1560, "total_works": 262}, {"decade": 1550, "total_works": 187}, {"decade": 1540, "total_works": 174}, {"decade": 1530, "total_works": 133}, {"decade": 1520, "total_works": 76}, {"decade": 1510, "total_works": 69}, {"decade": 1500, "total_works": 178}, {"decade": 1490, "total_works": 52}, {"decade": 1480, "total_works": 48}, {"decade": 1470, "total_works": 21}, {"decade": 1460, "total_works": 16}, {"decade": 1450, "total_works": 21}, {"decade": 1440, "total_works": 14}, {"decade": 1430, "total_works": 15}, {"decade": 1420, "total_works": 12}, {"decade": 1410, "total_works": 15}, {"decade": 1400, "total_works": 166}, {"decade": 1390, "total_works": 12}, {"decade": 1380, "total_works": 12}, {"decade": 1370, "total_works": 14}, {"decade": 1360, "total_works": 13}, {"decade": 1350, "total_works": 13}, {"decade": 1340, "total_works": 13}, {"decade": 1330, "total_works": 14}, {"decade": 1320, "total_works": 10}, {"decade": 1310, "total_works": 10}, {"decade": 1300, "total_works": 112}, {"decade": 1290, "total_works": 6}, {"decade": 1280, "total_works": 7}, {"decade": 1270, "total_works": 5}, {"decade": 1260, "total_works": 5}, {"decade": 1250, "total_works": 2}, {"decade": 1240, "total_works": 4}, {"decade": 1230, "total_works": 3}, {"decade": 1220, "total_works": 4}, {"decade": 1210, "total_works": 3}, {"decade": 1200, "total_works": 99}, {"decade": 1190, "total_works": 32}, {"decade": 1180, "total_works": 2}, {"decade": 1170, "total_works": 1}, {"decade": 1160, "total_works": 1}, {"decade": 1150, "total_works": 1}, {"decade": 1140, "total_works": 1}, {"decade": 1130, "total_works": 1}, {"decade": 1120, "total_works": 1}, {"decade": 1110, "total_works": 1}, {"decade": 1100, "total_works": 27}, {"decade": 1090, "total_works": 5}, {"decade": 1080, "total_works": 3}, {"decade": 1070, "total_works": 2}, {"decade": 1060, "total_works": 1}, {"decade": 1050, "total_works": 2}, {"decade": 1040, "total_works": 2}, {"decade": 1030, "total_works": 1}, {"decade": 1020, "total_works": 6}, {"decade": 1010, "total_works": 8}, {"decade": 1000, "total_works": 18}, {"decade": 910, "total_works": 2}, {"decade": 690, "total_works": 2}, {"decade": 630, "total_works": 1}, {"decade": 620, "total_works": 1}, {"decade": 610, "total_works": 1}, {"decade": 600, "total_works": 1}, {"decade": 590, "total_works": 1}, {"decade": 580, "total_works": 1}, {"decade": 570, "total_works": 1}, {"decade": 560, "total_works": 1}, {"decade": 550, "total_works": 1}, {"decade": 540, "total_works": 1}, {"decade": 530, "total_works": 1}, {"decade": 520, "total_works": 1}, {"decade": 510, "total_works": 1}, {"decade": 500, "total_works": 1}, {"decade": 490, "total_works": 2}, {"decade": 480, "total_works": 1}, {"decade": 470, "total_works": 1}, {"decade": 460, "total_works": 1}, {"decade": 450, "total_works": 1}, {"decade": 440, "total_works": 1}, {"decade": 430, "total_works": 1}, {"decade": 420, "total_works": 1}, {"decade": 410, "total_works": 1}, {"decade": 400, "total_works": 1}, {"decade": 390, "total_works": 1}, {"decade": 380, "total_works": 1}, {"decade": 370, "total_works": 1}, {"decade": 360, "total_works": 1}, {"decade": 350, "total_works": 1}, {"decade": 340, "total_works": 1}, {"decade": 330, "total_works": 1}, {"decade": 320, "total_works": 1}, {"decade": 310, "total_works": 1}, {"decade": 300, "total_works": 1}, {"decade": 290, "total_works": 1}, {"decade": 280, "total_works": 1}, {"decade": 270, "total_works": 1}, {"decade": 260, "total_works": 3}, {"decade": 250, "total_works": 1}, {"decade": 240, "total_works": 1}, {"decade": 230, "total_works": 1}, {"decade": 220, "total_works": 2}, {"decade": 210, "total_works": 2}, {"decade": 200, "total_works": 12}, {"decade": 190, "total_works": 18}, {"decade": 180, "total_works": 2}, {"decade": 170, "total_works": 1}, {"decade": 160, "total_works": 2}, {"decade": 150, "total_works": 1}, {"decade": 140, "total_works": 1}, {"decade": 130, "total_works": 1}, {"decade": 120, "total_works": 1}, {"decade": 110, "total_works": 3}, {"decade": 100, "total_works": 1}, {"decade": 90, "total_works": 2}, {"decade": 70, "total_works": 3}, {"decade": 60, "total_works": 1}, {"decade": 50, "total_works": 1}, {"decade": 40, "total_works": 1}, {"decade": 30, "total_works": 7}, {"decade": 20, "total_works": 31}, {"decade": 10, "total_works": 63}, {"decade": 0, "total_works": 293}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
-<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Distribution of publication dates of works in the ‘Research &amp; reports’ category</span><a class="headerlink" href="#research-decades-chart" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Distribution of publication dates of works in the ‘Research &amp; reports’ category</span><a class="headerlink" href="#research-decades-chart" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>But not all unexpected dates are errors. The ‘Research &amp; reports’ category currently contains <a class="reference external" href="https://trove.nla.gov.au/search/category/research?keyword=&amp;l-decade=208&amp;l-year=2085">759 works dated 2085</a>. It looks wrong, but if you examine the records you’ll see that these are datasets that include <em>future projections</em> for species distributions. The date is accurate, it’s just that the contents date has become confused with the publication date.</p>
+<p>But not all unexpected dates are errors. The ‘Research &amp; reports’ category currently contains <a class="reference external" href="https://trove.nla.gov.au/search/category/research?keyword=&amp;amp;l-decade=208&amp;amp;l-year=2085">759 works dated 2085</a>. It looks wrong, but if you examine the records you’ll see that these are datasets that include <em>future projections</em> for species distributions. The date is accurate, it’s just that the contents date has become confused with the publication date.</p>
 <p>You’d expect the dates assigned to digitised content to be reliable, and generally this is the case. There seem to be few, if any, date problems in the digitised newspapers. The digitised content in the ‘Magazines &amp; newsletters’ category, however, does seem to have a few data entry errors.</p>
 <figure class="align-default" id="magazine-decades-chart" style="width: 600px">
 <div class="output text_html">
 <style>
-  #altair-viz-804885afc9384f9b84f1c96924a082b9.vega-embed {
+  #altair-viz-5c1327683e064834a3823cc0c8d9f4f6.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-804885afc9384f9b84f1c96924a082b9.vega-embed details,
-  #altair-viz-804885afc9384f9b84f1c96924a082b9.vega-embed details summary {
+  #altair-viz-5c1327683e064834a3823cc0c8d9f4f6.vega-embed details,
+  #altair-viz-5c1327683e064834a3823cc0c8d9f4f6.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-804885afc9384f9b84f1c96924a082b9"></div>
+<div id="altair-viz-5c1327683e064834a3823cc0c8d9f4f6"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-804885afc9384f9b84f1c96924a082b9") {
-      outputDiv = document.getElementById("altair-viz-804885afc9384f9b84f1c96924a082b9");
+    if (outputDiv.id !== "altair-viz-5c1327683e064834a3823cc0c8d9f4f6") {
+      outputDiv = document.getElementById("altair-viz-5c1327683e064834a3823cc0c8d9f4f6");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -620,22 +642,22 @@ On this page</div>
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-1cb1f61599afe699e718c5504ebab549"}, "mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "c"}, "bin": {"step": 100}, "field": "decade", "title": "decade (binned by century)", "type": "quantitative"}, "y": {"field": "total_works", "scale": {"type": "log"}, "title": "number of works (log scale)", "type": "quantitative"}}, "height": 250, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-1cb1f61599afe699e718c5504ebab549": [{"decade": 2030, "total_works": 2}, {"decade": 2020, "total_works": 323}, {"decade": 2010, "total_works": 30087}, {"decade": 2000, "total_works": 71907}, {"decade": 1990, "total_works": 104433}, {"decade": 1980, "total_works": 127288}, {"decade": 1970, "total_works": 131328}, {"decade": 1960, "total_works": 124876}, {"decade": 1950, "total_works": 185513}, {"decade": 1940, "total_works": 219373}, {"decade": 1930, "total_works": 248592}, {"decade": 1920, "total_works": 206651}, {"decade": 1910, "total_works": 132211}, {"decade": 1900, "total_works": 73784}, {"decade": 1890, "total_works": 53295}, {"decade": 1880, "total_works": 48571}, {"decade": 1870, "total_works": 16992}, {"decade": 1860, "total_works": 10343}, {"decade": 1850, "total_works": 5050}, {"decade": 1840, "total_works": 10725}, {"decade": 1830, "total_works": 3471}, {"decade": 1820, "total_works": 2167}, {"decade": 1810, "total_works": 537}, {"decade": 1800, "total_works": 61}, {"decade": 1780, "total_works": 8}, {"decade": 1760, "total_works": 25}, {"decade": 850, "total_works": 68}, {"decade": 200, "total_works": 2}, {"decade": 190, "total_works": 20}, {"decade": 10, "total_works": 7}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-ddba0eedc32bd7f28362ad1b24cc7b4f"}, "mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "c"}, "bin": {"step": 100}, "field": "decade", "title": "decade (binned by century)", "type": "quantitative"}, "y": {"field": "total_works", "scale": {"type": "log"}, "title": "number of works (log scale)", "type": "quantitative"}}, "height": 250, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-ddba0eedc32bd7f28362ad1b24cc7b4f": [{"decade": 2030, "total_works": 2}, {"decade": 2020, "total_works": 323}, {"decade": 2010, "total_works": 30214}, {"decade": 2000, "total_works": 71853}, {"decade": 1990, "total_works": 104794}, {"decade": 1980, "total_works": 128995}, {"decade": 1970, "total_works": 132299}, {"decade": 1960, "total_works": 125326}, {"decade": 1950, "total_works": 187015}, {"decade": 1940, "total_works": 219668}, {"decade": 1930, "total_works": 249523}, {"decade": 1920, "total_works": 209064}, {"decade": 1910, "total_works": 132885}, {"decade": 1900, "total_works": 74170}, {"decade": 1890, "total_works": 53224}, {"decade": 1880, "total_works": 48552}, {"decade": 1870, "total_works": 16760}, {"decade": 1860, "total_works": 9349}, {"decade": 1850, "total_works": 5352}, {"decade": 1840, "total_works": 10365}, {"decade": 1830, "total_works": 3620}, {"decade": 1820, "total_works": 2061}, {"decade": 1810, "total_works": 485}, {"decade": 1800, "total_works": 61}, {"decade": 1780, "total_works": 8}, {"decade": 1760, "total_works": 25}, {"decade": 850, "total_works": 68}, {"decade": 200, "total_works": 2}, {"decade": 190, "total_works": 20}, {"decade": 10, "total_works": 7}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Distribution of publication dates of works in the ‘Magazines &amp; newsletters’ category</span><a class="headerlink" href="#magazine-decades-chart" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">Distribution of publication dates of works in the ‘Magazines &amp; newsletters’ category</span><a class="headerlink" href="#magazine-decades-chart" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="using-date-facets">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">8.2. </span>Using date facets</a><a class="headerlink" href="#using-date-facets" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink"><span class="section-number">8.2. </span>Using date facets</a><a class="headerlink" href="#using-date-facets" title="Link to this heading">#</a></h2>
 <p>There are three facets you can use to limit search results by date: <code class="docutils literal notranslate"><span class="pre">decade</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, and <code class="docutils literal notranslate"><span class="pre">month</span></code>. The <code class="docutils literal notranslate"><span class="pre">month</span></code> facet is only available in the <em>Newspapers &amp; Gazettes</em> category.</p>
 <table class="table" id="table-available-search-indexes">
-<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Date facets</span><a class="headerlink" href="#table-available-search-indexes" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Date facets</span><a class="headerlink" href="#table-available-search-indexes" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Facet</p></th>
 <th class="head"><p>Description</p></th>
@@ -663,22 +685,22 @@ On this page</div>
 </table>
 <p>In some cases these facets need to be used in combination. You can only apply the <code class="docutils literal notranslate"><span class="pre">l-year</span></code> facet in the <em>Newspapers &amp; Gazettes</em> category if you’ve already set <code class="docutils literal notranslate"><span class="pre">l-decade</span></code>. Similarly, you can only apply the <code class="docutils literal notranslate"><span class="pre">l-month</span></code> facet if you’ve already set <code class="docutils literal notranslate"><span class="pre">l-year</span></code> and <code class="docutils literal notranslate"><span class="pre">l-decade</span></code>.</p>
 <p>For example, to search for newspaper articles published in 1914 you’d set <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> to <code class="docutils literal notranslate"><span class="pre">191</span></code> and <code class="docutils literal notranslate"><span class="pre">l-year</span></code> to <code class="docutils literal notranslate"><span class="pre">1914</span></code>.</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-decade%3D191%26l-year%3D1914%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26l-decade%3D191%26l-year%3D1914%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>To search for books published in 1914 using the API you can just set <code class="docutils literal notranslate"><span class="pre">l-year</span></code> to <code class="docutils literal notranslate"><span class="pre">1914</span></code>.</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dbook%26l-year%3D1914%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dbook%26l-year%3D1914%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Keep in mind that the web interface works a bit differently than the API. It seems you need to use <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> and <code class="docutils literal notranslate"><span class="pre">l-year</span></code> together in <em>all categories</em> when using the web interface, not just the newspapers. This is only really an issue if you’re manually constructing search urls.</p>
 <p>Also, in those cases where you do need <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> and <code class="docutils literal notranslate"><span class="pre">l-year</span></code> together, leaving out <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> returns results without any date limits, rather than no results at all. This means it can look like the facet is working when it’s actually not.</p>
 </div>
 <section id="using-the-date-index">
-<span id="id1"></span><h3><a class="toc-backref" href="#id4" role="doc-backlink">Using the date index</a><a class="headerlink" href="#using-the-date-index" title="Permalink to this heading">#</a></h3>
+<span id="id1"></span><h3><a class="toc-backref" href="#id4" role="doc-backlink">Using the date index</a><a class="headerlink" href="#using-the-date-index" title="Link to this heading">#</a></h3>
 <p>If you want to search for a range of dates you can use the <code class="docutils literal notranslate"><span class="pre">date</span></code> index. Queries using the <code class="docutils literal notranslate"><span class="pre">date</span></code> index look something like this: <code class="docutils literal notranslate"><span class="pre">date:[STARTDATE</span> <span class="pre">TO</span> <span class="pre">ENDDATE]</span></code>. For example, to include records from 1914 to 1918 (inclusive) in your search, you’d use <code class="docutils literal notranslate"><span class="pre">date:[1914</span> <span class="pre">TO</span> <span class="pre">1918]</span></code>. You can add date index queries to the search box in the web interface, or include them in the <code class="docutils literal notranslate"><span class="pre">q</span></code> parameter of an API request.</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1914+TO+1918%5D%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1914+TO+1918%5D%26category%3Dnewspaper%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>To set <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> or <code class="docutils literal notranslate"><span class="pre">ENDDATE</span></code> to the limit of the available date range, use a value of <code class="docutils literal notranslate"><span class="pre">*</span></code> (an asterisk). For example, to search for records published in 1900 or earlier, you’d use <code class="docutils literal notranslate"><span class="pre">date:[*</span> <span class="pre">TO</span> <span class="pre">1900]</span></code>.</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B*+TO+1900%5D%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B*+TO+1900%5D%26category%3Dnewspaper%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>To search for results from a single year, you can set <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> and <code class="docutils literal notranslate"><span class="pre">ENDDATE</span></code> to the same value, for example, <code class="docutils literal notranslate"><span class="pre">date:[1914</span> <span class="pre">TO</span> <span class="pre">1914]</span></code>. This is the same as setting the <code class="docutils literal notranslate"><span class="pre">l-year</span></code> facet to <code class="docutils literal notranslate"><span class="pre">1914</span></code>.</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1914+TO+1914%5D%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1914+TO+1914%5D%26category%3Dnewspaper%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>In the <em>Newspapers &amp; Gazettes</em> category, the values of <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> and <code class="docutils literal notranslate"><span class="pre">ENDDATE</span></code> can be days, rather than years. But there are a few tricks. To specify a day, you need to provide a full ISO-formatted date, complete with time and timezone, even though the time component is ignored. For example: <code class="docutils literal notranslate"><span class="pre">1901-01-01T00:00:00Z</span></code>.</p>
 <p>Also, when you use days rather than years, the date range is <strong>not</strong> inclusive. <strong>You have to set <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> to the day before the one you you want.</strong> For example:</p>
 <ul class="simple">
@@ -688,7 +710,7 @@ On this page</div>
 <li><p><code class="docutils literal notranslate"><span class="pre">date[1913-12-30T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1914-01-01T00:00:00Z]</span></code> – returns results from 31 December 1913 to 1 January 1914</p></li>
 </ul>
 <p>This means that if you want to search for newspaper or gazette articles from a <em>specific day</em>, you need to set the the <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> value to the day before the one you want. For example, to find articles published on 2 November 1944, the <code class="docutils literal notranslate"><span class="pre">STARTDATE</span></code> would be <code class="docutils literal notranslate"><span class="pre">1944-11-01T00:00:00Z</span></code> and the full query would be <code class="docutils literal notranslate"><span class="pre">date:[1944-11-01T00:00:00Z</span> <span class="pre">TO</span> <span class="pre">1944-11-02T00:00:00Z]</span></code>.</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1944-11-01T00%3A00%3A00Z+TO+1944-11-02T00%3A00%3A00Z%5D%26category%3Dnewspaper%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Ddate%3A%5B1944-11-01T00%3A00%3A00Z+TO+1944-11-02T00%3A00%3A00Z%5D%26category%3Dnewspaper%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>We can do a little test of this behaviour by trying different <code class="docutils literal notranslate"><span class="pre">date</span></code> queries and using the <code class="docutils literal notranslate"><span class="pre">year</span></code> facet to check the range of our results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -789,9 +811,9 @@ On this page</div>
 </section>
 </section>
 <section id="works-versions-and-dates">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">8.3. </span>Works, versions, and dates</a><a class="headerlink" href="#works-versions-and-dates" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">8.3. </span>Works, versions, and dates</a><a class="headerlink" href="#works-versions-and-dates" title="Link to this heading">#</a></h2>
 <p>Date searches can produce odd results when you’re working with aggregated content (as in the <em>Books &amp; Libraries</em> category). What do you think happens if you set the <code class="docutils literal notranslate"><span class="pre">l-decade</span></code> facet to <code class="docutils literal notranslate"><span class="pre">200</span></code> (ie 2000 to 2009) and the <code class="docutils literal notranslate"><span class="pre">l-year</span></code> facet to <code class="docutils literal notranslate"><span class="pre">1900</span></code>? In the <em>Newspapers &amp; Gazettes</em> category you get no results, as you would expect. But in <em>Books &amp; Libraries</em> you get more than a million results!</p>
-<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dbook%26l-decade%3D200%26l-year%3D1900%26encoding%3Djson&amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dbook%26l-decade%3D200%26l-year%3D1900%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>How is this possible? How can both facet values be true? The answer lies in the way <a class="reference internal" href="../what-is-trove/works-and-versions.html"><span class="doc std std-doc">versions of publications are grouped together as works</span></a>. If there are multiple versions of a work with different publication dates, the date of the work in Trove will be a range encompassing all the version dates. For example, a work that has versions published in <code class="docutils literal notranslate"><span class="pre">1900</span></code> and <code class="docutils literal notranslate"><span class="pre">2022</span></code> will have an <code class="docutils literal notranslate"><span class="pre">issued</span></code> value of <code class="docutils literal notranslate"><span class="pre">1900-2022</span></code>. Because Trove searches for works rather than versions, a search for any date within the <code class="docutils literal notranslate"><span class="pre">issued</span></code> date range will return the work. So the same work can be published between 2000 and 2009, and also in 1900.</p>
 <p>But what if you want to find a version published on a specific date? The Trove web interface has an option to filter a work’s ‘editions’ (aka versions) by date. If you’re using the API, you’ll first have to requests details of all versions by setting the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">workversions</span></code>. Then you’ll need to loop through all the versions, checking their individual <code class="docutils literal notranslate"><span class="pre">issued</span></code> dates.</p>
 <!---
@@ -824,11 +846,10 @@ On this page</div>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="simple-search-options.html"
@@ -848,10 +869,7 @@ On this page</div>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -859,6 +877,7 @@ On this page</div>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -893,9 +912,10 @@ By <a href="https://timsherratt.org">Tim Sherratt</a>
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2023 Australian Research Data Commons.
+      © Copyright 2024 Australian Research Data Commons.
       <br/>
     
   </p>
@@ -925,8 +945,8 @@ By <a href="https://timsherratt.org">Tim Sherratt</a>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
