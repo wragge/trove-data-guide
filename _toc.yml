@@ -22,7 +22,7 @@ parts:
       - file: what-is-trove/collections
 #      - file: what-is-trove/types-of-data
       - file: what-is-trove/links-and-identifiers
-#      - file: what-is-trove/interfaces
+      - file: what-is-trove/interfaces
   - caption: Understanding search
     numbered: 2
     maxdepth: 3
@@ -92,10 +92,11 @@ parts:
         sections:
           - file: other-digitised-resources/books/overview
 #          - file: other-digitised-resources/books/accessing-data
-#      - file: other-digitised-resources/periodicals/intro
-#        title: Periodicals
-#        sections:
-#          - file: other-digitised-resources/periodicals/accessing-data
+      - file: other-digitised-resources/periodicals/index
+        title: Periodicals
+        sections:
+          - file: other-digitised-resources/periodicals/overview
+          - file: other-digitised-resources/periodicals/accessing-data
       - file: other-digitised-resources/parliamentary-papers/index
         title: Parliamentary papers
         sections:
