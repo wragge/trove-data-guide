@@ -15,6 +15,7 @@ kernelspec:
 
 While Trove's search application works much the same way in the web interface and the API, a couple of annoying design choices limit your options in the web interface. This page documents some workarounds.
 
+(search:hacks:empty-search)=
 ## Empty searches
 
 If you wanted to find out how many digitised newspaper articles are currently in Trove, you might try an *empty* search – a search with no keyword value. An empty search should return everything in the collection. But if you attempt this in the Trove web interface you’ll find that the search button remains disabled until you type something in the box. It just won’t let you. This limitation is imposed by the interface, not the underlying search technologies. In contrast, the API doesn't require a search query.
@@ -38,6 +39,7 @@ An empty search in web archives returns more than *8.5 billion* results!
 <https://trove.nla.gov.au/search/category/websites?keyword=>
 ```
 
+(search:hacks:results-per-page)=
 ## Results per page
 
 The Trove API's `n` parameter lets you specify the number of search results you want to get back from a single request. In the web interface you have no choice – you get twenty results per page. This can be frustrating if you want to quickly scan a set of search results.
