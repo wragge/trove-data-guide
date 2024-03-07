@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/search-hacks.b0a80fcb-91bf-499d-80bf-93f9f872796c.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/search-hacks.6daf51a0-4aff-4c4a-8bfb-3723151468dd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/search-hacks';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -486,7 +486,7 @@ document.write(`
 <h1>Search interface hacks<a class="headerlink" href="#search-interface-hacks" title="Link to this heading">#</a></h1>
 <p>While Trove’s search application works much the same way in the web interface and the API, a couple of annoying design choices limit your options in the web interface. This page documents some workarounds.</p>
 <section id="empty-searches">
-<h2>Empty searches<a class="headerlink" href="#empty-searches" title="Link to this heading">#</a></h2>
+<span id="search-hacks-empty-search"></span><h2>Empty searches<a class="headerlink" href="#empty-searches" title="Link to this heading">#</a></h2>
 <p>If you wanted to find out how many digitised newspaper articles are currently in Trove, you might try an <em>empty</em> search – a search with no keyword value. An empty search should return everything in the collection. But if you attempt this in the Trove web interface you’ll find that the search button remains disabled until you type something in the box. It just won’t let you. This limitation is imposed by the interface, not the underlying search technologies. In contrast, the API doesn’t require a search query.</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fcategory%3Dnewspaper%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>To run an empty search in the web interface you have to do a bit of harmless <em>url hacking</em>. Try this:</p>
@@ -508,7 +508,7 @@ document.write(`
 </figure>
 </section>
 <section id="results-per-page">
-<h2>Results per page<a class="headerlink" href="#results-per-page" title="Link to this heading">#</a></h2>
+<span id="search-hacks-results-per-page"></span><h2>Results per page<a class="headerlink" href="#results-per-page" title="Link to this heading">#</a></h2>
 <p>The Trove API’s <code class="docutils literal notranslate"><span class="pre">n</span></code> parameter lets you specify the number of search results you want to get back from a single request. In the web interface you have no choice – you get twenty results per page. This can be frustrating if you want to quickly scan a set of search results.</p>
 <p>But once again you can work around this limit with a bit of url hacking. If you look under the hood to see what Trove does when you submit a search query, you’ll see that it adds an extra <code class="docutils literal notranslate"><span class="pre">pageSize</span></code> parameter to the query before passing it to an internal API. The value of <code class="docutils literal notranslate"><span class="pre">pageSize</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">20</span></code>, but if you add <code class="docutils literal notranslate"><span class="pre">&amp;pageSize=100</span></code> to your search url, the value is passed through to the internal API and you get 100 results.</p>
 <p>Try it: <a href="https://trove.nla.gov.au/search/category/newspapers?keyword=wragge&pageSize=100">https://trove.nla.gov.au/search/category/newspapers?keyword=wragge&amp;pageSize=100</a></p>

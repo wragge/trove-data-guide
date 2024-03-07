@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/interfaces.39fc9480-0517-4c73-8f58-8c6a6e8b4bb8.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/interfaces.c6751b3b-e6f4-4287-b6a1-49fcbf81d5b3.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/interfaces';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -477,12 +477,46 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">Search results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-records">6.3. Work records</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newspapers-titles-browse-and-viewer">6.4. Newspapers – titles, browse and viewer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-content-viewers">6.5. Digitised content viewers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-archives-search-view-collections">6.6. Web archives – search, view, collections</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-view-and-edit">6.7. List – view and edit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-profile">6.8. User profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-and-version-records">6.3. Work and version records</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work">Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version">Version</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newspapers">6.4. Newspapers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#browse-interface">Browse interface</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#title-browser">Title browser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#title-details">Title details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-viewer">Page viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-viewer">Article viewer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-content-viewers">6.5. Digitised content viewers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-viewer">Collection viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#book-and-journal-viewer">Book and journal viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-viewer">Image viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-viewer">Map viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-aids">Finding aids</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-player">Audio player</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#born-digital-publications">6.6. Born digital publications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf">PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epub">epub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-archives-search-view-collections">6.7. Web archives – search, view, collections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search">Search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view">View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#website-title-page">Website title page</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#website-collection">Website collection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">6.8. Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manage">Manage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-profile">6.9. User profile</a></li>
 </ul>
             </nav>
         </div>
@@ -516,11 +550,11 @@ document.write(`
 </ul>
 </section>
 <section id="search-interface">
-<h2><span class="section-number">6.2. </span>Search interface<a class="headerlink" href="#search-interface" title="Link to this heading">#</a></h2>
-<p>The search application is at the heart of Trove, giving users a single entry point to a range of different systems and formats. See the <a class="reference external" href="https://trove.nla.gov.au/help/searching/search">Trove help system</a> for an introduction, and the</p>
+<span id="interfaces-search"></span><h2><span class="section-number">6.2. </span>Search interface<a class="headerlink" href="#search-interface" title="Link to this heading">#</a></h2>
+<p>The search application is at the heart of Trove, giving users a single entry point to a range of different systems and formats. See the <a class="reference external" href="https://trove.nla.gov.au/help/searching/search">Trove help system</a> for an introduction, and the <a class="reference internal" href="../understanding-search/index.html"><span class="doc std std-doc">Understanding search</span></a> section of this Guide for hints and tricks.</p>
 <p>Trove’s search interface includes a number of different components.</p>
 <section id="simple-search-box">
-<h3>‘Simple’ search box<a class="headerlink" href="#simple-search-box" title="Link to this heading">#</a></h3>
+<span id="interfaces-search-simple"></span><h3>‘Simple’ search box<a class="headerlink" href="#simple-search-box" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="search-box">
 <img alt="../_images/search-box.png" src="../_images/search-box.png" />
 <figcaption>
@@ -530,48 +564,344 @@ document.write(`
 <p>Simple in design, but powerful in function – see <a class="reference internal" href="../understanding-search/simple-search-options.html"><span class="doc std std-doc">‘Simple’ search options</span></a> for information on constructing complex queries.</p>
 </section>
 <section id="advanced-search-form">
-<h3>‘Advanced’ search form<a class="headerlink" href="#advanced-search-form" title="Link to this heading">#</a></h3>
+<span id="interfaces-search-advanced"></span><h3>‘Advanced’ search form<a class="headerlink" href="#advanced-search-form" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="advanced-search">
 <img alt="../_images/advanced-search.png" src="../_images/advanced-search.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">The advanced search form for digitised newspapers</span><a class="headerlink" href="#advanced-search" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Advanced search doesn’t really add any search options (except in the web archives category), but it does layer a structured interface over the standard query options. Each category has it’s own version of the advanced search form.</p>
+<p>Advanced search doesn’t really add any search options (except in the websites category), but it does layer a structured interface over the standard query options. Each category has it’s own version of the advanced search form with slightly different fields.</p>
 </section>
 <section id="search-results-summary">
-<h3>Search results summary<a class="headerlink" href="#search-results-summary" title="Link to this heading">#</a></h3>
-<p>A single page overview of results across all categories (except websites)</p>
+<span id="interfaces-search-summary"></span><h3>Search results summary<a class="headerlink" href="#search-results-summary" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="search-summary">
+<img alt="../_images/search-summary.png" src="../_images/search-summary.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">An example of the results presented by the search summary screen</span><a class="headerlink" href="#search-summary" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The search results summary page provides a single page overview of results across all categories (except websites). It displays the total number of results in each category, the three top results, and a link to view the complete set of results.</p>
 </section>
 <section id="search-results">
-<h3>Search results<a class="headerlink" href="#search-results" title="Link to this heading">#</a></h3>
-<p>Links out to different viewers (differences bw newspapers and others)</p>
+<span id="interfaces-search-results"></span><h3>Search results<a class="headerlink" href="#search-results" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id1">
+<img alt="../_images/search-results.png" src="../_images/search-results.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">An example of search results in the newspapers category</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The search results page lists twenty results at a time (more <a class="reference internal" href="../understanding-search/search-hacks.html#search-hacks-results-per-page"><span class="std std-ref">with a little url hacking</span></a>), and most categories provide options to sort and filter the results. The <strong>Images, Maps &amp; Artefacts</strong> category displays results in a grid rather than a list.</p>
 </section>
 </section>
-<section id="work-records">
-<h2><span class="section-number">6.3. </span>Work records<a class="headerlink" href="#work-records" title="Link to this heading">#</a></h2>
+<section id="work-and-version-records">
+<h2><span class="section-number">6.3. </span>Work and version records<a class="headerlink" href="#work-and-version-records" title="Link to this heading">#</a></h2>
+<p>See <a class="reference external" href="https://trove.nla.gov.au/help/navigating/trove-records">Trove records</a> in the Trove help documentation for an introduction.</p>
+<p>Works are the basic units of description for the categories that contain aggregated content:</p>
+<ul class="simple">
+<li><p>Books &amp; Libraries</p></li>
+<li><p>Diaries, Letters &amp; Archives</p></li>
+<li><p>Images, Maps &amp; Artefacts</p></li>
+<li><p>Magazines &amp; Newsletters</p></li>
+<li><p>Music, Audio &amp; Video</p></li>
+<li><p>Research &amp; Reports</p></li>
+</ul>
+<p>Trove tries to <a class="reference internal" href="works-and-versions.html"><span class="doc std std-doc">group all the versions of a particular resource into a single work</span></a>. If a work contains multiple versions (called ‘Editions’ in the web interface), then the default work view will provide a list of available versions to select from. If there’s only one version then that version record will be displayed automatically.</p>
+<section id="work">
+<h3>Work<a class="headerlink" href="#work" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://trove.nla.gov.au/help/navigating/trove-records">https://trove.nla.gov.au/help/navigating/trove-records</a></p>
+<figure class="align-default" id="work-view-record">
+<img alt="../_images/work-view-record.png" src="../_images/work-view-record.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">A work record containing multiple versions</span><a class="headerlink" href="#work-view-record" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="work-view-editions">
+<img alt="../_images/work-view-editions.png" src="../_images/work-view-editions.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">Select a version of this work from the list</span><a class="headerlink" href="#work-view-editions" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="newspapers-titles-browse-and-viewer">
-<h2><span class="section-number">6.4. </span>Newspapers – titles, browse and viewer<a class="headerlink" href="#newspapers-titles-browse-and-viewer" title="Link to this heading">#</a></h2>
+<section id="version">
+<h3>Version<a class="headerlink" href="#version" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="work-view-version">
+<img alt="../_images/work-view-version.png" src="../_images/work-view-version.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">A single version record</span><a class="headerlink" href="#work-view-version" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="newspapers">
+<h2><span class="section-number">6.4. </span>Newspapers<a class="headerlink" href="#newspapers" title="Link to this heading">#</a></h2>
+<p>See <a class="reference external" href="https://trove.nla.gov.au/help/navigating/newspaper-viewer">Newspaper viewer</a> in the Trove help documentation for an introduction.</p>
+<section id="browse-interface">
+<h3>Browse interface<a class="headerlink" href="#browse-interface" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="newspaper-browse">
+<img alt="../_images/newspaper-browse.png" src="../_images/newspaper-browse.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.9 </span><span class="caption-text">The Newspapers &amp; Gazettes browse interface<br />
+<a href="https://trove.nla.gov.au/newspaper/">https://trove.nla.gov.au/newspaper/</a></span><a class="headerlink" href="#newspaper-browse" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="title-browser">
+<h3>Title browser<a class="headerlink" href="#title-browser" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="newspaper-titles-list">
+<img alt="../_images/newspaper-titles-list.png" src="../_images/newspaper-titles-list.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.10 </span><span class="caption-text">Browse a list of newspaper titles<br />
+<a href="https://trove.nla.gov.au/newspaper/about">https://trove.nla.gov.au/newspaper/about</a></span><a class="headerlink" href="#newspaper-titles-list" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="title-details">
+<h3>Title details<a class="headerlink" href="#title-details" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id2">
+<img alt="../_images/newspaper-title.png" src="../_images/newspaper-title.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.11 </span><span class="caption-text">View the details of a single title, in this case, the <em>Canberra Times</em><br />
+<a href="https://nla.gov.au/nla.news-title11">http://nla.gov.au/nla.news-title11</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="page-viewer">
+<h3>Page viewer<a class="headerlink" href="#page-viewer" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="newspaper-page">
+<img alt="../_images/newspaper-page.png" src="../_images/newspaper-page.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.12 </span><span class="caption-text">View details of all the articles on a single page<br />
+<a href="https://nla.gov.au/nla.news-page16636766">http://nla.gov.au/nla.news-page16636766</a></span><a class="headerlink" href="#newspaper-page" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="article-viewer">
+<h3>Article viewer<a class="headerlink" href="#article-viewer" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="newspaper-article">
+<img alt="../_images/newspaper-article.png" src="../_images/newspaper-article.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">View a single article<br />
+<a href="https://nla.gov.au/nla.news-article162833980">http://nla.gov.au/nla.news-article162833980</a></span><a class="headerlink" href="#newspaper-article" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 <section id="digitised-content-viewers">
 <h2><span class="section-number">6.5. </span>Digitised content viewers<a class="headerlink" href="#digitised-content-viewers" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>digital collections</p></li>
-<li><p>digital books and periodicals</p></li>
-<li><p>digital images</p></li>
-<li><p>digital maps</p></li>
-<li><p>finding aids</p></li>
-</ul>
+<section id="collection-viewer">
+<h3>Collection viewer<a class="headerlink" href="#collection-viewer" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="digital-collection">
+<img alt="../_images/digital-collection.png" src="../_images/digital-collection.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.14 </span><span class="caption-text">View a collection of digitised items
+<a class="reference external" href="https://nla.gov.au/nla.obj-141170265">https://nla.gov.au/nla.obj-141170265</a></span><a class="headerlink" href="#digital-collection" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The <strong>Browse this collection</strong> button opens a modal window that lets you navigate through the items in the collection.</p>
+<figure class="align-default" id="digital-collection-images">
+<img alt="../_images/digital-collection-images.png" src="../_images/digital-collection-images.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.15 </span><span class="caption-text">View a list of items within a digital collection
+<a class="reference external" href="https://nla.gov.au/nla.obj-141170265">https://nla.gov.au/nla.obj-141170265</a></span><a class="headerlink" href="#digital-collection-images" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Digital collections can contain a range of formats. For example they can describe multi-volume books, list all the issues in a periodical, display all the photographs in an album, or describe a collection of ephemera. They can even contain other collections.</p>
+<figure class="align-default" id="digital-collection-journal">
+<img alt="../_images/digital-collection-journal.png" src="../_images/digital-collection-journal.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.16 </span><span class="caption-text">View a list of the issues available from a digitised periodical<br />
+<a class="reference external" href="http://nla.gov.au/nla.obj-52986893">http://nla.gov.au/nla.obj-52986893</a></span><a class="headerlink" href="#digital-collection-journal" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="book-and-journal-viewer">
+<h3>Book and journal viewer<a class="headerlink" href="#book-and-journal-viewer" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="digital-book-viewer">
+<img alt="../_images/digital-book-viewer.png" src="../_images/digital-book-viewer.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.17 </span><span class="caption-text">View a digitised book<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-3071128587">https://nla.gov.au/nla.obj-3071128587</a></span><a class="headerlink" href="#digital-book-viewer" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="digital-journal-viewer">
+<img alt="../_images/digital-journal-viewer.png" src="../_images/digital-journal-viewer.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.18 </span><span class="caption-text">View an issue from a digitised periodical<br />
+<a class="reference external" href="http://nla.gov.au/nla.obj-3084411245">https://nla.gov.au/nla.obj-3084411245</a></span><a class="headerlink" href="#digital-journal-viewer" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="image-viewer">
+<h3>Image viewer<a class="headerlink" href="#image-viewer" title="Link to this heading">#</a></h3>
+<p>See <a class="reference external" href="https://trove.nla.gov.au/help/navigating/image-viewer">Image viewer</a> in the Trove help documentation for an introduction.</p>
+<figure class="align-default" id="digital-image-viewer">
+<img alt="../_images/digital-image-viewer.png" src="../_images/digital-image-viewer.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.19 </span><span class="caption-text">View a digitised image<br />
+<a class="reference external" href="http://nla.gov.au/nla.obj-141171324">https://nla.gov.au/nla.obj-141171324</a></span><a class="headerlink" href="#digital-image-viewer" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="map-viewer">
+<h3>Map viewer<a class="headerlink" href="#map-viewer" title="Link to this heading">#</a></h3>
+<p>See <a class="reference external" href="https://trove.nla.gov.au/help/navigating/map-viewer">Map viewer</a> in the Trove help documentation for an introduction.</p>
+<p>Some map series have a clickable index to enable you to navigate around the collection.</p>
+<figure class="align-default" id="digital-map-index">
+<img alt="../_images/digital-map-index.png" src="../_images/digital-map-index.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.20 </span><span class="caption-text">Navigate around a map series by clicking on the index<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-234062874">https://nla.gov.au/nla.obj-234062874</a></span><a class="headerlink" href="#digital-map-index" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="digital-map">
+<img alt="../_images/digital-map.png" src="../_images/digital-map.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.21 </span><span class="caption-text">View a digitised map<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-234078097">https://nla.gov.au/nla.obj-234078097</a></span><a class="headerlink" href="#digital-map" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="finding-aids">
+<h3>Finding aids<a class="headerlink" href="#finding-aids" title="Link to this heading">#</a></h3>
+<p>See <a class="reference external" href="https://trove.nla.gov.au/help/navigating/finding-aids">Finding aids</a> in the Trove help documentation for an introduction.</p>
+<figure class="align-default" id="digital-finding-aid">
+<img alt="../_images/digital-finding-aid.png" src="../_images/digital-finding-aid.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.22 </span><span class="caption-text">Browse a finding aid for items of interest<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-225220821">https://nla.gov.au/nla.obj-225220821</a></span><a class="headerlink" href="#digital-finding-aid" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If sections of a finding aid are digitised, you can click on the image icon to open a modal window with a list of available items.</p>
+<figure class="align-default" id="digital-finding-aid-items">
+<img alt="../_images/digital-finding-aid-items.png" src="../_images/digital-finding-aid-items.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.23 </span><span class="caption-text">Browse a list of digitised items<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-225220821">https://nla.gov.au/nla.obj-225220821</a></span><a class="headerlink" href="#digital-finding-aid-items" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Clicking on one of the digitised items in a finding aid opens the item in the digital image viewer (or one of the other digital object viewers).</p>
+<figure class="align-default" id="digital-finding-aid-item">
+<img alt="../_images/digital-finding-aid-item.png" src="../_images/digital-finding-aid-item.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.24 </span><span class="caption-text">View an item from a finding aid<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-225288469">https://nla.gov.au/nla.obj-225288469</a></span><a class="headerlink" href="#digital-finding-aid-item" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="audio-player">
+<h3>Audio player<a class="headerlink" href="#audio-player" title="Link to this heading">#</a></h3>
+<p>See <a class="reference external" href="https://trove.nla.gov.au/help/navigating/audio-player">Audio player</a> in the Trove help documentation for an introduction.</p>
+<figure class="align-default" id="id3">
+<img alt="../_images/audio-player.png" src="../_images/audio-player.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.25 </span><span class="caption-text">Listen to an audio recording<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-222456429">https://nla.gov.au/nla.obj-222456429</a></span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="born-digital-publications">
+<h2><span class="section-number">6.6. </span>Born digital publications<a class="headerlink" href="#born-digital-publications" title="Link to this heading">#</a></h2>
+<section id="pdf">
+<h3>PDF<a class="headerlink" href="#pdf" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="born-digital-pdf">
+<img alt="../_images/born-digital-pdf.png" src="../_images/born-digital-pdf.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.26 </span><span class="caption-text">Read a born digital publication in PDF format<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-799207608">https://nla.gov.au/nla.obj-799207608</a></span><a class="headerlink" href="#born-digital-pdf" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="epub">
+<h3>epub<a class="headerlink" href="#epub" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="born-digital-epub">
+<img alt="../_images/born-digital-epub.png" src="../_images/born-digital-epub.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.27 </span><span class="caption-text">Read a born digital publication in epub format<br />
+<a class="reference external" href="https://nla.gov.au/nla.obj-1310550566">https://nla.gov.au/nla.obj-1310550566</a></span><a class="headerlink" href="#born-digital-epub" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 <section id="web-archives-search-view-collections">
-<h2><span class="section-number">6.6. </span>Web archives – search, view, collections<a class="headerlink" href="#web-archives-search-view-collections" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.7. </span>Web archives – search, view, collections<a class="headerlink" href="#web-archives-search-view-collections" title="Link to this heading">#</a></h2>
+<section id="search">
+<h3>Search<a class="headerlink" href="#search" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="websites-search">
+<img alt="../_images/websites-search.png" src="../_images/websites-search.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.28 </span><span class="caption-text">Search for a keyword in the archived websites</span><a class="headerlink" href="#websites-search" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="websites-search-domain">
+<img alt="../_images/websites-search-domain.png" src="../_images/websites-search-domain.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.29 </span><span class="caption-text">View search results within a specific web domain</span><a class="headerlink" href="#websites-search-domain" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="list-view-and-edit">
-<h2><span class="section-number">6.7. </span>List – view and edit<a class="headerlink" href="#list-view-and-edit" title="Link to this heading">#</a></h2>
+<section id="view">
+<h3>View<a class="headerlink" href="#view" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="websites-view">
+<img alt="../_images/websites-view.png" src="../_images/websites-view.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.30 </span><span class="caption-text">View an archived web page<br />
+<a class="reference external" href="https://webarchive.nla.gov.au/awa/20080718191843/http://www.bom.gov.au/">https://webarchive.nla.gov.au/awa/20080718191843/http://www.bom.gov.au/</a></span><a class="headerlink" href="#websites-view" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="website-title-page">
+<h3>Website title page<a class="headerlink" href="#website-title-page" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="websites-title">
+<img alt="../_images/websites-title.png" src="../_images/websites-title.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.31 </span><span class="caption-text">Browse a list of issues or snapshots of a website selected for preservation<br />
+<a class="reference external" href="https://webarchive.nla.gov.au/tep/11045">https://webarchive.nla.gov.au/tep/11045</a></span><a class="headerlink" href="#websites-title" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="website-collection">
+<h3>Website collection<a class="headerlink" href="#website-collection" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="websites-collection">
+<img alt="../_images/websites-collection.png" src="../_images/websites-collection.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.32 </span><span class="caption-text">Browse a collection of websites selected for preservation<br />
+<a class="reference external" href="https://webarchive.nla.gov.au/collection/20575">https://webarchive.nla.gov.au/collection/20575</a></span><a class="headerlink" href="#websites-collection" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lists">
+<h2><span class="section-number">6.8. </span>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>View<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="list-view">
+<img alt="../_images/list-view.png" src="../_images/list-view.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.33 </span><span class="caption-text">View a Trove list<br />
+<a class="reference external" href="https://trove.nla.gov.au/list/83777">https://trove.nla.gov.au/list/83777</a></span><a class="headerlink" href="#list-view" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="manage">
+<h3>Manage<a class="headerlink" href="#manage" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="list-edit">
+<img alt="../_images/list-edit.png" src="../_images/list-edit.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.34 </span><span class="caption-text">Manage a Trove list</span><a class="headerlink" href="#list-edit" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 <section id="user-profile">
-<h2><span class="section-number">6.8. </span>User profile<a class="headerlink" href="#user-profile" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.9. </span>User profile<a class="headerlink" href="#user-profile" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id5">
+<img alt="../_images/user-profile.png" src="../_images/user-profile.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6.35 </span><span class="caption-text">View your Trove user profile</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -647,12 +977,46 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">Search results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-records">6.3. Work records</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newspapers-titles-browse-and-viewer">6.4. Newspapers – titles, browse and viewer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-content-viewers">6.5. Digitised content viewers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-archives-search-view-collections">6.6. Web archives – search, view, collections</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-view-and-edit">6.7. List – view and edit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-profile">6.8. User profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-and-version-records">6.3. Work and version records</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work">Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version">Version</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newspapers">6.4. Newspapers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#browse-interface">Browse interface</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#title-browser">Title browser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#title-details">Title details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-viewer">Page viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#article-viewer">Article viewer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-content-viewers">6.5. Digitised content viewers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-viewer">Collection viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#book-and-journal-viewer">Book and journal viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-viewer">Image viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-viewer">Map viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-aids">Finding aids</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-player">Audio player</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#born-digital-publications">6.6. Born digital publications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf">PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epub">epub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-archives-search-view-collections">6.7. Web archives – search, view, collections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search">Search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view">View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#website-title-page">Website title page</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#website-collection">Website collection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">6.8. Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manage">Manage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-profile">6.9. User profile</a></li>
 </ul>
   </nav></div>
 
