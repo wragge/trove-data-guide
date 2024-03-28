@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/tdg.css?v=1b4bc755" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tdg.css?v=1ca2cafd" />
     <link rel="stylesheet" type="text/css" href="../../_static/tippy.css?v=2687f39f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/periodicals/accessing-data.0715a5cb-2ffc-4979-9e02-293b516b8891.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/periodicals/accessing-data.0125243d-1893-432a-a296-ed5385762513.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/periodicals/accessing-data';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -469,12 +469,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-periodical">What is a periodical?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-and-born-digital">Digitised and born digital</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-periodicals-have-been-digitised">What periodicals have been digitised?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parliamentary-papers">Parliamentary papers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodical-titles">Periodical titles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-titles-using-the-magazine-titles-api-endpoint">Get titles using the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> API endpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-magazine-titles-api-endpoint">Using the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> API endpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#harvest-all-of-the-records">Harvest all of the records</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-problems-and-workarounds">Data problems and workarounds</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-duplicates">Removing duplicates</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-parliamentary-papers">Removing parliamentary papers</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-problems">Data problems</a></li>
@@ -489,10 +488,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-missing-issues">Finding missing issues</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pages">Pages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">Images and PDFs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrations">Illustrations</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#articles">Articles</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">Images and PDFs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Issues</a><ul class="nav section-nav flex-column">
@@ -504,7 +507,8 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Periodical titles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">Images</a></li>
 </ul>
             </nav>
         </div>
@@ -518,20 +522,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="accessing-data-from-periodicals">
 <h1><span class="section-number">20.2. </span>Accessing data from periodicals<a class="headerlink" href="#accessing-data-from-periodicals" title="Link to this heading">#</a></h1>
-<section id="what-is-a-periodical">
-<h2>What is a periodical?<a class="headerlink" href="#what-is-a-periodical" title="Link to this heading">#</a></h2>
-<p>Periodicals are publications that are issued at regular intervals. They can include newspapers, magazines, and academic journals. Newspapers are managed and delivered separately in Trove, so this section focuses on all the other types of digitised periodicals.</p>
-<p>Sometimes it’s not clear whether a publication is a periodical or not. What about annual reports produced by government departments? Or almanacs that are updated each year?</p>
-<ul class="simple">
-<li><p>records describing periodicals are mostly in the <strong>Books &amp; Libraries</strong> category</p></li>
-<li><p>records describing articles extracted from periodicals are in the <strong>Magazines &amp; Newsletters</strong> category</p></li>
-<li><p>records describing selected periodicals and articles are in the <strong>Research &amp; Reports</strong></p></li>
-</ul>
-</section>
-<section id="digitised-and-born-digital">
-<h2>Digitised and born digital<a class="headerlink" href="#digitised-and-born-digital" title="Link to this heading">#</a></h2>
-<p>Note about NED publications</p>
-</section>
 <section id="what-periodicals-have-been-digitised">
 <h2>What periodicals have been digitised?<a class="headerlink" href="#what-periodicals-have-been-digitised" title="Link to this heading">#</a></h2>
 <p>Search for <a class="reference external" href="https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20series%3A%22Parliamentary%20paper%20%28Australia.%20Parliament%29%22%20NOT%20nuc%3A%22ANL%3ANED%22&amp;amp;l-format=Periodical&amp;amp;l-availability=y">“nla.obj” NOT series:“Parliamentary paper (Australia. Parliament)” NOT nuc:“ANL:NED” and <code class="docutils literal notranslate"><span class="pre">l-format=Periodical</span></code> and <code class="docutils literal notranslate"><span class="pre">l-availability=y</span></code></a> in different categories (mostly B&amp;L) : 968 results</p>
@@ -559,10 +549,6 @@ document.write(`
 <li><p>Get pages of issue</p></li>
 </ul>
 </section>
-<section id="parliamentary-papers">
-<h2>Parliamentary papers<a class="headerlink" href="#parliamentary-papers" title="Link to this heading">#</a></h2>
-<p>Digitised Parliamentary Papers are often treated as periodicals in Trove. For example, sections extracted from them appear as ‘articles’ in the <strong>Magazines &amp; Newsletters</strong> category, and some turn up in searches for works with a <code class="docutils literal notranslate"><span class="pre">format</span></code> value of <code class="docutils literal notranslate"><span class="pre">Periodical</span></code>. You can understand why annual reports by government agencies, for example, might be considered as periodicals. However, the treatment of the Parliamentary Papers isn’t consistent across Trove, and their numbers tend to overwhelm other periodicals. For this reason, I think it makes sense to consider Parliamentary Papers separately.</p>
-</section>
 <section id="periodical-titles">
 <h2>Periodical titles<a class="headerlink" href="#periodical-titles" title="Link to this heading">#</a></h2>
 <p>Finding out which periodicals in Trove have been digitised is not straightforward. There are two basic approaches:</p>
@@ -571,10 +557,67 @@ document.write(`
 <li><p>search for <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code> to find digitised items, setting the <code class="docutils literal notranslate"><span class="pre">format</span></code> facet to <code class="docutils literal notranslate"><span class="pre">Periodical</span></code> and the <code class="docutils literal notranslate"><span class="pre">availability</span></code> facet to <code class="docutils literal notranslate"><span class="pre">y</span></code></p></li>
 </ul>
 <p>These two approaches return similar, but not identical, sets of results. Both have problems and inconsistencies. The best method will probably depend on what you want to do with the data.</p>
-<section id="get-titles-using-the-magazine-titles-api-endpoint">
-<h3>Get titles using the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> API endpoint<a class="headerlink" href="#get-titles-using-the-magazine-titles-api-endpoint" title="Link to this heading">#</a></h3>
-<p>If you send a request to the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> API endpoint you get back the first group of periodical titles. The maximum number of titles per request is 100, you can set this using the <code class="docutils literal notranslate"><span class="pre">limit</span></code> parameter. To harvest details of <em>all</em> titles, you need to work your way through the complete dataset by using the <code class="docutils literal notranslate"><span class="pre">offset</span></code> parameter to move each request forward to the next group of titles. So if <code class="docutils literal notranslate"><span class="pre">limit</span></code> is set to <code class="docutils literal notranslate"><span class="pre">100</span></code>, your first request would have an <code class="docutils literal notranslate"><span class="pre">offset</span></code> value of <code class="docutils literal notranslate"><span class="pre">0</span></code>, and your second request would have an <code class="docutils literal notranslate"><span class="pre">offset</span></code> value of <code class="docutils literal notranslate"><span class="pre">100</span></code>. You’d then keep incrementing the <code class="docutils literal notranslate"><span class="pre">offset</span></code> value by 100 until you reach the end of the dataset. Here’s a full example.</p>
-<div class="cell docutils container">
+<section id="using-the-magazine-titles-api-endpoint">
+<h3>Using the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> API endpoint<a class="headerlink" href="#using-the-magazine-titles-api-endpoint" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> endpoint was introduced in version 3 of the Trove API. If you send a request to the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> you get back the first group of periodical titles. The maximum number of titles per request is 100, which you can set using the <code class="docutils literal notranslate"><span class="pre">limit</span></code> parameter.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fmagazine%2Ftitles%3Fencoding%3Djson%26limit%3D100&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">total</span></code> field of the API response tells you the total number of records. Here’s an example.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span>
+<span class="p">}</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/magazine/titles&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are currently </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> periodical records&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are currently 2,504 periodical records
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The number of records doesn’t neccessarily reflect the number of digitised periodicals. The data currently includes many duplicates as well as Commonwealth Parliamentary Papers. See below for details and workarounds.</p>
+</div>
+<p>Here’s an example of a periodical record. The <code class="docutils literal notranslate"><span class="pre">troveUrl</span></code> links go directly to the <a class="reference internal" href="../../what-is-trove/interfaces.html#interfaces-digitised-collection-viewer"><span class="std std-ref">digital collection viewer</span></a>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-3000083880&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Adelaide punch.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;publisher&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;W.G. Roberts&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;place&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;South Australia&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;troveUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://nla.gov.au/nla.obj-3000083880&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;startDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1868-01-01&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;endDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1884-01-01&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="harvest-all-of-the-records">
+<h4>Harvest all of the records<a class="headerlink" href="#harvest-all-of-the-records" title="Link to this heading">#</a></h4>
+<p>To harvest details of <em>all</em> titles, you need to work your way through the complete dataset by using the <code class="docutils literal notranslate"><span class="pre">offset</span></code> parameter to move each request forward to the next group of titles. So if <code class="docutils literal notranslate"><span class="pre">limit</span></code> is set to <code class="docutils literal notranslate"><span class="pre">100</span></code>, your first request would have an <code class="docutils literal notranslate"><span class="pre">offset</span></code> value of <code class="docutils literal notranslate"><span class="pre">0</span></code>, and your second request would have an <code class="docutils literal notranslate"><span class="pre">offset</span></code> value of <code class="docutils literal notranslate"><span class="pre">100</span></code>. You’d then keep incrementing the <code class="docutils literal notranslate"><span class="pre">offset</span></code> value by 100 until you reach the end of the dataset. Here’s a full example.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
@@ -615,6 +658,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;id&#39;: &#39;nla.obj-2526944948&#39;,
   &#39;title&#39;: &#39;... Annual report of the Canned Fruits Control Board for the year ...&#39;,
@@ -631,21 +675,11 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="data-problems-and-workarounds">
+<h4>Data problems and workarounds<a class="headerlink" href="#data-problems-and-workarounds" title="Link to this heading">#</a></h4>
 <p>By converting the list of titles into a dataframe, you can explore the contents.</p>
 <p>How many titles are there?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_titles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
-<span class="n">df_titles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2504
-</pre></div>
-</div>
-</div>
-</div>
 <p>The metadata available for each title varies. Every entry has an <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code>, and <code class="docutils literal notranslate"><span class="pre">troveUrl</span></code>, and most have a <code class="docutils literal notranslate"><span class="pre">publisher</span></code>, <code class="docutils literal notranslate"><span class="pre">startDate</span></code> and <code class="docutils literal notranslate"><span class="pre">endDate</span></code>. Here’s the percentage of missing values for each column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -654,48 +688,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_3db39">
-  <thead>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_3db39_level0_row0" class="row_heading level0 row0" >id</th>
-      <td id="T_3db39_row0_col0" class="data row0 col0" >0.00%</td>
-    </tr>
-    <tr>
-      <th id="T_3db39_level0_row1" class="row_heading level0 row1" >title</th>
-      <td id="T_3db39_row1_col0" class="data row1 col0" >0.00%</td>
-    </tr>
-    <tr>
-      <th id="T_3db39_level0_row2" class="row_heading level0 row2" >publisher</th>
-      <td id="T_3db39_row2_col0" class="data row2 col0" >0.59%</td>
-    </tr>
-    <tr>
-      <th id="T_3db39_level0_row3" class="row_heading level0 row3" >place</th>
-      <td id="T_3db39_row3_col0" class="data row3 col0" >20.66%</td>
-    </tr>
-    <tr>
-      <th id="T_3db39_level0_row4" class="row_heading level0 row4" >troveUrl</th>
-      <td id="T_3db39_row4_col0" class="data row4 col0" >0.00%</td>
-    </tr>
-    <tr>
-      <th id="T_3db39_level0_row5" class="row_heading level0 row5" >startDate</th>
-      <td id="T_3db39_row5_col0" class="data row5 col0" >0.50%</td>
-    </tr>
-    <tr>
-      <th id="T_3db39_level0_row6" class="row_heading level0 row6" >endDate</th>
-      <td id="T_3db39_row6_col0" class="data row6 col0" >11.40%</td>
-    </tr>
-    <tr>
-      <th id="T_3db39_level0_row7" class="row_heading level0 row7" >issn</th>
-      <td id="T_3db39_row7_col0" class="data row7 col0" >63.16%</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">(</span><span class="n">df_titles</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df_titles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{:.2%}</span><span class="s2">&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;df_titles&#39; is not defined
+</pre></div>
 </div>
+</div>
+</div>
+</section>
 <section id="removing-duplicates">
 <h4>Removing duplicates<a class="headerlink" href="#removing-duplicates" title="Link to this heading">#</a></h4>
 <p>Unfortunately the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> endpoint data includes a significant number of duplicate records. Here’s some examples.</p>
@@ -839,7 +842,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_32387">
+<table id="T_828bb">
   <thead>
     <tr>
       <th class="index_name level0" >title</th>
@@ -848,44 +851,44 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th id="T_32387_level0_row0" class="row_heading level0 row0" >Annual report</th>
-      <td id="T_32387_row0_col0" class="data row0 col0" >350</td>
+      <th id="T_828bb_level0_row0" class="row_heading level0 row0" >Annual report</th>
+      <td id="T_828bb_row0_col0" class="data row0 col0" >350</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row1" class="row_heading level0 row1" >Report</th>
-      <td id="T_32387_row1_col0" class="data row1 col0" >55</td>
+      <th id="T_828bb_level0_row1" class="row_heading level0 row1" >Report</th>
+      <td id="T_828bb_row1_col0" class="data row1 col0" >55</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row2" class="row_heading level0 row2" >Notes on the science of building.</th>
-      <td id="T_32387_row2_col0" class="data row2 col0" >26</td>
+      <th id="T_828bb_level0_row2" class="row_heading level0 row2" >Notes on the science of building.</th>
+      <td id="T_828bb_row2_col0" class="data row2 col0" >26</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row3" class="row_heading level0 row3" >The Newcastle and Maitland Catholic Sentinel : the official organ of the diocese of Maitland.</th>
-      <td id="T_32387_row3_col0" class="data row3 col0" >11</td>
+      <th id="T_828bb_level0_row3" class="row_heading level0 row3" >The Newcastle and Maitland Catholic Sentinel : the official organ of the diocese of Maitland.</th>
+      <td id="T_828bb_row3_col0" class="data row3 col0" >11</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row4" class="row_heading level0 row4" >Report for the period ...</th>
-      <td id="T_32387_row4_col0" class="data row4 col0" >9</td>
+      <th id="T_828bb_level0_row4" class="row_heading level0 row4" >Report for the period ...</th>
+      <td id="T_828bb_row4_col0" class="data row4 col0" >9</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row5" class="row_heading level0 row5" >Annual report for year ended ...</th>
-      <td id="T_32387_row5_col0" class="data row5 col0" >5</td>
+      <th id="T_828bb_level0_row5" class="row_heading level0 row5" >Annual report for year ended ...</th>
+      <td id="T_828bb_row5_col0" class="data row5 col0" >5</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row6" class="row_heading level0 row6" >Report for ...</th>
-      <td id="T_32387_row6_col0" class="data row6 col0" >5</td>
+      <th id="T_828bb_level0_row6" class="row_heading level0 row6" >Report for ...</th>
+      <td id="T_828bb_row6_col0" class="data row6 col0" >5</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row7" class="row_heading level0 row7" >Bulletin</th>
-      <td id="T_32387_row7_col0" class="data row7 col0" >4</td>
+      <th id="T_828bb_level0_row7" class="row_heading level0 row7" >Bulletin</th>
+      <td id="T_828bb_row7_col0" class="data row7 col0" >4</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row8" class="row_heading level0 row8" >Reports on the examination of annual reports</th>
-      <td id="T_32387_row8_col0" class="data row8 col0" >4</td>
+      <th id="T_828bb_level0_row8" class="row_heading level0 row8" >Reports on the examination of annual reports</th>
+      <td id="T_828bb_row8_col0" class="data row8 col0" >4</td>
     </tr>
     <tr>
-      <th id="T_32387_level0_row9" class="row_heading level0 row9" >Civil works program</th>
-      <td id="T_32387_row9_col0" class="data row9 col0" >4</td>
+      <th id="T_828bb_level0_row9" class="row_heading level0 row9" >Civil works program</th>
+      <td id="T_828bb_row9_col0" class="data row9 col0" >4</td>
     </tr>
   </tbody>
 </table>
@@ -895,7 +898,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the Parliamentary Pepers dataset</span>
-<span class="n">df_pp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://media.githubusercontent.com/media/GLAM-Workbench/trove-parliamentary-papers-data/main/trove-parliamentary-papers.csv&quot;</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df_pp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://github.com/GLAM-Workbench/trove-parliamentary-papers-data/raw/main/trove-parliamentary-papers.csv&quot;</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># The PP dataset contains individual publications (issues), the parent of an issue should be the periodical title.</span>
 <span class="c1"># Extract and dedupe the ids from the parent field.</span>
@@ -903,11 +906,6 @@ document.write(`
 
 <span class="c1"># Exclude titles that whose id is in the list of PP parent ids</span>
 <span class="n">df_notpp</span> <span class="o">=</span> <span class="n">df_titles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">df_titles</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">pp_ids</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>964
 </pre></div>
 </div>
 </div>
@@ -920,7 +918,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>964
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>949
 </pre></div>
 </div>
 </div>
@@ -1078,28 +1076,28 @@ Total issues: 183
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-eb84731e02d64da9b8ac38f2760847d2.vega-embed {
+  #altair-viz-f1aea3c839724fc78eae6cf80092a8c8.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-eb84731e02d64da9b8ac38f2760847d2.vega-embed details,
-  #altair-viz-eb84731e02d64da9b8ac38f2760847d2.vega-embed details summary {
+  #altair-viz-f1aea3c839724fc78eae6cf80092a8c8.vega-embed details,
+  #altair-viz-f1aea3c839724fc78eae6cf80092a8c8.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-eb84731e02d64da9b8ac38f2760847d2"></div>
+<div id="altair-viz-f1aea3c839724fc78eae6cf80092a8c8"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-eb84731e02d64da9b8ac38f2760847d2") {
-      outputDiv = document.getElementById("altair-viz-eb84731e02d64da9b8ac38f2760847d2");
+    if (outputDiv.id !== "altair-viz-f1aea3c839724fc78eae6cf80092a8c8") {
+      outputDiv = document.getElementById("altair-viz-f1aea3c839724fc78eae6cf80092a8c8");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -1135,12 +1133,12 @@ Total issues: 183
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-dedc7414efb11403065c8147a7254f6a"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "date", "type": "temporal"}, "y": {"field": "issuecount", "type": "quantitative"}}, "title": "The bulletin.", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-dedc7414efb11403065c8147a7254f6a": [{"date": "1880", "issuecount": 48}, {"date": "1881", "issuecount": 53}, {"date": "1882", "issuecount": 52}, {"date": "1883", "issuecount": 52}, {"date": "1884", "issuecount": 52}, {"date": "1885", "issuecount": 52}, {"date": "1886", "issuecount": 53}, {"date": "1887", "issuecount": 57}, {"date": "1888", "issuecount": 52}, {"date": "1889", "issuecount": 52}, {"date": "1890", "issuecount": 52}, {"date": "1891", "issuecount": 52}, {"date": "1892", "issuecount": 53}, {"date": "1893", "issuecount": 52}, {"date": "1894", "issuecount": 52}, {"date": "1895", "issuecount": 53}, {"date": "1896", "issuecount": 50}, {"date": "1897", "issuecount": 52}, {"date": "1898", "issuecount": 54}, {"date": "1899", "issuecount": 52}, {"date": "1900", "issuecount": 52}, {"date": "1901", "issuecount": 52}, {"date": "1902", "issuecount": 52}, {"date": "1903", "issuecount": 54}, {"date": "1904", "issuecount": 52}, {"date": "1905", "issuecount": 52}, {"date": "1906", "issuecount": 52}, {"date": "1907", "issuecount": 52}, {"date": "1908", "issuecount": 53}, {"date": "1909", "issuecount": 52}, {"date": "1910", "issuecount": 52}, {"date": "1911", "issuecount": 52}, {"date": "1912", "issuecount": 52}, {"date": "1913", "issuecount": 54}, {"date": "1914", "issuecount": 54}, {"date": "1915", "issuecount": 53}, {"date": "1916", "issuecount": 52}, {"date": "1917", "issuecount": 52}, {"date": "1918", "issuecount": 52}, {"date": "1919", "issuecount": 53}, {"date": "1920", "issuecount": 54}, {"date": "1921", "issuecount": 52}, {"date": "1922", "issuecount": 52}, {"date": "1923", "issuecount": 52}, {"date": "1924", "issuecount": 53}, {"date": "1925", "issuecount": 54}, {"date": "1926", "issuecount": 53}, {"date": "1927", "issuecount": 53}, {"date": "1928", "issuecount": 53}, {"date": "1929", "issuecount": 53}, {"date": "1930", "issuecount": 53}, {"date": "1931", "issuecount": 52}, {"date": "1932", "issuecount": 52}, {"date": "1933", "issuecount": 52}, {"date": "1934", "issuecount": 52}, {"date": "1935", "issuecount": 52}, {"date": "1936", "issuecount": 53}, {"date": "1937", "issuecount": 52}, {"date": "1938", "issuecount": 52}, {"date": "1939", "issuecount": 52}, {"date": "1940", "issuecount": 52}, {"date": "1941", "issuecount": 53}, {"date": "1942", "issuecount": 52}, {"date": "1943", "issuecount": 52}, {"date": "1944", "issuecount": 52}, {"date": "1945", "issuecount": 52}, {"date": "1946", "issuecount": 52}, {"date": "1947", "issuecount": 53}, {"date": "1948", "issuecount": 52}, {"date": "1949", "issuecount": 52}, {"date": "1950", "issuecount": 52}, {"date": "1951", "issuecount": 52}, {"date": "1952", "issuecount": 53}, {"date": "1953", "issuecount": 52}, {"date": "1954", "issuecount": 52}, {"date": "1955", "issuecount": 52}, {"date": "1956", "issuecount": 52}, {"date": "1957", "issuecount": 52}, {"date": "1958", "issuecount": 53}, {"date": "1959", "issuecount": 52}, {"date": "1960", "issuecount": 52}, {"date": "1961", "issuecount": 52}, {"date": "1962", "issuecount": 52}, {"date": "1963", "issuecount": 52}, {"date": "1964", "issuecount": 51}, {"date": "1965", "issuecount": 51}, {"date": "1966", "issuecount": 52}, {"date": "1967", "issuecount": 51}, {"date": "1968", "issuecount": 51}, {"date": "1969", "issuecount": 51}, {"date": "1970", "issuecount": 51}, {"date": "1971", "issuecount": 51}, {"date": "1972", "issuecount": 51}, {"date": "1973", "issuecount": 51}, {"date": "1974", "issuecount": 51}, {"date": "1975", "issuecount": 52}, {"date": "1976", "issuecount": 50}, {"date": "1977", "issuecount": 51}, {"date": "1978", "issuecount": 50}, {"date": "1979", "issuecount": 51}, {"date": "1980", "issuecount": 39}, {"date": "1981", "issuecount": 37}, {"date": "1982", "issuecount": 51}, {"date": "1983", "issuecount": 52}, {"date": "1984", "issuecount": 26}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-dedc7414efb11403065c8147a7254f6a"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "date", "type": "temporal"}, "y": {"field": "issuecount", "type": "quantitative"}}, "title": "The bulletin.", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-dedc7414efb11403065c8147a7254f6a": [{"date": "1880", "issuecount": 48}, {"date": "1881", "issuecount": 53}, {"date": "1882", "issuecount": 52}, {"date": "1883", "issuecount": 52}, {"date": "1884", "issuecount": 52}, {"date": "1885", "issuecount": 52}, {"date": "1886", "issuecount": 53}, {"date": "1887", "issuecount": 57}, {"date": "1888", "issuecount": 52}, {"date": "1889", "issuecount": 52}, {"date": "1890", "issuecount": 52}, {"date": "1891", "issuecount": 52}, {"date": "1892", "issuecount": 53}, {"date": "1893", "issuecount": 52}, {"date": "1894", "issuecount": 52}, {"date": "1895", "issuecount": 53}, {"date": "1896", "issuecount": 50}, {"date": "1897", "issuecount": 52}, {"date": "1898", "issuecount": 54}, {"date": "1899", "issuecount": 52}, {"date": "1900", "issuecount": 52}, {"date": "1901", "issuecount": 52}, {"date": "1902", "issuecount": 52}, {"date": "1903", "issuecount": 54}, {"date": "1904", "issuecount": 52}, {"date": "1905", "issuecount": 52}, {"date": "1906", "issuecount": 52}, {"date": "1907", "issuecount": 52}, {"date": "1908", "issuecount": 53}, {"date": "1909", "issuecount": 52}, {"date": "1910", "issuecount": 52}, {"date": "1911", "issuecount": 52}, {"date": "1912", "issuecount": 52}, {"date": "1913", "issuecount": 54}, {"date": "1914", "issuecount": 54}, {"date": "1915", "issuecount": 53}, {"date": "1916", "issuecount": 52}, {"date": "1917", "issuecount": 52}, {"date": "1918", "issuecount": 52}, {"date": "1919", "issuecount": 53}, {"date": "1920", "issuecount": 54}, {"date": "1921", "issuecount": 52}, {"date": "1922", "issuecount": 52}, {"date": "1923", "issuecount": 52}, {"date": "1924", "issuecount": 53}, {"date": "1925", "issuecount": 54}, {"date": "1926", "issuecount": 53}, {"date": "1927", "issuecount": 53}, {"date": "1928", "issuecount": 53}, {"date": "1929", "issuecount": 53}, {"date": "1930", "issuecount": 53}, {"date": "1931", "issuecount": 52}, {"date": "1932", "issuecount": 52}, {"date": "1933", "issuecount": 52}, {"date": "1934", "issuecount": 52}, {"date": "1935", "issuecount": 52}, {"date": "1936", "issuecount": 53}, {"date": "1937", "issuecount": 52}, {"date": "1938", "issuecount": 52}, {"date": "1939", "issuecount": 52}, {"date": "1940", "issuecount": 52}, {"date": "1941", "issuecount": 53}, {"date": "1942", "issuecount": 52}, {"date": "1943", "issuecount": 52}, {"date": "1944", "issuecount": 52}, {"date": "1945", "issuecount": 52}, {"date": "1946", "issuecount": 52}, {"date": "1947", "issuecount": 53}, {"date": "1948", "issuecount": 52}, {"date": "1949", "issuecount": 52}, {"date": "1950", "issuecount": 52}, {"date": "1951", "issuecount": 52}, {"date": "1952", "issuecount": 53}, {"date": "1953", "issuecount": 52}, {"date": "1954", "issuecount": 52}, {"date": "1955", "issuecount": 52}, {"date": "1956", "issuecount": 52}, {"date": "1957", "issuecount": 52}, {"date": "1958", "issuecount": 53}, {"date": "1959", "issuecount": 52}, {"date": "1960", "issuecount": 52}, {"date": "1961", "issuecount": 52}, {"date": "1962", "issuecount": 52}, {"date": "1963", "issuecount": 52}, {"date": "1964", "issuecount": 51}, {"date": "1965", "issuecount": 51}, {"date": "1966", "issuecount": 52}, {"date": "1967", "issuecount": 51}, {"date": "1968", "issuecount": 51}, {"date": "1969", "issuecount": 51}, {"date": "1970", "issuecount": 51}, {"date": "1971", "issuecount": 51}, {"date": "1972", "issuecount": 51}, {"date": "1973", "issuecount": 51}, {"date": "1974", "issuecount": 51}, {"date": "1975", "issuecount": 52}, {"date": "1976", "issuecount": 50}, {"date": "1977", "issuecount": 51}, {"date": "1978", "issuecount": 50}, {"date": "1979", "issuecount": 51}, {"date": "1980", "issuecount": 39}, {"date": "1981", "issuecount": 37}, {"date": "1982", "issuecount": 51}, {"date": "1983", "issuecount": 52}, {"date": "1984", "issuecount": 26}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 </section>
@@ -1236,6 +1234,16 @@ Total issues: 183
 <h3>Finding missing issues<a class="headerlink" href="#finding-missing-issues" title="Link to this heading">#</a></h3>
 </section>
 </section>
+<section id="pages">
+<h2>Pages<a class="headerlink" href="#pages" title="Link to this heading">#</a></h2>
+<section id="images-and-pdfs">
+<h3>Images and PDFs<a class="headerlink" href="#images-and-pdfs" title="Link to this heading">#</a></h3>
+<p>Page images</p>
+</section>
+<section id="illustrations">
+<h3>Illustrations<a class="headerlink" href="#illustrations" title="Link to this heading">#</a></h3>
+</section>
+</section>
 <section id="articles">
 <h2>Articles<a class="headerlink" href="#articles" title="Link to this heading">#</a></h2>
 <div class="warning admonition">
@@ -1253,10 +1261,6 @@ Total issues: 183
 <section id="text">
 <h3>Text<a class="headerlink" href="#text" title="Link to this heading">#</a></h3>
 <p>Via API</p>
-</section>
-<section id="images-and-pdfs">
-<h3>Images and PDFs<a class="headerlink" href="#images-and-pdfs" title="Link to this heading">#</a></h3>
-<p>Page images</p>
 </section>
 </section>
 <section id="id1">
@@ -1315,7 +1319,19 @@ Total issues: 183
 </section>
 </section>
 <section id="id3">
-<h2>Periodical titles<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>Text<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>There are two ways of getting OCRd text from periodicals:</p>
+<ul class="simple">
+<li><p>in article records from the Trove API</p></li>
+<li><p>downloaded from individual issues</p></li>
+</ul>
+</section>
+<section id="images">
+<h2>Images<a class="headerlink" href="#images" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>download pages as images</p></li>
+<li><p>extract illustrations from pages</p></li>
+</ul>
 </section>
 </section>
 
@@ -1383,12 +1399,11 @@ Total issues: 183
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-periodical">What is a periodical?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digitised-and-born-digital">Digitised and born digital</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-periodicals-have-been-digitised">What periodicals have been digitised?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parliamentary-papers">Parliamentary papers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodical-titles">Periodical titles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-titles-using-the-magazine-titles-api-endpoint">Get titles using the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> API endpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-magazine-titles-api-endpoint">Using the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> API endpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#harvest-all-of-the-records">Harvest all of the records</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-problems-and-workarounds">Data problems and workarounds</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-duplicates">Removing duplicates</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-parliamentary-papers">Removing parliamentary papers</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-problems">Data problems</a></li>
@@ -1403,10 +1418,14 @@ Total issues: 183
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-missing-issues">Finding missing issues</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pages">Pages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">Images and PDFs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#illustrations">Illustrations</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#articles">Articles</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text">Text</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">Images and PDFs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Issues</a><ul class="nav section-nav flex-column">
@@ -1418,7 +1437,8 @@ Total issues: 183
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Periodical titles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">Images</a></li>
 </ul>
   </nav></div>
 
