@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -17,6 +17,7 @@ kernelspec:
 
 ```{contents}
 :local:
+:backlinks: None
 ```
 
 ## What are Parliamentary Papers?
@@ -107,10 +108,6 @@ df = pd.read_csv(
 
 stats = [
     ["Number of digitised Parliamentary Papers", df.shape[0]],
-    [
-        "Number of Parliamentary Papers with OCRd text",
-        df.loc[df["text_file"].notnull()].shape[0],
-    ],
     ["Total number of pages", df["pages"].sum()],
     ["Median number of pages per publication", df["pages"].median()],
 ]
@@ -186,7 +183,7 @@ df["year"] = df["year"].astype("Int64")
 earliest = df.loc[df["year"].idxmin()]
 display(
     HTML(
-        f"<a href='{earliest['fulltext_url']}'>{earliest['title']} / {earliest['sub_unit']}</a>"
+        f"<a href='{earliest['fulltext_url']}'>{earliest['title']} / {earliest['alternative_title']}</a>"
     )
 )
 ```

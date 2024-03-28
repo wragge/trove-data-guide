@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -50,101 +50,214 @@ import re
 import requests
 from IPython.display import JSON
 
+
+def get_metadata(id):
+    """
+    Extract work data in a JSON string from the work's HTML page.
+    """
+    if not id.startswith("http"):
+        id = "https://nla.gov.au/" + id
+    response = requests.get(id)
+    try:
+        work_data = re.search(
+            r"var work = JSON\.parse\(JSON\.stringify\((\{.*\})", response.text
+        ).group(1)
+    except AttributeError:
+        work_data = "{}"
+    return json.loads(work_data)
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [output_scroll]
+---
 work_id = "https://nla.gov.au/nla.obj-362059651/"
 
-# Get the HTML page
-response = requests.get(work_id)
+metadata = get_metadata(work_id)
 
-# Search for the JSON string using regex
-try:
-    work_data = re.search(
-        r"var work = JSON\.parse\(JSON\.stringify\((\{.*\})", response.text
-    ).group(1)
-except AttributeError:
-    # Just in case it's not there...
-    work_data = "{}"
-    print("No data found!")
-
-# Load the JSON data
-data = json.loads(work_data)
-
-data
+display(metadata)
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Get information about pages
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 Depending on the format, the `children` field can contain information about pages, chapters, and articles contained within the digitised work. Books and periodical issues should include `page` data. To find the number of pages, you just need to get the length of the `page` list.
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 # How many pages are there?
-len(data["children"]["page"])
+len(metadata["children"]["page"])
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 If you want to get the identifiers for each individual page, just loop through the list of pages saving the `pid` value.
 
 ```{code-cell} ipython3
-page_ids = [p["pid"] for p in data["children"]["page"]]
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+page_ids = [p["pid"] for p in metadata["children"]["page"]]
 page_ids[:5]
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 These page identifiers can be used to download images of the pages.
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Get MARC catalogue data
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-The MARC data is contained in the `marcData` field. This field can contain multiple records – the main metadata is contained in the `Bibliographic` record. To retrieve a value you need to know the [MARC tag and subfield](https://www.loc.gov/marc/bibliographic/) for the field you're interested in. You can then loop through the `datafield` list until you find the tag and subfield, and extract the value from the `content` field.
+The MARC data is contained in the `marcData` field. This field can contain multiple records – the main metadata is contained in the record which has `type` set to `Bibliographic` in the `leader` field. 
 
-The functions below will extract the value of a given MARC tag and subfield from the embedded metadata.
+Tools like [PyMARC](https://pymarc.readthedocs.io/en/latest/index.html) can help you get information from MARC records, however, Trove's `marcData` isn't in a format that PyMARC recognises. The function below finds the `Bibliographic` record and restructures the data for use with PyMARC.
 
 ```{code-cell} ipython3
-def find_field_content(record, tag, subfield):
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+import json
+
+from pymarc import JSONReader
+
+
+def parse_marc(metadata):
     """
-    Loop through a MARC record looking for tag/subfield.
-    If found, return the subfield value.
+    Parse the bibliographic MARC data in the embedded metadata.
+    This produces a structure that can be loaded into PyMarc's JSON reader.
     """
+    # Some nla.obj items don't have MARC data
+    # For example some collections
     try:
-        for field in record["datafield"]:
-            if str(field["tag"]) == tag:
-                if isinstance(field["subfield"], list):
-                    for sfield in field["subfield"]:
-                        if sfield["code"] == subfield:
-                            return sfield["content"]
-                else:
-                    if field["subfield"]["code"] == subfield:
-                        return field["subfield"]["content"]
-    except (KeyError, TypeError):
-        pass
-    return None
+        records = metadata["marcData"]["record"]
+    except KeyError:
+        return {}
 
+    # The metadata contains bibliographic and holdings MARC data
+    # here we'll select the bib record.
+    for record in records:
+        if record["leader"].get("type") == "Bibliographic":
+            break
 
-def get_marc_field(work_data, tag, subfield):
-    """
-    Find the Bibliographic record in the MARC data and find the value
-    of a given tag and subfield.
-    """
-    if "marcData" in work_data and work_data["marcData"]:
-        for record in work_data["marcData"]["record"]:
-            if record["leader"]["type"] == "Bibliographic":
-                value = find_field_content(record, tag, subfield)
-                break
-    return value
+    fields = []
+    # Control fields only have content, no subfields
+    for cf in record.get("controlfield", []):
+        fields.append({str(cf["tag"]): str(cf["content"])})
+
+    # Loop through all the fields
+    for field in record["datafield"]:
+        subfields = []
+        # Get any subfields
+        sfs = field.get("subfield", [])
+        # The subfields value can be a list or dict
+        # Check if it's a list
+        if isinstance(sfs, list):
+            # Loop through the subfields adding the values
+            for sf in sfs:
+                subfields.append({sf["code"]: str(sf["content"])})
+        # If it's not a list just add the details from the dict
+        else:
+            subfields.append({sfs["code"]: str(sfs["content"])})
+        fields.append(
+            {
+                str(field["tag"]): {
+                    "subfields": subfields,
+                    "ind1": field["ind1"],
+                    "ind2": field["ind2"],
+                }
+            }
+        )
+
+    return [{"leader": record["leader"]["content"], "fields": fields}]
 ```
 
-For example, the main title of a work is in MARC tag `245`, subfield `a`.
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+First you extract the MARC data and restructure it for use with PyMARC.
 
 ```{code-cell} ipython3
-get_marc_field(data, "245", "a")
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+marc_json = parse_marc(metadata)
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+Then you can load the MARC data into PyMARC.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+# PyMARC expects a JSON string so we dump it to a string first
+reader = JSONReader(json.dumps(marc_json))
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+To retrieve a value from PyMARC you need to know the [MARC tag and subfield](https://www.loc.gov/marc/bibliographic/) for the field you’re interested in.  For example, the main title of a work is in MARC tag `245`, subfield `a`.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+for record in reader:
+    print(record["245"]["a"])
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 The subfield `c` contains a 'statement of responsibility'.
 
 ```{code-cell} ipython3
-get_marc_field(data, 245, "c")
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+for record in reader:
+    print(record["245"]["c"])
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+PyMARC also includes some handy shortcuts to save you having to remeber all the codes.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+for record in reader:
+    print(record.title)
+    print(record.author)
+    print(record.publisher)
+    print(record.pubyear)
 ```
 
 ```{code-cell} ipython3

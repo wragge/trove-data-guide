@@ -5,6 +5,15 @@ div.key-points .admonition-title:before {
     background-color: rgba(40, 167, 69, 1);
 }
 div.key-points .admonition-title:after {
-    color: rgba(40, 167, 69, 1);
+    color: var(--pst-color-text-base);
     content: '\e53d';  
 }
+
+div.cell details.hide > summary {
+    background-color: var(--pst-color-surface);
+}
+
+div.cell details[open].above-input div.cell_input {
+    border-top: None;
+}
+

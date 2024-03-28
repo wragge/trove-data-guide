@@ -19,7 +19,7 @@ For most users, Trove is defined by its web interface – by the screens, button
 
 +++
 
-(interfaces-home)=
+(interfaces:home)=
 ## Trove welcome, news, and help pages
 
 The [Trove home page](https://trove.nla.gov.au/), and the various news and documentation pages connected to it, are delivered through a content management system. New articles are added regularly. You can catch up on what's been posted recently on the [News](https://trove.nla.gov.au/news) page. Unfortunately there's no functional RSS feed.
@@ -106,23 +106,25 @@ Trove tries to [group all the versions of a particular resource into a single wo
 
 ### Work
 
-https://trove.nla.gov.au/help/navigating/trove-records
 
 ```{figure} /images/work-view-record.png
 :name: work-view-record
-A work record containing multiple versions
+A work record containing multiple versions  
+[https://trove.nla.gov.au/work/34731475](https://trove.nla.gov.au/work/34731475)
 ```
 
 ```{figure} /images/work-view-editions.png
 :name: work-view-editions
-Select a version of this work from the list
+Select a version of this work from the list  
+[https://trove.nla.gov.au/work/34731475](https://trove.nla.gov.au/work/34731475)
 ```
 
 ### Version
 
 ```{figure} /images/work-view-version.png
 :name: work-view-version
-A single version record
+A single version record  
+[https://trove.nla.gov.au/work/34731475/version/264818091](https://trove.nla.gov.au/work/34731475/version/264818091)
 ```
 
 +++
@@ -136,7 +138,7 @@ See [Newspaper viewer](https://trove.nla.gov.au/help/navigating/newspaper-viewer
 ```{figure} /images/newspaper-browse.png
 :name: newspaper-browse
 The Newspapers & Gazettes browse interface  
-<a href="https://trove.nla.gov.au/newspaper/">https://trove.nla.gov.au/newspaper/</a>
+[https://trove.nla.gov.au/newspaper/](https://trove.nla.gov.au/newspaper/)
 ```
 
 ### Title browser
@@ -144,7 +146,7 @@ The Newspapers & Gazettes browse interface
 ```{figure} /images/newspaper-titles-list.png
 :name: newspaper-titles-list
 Browse a list of newspaper titles  
-<a href="https://trove.nla.gov.au/newspaper/about">https://trove.nla.gov.au/newspaper/about</a>
+[https://trove.nla.gov.au/newspaper/about](https://trove.nla.gov.au/newspaper/about)
 ```
 
 ### Title details
@@ -152,7 +154,7 @@ Browse a list of newspaper titles
 ```{figure} /images/newspaper-title.png
 :name: newspaper-titles-list
 View the details of a single title, in this case, the *Canberra Times*   
-<a href="https://nla.gov.au/nla.news-title11">http://nla.gov.au/nla.news-title11</a>
+[https://nla.gov.au/nla.news-title11](http://nla.gov.au/nla.news-title11)
 ```
 
 ### Page viewer
@@ -160,7 +162,7 @@ View the details of a single title, in this case, the *Canberra Times*
 ```{figure} /images/newspaper-page.png
 :name: newspaper-page
 View details of all the articles on a single page  
-<a href="https://nla.gov.au/nla.news-page16636766">http://nla.gov.au/nla.news-page16636766</a>
+[https://nla.gov.au/nla.news-page16636766](http://nla.gov.au/nla.news-page16636766)
 ```
 
 ### Article viewer
@@ -168,13 +170,20 @@ View details of all the articles on a single page
 ```{figure} /images/newspaper-article.png
 :name: newspaper-article
 View a single article  
-<a href="https://nla.gov.au/nla.news-article162833980">http://nla.gov.au/nla.news-article162833980</a>
+[https://nla.gov.au/nla.news-article162833980](http://nla.gov.au/nla.news-article162833980)
 ```
 
 +++
 
 ## Digitised content viewers
 
+There are different viewers for different types of digitised content. Most of the viewers share a basic design and set of functions, however, the audio player is quite distinct.
+
+You're most likely to arrive at one of the digitised content viewers from a link in a work record. However, the viewers don't include links *back* to work records in Trove. Instead they usually include links to the NLA's catalogue. If you want to find the corresponding work record (or records) in Trove, you'll need to construct a search using the [digital object identifier](identifiers:digitised-resources).
+
+The amount of metadata presented in the digitised content viewers varies, and it doesn't always match what's in the work record. Interestingly, the HTML of the viewers embeds additional metadata as a JSON object. You [can extract this data](/other-digitised-resources/how-to/extract-embedded-metadata) and use it to do things like [downloading text, images, and PDFs](/other-digitised-resources/how-to/download-items-text-images).
+
+(interfaces:digitised-collection-viewer)=
 ### Collection viewer
 
 ```{figure} /images/digital-collection.png
@@ -183,7 +192,7 @@ View a collection of digitised items
 [https://nla.gov.au/nla.obj-141170265](https://nla.gov.au/nla.obj-141170265)
 ```
 
-The **Browse this collection** button opens a modal window that lets you navigate through the items in the collection.
+The **Browse this collection** button opens a modal window that lets you navigate through the items in the collection. This list is generated by an internal web request that returns an HTML fragment. You can [use these fragments to assemble machine-readable data](/other-digitised-resources/how-to/get-collection-items) about the items in a collection.
 
 ```{figure} /images/digital-collection-images.png
 :name: digital-collection-images
@@ -199,6 +208,7 @@ View a list of the issues available from a digitised periodical
 [http://nla.gov.au/nla.obj-52986893](http://nla.gov.au/nla.obj-52986893)
 ```
 
+(interfaces:digitised-journal-viewer)=
 ### Book and journal viewer
 
 ```{figure} /images/digital-book-viewer.png
