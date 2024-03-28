@@ -23,7 +23,12 @@ slideshow:
 tags: [remove-cell]
 ---
 # Let's import the libraries we need.
+import os
+import requests
+import pandas as pd
+import altair as alt
 from myst_nb import glue
+from dotenv import load_dotenv
 load_dotenv()
 ```
 
@@ -43,24 +48,6 @@ if os.getenv("TROVE_API_KEY"):
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## What is a periodical?
-
-Periodicals are publications that are issued at regular intervals. They can include newspapers, magazines, and academic journals. Newspapers are managed and delivered separately in Trove, so this section focuses on all the other types of digitised periodicals. 
-
-Sometimes it's not clear whether a publication is a periodical or not. What about annual reports produced by government departments? Or almanacs that are updated each year? 
-
-- records describing periodicals are mostly in the **Books & Libraries** category
-- records describing articles extracted from periodicals are in the **Magazines & Newsletters** category
-- records describing selected periodicals and articles are in the **Research & Reports**
-
-+++
-
-## Digitised and born digital
-
-Note about NED publications
-
-+++
 
 ## What periodicals have been digitised?
 
@@ -91,12 +78,6 @@ No work links from API but can get extra metadata from collection page -- includ
 - Get covers of title
 - Get pages of issue
 
-+++
-
-## Parliamentary papers
-
-Digitised Parliamentary Papers are often treated as periodicals in Trove. For example, sections extracted from them appear as 'articles' in the **Magazines & Newsletters** category, and some turn up in searches for works with a `format` value of `Periodical`. You can understand why annual reports by government agencies, for example, might be considered as periodicals. However, the treatment of the Parliamentary Papers isn't consistent across Trove, and their numbers tend to overwhelm other periodicals. For this reason, I think it makes sense to consider Parliamentary Papers separately.
-
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Periodical titles
@@ -108,15 +89,67 @@ Finding out which periodicals in Trove have been digitised is not straightforwar
 
 These two approaches return similar, but not identical, sets of results. Both have problems and inconsistencies. The best method will probably depend on what you want to do with the data.
 
-### Get titles using the `magazine/titles` API endpoint
+### Using the `magazine/titles` API endpoint
 
-If you send a request to the `magazine/titles` API endpoint you get back the first group of periodical titles. The maximum number of titles per request is 100, you can set this using the `limit` parameter. To harvest details of *all* titles, you need to work your way through the complete dataset by using the `offset` parameter to move each request forward to the next group of titles. So if `limit` is set to `100`, your first request would have an `offset` value of `0`, and your second request would have an `offset` value of `100`. You'd then keep incrementing the `offset` value by 100 until you reach the end of the dataset. Here's a full example.
+The `magazine/titles` endpoint was introduced in version 3 of the Trove API. If you send a request to the `magazine/titles` you get back the first group of periodical titles. The maximum number of titles per request is 100, which you can set using the `limit` parameter. 
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fmagazine%2Ftitles%3Fencoding%3Djson%26limit%3D100&comment=)
+
+The `total` field of the API response tells you the total number of records. Here's an example.
 
 ```{code-cell} ipython3
 ---
 editable: true
 slideshow:
   slide_type: ''
+tags: [hide-input]
+---
+import requests
+
+params = {
+    "encoding": "json"
+}
+
+headers = {"X-API-KEY": API_KEY}
+
+response = requests.get("https://api.trove.nla.gov.au/v3/magazine/titles", headers=headers, params=params)
+data = response.json()
+
+print(f"There are currently {data['total']:,} periodical records")
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+```{warning}
+The number of records doesn't neccessarily reflect the number of digitised periodicals. The data currently includes many duplicates as well as Commonwealth Parliamentary Papers. See below for details and workarounds.
+```
+
+Here's an example of a periodical record. The `troveUrl` links go directly to the [digital collection viewer](interfaces:digitised-collection-viewer).
+
+```json
+{
+    "id": "nla.obj-3000083880",
+    "title": "Adelaide punch.",
+    "publisher": "W.G. Roberts",
+    "place": [
+        "South Australia"
+    ],
+    "troveUrl": "https://nla.gov.au/nla.obj-3000083880",
+    "startDate": "1868-01-01",
+    "endDate": "1884-01-01"
+}
+```
+
+#### Harvest all of the records
+
+To harvest details of *all* titles, you need to work your way through the complete dataset by using the `offset` parameter to move each request forward to the next group of titles. So if `limit` is set to `100`, your first request would have an `offset` value of `0`, and your second request would have an `offset` value of `100`. You'd then keep incrementing the `offset` value by 100 until you reach the end of the dataset. Here's a full example.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
 ---
 import requests
 
@@ -156,19 +189,15 @@ while more:
 display(titles[0:2])
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+#### Data problems and workarounds
+
 By converting the list of titles into a dataframe, you can explore the contents.
 
 How many titles are there?
 
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-df_titles = pd.DataFrame(titles)
-df_titles.shape[0]
-```
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 The metadata available for each title varies. Every entry has an `id`, `title`, and `troveUrl`, and most have a `publisher`, `startDate` and `endDate`. Here's the percentage of missing values for each column.
 
@@ -236,7 +265,7 @@ slideshow:
   slide_type: ''
 ---
 # Load the Parliamentary Pepers dataset
-df_pp = pd.read_csv("https://media.githubusercontent.com/media/GLAM-Workbench/trove-parliamentary-papers-data/main/trove-parliamentary-papers.csv", keep_default_na=False)
+df_pp = pd.read_csv("https://github.com/GLAM-Workbench/trove-parliamentary-papers-data/raw/main/trove-parliamentary-papers.csv", keep_default_na=False)
 
 # The PP dataset contains individual publications (issues), the parent of an issue should be the periodical title.
 # Extract and dedupe the ids from the parent field.
@@ -245,6 +274,8 @@ pp_ids = list(df_pp.loc[df_pp["parent"] != ""]["parent"].str.split("|").explode(
 # Exclude titles that whose id is in the list of PP parent ids
 df_notpp = df_titles.loc[~df_titles["id"].isin(pp_ids)]
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 How many titles are left?
 
@@ -355,6 +386,11 @@ It's important to note that the `startDate` and `endDate` values don't necessari
 Using this data you can calculate the range of available years and the total number of issues available.
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 import requests
 
 obj_id = "nla.obj-740911077"
@@ -384,6 +420,11 @@ print(f"Total issues: {issue_count}")
 You can also visualise the distribution of issues over time.
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 import requests
 import altair as alt
 import pandas as pd
@@ -407,6 +448,8 @@ alt.Chart(df_counts).mark_bar().encode(
     y="issuecount:Q"
 ).properties(width=600, title=data["title"])
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ### Get a list of individual issues
 
@@ -508,6 +551,16 @@ Problems with API:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+## Pages
+
+### Images and PDFs
+
+Page images
+
+### Illustrations
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 ## Articles
 
 
@@ -534,9 +587,6 @@ Use bibliographicCitation metadata
 
 Via API
 
-### Images and PDFs
-
-Page images
 
 +++
 
@@ -602,6 +652,18 @@ Issue id
 
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Periodical titles
+## Text
+
+There are two ways of getting OCRd text from periodicals:
+
+- in article records from the Trove API
+- downloaded from individual issues
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Images
+
+- download pages as images
+- extract illustrations from pages

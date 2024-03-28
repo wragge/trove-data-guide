@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Overview of periodicals
 
 ````{card}
@@ -51,7 +53,7 @@ alt.themes.enable("blank_href")
 
 ## What is a periodical?
 
-Periodicals are publications that are issued at regular intervals, like newspapers, magazines, or academic journals. In Trove, newspapers are managed and delivered through a separate system, so this section focuses on other types of digitised periodicals.
+Periodicals are publications that are issued at regular intervals, like newspapers, magazines, or academic journals. Newspapers have their own category in Trove and are managed and delivered through a separate system, but what about everything else? This section helps you find and use all the other types of digitised periodicals available through Trove.
 
 Here's some examples of Trove's digitised periodicals:
 
@@ -83,102 +85,49 @@ Sometimes it's not clear whether a publication is a periodical or not. What abou
 
 This section is looking at periodicals that have been digitised by the NLA and its partners and delivered through Trove. In other words, they're periodicals that have been converted from print publications to digital objects by scanning, imaging, and OCR. But there are a growing number of periodicals available through Trove that were *born* digital. These include digital publications (usually PDFs) that are uploaded by publishers under the [National edeposit](https://ned.gov.au/ned/) (NED) scheme. Recent editions of periodicals are likely to arrive in Trove via NED.
 
-Since the 1990s, the Australian Web Archive has sought to preserve online journals through Pandora, its selective archiving program. The contents of the preserved journals are now rolled into the whole of domain web harvest that you can explore through Trove's **Websites** category. But there are also records for individual journal titles in other categories, particularly **Books & Libraries**. 
+A search for `nuc:"ANL:NED"` with the format `Periodical` in the [Books & Libraries](https://trove.nla.gov.au/search/category/books?keyword=nuc%3A%22ANL%3ANED%22&l-format=Periodical) or [Research & Reports](https://trove.nla.gov.au/search/category/research?keyword=nuc%3A%22ANL%3ANED%22&l-format=Periodical) categories will reveal many of these titles. Using the API, the same search with `category` set to `all` returns 10,736 results.
 
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dnuc%3A%22ANL%3ANED%22%26category%3Dall%26l-format%3DPeriodical%26encoding%3Djson%26bulkHarvest%3Dtrue&comment=)
 
+Since the 1990s, the Australian Web Archive has sought to preserve online journals through Pandora, its selective archiving program. The contents of the preserved journals are now rolled into the whole of domain web harvest that you can explore through Trove's **Websites** category. But there are also records for individual journal titles in other categories, particularly **Books & Libraries**. Most web archive links in **Books & Libraries** have the form `nla.arc-[some number]`, so [searching](https://trove.nla.gov.au/search/category/books?keyword=%22nla.arc%22&l-format=Periodical) for `"nla.arc"` and the format `Periodical` will reveal many archived titles. Using the API, the same search with `category` set to `all` returns 22,333 results.
 
-Web archives: https://trove.nla.gov.au/search/category/books?keyword=%22nla.arc%22&l-format=Periodical
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## Finding digitised periodicals
-
-Trove has a ready-made [list of digitised newspaper titles](https://trove.nla.gov.au/newspaper/about) for you to search and browse. However, there's no comparable list for other types of periodicals. So how do you find out which periodicals have been digitised?
-
-### Search for titles
-
-You can search for periodical titles as you would [other digitised resources](/understanding-search/finding-digitised-content), using `"nla.obj"` as your query, setting the `format` facet to `Periodical`, and the `availability` facet to `y`. However, this will include publications submitted through NED, as well as a large number of Parliamentary Papers, so you might want to add further filters. For example, a [search](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20series%3A%22Parliamentary%20paper%20%28Australia.%20Parliament%29%22%20NOT%20nuc%3A%22ANL%3ANED%22&l-availability=y&l-format=Periodical) for `"nla.obj" NOT series:"Parliamentary paper (Australia. Parliament)" NOT nuc:"ANL:NED"`, with `format` set to `Periodical` and `availability` set to `y`, currently returns 957 results in the **Books & Libraries** category. Using the API, with `category` set to `all`, there are 1,078 results.
-
-[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22+NOT+series%3A%22Parliamentary+paper+%28Australia.+Parliament%29%22+NOT+nuc%3A%22ANL%3ANED%22%26category%3Dall%26l-format%3DPeriodical%26l-availability%3Dy%26encoding%3Djson%26bulkHarvest%3Dtrue&comment=)
-
-These searches return work-level records. As with other 'works' in Trove, the records can combine multiple 'versions' of the periodical, grouping Trove's digitised version with metadata from other sources. The 'digitised item' link in the work record takes you to the digital collection viewer, which brings together all the issues from the periodical that have been digitised and made available through Trove. 
-
-```{figure} /images/home-work-record.png
-:name: home-work-record
-:width: 600px
-Work record for *The Home*, <https://trove.nla.gov.au/work/12397115>
-```
-
-Records for most periodical titles can be found in the **Books & Libraries** category, but they can pop up in other categories as well. Strangely enough, there are very few title records in the **Magazines & Newsletters** category. This is because it mostly contains records for *articles* extracted from periodicals, rather than records for the periodicals themselves.
-
-### Search for articles
-
-Another way to explore the range of digitised periodicals available from Trove is to search for articles in the **Magazines & Newsletters** category. Once you've run a search, the **Title** facet will indicate how your results are distributed across the range of available titles. You can also use the **Title** facet to limit your results to a particular periodical.
-
-```{figure} /images/magazine-title-facet.png
-:name: magazine-title-facet
-:width: 600px
-Results of a search in the **Magazines & Newsletters** category showing the **Title** facet
-```
-
-The **Read** links in article records open up the digitised item viewer to display the page on which the article was published. You can use the navigation links in the viewer to browse up through the hierarchy to view the complete set of issues from that title.
-
-### Using the API
-
-Version 3 of the Trove API introduced the `magazine/titles` endpoint. You can use this endpoint to request basic details of all the digitised periodicals in Trove.
-
-[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A//api.trove.nla.gov.au/v3/magazine/titles%3Fencoding%3Djson&comment=)
-
-Here's an example of a periodical record. The `nla.obj` links in the data go directly to the digital collection viewer.
-
-```json
-{
-    "id": "nla.obj-3000083880",
-    "title": "Adelaide punch.",
-    "publisher": "W.G. Roberts",
-    "place": [
-        "South Australia"
-    ],
-    "troveUrl": "https://nla.gov.au/nla.obj-3000083880",
-    "startDate": "1868-01-01",
-    "endDate": "1884-01-01"
-}
-```
-
-The API currently returns information on 2,504 titles. However, this includes many Parliamentary Papers and several hundred duplicate records.
-
-### Search versus API
-
-I've harvested lists of digitised periodicals using both the search strategy described above and the `magazine/titles` endpoint. Once I excluded the Parliamentary Papers, the number of titles returned by both methods was similar, but not the same. For example, the search results included some single issues of periodicals which were treated as standalone publications rather than as members of a collection. On the other hand, the API results include some periodicals whose `format` field doesn't include `Periodical`.  
-
-### Pre-harvested dataset
-
-
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.arc%22%26category%3Dall%26l-format%3DPeriodical%26encoding%3Djson%26bulkHarvest%3Dtrue&comment=)
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Finding digitised periodicals
 
+Strange as it seems, there's no simple way to find which periodicals have been digitised in Trove, but there are a few useful strategies:
 
+- search for digitised periodical titles
+- search for digitised articles from periodicals and explore the `title` facet
+- use the Trove API's `/magazine/titles` endpoint
 
-As noted above, the definitional boundaries around periodicals are pretty blurry, and you have to make some decisions about what to include or exclude. I've created a dataset that captures information about digitised periodicals in Trove, but have deliberately excluded Commonwealth Parliamentary Papers. This is because Parliamentary Papers are treated rather inconsistently in Trove – some are 'books', others are 'periodicals'. It made more sense to bring all the Parliamentary Papers together, and treat them separately from periodicals. This also makes it easier to explore the fascinating variety of journals, almanacs, magazines, and newsletters that have been digitised, without wading through innumerable annual reports from government agencies.
+## Pre-harvested dataset of digitised periodicals
 
-
-````{card}
-Search for digitised periodicals
-^^^
-
-<iframe width="100%" height="500" src="https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&install=datasette-json-html&install=datasette-template-sql&metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json"></iframe>
-
-+++
-[View full screen](https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&install=datasette-json-html&install=datasette-template-sql&metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json)
+````{margin}
+```{seealso}
+See [Get details of periodicals from the `/magazine/titles` API endpoint](https://glam-workbench.net/trove-journals/periodicals-from-api/) and [Enrich the list of periodicals from the Trove API](https://glam-workbench.net/trove-journals/periodicals-enrich-for-datasette/) in the GLAM Workbench for full details of how the dataset was created. 
+```
 ````
 
+To make it easier to analyse and explore digitised periodicals in Trove, I've created and shared a dataset containing details of titles and issues. This dataset was created using the `magazine/titles` endpoint, but I've removed duplicates, excluded Commonwealth Parliamentary Papers, fixed some of the issue data, and added extra metadata fields. 
+
+Parliamentary Papers make up more than half the periodical titles returned by the API. They're also treated inconsistently in Trove – some are 'books', while others are 'periodicals'. It seems to make more sense to bring all the Parliamentary Papers together separately. This also makes it easier to explore the fascinating variety of journals, almanacs, magazines, and newsletters that have been digitised, without wading through innumerable annual reports from government agencies.
+
+You can [download the dataset](https://glam-workbench.net/trove-journals/periodicals-data-api/) from the GLAM Workbench or [explore it using Datasette-Lite](https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&install=datasette-json-html&install=datasette-template-sql&metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json).
+
+```{figure} /images/periodicals-db.png
+:name: periodicals-db
+:width: 600px
+[Explore digitised periodicals](https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&install=datasette-json-html&install=datasette-template-sql&metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json) in Datasette-Lite
+```
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## How many digitised periodical titles are there?
+## Titles of digitised periodicals
 
-The calculations and visualisations below are all based on this pre-harvested dataset and exclude Parliamentary Papers. 
+The calculations and visualisations below are all based on the pre-harvested dataset which excludes Parliamentary Papers. 
 
 Given those qualifications, how many digitised periodicals are there?
 
