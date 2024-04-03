@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/issues.3ae39102-4415-4eaa-b53a-f2cdd1363db7.js"></script>
+    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/issues.31d2d9df-624a-48c9-bbb0-6f2c926f3045.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'newspapers-and-gazettes/data/issues';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -263,8 +263,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/get-collection-items.html">23.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/download-items-text-images.html">23.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/extract-embedded-metadata.html">23.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/harvest-digitised-resources.html">23.4. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/scrape-metadata-audio-player.html">23.5. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/get-ocr-layout-data.html">23.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/harvest-digitised-resources.html">23.5. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/scrape-metadata-audio-player.html">23.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
@@ -597,28 +598,28 @@ document.write(`
 <figure class="align-default">
 <div class="output text_html">
 <style>
-  #altair-viz-dafd981f499d448889b17ef49095979b.vega-embed {
+  #altair-viz-1ee713f7453e4ceaab710713bcf397b3.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-dafd981f499d448889b17ef49095979b.vega-embed details,
-  #altair-viz-dafd981f499d448889b17ef49095979b.vega-embed details summary {
+  #altair-viz-1ee713f7453e4ceaab710713bcf397b3.vega-embed details,
+  #altair-viz-1ee713f7453e4ceaab710713bcf397b3.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-dafd981f499d448889b17ef49095979b"></div>
+<div id="altair-viz-1ee713f7453e4ceaab710713bcf397b3"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-dafd981f499d448889b17ef49095979b") {
-      outputDiv = document.getElementById("altair-viz-dafd981f499d448889b17ef49095979b");
+    if (outputDiv.id !== "altair-viz-1ee713f7453e4ceaab710713bcf397b3") {
+      outputDiv = document.getElementById("altair-viz-1ee713f7453e4ceaab710713bcf397b3");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -654,12 +655,12 @@ document.write(`
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-a3eb0f21e56b85303bfda2cddd61ac45"}, "mark": {"type": "bar", "size": 7}, "encoding": {"tooltip": [{"field": "date", "type": "temporal"}, {"field": "issuecount", "type": "quantitative"}], "x": {"field": "date", "type": "temporal"}, "y": {"field": "issuecount", "title": "number of issues", "type": "quantitative"}}, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-a3eb0f21e56b85303bfda2cddd61ac45": [{"date": "1926", "issuecount": 18}, {"date": "1927", "issuecount": 86}, {"date": "1928", "issuecount": 285}, {"date": "1929", "issuecount": 312}, {"date": "1930", "issuecount": 311}, {"date": "1931", "issuecount": 311}, {"date": "1932", "issuecount": 312}, {"date": "1933", "issuecount": 310}, {"date": "1934", "issuecount": 311}, {"date": "1935", "issuecount": 311}, {"date": "1936", "issuecount": 312}, {"date": "1937", "issuecount": 311}, {"date": "1938", "issuecount": 311}, {"date": "1939", "issuecount": 310}, {"date": "1940", "issuecount": 312}, {"date": "1941", "issuecount": 311}, {"date": "1942", "issuecount": 311}, {"date": "1943", "issuecount": 311}, {"date": "1944", "issuecount": 311}, {"date": "1945", "issuecount": 311}, {"date": "1946", "issuecount": 311}, {"date": "1947", "issuecount": 311}, {"date": "1948", "issuecount": 312}, {"date": "1949", "issuecount": 311}, {"date": "1950", "issuecount": 310}, {"date": "1951", "issuecount": 311}, {"date": "1952", "issuecount": 312}, {"date": "1953", "issuecount": 311}, {"date": "1954", "issuecount": 311}, {"date": "1955", "issuecount": 311}, {"date": "1956", "issuecount": 309}, {"date": "1957", "issuecount": 311}, {"date": "1958", "issuecount": 310}, {"date": "1959", "issuecount": 310}, {"date": "1960", "issuecount": 312}, {"date": "1961", "issuecount": 310}, {"date": "1962", "issuecount": 311}, {"date": "1963", "issuecount": 311}, {"date": "1964", "issuecount": 309}, {"date": "1965", "issuecount": 310}, {"date": "1966", "issuecount": 311}, {"date": "1967", "issuecount": 311}, {"date": "1968", "issuecount": 312}, {"date": "1969", "issuecount": 311}, {"date": "1970", "issuecount": 312}, {"date": "1971", "issuecount": 312}, {"date": "1972", "issuecount": 312}, {"date": "1973", "issuecount": 310}, {"date": "1974", "issuecount": 311}, {"date": "1975", "issuecount": 311}, {"date": "1976", "issuecount": 311}, {"date": "1977", "issuecount": 311}, {"date": "1978", "issuecount": 333}, {"date": "1979", "issuecount": 363}, {"date": "1980", "issuecount": 365}, {"date": "1981", "issuecount": 364}, {"date": "1982", "issuecount": 364}, {"date": "1983", "issuecount": 364}, {"date": "1984", "issuecount": 364}, {"date": "1985", "issuecount": 362}, {"date": "1986", "issuecount": 363}, {"date": "1987", "issuecount": 363}, {"date": "1988", "issuecount": 365}, {"date": "1989", "issuecount": 364}, {"date": "1990", "issuecount": 364}, {"date": "1991", "issuecount": 364}, {"date": "1992", "issuecount": 365}, {"date": "1993", "issuecount": 364}, {"date": "1994", "issuecount": 365}, {"date": "1995", "issuecount": 365}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b03004f37c4f6ee55889c31af20302d3"}, "mark": {"type": "bar", "size": 7}, "encoding": {"tooltip": [{"field": "date", "type": "temporal"}, {"field": "issuecount", "type": "quantitative"}], "x": {"field": "date", "type": "temporal"}, "y": {"field": "issuecount", "title": "number of issues", "type": "quantitative"}}, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-b03004f37c4f6ee55889c31af20302d3": [{"date": "1926", "issuecount": 18}, {"date": "1927", "issuecount": 86}, {"date": "1928", "issuecount": 285}, {"date": "1929", "issuecount": 312}, {"date": "1930", "issuecount": 311}, {"date": "1931", "issuecount": 311}, {"date": "1932", "issuecount": 312}, {"date": "1933", "issuecount": 310}, {"date": "1934", "issuecount": 311}, {"date": "1935", "issuecount": 311}, {"date": "1936", "issuecount": 312}, {"date": "1937", "issuecount": 311}, {"date": "1938", "issuecount": 311}, {"date": "1939", "issuecount": 310}, {"date": "1940", "issuecount": 312}, {"date": "1941", "issuecount": 311}, {"date": "1942", "issuecount": 311}, {"date": "1943", "issuecount": 311}, {"date": "1944", "issuecount": 311}, {"date": "1945", "issuecount": 311}, {"date": "1946", "issuecount": 311}, {"date": "1947", "issuecount": 311}, {"date": "1948", "issuecount": 312}, {"date": "1949", "issuecount": 311}, {"date": "1950", "issuecount": 310}, {"date": "1951", "issuecount": 311}, {"date": "1952", "issuecount": 312}, {"date": "1953", "issuecount": 311}, {"date": "1954", "issuecount": 311}, {"date": "1955", "issuecount": 311}, {"date": "1956", "issuecount": 309}, {"date": "1957", "issuecount": 311}, {"date": "1958", "issuecount": 310}, {"date": "1959", "issuecount": 310}, {"date": "1960", "issuecount": 312}, {"date": "1961", "issuecount": 310}, {"date": "1962", "issuecount": 311}, {"date": "1963", "issuecount": 311}, {"date": "1964", "issuecount": 309}, {"date": "1965", "issuecount": 310}, {"date": "1966", "issuecount": 311}, {"date": "1967", "issuecount": 311}, {"date": "1968", "issuecount": 312}, {"date": "1969", "issuecount": 311}, {"date": "1970", "issuecount": 312}, {"date": "1971", "issuecount": 312}, {"date": "1972", "issuecount": 312}, {"date": "1973", "issuecount": 310}, {"date": "1974", "issuecount": 311}, {"date": "1975", "issuecount": 311}, {"date": "1976", "issuecount": 311}, {"date": "1977", "issuecount": 311}, {"date": "1978", "issuecount": 333}, {"date": "1979", "issuecount": 363}, {"date": "1980", "issuecount": 365}, {"date": "1981", "issuecount": 364}, {"date": "1982", "issuecount": 364}, {"date": "1983", "issuecount": 364}, {"date": "1984", "issuecount": 364}, {"date": "1985", "issuecount": 362}, {"date": "1986", "issuecount": 363}, {"date": "1987", "issuecount": 363}, {"date": "1988", "issuecount": 365}, {"date": "1989", "issuecount": 364}, {"date": "1990", "issuecount": 364}, {"date": "1991", "issuecount": 364}, {"date": "1992", "issuecount": 365}, {"date": "1993", "issuecount": 364}, {"date": "1994", "issuecount": 365}, {"date": "1995", "issuecount": 365}]}}, {"mode": "vega-lite"});
 </script></div></figure>
 </section>
 <section id="details-of-issues-within-a-date-range">
@@ -779,7 +780,7 @@ document.write(`
 </div>
 </div>
 <figure class="align-default" id="id3">
-<img alt="../../_images/f60f0a965fcbe54e1a6f7256ed99779e8a7de528a4c2aa0988c8c6a693419daa.png" src="../../_images/f60f0a965fcbe54e1a6f7256ed99779e8a7de528a4c2aa0988c8c6a693419daa.png" />
+<img alt="../../_images/6ff8c5a4fab98becc204714dec1abe5b1d9f488eb3be99a7c6f256464e228830.png" src="../../_images/6ff8c5a4fab98becc204714dec1abe5b1d9f488eb3be99a7c6f256464e228830.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16.8 </span><span class="caption-text">Word cloud from the text content of the <em>Canberra Times</em>, 2 November 1942.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>

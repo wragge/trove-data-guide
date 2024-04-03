@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/download-items-text-images.fff20449-d900-492d-8892-296b1b338020.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/download-items-text-images.141a0f30-7553-4a9e-99fe-197fc55dc4b2.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/download-items-text-images';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -263,8 +263,9 @@
 <li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">23.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">23.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">23.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
-<li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">23.4. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">23.5. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ocr-layout-data.html">23.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">23.5. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">23.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
@@ -504,7 +505,7 @@ document.write(`
 </div>
 <p>This method is consistent across most formats, so you can develop processes that construct urls like these from a list of NLA identifiers and download their contents automatically. But if you want to get the <em>complete</em> contents, you need some way of discovering the total number of pages or images to set the <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> value. You can find this value embedded in the code of the web page, though it’s location varies:</p>
 <ul class="simple">
-<li><p>in books, periodicals, and other works with consecutive pages it’s in a block of embedded JSON metadata</p></li>
+<li><p>in books, periodicals, and other works with consecutive pages it’s in a <a class="reference internal" href="extract-embedded-metadata.html"><span class="std std-doc">block of embedded JSON metadata</span></a></p></li>
 <li><p>in collections of images, maps, and manuscripts you need to look for <code class="docutils literal notranslate"><span class="pre">maxNumOfChildDownloads</span></code> variable in the page’s Javascript</p></li>
 </ul>
 <p><mark>==Code example==</mark></p>
@@ -517,10 +518,10 @@ document.write(`
 <p><a class="reference external" href="http://nla.gov.au/nla.obj-141171324/image">http://nla.gov.au/nla.obj-141171324/image</a></p>
 <p>But how do you get the individual identifiers for all the pages in a book, or all the images in a collection? Once again, the methods vary by format:</p>
 <ul class="simple">
-<li><p>in books, periodicals, and other works with consecutive pages it’s in a block of embedded JSON metadata</p></li>
+<li><p>in books, periodicals, and other works with consecutive pages it’s in a <a class="reference internal" href="extract-embedded-metadata.html"><span class="std std-doc">block of embedded JSON metadata</span></a></p></li>
 <li><p>in collections of images, maps, and manuscripts you need to <a class="reference internal" href="get-collection-items.html"><span class="std std-doc">extract the list of identifiers from the collection’s pop-up browse screen</span></a></p></li>
 </ul>
-<p><mark>==Code example==</mark></p>
+<p>Once you have a list of identifiers, you can loop through them, saving each image.</p>
 </section>
 </section>
 

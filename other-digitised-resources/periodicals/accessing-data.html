@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/periodicals/accessing-data.0125243d-1893-432a-a296-ed5385762513.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/periodicals/accessing-data.b57bd56b-deea-48ed-bb01-5f85f5f58322.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/periodicals/accessing-data';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -263,8 +263,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../how-to/get-collection-items.html">23.1. HOW TO: Get a list of items in a digitised collection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how-to/download-items-text-images.html">23.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how-to/extract-embedded-metadata.html">23.3. HOW TO: Extract additional metadata from the web page of a digitised work</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../how-to/harvest-digitised-resources.html">23.4. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../how-to/scrape-metadata-audio-player.html">23.5. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/get-ocr-layout-data.html">23.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/harvest-digitised-resources.html">23.5. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/scrape-metadata-audio-player.html">23.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
@@ -507,7 +508,20 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-identifiers">Understanding identifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#titles">Titles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Articles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-article-text-from-the-trove-api">Get article text from the Trove API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-ocrd-text-from-pages-and-issues">Download OCRd text from pages and issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-text-from-an-internal-api-that-provides-ocrd-text-and-layout-information">Get text from an internal API that provides OCRd text and layout information</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">Images</a></li>
 </ul>
             </nav>
@@ -1319,18 +1333,107 @@ Total issues: 183
 </section>
 </section>
 <section id="id3">
-<h2>Text<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>There are two ways of getting OCRd text from periodicals:</p>
+<h2>Metadata<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="understanding-identifiers">
+<h3>Understanding identifiers<a class="headerlink" href="#understanding-identifiers" title="Link to this heading">#</a></h3>
+</section>
+<section id="titles">
+<h3>Titles<a class="headerlink" href="#titles" title="Link to this heading">#</a></h3>
+</section>
+<section id="id4">
+<h3>Issues<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+</section>
+<section id="id5">
+<h3>Pages<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+</section>
+<section id="id6">
+<h3>Articles<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="id7">
+<h2>Text<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench includes a <a class="reference external" href="https://glam-workbench.net/trove-journals/ocrd-text-all-journals/">pre-harvested collection of OCRd text</a> from all the digitised periodicals in Trove. You can also download pre-harvested OCRd text for individual periodical titles using the <code class="docutils literal notranslate"><span class="pre">download_text</span></code> link in the <a class="reference external" href="https://glam-workbench.net/trove-journals/periodicals-data-api/#periodical-titlescsv">periodical-titles.csv</a> dataset or in <a class="reference external" href="https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&amp;amp;install=datasette-json-html&amp;amp;install=datasette-template-sql&amp;amp;metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json">Datasette-Lite</a>.</p>
+</div>
+</aside>
+<p>There are three ways of getting OCRd text from periodicals:</p>
 <ul class="simple">
 <li><p>in article records from the Trove API</p></li>
-<li><p>downloaded from individual issues</p></li>
+<li><p>downloaded from pages and issues</p></li>
+<li><p>from an internal API that provides OCRd text and layout information</p></li>
 </ul>
+<section id="get-article-text-from-the-trove-api">
+<h3>Get article text from the Trove API<a class="headerlink" href="#get-article-text-from-the-trove-api" title="Link to this heading">#</a></h3>
+<p>You can get the OCRd text of articles in the <em>Magazines &amp; Newsletters</em> category using the Trove API, but there’s a couple of tricks.</p>
+<p>The OCRd text is only included in <em>version</em> records rather than the parent <em>work</em> records. But, by default, the API only returns the <em>work</em> level records. To include the OCRd text you need to ask the API to add the versions by setting the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">workVersions</span></code> when constructing your request.</p>
+<p>This works when using the <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint to search for articles,</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dweather%26category%3Dmagazine%26encoding%3Djson%26include%3Dworkversions&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>or when requesting a single article using the <code class="docutils literal notranslate"><span class="pre">/work</span></code> endpoint.</p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F234127605%3Finclude%3DworkVersions%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>The OCRd text is included in the version’s <code class="docutils literal notranslate"><span class="pre">description</span></code> field, but not every <code class="docutils literal notranslate"><span class="pre">description</span></code> contains OCRd text. You need to look for a <code class="docutils literal notranslate"><span class="pre">description</span></code> that has a <code class="docutils literal notranslate"><span class="pre">type</span></code> equal to <code class="docutils literal notranslate"><span class="pre">open_fulltext</span></code>, and then retrieve the text from the <code class="docutils literal notranslate"><span class="pre">value</span></code> subfield.</p>
+<p>Here’s an example of a version’s <code class="docutils literal notranslate"><span class="pre">description</span></code> field containing OCRd text. Note the <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> subfields.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;In the year 1896 there will be four Eclipses — two of the Sun, and two of the Moon.&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open_fulltext&quot;</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+</pre></div>
+</div>
+<p>The description field can contain multiple entries, and you can’t assume that all of them will include these subfields, so you need to do some checking until you find the OCRd text. Something like this should work:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop through all the values in the description field</span>
+<span class="k">for</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">version</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+    <span class="c1"># Check that the description has a `type` subfield set to &quot;open_fulltext&quot;</span>
+    <span class="k">if</span> <span class="n">description</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;open_fulltext&quot;</span><span class="p">:</span>
+        <span class="c1"># Get the OCRd text from the `value` subfield</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">description</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<p>To complicate things further, some article records contain multiple versions. These are usually groups of advertisements from a single issue, but each advertisement will have its own OCRd text. To get all of the OCRd text from the record, you’d need to loop through all the grouped versions, extracting the OCRd text from each in turn.</p>
+</section>
+<section id="download-ocrd-text-from-pages-and-issues">
+<h3>Download OCRd text from pages and issues<a class="headerlink" href="#download-ocrd-text-from-pages-and-issues" title="Link to this heading">#</a></h3>
+<p>You can download OCRd text from periodical issues and pages using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in <a class="reference internal" href="../how-to/download-items-text-images.html"><span class="std std-doc">HOW TO: Automate the download of digitised items as text, images, or PDFs</span></a>, but here’s a quick summary.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The <a class="reference external" href="https://glam-workbench.net/trove-journals/periodicals-data-api/#periodical-issuescsv">periodical-issues.csv</a> dataset in the GLAM Workbench includes a <code class="docutils literal notranslate"><span class="pre">text_download_url</span></code> column which contains the url you need to download all the OCRd text from a single issue. It uses the same pattern as described here.</p>
+</div>
+</aside>
+<p>To download the complete OCRd text of a single periodical issue you need to know the number of pages in the issue. This can be found by <a class="reference internal" href="../how-to/extract-embedded-metadata.html"><span class="std std-doc">extracting the metadata</span></a> embedded in the issue viewer and getting the length of the <code class="docutils literal notranslate"><span class="pre">page</span></code> list.</p>
+<p>You can then construct a url to download the OCRd text using the issue identifier and the total number of pages:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://nla.gov.au/[ISSUE</span> <span class="pre">ID]/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=[TOTAL</span> <span class="pre">PAGES</span> <span class="pre">-</span> <span class="pre">1]</span></code></p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> parameter is set to the total number of pages, minus one. This is because page numbering starts at zero. For example, <a class="reference external" href="https://nla.gov.au/nla.obj-326379450">this issue</a> of <em>Pacific Islands Monthly</em> contains 164 pages, so the url to download the complete OCRd text would be:</p>
+<p><a href="https://nla.gov.au/nla.obj-326379450/download?downloadOption=ocr&firstPage=0&lastPage=163">https://nla.gov.au/nla.obj-326379450/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=163</a></p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench includes notebooks that demonstrate how you can combine this method with other processing steps to <a class="reference external" href="https://glam-workbench.net/trove-journals/get-ocrd-text-from-digitised-journal/">Get OCRd text from a digitised journal in Trove</a> and <a class="reference external" href="https://glam-workbench.net/trove-journals/get-ocrd-text-from-all-journals/">Download the OCRd text for ALL the digitised journals in Trove!</a></p>
+</div>
+</aside>
+<p>You can use the same url pattern to download OCRd text from any range of pages. For example, to download text from the first five pages of an issue, you’d set <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code>. To download text from page two, you’d set both <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Keep in mind that the page numbers printed in the periodical don’t necessarily correspond to the page numbers in Trove’s <a class="reference internal" href="../../what-is-trove/interfaces.html#interfaces-digitised-journal-viewer"><span class="std std-ref">digital journal viewer</span></a>.</p>
+</div>
+</section>
+<section id="get-text-from-an-internal-api-that-provides-ocrd-text-and-layout-information">
+<h3>Get text from an internal API that provides OCRd text and layout information<a class="headerlink" href="#get-text-from-an-internal-api-that-provides-ocrd-text-and-layout-information" title="Link to this heading">#</a></h3>
+<p>When Trove’s <a class="reference internal" href="../../what-is-trove/interfaces.html#interfaces-digitised-journal-viewer"><span class="std std-ref">digital book &amp; journal viewer</span></a> displays a page, it loads OCR data from an internal API. This data includes both the OCRd text and the position of every block, line, and word of the text. If all you want is the raw text, you’re better off using the method above, but if you’re interested in the position of the text on the page then you might find this a useful approach.</p>
+<p>To request the OCR data all you need is the page identifier</p>
+</section>
 </section>
 <section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>download pages as images</p></li>
-<li><p>extract illustrations from pages</p></li>
+<li><p>extract illustrations from pages using OCR layout data</p></li>
 </ul>
 </section>
 </section>
@@ -1437,7 +1540,20 @@ Total issues: 183
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-identifiers">Understanding identifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#titles">Titles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Pages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Articles</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-article-text-from-the-trove-api">Get article text from the Trove API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-ocrd-text-from-pages-and-issues">Download OCRd text from pages and issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-text-from-an-internal-api-that-provides-ocrd-text-and-layout-information">Get text from an internal API that provides OCRd text and layout information</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">Images</a></li>
 </ul>
   </nav></div>
