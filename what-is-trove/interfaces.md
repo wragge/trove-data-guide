@@ -173,7 +173,7 @@ View a single article
 [https://nla.gov.au/nla.news-article162833980](http://nla.gov.au/nla.news-article162833980)
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Digitised content viewers
 

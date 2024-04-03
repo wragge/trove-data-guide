@@ -78,6 +78,15 @@ No work links from API but can get extra metadata from collection page -- includ
 - Get covers of title
 - Get pages of issue
 
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+
+```
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Periodical titles
@@ -588,7 +597,7 @@ Use bibliographicCitation metadata
 Via API
 
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Issues
 
@@ -654,16 +663,120 @@ Issue id
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+## Metadata
+
+### Understanding identifiers
+
+### Titles
+
+### Issues
+
+### Pages
+
+### Articles
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 ## Text
 
-There are two ways of getting OCRd text from periodicals:
+````{margin}
+```{seealso}
+The GLAM Workbench includes a [pre-harvested collection of OCRd text](https://glam-workbench.net/trove-journals/ocrd-text-all-journals/) from all the digitised periodicals in Trove. You can also download pre-harvested OCRd text for individual periodical titles using the `download_text` link in the [periodical-titles.csv](https://glam-workbench.net/trove-journals/periodicals-data-api/#periodical-titlescsv) dataset or in [Datasette-Lite](https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&install=datasette-json-html&install=datasette-template-sql&metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json).
+```
+````
+
+There are three ways of getting OCRd text from periodicals:
 
 - in article records from the Trove API
-- downloaded from individual issues
+- downloaded from pages and issues
+- from an internal API that provides OCRd text and layout information
+
+### Get article text from the Trove API
+
+You can get the OCRd text of articles in the *Magazines & Newsletters* category using the Trove API, but there's a couple of tricks. 
+
+The OCRd text is only included in *version* records rather than the parent *work* records. But, by default, the API only returns the *work* level records. To include the OCRd text you need to ask the API to add the versions by setting the `include` parameter to `workVersions` when constructing your request.
+
+This works when using the `/result` endpoint to search for articles,
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3Dweather%26category%3Dmagazine%26encoding%3Djson%26include%3Dworkversions&comment=)
+
+or when requesting a single article using the `/work` endpoint.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F234127605%3Finclude%3DworkVersions%26encoding%3Djson&comment=)
+
+The OCRd text is included in the version's `description` field, but not every `description` contains OCRd text. You need to look for a `description` that has a `type` equal to `open_fulltext`, and then retrieve the text from the `value` subfield.
+
+Here's an example of a version's `description` field containing OCRd text. Note the `type` and `value` subfields.
+
+``` json
+    "description": [
+        {
+            "value": "In the year 1896 there will be four Eclipses — two of the Sun, and two of the Moon.",
+            "type": "open_fulltext"
+         }
+    ],
+```
+
+The description field can contain multiple entries, and you can't assume that all of them will include these subfields, so you need to do some checking until you find the OCRd text. Something like this should work:
+
+```python
+# Loop through all the values in the description field
+for description in version.get("description", []):
+    # Check that the description has a `type` subfield set to "open_fulltext"
+    if description.get("type") == "open_fulltext":
+        # Get the OCRd text from the `value` subfield
+        text = description.get("value", "")
+        break
+```
+
+To complicate things further, some article records contain multiple versions. These are usually groups of advertisements from a single issue, but each advertisement will have its own OCRd text. To get all of the OCRd text from the record, you'd need to loop through all the grouped versions, extracting the OCRd text from each in turn.
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+### Download OCRd text from pages and issues
+
+You can download OCRd text from periodical issues and pages using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in [](../how-to/download-items-text-images.md), but here's a quick summary.
+
+````{margin}
+```{seealso}
+The [periodical-issues.csv](https://glam-workbench.net/trove-journals/periodicals-data-api/#periodical-issuescsv) dataset in the GLAM Workbench includes a `text_download_url` column which contains the url you need to download all the OCRd text from a single issue. It uses the same pattern as described here.
+```
+````
+
+To download the complete OCRd text of a single periodical issue you need to know the number of pages in the issue. This can be found by [extracting the metadata](../how-to/extract-embedded-metadata.md) embedded in the issue viewer and getting the length of the `page` list.
+
+You can then construct a url to download the OCRd text using the issue identifier and the total number of pages:
+
+`https://nla.gov.au/[ISSUE ID]/download?downloadOption=ocr&firstPage=0&lastPage=[TOTAL PAGES - 1]`
+
+Note that the `lastPage` parameter is set to the total number of pages, minus one. This is because page numbering starts at zero. For example, [this issue](https://nla.gov.au/nla.obj-326379450) of *Pacific Islands Monthly* contains 164 pages, so the url to download the complete OCRd text would be:
+
+<a href="https://nla.gov.au/nla.obj-326379450/download?downloadOption=ocr&firstPage=0&lastPage=163">https://nla.gov.au/nla.obj-326379450/download?downloadOption=ocr&firstPage=0&lastPage=163</a>
+
+````{margin}
+```{seealso}
+The GLAM Workbench includes notebooks that demonstrate how you can combine this method with other processing steps to [Get OCRd text from a digitised journal in Trove](https://glam-workbench.net/trove-journals/get-ocrd-text-from-digitised-journal/) and [Download the OCRd text for ALL the digitised journals in Trove!](https://glam-workbench.net/trove-journals/get-ocrd-text-from-all-journals/)
+```
+````
+
+You can use the same url pattern to download OCRd text from any range of pages. For example, to download text from the first five pages of an issue, you'd set `firstPage` to `0` and `lastPage` to `4`. To download text from page two, you'd set both `firstPage` and `lastPage` to `1`. 
+
+```{warning}
+Keep in mind that the page numbers printed in the periodical don't necessarily correspond to the page numbers in Trove's [digital journal viewer](interfaces:digitised-journal-viewer). 
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+### Get text from an internal API that provides OCRd text and layout information
+
+When Trove's [digital book & journal viewer](interfaces:digitised-journal-viewer) displays a page, it loads OCR data from an internal API. This data includes both the OCRd text and the position of every block, line, and word of the text. If all you want is the raw text, you're better off using the method above, but if you're interested in the position of the text on the page then you might find this a useful approach.
+
+To request the OCR data all you need is the page identifier
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Images
 
 - download pages as images
-- extract illustrations from pages
+- extract illustrations from pages using OCR layout data

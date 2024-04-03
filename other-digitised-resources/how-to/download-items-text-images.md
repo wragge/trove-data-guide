@@ -43,7 +43,7 @@ If you're downloading a collection of images you might notice that you get the f
 
 This method is consistent across most formats, so you can develop processes that construct urls like these from a list of NLA identifiers and download their contents automatically. But if you want to get the *complete* contents, you need some way of discovering the total number of pages or images to set the `lastPage` value. You can find this value embedded in the code of the web page, though it's location varies:
 
-- in books, periodicals, and other works with consecutive pages it's in a block of embedded JSON metadata
+- in books, periodicals, and other works with consecutive pages it's in a [block of embedded JSON metadata](extract-embedded-metadata.md)
 - in collections of images, maps, and manuscripts you need to look for `maxNumOfChildDownloads` variable in the page's Javascript
 
 <mark>==Code example==</mark>
@@ -63,10 +63,10 @@ For example, this [cute picture of a penguin](http://nla.gov.au/nla.obj-14117132
 
 But how do you get the individual identifiers for all the pages in a book, or all the images in a collection? Once again, the methods vary by format:
 
-- in books, periodicals, and other works with consecutive pages it's in a block of embedded JSON metadata
+- in books, periodicals, and other works with consecutive pages it's in a [block of embedded JSON metadata](extract-embedded-metadata.md)
 - in collections of images, maps, and manuscripts you need to [extract the list of identifiers from the collection's pop-up browse screen](/other-digitised-resources/how-to/get-collection-items.md)
 
-<mark>==Code example==</mark>
+Once you have a list of identifiers, you can loop through them, saving each image. 
 
 ```{code-cell} ipython3
 
