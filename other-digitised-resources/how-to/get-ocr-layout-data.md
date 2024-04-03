@@ -12,6 +12,12 @@ kernelspec:
 ---
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
 from myst_nb import glue
 ```
 
@@ -21,7 +27,7 @@ from myst_nb import glue
 
 ````{margin}
 ```{seealso}
-For information on getting positional information from newspaper articles see [](newspapers-and-gazettes/how-to/get-ocr-coordinates.md).
+For information on getting positional information from newspaper articles see [](/newspapers-and-gazettes/how-to/get-ocr-coordinates.md).
 ```
 ````
 
@@ -435,6 +441,12 @@ Complete image of page [nla.obj-375667954](https://nla.gov.au/nla.obj-375667954)
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Play with words
+
+````{margin}
+```{seealso}
+If you'd like to create scissors & paste messages using OCR data from digitised newspapers, see [Create 'scissors and paste' messages from Trove newspaper articles](https://glam-workbench.net/trove-newspapers/trove-newspapers-scissors-and-paste/) in the GLAM Workbench.
+```
+````
 
 As noted above, the OCR data includes coordinates for all the page objects, including every word. You could use this to crop printed words from pages and create your own scissors and paste, 'ransom note' style messages. Or you could attempt some redaction art.
 
