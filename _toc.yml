@@ -115,6 +115,7 @@ parts:
           - file: other-digitised-resources/how-to/get-collection-items
           - file: other-digitised-resources/how-to/download-items-text-images
           - file: other-digitised-resources/how-to/extract-embedded-metadata
+          - file: other-digitised-resources/how-to/get-ocr-layout-data.md
           - file: other-digitised-resources/how-to/harvest-digitised-resources
           - file: other-digitised-resources/how-to/scrape-metadata-audio-player
 #  - caption: Web archives
