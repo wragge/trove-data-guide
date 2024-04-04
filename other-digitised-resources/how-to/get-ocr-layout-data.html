@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-ocr-layout-data.6102ec4f-f04a-46aa-b8d4-c0927f4cc7ec.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-ocr-layout-data.5b681539-31dc-4248-a24e-6a9b6ece96cd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/get-ocr-layout-data';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -575,33 +575,37 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">Content_Cartoon</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Content_Music</span></code></p></li>
 </ul>
-<p>The top level structure does seem to vary a bit. Sometimes, as in the example above, <code class="docutils literal notranslate"><span class="pre">print</span></code> is an object containing <code class="docutils literal notranslate"><span class="pre">ps</span></code> and <code class="docutils literal notranslate"><span class="pre">zs</span></code> keys. But other times, <code class="docutils literal notranslate"><span class="pre">print</span></code> is an array of <code class="docutils literal notranslate"><span class="pre">ps</span></code> and <code class="docutils literal notranslate"><span class="pre">zs</span></code> objects. If you want to capture the complete content of a page you’ll need to accomodate both possibilities. The <code class="docutils literal notranslate"><span class="pre">get_blocks()</span></code> function in the code below attempts to do this.</p>
+<p>The top level structure does seem to vary a bit. Sometimes, as in the example above, <code class="docutils literal notranslate"><span class="pre">print</span></code> is an object containing <code class="docutils literal notranslate"><span class="pre">ps</span></code> and <code class="docutils literal notranslate"><span class="pre">zs</span></code> keys. But other times, <code class="docutils literal notranslate"><span class="pre">print</span></code> is an array of <code class="docutils literal notranslate"><span class="pre">ps</span></code> and <code class="docutils literal notranslate"><span class="pre">zs</span></code> objects. I’ve also noticed some pages where the <code class="docutils literal notranslate"><span class="pre">ps</span></code> blocks are children of a <code class="docutils literal notranslate"><span class="pre">zs</span></code> block. If you want to capture the complete content of a page you’ll need to accomodate these possibilities. The <code class="docutils literal notranslate"><span class="pre">get_blocks()</span></code> function in the code below attempts to do this.</p>
 </section>
 <section id="extract-blocks-from-the-ocr-data">
-<h2>Extract blocks from the OCR data<a class="headerlink" href="#extract-blocks-from-the-ocr-data" title="Link to this heading">#</a></h2>
+<span id="other-digitised-ocr-data-extract-blocks"></span><h2>Extract blocks from the OCR data<a class="headerlink" href="#extract-blocks-from-the-ocr-data" title="Link to this heading">#</a></h2>
 <p>As noted, the OCR data contains <code class="docutils literal notranslate"><span class="pre">ps</span></code> (text) and <code class="docutils literal notranslate"><span class="pre">zs</span></code> (illustration) blocks. The function below will extract the blocks from the data into a list, irrespective of the top-level structure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dict_extract</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find keys wherever they are in dict/lists.</span>
+<span class="sd">    From https://stackoverflow.com/a/29652561</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;items&#39;</span><span class="p">):</span> 
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> 
+            <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">v</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">dict_extract</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">result</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">dict_extract</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+                        <span class="k">yield</span> <span class="n">result</span>
 
 <span class="k">def</span> <span class="nf">get_blocks</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;ps&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve a list of blocks of the desired type</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Try to access blocks from top-level dict</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">blocks</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;print&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="c1"># If it&#39;s not a dict, process as a list</span>
-    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-        <span class="n">blocks</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="c1"># Loop through this list of dicts</span>
-        <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;print&quot;</span><span class="p">]:</span>
-            <span class="c1"># Check that the dict key is the type we want</span>
-            <span class="c1"># if so save the blocks</span>
-            <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">nested_blocks</span> <span class="ow">in</span> <span class="n">section</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="nb">type</span><span class="p">:</span>
-                    <span class="n">blocks</span> <span class="o">+=</span> <span class="n">nested_blocks</span>
+    <span class="n">blocks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">dict_extract</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+        <span class="n">blocks</span> <span class="o">+=</span> <span class="n">block</span>
     <span class="k">return</span> <span class="n">blocks</span>
 </pre></div>
 </div>
@@ -610,7 +614,9 @@ document.write(`
 <p>Here’s an example retrieving the OCR data from the page with the identifier <code class="docutils literal notranslate"><span class="pre">nla.obj-326405522</span></code> and then extracting the text blocks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">page_id</span> <span class="o">=</span> <span class="s2">&quot;nla.obj-326405522&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">page_id</span> <span class="o">=</span> <span class="s2">&quot;nla.obj-326405522&quot;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://nla.gov.au/</span><span class="si">{</span><span class="n">page_id</span><span class="si">}</span><span class="s2">/ocr&quot;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
@@ -643,7 +649,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 </div>
 </section>
 <section id="visualise-page-layout">
-<h2>Visualise page layout<a class="headerlink" href="#visualise-page-layout" title="Link to this heading">#</a></h2>
+<span id="other-digitised-ocr-data-page-layout"></span><h2>Visualise page layout<a class="headerlink" href="#visualise-page-layout" title="Link to this heading">#</a></h2>
 <p>The most interesting thing about the OCR data is the positional information. It enables us to explore the structure and layout of published pages, rather than just their content. Here’s a simple example which visualises the position of each text and illustration block. It uses the OCR data downloaded above, using the block coordinates to draw coloured rectangles on a blank canvas.</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
@@ -715,7 +721,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 </div>
 </section>
 <section id="crop-images-from-pages-using-the-ocr-coordinates">
-<h2>Crop images from pages using the OCR coordinates<a class="headerlink" href="#crop-images-from-pages-using-the-ocr-coordinates" title="Link to this heading">#</a></h2>
+<span id="other-digitised-ocr-data-crop-images"></span><h2>Crop images from pages using the OCR coordinates<a class="headerlink" href="#crop-images-from-pages-using-the-ocr-coordinates" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -725,7 +731,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 </div>
 </aside>
 <p>One thing you might want to do is to crop text blocks or illustrations from the page image using the OCR coordinates. This is certainly possible, but it’s not always straightforward. The problem is that the coordinates in the OCR data can sometimes refer to images at a higher resolution than those you can access through the web interface. If you try and use the coordinates with a lower resolution image you’ll end up cropping out the wrong areas. The solution is to find the resolution of the image used in creating the coordinates and compare it to the one you’ve downloaded. Dividing the width of the low res image by the width of the high-res image will give you a ratio that you can apply to the coordinates to transform them for use with the downloaded image.</p>
-<p>The original page resolutions are included in the metadata embedded in the digital journal viewer.</p>
+<p>The original page resolutions are usually included in the metadata embedded in the digital journal viewer.</p>
 <p>For example, if you download the page with the identifier <a class="reference external" href="http://nla.gov.au/nla.obj-375667954/image">nla.obj-375667954</a> from <em>The Home</em> using the url hacking technique, you’ll end up with an image that is 3804 pixels wide and 5000 pixels high. But if you find the page’s details in the viewer’s embedded metadata, you’ll see the <code class="docutils literal notranslate"><span class="pre">technicalmetadata</span></code> field lists the width as 5068 pixels and the height as 6663 pixels.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;37566795&quot;</span><span class="p">,</span>
@@ -760,6 +766,10 @@ nket—pardon me, safari —through Kenya has taught us is that
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I have noticed some instances where the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> values in <code class="docutils literal notranslate"><span class="pre">technicalmetadata</span></code> are set to <code class="docutils literal notranslate"><span class="pre">0</span></code>. This will cause an error when you try to calculate the ratio.</p>
 </div>
 <p>Here’s an example that calculates the page size ratio and extracts the first illustration from the page. It includes some code copied from <a class="reference internal" href="extract-embedded-metadata.html"><span class="std std-doc">HOW TO: Extract additional metadata from the web page of a digitised work</span></a> and the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/">Harvest illustrations from periodicals</a>. It also uses the <code class="docutils literal notranslate"><span class="pre">get_blocks()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_coords()</span></code> functions defined above.</p>
 <div class="cell tag_remove-output docutils container">
@@ -913,7 +923,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 </div>
 </div>
 <figure class="align-default" id="redacted-image">
-<a class="reference internal image-reference" href="../../_images/b4b45a7ef32eaff177099cd147beead060b01870f3ed62c05422ec0d4d4bd3cd.png"><img alt="../../_images/b4b45a7ef32eaff177099cd147beead060b01870f3ed62c05422ec0d4d4bd3cd.png" src="../../_images/b4b45a7ef32eaff177099cd147beead060b01870f3ed62c05422ec0d4d4bd3cd.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png"><img alt="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png" src="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 23.5 </span><span class="caption-text">Some randomly-generated redaction art!</span><a class="headerlink" href="#redacted-image" title="Link to this image">#</a></p>
 </figcaption>

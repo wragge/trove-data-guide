@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/extract-embedded-metadata.80f8bf41-7a70-4ee8-bfa1-12c543316702.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/extract-embedded-metadata.79aeb11e-da9a-46a0-bc1a-9d7c2524293e.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/extract-embedded-metadata';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -470,8 +470,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-information-about-pages">Get information about pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-metadata-is-available">What metadata is available?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-viewers">All viewers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-and-map-viewer">Image and map viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#books-and-journals-viewer">Books and journals viewer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pages">Pages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#articles">Articles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chapters">Chapters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-the-metadata">Extracting the metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-marc-catalogue-data">Get MARC catalogue data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-information-about-pages">Get information about pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-list-of-articles-in-a-periodical-issue">Get a list of articles in a periodical issue</a></li>
 </ul>
             </nav>
         </div>
@@ -494,6 +507,194 @@ document.write(`
 </aside>
 <p>The viewers you use to examine digitised resources in Trove embed some metadata that isn’t available through the Trove API. This includes a JSON-ified version of the item’s MARC record (presumably copied from the NLA catalogue), as well as structural information used by the viewer itself, such as a list of pages in a digitised book.</p>
 <p>This metadata can be useful in a number of different contexts. For example, you can extract the number of pages in a digitised book, then use this number to <a class="reference internal" href="download-items-text-images.html"><span class="doc std std-doc">automatically download the full text or a PDF</span></a>. The GLAM Workbench includes an example where geospatial coordinates are extracted from the MARC data to add to a <a class="reference external" href="https://glam-workbench.net/trove-maps/exploring-digitised-maps/">harvest of digitised maps</a>.</p>
+<section id="what-metadata-is-available">
+<h2>What metadata is available?<a class="headerlink" href="#what-metadata-is-available" title="Link to this heading">#</a></h2>
+<p>The available metadata varies by viewer and format. The main differences are:</p>
+<ul class="simple">
+<li><p>the image viewer includes information about digitised images in the <code class="docutils literal notranslate"><span class="pre">copies</span></code> field</p></li>
+<li><p>the books and journals viewer includes information in the <code class="docutils literal notranslate"><span class="pre">children</span></code> field about individual pages and sub-sections such as chapters and articles</p></li>
+</ul>
+<section id="all-viewers">
+<h3>All viewers<a class="headerlink" href="#all-viewers" title="Link to this heading">#</a></h3>
+<p>All of the viewers embed some basic metadata, like <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code>, at the top level of the JSON data. However, the actual fields can vary by format and viewer type, so don’t assume that a particular field exists, or has a value. Here’s an example from an issue of <em>Walkabout</em>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;71404117&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;collection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.aus&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;work&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;form&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Journal&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;displayTitlePage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;book&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;issueDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sun, 02 Dec 1934&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subUnitNo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vol. 1 No. 2 (2 December 1934)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bibLevel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Item&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bibId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2592481&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;holdingNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nq 919.4 WAL&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-714041173&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Walkabout.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;accessConditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Unrestricted&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;copyrightPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Out of Copyright&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;recordSource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NLACat&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sensitiveMaterial&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;No&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;commentsExternal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Some pages in this issue have been restricted. This may affect left/right page sequencing. Some loss of text in gutter due to page edges stitched into gutter at binding process&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;digitalStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Captured&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;startDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;01 January 1934&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v. : ill., maps. ; 34 cm.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;isMissingPage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;publisherName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Australian National Travel Association&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>There’s also a <code class="docutils literal notranslate"><span class="pre">topLevelCollection</span></code> field that contains the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier of the parent record in this collection. If it’s a single item (ie a collection of one) then <code class="docutils literal notranslate"><span class="pre">topLevelCollection</span></code> will probably be the same as the item identifier in <code class="docutils literal notranslate"><span class="pre">pid</span></code>.</p>
+<p>All of the viewers also embed a JSON-ified MARC record in the <code class="docutils literal notranslate"><span class="pre">marcData</span></code> field.</p>
+</section>
+<section id="image-and-map-viewer">
+<h3>Image and map viewer<a class="headerlink" href="#image-and-map-viewer" title="Link to this heading">#</a></h3>
+<p>The image and map viewer includes a <code class="docutils literal notranslate"><span class="pre">copies</span></code> field at the top level of the JSON data. This field includes a list of the images associated with this item. Here’s an example from <a class="reference external" href="http://nla.gov.au/nla.obj-133327370">nla.obj-133327370</a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;copies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;copyrole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;access&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;blobId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">146939732</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;314560922.jp2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;filesize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6663187</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;technicalmetadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8566</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12449</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;copyrole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;access&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;filesize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">745416848</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>The ‘copies’ of the image are different formats or resolutions created for specific purposes, such as access or preservation. Apparently <code class="docutils literal notranslate"><span class="pre">copyrole</span></code> values can be one of<code class="docutils literal notranslate"><span class="pre">access</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">o</span></code>, <code class="docutils literal notranslate"><span class="pre">i</span></code>, or <code class="docutils literal notranslate"><span class="pre">fd</span></code>, but I’ve only come across <code class="docutils literal notranslate"><span class="pre">access</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code>. The <code class="docutils literal notranslate"><span class="pre">m</span></code> copies seem to refer to high-resolution TIFFs, and if <code class="docutils literal notranslate"><span class="pre">access</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> then these TIFF versions are made available for download. You can find downloadable TIFFs amongst the digitised maps. For example, <a class="reference external" href="https://nla.gov.au/nla.obj-232162256">this map</a> has <code class="docutils literal notranslate"><span class="pre">access</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> for the <code class="docutils literal notranslate"><span class="pre">m</span></code> copy:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;copies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;copyrole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;access&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;blobId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7682805</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;23216230.jp2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;filesize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1560253</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;technicalmetadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4519</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5508</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;copyrole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;access&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;filesize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">74685872</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>The map viewer reads this value and adds a TIFF option under the download tab. If <code class="docutils literal notranslate"><span class="pre">access</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> you can also download the high-resolution TIFF directly by adding <code class="docutils literal notranslate"><span class="pre">/m</span></code> to the item identifier (though take note of the file size as the downloads can be huge!):</p>
+<p><a href="https://nla.gov.au/nla.obj-232162256/m">https://nla.gov.au/nla.obj-232162256/m</a></p>
+</section>
+<section id="books-and-journals-viewer">
+<h3>Books and journals viewer<a class="headerlink" href="#books-and-journals-viewer" title="Link to this heading">#</a></h3>
+<p>The books and journals viewer has a <code class="docutils literal notranslate"><span class="pre">children</span></code> field in the top-level JSON data which includes <code class="docutils literal notranslate"><span class="pre">page</span></code>, <code class="docutils literal notranslate"><span class="pre">article</span></code>, and <code class="docutils literal notranslate"><span class="pre">chapter</span></code> fields.</p>
+<section id="pages">
+<h4>Pages<a class="headerlink" href="#pages" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">page</span></code> field contains details of every page image. Here’s the metadata for a single page in the book <em>The story of the Australian bushrangers</em>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48661387&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;page&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The story of the Australian bushrangers&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bibId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1068148&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-486613874&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;form&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Book&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;accessConditions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Unrestricted&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;copyrightPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Out of Copyright&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bibLevel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Part&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;digitalStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Captured&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;holdingNumber&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NL 343.94 BOX&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;copies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;copyrole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;access&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;blobId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15236579</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48661395.jp2&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;filesize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">506342</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;technicalmetadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2335</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3495</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;copyrole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;access&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;filesize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24482931</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>While some of these fields duplicate what’s available at the top-level of the metadata, the <code class="docutils literal notranslate"><span class="pre">pid</span></code> here is the identifier of this particular page. This identifier can be used to download the page image and <a class="reference internal" href="#other-digitised-resources/how-to/get-ocr-layout-data.md"><span class="xref myst">OCR data</span></a>.</p>
+<p>Each page has a <code class="docutils literal notranslate"><span class="pre">copies</span></code> field describing the available image versions. The image dimensions of the <code class="docutils literal notranslate"><span class="pre">access</span></code> copy included in the <code class="docutils literal notranslate"><span class="pre">technicalmetadata</span></code> field can be useful if you want <a class="reference internal" href="get-ocr-layout-data.html#other-digitised-ocr-data-crop-images"><span class="std std-ref">to use the OCR data to crop sections out of the page image</span></a>.</p>
+</section>
+<section id="articles">
+<h4>Articles<a class="headerlink" href="#articles" title="Link to this heading">#</a></h4>
+<p>Periodical issues can include a list of articles in the <code class="docutils literal notranslate"><span class="pre">article</span></code> field. Here’s an example of an article entry from <em>Walkabout</em>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;75337488&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;article&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-753374885&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A Visit to Lake Frome&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;By ARTHUR W. UPFIELD&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bibLevel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Section&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;existson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;71404264&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-714042646&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;71404251&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-714042515&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;71404232&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-714042324&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;71404219&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-714042196&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Articles have their own values for <code class="docutils literal notranslate"><span class="pre">pid</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code>, and <code class="docutils literal notranslate"><span class="pre">creator</span></code> (if the article has a byline). The <code class="docutils literal notranslate"><span class="pre">existson</span></code> field lists the pages on which this article appears. This article starts on page <code class="docutils literal notranslate"><span class="pre">nla.obj-714042646</span></code>.</p>
+</section>
+<section id="chapters">
+<h4>Chapters<a class="headerlink" href="#chapters" title="Link to this heading">#</a></h4>
+<p>Books can include a list of chapters in the <code class="docutils literal notranslate"><span class="pre">chapter</span></code> field. Here’s an example of a chapter entry from <em>The story of the Australian bushrangers</em>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;49622020&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chapter&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subUnitNo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PREFACE.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-496220207&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bibLevel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Section&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;existson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48661510&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-486615102&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48661523&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nla.obj-486615233&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Chapters have their own values for <code class="docutils literal notranslate"><span class="pre">pid</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code>, while the <code class="docutils literal notranslate"><span class="pre">subUnitNo</span></code> specifies the order of the chapters. The <code class="docutils literal notranslate"><span class="pre">existson</span></code> field lists the pages on which this chapter appears.</p>
+</section>
+</section>
+</section>
+<section id="extracting-the-metadata">
+<h2>Extracting the metadata<a class="headerlink" href="#extracting-the-metadata" title="Link to this heading">#</a></h2>
+<p>The function to extract the metadata is fairly straightforward. It loads the viewer’s HTML code and uses a regular expression to find and extract the embedded JSON string. It expects an <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier. For the image and map viewers, this is the identifier of an individual item. For the book and journal viewer you can use the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier for the book, issue, page, or article. This is because page and article identifiers are redirected to issues. Here’s a full examp[le that extracts the embedded metadata for the book <a class="reference external" href="https://nla.gov.au/nla.obj-362059651"><em>Lord Robert Cecil’s gold fields diary</em></a>.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -517,15 +718,11 @@ document.write(`
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="n">work_data</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
     <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">work_data</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_output_scroll docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">work_id</span> <span class="o">=</span> <span class="s2">&quot;https://nla.gov.au/nla.obj-362059651/&quot;</span>
 
-<span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="n">work_id</span><span class="p">)</span>
+
+<span class="n">book_id</span> <span class="o">=</span> <span class="s2">&quot;https://nla.gov.au/nla.obj-362059651/&quot;</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
 </pre></div>
@@ -1756,41 +1953,6 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="get-information-about-pages">
-<h2>Get information about pages<a class="headerlink" href="#get-information-about-pages" title="Link to this heading">#</a></h2>
-<p>Depending on the format, the <code class="docutils literal notranslate"><span class="pre">children</span></code> field can contain information about pages, chapters, and articles contained within the digitised work. Books and periodical issues should include <code class="docutils literal notranslate"><span class="pre">page</span></code> data. To find the number of pages, you just need to get the length of the <code class="docutils literal notranslate"><span class="pre">page</span></code> list.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How many pages are there?</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;page&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you want to get the identifiers for each individual page, just loop through the list of pages saving the <code class="docutils literal notranslate"><span class="pre">pid</span></code> value.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">page_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;pid&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;page&quot;</span><span class="p">]]</span>
-<span class="n">page_ids</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;nla.obj-362059904&#39;,
- &#39;nla.obj-362060036&#39;,
- &#39;nla.obj-362060175&#39;,
- &#39;nla.obj-362060307&#39;,
- &#39;nla.obj-362060433&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>These page identifiers can be used to download images of the pages.</p>
 </section>
 <section id="get-marc-catalogue-data">
 <h2>Get MARC catalogue data<a class="headerlink" href="#get-marc-catalogue-data" title="Link to this heading">#</a></h2>
@@ -1921,6 +2083,105 @@ Melbourne University Press,
 </div>
 </div>
 </section>
+<section id="get-information-about-pages">
+<h2>Get information about pages<a class="headerlink" href="#get-information-about-pages" title="Link to this heading">#</a></h2>
+<p>Books and periodical issues should include <code class="docutils literal notranslate"><span class="pre">page</span></code> data in the <code class="docutils literal notranslate"><span class="pre">children</span></code> field. To find the number of pages, you just need to get the length of the <code class="docutils literal notranslate"><span class="pre">page</span></code> list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How many pages are there?</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;page&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want to get the identifiers for each individual page, just loop through the list of pages saving the <code class="docutils literal notranslate"><span class="pre">pid</span></code> value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">page_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;pid&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;page&quot;</span><span class="p">]]</span>
+<span class="n">page_ids</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;nla.obj-362059904&#39;,
+ &#39;nla.obj-362060036&#39;,
+ &#39;nla.obj-362060175&#39;,
+ &#39;nla.obj-362060307&#39;,
+ &#39;nla.obj-362060433&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>These page identifiers can be used to download images of the pages.</p>
+<p>Here’s a function you can use to get the dimensions of the <code class="docutils literal notranslate"><span class="pre">access</span></code> copy of a page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_page_size</span><span class="p">(</span><span class="n">page_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the dimensions of a page image from embedded metadata.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="n">page_id</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;page&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">page</span><span class="p">[</span><span class="s2">&quot;pid&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">page_id</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">page</span><span class="p">[</span><span class="s2">&quot;copies&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;technicalmetadata&quot;</span><span class="p">]</span>
+
+<span class="n">get_page_size</span><span class="p">(</span><span class="s2">&quot;nla.obj-362059904&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;width&#39;: 1926, &#39;height&#39;: 2840}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-a-list-of-articles-in-a-periodical-issue">
+<h2>Get a list of articles in a periodical issue<a class="headerlink" href="#get-a-list-of-articles-in-a-periodical-issue" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span>
+<span class="n">issue_id</span> <span class="o">=</span> <span class="s2">&quot;nla.obj-714041173&quot;</span>
+
+<span class="n">issue_metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="n">issue_id</span><span class="p">)</span>
+<span class="n">md</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">issue_metadata</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;article&quot;</span><span class="p">]:</span>
+    <span class="n">md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;* [</span><span class="si">{</span><span class="n">article</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">](https://nla.gov.au/</span><span class="si">{</span><span class="n">article</span><span class="p">[</span><span class="s1">&#39;pid&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">md</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<ul class="simple">
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374124">WALKABOUT AUSTRALIA AND THE SOUTH SEAS</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374156">Advertising</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374242">WALKABOUT</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374275">CONTENTS</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374300">AN EXPORT COMMODITY THAT COSTS NOTHING TO PRODUCE!</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374337">WALKABOUT</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374368">Curiosities of the Coral Seas (Australia’s Great Barrier Reef)</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374444">BEACH BEAUTY</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374489">Lakatoi Racing in Papua</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374551">Across Cape York Peninsula with a Pack Team</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374682">Taronga Park, Sydney —World’s Most Picturesque Zoo</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374754">Inland Oddities</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374848">Advertising</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374885">A Visit to Lake Frome</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374947">Advertising</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753374971">An Old-Time Maori Feast</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753375027">Advertising</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753375069">OUR CAMERAMAN’S WALKABOUT…</a></p></li>
+<li><p><a class="reference external" href="https://nla.gov.au/nla.obj-753375151">Advertising</a></p></li>
+</ul>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1987,8 +2248,21 @@ Melbourne University Press,
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-information-about-pages">Get information about pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-metadata-is-available">What metadata is available?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#all-viewers">All viewers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-and-map-viewer">Image and map viewer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#books-and-journals-viewer">Books and journals viewer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pages">Pages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#articles">Articles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chapters">Chapters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-the-metadata">Extracting the metadata</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-marc-catalogue-data">Get MARC catalogue data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-information-about-pages">Get information about pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-list-of-articles-in-a-periodical-issue">Get a list of articles in a periodical issue</a></li>
 </ul>
   </nav></div>
 
