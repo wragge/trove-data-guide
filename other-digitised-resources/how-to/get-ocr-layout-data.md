@@ -119,8 +119,9 @@ Each `zs` block describes an illustration. The `b` field provides the coordinate
 - `Content_Cartoon`
 - `Content_Music`
 
-The top level structure does seem to vary a bit. Sometimes, as in the example above, `print` is an object containing `ps` and `zs` keys. But other times, `print` is an array of `ps` and `zs` objects. If you want to capture the complete content of a page you'll need to accomodate both possibilities. The `get_blocks()` function in the code below attempts to do this.
+The top level structure does seem to vary a bit. Sometimes, as in the example above, `print` is an object containing `ps` and `zs` keys. But other times, `print` is an array of `ps` and `zs` objects. I've also noticed some pages where the `ps` blocks are children of a `zs` block. If you want to capture the complete content of a page you'll need to accomodate these possibilities. The `get_blocks()` function in the code below attempts to do this.
 
+(other-digitised:ocr-data:extract-blocks)=
 ## Extract blocks from the OCR data
 
 As noted, the OCR data contains `ps` (text) and `zs` (illustration) blocks. The function below will extract the blocks from the data into a list, irrespective of the top-level structure.
@@ -131,26 +132,30 @@ editable: true
 slideshow:
   slide_type: ''
 ---
-import requests
-
+def dict_extract(data, key):
+    """
+    Find keys wherever they are in dict/lists.
+    From https://stackoverflow.com/a/29652561
+    """
+    if hasattr(data, 'items'): 
+        for k, v in data.items(): 
+            if k == key:
+                yield v
+            if isinstance(v, dict):
+                for result in dict_extract(v, key):
+                    yield result
+            elif isinstance(v, list):
+                for d in v:
+                    for result in dict_extract(v, key):
+                        yield result
 
 def get_blocks(data, type="ps"):
     """
     Retrieve a list of blocks of the desired type
     """
-    # Try to access blocks from top-level dict
-    try:
-        blocks = data["print"].get(type, [])
-    # If it's not a dict, process as a list
-    except AttributeError:
-        blocks = []
-        # Loop through this list of dicts
-        for section in data["print"]:
-            # Check that the dict key is the type we want
-            # if so save the blocks
-            for label, nested_blocks in section.items():
-                if label == type:
-                    blocks += nested_blocks
+    blocks = []
+    for block in dict_extract(data, type):
+        blocks += block
     return blocks
 ```
 
@@ -164,6 +169,8 @@ editable: true
 slideshow:
   slide_type: ''
 ---
+import requests
+
 page_id = "nla.obj-326405522"
 response = requests.get(f"http://nla.gov.au/{page_id}/ocr")
 data = response.json()
@@ -189,6 +196,7 @@ for block in text_blocks[:3]:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(other-digitised:ocr-data:page-layout)=
 ## Visualise page layout
 
 The most interesting thing about the OCR data is the positional information. It enables us to explore the structure and layout of published pages, rather than just their content. Here's a simple example which visualises the position of each text and illustration block. It uses the OCR data downloaded above, using the block coordinates to draw coloured rectangles on a blank canvas.
@@ -279,6 +287,7 @@ Image of page [nla.obj-326405522](https://nla.gov.au/nla.obj-326405522)
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(other-digitised:ocr-data:crop-images)=
 ## Crop images from pages using the OCR coordinates
 
 ````{margin}
@@ -291,7 +300,7 @@ The GLAM Workbench notebook [Harvest illustrations from periodicals](https://gla
 
 One thing you might want to do is to crop text blocks or illustrations from the page image using the OCR coordinates. This is certainly possible, but it's not always straightforward. The problem is that the coordinates in the OCR data can sometimes refer to images at a higher resolution than those you can access through the web interface. If you try and use the coordinates with a lower resolution image you'll end up cropping out the wrong areas. The solution is to find the resolution of the image used in creating the coordinates and compare it to the one you've downloaded. Dividing the width of the low res image by the width of the high-res image will give you a ratio that you can apply to the coordinates to transform them for use with the downloaded image.
 
-The original page resolutions are included in the metadata embedded in the digital journal viewer.
+The original page resolutions are usually included in the metadata embedded in the digital journal viewer.
 
 For example, if you download the page with the identifier [nla.obj-375667954](http://nla.gov.au/nla.obj-375667954/image) from *The Home* using the url hacking technique, you'll end up with an image that is 3804 pixels wide and 5000 pixels high. But if you find the page's details in the viewer's embedded metadata, you'll see the `technicalmetadata` field lists the width as 5068 pixels and the height as 6663 pixels. 
 
@@ -328,6 +337,10 @@ For example, if you download the page with the identifier [nla.obj-375667954](ht
         }
     ]
 }
+```
+
+```{warning}
+I have noticed some instances where the `width` and `height` values in `technicalmetadata` are set to `0`. This will cause an error when you try to calculate the ratio.
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
