@@ -37,6 +37,213 @@ The viewers you use to examine digitised resources in Trove embed some metadata 
 
 This metadata can be useful in a number of different contexts. For example, you can extract the number of pages in a digitised book, then use this number to [automatically download the full text or a PDF](download-items-text-images). The GLAM Workbench includes an example where geospatial coordinates are extracted from the MARC data to add to a [harvest of digitised maps](https://glam-workbench.net/trove-maps/exploring-digitised-maps/).
 
+## What metadata is available?
+
+The available metadata varies by viewer and format. The main differences are:
+
+- the image viewer includes information about digitised images in the `copies` field
+- the books and journals viewer includes information in the `children` field about individual pages and sub-sections such as chapters and articles
+
+### All viewers
+
+All of the viewers embed some basic metadata, like `id` and `title`, at the top level of the JSON data. However, the actual fields can vary by format and viewer type, so don't assume that a particular field exists, or has a value. Here's an example from an issue of *Walkabout*.
+
+```json
+    "id": "71404117",
+    "collection": "nla.aus",
+    "type": "work",
+    "form": "Journal",
+    "displayTitlePage": "false",
+    "subType": "book",
+    "issueDate": "Sun, 02 Dec 1934",
+    "subUnitNo": "Vol. 1 No. 2 (2 December 1934)",
+    "bibLevel": "Item",
+    "bibId": "2592481",
+    "holdingNumber": "Nq 919.4 WAL",
+    "pid": "nla.obj-714041173",
+    "title": "Walkabout.",
+    "accessConditions": "Unrestricted",
+    "copyrightPolicy": "Out of Copyright",
+    "recordSource": "NLACat",
+    "sensitiveMaterial": "No",
+    "commentsExternal": "Some pages in this issue have been restricted. This may affect left/right page sequencing. Some loss of text in gutter due to page edges stitched into gutter at binding process",
+    "digitalStatus": "Captured",
+    "startDate": "01 January 1934",
+    "creator": "",
+    "extent": "v. : ill., maps. ; 34 cm.",
+    "isMissingPage": "false",
+    "publisherName": "Australian National Travel Association",
+```
+
+There's also a `topLevelCollection` field that contains the `nla.obj` identifier of the parent record in this collection. If it's a single item (ie a collection of one) then `topLevelCollection` will probably be the same as the item identifier in `pid`.
+
+All of the viewers also embed a JSON-ified MARC record in the `marcData` field.
+
+### Image and map viewer
+
+The image and map viewer includes a `copies` field at the top level of the JSON data. This field includes a list of the images associated with this item. Here's an example from [nla.obj-133327370](http://nla.gov.au/nla.obj-133327370):
+
+```json
+"copies": [
+    {
+        "copyrole": "access",
+        "blobId": 146939732,
+        "filename": "314560922.jp2",
+        "filesize": 6663187,
+        "technicalmetadata": {
+            "width": 8566,
+            "height": 12449
+        }
+    },
+    {
+        "copyrole": "m",
+        "access": "false",
+        "filesize": 745416848
+    }
+],
+```
+
+The 'copies' of the image are different formats or resolutions created for specific purposes, such as access or preservation. Apparently `copyrole` values can be one of`access`, `m`, `o`, `i`, or `fd`, but I've only come across `access` and `m`. The `m` copies seem to refer to high-resolution TIFFs, and if `access` is set to `true` then these TIFF versions are made available for download. You can find downloadable TIFFs amongst the digitised maps. For example, [this map](https://nla.gov.au/nla.obj-232162256) has `access` set to `true` for the `m` copy:
+
+```json
+"copies": [
+    {
+        "copyrole": "access",
+        "blobId": 7682805,
+        "filename": "23216230.jp2",
+        "filesize": 1560253,
+        "technicalmetadata": {
+            "width": 4519,
+            "height": 5508
+        }
+    },
+    {
+        "copyrole": "m",
+        "access": "true",
+        "filesize": 74685872
+    }
+],
+```
+
+The map viewer reads this value and adds a TIFF option under the download tab. If `access` is `true` you can also download the high-resolution TIFF directly by adding `/m` to the item identifier (though take note of the file size as the downloads can be huge!): 
+
+<a href="https://nla.gov.au/nla.obj-232162256/m">https://nla.gov.au/nla.obj-232162256/m</a>
+
+### Books and journals viewer
+
+The books and journals viewer has a `children` field in the top-level JSON data which includes `page`, `article`, and `chapter` fields.
+
+#### Pages
+
+The `page` field contains details of every page image. Here's the metadata for a single page in the book *The story of the Australian bushrangers*:
+
+```json
+{
+    "id": "48661387",
+    "subType": "page",
+    "title": "The story of the Australian bushrangers",
+    "bibId": "1068148",
+    "pid": "nla.obj-486613874",
+    "form": "Book",
+    "accessConditions": "Unrestricted",
+    "copyrightPolicy": "Out of Copyright",
+    "bibLevel": "Part",
+    "digitalStatus": "Captured",
+    "holdingNumber": "NL 343.94 BOX",
+    "copies": [
+        {
+            "copyrole": "access",
+            "blobId": 15236579,
+            "filename": "48661395.jp2",
+            "filesize": 506342,
+            "technicalmetadata": {
+                "width": 2335,
+                "height": 3495
+            }
+        },
+        {
+            "copyrole": "m",
+            "access": "false",
+            "filesize": 24482931
+        }
+    ]
+}
+
+```
+
+While some of these fields duplicate what's available at the top-level of the metadata, the `pid` here is the identifier of this particular page. This identifier can be used to download the page image and [OCR data](other-digitised-resources/how-to/get-ocr-layout-data.md).
+
+Each page has a `copies` field describing the available image versions. The image dimensions of the `access` copy included in the `technicalmetadata` field can be useful if you want [to use the OCR data to crop sections out of the page image](other-digitised:ocr-data:crop-images).
+
+#### Articles
+
+Periodical issues can include a list of articles in the `article` field. Here's an example of an article entry from *Walkabout*:
+
+```json
+{
+    "id": "75337488",
+    "subType": "article",
+    "pid": "nla.obj-753374885",
+    "title": "A Visit to Lake Frome",
+    "creator": "By ARTHUR W. UPFIELD",
+    "bibLevel": "Section",
+    "existson": [
+        {
+            "id": "71404264",
+            "page": "nla.obj-714042646"
+        },
+        {
+            "id": "71404251",
+            "page": "nla.obj-714042515"
+        },
+        {
+            "id": "71404232",
+            "page": "nla.obj-714042324"
+        },
+        {
+            "id": "71404219",
+            "page": "nla.obj-714042196"
+        }
+    ]
+}
+
+```
+
+Articles have their own values for `pid`, `title`, and `creator` (if the article has a byline). The `existson` field lists the pages on which this article appears. This article starts on page `nla.obj-714042646`.
+
+#### Chapters
+
+Books can include a list of chapters in the `chapter` field. Here's an example of a chapter entry from *The story of the Australian bushrangers*:
+
+```json
+{
+    "id": "49622020",
+    "subType": "chapter",
+    "subUnitNo": "2",
+    "title": "PREFACE.",
+    "pid": "nla.obj-496220207",
+    "bibLevel": "Section",
+    "existson": [
+        {
+            "id": "48661510",
+            "page": "nla.obj-486615102"
+        },
+        {
+            "id": "48661523",
+            "page": "nla.obj-486615233"
+        }
+    ]
+}
+```
+
+Chapters have their own values for `pid` and `title`, while the `subUnitNo` specifies the order of the chapters. The `existson` field lists the pages on which this chapter appears.
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Extracting the metadata
+
+The function to extract the metadata is fairly straightforward. It loads the viewer's HTML code and uses a regular expression to find and extract the embedded JSON string. It expects an `nla.obj` identifier. For the image and map viewers, this is the identifier of an individual item. For the book and journal viewer you can use the `nla.obj` identifier for the book, issue, page, or article. This is because page and article identifiers are redirected to issues. Here's a full examp[le that extracts the embedded metadata for the book [*Lord Robert Cecil's gold fields diary*](https://nla.gov.au/nla.obj-362059651).
+
 ```{code-cell} ipython3
 ---
 editable: true
@@ -65,57 +272,14 @@ def get_metadata(id):
     except AttributeError:
         work_data = "{}"
     return json.loads(work_data)
-```
 
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
-tags: [output_scroll]
----
-work_id = "https://nla.gov.au/nla.obj-362059651/"
 
-metadata = get_metadata(work_id)
+book_id = "https://nla.gov.au/nla.obj-362059651/"
+
+metadata = get_metadata(book_id)
 
 display(metadata)
 ```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## Get information about pages
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-Depending on the format, the `children` field can contain information about pages, chapters, and articles contained within the digitised work. Books and periodical issues should include `page` data. To find the number of pages, you just need to get the length of the `page` list.
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-# How many pages are there?
-len(metadata["children"]["page"])
-```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-If you want to get the identifiers for each individual page, just loop through the list of pages saving the `pid` value.
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-page_ids = [p["pid"] for p in metadata["children"]["page"]]
-page_ids[:5]
-```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-These page identifiers can be used to download images of the pages.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -260,11 +424,79 @@ for record in reader:
     print(record.pubyear)
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Get information about pages
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+Books and periodical issues should include `page` data in the `children` field. To find the number of pages, you just need to get the length of the `page` list.
+
 ```{code-cell} ipython3
 ---
 editable: true
 slideshow:
   slide_type: ''
 ---
+# How many pages are there?
+len(metadata["children"]["page"])
+```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+If you want to get the identifiers for each individual page, just loop through the list of pages saving the `pid` value.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+page_ids = [p["pid"] for p in metadata["children"]["page"]]
+page_ids[:5]
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+These page identifiers can be used to download images of the pages.
+
+Here's a function you can use to get the dimensions of the `access` copy of a page.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+def get_page_size(page_id):
+    """
+    Get the dimensions of a page image from embedded metadata.
+    """
+    metadata = get_metadata(page_id)
+    for page in metadata["children"]["page"]:
+        if page["pid"] == page_id:
+            break
+    return page["copies"][0]["technicalmetadata"]
+
+get_page_size("nla.obj-362059904")
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Get a list of articles in a periodical issue
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+from IPython.display import Markdown
+issue_id = "nla.obj-714041173"
+
+issue_metadata = get_metadata(issue_id)
+md = ""
+for article in issue_metadata["children"]["article"]:
+    md += f"* [{article['title']}](https://nla.gov.au/{article['pid']})\n"
+display(Markdown(md))
 ```
