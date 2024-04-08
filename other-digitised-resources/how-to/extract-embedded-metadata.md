@@ -426,6 +426,7 @@ for record in reader:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:howto:embedded:pages)=
 ## Get information about pages
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
@@ -483,6 +484,7 @@ get_page_size("nla.obj-362059904")
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:howto:embedded:articles)=
 ## Get a list of articles in a periodical issue
 
 ```{code-cell} ipython3

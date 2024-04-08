@@ -4,18 +4,16 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-# HOW TO: Get a list of items in a digitised collection
-
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-
+# HOW TO: Get a list of items in a digitised collection
 
 +++
 

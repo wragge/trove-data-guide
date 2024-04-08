@@ -15,6 +15,16 @@ kernelspec:
 
 # Accessing data from periodicals
 
+````{card}
+On this page
+
+
+```{contents}
+:local:
+:backlinks: None
+```
+````
+
 ```{code-cell} ipython3
 ---
 editable: true
@@ -49,58 +59,34 @@ if os.getenv("TROVE_API_KEY"):
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## What periodicals have been digitised?
+## Understanding identifiers
 
-Search for ["nla.obj" NOT series:"Parliamentary paper (Australia. Parliament)" NOT nuc:"ANL:NED" and `l-format=Periodical` and `l-availability=y`](https://trove.nla.gov.au/search/category/books?keyword=%22nla.obj%22%20NOT%20series%3A%22Parliamentary%20paper%20%28Australia.%20Parliament%29%22%20NOT%20nuc%3A%22ANL%3ANED%22&l-format=Periodical&l-availability=y) in different categories (mostly B&L) : 968 results
+There are four different types of identifiers used for periodical titles, issues, pages, and articles – and they all look exactly the same! To confuse matters further, sometimes the different identifiers take you to the same place.
 
-API provides another option
-
-Limits/problems:
-
-- includes parliamentary papers
-- hundreds of duplicates
-- titles that have had articles extracted from them
-- some missing?
-- no links to works (some ISSNs)
-
-Differences between the two sources.
-
-No work links from API but can get extra metadata from collection page -- include link to NLA catalogue and MARC data
-
-- Get a list of titles
-- Get a list of issues for a title
-- Get extra info about issues (number of pages etc)
-- Search for articles
-- Get text from articles
-- Get articles in an issue (from embedded metadata)
-- Get text from issue
-- Get text from title
-- Get covers of title
-- Get pages of issue
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-
-```
+| type | identifier | final url | explanation |
+|------|------|------|------|
+| issue | http://nla.gov.au/nla.obj-714041173| https://nla.gov.au/nla.obj-714041173/view?partId=nla.obj-714048365 | |
+| page | http://nla.gov.au/nla.obj-714048365 | https://nla.gov.au/nla.obj-714041173/view?partId=nla.obj-714048365 | |
+| article | http://nla.gov.au/nla.obj-753374124 | https://nla.gov.au/nla.obj-714041173/view?sectionId=nla.obj-753374124&partId=nla.obj-714048365 | |
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Periodical titles
+## Metadata
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+### Get a list of digitised periodical titles
 
 Finding out which periodicals in Trove have been digitised is not straightforward. There are two basic approaches:
 
 - use the `magazine/titles` API endpoint to retrieve a list of digitised periodical titles
 - search for `"nla.obj"` to find digitised items, setting the `format` facet to `Periodical` and the `availability` facet to `y`
 
-These two approaches return similar, but not identical, sets of results. Both have problems and inconsistencies. The best method will probably depend on what you want to do with the data.
+These two approaches return [similar, but not identical](periodicals:finding:search-v-api), sets of results. Both have problems and inconsistencies. The best method will probably depend on what you want to do with the data.
 
-### Using the `magazine/titles` API endpoint
+#### Using the `magazine/titles` API endpoint
 
-The `magazine/titles` endpoint was introduced in version 3 of the Trove API. If you send a request to the `magazine/titles` you get back the first group of periodical titles. The maximum number of titles per request is 100, which you can set using the `limit` parameter. 
+The `magazine/titles` endpoint was introduced in version 3 of the Trove API. If you send a request to `https://api.trove.nla.gov.au/v3/magazine/titles` you'll get back the first group of 20 periodical titles. You can change the number of records per request to a maximum of 100 by using the `limit` parameter. 
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fmagazine%2Ftitles%3Fencoding%3Djson%26limit%3D100&comment=)
 
@@ -111,7 +97,6 @@ The `total` field of the API response tells you the total number of records. Her
 editable: true
 slideshow:
   slide_type: ''
-tags: [hide-input]
 ---
 import requests
 
@@ -149,8 +134,6 @@ Here's an example of a periodical record. The `troveUrl` links go directly to th
 }
 ```
 
-#### Harvest all of the records
-
 To harvest details of *all* titles, you need to work your way through the complete dataset by using the `offset` parameter to move each request forward to the next group of titles. So if `limit` is set to `100`, your first request would have an `offset` value of `0`, and your second request would have an `offset` value of `100`. You'd then keep incrementing the `offset` value by 100 until you reach the end of the dataset. Here's a full example.
 
 ```{code-cell} ipython3
@@ -158,7 +141,6 @@ To harvest details of *all* titles, you need to work your way through the comple
 editable: true
 slideshow:
   slide_type: ''
-tags: [hide-input]
 ---
 import requests
 
@@ -202,25 +184,13 @@ display(titles[0:2])
 
 #### Data problems and workarounds
 
-By converting the list of titles into a dataframe, you can explore the contents.
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-How many titles are there?
+The `magazine/titles` endpoint data currently includes a significant number of duplicate records. This is easy to demonstrate and repair by converting the harvested titles data into a Pandas dataframe.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-The metadata available for each title varies. Every entry has an `id`, `title`, and `troveUrl`, and most have a `publisher`, `startDate` and `endDate`. Here's the percentage of missing values for each column.
-
-```{code-cell} ipython3
-(df_titles.isnull().sum() / df_titles.shape[0]).to_frame().style.format({0: "{:.2%}"}).hide(axis=1)
-```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-#### Removing duplicates
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-Unfortunately the `magazine/titles` endpoint data includes a significant number of duplicate records. Here's some examples.
+How many records are there?
 
 ```{code-cell} ipython3
 ---
@@ -228,33 +198,15 @@ editable: true
 slideshow:
   slide_type: ''
 ---
-df_titles.loc[df_titles.duplicated(["id"], keep=False)].sort_values("id").head(6)
-```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-If you know that they're there, the duplicates are easy to remove.
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-df_titles.drop_duplicates(["id"], inplace=True)
-```
-
-How many titles are there now?
-
-```{code-cell} ipython3
+# Convert the harvested data to a dataframe
+df_titles = pd.DataFrame(titles)
+# Get the number of records
 df_titles.shape[0]
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-#### Removing parliamentary papers
-
-To get a sense of the types of periodicals in the dataset you can look at the titles. You'll see that many of them are just called 'Annual report'.
+How many of these are duplicates?
 
 ```{code-cell} ipython3
 ---
@@ -262,48 +214,71 @@ editable: true
 slideshow:
   slide_type: ''
 ---
-display(df_titles["title"].value_counts()[:10].to_frame().style.hide(axis=1))
-```
+# Flatten the place array so we can check for duplicates
+df_titles["place"] = df_titles["place"].str.join("")
 
-This reflects the fact that many of the periodicals in the `magazine/titles` endpoint data are actually Parliamentary Papers. This may not be what you expect or want. There's no metadata field in the API results that identifies Parliamentary Papers, so there's no easy way to filter them out. The only way to exclude them is to compare the list of periodical titles with a previously-harvested list of Parliamentary Papers. The code below extracts identifiers from a dataset of Parliamentary Papers, and uses them as a filter on the list of titles.
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-# Load the Parliamentary Pepers dataset
-df_pp = pd.read_csv("https://github.com/GLAM-Workbench/trove-parliamentary-papers-data/raw/main/trove-parliamentary-papers.csv", keep_default_na=False)
-
-# The PP dataset contains individual publications (issues), the parent of an issue should be the periodical title.
-# Extract and dedupe the ids from the parent field.
-pp_ids = list(df_pp.loc[df_pp["parent"] != ""]["parent"].str.split("|").explode().reset_index()["parent"].unique())
-
-# Exclude titles that whose id is in the list of PP parent ids
-df_notpp = df_titles.loc[~df_titles["id"].isin(pp_ids)]
+# Find duplicates
+df_titles.loc[df_titles.duplicated()].shape[0]
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-How many titles are left?
+Fortunately, if you know that they're there, the duplicates are easy to remove.
 
 ```{code-cell} ipython3
-df_notpp.shape[0]
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+# Remove duplicate records
+df_titles.drop_duplicates(inplace=True)
 ```
 
-#### Data problems
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-Once you start working with the data from the `magazine/titles` endpoint you might notice other problems, such as:
+How many titles are there now?
 
-- some of the entries point to periodical issues, rather than titles (that's why there's multiple entries for *The Newcastle and Maitland Catholic Sentinel* in the list above)
-- some of the titles point to
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+df_titles.shape[0]
+```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-### Get details of an individual title
+There's also some inconsistencies in the fields returned by the `magazine/titles` endpoint. Every record has an `id`, `title`, and `troveUrl` field, but other fields are not always included. Here's the percentage of missing values for each field. 
 
-You can use the `magazine/title` endpoint to retrieve information about an individual periodical title. You can supply either an `nla.obj` identifier or a numeric work identifier. For example, to get details about the [*Journal of Soil Conservation*](https://trove.nla.gov.au/work/10411388) you can either use it's work identifier `10411388`:
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+(df_titles.isnull().sum() / df_titles.shape[0]).to_frame().style.format({0: "{:.2%}"}).hide(axis=1)
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+The `place` field has a number of problems. Where there is a value it is returned as an array containing a single string, even when there are multiple places. In other words, the arrays themselves are pointless, and you need to do some extra work to try and recover multiple values from the enclosed strings. There's no reliable delimiter you can use to split the strings, so you'd probably have to do some sort of pattern matching.
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+Other problems I've noticed with the data from the `magazine/titles` endpoint include:
+
+- more than half of the records are for Commonwealth Parliamentary Papers so, depending on your needs, you might want to separate these out from the more conventional periodicals
+- some of the titles have no issues, so no digitised content is actually available
+- some of the title records actually point to a single issue, rather than a collection of issues
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+(periodicals:data:title)=
+### Get details of an individual periodical title
+
+The `magazine/title` (note the singular `title`) endpoint provides information about individual periodical titles. You can specify the title using either an `nla.obj` identifier or a numeric work identifier. For example, to get details about the [*Journal of Soil Conservation*](https://trove.nla.gov.au/work/10411388) you can either use it's work identifier `10411388`:
 
 `https://api.trove.nla.gov.au/v3/magazine/title/10411388?encoding=json`
 
@@ -332,19 +307,25 @@ Both of these requests return exactly the same data:
 }
 ```
 
+```{admonition} One way traffic!
+:class: info
 You might notice that while you can use a periodical's work id to retrieve its API record, the data doesn't actually include a link *back* to the work. This means that there's no simple way to look up additional metadata describing a periodical using this API endpoint. To find a corresponding work record, you have to search for the digital object identifier using the `/result` endpoint. This is not an exact search, and will match the identifier wherever it appears in a record. As a result, it's likely to return multiple results and require some manual checking. Setting the `l-format` parameter to `Periodical` and `l-availability` to `y` should help narrow things down.
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj-740911077%22%26category%3Dbook%26l-format%3DPeriodical%26l-availability%3Dy%26encoding%3Djson&comment=)
+```
 
-The data returned about individual periodicals using the `magazine/title` endpoint is the same as the data you get back about multiple titles using `magazine/titles`. However, there are a couple of additional parameters you can add to get information about issues from that periodical. These are described below.
+The data returned about individual periodicals using the `magazine/title` endpoint is the same as the data you get back about multiple titles using `magazine/titles`. However, there are a couple of additional parameters you can add to get information about issues from a periodical.
+
+- set `include` to `years` to get the number of issues per year
+- set `include` to `years` and `range` to a date range to get a list of digitised issues within the date range
+
+See below for examples showing these parameters in use.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Issues
-
-You can use the `magazine/title` API endpoint to retrieve information about issues of a periodical that have been digitised and are available through Trove. As described above, you can get details about an individual periodical using either it's work identifier or `nla.obj` identifier.
-
 ### Find the number of issues per year
+
+You can use the `magazine/title` API endpoint to retrieve information about issues of a periodical that have been digitised and are available through Trove. As [described above](periodicals:data:title), you can get details about an individual periodical using either it's work identifier or `nla.obj` identifier.
 
 You can find the number of digitised issues per year by setting the `include` parameter to `years`. The data returned will include a list of years for which digitised issues are available, and the number of issues available each year. For example, to get issue counts from the *Australasian pocket almanack* (`nla.obj-2967431735`), you'd request:
 
@@ -426,38 +407,6 @@ for year in data["year"]:
 print(f"Total issues: {issue_count}")
 ```
 
-You can also visualise the distribution of issues over time.
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-import requests
-import altair as alt
-import pandas as pd
-
-work_id = "11500235"
-
-params = {
-    "include": "years",
-    "encoding": "json"
-}
-
-headers = {"X-API-KEY": API_KEY}
-
-response = requests.get(f"https://api.trove.nla.gov.au/v3/magazine/title/{work_id}", params=params, headers=headers)
-data = response.json()
-
-df_counts = pd.DataFrame(data["year"])
-
-alt.Chart(df_counts).mark_bar().encode(
-    x="date:T",
-    y="issuecount:Q"
-).properties(width=600, title=data["title"])
-```
-
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ### Get a list of individual issues
@@ -472,7 +421,9 @@ So to get details of all issues in the *Australasian pocket almanack* (`nla.obj-
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fmagazine%2Ftitle%2Fnla.obj-2967431735%3Fencoding%3Djson%26include%3Dyears%26range%3D18000101-21001231&comment=)
 
-The data will include a list of issues for each year:
+There are, however, some titles with thousands of issues, so you'll probably want to use `range` to divide the data into manageable chunks. For example, the `get_periodical_issues()` function in the GLAM Workbench notebook [Get details of periodicals from the `/magazine/titles` API endpoint](https://glam-workbench.net/trove-journals/periodicals-from-api/) automatically harvests the data in 10 year chunks if there are more than 500 issues in total.
+
+The data includes a list of issues for each year:
 
 ```json
 {
@@ -545,135 +496,93 @@ The data will include a list of issues for each year:
 }
 ```
 
-You can see the data for each issue is pretty minimal, really just an identifier/url and a date. 
+The metadata available for each issue is fairly minimal, just an identifier/url and a date. The url will open the issue in the [book and journal viewer](interfaces:digitised-journal-viewer). You can [extract additional metadata](/other-digitised-resources/how-to/extract-embedded-metadata) from the viewer, including lists of pages and articles.
 
-Unknown are missing
+#### Data problems and workarounds
 
-However, some periodicals have thousands of issues and requesting them all in one hit might cause problems
+There's currently a bug in the API that means that details of periodical issues without a date will be missing from the results. It tells you the undated issues exist, but doesn't include identifiers or links.
 
-Problems with API:
-- unknown dates
-- some issues missing
-- some issues are actually sub-collections
-
-### Finding missing issues
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## Pages
-
-### Images and PDFs
-
-Page images
-
-### Illustrations
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## Articles
-
-
-```{admonition} Some articles are grouped as works!
-:class: warning
-
-Search results for periodical articles in the **Magazines & Newsletters** category are returned as work-level records. Usually the work records will only contain a single 'version' – the article. However, advertisements are treated differently. You will sometimes come across work records, [like this](https://trove.nla.gov.au/work/232859878), that munge together *all* the advertisements in a specific issue as 'versions'. While this might make your search results more manageable, it will have an impact on the discoverability and analysis of periodical content.
+```json
+"year": [
+    {
+        "date": "unknown",
+        "issuecount": 2
+    }
+]
 ```
 
-### Metadata
+The only real workaround is to [harvest issue details from the collection viewer](/other-digitised-resources/how-to/get-collection-items).
 
-`/search` in `magazine` category and `/work` endpoints 
+Other problems I've noticed with the data from the `magazine/titles` endpoint include:
 
-
-`bibliographicCitation` in article records has structured publication metadata
-
-Advertisements on multiple pages in an issue grouped as a single work record for discovery: https://trove.nla.gov.au/work/232859472?keyword=fullTextInd%3Ay
-
-Can access as separate versions via the API: https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F232859472%3Fencoding%3Djson%26include%3Dall&comment=
-
-Use bibliographicCitation metadata
-
-### Text
-
-Via API
-
+- some issues are missing
+- some issue urls actually go to sub-collections containing issues
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Issues
+### Getting a list of pages in an issue
 
-### Metadata
-
-API provides `/magazine/titles` and `/magazine/title/[ID]` endpoints 
-
-Been prodding the new `/magazine/title` endpoint that was added to #Trove API v3. It provides details on periodical titles and issues (other than newspapers). So it's very useful, but also very not...
-
-Of the 2,504 titles, 1,538 point to sets of parliamentary papers. I suppose annual reports count as periodicals, but it would be good to be able to separate them out. In any case I've already got a full harvest of PPs.
-
-Of the 966 left, 114 have no issues. That seems to be either because they're actually issues rather than titles, or they're just brokened. 
-
-Another 124 titles have incomplete lists of issues, either because some of the issues have no date, or they're just brokened.
-
-So as with just about everything involving Trove data, I'll have to develop a series of workarounds to deal with the problems and inconsistences. This is my life now. #TroveDataGuide #GLAM #digitalHumanities
-
-#### Format `periodical` and "nla.obj"
-
-There are 2,500 titles in the title endpoint, but only about 1,000 when you search for `"nla.obj"` & `l-format=periodical`. Is there any way to reconcile? Is it because of PP?
-
-Check by getting ids from title endpoint, then extracting embedded metadata? Will that help?
-
-Get lists of nla.obj ids from both methods and compare -- see what the difference is.
-
-#### `/magazine/titles`
-
-- paginated using `limit` and `offset`
-
-Example record:
-
-``` json
-{
-    "id": "nla.obj-8423556",
-    "title": "\"Coo-ee!\" : the journal of the Bishops Knoll Hospital, Bristol.",
-    "publisher": "Partridge & Love Ltd.",
-    "troveUrl": "https://nla.gov.au/nla.obj-8423556",
-    "startDate": "1916-01-01",
-    "endDate": "1917-10-20"
-}
-```
-
-#### `/magazine/title/[ID]`
-
-- [ID] can either be a nla.obj id or a numeric work id (however the work ids aren't in the returned records)
-- Get a list of issues by using `include=years` and `range=YYYYMMDD-YYYYMMDD`
-- issues returned grouped by year
-
-Example issue:
-
-``` json
-{
-    "id": "nla.obj-8447243",
-    "date": "1916-11-10",
-    "url": "https://nla.gov.au/nla.obj-8447243"
-},
-
-Issue id
-
-```{code-cell} ipython3
-
-```
+If you have an issue's `nla.obj` identifier you can [get a list of page identifiers](digitised:howto:embedded:pages) from the metadata embedded in the [book and journal viewer](interfaces:digitised-journal-viewer). The page identifiers can then be used to [download images of digitised pages](download-high-res-images) and [access OCR layout data](/other-digitised-resources/how-to/get-ocr-layout-data).
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Metadata
+### Getting a list of articles in an issue
 
-### Understanding identifiers
+If you have an issue's `nla.obj` identifier you can [get a list of articles](digitised:howto:embedded:articles) in that issue (digitised:howto:embedded:articles) from the metadata embedded in the [book and journal viewer](interfaces:digitised-journal-viewer).
 
-### Titles
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-### Issues
+### Searching for articles
 
-### Pages
+To find periodical articles related to a particular topic, you can search using keywords and facets in the *Magazines & Newsletters* category.
 
-### Articles
+However, it's important to note that periodical articles (unlike newspaper articles) are returned as work-level records. *Usually* the work records will only contain a single 'version' – the article itself – but not always. Advertisements, in particular, seem to be treated differently. You will sometimes come across work records, [like this](https://trove.nla.gov.au/work/232859878), that munge together *all* the advertisements in a specific issue as 'versions'.
+
+And it's not just advertisements. Here's [a work record](https://trove.nla.gov.au/work/10431978) that combines reports on Korea from 13 *different* issues of *Current Notes*.
+
+These sorts of article groupings might make your search results more readable, but they make the articles themselves less discoverable. If your search on a topic related to Korea returns the group from *Current Notes*, how do you know which of the 13 reports actually matched your query? You would need to manually search each issue, or download the article texts and run your own search process.
+
+Another odd feature of periodical article search results is that key metadata, such as the issue date and page number, is only included in the version record, not in the top-level work record. Similarly, OCRd text of articles is [buried down in the description field of the version records](digitised:periodicals:data:text-articles-api). Here's an example of the metadata only available at version level:
+
+```json
+"isPartOf": [
+    {
+        "value": "Current notes on international affairs.",
+        "type": "publication"
+    },
+    {
+        "value": "Vol. 30 No. 4 (April 1959)"
+    }
+],
+"bibliographicCitation": [
+    {
+        "value": "36",
+        "type": "pagination"
+    },
+    {
+        "value": "1959-04-30",
+        "type": "dateIssued"
+    },
+    {
+        "value": "4",
+        "type": "issue"
+    },
+    {
+        "value": "30",
+        "type": "volume"
+    },
+    {
+        "value": "aca",
+        "type": "placeOfPub"
+    },
+    {
+        "value": "0011-3751",
+        "type": "issn"
+    }
+],
+```
+
+All of this means that if you're assembling a dataset of periodical articles from a search using the `/result` endpoint of the Trove API, you need to *always* set the `include` parameter to `workVersions`. If you don't, you'll miss important metadata, won't have access to the OCRd text, and could overlook grouped articles.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -691,6 +600,7 @@ There are three ways of getting OCRd text from periodicals:
 - downloaded from pages and issues
 - from an internal API that provides OCRd text and layout information
 
+(digitised:periodicals:data:text-articles-api)=
 ### Get article text from the Trove API
 
 You can get the OCRd text of articles in the *Magazines & Newsletters* category using the Trove API, but there's a couple of tricks. 
@@ -736,7 +646,7 @@ To complicate things further, some article records contain multiple versions. Th
 
 ### Download OCRd text from pages and issues
 
-You can download OCRd text from periodical issues and pages using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in [](../how-to/download-items-text-images.md), but here's a quick summary.
+You can download OCRd text from periodical issues and pages using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in [](/other-digitised-resources/how-to/download-items-text-images), but here's a quick summary.
 
 ````{margin}
 ```{seealso}
@@ -744,7 +654,7 @@ The [periodical-issues.csv](https://glam-workbench.net/trove-journals/periodical
 ```
 ````
 
-To download the complete OCRd text of a single periodical issue you need to know the number of pages in the issue. This can be found by [extracting the metadata](../how-to/extract-embedded-metadata.md) embedded in the issue viewer and getting the length of the `page` list.
+To download the complete OCRd text of a single periodical issue you need to know the number of pages in the issue. This can be found by [extracting the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the issue viewer and getting the length of the `page` list.
 
 You can then construct a url to download the OCRd text using the issue identifier and the total number of pages:
 
@@ -768,15 +678,77 @@ Keep in mind that the page numbers printed in the periodical don't necessarily c
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-### Get text from an internal API that provides OCRd text and layout information
+### Get text and positional information from OCR data
 
-When Trove's [digital book & journal viewer](interfaces:digitised-journal-viewer) displays a page, it loads OCR data from an internal API. This data includes both the OCRd text and the position of every block, line, and word of the text. If all you want is the raw text, you're better off using the method above, but if you're interested in the position of the text on the page then you might find this a useful approach.
-
-To request the OCR data all you need is the page identifier
+When Trove's [digital book & journal viewer](interfaces:digitised-journal-viewer) displays a page, it loads OCR data from an internal API. This data includes both the OCRd text and the position of every block, line, and word of the text. If all you want is the raw text, you're better off using the method above, but if you're interested in the position of the text on the page then you you can download and parse the OCR data. See [](/other-digitised-resources/how-to/get-ocr-layout-data) for full details.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Images
 
-- download pages as images
-- extract illustrations from pages using OCR layout data
+There are two types of images you can obtain from periodicals:
+
+- complete page images
+- images of illustrations cropped from pages using OCR data
+
+### Download a range of pages from an issue
+
+````{margin}
+```{seealso}
+The GLAM Workbench notebook [Get covers (or any other pages) from a digitised journal in Trove](https://glam-workbench.net/trove-journals/get-covers-from-digitised-journal/) uses this method to download all the cover images from a periodical.
+```
+````
+
+You can download page images from periodical issues using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in [](/other-digitised-resources/how-to/download-items-text-images), but here's a quick summary.
+
+To download all the page images from a single periodical issue you need to know the number of pages in the issue. This can be found by [extracting the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the issue viewer and getting the length of the `page` list.
+
+You can then construct a url to download the page images using the issue identifier and the total number of pages:
+
+`https://nla.gov.au/[ISSUE ID]/download?downloadOption=zip&firstPage=0&lastPage=[TOTAL PAGES - 1]`
+
+Note that the `lastPage` parameter is set to the total number of pages, minus one. This is because page numbering starts at zero. Note also that `downloadOption` is set to `zip` because the page images are zipped up into a single file for download. Once you've downloaded the file, you'll need to unzip it to access the images.
+
+You can use the same method to download the covers (or any other range of pages) from a collection of issues. To get the covers set `firstPage` to `0` and `lastPage` to `1`.
+
+### Download a page image using its identifier
+
+If you have a page identifier you can download a high-resolution image of the page simply by adding `/image` to the identifier url. Full details [are available here](download-high-res-images), but here's a quick example.
+
+This identifier [nla.obj-714047007](http://nla.gov.au/nla.obj-714047007) points to a page in *Walkabout*. To download the page, you construct a url that looks like this:
+
+`http://nla.gov.au/nla.obj-714047007/image`
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-output]
+---
+from IPython.display import Image
+from pathlib import Path
+
+page_id = "nla.obj-714047007"
+
+# Construct the image url
+image_url = f"https://nla.gov.au/{page_id}/image"
+
+# Request the image
+response = requests.get(image_url)
+
+# Save the image to your local system
+Path(f"{page_id}.jpg").write_bytes(response.content)
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+```{figure} nla.obj-714047007.jpg
+:width: 500px
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+### Save illustrations from pages using OCR layout data
+
+When Trove's [digital book & journal viewer](interfaces:digitised-journal-viewer) displays a periodical page, it loads OCR data from an internal API. As well as providing information about the position and content of text objects, this data includes the coordinates of any illustrations on the page. Using these coordinates you can crop and save illustrations from a page image. The [full method is described here](other-digitised:ocr-data:crop-images).

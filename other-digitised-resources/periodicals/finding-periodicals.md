@@ -75,6 +75,7 @@ Here's an example of a periodical record. The `nla.obj` links in the data go dir
 
 The API currently returns information on 2,504 titles. However, this includes many Parliamentary Papers and several hundred duplicate records.
 
+(periodicals:finding:search-v-api)=
 ### Search versus API
 
 I've harvested lists of digitised periodicals using both the search strategy described above and the `magazine/titles` endpoint. Once I excluded the Parliamentary Papers, the number of titles returned by both methods was similar, but not the same. For example, the search results included some single issues of periodicals which were treated as standalone publications rather than as members of a collection. On the other hand, the API results include some periodicals whose `format` field doesn't include `Periodical`, as well as some titles that currently have no issues digitised.
