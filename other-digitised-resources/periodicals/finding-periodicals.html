@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/periodicals/finding-periodicals.52ece2f9-9ce3-45e1-9e03-9a06b41c538b.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/periodicals/finding-periodicals.ef31c40f-d5ba-4bfd-8cdb-92c455a0d2e1.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/periodicals/finding-periodicals';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -539,7 +539,7 @@ document.write(`
 <p>The API currently returns information on 2,504 titles. However, this includes many Parliamentary Papers and several hundred duplicate records.</p>
 </section>
 <section id="search-versus-api">
-<h2>Search versus API<a class="headerlink" href="#search-versus-api" title="Link to this heading">#</a></h2>
+<span id="periodicals-finding-search-v-api"></span><h2>Search versus API<a class="headerlink" href="#search-versus-api" title="Link to this heading">#</a></h2>
 <p>I’ve harvested lists of digitised periodicals using both the search strategy described above and the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> endpoint. Once I excluded the Parliamentary Papers, the number of titles returned by both methods was similar, but not the same. For example, the search results included some single issues of periodicals which were treated as standalone publications rather than as members of a collection. On the other hand, the API results include some periodicals whose <code class="docutils literal notranslate"><span class="pre">format</span></code> field doesn’t include <code class="docutils literal notranslate"><span class="pre">Periodical</span></code>, as well as some titles that currently have no issues digitised.</p>
 <p>This means that there’s no straighforward way of determining which periodicals have been digitised. The answer will depend on what you think a periodical is, and what you want to do with the data. Hopefully, some of the problems with the <code class="docutils literal notranslate"><span class="pre">magazine/titles</span></code> endpoint will be fixed over time, so that it will at least provide a consistent, if not complete, answer to the question.</p>
 </section>

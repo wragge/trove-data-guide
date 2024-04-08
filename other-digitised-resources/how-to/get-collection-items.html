@@ -62,7 +62,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-collection-items.be8964bb-e176-4c88-abe1-04286441e4b5.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-collection-items.6c06fbff-2f9f-4c74-aa1b-1308e9992a89.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/get-collection-items';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -474,10 +474,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-get-a-list-of-items-in-a-digitised-collection">
 <h1><span class="section-number">23.1. </span>HOW TO: Get a list of items in a digitised collection<a class="headerlink" href="#how-to-get-a-list-of-items-in-a-digitised-collection" title="Link to this heading">#</a></h1>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
-</div>
 <p>The NLA’s digitised resources are often presented as ‘collections’. A collection could be the volumes in a multi-volume work, the issues of a periodical, a map series, an album of photographs, or a manuscript collection. In the web interface, collections will have a ‘Browse this collection’ link or button that displays a list of the contents, but getting machine-readable data is not so straightforward. You can use the <code class="docutils literal notranslate"><span class="pre">magazine/title</span></code> API endpoint to get a list of issues from a periodical, but there’s no way to get the contents of other types of collections from the Trove API.</p>
 <p><mark>==Insert screencap==</mark></p>
 <p>One work around is to scrape a list of items from the collection browse window. When you click on the ‘Browse this collection’ button, your browser fires off a request for a list of items. Details of the first 20 items are returned in an HTML fragment which is displayed in a pop up window. By manually constructing the url for this request you can retrieve the HTML fragment and extract the item identifiers. The url to retrieve the browse list looks like this:</p>
