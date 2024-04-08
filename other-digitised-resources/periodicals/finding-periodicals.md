@@ -53,7 +53,7 @@ The **Read** links in article records opens up the [digitised journal viewer](in
 
 ### Using the API
 
-Version 3 of the Trove API introduced the `magazine/titles` endpoint. You can use this endpoint to request basic details of all the digitised periodicals in Trove.
+Version 3 of the Trove API introduced the `magazine/titles` endpoint. You can [use this endpoint](digitised:periodicals:data:titles-api) to request basic details of all the digitised periodicals in Trove.
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A//api.trove.nla.gov.au/v3/magazine/titles%3Fencoding%3Djson&comment=)
 

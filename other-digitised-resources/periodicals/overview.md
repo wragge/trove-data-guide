@@ -32,15 +32,17 @@ slideshow:
   slide_type: ''
 tags: [remove-cell]
 ---
-from myst_nb import glue
 import altair as alt
 import pandas as pd
+from myst_nb import glue
 from wordcloud import WordCloud
 
 # CONFIG SO THAT ALTAIR HREFS OPEN IN A NEW TAB
 
+
 def blank_href():
     return {"usermeta": {"embedOptions": {"loader": {"target": "_blank"}}}}
+
 
 # register the custom theme under a chosen name
 alt.themes.register("blank_href", blank_href)
@@ -103,6 +105,8 @@ Strange as it seems, there's no simple way to find which periodicals have been d
 - search for digitised articles from periodicals and explore the `title` facet
 - use the Trove API's `/magazine/titles` endpoint
 
+These are described more fully in [](/other-digitised-resources/periodicals/finding-periodicals).
+
 ## Pre-harvested dataset of digitised periodicals
 
 ````{margin}
@@ -129,7 +133,7 @@ You can [download the dataset](https://glam-workbench.net/trove-journals/periodi
 
 The calculations and visualisations below are all based on the pre-harvested dataset which excludes Parliamentary Papers. 
 
-Given those qualifications, how many digitised periodicals are there?
+How many digitised periodicals are there in the dataset?
 
 ```{code-cell} ipython3
 ---
@@ -140,10 +144,17 @@ tags: [hide-input]
 ---
 import pandas as pd
 
-df_titles = pd.read_csv("https://github.com/GLAM-Workbench/trove-periodicals-data/raw/main/periodical-titles.csv", keep_default_na=False)
+df_titles = pd.read_csv(
+    "https://github.com/GLAM-Workbench/trove-periodicals-data/raw/main/periodical-titles.csv",
+    dtype={"start_year": "Int64", "end_year": "Int64"},
+)
 
 print(f"There are {df_titles.shape[0]:,} digitised periodicals in Trove.")
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+What words appear most frequently in the titles of periodicals?
 
 ```{code-cell} ipython3
 ---
@@ -155,7 +166,11 @@ tags: [remove-output, hide-input]
 from wordcloud import WordCloud
 
 wc = WordCloud()
-wc = WordCloud(width=800, height=300).generate("\n".join(df_titles["title"].to_list())).to_image()
+wc = (
+    WordCloud(width=800, height=300)
+    .generate("\n".join(df_titles["title"].to_list()))
+    .to_image()
+)
 wc
 ```
 
@@ -178,7 +193,7 @@ Words in the titles of periodicals
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Issues
+Which titles have the most issues?
 
 ```{code-cell} ipython3
 ---
@@ -187,10 +202,51 @@ slideshow:
   slide_type: ''
 tags: [hide-input]
 ---
-df_issues = pd.read_csv("https://github.com/GLAM-Workbench/trove-periodicals-data/raw/main/periodical-issues.csv", keep_default_na=False)
+from IPython.display import HTML
+
+# Sort by issue count then take the top 20
+df_titles[["title", "trove_url", "issue_count"]].sort_values(
+    "issue_count", ascending=False
+)[:20].style.format(thousands=",").hide()
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+Not all of the titles in the dataset have digitised issues available on Trove. I'm not sure if they're still in the process of being digitised, or if it's an error of some sort. Here's how mnay titles currently have zero issues
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+df_titles.loc[df_titles["issue_count"] == 0].shape[0]
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Issues
+
+How many digitised periodical issues are in the dataset?
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [hide-input]
+---
+df_issues = pd.read_csv(
+    "https://github.com/GLAM-Workbench/trove-periodicals-data/raw/main/periodical-issues.csv",
+    keep_default_na=False,
+)
 
 print(f"There are {df_issues.shape[0]:,} digitised periodical issues in Trove.")
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+How are the issues distributed over time?
 
 ```{code-cell} ipython3
 ---
@@ -201,19 +257,29 @@ tags: [remove-output, hide-input]
 ---
 import altair as alt
 
-df_issues["year"] = df_issues["date"].str.slice(0,4)
+df_issues["year"] = df_issues["date"].str.slice(0, 4)
 
 df_issues_years = df_issues["year"].value_counts().to_frame().reset_index()
 
 # Add a link to the db of issues in Datasette
-df_issues_years["db_link"] = df_issues_years["year"].apply(lambda x: f"https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&install=datasette-json-html&install=datasette-template-sql&metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json#/periodicals/issues?date__lte={x}-12-31&date__gte={x}-01-01&_sort=date")
+df_issues_years["db_link"] = df_issues_years["year"].apply(
+    lambda x: f"https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&install=datasette-json-html&install=datasette-template-sql&metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json#/periodicals/issues?date__lte={x}-12-31&date__gte={x}-01-01&_sort=date"
+)
 
-chart_issues_years = alt.Chart(df_issues_years.loc[df_issues_years["year"] > "1800"]).mark_bar(size=2).encode(
-    x=alt.X("year:T", title="year of publication"),
-    y=alt.Y("count:Q", title="number of issues"),
-    tooltip=[alt.Tooltip("year:T", format="%Y"), alt.Tooltip("count:Q", title="issues")],
-    href="db_link"
-).properties(width=600, height=300, padding=20)
+chart_issues_years = (
+    alt.Chart(df_issues_years.loc[df_issues_years["year"] > "1800"])
+    .mark_bar(size=2)
+    .encode(
+        x=alt.X("year:T", title="year of publication"),
+        y=alt.Y("count:Q", title="number of issues"),
+        tooltip=[
+            alt.Tooltip("year:T", format="%Y"),
+            alt.Tooltip("count:Q", title="issues"),
+        ],
+        href="db_link",
+    )
+    .properties(width=600, height=300, padding=20)
+)
 
 chart_issues_years
 ```
@@ -233,66 +299,4 @@ glue("chart-issues-years", chart_issues_years, display=False)
 ```{glue:figure} chart-issues-years
 :name: chart-issues-years
 Number of periodical issues by year
-```
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
-tags: [hide-input, remove-output]
----
-import altair as alt
-
-df_pages_years = df_issues.groupby("year")["pages"].sum().to_frame().reset_index()
-
-df_issues["year"] = df_issues["date"].str.slice(0,4)
-
-df_issues_years = df_issues["year"].value_counts().to_frame().reset_index()
-
-# Add a link to the db of issues in Datasette
-df_issues_years["db_link"] = df_issues_years["year"].apply(lambda x: f"https://glam-workbench.net/datasette-lite/?url=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/periodicals.db&install=datasette-json-html&install=datasette-template-sql&metadata=https://github.com/GLAM-Workbench/trove-periodicals-data/blob/main/metadata.json#/periodicals/issues?date__lte={x}-12-31&date__gte={x}-01-01&_sort=date")
-
-chart_pages_years = alt.Chart(df_pages_years.loc[df_pages_years["year"] > "1800"]).mark_bar(size=2).encode(
-    x=alt.X("year:T", title="year of publication"),
-    y=alt.Y("pages:Q", title="number of pages"),
-    tooltip=[alt.Tooltip("year:T", format="%Y"), alt.Tooltip("pages:Q", title="pages", format=",")]
-).properties(width=600, height=300, padding=20)
-
-chart_pages_years
-```
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
-tags: [remove-cell]
----
-glue("chart-pages-years", chart_pages_years, display=False)
-```
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-```{glue:figure} chart-pages-years
-:name: chart-pages-years
-Number of periodical issues by year
-```
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-## Undated issues
-```
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-
 ```

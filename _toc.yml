@@ -96,6 +96,7 @@ parts:
         title: Periodicals
         sections:
           - file: other-digitised-resources/periodicals/overview
+          - file: other-digitised-resources/periodicals/finding-periodicals
           - file: other-digitised-resources/periodicals/accessing-data
       - file: other-digitised-resources/parliamentary-papers/index
         title: Parliamentary papers
