@@ -17,3 +17,19 @@ div.cell details[open].above-input div.cell_input {
     border-top: None;
 }
 
+html[data-theme="dark"] .bd-content div.cell_output div[class^="ipyplot"] img, html[data-theme="dark"] .bd-content div.cell_output .text_html:has(div):has(input[id^="ipyplot"]){
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    padding-right: 0rem;
+    padding-left: 0rem;
+    border-radius: 0rem;
+    background-color: var(--pst-color-on-background);
+}
+
+html[data-theme="dark"] .bd-content div.cell_output .text_html:has(div[id^="ipyplot"]) {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
+    background-color: var(--pst-color-on-background);
+}
