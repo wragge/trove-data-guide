@@ -19,3 +19,5 @@ vegafusion[embed]
 pyppeteer
 geopandas
 pymarc
+sphinx-icon
+ipyplot @ git+https://github.com/wragge/ipyplot@master

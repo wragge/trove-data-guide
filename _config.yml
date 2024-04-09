@@ -67,6 +67,7 @@ sphinx:
   extra_extensions:
     - sphinx_tippy
     - sphinxcontrib.mermaid
+    - sphinxcontrib.icon
   config:
     html_theme: sphinx_book_theme
     #html_theme: pydata_sphinx_theme

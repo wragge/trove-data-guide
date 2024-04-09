@@ -57,7 +57,7 @@ if os.getenv("TROVE_API_KEY"):
     API_KEY = os.getenv("TROVE_API_KEY")
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"editable": true, "slideshow": {"slide_type": ""}, "jp-MarkdownHeadingCollapsed": true}
 
 ## Understanding identifiers
 
@@ -716,6 +716,50 @@ Note that the `lastPage` parameter is set to the total number of pages, minus on
 
 You can use the same method to download the covers (or any other range of pages) from a collection of issues. To get the covers set `firstPage` to `0` and `lastPage` to `1`.
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+### Download issue thumbnails
+
+To download a thumbnail image of the first page of an issue, just add `-t` to the the issue identifier, eg:
+
+[https://nla.gov.au/nla.obj-714041173-t](https://nla.gov.au/nla.obj-714041173-t)
+
+The example below loads a list of periodical issues from [this dataset](https://glam-workbench.net/trove-journals/periodicals-data-api/), selects a random sample of 100 issues from [*Everyones*](https://nla.gov.au/nla.obj-522690001), and displays the issue thumbnails.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+import requests
+from pathlib import Path
+import ipyplot
+
+# Load issues dataset
+df_issues = pd.read_csv(
+    "https://github.com/GLAM-Workbench/trove-periodicals-data/raw/main/periodical-issues.csv",
+    keep_default_na=False,
+)
+
+# Filter issues to Everyones, select a random sample of 100, and sort by date
+sample_issues = df_issues.loc[df_issues["title_id"] == "nla.obj-522690001"].sample(100).sort_values("date")
+
+# Uncomment these lines to save images locally
+# for image in sample_issues.itertuples():
+#    url = f"https://nla.gov.au/{image.id}-t"
+#    response = requests.get(url)
+#    Path(f"{image.id}-thumbnail.jpg").write_bytes(response.content)
+
+# Generate a list of thumbnail urls
+images = [f"https://nla.gov.au/{i.id}-t" for i in sample_issues.itertuples()]
+
+# Display the thumbnails
+ipyplot.plot_images(images, max_images=100, img_width=50, show_url=False)
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 ### Download a page image using its identifier
 
 If you have a page identifier you can download a high-resolution image of the page simply by adding `/image` to the identifier url. Full details [are available here](download-high-res-images), but here's a quick example.
@@ -756,4 +800,15 @@ Path(f"{page_id}.jpg").write_bytes(response.content)
 
 ### Save illustrations from pages using OCR layout data
 
-When Trove's [digital book & journal viewer](interfaces:digitised-journal-viewer) displays a periodical page, it loads OCR data from an internal API. As well as providing information about the position and content of text objects, this data includes the coordinates of any illustrations on the page. Using these coordinates you can crop and save illustrations from a page image. The [full method is described here](other-digitised:ocr-data:crop-images).
+````{margin}
+```{seealso}
+The GLAM Workbench notebook [Harvest illustrations from periodicals](https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/) demonstrates in detail how to use the OCR positional data to crop illustrations from the pages of periodicals. You can use it to harvest illustrations from articles, pages, issues, or a search in the *Magazines & Newsletters* category.
+```
+````
+
+When Trove's [digital book & journal viewer](interfaces:digitised-journal-viewer) displays a periodical page, it loads OCR data from an internal API. As well as providing information about the position and content of text objects, this data includes the coordinates of any illustrations on the page. Using these coordinates you can crop and save illustrations from a page image. The full method is described in [](other-digitised:ocr-data:crop-images).
+
+Here's a [collection of cat photos](https://www.dropbox.com/scl/fo/60imdoyf4ss2b6vh01q1w/h?rlkey=zuwbjaqnmr7qvkuinovdu5ot0&dl=0) harvested from a search for `cat` or `kitten` in the titles of periodical articles.
+
+```{figure} /images/cat-collection.png
+```

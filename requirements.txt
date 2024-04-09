@@ -141,9 +141,12 @@ ipykernel==6.29.4
     # via
     #   jupyterlab
     #   myst-nb
+ipyplot @ git+https://github.com/wragge/ipyplot@master
+    # via -r requirements.in
 ipython==8.23.0
     # via
     #   ipykernel
+    #   ipyplot
     #   myst-nb
 isoduration==20.11.0
     # via jsonschema
@@ -281,6 +284,7 @@ numpy==1.26.4
     # via
     #   altair
     #   contourpy
+    #   ipyplot
     #   matplotlib
     #   pandas
     #   pyarrow
@@ -320,6 +324,7 @@ pexpect==4.9.0
     # via ipython
 pillow==10.3.0
     # via
+    #   ipyplot
     #   matplotlib
     #   wordcloud
 platformdirs==4.2.0
@@ -394,6 +399,7 @@ pyyaml==6.0.1
     #   myst-parser
     #   pybtex
     #   sphinx-external-toc
+    #   sphinx-icon
 pyzmq==25.1.2
     # via
     #   ipykernel
@@ -429,6 +435,8 @@ send2trash==1.8.2
     # via jupyter-server
 shapely==2.0.3
     # via geopandas
+shortuuid==1.0.13
+    # via ipyplot
 six==1.16.0
     # via
     #   asttokens
@@ -457,6 +465,7 @@ sphinx==7.2.6
     #   sphinx-copybutton
     #   sphinx-design
     #   sphinx-external-toc
+    #   sphinx-icon
     #   sphinx-jupyterbook-latex
     #   sphinx-multitoc-numbering
     #   sphinx-thebe
@@ -473,6 +482,8 @@ sphinx-design==0.5.0
     # via jupyter-book
 sphinx-external-toc==1.0.1
     # via jupyter-book
+sphinx-icon==0.2.2
+    # via -r requirements.in
 sphinx-jupyterbook-latex==1.0.0
     # via jupyter-book
 sphinx-multitoc-numbering==0.1.3
