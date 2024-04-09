@@ -34,8 +34,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/css/all.min.css?v=53359634" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/tdg.css?v=1ca2cafd" />
+    <link rel="stylesheet" type="text/css" href="../_static/tdg.css?v=7dda3ab4" />
     <link rel="stylesheet" type="text/css" href="../_static/tippy.css?v=2687f39f" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -49,6 +50,7 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/sphinxcontrib/icon/node_modules/@fortawesome/fontawesome-free/js/all.min.js?v=ec35c6c9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -62,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.e9b53f6a-e1e9-4827-990c-a6b67d84f05e.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.d2345e39-ead9-42f9-a604-1bae0a614e71.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/simple-search-options';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -539,19 +541,19 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,886,631</span></p></td>
+<td><p><span class="pasted-text">5,886,643</span></p></td>
 <td><p>Searches article text, tags &amp; comments (some fuzziness, terms are stemmed)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hobart*</span></code></p></td>
-<td><p><span class="pasted-text">5,958,011</span></p></td>
+<td><p><span class="pasted-text">5,958,023</span></p></td>
 <td><p>Searches article text, tags &amp; comments (more fuzziness, wildcard matches zero or more characters)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,599,920</span></p></td>
+<td><p></p></td>
 <td><p>Searches article text only (exact match, ignores tags &amp; comments)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title:hobart</span></code></p></td>
-<td><p><span class="pasted-text">720,063</span></p></td>
+<td><p></p></td>
 <td><p>Searches headlines only</p></td>
 </tr>
 </tbody>
@@ -567,27 +569,27 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">OR</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">49,642,376</span></p></td>
+<td><p></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">5,784,544</span></p></td>
+<td><p></p></td>
 <td><p>Same as white AND australia</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
-<td><p><span class="pasted-text">161,519</span></p></td>
+<td><p></p></td>
 <td><p>Search for phrase (with stemming)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
-<td><p><span class="pasted-text">157,208</span></p></td>
+<td><p></p></td>
 <td><p>Search for phrase (no stemming &amp; ignores tags/comments)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;~0</span></code></p></td>
-<td><p><span class="pasted-text">161,519</span></p></td>
+<td><p></p></td>
 <td><p>Search for phrase (with stemming, no extra words)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:&quot;white</span> <span class="pre">australia&quot;~0</span></code></p></td>
-<td><p><span class="pasted-text">151,549</span></p></td>
+<td><p></p></td>
 <td><p>Search for exact phrase (no extra words, no stemming, ignore tags/comments)</p></td>
 </tr>
 </tbody>
@@ -607,19 +609,19 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">naturalisation</span></code></p></td>
-<td><p><span class="pasted-text">249,767</span></p></td>
+<td><p><span class="pasted-text">245,098</span></p></td>
 <td><p>Stemmed to ‘naturalis’</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">naturalization</span></code></p></td>
-<td><p><span class="pasted-text">15,415,377</span></p></td>
+<td><p><span class="pasted-text">15,259,751</span></p></td>
 <td><p>Stemmed to ‘natur’</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalisation</span></code></p></td>
-<td><p><span class="pasted-text">132,424</span></p></td>
+<td><p><span class="pasted-text">129,532</span></p></td>
 <td><p>No stemming</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalization</span></code></p></td>
-<td><p><span class="pasted-text">24,648</span></p></td>
+<td><p><span class="pasted-text">24,302</span></p></td>
 <td><p>No stemming</p></td>
 </tr>
 </tbody>
@@ -638,19 +640,19 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chinese</span> <span class="pre">tasmania</span></code></p></td>
-<td><p><span class="pasted-text">279,242</span></p></td>
+<td><p><span class="pasted-text">278,466</span></p></td>
 <td><p>articles contain both terms</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;chinese</span> <span class="pre">tasmania&quot;~10</span></code></p></td>
-<td><p><span class="pasted-text">4,176</span></p></td>
+<td><p><span class="pasted-text">4,144</span></p></td>
 <td><p>articles where ‘tasmania’ is within 10 words of ‘chinese’</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;tasmania</span> <span class="pre">chinese&quot;~10</span></code></p></td>
-<td><p><span class="pasted-text">4,189</span></p></td>
+<td><p><span class="pasted-text">4,160</span></p></td>
 <td><p>terms in reverse order are matched, but reversing counts towards the word distance so results can differ</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;tasmania</span> <span class="pre">chinese&quot;~10</span> <span class="pre">OR</span> <span class="pre">&quot;chinese</span> <span class="pre">tasmania&quot;~10</span></code></p></td>
-<td><p><span class="pasted-text">4,692</span></p></td>
+<td><p><span class="pasted-text">4,657</span></p></td>
 <td><p>10 word distance in either direction</p></td>
 </tr>
 </tbody>
@@ -794,13 +796,13 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=Victoria</span></code></p></td>
-<td><p><span class="pasted-text">47,660,014</span></p></td>
+<td><p><span class="pasted-text">45,003,638</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=New</span> <span class="pre">South</span> <span class="pre">Wales</span></code></p></td>
-<td><p><span class="pasted-text">90,259,364</span></p></td>
+<td><p><span class="pasted-text">87,719,391</span></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=Victoria&amp;l-state=New</span> <span class="pre">South</span> <span class="pre">Wales</span></code></p></td>
-<td><p><span class="pasted-text">137,919,378</span></p></td>
+<td><p><span class="pasted-text">132,723,029</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -814,13 +816,13 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Article</span></code></p></td>
-<td><p><span class="pasted-text">172,178,266</span></p></td>
+<td><p><span class="pasted-text">168,423,816</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Advertising</span></code></p></td>
-<td><p><span class="pasted-text">46,577,574</span></p></td>
+<td><p><span class="pasted-text">45,471,415</span></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Article&amp;l-category=Advertising</span></code></p></td>
-<td><p><span class="pasted-text">5,818</span></p></td>
+<td><p><span class="pasted-text">5,756</span></p></td>
 </tr>
 </tbody>
 </table>
