@@ -130,9 +130,17 @@ parts:
 #    chapters:
 #      - file: user-generated-data/trove-lists
   - caption: Research pathways
-    numbered: true
+    numbered: 2
+    maxdepth: 3
     chapters:
       - file: pathways/index
+        sections:
+          - file: pathways/analysing-texts
+          - file: pathways/using-images
+          - file: pathways/structured-data
+          - file: pathways/geospatial
+          - file: pathways/networks
+          - file: pathways/collections
   - chapters:
 #    - file: glossary
 #    - file: genindex
