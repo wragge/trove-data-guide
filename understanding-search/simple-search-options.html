@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.d2345e39-ead9-42f9-a604-1bae0a614e71.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.f5f4d867-1307-4003-ab7a-819cc871ca19.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/simple-search-options';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -274,7 +274,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Research pathways</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pathways/index.html">24. Research pathways</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pathways/index.html">24. Research pathways</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/analysing-texts.html">24.1. Analysing texts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/using-images.html">24.2. Using images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/structured-data.html">24.3. Creating collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/geospatial.html">24.4. Geospatial data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/networks.html">24.5. Structured data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/collections.html">24.6. Networks and relationships</a></li>
+</ul>
+</li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
@@ -541,19 +549,19 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,886,643</span></p></td>
+<td><p><span class="pasted-text">5,886,663</span></p></td>
 <td><p>Searches article text, tags &amp; comments (some fuzziness, terms are stemmed)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hobart*</span></code></p></td>
-<td><p><span class="pasted-text">5,958,023</span></p></td>
+<td><p><span class="pasted-text">5,958,043</span></p></td>
 <td><p>Searches article text, tags &amp; comments (more fuzziness, wildcard matches zero or more characters)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:hobart</span></code></p></td>
-<td><p></p></td>
+<td><p><span class="pasted-text">5,599,957</span></p></td>
 <td><p>Searches article text only (exact match, ignores tags &amp; comments)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title:hobart</span></code></p></td>
-<td><p></p></td>
+<td><p><span class="pasted-text">720,063</span></p></td>
 <td><p>Searches headlines only</p></td>
 </tr>
 </tbody>
@@ -569,27 +577,27 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">OR</span> <span class="pre">australia</span></code></p></td>
-<td><p></p></td>
+<td><p><span class="pasted-text">49,642,422</span></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">australia</span></code></p></td>
-<td><p></p></td>
+<td><p><span class="pasted-text">5,784,558</span></p></td>
 <td><p>Same as white AND australia</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
-<td><p></p></td>
+<td><p><span class="pasted-text">161,517</span></p></td>
 <td><p>Search for phrase (with stemming)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
-<td><p></p></td>
+<td><p><span class="pasted-text">157,206</span></p></td>
 <td><p>Search for phrase (no stemming &amp; ignores tags/comments)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;~0</span></code></p></td>
-<td><p></p></td>
+<td><p><span class="pasted-text">161,517</span></p></td>
 <td><p>Search for phrase (with stemming, no extra words)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:&quot;white</span> <span class="pre">australia&quot;~0</span></code></p></td>
-<td><p></p></td>
+<td><p><span class="pasted-text">151,548</span></p></td>
 <td><p>Search for exact phrase (no extra words, no stemming, ignore tags/comments)</p></td>
 </tr>
 </tbody>
@@ -609,19 +617,19 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">naturalisation</span></code></p></td>
-<td><p><span class="pasted-text">245,098</span></p></td>
+<td><p><span class="pasted-text">249,769</span></p></td>
 <td><p>Stemmed to ‘naturalis’</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">naturalization</span></code></p></td>
-<td><p><span class="pasted-text">15,259,751</span></p></td>
+<td><p><span class="pasted-text">15,415,398</span></p></td>
 <td><p>Stemmed to ‘natur’</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalisation</span></code></p></td>
-<td><p><span class="pasted-text">129,532</span></p></td>
+<td><p><span class="pasted-text">132,425</span></p></td>
 <td><p>No stemming</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalization</span></code></p></td>
-<td><p><span class="pasted-text">24,302</span></p></td>
+<td><p><span class="pasted-text">24,647</span></p></td>
 <td><p>No stemming</p></td>
 </tr>
 </tbody>
@@ -640,19 +648,19 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chinese</span> <span class="pre">tasmania</span></code></p></td>
-<td><p><span class="pasted-text">278,466</span></p></td>
+<td><p><span class="pasted-text">279,245</span></p></td>
 <td><p>articles contain both terms</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;chinese</span> <span class="pre">tasmania&quot;~10</span></code></p></td>
-<td><p><span class="pasted-text">4,144</span></p></td>
+<td><p><span class="pasted-text">4,176</span></p></td>
 <td><p>articles where ‘tasmania’ is within 10 words of ‘chinese’</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;tasmania</span> <span class="pre">chinese&quot;~10</span></code></p></td>
-<td><p><span class="pasted-text">4,160</span></p></td>
+<td><p><span class="pasted-text">4,189</span></p></td>
 <td><p>terms in reverse order are matched, but reversing counts towards the word distance so results can differ</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;tasmania</span> <span class="pre">chinese&quot;~10</span> <span class="pre">OR</span> <span class="pre">&quot;chinese</span> <span class="pre">tasmania&quot;~10</span></code></p></td>
-<td><p><span class="pasted-text">4,657</span></p></td>
+<td><p><span class="pasted-text">4,692</span></p></td>
 <td><p>10 word distance in either direction</p></td>
 </tr>
 </tbody>
@@ -796,13 +804,13 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=Victoria</span></code></p></td>
-<td><p><span class="pasted-text">45,003,638</span></p></td>
+<td><p><span class="pasted-text">47,660,014</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=New</span> <span class="pre">South</span> <span class="pre">Wales</span></code></p></td>
-<td><p><span class="pasted-text">87,719,391</span></p></td>
+<td><p><span class="pasted-text">90,259,364</span></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-state=Victoria&amp;l-state=New</span> <span class="pre">South</span> <span class="pre">Wales</span></code></p></td>
-<td><p><span class="pasted-text">132,723,029</span></p></td>
+<td><p><span class="pasted-text">137,919,378</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -816,13 +824,13 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Article</span></code></p></td>
-<td><p><span class="pasted-text">168,423,816</span></p></td>
+<td><p><span class="pasted-text">172,178,267</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Advertising</span></code></p></td>
-<td><p><span class="pasted-text">45,471,415</span></p></td>
+<td><p><span class="pasted-text">46,577,574</span></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Article&amp;l-category=Advertising</span></code></p></td>
-<td><p><span class="pasted-text">5,756</span></p></td>
+<td><p><span class="pasted-text">5,818</span></p></td>
 </tr>
 </tbody>
 </table>
