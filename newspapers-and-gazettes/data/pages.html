@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/pages.eb56a89f-458d-4261-b801-9d0f50e4e595.js"></script>
+    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/pages.e5f1628c-d731-4f2a-be0a-e7929362def3.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'newspapers-and-gazettes/data/pages';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -275,12 +275,12 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Research pathways</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../pathways/index.html">24. Research pathways</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/analysing-texts.html">24.1. Analysing texts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/using-images.html">24.2. Using images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/structured-data.html">24.3. Creating collections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/geospatial.html">24.4. Geospatial data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/networks.html">24.5. Structured data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/collections.html">24.6. Networks and relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/text.html">24.1. Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/images.html">24.2. Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/structured-data.html">24.3. Structured data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/geospatial.html">24.4. Maps and places</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/networks.html">24.5. Networks and relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/collections.html">24.6. Creating collections</a></li>
 </ul>
 </li>
 </ul>
@@ -516,10 +516,6 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="accessing-data-about-newspaper-gazette-pages">
 <h1><span class="section-number">16.2. </span>Accessing data about newspaper &amp; gazette pages<a class="headerlink" href="#accessing-data-about-newspaper-gazette-pages" title="Link to this heading">#</a></h1>
 <p><img alt="Screenshot of the masthead at the top of a newspaper page" src="../../_images/16635065-level4-cropped.jpg" /></p>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
-</div>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#what-are-pages" id="id4">What are pages?</a></p>
@@ -802,7 +798,7 @@ document.write(`
 </section>
 </section>
 <section id="page-text">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Page text</a><a class="headerlink" href="#page-text" title="Link to this heading">#</a></h2>
+<span id="newspapers-data-pages-text"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">Page text</a><a class="headerlink" href="#page-text" title="Link to this heading">#</a></h2>
 <p>To get the full text content of a page, you need to aggregate the content of all the articles published on that page. The method is much the same as that <a class="reference internal" href="#get-page-identifier-from-search"><span class="std std-ref">described above</span></a> – you search for articles on a specific page by specifying the newspaper, date and page. You also need to set <code class="docutils literal notranslate"><span class="pre">include</span></code> to <code class="docutils literal notranslate"><span class="pre">articleText</span></code> to add the full text to the article records. You can then collect the text content of each article. Here’s an example that collects the article texts from a page and uses them to create a wordcloud using the <a class="reference external" href="https://github.com/amueller/word_cloud">WordCloud package</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -848,7 +844,7 @@ document.write(`
 </div>
 </div>
 <figure class="align-default" id="id3">
-<img alt="../../_images/fb226d8ef8537dd5dcfa8b332fd3fd4a09abe84676807ddc463cde254c306ab7.png" src="../../_images/fb226d8ef8537dd5dcfa8b332fd3fd4a09abe84676807ddc463cde254c306ab7.png" />
+<img alt="../../_images/ece54c57484065f0802f00310368f20ab5163743f30e3b07b291592da3e1b87f.png" src="../../_images/ece54c57484065f0802f00310368f20ab5163743f30e3b07b291592da3e1b87f.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16.6 </span><span class="caption-text">Word cloud from the text content of page 3 of the <em>Canberra Times</em>, 2 November 1942.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>

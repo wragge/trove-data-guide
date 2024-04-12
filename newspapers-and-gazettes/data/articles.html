@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/articles.d71e2f39-b5a7-4c57-85c4-82fa33d276fa.js"></script>
+    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/articles.5c65e509-4a0f-49b9-ad8c-81c59ef78768.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'newspapers-and-gazettes/data/articles';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -275,12 +275,12 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Research pathways</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../pathways/index.html">24. Research pathways</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/analysing-texts.html">24.1. Analysing texts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/using-images.html">24.2. Using images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/structured-data.html">24.3. Creating collections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/geospatial.html">24.4. Geospatial data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/networks.html">24.5. Structured data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pathways/collections.html">24.6. Networks and relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/text.html">24.1. Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/images.html">24.2. Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/structured-data.html">24.3. Structured data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/geospatial.html">24.4. Maps and places</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/networks.html">24.5. Networks and relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pathways/collections.html">24.6. Creating collections</a></li>
 </ul>
 </li>
 </ul>
@@ -523,10 +523,6 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="accessing-data-about-newspaper-and-gazette-articles">
 <h1><span class="section-number">16.1. </span>Accessing data about newspaper and gazette articles<a class="headerlink" href="#accessing-data-about-newspaper-and-gazette-articles" title="Link to this heading">#</a></h1>
 <p><img alt="Screenshot of Trove web interface displaying basic article metadata" src="../../_images/trove-article-metadata.png" /></p>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>This guide is currently under development. For more information and discussion see <a class="reference external" href="https://github.com/wragge/trove-data-guide/issues">the list of issues</a> on GitHub. Comments are welcome.</p>
-</div>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#what-are-articles" id="id1">What are articles?</a></p></li>
@@ -564,14 +560,14 @@ document.write(`
 </ul>
 </nav>
 <section id="what-are-articles">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">What are articles?</a><a class="headerlink" href="#what-are-articles" title="Link to this heading">#</a></h2>
+<h2>What are articles?<a class="headerlink" href="#what-are-articles" title="Link to this heading">#</a></h2>
 <p>When you search in Trove’s digitised newspapers, you’re searching for <em>articles</em>. The boundaries of articles are defined as part of the <a class="reference internal" href="../../glossary.html#term-OCR"><span class="xref std std-term">OCR</span></a> process. In most cases they represent a single piece of content with a heading and some text (or an illustration). But sometimes blocks of content are grouped together. Advertisements, for example, are often grouped as a single ‘article’ headed ‘Advertising’. A single article can also be split across multiple pages.</p>
 </section>
 <section id="article-links-and-connections">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Article links and connections</a><a class="headerlink" href="#article-links-and-connections" title="Link to this heading">#</a></h2>
+<h2>Article links and connections<a class="headerlink" href="#article-links-and-connections" title="Link to this heading">#</a></h2>
 <p>Articles exist at the bottom of a hierarchy of newspapers, issues, and pages. Article metadata includes information linking articles to other levels in this hierarchy, but the type and form of these links varies.</p>
 <section id="article-identifiers">
-<span id="newspaper-article-identifiers"></span><h3><a class="toc-backref" href="#id3" role="doc-backlink">Article identifiers</a><a class="headerlink" href="#article-identifiers" title="Link to this heading">#</a></h3>
+<span id="newspaper-article-identifiers"></span><h3>Article identifiers<a class="headerlink" href="#article-identifiers" title="Link to this heading">#</a></h3>
 <p>Every newspaper article in Trove has its own unique identifier. This identifier is used in persistent links to articles on the Trove web site. In the web interface, you can find the identifier under the article’s ‘Cite’ tab, it’ll look something like this <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.news-article163325648</span></code></p>
 <figure class="align-default" id="article-cite">
 <a class="reference internal image-reference" href="../../_images/article-cite.png"><img alt="../../_images/article-cite.png" src="../../_images/article-cite.png" style="width: 300px;" /></a>
@@ -582,7 +578,7 @@ document.write(`
 <p>If you follow an article identifier you’ll get redirected to a different url that looks like this <code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/newspaper/article/163325648</span></code>. Notice that the number at the end of the identifier and the redirected url are the same, <code class="docutils literal notranslate"><span class="pre">163325648</span></code>. You can use this numeric identifier with the <code class="docutils literal notranslate"><span class="pre">/newspaper</span></code> endpoint of the Trove API to retrieve metadata and full text.</p>
 </section>
 <section id="articles-and-newspaper-titles">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Articles and newspaper titles</a><a class="headerlink" href="#articles-and-newspaper-titles" title="Link to this heading">#</a></h3>
+<h3>Articles and newspaper titles<a class="headerlink" href="#articles-and-newspaper-titles" title="Link to this heading">#</a></h3>
 <p>Links to newspaper <strong>titles</strong> are perhaps the most straightforward. Each article is linked to a single newspaper title by the title’s unique identifier. An article’s metadata record includes a field for <code class="docutils literal notranslate"><span class="pre">title</span></code> that includes both the numeric identifier and the newspaper’s masthead. for example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;101&quot;</span><span class="p">,</span>
@@ -593,7 +589,7 @@ document.write(`
 <p>You can use the newspaper’s <code class="docutils literal notranslate"><span class="pre">id</span></code> to request more information from the <code class="docutils literal notranslate"><span class="pre">newspaper/titles</span></code> API endpoint.</p>
 </section>
 <section id="articles-and-issues">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Articles and issues</a><a class="headerlink" href="#articles-and-issues" title="Link to this heading">#</a></h3>
+<h3>Articles and issues<a class="headerlink" href="#articles-and-issues" title="Link to this heading">#</a></h3>
 <p>There are no direct links from articles to newspaper <strong>issues</strong>. However, articles share a date with their parent issue, so it’s possible to use the date to connect them. For example you can use a <code class="docutils literal notranslate"><span class="pre">date</span></code> search to find all the articles in an issue.</p>
 <div class="note admonition">
 <p class="admonition-title">But what about ‘editions’?</p>
@@ -601,7 +597,7 @@ document.write(`
 </div>
 </section>
 <section id="articles-and-pages">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Articles and pages</a><a class="headerlink" href="#articles-and-pages" title="Link to this heading">#</a></h3>
+<h3>Articles and pages<a class="headerlink" href="#articles-and-pages" title="Link to this heading">#</a></h3>
 <p>There are two ways in which articles are linked to <strong>pages</strong>. The first is simply by the <code class="docutils literal notranslate"><span class="pre">page</span></code> value, which is a number indicating the sequence of a page within an issue. This <em>usually</em> corresponds to the page number printed on the page, however, sometimes issues include separately numbered supplements. You can tell if a page is part of a supplement by looking at the confusingly-named <code class="docutils literal notranslate"><span class="pre">pageSequence</span></code> value – it will typically include an ‘S’ after the page number. There might also be a <code class="docutils literal notranslate"><span class="pre">pageLabel</span></code> value that provides the number printed on the page within the supplement.</p>
 <p>Here’s <a class="reference external" href="https://trove.nla.gov.au/newspaper/article/48076559/">an advertisement for abstestos cement</a> in a 1957 building supplement published as part of the <em>Australian Women’s Weekly</em>. The article’s metadata record includes the following page values:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;82&quot;</span><span class="p">,</span>
@@ -622,10 +618,10 @@ document.write(`
 </section>
 </section>
 <section id="article-metadata">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Article metadata</a><a class="headerlink" href="#article-metadata" title="Link to this heading">#</a></h2>
+<h2>Article metadata<a class="headerlink" href="#article-metadata" title="Link to this heading">#</a></h2>
 <p>The <a class="reference internal" href="../../glossary.html#term-Metadata"><span class="xref std std-term">metadata</span></a> associated with newspaper and gazette articles in Trove includes the basic information you’d expect to put in a citation, like the article’s headline, publication date, newspaper, and page number. Additional fields are added by the OCR and data ingestion processes, such as internal links, the number of words, and the article category. User activity also adds data relating to tags, comments, lists, and corrections.</p>
 <section id="individual-articles">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Individual articles</a><a class="headerlink" href="#individual-articles" title="Link to this heading">#</a></h3>
+<h3>Individual articles<a class="headerlink" href="#individual-articles" title="Link to this heading">#</a></h3>
 <p>To access metadata relating to an individual article you need the <a class="reference internal" href="#newspaper-article-identifiers"><span class="std std-ref">article’s numeric identifier</span></a>. You can then construct an API request url by adding the identifier to the <code class="docutils literal notranslate"><span class="pre">/newspaper/</span></code> endpoint. For example, if the article identifier was <code class="docutils literal notranslate"><span class="pre">61389505</span></code>, the API request url would be:</p>
 <p><code class="docutils literal notranslate"><span class="pre">https://api.trove.nla.gov.au/v3/newspaper/61389505</span></code></p>
 <p>You can add additional parameters to the url if, for example, you want the metadata in JSON format.</p>
@@ -649,7 +645,7 @@ document.write(`
 </div>
 </section>
 <section id="search-results">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Search results</a><a class="headerlink" href="#search-results" title="Link to this heading">#</a></h3>
+<h3>Search results<a class="headerlink" href="#search-results" title="Link to this heading">#</a></h3>
 <p>You can search for newspaper and gazette articles using the Trove API’s <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoint, just set the <code class="docutils literal notranslate"><span class="pre">category</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>.</p>
 <div class="note admonition">
 <p class="admonition-title">Don’t get your categories mixed up!</p>
@@ -718,7 +714,7 @@ document.write(`
  &#39;date&#39;: &#39;1927-03-08&#39;,
  &#39;page&#39;: &#39;3&#39;,
  &#39;pageSequence&#39;: &#39;3&#39;,
- &#39;relevance&#39;: {&#39;score&#39;: 540.8796997070312, &#39;value&#39;: &#39;very relevant&#39;},
+ &#39;relevance&#39;: {&#39;score&#39;: 540.8865966796875, &#39;value&#39;: &#39;very relevant&#39;},
  &#39;snippet&#39;: &#39;&quot;Coyyan&quot; writes in the Cairns \&#39;Post\&#39;:-- Mr. Clement Wragge was generally referred to as the Inclement Wragge,&quot; purely on account of&#39;,
  &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-article169851997?searchTerm=%22clement+wragge%22+AND+cyclone&#39;}
 </pre></div>
@@ -728,7 +724,7 @@ document.write(`
 <p>You can request a maximum of 100 records with a single API request. To download metadata from <em>all</em> the articles in a set of search results you need to make multiple requests. See <a class="reference internal" href="../../accessing-data/how-to/harvest-complete-results.html"><span class="doc std std-doc">HOW TO: Harvest a complete set of search results using the Trove API</span></a> for examples of how to do this.</p>
 </section>
 <section id="add-extra-metadata-fields">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Add extra metadata fields</a><a class="headerlink" href="#add-extra-metadata-fields" title="Link to this heading">#</a></h3>
+<h3>Add extra metadata fields<a class="headerlink" href="#add-extra-metadata-fields" title="Link to this heading">#</a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> and <code class="docutils literal notranslate"><span class="pre">include</span></code> parameters with either the <code class="docutils literal notranslate"><span class="pre">/newspaper</span></code> or <code class="docutils literal notranslate"><span class="pre">/result</span></code> endpoints to control the amount of metadata provided about each article. For example:</p>
 <p>Setting <code class="docutils literal notranslate"><span class="pre">reclevel=full</span></code> adds the following fields:</p>
 <ul class="simple">
@@ -766,7 +762,7 @@ document.write(`
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22clement+wragge%22+AND+cyclone%26category%3Dnewspaper%26reclevel%3Dfull%26include%3Dtags%26include%3Dcomments%26include%3Dlists%26encoding%3Djson#limit-to-articles-with-illustrations"><img alt="Try it!" src="../../_images/try-trove-api-console.svg" /></a></p>
 </section>
 <section id="find-the-total-number-of-articles-in-a-search">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Find the total number of articles in a search</a><a class="headerlink" href="#find-the-total-number-of-articles-in-a-search" title="Link to this heading">#</a></h3>
+<h3>Find the total number of articles in a search<a class="headerlink" href="#find-the-total-number-of-articles-in-a-search" title="Link to this heading">#</a></h3>
 <p>You can also access metadata <em>about</em> a search. API search results include a <code class="docutils literal notranslate"><span class="pre">total</span></code> value that tells you the number of articles matching your query. If we don’t include any search parameters, we can use this to find out the number of newspaper and gazette articles in the whole of Trove!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -817,14 +813,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 11 April 2024, there are 251,935,924 newspaper &amp; gazette articles in Trove
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 12 April 2024, there are 251,935,924 newspaper &amp; gazette articles in Trove
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="using-facets-to-get-aggregate-data-about-articles">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink">Using facets to get aggregate data about articles</a><a class="headerlink" href="#using-facets-to-get-aggregate-data-about-articles" title="Link to this heading">#</a></h3>
+<h3>Using facets to get aggregate data about articles<a class="headerlink" href="#using-facets-to-get-aggregate-data-about-articles" title="Link to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="seealso admonition">
@@ -879,53 +875,53 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_b4998">
+<table id="T_f5cf0">
   <thead>
     <tr>
-      <th id="T_b4998_level0_col0" class="col_heading level0 col0" >state</th>
-      <th id="T_b4998_level0_col1" class="col_heading level0 col1" >total_articles</th>
+      <th id="T_f5cf0_level0_col0" class="col_heading level0 col0" >state</th>
+      <th id="T_f5cf0_level0_col1" class="col_heading level0 col1" >total_articles</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_b4998_row0_col0" class="data row0 col0" >ACT</td>
-      <td id="T_b4998_row0_col1" class="data row0 col1" >3,296,997</td>
+      <td id="T_f5cf0_row0_col0" class="data row0 col0" >ACT</td>
+      <td id="T_f5cf0_row0_col1" class="data row0 col1" >3,296,997</td>
     </tr>
     <tr>
-      <td id="T_b4998_row1_col0" class="data row1 col0" >International</td>
-      <td id="T_b4998_row1_col1" class="data row1 col1" >916,795</td>
+      <td id="T_f5cf0_row1_col0" class="data row1 col0" >International</td>
+      <td id="T_f5cf0_row1_col1" class="data row1 col1" >916,795</td>
     </tr>
     <tr>
-      <td id="T_b4998_row2_col0" class="data row2 col0" >National</td>
-      <td id="T_b4998_row2_col1" class="data row2 col1" >1,739,802</td>
+      <td id="T_f5cf0_row2_col0" class="data row2 col0" >National</td>
+      <td id="T_f5cf0_row2_col1" class="data row2 col1" >1,739,802</td>
     </tr>
     <tr>
-      <td id="T_b4998_row3_col0" class="data row3 col0" >New South Wales</td>
-      <td id="T_b4998_row3_col1" class="data row3 col1" >90,259,364</td>
+      <td id="T_f5cf0_row3_col0" class="data row3 col0" >New South Wales</td>
+      <td id="T_f5cf0_row3_col1" class="data row3 col1" >90,259,364</td>
     </tr>
     <tr>
-      <td id="T_b4998_row4_col0" class="data row4 col0" >Northern Territory</td>
-      <td id="T_b4998_row4_col1" class="data row4 col1" >409,433</td>
+      <td id="T_f5cf0_row4_col0" class="data row4 col0" >Northern Territory</td>
+      <td id="T_f5cf0_row4_col1" class="data row4 col1" >409,433</td>
     </tr>
     <tr>
-      <td id="T_b4998_row5_col0" class="data row5 col0" >Queensland</td>
-      <td id="T_b4998_row5_col1" class="data row5 col1" >41,131,526</td>
+      <td id="T_f5cf0_row5_col0" class="data row5 col0" >Queensland</td>
+      <td id="T_f5cf0_row5_col1" class="data row5 col1" >41,131,526</td>
     </tr>
     <tr>
-      <td id="T_b4998_row6_col0" class="data row6 col0" >South Australia</td>
-      <td id="T_b4998_row6_col1" class="data row6 col1" >25,302,116</td>
+      <td id="T_f5cf0_row6_col0" class="data row6 col0" >South Australia</td>
+      <td id="T_f5cf0_row6_col1" class="data row6 col1" >25,302,116</td>
     </tr>
     <tr>
-      <td id="T_b4998_row7_col0" class="data row7 col0" >Tasmania</td>
-      <td id="T_b4998_row7_col1" class="data row7 col1" >15,850,246</td>
+      <td id="T_f5cf0_row7_col0" class="data row7 col0" >Tasmania</td>
+      <td id="T_f5cf0_row7_col1" class="data row7 col1" >15,850,246</td>
     </tr>
     <tr>
-      <td id="T_b4998_row8_col0" class="data row8 col0" >Victoria</td>
-      <td id="T_b4998_row8_col1" class="data row8 col1" >47,660,014</td>
+      <td id="T_f5cf0_row8_col0" class="data row8 col0" >Victoria</td>
+      <td id="T_f5cf0_row8_col1" class="data row8 col1" >47,660,014</td>
     </tr>
     <tr>
-      <td id="T_b4998_row9_col0" class="data row9 col0" >Western Australia</td>
-      <td id="T_b4998_row9_col1" class="data row9 col1" >25,369,631</td>
+      <td id="T_f5cf0_row9_col0" class="data row9 col0" >Western Australia</td>
+      <td id="T_f5cf0_row9_col1" class="data row9 col1" >25,369,631</td>
     </tr>
   </tbody>
 </table>
@@ -948,7 +944,7 @@ document.write(`
 </figure>
 </section>
 <section id="get-positional-information-from-ocr">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">Get positional information from OCR</a><a class="headerlink" href="#get-positional-information-from-ocr" title="Link to this heading">#</a></h3>
+<h3>Get positional information from OCR<a class="headerlink" href="#get-positional-information-from-ocr" title="Link to this heading">#</a></h3>
 <p>The OCR process generates some article metadata that is not available through the Trove API. As well as extracting text from the page images, the OCR process captures positional information that relates blocks of text to their location within the original image.</p>
 <p>Some of this positional information can be scraped from the Trove web site, enabling you to locate individual lines of text, and, by combining their coordinates, draw a bounding box around a complete article. This method is explained in <a class="reference internal" href="../how-to/get-ocr-coordinates.html"><span class="doc std std-doc">HOW TO: Get information about the position of OCRd newspaper text</span></a>.</p>
 <figure class="align-default" id="newspaper-article-coords">
@@ -961,7 +957,7 @@ document.write(`
 </section>
 </section>
 <section id="article-text">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Article text</a><a class="headerlink" href="#article-text" title="Link to this heading">#</a></h2>
+<span id="newspapers-data-articles-text"></span><h2>Article text<a class="headerlink" href="#article-text" title="Link to this heading">#</a></h2>
 <p>Trove provides the full text of articles for download. This makes it possible to use natural language processing and other computational methods to analyse the contents of newspapers.</p>
 <p>There are actually three sources of newspaper article text:</p>
 <ul class="simple">
@@ -971,7 +967,7 @@ document.write(`
 </ul>
 <p>The article title displayed in the web interface and available from the <code class="docutils literal notranslate"><span class="pre">heading</span></code> field in API results is the manually transcribed version, while the full text download is the OCRd text with any user corrections. That’s why there can be differences between the two.</p>
 <section id="including-article-text-in-api-results">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">Including article text in API results</a><a class="headerlink" href="#including-article-text-in-api-results" title="Link to this heading">#</a></h3>
+<h3>Including article text in API results<a class="headerlink" href="#including-article-text-in-api-results" title="Link to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="seealso admonition">
@@ -991,17 +987,17 @@ document.write(`
 </section>
 </section>
 <section id="images-and-pdfs-of-articles">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Images and PDFs of articles</a><a class="headerlink" href="#images-and-pdfs-of-articles" title="Link to this heading">#</a></h2>
+<h2>Images and PDFs of articles<a class="headerlink" href="#images-and-pdfs-of-articles" title="Link to this heading">#</a></h2>
 <p>While you can download article images (embedded in an HTML page) and PDFs from the Trove web interface, there’s no direct mechanism for accessing them via the API. This makes it difficult to automate downloads, assemble image datasets, and build image processing pipelines. Fortunately, there are a few handy workarounds you can use.</p>
 <section id="downloading-article-pdfs">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Downloading article PDFs</a><a class="headerlink" href="#downloading-article-pdfs" title="Link to this heading">#</a></h3>
+<h3>Downloading article PDFs<a class="headerlink" href="#downloading-article-pdfs" title="Link to this heading">#</a></h3>
 <p>Getting PDFs of full newspaper pages is easy. If you set the <code class="docutils literal notranslate"><span class="pre">reclevel</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">full</span></code> in your API request, the response will include a <code class="docutils literal notranslate"><span class="pre">pdf</span></code> field with direct links to download the PDFs of all pages on which the article appeared.</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fnewspaper%2F217926119%3Fencoding%3Djson%26reclevel%3Dfull&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>But what if you don’t want the complete page? Unfortunately, it’s not just a matter of finding the right url. If you peek behind the web interface to see what happens when you click the download button, you’ll see that it’s a multi-step process. First the interface sends off a request to generate the article PDF and gets back a token. It then uses that token to check with the Trove backend to see when the PDF generation is finished. When the backend signals the PDF is ready, the interface uses the token to download it. Complicated huh?</p>
 <p>If you want to automate the download of article PDFs, you’ll need to reproduce these steps. There’s an example of how to do this with Python in <a class="reference internal" href="../how-to/get-newspaper-issue-article-pdfs.html"><span class="doc std std-doc">HOW TO: Get a newspaper issue or article as a PDF</span></a>.</p>
 </section>
 <section id="save-articles-as-images">
-<span id="articles-as-images"></span><h3><a class="toc-backref" href="#id18" role="doc-backlink">Save articles as images</a><a class="headerlink" href="#save-articles-as-images" title="Link to this heading">#</a></h3>
+<span id="articles-as-images"></span><h3>Save articles as images<a class="headerlink" href="#save-articles-as-images" title="Link to this heading">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -1013,11 +1009,11 @@ document.write(`
 <p>As described above, it’s possible the extract the positional coordinates of an article from the web interface. It’s also possible to download a high-resolution image of a page. By putting the two together you can crop an article image from the full page. This <a class="reference external" href="https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image/">method is fully documented</a> in the GLAM Workbench.</p>
 </section>
 <section id="save-article-illustrations-as-images">
-<span id="illustrations-as-images"></span><h3><a class="toc-backref" href="#id19" role="doc-backlink">Save article illustrations as images</a><a class="headerlink" href="#save-article-illustrations-as-images" title="Link to this heading">#</a></h3>
+<span id="illustrations-as-images"></span><h3>Save article illustrations as images<a class="headerlink" href="#save-article-illustrations-as-images" title="Link to this heading">#</a></h3>
 <p><mark>==I should probably add a GW notebook for this – some of the necessary code is in the save a thumbnail nb==</mark></p>
 </section>
 <section id="save-words-as-images">
-<span id="words-as-images"></span><h3><a class="toc-backref" href="#id20" role="doc-backlink">Save words as images</a><a class="headerlink" href="#save-words-as-images" title="Link to this heading">#</a></h3>
+<span id="words-as-images"></span><h3>Save words as images<a class="headerlink" href="#save-words-as-images" title="Link to this heading">#</a></h3>
 <p>By using a variation on the method described above, you can even save images of individual words! As explained in <a class="reference internal" href="../how-to/get-ocr-coordinates.html"><span class="doc std std-doc">HOW TO: Get information about the position of OCRd newspaper text</span></a>, the secret is to modify an article’s url and set the <code class="docutils literal notranslate"><span class="pre">searchTerm</span></code> parameter to the word you want to save. This will highlight the word wherever it appears in the article. You can then scrape the coordinates of the highlighted words, and crop them from the full page image. This method is used in the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-newspapers/trove-newspapers-scissors-and-paste/">Create ‘scissors and paste’ messages from Trove newspaper articles</a> to generate images like this!</p>
 <p><img alt="Scissors and paste style message created from snipped words: &quot;Help trapped inside Trove cannot escape.&quot;" src="../../_images/trapped-trove.jpg" /></p>
 </section>
