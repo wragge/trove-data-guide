@@ -135,8 +135,8 @@ parts:
     chapters:
       - file: pathways/index
         sections:
-          - file: pathways/analysing-texts
-          - file: pathways/using-images
+          - file: pathways/text
+          - file: pathways/images
           - file: pathways/structured-data
           - file: pathways/geospatial
           - file: pathways/networks

@@ -255,7 +255,7 @@ df_titles.shape[0]
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-There's also some inconsistencies in the fields returned by the `magazine/titles` endpoint. Every record has an `id`, `title`, and `troveUrl` field, but other fields are not always included. Here's the percentage of missing values for each field. 
+There's also some inconsistencies in the fields returned by the `magazine/titles` endpoint. Every record has an `id`, `title`, and `troveUrl` field, but other fields are not always included. Here's the percentage of missing values for each field.
 
 ```{code-cell} ipython3
 ---
@@ -591,6 +591,7 @@ All of this means that if you're assembling a dataset of periodical articles fro
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:periodicals:data:text)=
 ## Text
 
 ````{margin}
@@ -689,6 +690,7 @@ When Trove's [digital book & journal viewer](interfaces:digitised-journal-viewer
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:periodicals:data:images)=
 ## Images
 
 There are two types of images you can obtain from periodicals:

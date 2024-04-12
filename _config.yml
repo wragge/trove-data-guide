@@ -26,6 +26,8 @@ parse:
     # - attrs_block
   myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
+  myst_substitutions:
+    gw: "{bdg-primary}`GLAM Workbench`"
   # myst_heading_anchors: 5
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

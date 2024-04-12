@@ -13,20 +13,39 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# Analysing texts
+# Text
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Data sources
+## Text in Trove
 
-- [OCRd text from Trove books and ephemera](https://glam-workbench.net/trove-books/ocrd-text-from-trove-books/) (GLAM Workbench)
-- [OCRd text from Trove digitised journals](https://glam-workbench.net/trove-journals/ocrd-text-all-journals/) (GLAM Workbench)
+### Documentation
+
+- OCRd text from digitised newspapers
+  - [Articles](newspapers:data:articles:text)
+  - [Pages](newspapers:data:pages:text)
+  - [Issues](issue-text)
+  - [Titles](newspapers:data:titles:text)
+- [OCRd text from digitised periodicals](digitised:periodicals:data:text)
+- [Transcripts and summaries from oral histories](oral-histories-transcripts)
+
+### Pre-harvested datasets
+
+- [OCRd text from Trove books and ephemera](https://glam-workbench.net/trove-books/ocrd-text-from-trove-books/) {{gw}}
+- [OCRd text from Trove digitised journals](https://glam-workbench.net/trove-journals/ocrd-text-all-journals/) {{gw}}
+
+### Creating datasets
+
+- [Trove Newspaper Harvester](https://glam-workbench.net/trove-harvester/) {{gw}}
+- [Get OCRd text from a digitised journal in Trove](https://glam-workbench.net/trove-journals/get-ocrd-text-from-digitised-journal/) {{gw}}
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Tools and resources
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+### ARDC Community Data Lab
 
 `````{grid}
 :gutter: 3
@@ -52,19 +71,6 @@ The Stylometry Intelligent Archive (SIA) provides researchers with a toolkit for
 +++
 
 ```{button-link} https://systemik-solutions.github.io/sia_site/intro.html
-:color: primary
-More info
-```
-````
-
-````{grid-item-card} Voyant Tools
-
-![Voyant logo](/images/voyant-see.png)
-
-Voyant Tools is a web-based reading and analysis environment for digital texts.
-+++
-
-```{button-link} https://voyant-tools.org/
 :color: primary
 More info
 ```

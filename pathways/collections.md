@@ -11,7 +11,9 @@ kernelspec:
   name: python3
 ---
 
-# Networks and relationships
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+# Creating collections
 
 +++
 
