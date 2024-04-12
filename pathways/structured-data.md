@@ -11,13 +11,15 @@ kernelspec:
   name: python3
 ---
 
-# Creating collections
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-+++
+# Structured data
 
-## Data sources
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-+++
+## Structured data in Trove
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Tools and resources
 

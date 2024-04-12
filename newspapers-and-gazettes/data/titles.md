@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -328,6 +328,7 @@ The raw number and proportion of articles containing the term 'worker' by year i
 
 +++
 
+(newspapers:data:titles:text)=
 ## Title text
 
 With the exception of some Government Gazettes which are available as [bulk downloads](/accessing-data/downloadable-datasets), there's no direct way of accessing all the text of a title. You'd need to use the `/result` endpoint to assemble a collection of articles and then aggregate the OCRd text from the individual articles. This could be done [issue by issue](https://glam-workbench.net/trove-harvester/), or by setting the `l-title` facet without a search query, and then [harvesting the complete result set](/accessing-data/how-to/harvest-complete-results).

@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Geospatial data
+# Maps and places
 
 +++
 

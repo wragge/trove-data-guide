@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -21,10 +21,9 @@ kernelspec:
 
 +++
 
-
-
 ```{contents}
 :local:
+:backlinks: None
 ```
 
 ```{code-cell} ipython3
@@ -425,6 +424,7 @@ You can use this positional information to [extract images of articles](articles
 
 +++
 
+(newspapers:data:articles:text)=
 ## Article text
 
 +++
