@@ -11,15 +11,33 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Maps and places
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Data sources
+## Maps and place data in Trove
 
-+++
+### Documentation
+
+### Pre-harvested datasets
+
+- [Trove digitised maps metadata](https://glam-workbench.net/trove-maps/single-maps-data/) {{gw}}
+- [Trove digitised maps – coordinates](https://glam-workbench.net/trove-maps/single-maps-coordinates-data/) {{gw}}
+- Trove newspaper publication places CSV
+
+### Creating datasets
+
+- [MARC Geographic Areas – Wikidata mappings](https://github.com/GLAM-Workbench/marc-geographicareas)
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Tools and resources
+
+### ARDC Community Data Lab
+
+These tools are developed, maintained or supported by the Community Data Lab or other projects within the HASS&I Research Data Commons.
 
 `````{grid}
 :gutter: 3
@@ -48,6 +66,11 @@ More info
 ```
 ````
 `````
+
+### Other tools and resources
+
+- [TAPoR 3: Discover research tools for studying texts](https://tapor.ca/home)
+- [SSH Open Marketplace](https://marketplace.sshopencloud.eu/)
 
 +++
 
