@@ -15,6 +15,14 @@ kernelspec:
 
 # Text
 
+````{card}
+On this page
+
+```{contents}
+:local:
+:backlinks: None
+```
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Text in Trove

@@ -17,6 +17,7 @@ kernelspec:
 
 ```{contents}
 :local:
+:backlinks: None
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
