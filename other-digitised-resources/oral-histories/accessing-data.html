@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/oral-histories/accessing-data.9056e5a3-7cfb-4036-8783-4dbaf4d2c25f.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/oral-histories/accessing-data.ce8a57e2-03b9-4138-bdeb-bbc9a3824786.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/oral-histories/accessing-data';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -522,7 +522,7 @@ document.write(`
 </ul>
 </nav>
 <section id="identifiers">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Identifiers</a><a class="headerlink" href="#identifiers" title="Link to this heading">#</a></h2>
+<h2>Identifiers<a class="headerlink" href="#identifiers" title="Link to this heading">#</a></h2>
 <p>Digitised oral histories are uniquely identified by a <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier, for example: <code class="docutils literal notranslate"><span class="pre">nla.obj-220905784</span></code>.</p>
 <p>You can find these identifiers in the web interface and in API results. In the web interface, for example, the ‘Listen’ link from <a class="reference external" href="https://trove.nla.gov.au/work/245550803">this oral history record</a> goes to the url <a class="reference external" href="https://nla.gov.au/nla.obj-220905784">https://nla.gov.au/nla.obj-220905784</a> which opens the audio player.</p>
 <p>If you’re using the API, the digital object url will be in the <code class="docutils literal notranslate"><span class="pre">identifier</span></code> field of the work or version, with a <code class="docutils literal notranslate"><span class="pre">linktype</span></code> value equal to <code class="docutils literal notranslate"><span class="pre">fulltext</span></code>.</p>
@@ -535,7 +535,7 @@ document.write(`
 <p>You can use this identifier to access additional metadata and download transcripts.</p>
 </section>
 <section id="types-of-data">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Types of data</a><a class="headerlink" href="#types-of-data" title="Link to this heading">#</a></h2>
+<h2>Types of data<a class="headerlink" href="#types-of-data" title="Link to this heading">#</a></h2>
 <p>There are three types of data from the NLA’s digitised oral histories that you can download:</p>
 <ul class="simple">
 <li><p>metadata (available from the Trove API and embedded within the audio player)</p></li>
@@ -545,7 +545,7 @@ document.write(`
 <p>A single oral history can be recorded across multiple sessions. There are separate audio files for each session, but summaries and transcripts are combined into a single text file.</p>
 </section>
 <section id="metadata">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Metadata</a><a class="headerlink" href="#metadata" title="Link to this heading">#</a></h2>
+<h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -554,11 +554,11 @@ document.write(`
 </div>
 </aside>
 <section id="downloadable-dataset">
-<span id="oral-histories-downloadable-data"></span><h3><a class="toc-backref" href="#id5" role="doc-backlink">Downloadable dataset</a><a class="headerlink" href="#downloadable-dataset" title="Link to this heading">#</a></h3>
+<span id="oral-histories-downloadable-data"></span><h3>Downloadable dataset<a class="headerlink" href="#downloadable-dataset" title="Link to this heading">#</a></h3>
 <p>A <a class="reference external" href="https://glam-workbench.net/trove-music/trove-oral-histories/">CSV file containing details of oral histories</a> from the NLA collection (both online and not online) harvested from Trove is available from the GLAM Workbench. You can also <a class="reference external" href="https://glam-workbench.net/datasette-lite/?csv=https://github.com/GLAM-Workbench/trove-oral-histories-data/blob/main/trove-oral-histories.csv#/data/trove-oral-histories">explore the data</a> using Datasette.</p>
 </section>
 <section id="search-results-from-the-api">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Search results from the API</a><a class="headerlink" href="#search-results-from-the-api" title="Link to this heading">#</a></h3>
+<h3>Search results from the API<a class="headerlink" href="#search-results-from-the-api" title="Link to this heading">#</a></h3>
 <p>As <a class="reference internal" href="overview.html#finding-oral-histories"><span class="std std-ref">described elsewhere</span></a>, you can find details of oral histories from the NLA collection that are available online by searching for <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code> in the <code class="docutils literal notranslate"><span class="pre">music</span></code> category, with the <code class="docutils literal notranslate"><span class="pre">availability</span></code> facet set to <code class="docutils literal notranslate"><span class="pre">y</span></code>, and the <code class="docutils literal notranslate"><span class="pre">format</span></code> facet set to <code class="docutils literal notranslate"><span class="pre">Sound/Interview,</span> <span class="pre">lecture,</span> <span class="pre">talk</span></code>.</p>
 <p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj%22%26category%3Dmusic%26l-format%3DSound%2FInterview%2C+lecture%2C+talk%26l-availability%3Dy%26encoding%3Djson&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
 <p>Start with this search then add additional keywords or filters to limit the results according to your research needs. For example, you could use the <code class="docutils literal notranslate"><span class="pre">series</span></code> index to find results from the Hazel de Berg collection.</p>
@@ -573,7 +573,7 @@ document.write(`
 <p>To make sure you get all relevant results, I’d recommend harvesting all the version data from the work records and dealing with duplicates at the end. This strategy is described and documented in <a class="reference internal" href="../how-to/harvest-digitised-resources.html"><span class="doc std std-doc">HOW TO: Harvest data relating to digitised resources</span></a>.</p>
 </section>
 <section id="additional-metadata-from-audio-player">
-<span id="additional-metadata-audio-player"></span><h3><a class="toc-backref" href="#id7" role="doc-backlink">Additional metadata from audio player</a><a class="headerlink" href="#additional-metadata-from-audio-player" title="Link to this heading">#</a></h3>
+<span id="additional-metadata-audio-player"></span><h3>Additional metadata from audio player<a class="headerlink" href="#additional-metadata-from-audio-player" title="Link to this heading">#</a></h3>
 <p>Trove’s audio player displays some metadata that isn’t included in the API records. This can include:</p>
 <ul class="simple">
 <li><p>a descriptive note with the date and place of the recording</p></li>
@@ -589,7 +589,7 @@ document.write(`
 <p>This information could be useful, and you might want to use it to enrich the records harvested from the API. Some example code that you can use to scrape this metadata using the digital object url of an oral history record is included in <a class="reference internal" href="../how-to/scrape-metadata-audio-player.html"><span class="doc std std-doc">HOW TO: Scrape metadata from the Trove audio player</span></a>.</p>
 </section>
 <section id="details-of-available-downloads">
-<span id="id1"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Details of available downloads</a><a class="headerlink" href="#details-of-available-downloads" title="Link to this heading">#</a></h3>
+<span id="id1"></span><h3>Details of available downloads<a class="headerlink" href="#details-of-available-downloads" title="Link to this heading">#</a></h3>
 <p>When you click on the ‘Download’ button in the audio player, a window pops up with links to download the summary/transcript and any audio files. The contents of this pop-up are generated from a Javascript file. It’s possible to access this Javascript file directly and extract details about available downloads.</p>
 <p>The Javascript file includes the following fields:</p>
 <ul class="simple">
@@ -728,7 +728,7 @@ Total duration: 78024 seconds
 </section>
 </section>
 <section id="transcripts-and-summaries">
-<span id="oral-histories-transcripts"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">Transcripts and summaries</a><a class="headerlink" href="#transcripts-and-summaries" title="Link to this heading">#</a></h2>
+<span id="oral-histories-transcripts"></span><h2>Transcripts and summaries<a class="headerlink" href="#transcripts-and-summaries" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -748,7 +748,7 @@ Total duration: 78024 seconds
 </ul>
 </section>
 <section id="audio-files">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Audio files</a><a class="headerlink" href="#audio-files" title="Link to this heading">#</a></h2>
+<h2>Audio files<a class="headerlink" href="#audio-files" title="Link to this heading">#</a></h2>
 <p>Each audio file has it’s own <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier. Using this identifier, you can download the file at a variety of bitrates.</p>
 <p>The url pattern to use when downloading audio files is:</p>
 <p><code class="docutils literal notranslate"><span class="pre">https://nla.gov.au/tarkine/listen/download/[NLA.OBJ</span> <span class="pre">ID]?copyRole=l[BITRATE</span> <span class="pre">LEVEL]</span></code></p>

@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-ocr-layout-data.f850a3c0-079c-4b59-b2eb-38e29e4b6cb8.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-ocr-layout-data.59698359-a546-466d-8aed-a82ccba715b9.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/get-ocr-layout-data';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -499,6 +499,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-get-and-use-ocr-data-from-a-book-or-periodical-page">
 <h1><span class="section-number">23.4. </span>HOW TO: Get and use OCR data from a book or periodical page<a class="headerlink" href="#how-to-get-and-use-ocr-data-from-a-book-or-periodical-page" title="Link to this heading">#</a></h1>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">On this page</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-structure-of-the-data" id="id1">The structure of the data</a></p></li>
+<li><p><a class="reference internal" href="#extract-blocks-from-the-ocr-data" id="id2">Extract blocks from the OCR data</a></p></li>
+<li><p><a class="reference internal" href="#visualise-page-layout" id="id3">Visualise page layout</a></p></li>
+<li><p><a class="reference internal" href="#crop-images-from-pages-using-the-ocr-coordinates" id="id4">Crop images from pages using the OCR coordinates</a></p></li>
+<li><p><a class="reference internal" href="#play-with-words" id="id5">Play with words</a></p></li>
+</ul>
+</nav>
+</div>
+</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -716,7 +730,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="layout-img">
 <a class="reference internal image-reference" href="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png"><img alt="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png" src="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23.1 </span><span class="caption-text">OCR block layout of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#layout-img" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23.2 </span><span class="caption-text">OCR block layout of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#layout-img" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -724,7 +738,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="nla-obj-326405522">
 <a class="reference internal image-reference" href="../../_images/nla.obj-326405522.jpg"><img alt="../../_images/nla.obj-326405522.jpg" src="../../_images/nla.obj-326405522.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23.2 </span><span class="caption-text">Image of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#nla-obj-326405522" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23.3 </span><span class="caption-text">Image of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#nla-obj-326405522" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -860,7 +874,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="ill-img">
 <a class="reference internal image-reference" href="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png"><img alt="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png" src="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23.3 </span><span class="caption-text">Cropped illustration</span><a class="headerlink" href="#ill-img" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23.4 </span><span class="caption-text">Cropped illustration</span><a class="headerlink" href="#ill-img" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -868,7 +882,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="nla-obj-375667954">
 <a class="reference internal image-reference" href="../../_images/nla.obj-375667954.jpg"><img alt="../../_images/nla.obj-375667954.jpg" src="../../_images/nla.obj-375667954.jpg" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23.4 </span><span class="caption-text">Complete image of page <a class="reference external" href="https://nla.gov.au/nla.obj-375667954">nla.obj-375667954</a></span><a class="headerlink" href="#nla-obj-375667954" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23.5 </span><span class="caption-text">Complete image of page <a class="reference external" href="https://nla.gov.au/nla.obj-375667954">nla.obj-375667954</a></span><a class="headerlink" href="#nla-obj-375667954" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -936,7 +950,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="redacted-image">
 <a class="reference internal image-reference" href="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png"><img alt="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png" src="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23.5 </span><span class="caption-text">Some randomly-generated redaction art!</span><a class="headerlink" href="#redacted-image" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23.6 </span><span class="caption-text">Some randomly-generated redaction art!</span><a class="headerlink" href="#redacted-image" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
