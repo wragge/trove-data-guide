@@ -25,6 +25,15 @@ from myst_nb import glue
 
 # HOW TO: Get and use OCR data from a book or periodical page
 
+````{card}
+On this page
+
+```{contents}
+:local:
+:backlinks: None
+```
+````
+
 ````{margin}
 ```{seealso}
 For information on getting positional information from newspaper articles see [](/newspapers-and-gazettes/how-to/get-ocr-coordinates.md).

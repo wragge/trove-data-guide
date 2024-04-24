@@ -25,7 +25,7 @@ tags: [remove-cell]
 from myst_nb import glue
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"editable": true, "slideshow": {"slide_type": ""}, "jp-MarkdownHeadingCollapsed": true}
 
 ````{margin}
 ```{seealso}

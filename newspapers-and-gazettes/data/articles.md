@@ -422,7 +422,7 @@ Example of a bounding box around an article, created by scraping positional info
 
 You can use this positional information to [extract images of articles](articles-as-images), or even [individual words](words-as-images), as explained below.
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 (newspapers:data:articles:text)=
 ## Article text
