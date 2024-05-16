@@ -28,7 +28,7 @@ parse:
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
   myst_heading_anchors: 5
   myst_substitutions:
-    gw: "{bdg-primary}`GLAM Workbench"
+    gw: "{bdg-primary}`GW"
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:

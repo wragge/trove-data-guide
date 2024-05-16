@@ -48,10 +48,16 @@ This method is consistent across most formats, so you can develop processes that
 
 <mark>==Code example==</mark>
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"editable": true, "slideshow": {"slide_type": ""}, "jp-MarkdownHeadingCollapsed": true}
 
 (download-high-res-images)=
 ## Downloading high-resolution images individually
+
+````{margin}
+```{seealso}
+This method is used in a number of GLAM Workbench notebooks including [Harvest illustrations from periodicals](https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/) and [Download a collection of digitised images](https://glam-workbench.net/trove-images/download-image-collection/).
+```
+````
 
 The method described above has a couple of problems when it comes to downloading images. The first is that all the requested images are delivered in a single `zip` file. If you're requested images of all the pages in a book, this file could get very large. The second problem is that the built-in download link doesn't always provide images at the highest possible resolution.
 
@@ -66,7 +72,7 @@ But how do you get the individual identifiers for all the pages in a book, or al
 - in books, periodicals, and other works with consecutive pages it's in a [block of embedded JSON metadata](extract-embedded-metadata.md)
 - in collections of images, maps, and manuscripts you need to [extract the list of identifiers from the collection's pop-up browse screen](/other-digitised-resources/how-to/get-collection-items.md)
 
-Once you have a list of identifiers, you can loop through them, saving each image. 
+Once you have a list of identifiers, you can loop through them, saving each image.
 
 ```{code-cell} ipython3
 

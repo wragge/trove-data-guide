@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -15,7 +15,7 @@ kernelspec:
 
 # Understanding and using digitised resources
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ````{card} On this page
 This section describes how to access data from resources (other than newspapers and gazettes) that have been digitised by the NLA and partners and delivered through Trove. This includes things likes books, periodicals, photographs, maps, oral histories, and manuscript collections.
@@ -54,7 +54,7 @@ Sometimes the digitised resources you find are not individual items, but *collec
 
 The arrangement of items and collections is most complex in the *Diaries, Letters & Archives* category where hierarchical finding aids have been flattened out to aid discovery of their digitised contents. Collections there can contain a confusing mix of items and nested collections.
 
-Once you've found a digitised item or collection, Trove provides a link to access the resource in one of a number of different 'viewers'. While these viewers share many characteristics, there can be differences in the way you navigate and download resources. This, in turn, affects your ability to access the underlying data.
+Once you've found a digitised item or collection, Trove provides a link to access the resource in one of [a number of different 'viewers'](whatis:interfaces:digitised). While these viewers share many characteristics, there can be differences in the way you navigate and download resources. This, in turn, affects your ability to [access the underlying data](accessing-data.md).
 
 <!---
 

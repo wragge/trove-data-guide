@@ -87,6 +87,7 @@ parts:
     maxdepth: 3
     chapters:
       - file: other-digitised-resources/index
+      - file: other-digitised-resources/accessing-data
       - file: other-digitised-resources/books/index
         title: Books
         sections:
@@ -134,13 +135,22 @@ parts:
     maxdepth: 3
     chapters:
       - file: pathways/index
+      - file: pathways/text/text
+        title: Text
         sections:
-          - file: pathways/text
-          - file: pathways/images
-          - file: pathways/structured-data
-          - file: pathways/geospatial
-          - file: pathways/networks
-          - file: pathways/collections
+          - file: pathways/text/data-sources
+          - file: pathways/text/tools
+          - file: pathways/text/examples
+      - file: pathways/images/images
+        title: Images
+        sections:
+          - file: pathways/images/data-sources
+          - file: pathways/images/tools
+          - file: pathways/images/examples
+      - file: pathways/structured-data
+      - file: pathways/geospatial
+      - file: pathways/networks
+      - file: pathways/collections
   - chapters:
 #    - file: glossary
 #    - file: genindex
