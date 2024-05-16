@@ -177,6 +177,7 @@ View a single article
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(whatis:interfaces:digitised)=
 ## Digitised content viewers
 
 There are different viewers for different types of digitised content. Most of the viewers share a basic design and set of functions, however, the audio player is quite distinct.

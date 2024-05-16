@@ -13,7 +13,17 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# HOW TO: Extract additional metadata from the web page of a digitised work
+# HOW TO: Extract additional metadata from the digitised resource viewer
+
+````{card}
+On this page
+
+
+```{contents}
+:local:
+:backlinks: None
+```
+````
 
 ```{code-cell} ipython3
 ---
@@ -25,7 +35,7 @@ tags: [remove-cell]
 from myst_nb import glue
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}, "jp-MarkdownHeadingCollapsed": true}
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ````{margin}
 ```{seealso}
@@ -461,7 +471,7 @@ page_ids[:5]
 
 These page identifiers can be used to download images of the pages.
 
-Here's a function you can use to get the dimensions of the `access` copy of a page.
+Here's a function you can use to get the dimensions of the `access` copy of a page. Note, however, that the downloadble versions of page images seem to limited to a maximum of 5000 pixels on the longest dimension. It's important to know the difference between the size of the `access` copy and the downloaded page if you're going to make use of [the page's OCR layout data](get-ocr-layout-data.md).
 
 ```{code-cell} ipython3
 ---
@@ -476,8 +486,10 @@ def get_page_size(page_id):
     metadata = get_metadata(page_id)
     for page in metadata["children"]["page"]:
         if page["pid"] == page_id:
-            break
-    return page["copies"][0]["technicalmetadata"]
+            for copy in page["copies"]:
+                if copy["copyrole"] == "access":
+                    break
+    return copy["technicalmetadata"]
 
 get_page_size("nla.obj-362059904")
 ```
@@ -501,4 +513,57 @@ md = ""
 for article in issue_metadata["children"]["article"]:
     md += f"* [{article['title']}](https://nla.gov.au/{article['pid']})\n"
 display(Markdown(md))
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+(digitised:howto:embedded:images)=
+## Get information about images and maps
+
+The digitised image and map viewers include information about digitised images in the `copies` field. This function returns the details of the image with the specified role – defaulting to the `access` version.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+def get_image_copy(image_id, role="access"):
+    """
+    Get image copy details for a particular copy role.
+    """
+    metadata = get_metadata(image_id)
+    for copy in metadata["copies"]:
+        if copy["copyrole"] == role:
+            return copy
+
+get_image_copy("nla.obj-232162256")
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+You might want to check whether a high-resolution TIFF version is available for download. To do this you would look for a version with a `copyrole` value set to `m`. You can then check the `access` value to see whether it is set to `true` (can be downloaded) or `false` (can't be downloaded).
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+tiff_copy = get_image_copy("nla.obj-232162256", role="m")
+
+if tiff_copy["access"] == "true":
+    download_url = "https://nla.gov.au/nla.obj-232162256/m"
+    print(f"Download: {download_url}")
+else:
+    print("Cannot be downloaded")
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+
 ```
