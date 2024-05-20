@@ -147,6 +147,7 @@ parts:
           - file: pathways/images/data-sources
           - file: pathways/images/tools
           - file: pathways/images/examples
+          - file: pathways/images/tropy
       - file: pathways/structured-data
       - file: pathways/geospatial
       - file: pathways/networks
