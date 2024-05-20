@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Working with a Trove collection in Tropy &#8212; Trove Data Guide</title>
+    <title>27.4. Working with a Trove collection in Tropy &#8212; Trove Data Guide</title>
   
   
   
@@ -64,11 +64,13 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/pathways/images/tropy.f03791dd-6d30-4cf2-b1f6-43ef260c0d38.js"></script>
+    <script defer="defer" src="../../_static/tippy/pathways/images/tropy.541624f6-bce9-4b0b-b721-67ba3c2dd1cd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pathways/images/tropy';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="28. Structured data" href="../structured-data.html" />
+    <link rel="prev" title="27.3. Tutorials and examples" href="examples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -135,8 +137,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -274,7 +274,7 @@
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Research pathways</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">25. Research pathways</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../text/text.html">26. Text</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../text/data-sources.html">26.1. Data sources</a></li>
@@ -282,10 +282,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../text/examples.html">26.3. Tutorials and examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="images.html">27. Images</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="images.html">27. Images</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="data-sources.html">27.1. Data sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html">27.2. Tools and resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">27.3. Tutorials and examples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">27.4. Working with a Trove collection in Tropy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../structured-data.html">28. Structured data</a></li>
@@ -498,6 +499,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-collections-nla-obj-identifier">Getting the collection’s <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-a-trove-collection-as-an-iiif-manifest">Saving a Trove collection as an IIIF manifest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-iiif">What is IIIF?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebook">Running the notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ardc-binder">Using ARDC Binder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mybinder">Using MyBinder</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-notebook-in-jupyter-lab">Using the notebook in Jupyter Lab</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-tropy-and-the-iiif-manifest-plugin">Installing Tropy and the IIIF Manifest plugin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-tropy-optional">Configuring Tropy (optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-manifest-into-tropy">Importing the manifest into Tropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further">Going further</a></li>
 </ul>
             </nav>
         </div>
@@ -510,18 +526,35 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="working-with-a-trove-collection-in-tropy">
-<h1>Working with a Trove collection in Tropy<a class="headerlink" href="#working-with-a-trove-collection-in-tropy" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">27.4. </span>Working with a Trove collection in Tropy<a class="headerlink" href="#working-with-a-trove-collection-in-tropy" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#scenario" id="id1">Scenario</a></p></li>
-<li><p><a class="reference internal" href="#tools-and-standards" id="id2">Tools and standards</a></p></li>
-<li><p><a class="reference internal" href="#method" id="id3">Method</a></p></li>
-<li><p><a class="reference internal" href="#identifying-a-collection-in-trove" id="id4">Identifying a collection in Trove</a></p>
+<li><p><a class="reference internal" href="#scenario" id="id2">Scenario</a></p></li>
+<li><p><a class="reference internal" href="#tools-and-standards" id="id3">Tools and standards</a></p></li>
+<li><p><a class="reference internal" href="#method" id="id4">Method</a></p></li>
+<li><p><a class="reference internal" href="#identifying-a-collection-in-trove" id="id5">Identifying a collection in Trove</a></p>
 <ul>
-<li><p><a class="reference internal" href="#finding-collection-pages" id="id5">Finding collection pages</a></p></li>
-<li><p><a class="reference internal" href="#getting-the-collections-nla-obj-identifier" id="id6">Getting the collection’s <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier</a></p></li>
+<li><p><a class="reference internal" href="#finding-collection-pages" id="id6">Finding collection pages</a></p></li>
+<li><p><a class="reference internal" href="#getting-the-collections-nla-obj-identifier" id="id7">Getting the collection’s <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#saving-a-trove-collection-as-an-iiif-manifest" id="id8">Saving a Trove collection as an IIIF manifest</a></p>
+<ul>
+<li><p><a class="reference internal" href="#what-is-iiif" id="id9">What is IIIF?</a></p></li>
+<li><p><a class="reference internal" href="#running-the-notebook" id="id10">Running the notebook</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-ardc-binder" id="id11">Using ARDC Binder</a></p></li>
+<li><p><a class="reference internal" href="#using-mybinder" id="id12">Using MyBinder</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-the-notebook-in-jupyter-lab" id="id13">Using the notebook in Jupyter Lab</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#installing-tropy-and-the-iiif-manifest-plugin" id="id14">Installing Tropy and the IIIF Manifest plugin</a></p></li>
+<li><p><a class="reference internal" href="#configuring-tropy-optional" id="id15">Configuring Tropy (optional)</a></p></li>
+<li><p><a class="reference internal" href="#importing-the-manifest-into-tropy" id="id16">Importing the manifest into Tropy</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting" id="id17">Troubleshooting</a></p></li>
+<li><p><a class="reference internal" href="#going-further" id="id18">Going further</a></p></li>
 </ul>
 </nav>
 <section id="scenario">
@@ -593,14 +626,14 @@ Tropy</div>
 <figure class="align-default" id="collection-album-landing">
 <a class="reference internal image-reference" href="../../_images/collection-album-landing.png"><img alt="../../_images/collection-album-landing.png" src="../../_images/collection-album-landing.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">The landing page for the B.A.N.Z. Antarctic Research Expedition photographs (<a class="reference external" href="https://nla.gov.au/nla.obj-141170265">https://nla.gov.au/nla.obj-141170265</a>)</span><a class="headerlink" href="#collection-album-landing" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27.1 </span><span class="caption-text">The landing page for the B.A.N.Z. Antarctic Research Expedition photographs (<a class="reference external" href="https://nla.gov.au/nla.obj-141170265">https://nla.gov.au/nla.obj-141170265</a>)</span><a class="headerlink" href="#collection-album-landing" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If your search results lead to an item within a collection, rather than a landing page, you can usually navigate up the collection hierarchy by using the breadcrumb links.</p>
 <figure class="align-default" id="collection-breadcrumbs">
 <a class="reference internal image-reference" href="../../_images/collection-breadcrumbs.png"><img alt="../../_images/collection-breadcrumbs.png" src="../../_images/collection-breadcrumbs.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">An photo within the B.A.N.Z. Antarctic Research Expedition collection (<a class="reference external" href="https://nla.gov.au/nla.obj-141171021">https://nla.gov.au/nla.obj-141171021</a>) – clicking on the breadcrumb link will take you up to the collection landing page.</span><a class="headerlink" href="#collection-breadcrumbs" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27.2 </span><span class="caption-text">An photo within the B.A.N.Z. Antarctic Research Expedition collection (<a class="reference external" href="https://nla.gov.au/nla.obj-141171021">https://nla.gov.au/nla.obj-141171021</a>) – clicking on the breadcrumb link will take you up to the collection landing page.</span><a class="headerlink" href="#collection-breadcrumbs" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Collections can also include other collections. For example, the Barton Papers are divided into series, and each series has its own landing page. Here’s the landing page for <a class="reference external" href="https://nla.gov.au/nla.obj-224441858">Series 6, Papers relating to the Federation Campaign</a>. However, the finding aid only links to items within a series, not to the series landing page itself. To get to the series page from the finding aid, you need to go down the hierarchy to an item in the series, then back up the breadcrumbs trail.</p>
@@ -613,7 +646,7 @@ Tropy</div>
 <figure class="align-default" id="collection-cite-identifier">
 <a class="reference internal image-reference" href="../../_images/collection-cite-identifier.png"><img alt="../../_images/collection-cite-identifier.png" src="../../_images/collection-cite-identifier.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Clicking on the <strong>Cite</strong> button reveals the collection’s identifier.</span><a class="headerlink" href="#collection-cite-identifier" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27.3 </span><span class="caption-text">Clicking on the <strong>Cite</strong> button reveals the collection’s identifier.</span><a class="headerlink" href="#collection-cite-identifier" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You don’t need the full identifier url, just the section that starts with <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code>. So, in the example above, the identifier value would be <code class="docutils literal notranslate"><span class="pre">nla.obj-141170265</span></code>.</p>
@@ -621,11 +654,109 @@ Tropy</div>
 <figure class="align-default" id="collection-url-identifier">
 <a class="reference internal image-reference" href="../../_images/collection-url-identifier.png"><img alt="../../_images/collection-url-identifier.png" src="../../_images/collection-url-identifier.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Your browser’s location bar includes the identifier of the current page.</span><a class="headerlink" href="#collection-url-identifier" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27.4 </span><span class="caption-text">Your browser’s location bar includes the identifier of the current page.</span><a class="headerlink" href="#collection-url-identifier" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Copy the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> to use in the next step.</p>
 </section>
+</section>
+<section id="saving-a-trove-collection-as-an-iiif-manifest">
+<h2>Saving a Trove collection as an IIIF manifest<a class="headerlink" href="#saving-a-trove-collection-as-an-iiif-manifest" title="Link to this heading">#</a></h2>
+<p>The first step in importing Trove data into Tropy is to save the data in a format that Tropy understands. Tropy has plugins that enable it to import data from CSV files and IIIF manifests. You can save a Trove collection as an IIIF manifest using <a class="reference external" href="https://glam-workbench.net/trove-images/save-image-collection-iiif/">this noteboook</a> in the GLAM Workbench.</p>
+<section id="what-is-iiif">
+<h3>What is IIIF?<a class="headerlink" href="#what-is-iiif" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://iiif.io/">International Image Interoperability Framework</a>, more conveniently known as IIIF, develops open standards for sharing digital objects, such as images. IIIF platforms and standards are used by GLAM organisations around the world to deliver their image collections online.</p>
+<p>Once you have standards for sharing image metadata, people can build tools that work across collections. For example, <a class="reference external" href="https://universalviewer.io/">Universal Viewer</a> and <a class="reference external" href="https://projectmirador.org/">Mirador</a> are both richly featured, open source, community developed image viewing platforms.</p>
+<p>IIIF manifests are JSON files that describe a set of digital objects. They include technical information about the images and how to access them, as well as metadata describing their content and context. Everything you need to explore the images is packaged up in a single, standards based file. This means that if you point a manifest at tools like Universal Viewer and Mirador, they can present the images to users without any special configuration. Similarly, Tropy knows what to expect when you import data from an IIIF manifest.</p>
+<p>Unfortunately Trove doesn’t provide data using IIIF standards. Indeed, it doesn’t really supply any machine-readable data about the contents of digital collections. The GLAM Workbench notebook scrapes metadata from Trove’s digital collection viewer, reassembling it as a standard IIIF manifest.</p>
+</section>
+<section id="running-the-notebook">
+<h3>Running the notebook<a class="headerlink" href="#running-the-notebook" title="Link to this heading">#</a></h3>
+<p>Go to <a class="reference external" href="https://glam-workbench.net/trove-images/save-image-collection-iiif/">Save a collection of digitised images as an IIIF manifest</a> in the Trove images section of the GLAM Workbench.</p>
+<p>This notebook, like all GLAM Workbench notebooks, needs to be run in a customised computing environment. The easiest way to do this is through BinderHub. BinderHub is a cloud-based service that gets a notebook up and running by reading its requirements from a code repository, and creating the necessary environment. The GLAM Workbench is integrated with two BinderHub services:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ardc.edu.au/services/ardc-nectar-research-cloud/ardc-binderhub-service/">ARDC Binder</a> – based in Australia, requires login using university credentials</p></li>
+<li><p><a class="reference external" href="https://mybinder.org/">MyBinder</a> – international, no login required</p></li>
+</ul>
+<p>If you have a login at an Australian university or research agency, try the ARDC Binder service first. It’s a little more effort, but it’s usually faster and more reliable than the public MyBinder service which can have capacity issues.</p>
+<p>The GLAM Workbench displays a preview of the notebook, with options to run it using either the ARDC Binder of MyBinder service.</p>
+<figure class="align-default" id="gw-iiif-nb">
+<a class="reference internal image-reference" href="../../_images/gw-iiif-nb.png"><img alt="../../_images/gw-iiif-nb.png" src="../../_images/gw-iiif-nb.png" style="width: 600px;" /></a>
+</figure>
+<section id="using-ardc-binder">
+<h4>Using ARDC Binder<a class="headerlink" href="#using-ardc-binder" title="Link to this heading">#</a></h4>
+<p>To use the ARDC Binder service, click on the ARDC Binder tab under the notebook preview. You should see a big, blue <strong>Run live on ARDC Binder</strong> button. Click on the button to launch the Binder service.</p>
+<p>If this is the first time you’ve used the ARDC Binder service you’ll be asked to login using the Australian Access Federation (AAF).</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/ardc-binder-aaf-login.png"><img alt="../../_images/ardc-binder-aaf-login.png" src="../../_images/ardc-binder-aaf-login.png" style="width: 600px;" /></a>
+</figure>
+<p>Click on the <strong>Sign in with AAF/Tuakiri</strong> button. You’ll be asked to select either AAF or Tuakiri – select AAF.</p>
+<p>To sign in with AAF, select your institution from the list, then click the <strong>Continue to your organisation</strong> button.</p>
+<figure class="align-default" id="aaf-institutions-select">
+<a class="reference internal image-reference" href="../../_images/aaf-institutions-select.png"><img alt="../../_images/aaf-institutions-select.png" src="../../_images/aaf-institutions-select.png" style="width: 300px;" /></a>
+</figure>
+<p>You’ll be redirected to your insitution’s login screen. Log in using your usual credentials. Once you’ve logged in you’ll be redirected back to ARDC Binder and the notebook will start to load. You might have to wait a bit while a customised computing environment is prepared for you. If you see a message saying that things are taking a long time and there might be a problem, just ignore it. Eventually the notebook will load in the Jupyter Lab interface.</p>
+</section>
+<section id="using-mybinder">
+<h4>Using MyBinder<a class="headerlink" href="#using-mybinder" title="Link to this heading">#</a></h4>
+<figure class="align-default" id="mybinder-tab">
+<a class="reference internal image-reference" href="../../_images/mybinder-tab.png"><img alt="../../_images/mybinder-tab.png" src="../../_images/mybinder-tab.png" style="width: 600px;" /></a>
+</figure>
+<p>To use the MyBinder service, click on the MyBinder tab under the notebook preview. You should see a big, blue <strong>Run live on MyBinder</strong> button. Click on the button to launch the Binder service. No login is required, so MyBinder immediately starts building a customised computing environment. This can take a while, but eventually the notebook should load in the Jupyter Lab interface.</p>
+</section>
+</section>
+<section id="using-the-notebook-in-jupyter-lab">
+<h3>Using the notebook in Jupyter Lab<a class="headerlink" href="#using-the-notebook-in-jupyter-lab" title="Link to this heading">#</a></h3>
+<p>No matter what service you use to run the notebook, the result will be the same – the notebook will open in the Jupyter Lab interface.</p>
+<figure class="align-default" id="iiif-nb-jupyterlab">
+<a class="reference internal image-reference" href="../../_images/iiif-nb-jupyterlab.png"><img alt="../../_images/iiif-nb-jupyterlab.png" src="../../_images/iiif-nb-jupyterlab.png" style="width: 600px;" /></a>
+</figure>
+<p>The Jupyter Lab interface has two main panes – a file browser is on the left, while the current notebook is displayed in the main, central pane.</p>
+<p>Scroll down the notebook until you come to a line that reads <code class="docutils literal notranslate"><span class="pre">create_manifest_v3(&quot;nla.obj-140670968&quot;)</span></code>. You need to edit this line to save your collection for Tropy:</p>
+<ul class="simple">
+<li><p>click on the line of code, you’ll see the border of the cell is highlighted – this means it’s ready for editing</p></li>
+<li><p>change <code class="docutils literal notranslate"><span class="pre">create_manifest_v3</span></code> to <code class="docutils literal notranslate"><span class="pre">create_manifest_v2</span></code> (this tells the notebook to create a manifest that conforms to version 2 of the IIIF API)</p></li>
+<li><p>replace the <code class="docutils literal notranslate"><span class="pre">nla.obj-140670968</span></code> value with the identifier of the collection you want to harvest (keep the double quotes around the identifier)</p></li>
+</ul>
+<p>For example, the B.A.N.Z. Antarctic Research Expedition collection mentioned above has the identifier <code class="docutils literal notranslate"><span class="pre">nla.obj-141170265</span></code>. To tell the notebook to save this collection as an IIIF manifest, you need to change the line of code to <code class="docutils literal notranslate"><span class="pre">create_manifest_v2(&quot;nla.obj-141170265&quot;)</span></code>.</p>
+<figure class="align-default" id="create-manifest-after">
+<a class="reference internal image-reference" href="../../_images/create-manifest-after.png"><img alt="../../_images/create-manifest-after.png" src="../../_images/create-manifest-after.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.5 </span><span class="caption-text">Change <code class="docutils literal notranslate"><span class="pre">v3</span></code> to <code class="docutils literal notranslate"><span class="pre">v2</span></code> and insert your collection’s identifier as shown</span><a class="headerlink" href="#create-manifest-after" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can now start the harvest! From Jupyter Lab’s ‘Run’ menu select ‘Run all cells’. You’ll notice that the square brackets next to the line of code you edited will now contain an asterisk. This indicates the code is running. Once it’s finished, the asterisk will change to a number.</p>
+<p>The harvesting process gathers information from every item in the collection. This takes time. Depending on the size of the collection, it could take a few minutes, or more than an hour, to generate the IIIF manifest. You’ll know that the harvest has finished when the asterisk in the square brackets has changed to a number, and a new <code class="docutils literal notranslate"><span class="pre">manifests</span></code> folder has appeared in the file browser.</p>
+<figure class="align-default" id="iiif-manifests-folder">
+<a class="reference internal image-reference" href="../../_images/iiif-manifests-folder.png"><img alt="../../_images/iiif-manifests-folder.png" src="../../_images/iiif-manifests-folder.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.6 </span><span class="caption-text">Double click to open the folder</span><a class="headerlink" href="#iiif-manifests-folder" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once the harvest has finished, double click on the <code class="docutils literal notranslate"><span class="pre">manifests</span></code> folder to open it. Your newly-created IIIF manifest will be inside.</p>
+<figure class="align-default" id="iiif-manifest-download">
+<a class="reference internal image-reference" href="../../_images/iiif-manifest-download.png"><img alt="../../_images/iiif-manifest-download.png" src="../../_images/iiif-manifest-download.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.7 </span><span class="caption-text">Right click on the file</span><a class="headerlink" href="#iiif-manifest-download" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Right-click on the manifest file and select ‘Download’ from the menu. The manifest file will be saved to your local computer.</p>
+</section>
+</section>
+<section id="installing-tropy-and-the-iiif-manifest-plugin">
+<h2>Installing Tropy and the IIIF Manifest plugin<a class="headerlink" href="#installing-tropy-and-the-iiif-manifest-plugin" title="Link to this heading">#</a></h2>
+</section>
+<section id="configuring-tropy-optional">
+<h2>Configuring Tropy (optional)<a class="headerlink" href="#configuring-tropy-optional" title="Link to this heading">#</a></h2>
+</section>
+<section id="importing-the-manifest-into-tropy">
+<h2>Importing the manifest into Tropy<a class="headerlink" href="#importing-the-manifest-into-tropy" title="Link to this heading">#</a></h2>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+</section>
+<section id="going-further">
+<h2>Going further<a class="headerlink" href="#going-further" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -659,6 +790,24 @@ Tropy</div>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="examples.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">27.3. </span>Tutorials and examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../structured-data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">28. </span>Structured data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -683,6 +832,21 @@ Tropy</div>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-collections-nla-obj-identifier">Getting the collection’s <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-a-trove-collection-as-an-iiif-manifest">Saving a Trove collection as an IIIF manifest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-iiif">What is IIIF?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebook">Running the notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ardc-binder">Using ARDC Binder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mybinder">Using MyBinder</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-notebook-in-jupyter-lab">Using the notebook in Jupyter Lab</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-tropy-and-the-iiif-manifest-plugin">Installing Tropy and the IIIF Manifest plugin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-tropy-optional">Configuring Tropy (optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-manifest-into-tropy">Importing the manifest into Tropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further">Going further</a></li>
 </ul>
   </nav></div>
 

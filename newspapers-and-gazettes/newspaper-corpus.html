@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/newspapers-and-gazettes/newspaper-corpus.7618f5fb-68f4-4424-9ca5-63ea39a60c74.js"></script>
+    <script defer="defer" src="../_static/tippy/newspapers-and-gazettes/newspaper-corpus.f9b9c916-cb81-4704-86d5-80554950a215.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'newspapers-and-gazettes/newspaper-corpus';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -286,6 +286,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../pathways/images/data-sources.html">27.1. Data sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pathways/images/tools.html">27.2. Tools and resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pathways/images/examples.html">27.3. Tutorials and examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/images/tropy.html">27.4. Working with a Trove collection in Tropy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pathways/structured-data.html">28. Structured data</a></li>
@@ -579,23 +580,23 @@ On this page</div>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-52bf861372a74723b279f046ce2b4e9c.vega-embed {
+  #altair-viz-efa3707a775544599983583c95632445.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-52bf861372a74723b279f046ce2b4e9c.vega-embed details,
-  #altair-viz-52bf861372a74723b279f046ce2b4e9c.vega-embed details summary {
+  #altair-viz-efa3707a775544599983583c95632445.vega-embed details,
+  #altair-viz-efa3707a775544599983583c95632445.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-52bf861372a74723b279f046ce2b4e9c"></div>
+<div id="altair-viz-efa3707a775544599983583c95632445"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-52bf861372a74723b279f046ce2b4e9c") {
-      outputDiv = document.getElementById("altair-viz-52bf861372a74723b279f046ce2b4e9c");
+    if (outputDiv.id !== "altair-viz-efa3707a775544599983583c95632445") {
+      outputDiv = document.getElementById("altair-viz-efa3707a775544599983583c95632445");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -641,30 +642,30 @@ On this page</div>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b8f1cb8d82e69db676ba5f31521c29e0"}, "mark": {"type": "line"}, "encoding": {"tooltip": [{"field": "year", "format": "%Y", "type": "temporal"}, {"field": "total", "format": ",", "type": "quantitative"}], "x": {"field": "year", "type": "temporal"}, "y": {"field": "total", "title": "total number of articles", "type": "quantitative"}}, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-b8f1cb8d82e69db676ba5f31521c29e0": [{"year": "1803", "total": 526}, {"year": "1804", "total": 619}, {"year": "1805", "total": 430}, {"year": "1806", "total": 367}, {"year": "1807", "total": 134}, {"year": "1808", "total": 155}, {"year": "1809", "total": 237}, {"year": "1810", "total": 274}, {"year": "1811", "total": 228}, {"year": "1812", "total": 215}, {"year": "1813", "total": 234}, {"year": "1814", "total": 239}, {"year": "1815", "total": 226}, {"year": "1816", "total": 644}, {"year": "1817", "total": 1068}, {"year": "1818", "total": 1249}, {"year": "1819", "total": 1152}, {"year": "1820", "total": 1275}, {"year": "1821", "total": 1005}, {"year": "1822", "total": 1033}, {"year": "1823", "total": 1156}, {"year": "1824", "total": 1646}, {"year": "1825", "total": 3366}, {"year": "1826", "total": 5201}, {"year": "1827", "total": 6693}, {"year": "1828", "total": 7335}, {"year": "1829", "total": 8935}, {"year": "1830", "total": 8977}, {"year": "1831", "total": 10989}, {"year": "1832", "total": 16271}, {"year": "1833", "total": 17370}, {"year": "1834", "total": 20877}, {"year": "1835", "total": 22997}, {"year": "1836", "total": 23076}, {"year": "1837", "total": 24051}, {"year": "1838", "total": 28588}, {"year": "1839", "total": 36007}, {"year": "1840", "total": 45862}, {"year": "1841", "total": 51604}, {"year": "1842", "total": 55475}, {"year": "1843", "total": 56534}, {"year": "1844", "total": 60345}, {"year": "1845", "total": 68812}, {"year": "1846", "total": 67854}, {"year": "1847", "total": 67915}, {"year": "1848", "total": 69197}, {"year": "1849", "total": 68489}, {"year": "1850", "total": 87044}, {"year": "1851", "total": 102403}, {"year": "1852", "total": 86076}, {"year": "1853", "total": 102965}, {"year": "1854", "total": 126001}, {"year": "1855", "total": 168180}, {"year": "1856", "total": 175628}, {"year": "1857", "total": 182055}, {"year": "1858", "total": 188827}, {"year": "1859", "total": 217313}, {"year": "1860", "total": 232147}, {"year": "1861", "total": 256273}, {"year": "1862", "total": 263703}, {"year": "1863", "total": 272180}, {"year": "1864", "total": 286108}, {"year": "1865", "total": 303518}, {"year": "1866", "total": 311006}, {"year": "1867", "total": 319506}, {"year": "1868", "total": 328571}, {"year": "1869", "total": 351648}, {"year": "1870", "total": 397923}, {"year": "1871", "total": 384132}, {"year": "1872", "total": 410859}, {"year": "1873", "total": 445869}, {"year": "1874", "total": 459320}, {"year": "1875", "total": 497768}, {"year": "1876", "total": 511139}, {"year": "1877", "total": 527032}, {"year": "1878", "total": 598066}, {"year": "1879", "total": 642641}, {"year": "1880", "total": 658456}, {"year": "1881", "total": 700894}, {"year": "1882", "total": 790334}, {"year": "1883", "total": 823729}, {"year": "1884", "total": 924963}, {"year": "1885", "total": 978539}, {"year": "1886", "total": 1056763}, {"year": "1887", "total": 1093501}, {"year": "1888", "total": 1224016}, {"year": "1889", "total": 1313631}, {"year": "1890", "total": 1431694}, {"year": "1891", "total": 1502155}, {"year": "1892", "total": 1558628}, {"year": "1893", "total": 1585609}, {"year": "1894", "total": 1642755}, {"year": "1895", "total": 1761565}, {"year": "1896", "total": 1882473}, {"year": "1897", "total": 1995451}, {"year": "1898", "total": 2219555}, {"year": "1899", "total": 2396516}, {"year": "1900", "total": 2634782}, {"year": "1901", "total": 2729821}, {"year": "1902", "total": 2787638}, {"year": "1903", "total": 2823335}, {"year": "1904", "total": 2985868}, {"year": "1905", "total": 3110775}, {"year": "1906", "total": 3149031}, {"year": "1907", "total": 3306261}, {"year": "1908", "total": 3409538}, {"year": "1909", "total": 3471035}, {"year": "1910", "total": 3700771}, {"year": "1911", "total": 3827485}, {"year": "1912", "total": 3986600}, {"year": "1913", "total": 4062328}, {"year": "1914", "total": 4701632}, {"year": "1915", "total": 4804398}, {"year": "1916", "total": 4389755}, {"year": "1917", "total": 4277370}, {"year": "1918", "total": 4056422}, {"year": "1919", "total": 3576904}, {"year": "1920", "total": 3325794}, {"year": "1921", "total": 3505399}, {"year": "1922", "total": 3653823}, {"year": "1923", "total": 3961277}, {"year": "1924", "total": 4264838}, {"year": "1925", "total": 4246638}, {"year": "1926", "total": 4241704}, {"year": "1927", "total": 4337617}, {"year": "1928", "total": 4460227}, {"year": "1929", "total": 4681461}, {"year": "1930", "total": 4525844}, {"year": "1931", "total": 4138507}, {"year": "1932", "total": 4152570}, {"year": "1933", "total": 4338798}, {"year": "1934", "total": 4475884}, {"year": "1935", "total": 4570035}, {"year": "1936", "total": 4651449}, {"year": "1937", "total": 4637350}, {"year": "1938", "total": 4629790}, {"year": "1939", "total": 4403276}, {"year": "1940", "total": 3746724}, {"year": "1941", "total": 3561303}, {"year": "1942", "total": 2888275}, {"year": "1943", "total": 2529038}, {"year": "1944", "total": 2582044}, {"year": "1945", "total": 2716823}, {"year": "1946", "total": 3257141}, {"year": "1947", "total": 3374188}, {"year": "1948", "total": 3038022}, {"year": "1949", "total": 3461539}, {"year": "1950", "total": 3513001}, {"year": "1951", "total": 3254155}, {"year": "1952", "total": 3349585}, {"year": "1953", "total": 3511225}, {"year": "1954", "total": 3516505}, {"year": "1955", "total": 408584}, {"year": "1956", "total": 245996}, {"year": "1957", "total": 171410}, {"year": "1958", "total": 171514}, {"year": "1959", "total": 171724}, {"year": "1960", "total": 173553}, {"year": "1961", "total": 171423}, {"year": "1962", "total": 175390}, {"year": "1963", "total": 186265}, {"year": "1964", "total": 187933}, {"year": "1965", "total": 197022}, {"year": "1966", "total": 181602}, {"year": "1967", "total": 177689}, {"year": "1968", "total": 178922}, {"year": "1969", "total": 201483}, {"year": "1970", "total": 215176}, {"year": "1971", "total": 218547}, {"year": "1972", "total": 201932}, {"year": "1973", "total": 204506}, {"year": "1974", "total": 205565}, {"year": "1975", "total": 196067}, {"year": "1976", "total": 195626}, {"year": "1977", "total": 198033}, {"year": "1978", "total": 203616}, {"year": "1979", "total": 213911}, {"year": "1980", "total": 216363}, {"year": "1981", "total": 194416}, {"year": "1982", "total": 184309}, {"year": "1983", "total": 176720}, {"year": "1984", "total": 188518}, {"year": "1985", "total": 199414}, {"year": "1986", "total": 198342}, {"year": "1987", "total": 183052}, {"year": "1988", "total": 191054}, {"year": "1989", "total": 194534}, {"year": "1990", "total": 186254}, {"year": "1991", "total": 188695}, {"year": "1992", "total": 202533}, {"year": "1993", "total": 205995}, {"year": "1994", "total": 198696}, {"year": "1995", "total": 197469}, {"year": "1996", "total": 112819}, {"year": "1997", "total": 113221}, {"year": "1998", "total": 119686}, {"year": "1999", "total": 126044}, {"year": "2000", "total": 101785}, {"year": "2001", "total": 88164}, {"year": "2002", "total": 87799}, {"year": "2003", "total": 53143}, {"year": "2004", "total": 46571}, {"year": "2005", "total": 30091}, {"year": "2006", "total": 32242}, {"year": "2007", "total": 31375}, {"year": "2008", "total": 26426}, {"year": "2009", "total": 12159}, {"year": "2010", "total": 12356}, {"year": "2011", "total": 11730}, {"year": "2012", "total": 10306}, {"year": "2013", "total": 8358}, {"year": "2014", "total": 8077}, {"year": "2015", "total": 8255}, {"year": "2016", "total": 4665}, {"year": "2017", "total": 4184}, {"year": "2018", "total": 3506}, {"year": "2019", "total": 3314}, {"year": "2020", "total": 3201}, {"year": "2021", "total": 3469}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-384c6f699cb48e7065a70eecfa53b2a4"}, "mark": {"type": "line"}, "encoding": {"tooltip": [{"field": "year", "format": "%Y", "type": "temporal"}, {"field": "total", "format": ",", "type": "quantitative"}], "x": {"field": "year", "type": "temporal"}, "y": {"field": "total", "title": "total number of articles", "type": "quantitative"}}, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-384c6f699cb48e7065a70eecfa53b2a4": [{"year": "1803", "total": 526}, {"year": "1804", "total": 619}, {"year": "1805", "total": 430}, {"year": "1806", "total": 367}, {"year": "1807", "total": 134}, {"year": "1808", "total": 155}, {"year": "1809", "total": 237}, {"year": "1810", "total": 274}, {"year": "1811", "total": 228}, {"year": "1812", "total": 215}, {"year": "1813", "total": 234}, {"year": "1814", "total": 239}, {"year": "1815", "total": 226}, {"year": "1816", "total": 644}, {"year": "1817", "total": 1068}, {"year": "1818", "total": 1249}, {"year": "1819", "total": 1152}, {"year": "1820", "total": 1275}, {"year": "1821", "total": 1005}, {"year": "1822", "total": 1033}, {"year": "1823", "total": 1156}, {"year": "1824", "total": 1646}, {"year": "1825", "total": 3366}, {"year": "1826", "total": 5201}, {"year": "1827", "total": 6693}, {"year": "1828", "total": 7335}, {"year": "1829", "total": 8935}, {"year": "1830", "total": 8977}, {"year": "1831", "total": 10989}, {"year": "1832", "total": 16271}, {"year": "1833", "total": 17370}, {"year": "1834", "total": 20877}, {"year": "1835", "total": 22997}, {"year": "1836", "total": 23076}, {"year": "1837", "total": 24051}, {"year": "1838", "total": 28588}, {"year": "1839", "total": 36007}, {"year": "1840", "total": 45862}, {"year": "1841", "total": 51604}, {"year": "1842", "total": 55475}, {"year": "1843", "total": 56534}, {"year": "1844", "total": 60345}, {"year": "1845", "total": 68812}, {"year": "1846", "total": 67854}, {"year": "1847", "total": 67915}, {"year": "1848", "total": 69197}, {"year": "1849", "total": 68489}, {"year": "1850", "total": 87044}, {"year": "1851", "total": 102403}, {"year": "1852", "total": 86076}, {"year": "1853", "total": 102965}, {"year": "1854", "total": 126001}, {"year": "1855", "total": 168180}, {"year": "1856", "total": 175628}, {"year": "1857", "total": 182055}, {"year": "1858", "total": 188827}, {"year": "1859", "total": 217313}, {"year": "1860", "total": 232147}, {"year": "1861", "total": 256273}, {"year": "1862", "total": 263703}, {"year": "1863", "total": 272180}, {"year": "1864", "total": 286108}, {"year": "1865", "total": 303518}, {"year": "1866", "total": 311006}, {"year": "1867", "total": 319506}, {"year": "1868", "total": 328571}, {"year": "1869", "total": 351648}, {"year": "1870", "total": 397923}, {"year": "1871", "total": 384132}, {"year": "1872", "total": 410859}, {"year": "1873", "total": 445869}, {"year": "1874", "total": 459320}, {"year": "1875", "total": 497768}, {"year": "1876", "total": 511139}, {"year": "1877", "total": 527032}, {"year": "1878", "total": 598066}, {"year": "1879", "total": 642641}, {"year": "1880", "total": 658456}, {"year": "1881", "total": 700894}, {"year": "1882", "total": 790334}, {"year": "1883", "total": 823729}, {"year": "1884", "total": 924963}, {"year": "1885", "total": 978539}, {"year": "1886", "total": 1056763}, {"year": "1887", "total": 1093501}, {"year": "1888", "total": 1224056}, {"year": "1889", "total": 1313631}, {"year": "1890", "total": 1431694}, {"year": "1891", "total": 1502181}, {"year": "1892", "total": 1558628}, {"year": "1893", "total": 1585723}, {"year": "1894", "total": 1643956}, {"year": "1895", "total": 1761565}, {"year": "1896", "total": 1882473}, {"year": "1897", "total": 1995451}, {"year": "1898", "total": 2219555}, {"year": "1899", "total": 2396516}, {"year": "1900", "total": 2634782}, {"year": "1901", "total": 2729821}, {"year": "1902", "total": 2787638}, {"year": "1903", "total": 2823335}, {"year": "1904", "total": 2985868}, {"year": "1905", "total": 3110775}, {"year": "1906", "total": 3149031}, {"year": "1907", "total": 3306261}, {"year": "1908", "total": 3409538}, {"year": "1909", "total": 3471035}, {"year": "1910", "total": 3700771}, {"year": "1911", "total": 3827485}, {"year": "1912", "total": 3986600}, {"year": "1913", "total": 4062328}, {"year": "1914", "total": 4701632}, {"year": "1915", "total": 4804398}, {"year": "1916", "total": 4389755}, {"year": "1917", "total": 4280248}, {"year": "1918", "total": 4058767}, {"year": "1919", "total": 3576904}, {"year": "1920", "total": 3325794}, {"year": "1921", "total": 3505399}, {"year": "1922", "total": 3653823}, {"year": "1923", "total": 3962198}, {"year": "1924", "total": 4268008}, {"year": "1925", "total": 4249874}, {"year": "1926", "total": 4241704}, {"year": "1927", "total": 4337617}, {"year": "1928", "total": 4460227}, {"year": "1929", "total": 4681461}, {"year": "1930", "total": 4525844}, {"year": "1931", "total": 4138507}, {"year": "1932", "total": 4152570}, {"year": "1933", "total": 4338798}, {"year": "1934", "total": 4475884}, {"year": "1935", "total": 4570035}, {"year": "1936", "total": 4651449}, {"year": "1937", "total": 4637350}, {"year": "1938", "total": 4635358}, {"year": "1939", "total": 4406566}, {"year": "1940", "total": 3746724}, {"year": "1941", "total": 3561303}, {"year": "1942", "total": 2891824}, {"year": "1943", "total": 2532642}, {"year": "1944", "total": 2585470}, {"year": "1945", "total": 2720310}, {"year": "1946", "total": 3258603}, {"year": "1947", "total": 3374188}, {"year": "1948", "total": 3038022}, {"year": "1949", "total": 3461539}, {"year": "1950", "total": 3513001}, {"year": "1951", "total": 3254155}, {"year": "1952", "total": 3349585}, {"year": "1953", "total": 3511225}, {"year": "1954", "total": 3516505}, {"year": "1955", "total": 408584}, {"year": "1956", "total": 245996}, {"year": "1957", "total": 171410}, {"year": "1958", "total": 171514}, {"year": "1959", "total": 171724}, {"year": "1960", "total": 173553}, {"year": "1961", "total": 171423}, {"year": "1962", "total": 175390}, {"year": "1963", "total": 186265}, {"year": "1964", "total": 187933}, {"year": "1965", "total": 197022}, {"year": "1966", "total": 181602}, {"year": "1967", "total": 177689}, {"year": "1968", "total": 178922}, {"year": "1969", "total": 201483}, {"year": "1970", "total": 215176}, {"year": "1971", "total": 218547}, {"year": "1972", "total": 201932}, {"year": "1973", "total": 204506}, {"year": "1974", "total": 205565}, {"year": "1975", "total": 196067}, {"year": "1976", "total": 195626}, {"year": "1977", "total": 198033}, {"year": "1978", "total": 203616}, {"year": "1979", "total": 213911}, {"year": "1980", "total": 216363}, {"year": "1981", "total": 194416}, {"year": "1982", "total": 184309}, {"year": "1983", "total": 176720}, {"year": "1984", "total": 188518}, {"year": "1985", "total": 199414}, {"year": "1986", "total": 198342}, {"year": "1987", "total": 183052}, {"year": "1988", "total": 191054}, {"year": "1989", "total": 194534}, {"year": "1990", "total": 186254}, {"year": "1991", "total": 188695}, {"year": "1992", "total": 202533}, {"year": "1993", "total": 205995}, {"year": "1994", "total": 198696}, {"year": "1995", "total": 197469}, {"year": "1996", "total": 112819}, {"year": "1997", "total": 113221}, {"year": "1998", "total": 119686}, {"year": "1999", "total": 126044}, {"year": "2000", "total": 101785}, {"year": "2001", "total": 88164}, {"year": "2002", "total": 87799}, {"year": "2003", "total": 53143}, {"year": "2004", "total": 46571}, {"year": "2005", "total": 32537}, {"year": "2006", "total": 32242}, {"year": "2007", "total": 33735}, {"year": "2008", "total": 28866}, {"year": "2009", "total": 12159}, {"year": "2010", "total": 12356}, {"year": "2011", "total": 11730}, {"year": "2012", "total": 10306}, {"year": "2013", "total": 8358}, {"year": "2014", "total": 8077}, {"year": "2015", "total": 8255}, {"year": "2016", "total": 4665}, {"year": "2017", "total": 4184}, {"year": "2018", "total": 3506}, {"year": "2019", "total": 3314}, {"year": "2020", "total": 3201}, {"year": "2021", "total": 3469}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </details>
 </div>
 <figure class="align-default">
 <div class="output text_html">
 <style>
-  #altair-viz-209a2bc231e643c5a4cc57eb46ec2fce.vega-embed {
+  #altair-viz-b21ba7ce86c44b7bac7bc722decf4951.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-209a2bc231e643c5a4cc57eb46ec2fce.vega-embed details,
-  #altair-viz-209a2bc231e643c5a4cc57eb46ec2fce.vega-embed details summary {
+  #altair-viz-b21ba7ce86c44b7bac7bc722decf4951.vega-embed details,
+  #altair-viz-b21ba7ce86c44b7bac7bc722decf4951.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-209a2bc231e643c5a4cc57eb46ec2fce"></div>
+<div id="altair-viz-b21ba7ce86c44b7bac7bc722decf4951"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-209a2bc231e643c5a4cc57eb46ec2fce") {
-      outputDiv = document.getElementById("altair-viz-209a2bc231e643c5a4cc57eb46ec2fce");
+    if (outputDiv.id !== "altair-viz-b21ba7ce86c44b7bac7bc722decf4951") {
+      outputDiv = document.getElementById("altair-viz-b21ba7ce86c44b7bac7bc722decf4951");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -710,7 +711,7 @@ On this page</div>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b8f1cb8d82e69db676ba5f31521c29e0"}, "mark": {"type": "line"}, "encoding": {"tooltip": [{"field": "year", "format": "%Y", "type": "temporal"}, {"field": "total", "format": ",", "type": "quantitative"}], "x": {"field": "year", "type": "temporal"}, "y": {"field": "total", "title": "total number of articles", "type": "quantitative"}}, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-b8f1cb8d82e69db676ba5f31521c29e0": [{"year": "1803", "total": 526}, {"year": "1804", "total": 619}, {"year": "1805", "total": 430}, {"year": "1806", "total": 367}, {"year": "1807", "total": 134}, {"year": "1808", "total": 155}, {"year": "1809", "total": 237}, {"year": "1810", "total": 274}, {"year": "1811", "total": 228}, {"year": "1812", "total": 215}, {"year": "1813", "total": 234}, {"year": "1814", "total": 239}, {"year": "1815", "total": 226}, {"year": "1816", "total": 644}, {"year": "1817", "total": 1068}, {"year": "1818", "total": 1249}, {"year": "1819", "total": 1152}, {"year": "1820", "total": 1275}, {"year": "1821", "total": 1005}, {"year": "1822", "total": 1033}, {"year": "1823", "total": 1156}, {"year": "1824", "total": 1646}, {"year": "1825", "total": 3366}, {"year": "1826", "total": 5201}, {"year": "1827", "total": 6693}, {"year": "1828", "total": 7335}, {"year": "1829", "total": 8935}, {"year": "1830", "total": 8977}, {"year": "1831", "total": 10989}, {"year": "1832", "total": 16271}, {"year": "1833", "total": 17370}, {"year": "1834", "total": 20877}, {"year": "1835", "total": 22997}, {"year": "1836", "total": 23076}, {"year": "1837", "total": 24051}, {"year": "1838", "total": 28588}, {"year": "1839", "total": 36007}, {"year": "1840", "total": 45862}, {"year": "1841", "total": 51604}, {"year": "1842", "total": 55475}, {"year": "1843", "total": 56534}, {"year": "1844", "total": 60345}, {"year": "1845", "total": 68812}, {"year": "1846", "total": 67854}, {"year": "1847", "total": 67915}, {"year": "1848", "total": 69197}, {"year": "1849", "total": 68489}, {"year": "1850", "total": 87044}, {"year": "1851", "total": 102403}, {"year": "1852", "total": 86076}, {"year": "1853", "total": 102965}, {"year": "1854", "total": 126001}, {"year": "1855", "total": 168180}, {"year": "1856", "total": 175628}, {"year": "1857", "total": 182055}, {"year": "1858", "total": 188827}, {"year": "1859", "total": 217313}, {"year": "1860", "total": 232147}, {"year": "1861", "total": 256273}, {"year": "1862", "total": 263703}, {"year": "1863", "total": 272180}, {"year": "1864", "total": 286108}, {"year": "1865", "total": 303518}, {"year": "1866", "total": 311006}, {"year": "1867", "total": 319506}, {"year": "1868", "total": 328571}, {"year": "1869", "total": 351648}, {"year": "1870", "total": 397923}, {"year": "1871", "total": 384132}, {"year": "1872", "total": 410859}, {"year": "1873", "total": 445869}, {"year": "1874", "total": 459320}, {"year": "1875", "total": 497768}, {"year": "1876", "total": 511139}, {"year": "1877", "total": 527032}, {"year": "1878", "total": 598066}, {"year": "1879", "total": 642641}, {"year": "1880", "total": 658456}, {"year": "1881", "total": 700894}, {"year": "1882", "total": 790334}, {"year": "1883", "total": 823729}, {"year": "1884", "total": 924963}, {"year": "1885", "total": 978539}, {"year": "1886", "total": 1056763}, {"year": "1887", "total": 1093501}, {"year": "1888", "total": 1224016}, {"year": "1889", "total": 1313631}, {"year": "1890", "total": 1431694}, {"year": "1891", "total": 1502155}, {"year": "1892", "total": 1558628}, {"year": "1893", "total": 1585609}, {"year": "1894", "total": 1642755}, {"year": "1895", "total": 1761565}, {"year": "1896", "total": 1882473}, {"year": "1897", "total": 1995451}, {"year": "1898", "total": 2219555}, {"year": "1899", "total": 2396516}, {"year": "1900", "total": 2634782}, {"year": "1901", "total": 2729821}, {"year": "1902", "total": 2787638}, {"year": "1903", "total": 2823335}, {"year": "1904", "total": 2985868}, {"year": "1905", "total": 3110775}, {"year": "1906", "total": 3149031}, {"year": "1907", "total": 3306261}, {"year": "1908", "total": 3409538}, {"year": "1909", "total": 3471035}, {"year": "1910", "total": 3700771}, {"year": "1911", "total": 3827485}, {"year": "1912", "total": 3986600}, {"year": "1913", "total": 4062328}, {"year": "1914", "total": 4701632}, {"year": "1915", "total": 4804398}, {"year": "1916", "total": 4389755}, {"year": "1917", "total": 4277370}, {"year": "1918", "total": 4056422}, {"year": "1919", "total": 3576904}, {"year": "1920", "total": 3325794}, {"year": "1921", "total": 3505399}, {"year": "1922", "total": 3653823}, {"year": "1923", "total": 3961277}, {"year": "1924", "total": 4264838}, {"year": "1925", "total": 4246638}, {"year": "1926", "total": 4241704}, {"year": "1927", "total": 4337617}, {"year": "1928", "total": 4460227}, {"year": "1929", "total": 4681461}, {"year": "1930", "total": 4525844}, {"year": "1931", "total": 4138507}, {"year": "1932", "total": 4152570}, {"year": "1933", "total": 4338798}, {"year": "1934", "total": 4475884}, {"year": "1935", "total": 4570035}, {"year": "1936", "total": 4651449}, {"year": "1937", "total": 4637350}, {"year": "1938", "total": 4629790}, {"year": "1939", "total": 4403276}, {"year": "1940", "total": 3746724}, {"year": "1941", "total": 3561303}, {"year": "1942", "total": 2888275}, {"year": "1943", "total": 2529038}, {"year": "1944", "total": 2582044}, {"year": "1945", "total": 2716823}, {"year": "1946", "total": 3257141}, {"year": "1947", "total": 3374188}, {"year": "1948", "total": 3038022}, {"year": "1949", "total": 3461539}, {"year": "1950", "total": 3513001}, {"year": "1951", "total": 3254155}, {"year": "1952", "total": 3349585}, {"year": "1953", "total": 3511225}, {"year": "1954", "total": 3516505}, {"year": "1955", "total": 408584}, {"year": "1956", "total": 245996}, {"year": "1957", "total": 171410}, {"year": "1958", "total": 171514}, {"year": "1959", "total": 171724}, {"year": "1960", "total": 173553}, {"year": "1961", "total": 171423}, {"year": "1962", "total": 175390}, {"year": "1963", "total": 186265}, {"year": "1964", "total": 187933}, {"year": "1965", "total": 197022}, {"year": "1966", "total": 181602}, {"year": "1967", "total": 177689}, {"year": "1968", "total": 178922}, {"year": "1969", "total": 201483}, {"year": "1970", "total": 215176}, {"year": "1971", "total": 218547}, {"year": "1972", "total": 201932}, {"year": "1973", "total": 204506}, {"year": "1974", "total": 205565}, {"year": "1975", "total": 196067}, {"year": "1976", "total": 195626}, {"year": "1977", "total": 198033}, {"year": "1978", "total": 203616}, {"year": "1979", "total": 213911}, {"year": "1980", "total": 216363}, {"year": "1981", "total": 194416}, {"year": "1982", "total": 184309}, {"year": "1983", "total": 176720}, {"year": "1984", "total": 188518}, {"year": "1985", "total": 199414}, {"year": "1986", "total": 198342}, {"year": "1987", "total": 183052}, {"year": "1988", "total": 191054}, {"year": "1989", "total": 194534}, {"year": "1990", "total": 186254}, {"year": "1991", "total": 188695}, {"year": "1992", "total": 202533}, {"year": "1993", "total": 205995}, {"year": "1994", "total": 198696}, {"year": "1995", "total": 197469}, {"year": "1996", "total": 112819}, {"year": "1997", "total": 113221}, {"year": "1998", "total": 119686}, {"year": "1999", "total": 126044}, {"year": "2000", "total": 101785}, {"year": "2001", "total": 88164}, {"year": "2002", "total": 87799}, {"year": "2003", "total": 53143}, {"year": "2004", "total": 46571}, {"year": "2005", "total": 30091}, {"year": "2006", "total": 32242}, {"year": "2007", "total": 31375}, {"year": "2008", "total": 26426}, {"year": "2009", "total": 12159}, {"year": "2010", "total": 12356}, {"year": "2011", "total": 11730}, {"year": "2012", "total": 10306}, {"year": "2013", "total": 8358}, {"year": "2014", "total": 8077}, {"year": "2015", "total": 8255}, {"year": "2016", "total": 4665}, {"year": "2017", "total": 4184}, {"year": "2018", "total": 3506}, {"year": "2019", "total": 3314}, {"year": "2020", "total": 3201}, {"year": "2021", "total": 3469}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-384c6f699cb48e7065a70eecfa53b2a4"}, "mark": {"type": "line"}, "encoding": {"tooltip": [{"field": "year", "format": "%Y", "type": "temporal"}, {"field": "total", "format": ",", "type": "quantitative"}], "x": {"field": "year", "type": "temporal"}, "y": {"field": "total", "title": "total number of articles", "type": "quantitative"}}, "padding": 20, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-384c6f699cb48e7065a70eecfa53b2a4": [{"year": "1803", "total": 526}, {"year": "1804", "total": 619}, {"year": "1805", "total": 430}, {"year": "1806", "total": 367}, {"year": "1807", "total": 134}, {"year": "1808", "total": 155}, {"year": "1809", "total": 237}, {"year": "1810", "total": 274}, {"year": "1811", "total": 228}, {"year": "1812", "total": 215}, {"year": "1813", "total": 234}, {"year": "1814", "total": 239}, {"year": "1815", "total": 226}, {"year": "1816", "total": 644}, {"year": "1817", "total": 1068}, {"year": "1818", "total": 1249}, {"year": "1819", "total": 1152}, {"year": "1820", "total": 1275}, {"year": "1821", "total": 1005}, {"year": "1822", "total": 1033}, {"year": "1823", "total": 1156}, {"year": "1824", "total": 1646}, {"year": "1825", "total": 3366}, {"year": "1826", "total": 5201}, {"year": "1827", "total": 6693}, {"year": "1828", "total": 7335}, {"year": "1829", "total": 8935}, {"year": "1830", "total": 8977}, {"year": "1831", "total": 10989}, {"year": "1832", "total": 16271}, {"year": "1833", "total": 17370}, {"year": "1834", "total": 20877}, {"year": "1835", "total": 22997}, {"year": "1836", "total": 23076}, {"year": "1837", "total": 24051}, {"year": "1838", "total": 28588}, {"year": "1839", "total": 36007}, {"year": "1840", "total": 45862}, {"year": "1841", "total": 51604}, {"year": "1842", "total": 55475}, {"year": "1843", "total": 56534}, {"year": "1844", "total": 60345}, {"year": "1845", "total": 68812}, {"year": "1846", "total": 67854}, {"year": "1847", "total": 67915}, {"year": "1848", "total": 69197}, {"year": "1849", "total": 68489}, {"year": "1850", "total": 87044}, {"year": "1851", "total": 102403}, {"year": "1852", "total": 86076}, {"year": "1853", "total": 102965}, {"year": "1854", "total": 126001}, {"year": "1855", "total": 168180}, {"year": "1856", "total": 175628}, {"year": "1857", "total": 182055}, {"year": "1858", "total": 188827}, {"year": "1859", "total": 217313}, {"year": "1860", "total": 232147}, {"year": "1861", "total": 256273}, {"year": "1862", "total": 263703}, {"year": "1863", "total": 272180}, {"year": "1864", "total": 286108}, {"year": "1865", "total": 303518}, {"year": "1866", "total": 311006}, {"year": "1867", "total": 319506}, {"year": "1868", "total": 328571}, {"year": "1869", "total": 351648}, {"year": "1870", "total": 397923}, {"year": "1871", "total": 384132}, {"year": "1872", "total": 410859}, {"year": "1873", "total": 445869}, {"year": "1874", "total": 459320}, {"year": "1875", "total": 497768}, {"year": "1876", "total": 511139}, {"year": "1877", "total": 527032}, {"year": "1878", "total": 598066}, {"year": "1879", "total": 642641}, {"year": "1880", "total": 658456}, {"year": "1881", "total": 700894}, {"year": "1882", "total": 790334}, {"year": "1883", "total": 823729}, {"year": "1884", "total": 924963}, {"year": "1885", "total": 978539}, {"year": "1886", "total": 1056763}, {"year": "1887", "total": 1093501}, {"year": "1888", "total": 1224056}, {"year": "1889", "total": 1313631}, {"year": "1890", "total": 1431694}, {"year": "1891", "total": 1502181}, {"year": "1892", "total": 1558628}, {"year": "1893", "total": 1585723}, {"year": "1894", "total": 1643956}, {"year": "1895", "total": 1761565}, {"year": "1896", "total": 1882473}, {"year": "1897", "total": 1995451}, {"year": "1898", "total": 2219555}, {"year": "1899", "total": 2396516}, {"year": "1900", "total": 2634782}, {"year": "1901", "total": 2729821}, {"year": "1902", "total": 2787638}, {"year": "1903", "total": 2823335}, {"year": "1904", "total": 2985868}, {"year": "1905", "total": 3110775}, {"year": "1906", "total": 3149031}, {"year": "1907", "total": 3306261}, {"year": "1908", "total": 3409538}, {"year": "1909", "total": 3471035}, {"year": "1910", "total": 3700771}, {"year": "1911", "total": 3827485}, {"year": "1912", "total": 3986600}, {"year": "1913", "total": 4062328}, {"year": "1914", "total": 4701632}, {"year": "1915", "total": 4804398}, {"year": "1916", "total": 4389755}, {"year": "1917", "total": 4280248}, {"year": "1918", "total": 4058767}, {"year": "1919", "total": 3576904}, {"year": "1920", "total": 3325794}, {"year": "1921", "total": 3505399}, {"year": "1922", "total": 3653823}, {"year": "1923", "total": 3962198}, {"year": "1924", "total": 4268008}, {"year": "1925", "total": 4249874}, {"year": "1926", "total": 4241704}, {"year": "1927", "total": 4337617}, {"year": "1928", "total": 4460227}, {"year": "1929", "total": 4681461}, {"year": "1930", "total": 4525844}, {"year": "1931", "total": 4138507}, {"year": "1932", "total": 4152570}, {"year": "1933", "total": 4338798}, {"year": "1934", "total": 4475884}, {"year": "1935", "total": 4570035}, {"year": "1936", "total": 4651449}, {"year": "1937", "total": 4637350}, {"year": "1938", "total": 4635358}, {"year": "1939", "total": 4406566}, {"year": "1940", "total": 3746724}, {"year": "1941", "total": 3561303}, {"year": "1942", "total": 2891824}, {"year": "1943", "total": 2532642}, {"year": "1944", "total": 2585470}, {"year": "1945", "total": 2720310}, {"year": "1946", "total": 3258603}, {"year": "1947", "total": 3374188}, {"year": "1948", "total": 3038022}, {"year": "1949", "total": 3461539}, {"year": "1950", "total": 3513001}, {"year": "1951", "total": 3254155}, {"year": "1952", "total": 3349585}, {"year": "1953", "total": 3511225}, {"year": "1954", "total": 3516505}, {"year": "1955", "total": 408584}, {"year": "1956", "total": 245996}, {"year": "1957", "total": 171410}, {"year": "1958", "total": 171514}, {"year": "1959", "total": 171724}, {"year": "1960", "total": 173553}, {"year": "1961", "total": 171423}, {"year": "1962", "total": 175390}, {"year": "1963", "total": 186265}, {"year": "1964", "total": 187933}, {"year": "1965", "total": 197022}, {"year": "1966", "total": 181602}, {"year": "1967", "total": 177689}, {"year": "1968", "total": 178922}, {"year": "1969", "total": 201483}, {"year": "1970", "total": 215176}, {"year": "1971", "total": 218547}, {"year": "1972", "total": 201932}, {"year": "1973", "total": 204506}, {"year": "1974", "total": 205565}, {"year": "1975", "total": 196067}, {"year": "1976", "total": 195626}, {"year": "1977", "total": 198033}, {"year": "1978", "total": 203616}, {"year": "1979", "total": 213911}, {"year": "1980", "total": 216363}, {"year": "1981", "total": 194416}, {"year": "1982", "total": 184309}, {"year": "1983", "total": 176720}, {"year": "1984", "total": 188518}, {"year": "1985", "total": 199414}, {"year": "1986", "total": 198342}, {"year": "1987", "total": 183052}, {"year": "1988", "total": 191054}, {"year": "1989", "total": 194534}, {"year": "1990", "total": 186254}, {"year": "1991", "total": 188695}, {"year": "1992", "total": 202533}, {"year": "1993", "total": 205995}, {"year": "1994", "total": 198696}, {"year": "1995", "total": 197469}, {"year": "1996", "total": 112819}, {"year": "1997", "total": 113221}, {"year": "1998", "total": 119686}, {"year": "1999", "total": 126044}, {"year": "2000", "total": 101785}, {"year": "2001", "total": 88164}, {"year": "2002", "total": 87799}, {"year": "2003", "total": 53143}, {"year": "2004", "total": 46571}, {"year": "2005", "total": 32537}, {"year": "2006", "total": 32242}, {"year": "2007", "total": 33735}, {"year": "2008", "total": 28866}, {"year": "2009", "total": 12159}, {"year": "2010", "total": 12356}, {"year": "2011", "total": 11730}, {"year": "2012", "total": 10306}, {"year": "2013", "total": 8358}, {"year": "2014", "total": 8077}, {"year": "2015", "total": 8255}, {"year": "2016", "total": 4665}, {"year": "2017", "total": 4184}, {"year": "2018", "total": 3506}, {"year": "2019", "total": 3314}, {"year": "2020", "total": 3201}, {"year": "2021", "total": 3469}]}}, {"mode": "vega-lite"});
 </script></div></figure>
 <p>You might be wondering about the peak in 1915 – is it because of World War I? Well, yes and no. In the lead up to the centenary of WWI, it was decided to focus digitisation dollars on newspapers from the WWI period. The peak reflects decisions about funding, not the impact of historical events. And what about the dramatic collapse in the number of articles after 1954 – did the arrival of television send newspapers into a cataclysmic decline? No, it’s because of copyright. The NLA has chosen to manage some of the risks around copyright by limiting digitisation to newspaper issues published before 1955, unless there’s a special arrangement with the publisher.</p>
 <p>The impact of these policy decisions is an important reminder that <strong>the Trove corpus is not unchanging or inevitable, it’s constructed</strong> – it’s the product of preservation decisions, funding priorities, library policies, digitisation technologies, professional practices, legal frameworks, and a fair bit of luck.</p>
@@ -783,23 +784,23 @@ On this page</div>
 <figure class="align-default" id="chart-all">
 <div class="output text_html">
 <style>
-  #altair-viz-b66447935efd41e1958d99f492bb4372.vega-embed {
+  #altair-viz-f86738b4eda548808397e6491ae1fe9c.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-b66447935efd41e1958d99f492bb4372.vega-embed details,
-  #altair-viz-b66447935efd41e1958d99f492bb4372.vega-embed details summary {
+  #altair-viz-f86738b4eda548808397e6491ae1fe9c.vega-embed details,
+  #altair-viz-f86738b4eda548808397e6491ae1fe9c.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-b66447935efd41e1958d99f492bb4372"></div>
+<div id="altair-viz-f86738b4eda548808397e6491ae1fe9c"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b66447935efd41e1958d99f492bb4372") {
-      outputDiv = document.getElementById("altair-viz-b66447935efd41e1958d99f492bb4372");
+    if (outputDiv.id !== "altair-viz-f86738b4eda548808397e6491ae1fe9c") {
+      outputDiv = document.getElementById("altair-viz-f86738b4eda548808397e6491ae1fe9c");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -888,23 +889,23 @@ On this page</div>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-05949fbfae444892a5642d1dc34e777c.vega-embed {
+  #altair-viz-1faf6ef6708640ebb509211907b68b65.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-05949fbfae444892a5642d1dc34e777c.vega-embed details,
-  #altair-viz-05949fbfae444892a5642d1dc34e777c.vega-embed details summary {
+  #altair-viz-1faf6ef6708640ebb509211907b68b65.vega-embed details,
+  #altair-viz-1faf6ef6708640ebb509211907b68b65.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-05949fbfae444892a5642d1dc34e777c"></div>
+<div id="altair-viz-1faf6ef6708640ebb509211907b68b65"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-05949fbfae444892a5642d1dc34e777c") {
-      outputDiv = document.getElementById("altair-viz-05949fbfae444892a5642d1dc34e777c");
+    if (outputDiv.id !== "altair-viz-1faf6ef6708640ebb509211907b68b65") {
+      outputDiv = document.getElementById("altair-viz-1faf6ef6708640ebb509211907b68b65");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -957,23 +958,23 @@ On this page</div>
 <figure class="align-default" id="id1">
 <div class="output text_html">
 <style>
-  #altair-viz-949780f44743457c9a399f7f27d666f9.vega-embed {
+  #altair-viz-741180bb375e4bae8c1c8b571f11064d.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-949780f44743457c9a399f7f27d666f9.vega-embed details,
-  #altair-viz-949780f44743457c9a399f7f27d666f9.vega-embed details summary {
+  #altair-viz-741180bb375e4bae8c1c8b571f11064d.vega-embed details,
+  #altair-viz-741180bb375e4bae8c1c8b571f11064d.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-949780f44743457c9a399f7f27d666f9"></div>
+<div id="altair-viz-741180bb375e4bae8c1c8b571f11064d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-949780f44743457c9a399f7f27d666f9") {
-      outputDiv = document.getElementById("altair-viz-949780f44743457c9a399f7f27d666f9");
+    if (outputDiv.id !== "altair-viz-741180bb375e4bae8c1c8b571f11064d") {
+      outputDiv = document.getElementById("altair-viz-741180bb375e4bae8c1c8b571f11064d");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1096,23 +1097,23 @@ On this page</div>
 <figure class="align-default" id="state-titles-chart">
 <div class="output text_html">
 <style>
-  #altair-viz-b02966a3230c4033bfdabbb602e1229f.vega-embed {
+  #altair-viz-07597a04b7fd4f6da8d08487c05c8e04.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-b02966a3230c4033bfdabbb602e1229f.vega-embed details,
-  #altair-viz-b02966a3230c4033bfdabbb602e1229f.vega-embed details summary {
+  #altair-viz-07597a04b7fd4f6da8d08487c05c8e04.vega-embed details,
+  #altair-viz-07597a04b7fd4f6da8d08487c05c8e04.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-b02966a3230c4033bfdabbb602e1229f"></div>
+<div id="altair-viz-07597a04b7fd4f6da8d08487c05c8e04"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b02966a3230c4033bfdabbb602e1229f") {
-      outputDiv = document.getElementById("altair-viz-b02966a3230c4033bfdabbb602e1229f");
+    if (outputDiv.id !== "altair-viz-07597a04b7fd4f6da8d08487c05c8e04") {
+      outputDiv = document.getElementById("altair-viz-07597a04b7fd4f6da8d08487c05c8e04");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1218,23 +1219,23 @@ On this page</div>
 <figure class="align-default" id="state-articles-chart">
 <div class="output text_html">
 <style>
-  #altair-viz-74bc5fca10da44e3a9eed63ee89ff2e9.vega-embed {
+  #altair-viz-11478c1a0cf5495381e5947c6f67ded9.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-74bc5fca10da44e3a9eed63ee89ff2e9.vega-embed details,
-  #altair-viz-74bc5fca10da44e3a9eed63ee89ff2e9.vega-embed details summary {
+  #altair-viz-11478c1a0cf5495381e5947c6f67ded9.vega-embed details,
+  #altair-viz-11478c1a0cf5495381e5947c6f67ded9.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-74bc5fca10da44e3a9eed63ee89ff2e9"></div>
+<div id="altair-viz-11478c1a0cf5495381e5947c6f67ded9"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-74bc5fca10da44e3a9eed63ee89ff2e9") {
-      outputDiv = document.getElementById("altair-viz-74bc5fca10da44e3a9eed63ee89ff2e9");
+    if (outputDiv.id !== "altair-viz-11478c1a0cf5495381e5947c6f67ded9") {
+      outputDiv = document.getElementById("altair-viz-11478c1a0cf5495381e5947c6f67ded9");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1280,7 +1281,7 @@ On this page</div>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7b2f7fa91c5b6b96627bcf14a151f1b2"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "state", "type": "nominal"}, "tooltip": [{"field": "state", "type": "nominal"}, {"field": "total", "format": ",", "type": "quantitative"}], "x": {"field": "total", "title": "number of articles", "type": "quantitative"}, "y": {"field": "state", "type": "nominal"}}, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-7b2f7fa91c5b6b96627bcf14a151f1b2": [{"state": "New South Wales", "total": 87969752}, {"state": "Victoria", "total": 47732245}, {"state": "Queensland", "total": 41131526}, {"state": "Western Australia", "total": 25369631}, {"state": "South Australia", "total": 25347576}, {"state": "Tasmania", "total": 15850246}, {"state": "ACT", "total": 3296997}, {"state": "International", "total": 854022}, {"state": "National", "total": 663996}, {"state": "Northern Territory", "total": 409433}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b2eccae71740dd30c72ad75fbf0e33a1"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "state", "type": "nominal"}, "tooltip": [{"field": "state", "type": "nominal"}, {"field": "total", "format": ",", "type": "quantitative"}], "x": {"field": "total", "title": "number of articles", "type": "quantitative"}, "y": {"field": "state", "type": "nominal"}}, "width": "container", "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-b2eccae71740dd30c72ad75fbf0e33a1": [{"state": "New South Wales", "total": 88008069}, {"state": "Victoria", "total": 47732245}, {"state": "Queensland", "total": 41131526}, {"state": "Western Australia", "total": 25369631}, {"state": "South Australia", "total": 25354822}, {"state": "Tasmania", "total": 15850246}, {"state": "ACT", "total": 3296997}, {"state": "International", "total": 854022}, {"state": "National", "total": 663996}, {"state": "Northern Territory", "total": 409433}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
 <p><span class="caption-number">Fig. 15.6 </span><span class="caption-text">Number of newspaper articles published in each <code class="docutils literal notranslate"><span class="pre">state</span></code></span><a class="headerlink" href="#state-articles-chart" title="Link to this image">#</a></p>
 </figcaption>
@@ -1358,7 +1359,7 @@ On this page</div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15,671,837 articles have user corrections
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15,678,365 articles have user corrections
 </pre></div>
 </div>
 </div>
