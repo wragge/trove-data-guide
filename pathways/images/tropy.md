@@ -13,16 +13,19 @@ kernelspec:
 
 # Working with a Trove collection in Tropy
 
+You want to be able to work on a collection of digitised images from Trove on your desktop – adding notes, transcriptions, and annotations. [Tropy](https://tropy.org/) is a useful tool for managing collections of research images, but how do you import a collection of images from Trove into Tropy? This tutorial walks through one possible method.
+
+```{figure} ../../images/tropy-interface.png
+:width: 600px
+:name: tropy-interface
+
+The Tropy interface showing photographs imported from the B.A.N.Z. Antarctic Research Expedition photographs (https://nla.gov.au/nla.obj-141170265).
+```
+
 ```{contents}
 :local:
 :backlinks: None
 ```
-
-+++
-
-## Scenario
-
-You want to be able to work on a collection of digitised images from Trove on your desktop – adding notes, transcriptions, and annotations. In the future you might want to share your research online.
 
 +++
 
@@ -59,17 +62,6 @@ More info
 ```
 ````
 `````
-
-+++
-
-## Method
-
-- find the collection identifier
-- generate an IIIF manifest
-- configure Tropy
-  - template
-  - vocab
-- import manifest
 
 +++
 
@@ -170,6 +162,7 @@ The GLAM Workbench displays a preview of the notebook, with options to run it us
 :width: 600px
 :name: gw-iiif-nb
 
+The GLAM Workbench provides a number of ways you can run the notebook.
 ```
 
 #### Using ARDC Binder
@@ -182,6 +175,7 @@ If this is the first time you've used the ARDC Binder service you'll be asked to
 :width: 600px
 :name: gw-iiif-nb
 
+ARDC Binder will ask you to log in using AAF
 ```
 
 Click on the **Sign in with AAF/Tuakiri** button. You'll be asked to select either AAF or Tuakiri – select AAF.
@@ -192,6 +186,7 @@ To sign in with AAF, select your institution from the list, then click the **Con
 :width: 300px
 :name: aaf-institutions-select
 
+Select your institution from the AAF list
 ```
 
 You'll be redirected to your insitution's login screen. Log in using your usual credentials. Once you've logged in you'll be redirected back to ARDC Binder and the notebook will start to load. You might have to wait a bit while a customised computing environment is prepared for you. If you see a message saying that things are taking a long time and there might be a problem, just ignore it. Eventually the notebook will load in the Jupyter Lab interface.
@@ -202,6 +197,7 @@ You'll be redirected to your insitution's login screen. Log in using your usual 
 :width: 600px
 :name: mybinder-tab
 
+Click on the MyBinder tab.
 ```
 
 To use the MyBinder service, click on the MyBinder tab under the notebook preview. You should see a big, blue **Run live on MyBinder** button. Click on the button to launch the Binder service. No login is required, so MyBinder immediately starts building a customised computing environment. This can take a while, but eventually the notebook should load in the Jupyter Lab interface.
@@ -214,6 +210,7 @@ No matter what service you use to run the notebook, the result will be the same 
 :width: 600px
 :name: iiif-nb-jupyterlab
 
+The notebook running in Jupyter Lab.
 ```
 
 The Jupyter Lab interface has two main panes – a file browser is on the left, while the current notebook is displayed in the main, central pane.
@@ -259,18 +256,171 @@ Right-click on the manifest file and select 'Download' from the menu. The manife
 
 ## Installing Tropy and the IIIF Manifest plugin
 
+If you haven't already, download and install Tropy from the [Tropy home page](https://tropy.org/). For an introduction to using Tropy, see the [documentation section](https://docs.tropy.org/using-tropy/intro-to-the-interface).
+
+To import IIIF manifests into Tropy yoou need to install the [IIIF plugin](https://github.com/tropy/tropy-plugin-iiif):
+
+- [download the zip file](https://github.com/tropy/tropy-plugin-iiif/releases/latest) from the plugin's GitHub repository
+- open up Tropy and select 'Preferences' from the 'Edit' menu
+- select the 'Plugins' tab
+- click on the **Install Plugin** button and select the downloaded zip file
+- the IIIF Plugin will now be listed on the 'Plugins' page, click on the plugin's **Enable** button
+
+```{figure} ../../images/tropy-plugins.png
+:width: 600px
+:name: tropy-plugins
+
+The Tropy plugins page with the IIIF plugin installed and enabled.
+```
+
 +++
 
 ## Configuring Tropy (optional)
+
+The [Save a collection of digitised images as an IIIF manifest](https://glam-workbench.net/trove-images/save-image-collection-iiif/) notebook tries to save useful metadata describing each item in a collection (as well as the collection itself). Besides the title, the metadata fields it looks for are:
+
+- `type`
+- `creator`
+- `date`
+- `publisher`
+- `pages`
+- `extent`
+- `rights`
+- `url`
+- `call number`
+
+If values for these fields are available they're saved in the IIIF manifest. However, these fields won't automatically appear in Tropy. To display all the Trove metadata you need to align the harvested fields with the vocabularies used by Tropy. There are three steps involved:
+
+- install the BIBO vocabulary
+- install the IIIF Trove import template
+- set the IIIF Import plugin to use the Trove template
+
+### Install the BIBO vocabulary
+
+Tropy comes equipped with a number of commonly-used metadata vocabularies. However, it's currently missing [BIBO (the Bibliographic Ontology)](https://dcmi.github.io/bibo/).
+
+```{figure} ../../images/tropy-vocabs.png
+:width: 600px
+:name: tropy-vocabs
+
+Click on the plus sign to add a new vocabulary
+```
+
+To install BIBO in Tropy:
+
+- [download the BIBO ontology](https://www.dublincore.org/specifications/bibo/bibo/bibo.ttl) and save to your local computer
+- open Tropy and select 'Preferences' from the 'Edit' menu
+- select the 'Vocabularies' tab
+- click on the **+** at the bottom of the vocabularies list and select the downloaded BIBO file
+
+```{warning}
+When you install the BIBO vocabulary you may be confronted by a series of scary looking warning messages. **You can safely ignore these messages.** Just click on **Dismiss** or **OK** to get rid of them. The warnings are caused by the fact that BIBO embeds references to vocabularies that are included in Tropy by default. Tropy refuses to overwrite the default vocabularies, and generates warnings if you try.
+```
+
+### Install the IIIF Trove import template
+
+Tropy uses templates to control how metadata is displayed. You can create new templates to meet the needs of particular projects, collection sources, or format types. I've created an 'IIIF Trove import' template that maps Trove fields to Tropy vocabularies.
+
+```{figure} ../../images/tropy-templates.png
+:width: 600px
+:name: tropy-templates
+
+Click on the import symbol to install a new template.
+```
+
+- open the [IIIF Trove import template](https://raw.githubusercontent.com/wragge/tropy-templates/main/IIIF-Trove-import.ttp) on GitHub
+- save the template to your local computer by selecting 'Save Page As' from the right-click menu
+- open Tropy and select 'Preferences' from the 'Edit' menu
+- select the 'Templates' tab
+- click on the import icon at the top of the new template form
+- select the downloaded template file
+
+```{figure} ../../images/tropy-template-details.png
+:width: 600px
+:name: tropy-template-details
+
+The IIIF Trove import template installed in Tropy.
+```
+
+### Set the IIIF Import plugin to use the Trove template
+
+Finally, you need to tell the IIIF import plugin to use the new template. This will ensure that the metadata fields are mapped correctly when you import a new Trove manifest.
+
+```{figure} ../../images/tropy-iiif-settings.png
+:width: 600px
+:name: tropy-iiif-settings
+
+Create a new profile in the IIIF plugin settings.
+```
+
+The IIIF plugin can have multiple profiles, each using its own set of templates. To create a new profile for Trove imports:
+
+- open Tropy and select 'Preferences' from the 'Edit' menu
+- select the 'Plugins' tab
+- click IIIF plugin's **Settings** button to create a new profile
+- enter a name for this profile in the 'Name' field, for example, 'IIIF import from Trove'
+- in the 'Item template' field, select the 'IIIF Trove import' template from the dropdown list
+- in the 'Photo template' field, select the 'IIIF Trove import' template from the dropdown list
 
 +++
 
 ## Importing the manifest into Tropy
 
+```{figure} ../../images/tropy-import-iiif.png
+:width: 600px
+:name: tropy-import-iiif
+
+Select File > Import > IIIF import
+```
+
+To import your Trove collection manifest into Tropy:
+
+- select the IIIF import option under the 'File' > 'Import' menu (the actual name of the IIIF import option will depend on whether you've created a Trove profile in the plugin's settings)
+- navigate to the location of your downloaded IIIF manifest and select it
+
+````{warning}
+When you import the manifest, Tropy tries to download all the images described within the manifest. Sometimes this seems to fail, and little warning icons will appear next to images that couldn't be loaded.
+
+```{figure} ../../images/tropy-missing-images.png
+:width: 400px
+:name: tropy-missing-images
+```
+
+Clicking on the icons individually seems to load the missing images. You can also try selecting 'Consolidate Photo Library' from the 'File' menu. 
+
+````
+
 +++
 
-## Troubleshooting
+## Organising Trove collections in Tropy
+
+Tropy provides a number of mechanisms for organising the contents of your imported collections, so your research is no longer bound by Trove's descriptive framework. One thing to note, however, is that the whole IIIF manifest is imported into Tropy as a single 'Item', with individual images grouped as 'Photos' within that item. This limits your options for re-organising images. Fortunately, there's a quick solution. Right click on the manifest 'Item' and choose 'Explode' from the menu.
+
+```{figure} ../../images/tropy-explode.png
+:width: 600px
+:name: tropy-explode
+
+Choose 'Explode' from the item menu
+```
+
+'Explode' will split the manifest, creating a new item for each image. You're then free to group the items as your project requires. Consult the [Tropy documentation](https://docs.tropy.org/) to find out about creating your own structures with lists and tags. There's also a 'Combine' option that works like 'Explode' in reverse, grouping individual images together as a single item.
+
+This video provides a quick introduction to the possibilities of Tropy:
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/jqTkI49JUDA?si=Cn3oZ3lL1U-4FaAx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 +++
 
-## Going further
+## Saving and sharing your research
+
+It's always important to think about what happens to your data at the end of a project. Tropy helps you save and share your research by providing a variety of export options. 
+
+From the 'File' menu, choose 'Export' to save your data as a JSON-LD file. This file saves all your metadata, annotations, and notes in a structured, machine-readable format. Saving this to an approprate repository will help document and preserve your research process and provide signposts for other researchers. Your can also export your work to a PDF file.
+
+Plugins extend Tropy's export options:
+
+- the [CSV plugin](https://github.com/tropy/tropy-plugin-csv) lets you import and export CSV files (spreadsheets)
+- the [CSL plugin](https://github.com/tropy/tropy-plugin-csl) lets you export items to [Zotero](https://www.zotero.org/)
+- the [Archive plugin](https://github.com/tropy/tropy-plugin-archive) lets you export all your metadata and images as a single zip file
+
+If you'd like to share your carefully curated and annotated research collection for others to explore online, you can use the [Omeka plugin](https://github.com/tropy/tropy-plugin-omeka) to export items to [Omeka S](https://omeka.org/s/).
