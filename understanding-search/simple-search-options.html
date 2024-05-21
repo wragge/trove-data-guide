@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.f5994261-3cc3-4700-85ce-19abbe3c5af7.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.75c6d6dd-0aac-48bc-a54a-fe9d79cf53c1.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/simple-search-options';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -285,8 +285,10 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pathways/images/images.html">27. Images</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pathways/images/data-sources.html">27.1. Data sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pathways/images/tools.html">27.2. Tools and resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pathways/images/examples.html">27.3. Tutorials and examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pathways/images/tropy.html">27.4. Working with a Trove collection in Tropy</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pathways/images/examples.html">27.3. Tutorials and examples</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pathways/images/tropy.html">Working with a Trove collection in Tropy</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pathways/structured-data.html">28. Structured data</a></li>
@@ -559,15 +561,15 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,887,698</span></p></td>
+<td><p><span class="pasted-text">5,887,701</span></p></td>
 <td><p>Searches article text, tags &amp; comments (some fuzziness, terms are stemmed)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hobart*</span></code></p></td>
-<td><p><span class="pasted-text">5,959,118</span></p></td>
+<td><p><span class="pasted-text">5,959,120</span></p></td>
 <td><p>Searches article text, tags &amp; comments (more fuzziness, wildcard matches zero or more characters)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,600,926</span></p></td>
+<td><p><span class="pasted-text">5,600,934</span></p></td>
 <td><p>Searches article text only (exact match, ignores tags &amp; comments)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title:hobart</span></code></p></td>
@@ -587,11 +589,11 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">OR</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">49,699,431</span></p></td>
+<td><p><span class="pasted-text">49,699,451</span></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">5,790,362</span></p></td>
+<td><p><span class="pasted-text">5,790,364</span></p></td>
 <td><p>Same as white AND australia</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
@@ -627,11 +629,11 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">naturalisation</span></code></p></td>
-<td><p><span class="pasted-text">249,918</span></p></td>
+<td><p><span class="pasted-text">249,919</span></p></td>
 <td><p>Stemmed to ‘naturalis’</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">naturalization</span></code></p></td>
-<td><p><span class="pasted-text">15,436,230</span></p></td>
+<td><p><span class="pasted-text">15,436,233</span></p></td>
 <td><p>Stemmed to ‘natur’</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalisation</span></code></p></td>
@@ -834,7 +836,7 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Article</span></code></p></td>
-<td><p><span class="pasted-text">172,325,646</span></p></td>
+<td><p><span class="pasted-text">172,325,647</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">l-category=Advertising</span></code></p></td>
 <td><p><span class="pasted-text">46,679,364</span></p></td>
@@ -961,6 +963,9 @@ By <a href="https://timsherratt.org">Tim Sherratt</a>
 <div class="extra_footer">
   <p>
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</p>
+<p>
+The Trove Data Guide received investment from the <a href="https://ardc.edu.au/">Australian Research Data Commons</a> (ARDC). The ARDC is funded by the National Collaborative Research Infrastructure Strategy (NCRIS).
 </p>
 
 </div>
