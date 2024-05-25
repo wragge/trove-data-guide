@@ -32,6 +32,7 @@ parts:
       - file: understanding-search/simple-search-options
 #      - file: understanding-search/facets
       - file: understanding-search/date-searches
+      - file: understanding-search/search-hacks
       - file: understanding-search/finding-digitised-content
   - caption: Accessing data
     numbered: 2
@@ -141,6 +142,8 @@ parts:
           - file: pathways/text/data-sources
           - file: pathways/text/tools
           - file: pathways/text/examples
+            sections:
+            - file: pathways/text/newspapers-keywords
       - file: pathways/images/images
         title: Images
         sections:
