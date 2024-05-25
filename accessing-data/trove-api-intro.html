@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. Trove API introduction &#8212; Trove Data Guide</title>
+    <title>14. Trove API introduction &#8212; Trove Data Guide</title>
   
   
   
@@ -64,13 +64,13 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/accessing-data/trove-api-intro.444d6663-9ffb-4746-8641-35f5ebbd419d.js"></script>
+    <script defer="defer" src="../_static/tippy/accessing-data/trove-api-intro.cab03e80-45a9-46c6-9791-1d0f5bcebb56.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'accessing-data/trove-api-intro';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="14. How to" href="how-to/how-to.html" />
-    <link rel="prev" title="12. Downloading data from the Trove web interface" href="using-web-interface.html" />
+    <link rel="next" title="15. How to" href="how-to/how-to.html" />
+    <link rel="prev" title="13. Downloading data from the Trove web interface" href="using-web-interface.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -209,92 +209,96 @@
 <li class="toctree-l1"><a class="reference internal" href="../understanding-search/index.html">7. Understanding search</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../understanding-search/simple-search-options.html">8. ‘Simple’ search options</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../understanding-search/date-searches.html">9. Date searches</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../understanding-search/finding-digitised-content.html">10. Finding NLA digitised content you can download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../understanding-search/search-hacks.html">10. Search interface hacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../understanding-search/finding-digitised-content.html">11. Finding NLA digitised content you can download</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing data</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="index.html">11. Data access options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="using-web-interface.html">12. Downloading data from the Trove web interface</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Trove API introduction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="how-to/how-to.html">14. How to</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="how-to/download-higher-resolution-images.html">14.1. HOW TO: Download higher resolution versions of images from the web interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how-to/harvest-complete-results.html">14.2. HOW TO: Harvest a complete set of search results using the Trove API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">12. Data access options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-web-interface.html">13. Downloading data from the Trove web interface</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Trove API introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="how-to/how-to.html">15. How to</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/download-higher-resolution-images.html">15.1. HOW TO: Download higher resolution versions of images from the web interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/harvest-complete-results.html">15.2. HOW TO: Harvest a complete set of search results using the Trove API</a></li>
 </ul>
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Digitised newspapers and gazettes</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../newspapers-and-gazettes/newspaper-corpus.html">15. Understanding the digitised newspapers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../newspapers-and-gazettes/data/accessing-data.html">16. Accessing data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/data/articles.html">16.1. Articles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/data/pages.html">16.2. Pages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/data/issues.html">16.3. Issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/data/titles.html">16.4. Titles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../newspapers-and-gazettes/newspaper-corpus.html">16. Understanding the digitised newspapers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../newspapers-and-gazettes/data/accessing-data.html">17. Accessing data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/data/articles.html">17.1. Articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/data/pages.html">17.2. Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/data/issues.html">17.3. Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/data/titles.html">17.4. Titles</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../newspapers-and-gazettes/how-to/newspapers-and-gazettes.html">17. How to</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/how-to/get-newspaper-issue-article-pdfs.html">17.1. HOW TO: Get a newspaper issue or article as a PDF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/how-to/get-ocr-coordinates.html">17.2. HOW TO: Get information about the position of OCRd newspaper text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/how-to/create-newspaper-articles-dataset.html">17.3. HOW TO: Create a dataset of digitised newspaper articles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../newspapers-and-gazettes/how-to/newspapers-and-gazettes.html">18. How to</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/how-to/get-newspaper-issue-article-pdfs.html">18.1. HOW TO: Get a newspaper issue or article as a PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/how-to/get-ocr-coordinates.html">18.2. HOW TO: Get information about the position of OCRd newspaper text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../newspapers-and-gazettes/how-to/create-newspaper-articles-dataset.html">18.3. HOW TO: Create a dataset of digitised newspaper articles</a></li>
 </ul>
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other digitised resources</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../other-digitised-resources/index.html">18. Understanding and using digitised resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../other-digitised-resources/accessing-data.html">19. Accessing data from digitised resources</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/books/index.html">20. Books</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/books/overview.html">20.1. Overview of digitised books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other-digitised-resources/index.html">19. Understanding and using digitised resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../other-digitised-resources/accessing-data.html">20. Accessing data from digitised resources</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/books/index.html">21. Books</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/books/overview.html">21.1. Overview of digitised books</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/periodicals/index.html">21. Periodicals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/periodicals/overview.html">21.1. Overview of periodicals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/periodicals/finding-periodicals.html">21.2. Finding digitised periodicals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/periodicals/accessing-data.html">21.3. Accessing data from periodicals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/periodicals/index.html">22. Periodicals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/periodicals/overview.html">22.1. Overview of periodicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/periodicals/finding-periodicals.html">22.2. Finding digitised periodicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/periodicals/accessing-data.html">22.3. Accessing data from periodicals</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/index.html">22. Parliamentary papers</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/overview.html">22.1. Overview of Parliamentary Papers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/finding-pp.html">22.2. Finding Parliamentary Papers in Trove</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/index.html">23. Parliamentary papers</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/overview.html">23.1. Overview of Parliamentary Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/parliamentary-papers/finding-pp.html">23.2. Finding Parliamentary Papers in Trove</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/oral-histories/index.html">23. Oral histories</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/oral-histories/overview.html">23.1. Overview of oral histories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/oral-histories/accessing-data.html">23.2. Accessing data from digitised oral histories</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/oral-histories/index.html">24. Oral histories</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/oral-histories/overview.html">24.1. Overview of oral histories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/oral-histories/accessing-data.html">24.2. Accessing data from digitised oral histories</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/how-to/digitised-resources.html">24. How to</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-collection-items.html">24.1. HOW TO: Get a list of items in a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/download-items-text-images.html">24.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/extract-embedded-metadata.html">24.3. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-ocr-layout-data.html">24.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/harvest-digitised-resources.html">24.5. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/scrape-metadata-audio-player.html">24.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../other-digitised-resources/how-to/digitised-resources.html">25. How to</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-collection-items.html">25.1. HOW TO: Get a list of items in a digitised collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/download-items-text-images.html">25.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/extract-embedded-metadata.html">25.3. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-ocr-layout-data.html">25.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/harvest-digitised-resources.html">25.5. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/scrape-metadata-audio-player.html">25.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Research pathways</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pathways/index.html">25. Research pathways</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pathways/text/text.html">26. Text</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pathways/text/data-sources.html">26.1. Data sources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pathways/text/tools.html">26.2. Tools and resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pathways/text/examples.html">26.3. Tutorials and examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathways/index.html">26. Research pathways</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pathways/text/text.html">27. Text</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/text/data-sources.html">27.1. Data sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/text/tools.html">27.2. Tools and resources</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pathways/text/examples.html">27.3. Tutorials and examples</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pathways/text/newspapers-keywords.html">Analysing keywords in Trove’s digitised newspapers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pathways/images/images.html">27. Images</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pathways/images/data-sources.html">27.1. Data sources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pathways/images/tools.html">27.2. Tools and resources</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../pathways/images/examples.html">27.3. Tutorials and examples</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pathways/images/images.html">28. Images</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/images/data-sources.html">28.1. Data sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pathways/images/tools.html">28.2. Tools and resources</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pathways/images/examples.html">28.3. Tutorials and examples</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pathways/images/tropy.html">Working with a Trove collection in Tropy</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../pathways/structured-data.html">28. Structured data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pathways/geospatial.html">29. Maps and places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pathways/networks.html">30. Networks and relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pathways/collections.html">31. Creating collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathways/structured-data.html">29. Structured data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathways/geospatial.html">30. Maps and places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathways/networks.html">31. Networks and relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathways/collections.html">32. Creating collections</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
@@ -493,11 +497,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-the-api">13.1. Why use the API?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-requests-endpoints-and-responses">13.2. API requests, endpoints, and responses</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authorising-your-requests-with-an-api-key">13.3. Authorising your requests with an API key</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-api-request">13.4. A simple API request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoints">13.5. Endpoints</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-the-api">14.1. Why use the API?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-requests-endpoints-and-responses">14.2. API requests, endpoints, and responses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authorising-your-requests-with-an-api-key">14.3. Authorising your requests with an API key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-api-request">14.4. A simple API request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoints">14.5. Endpoints</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">Search results</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-records">Individual records</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-of-records">Lists of records</a></li>
@@ -515,10 +519,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="trove-api-introduction">
-<h1><span class="section-number">13. </span>Trove API introduction<a class="headerlink" href="#trove-api-introduction" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>Trove API introduction<a class="headerlink" href="#trove-api-introduction" title="Link to this heading">#</a></h1>
 <p>Use the Trove Application Programming Interface (API) to get direct access to Trove data. Just make a request  and get back data in a predictable, structured format that computers can understand.</p>
 <section id="why-use-the-api">
-<h2><span class="section-number">13.1. </span>Why use the API?<a class="headerlink" href="#why-use-the-api" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>Why use the API?<a class="headerlink" href="#why-use-the-api" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="seealso admonition">
@@ -546,7 +550,7 @@ document.write(`
 </ul>
 </section>
 <section id="api-requests-endpoints-and-responses">
-<h2><span class="section-number">13.2. </span>API requests, endpoints, and responses<a class="headerlink" href="#api-requests-endpoints-and-responses" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>API requests, endpoints, and responses<a class="headerlink" href="#api-requests-endpoints-and-responses" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -632,7 +636,7 @@ document.write(`
 <p>The actual data fields contained within an API response vary according to your query and the endpoint used. Specific types of responses are discussed further below.</p>
 </section>
 <section id="authorising-your-requests-with-an-api-key">
-<h2><span class="section-number">13.3. </span>Authorising your requests with an API key<a class="headerlink" href="#authorising-your-requests-with-an-api-key" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.3. </span>Authorising your requests with an API key<a class="headerlink" href="#authorising-your-requests-with-an-api-key" title="Link to this heading">#</a></h2>
 <p>The Trove API lets you make a limited number of requests without any authorisation. This is handy for quick testing or experimentation, but for most uses you’ll need to authorise your requests with an API key. Trove API keys are free and, for non-commercial uses, can be <a class="reference external" href="https://trove.nla.gov.au/about/create-something/using-api">obtained instantly</a>.</p>
 <p>There are two ways of adding your key to an API request:</p>
 <ul class="simple">
@@ -646,7 +650,7 @@ document.write(`
 <p>A more secure and future-proof method is adding the key to the <code class="docutils literal notranslate"><span class="pre">X-API-KEY</span></code> field in your request’s headers. If you’re using a library like Python Requests to access the API, it’s easy to set header values. See below for a full example.</p>
 </section>
 <section id="a-simple-api-request">
-<h2><span class="section-number">13.4. </span>A simple API request<a class="headerlink" href="#a-simple-api-request" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.4. </span>A simple API request<a class="headerlink" href="#a-simple-api-request" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -711,7 +715,7 @@ document.write(`
  &#39;date&#39;: &#39;1902-07-15&#39;,
  &#39;page&#39;: &#39;4&#39;,
  &#39;pageSequence&#39;: &#39;4&#39;,
- &#39;relevance&#39;: {&#39;score&#39;: 280.8791198730469, &#39;value&#39;: &#39;very relevant&#39;},
+ &#39;relevance&#39;: {&#39;score&#39;: 280.89276123046875, &#39;value&#39;: &#39;very relevant&#39;},
  &#39;snippet&#39;: &#39;Mr. Wragge is going to issue a &quot;Wragge.&quot; This is the title of his paper to be, as Mr. Wragge, having weathered Sproule, Drake and other extraordinarily named storms on&#39;,
  &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-article61389505?searchTerm=wragge&#39;}
 </pre></div>
@@ -720,7 +724,7 @@ document.write(`
 </div>
 </section>
 <section id="endpoints">
-<h2><span class="section-number">13.5. </span>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.5. </span>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading">#</a></h2>
 <!---<mark>==Link where appropriate to sections on specific categories/formats==</mark>--->
 <section id="search-results">
 <h3>Search results<a class="headerlink" href="#search-results" title="Link to this heading">#</a></h3>
@@ -857,7 +861,7 @@ Saving results (ndjson, csv (with flattening) etc)
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Downloading data from the Trove web interface</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Downloading data from the Trove web interface</p>
       </div>
     </a>
     <a class="right-next"
@@ -865,7 +869,7 @@ Saving results (ndjson, csv (with flattening) etc)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>How to</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>How to</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -885,11 +889,11 @@ Saving results (ndjson, csv (with flattening) etc)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-the-api">13.1. Why use the API?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-requests-endpoints-and-responses">13.2. API requests, endpoints, and responses</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authorising-your-requests-with-an-api-key">13.3. Authorising your requests with an API key</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-api-request">13.4. A simple API request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoints">13.5. Endpoints</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-the-api">14.1. Why use the API?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-requests-endpoints-and-responses">14.2. API requests, endpoints, and responses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authorising-your-requests-with-an-api-key">14.3. Authorising your requests with an API key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-api-request">14.4. A simple API request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoints">14.5. Endpoints</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">Search results</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-records">Individual records</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-of-records">Lists of records</a></li>
