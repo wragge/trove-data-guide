@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -66,6 +66,7 @@ Below you'll find information on some of the undocumented and potentially confus
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(search:simple:defuzzify)=
 ## De-fuzzify your searches
 
 By default, Trove adds a bit of fuzziness to your searches to try and ensure you get back some useful results. This includes:
@@ -214,6 +215,7 @@ glue("text_ise", get_total("text:naturalisation"))
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(search:simple:proxity)=
 ## Proximity searches
 
 The defuzzify examples above use the proximity modifier (`~`) to remove extra words from a query, but you can also use it to set a maximum distance between search terms. One thing to note is that the order of the search terms makes a difference to your results, as reversing the order of your terms counts as a 'word'. For example:
@@ -256,6 +258,7 @@ glue("prox_both", get_total('"tasmania chinese"~10 OR "chinese tasmania"~10'))
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(search:simple:indexes)=
 ## Using indexes
 
 When you enter queries in the simple search box, or by using the `q` parameter in an API request, you're searching across most metadata fields and any available full text. To control where and what you're searching, you can specify the index you want Trove to use. For example, the query `title:wragge` will search only the `title` field for the term `wragge`.
@@ -343,6 +346,7 @@ For more information see [](date-searches)
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(search:simple:facets)=
 ## Using facets
 
 ````{margin}
