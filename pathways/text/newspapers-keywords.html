@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/pathways/text/newspapers-keywords.0024bc9f-b6ef-4ae2-a25b-06c794eabe12.js"></script>
+    <script defer="defer" src="../../_static/tippy/pathways/text/newspapers-keywords.1a2ad098-2e82-4e67-8165-2e4e05d1120d.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pathways/text/newspapers-keywords';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -301,6 +301,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../collections.html">32. Creating collections</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to the Trove Data Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
 </ul>
 
@@ -498,7 +499,17 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-your-own-trove-api-key">Getting your own Trove API key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-your-search">Constructing your search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-gazette-harvester">Trove Newspaper &amp; Gazette Harvester</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-the-notebook">Starting the notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ardc-binder">Using ARDC Binder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mybinder">Using MyBinder</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-harvest">Running your harvest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-your-results">Reshaping your results</a></li>
 </ul>
             </nav>
         </div>
@@ -515,6 +526,7 @@ document.write(`
 <p>You want to explore differences in language use across a collection of digitised newspaper articles. The <a class="reference external" href="https://www.atap.edu.au/">Australian Text Analytics Platform</a> provides a <a class="reference external" href="https://github.com/Australian-Text-Analytics-Platform/keywords-analysis">Keywords Analysis tool</a> that helps you examine whether particular words are over or under-represented across collections of text. But how do get data from Trove’s newspapers to the keyword analysis tool?</p>
 <ul class="simple">
 <li><p>constructing a search</p></li>
+<li><p>API key</p></li>
 <li><p>Using Binder</p></li>
 <li><p>Trove Newspaper Harvester</p></li>
 <li><p>understanding results</p></li>
@@ -556,13 +568,33 @@ KeywordsAnalysis Tool</div>
 </div>
 </div>
 </section>
+<section id="getting-your-own-trove-api-key">
+<h2>Getting your own Trove API key<a class="headerlink" href="#getting-your-own-trove-api-key" title="Link to this heading">#</a></h2>
+<p>The Trove Newspaper &amp; Gazette Harvester downloads data using Trove’s Application Programming Interface (API). Access to the API is managed through the use of ‘keys’. You’ll need your own API key to use the Harvester. Fortunately, it’s quick and easy to get a key for non-commercial use. See Trove’s <a class="reference external" href="https://trove.nla.gov.au/about/create-something/using-api">Using the API</a> help page for full details, but in summary you need to:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://trove.nla.gov.au/help/your-trove-account/creating-account">create a Trove user account</a> (if you don’t have one already)</p></li>
+<li><p>login to your user account and go to your profile</p></li>
+<li><p>click on the ‘For developers’ tab</p></li>
+<li><p>fill in and submit the API application form</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your API key will be displayed as soon as you submit the application form, however, it can take several minutes for the key to be activated. If you receive authentication errors when you try to use the key, wait a little while and then try again.</p>
+</div>
+<p>Your API key is just a string of random letters and numbers. Any time you need it, just go back to the ‘For developers’ tab in your user profile and copy the key from the page.</p>
+<figure class="align-default" id="trove-user-api-tab">
+<a class="reference internal image-reference" href="../../_images/trove-user-api-tab.png"><img alt="../../_images/trove-user-api-tab.png" src="../../_images/trove-user-api-tab.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.1 </span><span class="caption-text">Your API will be displayed in the ‘For developers’ tab of your user profile.</span><a class="headerlink" href="#trove-user-api-tab" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="constructing-your-search">
 <h2>Constructing your search<a class="headerlink" href="#constructing-your-search" title="Link to this heading">#</a></h2>
 <p>The first step is constructing a search that will return relevant newspaper articles. This is harder than it seems. Yes, you can just plug keywords into Trove’s search interface and get back interesting looking results. But it’s important to keep in mind the differing needs of <em>discovery</em> versus <em>analysis</em>. Your aim here is not to find a few useful articles, but to construct a dataset containing <em>all</em> the articles returned by your search query. <strong>Everything.</strong> When you’re searching for individual articles you can usually just ignore the fact that there are millions of articles in your search results, as Trove’s relevance ranking pushes the most likely candidates to the top. But if you’re creating a dataset, you want to be as precise as possible to avoid including unwanted noise.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Relevance in bulk harvests
-Unlike the web interface, when you harvest newspaper articles from the Trove API they’re ordered by their identifier, not their relevance. So you can’t just get the first few hundred articles and assume you’ve got the most important stuff. However, the API results do include a relevance score that you can use to filter the dataset <em>after</em> you’ve finished harvesting. This is discussed further below.</p>
+<div class="note admonition">
+<p class="admonition-title">Relevance in bulk harvests</p>
+<p>Unlike the web interface, when you harvest newspaper articles from the Trove API they’re ordered by their identifier, not their relevance. So you can’t just get the first few hundred articles and assume you’ve got the most important stuff. However, the API results do include a relevance score that you can use to filter the dataset <em>after</em> you’ve finished harvesting. This is discussed further below.</p>
 </div>
 <p>There are a few ways of making your search more precise:</p>
 <ul class="simple">
@@ -570,13 +602,162 @@ Unlike the web interface, when you harvest newspaper articles from the Trove API
 <li><p>use <a class="reference internal" href="#search:simple:proximity"><span class="xref myst">proximity searches</span></a> to specify the distance between search terms</p></li>
 <li><p><a class="reference internal" href="../../understanding-search/simple-search-options.html#search-simple-facets"><span class="std std-ref">apply facets</span></a> to limit your results – in particular you might want to use:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">l-category</span></code> to specify the type of articles (do you really want to include advertisements?)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l-state</span></code> to specify the state in which articles were published</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l-wordCount</span></code> to limit to articles of a particular length</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">l-decade</span></code> or <code class="docutils literal notranslate"><span class="pre">l-year</span></code> to specify the date span (do you really want everything from 1803 to 2020?)</p></li>
+<li><p><strong>Type</strong> to include newspapers (or gazettes) only</p></li>
+<li><p><strong>Category</strong> to specify the type of articles (do you really want to include advertisements?)</p></li>
+<li><p><strong>Place</strong> to specify the state in which articles were published</p></li>
+<li><p><strong>Word Count</strong> to limit to articles of a particular length</p></li>
+<li><p><strong>Date range</strong> to specify the date span (do you really want everything from 1803 to 2020?)</p></li>
 </ul>
 </li>
 </ul>
+<p>Once you’re happy with your search, copy the url in your browser’s location bar. You’ll need this url to run the Trove Newspaper &amp; Gazette Harvester.</p>
+<figure class="align-default" id="trove-search-location-bar">
+<a class="reference internal image-reference" href="../../_images/trove-search-location-bar.png"><img alt="../../_images/trove-search-location-bar.png" src="../../_images/trove-search-location-bar.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.2 </span><span class="caption-text">Copy the url in your browser’s location bar.</span><a class="headerlink" href="#trove-search-location-bar" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="trove-newspaper-gazette-harvester">
+<h2>Trove Newspaper &amp; Gazette Harvester<a class="headerlink" href="#trove-newspaper-gazette-harvester" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://glam-workbench.net/trove-harvester/">Trove Newspaper &amp; Gazette Harvester</a> is a tool that helps you harvest metadata, text, and images from a search in Trove’s digitised newspapers. You just give the harvester the url of a search and it will create a dataset containing hundreds, thousands, even millions of articles.</p>
+<p>The Trove Newspaper &amp; Gazette Harvester is available in a number of different forms according to your needs and skills. You can use it as:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://glam-workbench.net/trove-harvester/harvester-web-app/">a simple web app</a></p></li>
+<li><p><a class="reference external" href="https://glam-workbench.net/trove-harvester/basic-harvester-example/">a Jupyter Lab notebook</a></p></li>
+<li><p><a class="reference external" href="https://wragge.github.io/trove-newspaper-harvester/cli.html">a command line tool</a></p></li>
+<li><p><a class="reference external" href="https://wragge.github.io/trove-newspaper-harvester/core.html">a Python package</a> embedded in your own data processing workflows</p></li>
+</ul>
+<p>This tutorial uses the Jupyter Lab notebook available in the GLAM Workbench. You’ll need:</p>
+<ul class="simple">
+<li><p>a Trove API key</p></li>
+<li><p>the url of your search in the Trove web interface</p></li>
+</ul>
+</section>
+<section id="starting-the-notebook">
+<h2>Starting the notebook<a class="headerlink" href="#starting-the-notebook" title="Link to this heading">#</a></h2>
+<p>Go to <a class="reference external" href="https://glam-workbench.net/trove-harvester/basic-harvester-example/">Using the Trove Harvester as a Python package</a> in the Trove newspaper harvester section of the GLAM Workbench.</p>
+<p>This notebook, like all GLAM Workbench notebooks, needs to be run in a customised computing environment. The easiest way to do this is through BinderHub. BinderHub is a cloud-based service that gets a notebook up and running by reading its requirements from a code repository, and creating an environment with the necessary software. The GLAM Workbench is integrated with two BinderHub services:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ardc.edu.au/services/ardc-nectar-research-cloud/ardc-binderhub-service/">ARDC Binder</a> – based in Australia, requires login using university credentials</p></li>
+<li><p><a class="reference external" href="https://mybinder.org/">MyBinder</a> – international, no login required</p></li>
+</ul>
+<p>If you have a login at an Australian university or research agency, try the ARDC Binder service first. It’s a little more effort, but it’s usually faster and more reliable than the public MyBinder service which can have capacity issues.</p>
+<p>The GLAM Workbench displays a preview of the notebook, with options to run it using either the ARDC Binder or MyBinder service.</p>
+<figure class="align-default" id="gw-iiif-nb">
+<a class="reference internal image-reference" href="../../_images/gw-harvester-package.png"><img alt="../../_images/gw-harvester-package.png" src="../../_images/gw-harvester-package.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.3 </span><span class="caption-text">The GLAM Workbench provides a number of ways you can run the notebook.</span><a class="headerlink" href="#gw-iiif-nb" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="using-ardc-binder">
+<h3>Using ARDC Binder<a class="headerlink" href="#using-ardc-binder" title="Link to this heading">#</a></h3>
+<p>To use the ARDC Binder service, click on the ARDC Binder tab under the notebook preview. You should see a big, blue <strong>Run live on ARDC Binder</strong> button. Click on the button to launch the Binder service.</p>
+<p>If this is the first time you’ve used the ARDC Binder service you’ll be asked to login using the Australian Access Federation (AAF).</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/ardc-binder-aaf-login.png"><img alt="../../_images/ardc-binder-aaf-login.png" src="../../_images/ardc-binder-aaf-login.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.4 </span><span class="caption-text">ARDC Binder will ask you to log in using AAF</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the <strong>Sign in with AAF/Tuakiri</strong> button. You’ll be asked to select either AAF or Tuakiri – select AAF.</p>
+<p>To sign in with AAF, select your institution from the list, then click the <strong>Continue to your organisation</strong> button.</p>
+<figure class="align-default" id="aaf-institutions-select">
+<a class="reference internal image-reference" href="../../_images/aaf-institutions-select.png"><img alt="../../_images/aaf-institutions-select.png" src="../../_images/aaf-institutions-select.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.5 </span><span class="caption-text">Select your institution from the AAF list</span><a class="headerlink" href="#aaf-institutions-select" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You’ll be redirected to your insitution’s login screen. Log in using your usual credentials. Once you’ve logged in you’ll be redirected back to ARDC Binder and the notebook will start to load. You might have to wait a bit while a customised computing environment is prepared for you. If you see a message saying that things are taking a long time and there might be a problem, just ignore it. Eventually the notebook will load in the Jupyter Lab interface.</p>
+</section>
+<section id="using-mybinder">
+<h3>Using MyBinder<a class="headerlink" href="#using-mybinder" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="mybinder-tab">
+<a class="reference internal image-reference" href="../../_images/mybinder-tab.png"><img alt="../../_images/mybinder-tab.png" src="../../_images/mybinder-tab.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.6 </span><span class="caption-text">Click on the MyBinder tab.</span><a class="headerlink" href="#mybinder-tab" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To use the MyBinder service, click on the MyBinder tab under the notebook preview. You should see a big, blue <strong>Run live on MyBinder</strong> button. Click on the button to launch the Binder service. No login is required, so MyBinder immediately starts building a customised computing environment. This can take a while, but eventually the notebook should load in the Jupyter Lab interface.</p>
+</section>
+</section>
+<section id="running-your-harvest">
+<h2>Running your harvest<a class="headerlink" href="#running-your-harvest" title="Link to this heading">#</a></h2>
+<p>No matter what service you use to run the notebook, the result will be the same – the notebook will open in the Jupyter Lab interface.</p>
+<figure class="align-default" id="iiif-nb-jupyterlab">
+<a class="reference internal image-reference" href="../../_images/harvester-nb.png"><img alt="../../_images/harvester-nb.png" src="../../_images/harvester-nb.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.7 </span><span class="caption-text">The notebook running in Jupyter Lab.</span><a class="headerlink" href="#iiif-nb-jupyterlab" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Jupyter Lab interface has two main panes – a file browser is on the left, while the current notebook is displayed in the main, central pane.</p>
+<p>Scroll down the notebook until you come to the section <strong>Set your Trove API key</strong>. Underneath the text is a code cell that sets the value of the API key to use with the harvester. Click on the code cell to activate it for editing (you’ll notice the border turns blue). Paste your API key where indicated between the double quotes.</p>
+<figure class="align-default" id="trove-harvester-api-key">
+<a class="reference internal image-reference" href="../../_images/trove-harvester-api-key.png"><img alt="../../_images/trove-harvester-api-key.png" src="../../_images/trove-harvester-api-key.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.8 </span><span class="caption-text">Paste your API key between the quotes.</span><a class="headerlink" href="#trove-harvester-api-key" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Scroll further to the next section headed <strong>Set your search query</strong>. This is where you set the search url that the harvester will use to create your dataset. Click on the code cell and paste your url between the double quotes. The Newspaper &amp; Gazette Harvester takes the url from your search and automatically translates it into a form the API understands.</p>
+<figure class="align-default" id="trove-harvester-query">
+<a class="reference internal image-reference" href="../../_images/trove-harvester-query.png"><img alt="../../_images/trove-harvester-query.png" src="../../_images/trove-harvester-query.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.9 </span><span class="caption-text">Paste the url of your search between the quotes.</span><a class="headerlink" href="#trove-harvester-query" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can now start your harvest! From the ‘Run’ menu select ‘Run All cells’.</p>
+<figure class="align-default" id="trove-harvester-run">
+<a class="reference internal image-reference" href="../../_images/trove-harvester-run.png"><img alt="../../_images/trove-harvester-run.png" src="../../_images/trove-harvester-run.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.10 </span><span class="caption-text">Select Run &gt; Run All Cells.</span><a class="headerlink" href="#trove-harvester-run" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To monitor the progress of your harvest scroll down until you see the cell containing <code class="docutils literal notranslate"><span class="pre">harvester.harvest()</span></code>. Beneath it you should see a progress bar that tells you how many articles have been saved.</p>
+<figure class="align-default" id="trove-harvester-progress">
+<a class="reference internal image-reference" href="../../_images/trove-harvester-progress.png"><img alt="../../_images/trove-harvester-progress.png" src="../../_images/trove-harvester-progress.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.11 </span><span class="caption-text">Monitor your harvest.</span><a class="headerlink" href="#trove-harvester-progress" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once the harvest is complete, the progress bar will turn green, and a link will appear to download all the harvested data as a zip file.</p>
+<figure class="align-default" id="trove-harvester-finished">
+<a class="reference internal image-reference" href="../../_images/trove-harvester-finished.png"><img alt="../../_images/trove-harvester-finished.png" src="../../_images/trove-harvester-finished.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.12 </span><span class="caption-text">The harvest is finished!</span><a class="headerlink" href="#trove-harvester-finished" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="understanding-your-data">
+<h2>Understanding your data<a class="headerlink" href="#understanding-your-data" title="Link to this heading">#</a></h2>
+<div class="warning admonition">
+<p class="admonition-title">STOP! Save your data now!</p>
+<p>Before you do anything else, click on the ‘Download results’ link to download the harvested data as a zip file. Save it with you other research data and make sure it’s properly backed up. You might want to repeat this analysis sometime in the future, so it’s important to have access to the original data, especially given that Trove itself is <a class="reference internal" href="../../newspapers-and-gazettes/newspaper-corpus.html#newspapers-corpus-history"><span class="std std-ref">changing all the time</span></a>.</p>
+</div>
+<p>You can start exploring your harvested data in the Jupyter Lab interface. By default, the Harvester saves its outputs in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. Double click on the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory in the file browser to open it.</p>
+<p>Individual harvests are named according to the date and time they were started. Within the data directory you should see a directory that starts with the current year, for example <code class="docutils literal notranslate"><span class="pre">20240527055711</span></code>. Double click on the directory to open your harvest.</p>
+<figure class="align-default" id="trove-harvester-results">
+<a class="reference internal image-reference" href="../../_images/trove-harvester-results.png"><img alt="../../_images/trove-harvester-results.png" src="../../_images/trove-harvester-results.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.13 </span><span class="caption-text">Open the harvest directory to view the results.</span><a class="headerlink" href="#trove-harvester-results" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="reshaping-your-results">
+<h2>Reshaping your results<a class="headerlink" href="#reshaping-your-results" title="Link to this heading">#</a></h2>
+<p>Creating corpora
+You might need to experiment.</p>
+<figure class="align-default" id="harvester-reshaping-slicer">
+<a class="reference internal image-reference" href="../../_images/harvester-reshaping-slicer.png"><img alt="../../_images/harvester-reshaping-slicer.png" src="../../_images/harvester-reshaping-slicer.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.14 </span><span class="caption-text">Create a HarvestSlicer using your harvests id.</span><a class="headerlink" href="#harvester-reshaping-slicer" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="harvester-reshaping-years">
+<a class="reference internal image-reference" href="../../_images/harvester-reshaping-years.png"><img alt="../../_images/harvester-reshaping-years.png" src="../../_images/harvester-reshaping-years.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.15 </span><span class="caption-text">Slice your harvest by year or decade.</span><a class="headerlink" href="#harvester-reshaping-years" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
@@ -645,7 +826,17 @@ Unlike the web interface, when you harvest newspaper articles from the Trove API
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-your-own-trove-api-key">Getting your own Trove API key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-your-search">Constructing your search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-gazette-harvester">Trove Newspaper &amp; Gazette Harvester</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-the-notebook">Starting the notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ardc-binder">Using ARDC Binder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mybinder">Using MyBinder</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-harvest">Running your harvest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-your-results">Reshaping your results</a></li>
 </ul>
   </nav></div>
 
@@ -685,7 +876,7 @@ By <a href="https://timsherratt.org">Tim Sherratt</a>
     
 <div class="extra_footer">
   <p>
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </p>
 <p>
 The Trove Data Guide received investment from the <a href="https://ardc.edu.au/">Australian Research Data Commons</a> (ARDC). The ARDC is funded by the National Collaborative Research Infrastructure Strategy (NCRIS).
