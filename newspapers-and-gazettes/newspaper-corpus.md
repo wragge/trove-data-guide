@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -128,6 +128,7 @@ You might be wondering about the peak in 1915 – is it because of World War I? 
 
 The impact of these policy decisions is an important reminder that **the Trove corpus is not unchanging or inevitable, it's constructed** – it's the product of preservation decisions, funding priorities, library policies, digitisation technologies, professional practices, legal frameworks, and a fair bit of luck.
 
+(newspapers:corpus:history)=
 ## The newspaper corpus has a history
 
 ````{margin}

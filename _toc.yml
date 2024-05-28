@@ -157,6 +157,7 @@ parts:
       - file: pathways/networks
       - file: pathways/collections
   - chapters:
+    - file: contributing.md
 #    - file: glossary
 #    - file: genindex
     - file: references

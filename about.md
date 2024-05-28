@@ -2,7 +2,7 @@
 
 The Trove Data Guide is being developed by [Tim Sherratt](https://timsherratt.org) as part of the [ARDC Community Data Lab](https://ardc.edu.au/project/ardc-community-data-lab/).
 
-The published version is available at: <http://tdg.glamworkbench.cloud.edu.au>.
+The published version is available at: <https://tdg.glam-workbench.net>.
 
 ## GLAM Workbench
 
@@ -12,4 +12,4 @@ The Trove Data Guide is a companion to the Trove sections of the [GLAM Workbench
 
 More content will be added to the Trove Data Guide over coming months. To view work-in-progress see the [development version](https://wragge.github.io/trove-data-guide/) and the project's [GitHub repository](https://github.com/wragge/trove-data-guide).
 
-Suggestions for new topics are welcome – feel free to [add an issue](https://github.com/wragge/trove-data-guide/issues) in the GitHub repository.
+Ideas, corrections, and new content are very welcome – find out more about [contributing to the Trove Data Guide](contributing.md). 

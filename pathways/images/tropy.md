@@ -149,14 +149,14 @@ Unfortunately Trove doesn’t provide data using IIIF standards. Indeed, it does
 
 Go to [Save a collection of digitised images as an IIIF manifest](https://glam-workbench.net/trove-images/save-image-collection-iiif/) in the Trove images section of the GLAM Workbench.
 
-This notebook, like all GLAM Workbench notebooks, needs to be run in a customised computing environment. The easiest way to do this is through BinderHub. BinderHub is a cloud-based service that gets a notebook up and running by reading its requirements from a code repository, and creating the necessary environment. The GLAM Workbench is integrated with two BinderHub services:
+This notebook, like all GLAM Workbench notebooks, needs to be run in a customised computing environment. The easiest way to do this is through BinderHub. BinderHub is a cloud-based service that gets a notebook up and running by reading its requirements from a code repository, and creating an environment with the necessary software. The GLAM Workbench is integrated with two BinderHub services:
 
 - [ARDC Binder](https://ardc.edu.au/services/ardc-nectar-research-cloud/ardc-binderhub-service/) – based in Australia, requires login using university credentials
 - [MyBinder](https://mybinder.org/) – international, no login required
 
 If you have a login at an Australian university or research agency, try the ARDC Binder service first. It's a little more effort, but it's usually faster and more reliable than the public MyBinder service which can have capacity issues.
 
-The GLAM Workbench displays a preview of the notebook, with options to run it using either the ARDC Binder of MyBinder service.
+The GLAM Workbench displays a preview of the notebook, with options to run it using either the ARDC Binder or MyBinder service.
 
 ```{figure} ../../images/gw-iiif-nb.png
 :width: 600px
