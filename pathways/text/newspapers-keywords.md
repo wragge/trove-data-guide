@@ -15,6 +15,12 @@ kernelspec:
 
 You want to explore differences in language use across a collection of digitised newspaper articles. The [Australian Text Analytics Platform](https://www.atap.edu.au/) provides a [Keywords Analysis tool](https://github.com/Australian-Text-Analytics-Platform/keywords-analysis) that helps you examine whether particular words are over or under-represented across collections of text. But how do get data from Trove's newspapers to the keyword analysis tool?
 
+
+```{contents}
+:local:
+:backlinks: None
+```
+
 +++
 
 - constructing a search
@@ -154,6 +160,7 @@ The GLAM Workbench displays a preview of the notebook, with options to run it us
 The GLAM Workbench provides a number of ways you can run the notebook.
 ```
 
+(pathways:text:keywords:ardc)=
 ### Using ARDC Binder
 
 To use the ARDC Binder service, click on the ARDC Binder tab under the notebook preview. You should see a big, blue **Run live on ARDC Binder** button. Click on the button to launch the Binder service.
@@ -180,6 +187,7 @@ Select your institution from the AAF list
 
 You'll be redirected to your insitution's login screen. Log in using your usual credentials. Once you've logged in you'll be redirected back to ARDC Binder and the notebook will start to load. You might have to wait a bit while a customised computing environment is prepared for you. If you see a message saying that things are taking a long time and there might be a problem, just ignore it. Eventually the notebook will load in the Jupyter Lab interface.
 
+(pathways:text:keywords:mybinder)=
 ### Using MyBinder
 
 ```{figure} ../../images/mybinder-tab.png
@@ -263,19 +271,272 @@ You can start exploring your harvested data in the Jupyter Lab interface. By def
 Individual harvests are named according to the date and time they were started. Within the data directory you should see a directory that starts with the current year, for example `20240527055711`. Double click on the directory to open your harvest.
 
 ```{figure} ../../images/trove-harvester-results.png
-:width: 600px
+:width: 400px
 :name: trove-harvester-results
 
 Open the harvest directory to view the results.
 ```
 
+The harvest directory should contain three files and a directory.
+
+* `harvester_config.json` a file that captures the parameters used to launch the harvest
+* `ro-crate-metadata.json` a metadata file documenting the harvest in [RO-Crate](https://www.researchobject.org/ro-crate/) format
+* `results.csv` contains details of all the harvested articles in a plain text CSV (Comma Separated Values) file. You can open it with any spreadsheet program.
+* `text` a directory containing the OCRd text of individual articles
+
+You can double click on any of these to explore their contents in Jupyter Lab.
+
+### `harvester_config.json`
+
+This file captures the parameters used to create the harvest. This includes the search query parameters sent to the Trove API, as well as the Harvester's own settings. Here's an example:
+
+```json
+{
+    "query_params": {
+        "q": "fulltext:\"technical education\"",
+        "l-artType": "newspapers",
+        "l-category": [
+            "Article"
+        ],
+        "category": "newspaper",
+        "encoding": "json",
+        "reclevel": "full",
+        "bulkHarvest": "true",
+        "include": [
+            "articleText"
+        ]
+    },
+    "key": "[API KEY REDACTED]",
+    "full_harvest_dir": "data/20240527055711",
+    "maximum": null,
+    "text": true,
+    "pdf": false,
+    "image": false,
+    "include_linebreaks": false
+}
+```
+
+You can use the `harvester_config.json` to re-run a harvest at some point in the future. This can be useful if you want to understand how changes to Trove's newspaper corpus affect your results. To re-run a harvest, initialise the Harvester with the `config_file` parameter pointing to the location of an existing `harvester_config.json`.
+
+### `ro-crate-metadata.json`
+
+This file saves information about the context and results of the harvest in a standardised, machine-readable format. If you've ever come across a data file on your computer that you've created at some time in the past, but have no memory of how or why you created it, you'll appreciate the importance of capturing the context in which datasets are created *at the point of creation*. The Harvester does this automatically to save you from future confusion and embed good data management practice. The file is formatted according to the [RO-Crate](https://www.researchobject.org/ro-crate/) specification for describing research objects. It includes information such as the date of the harvest and the version of the Harvester software, as well as the number of articles saved. Here's a (slightly truncated) example:
+
+``` json
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "datePublished": "2024-05-27T05:57:12+00:00",
+            "description": "This dataset of digitised newspaper articles from Trove was created using the Trove Newspaper Harvester. Details of the search query used to generate this dataset can be found in the harvester_config.json file.",
+            "hasPart": [
+                {
+                    "@id": "harvester_config.json"
+                },
+                {
+                    "@id": "text"
+                },
+                {
+                    "@id": "results.csv"
+                }
+            ],
+            "mainEntity": {
+                "@id": "#harvester_run"
+            },
+            "name": "Dataset of digitised newspaper articles harvested from Trove on 27 May 2024"
+        },
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "license": {
+                "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+            }
+        },
+        {
+            "@id": "harvester_config.json",
+            "@type": "File",
+            "encodingFormat": "application/json",
+            "name": "Trove Newspaper Harvester configuration file"
+        },
+        {
+            "@id": "text",
+            "@type": [
+                "File",
+                "Dataset"
+            ],
+            "dateCreated": "2024-05-27T16:41:30.491764+10:00",
+            "description": "There is one text file per article. The file titles include basic article metadata \u2013 the date of the article, the id number of the newspaper, and the id number of the article.",
+            "license": {
+                "@id": "http://rightsstatements.org/vocab/CNE/1.0/"
+            },
+            "name": "Text files harvested from articles",
+            "size": 107032
+        },
+        {
+            "@id": "results.csv",
+            "@type": [
+                "File",
+                "Dataset"
+            ],
+            "contentSize": 48017711,
+            "dateCreated": "2024-05-27T16:41:33.772582+10:00",
+            "encodingFormat": "text/csv",
+            "license": {
+                "@id": "http://rightsstatements.org/vocab/NKC/1.0/"
+            },
+            "name": "Metadata of harvested articles in CSV format",
+            "size": 107032
+        },
+        {
+            "@id": "#harvester_run",
+            "@type": "CreateAction",
+            "actionStatus": {
+                "@id": "http://schema.org/CompletedActionStatus"
+            },
+            "endDate": "2024-05-27T16:41:30.491764+10:00",
+            "instrument": "https://github.com/wragge/trove-newspaper-harvester",
+            "name": "Run of harvester",
+            "object": "harvester_config.json",
+            "result": [
+                {
+                    "@id": "text"
+                },
+                {
+                    "@id": "results.csv"
+                }
+            ],
+            "startDate": "2024-05-27T15:57:12.306629+10:00"
+        },
+        {
+            "@id": "https://github.com/wragge/trove-newspaper-harvester",
+            "@type": "SoftwareApplication",
+            "description": "The Trove Newspaper (& Gazette) Harvester makes it easy to download large quantities of digitised articles from Trove\u2019s newspapers and gazettes.",
+            "documentation": "https://wragge.github.io/trove-newspaper-harvester/",
+            "name": "Trove Newspaper and Gazette Harvester",
+            "softwareVersion": "0.7.2",
+            "url": "https://github.com/wragge/trove-newspaper-harvester"
+        }
+    ]
+}
+```
+
+### `results.csv`
+
+The file saves metadata from all the articles in the results set. It's formatted as a CSV (Comma Separated Values) file that can be opened in any spreadsheet program (though beware of Excel's penchant for mangling dates). The dataset contains the following columns:
+
+| column | description |
+|--------|-------------|
+| `article_id` | Trove's unique identifier for the article |
+| `title` | the title of the article |
+| `date` | date in ISO format, YYYY-MM-DD |
+| `page` | page number (of course), but might also indicate the page is part of a supplement or special section |
+| `newspaper_id` | Trove's unique identifier for the newspaper or gazette title (this can be used to retrieve more information or build a link to the web interface) |
+| `newspaper_title` | the name of the newspaper (or gazette) |
+| `category` | one of ‘Article’, ‘Advertising’, ‘Detailed lists, results, guides’, ‘Family Notices’, or ‘Literature’ |
+| `words` | number of words in the article |
+| `illustrated` | is it illustrated (values are y or n) |
+| `edition` | edition of newspaper (rarely used) |
+| `supplement` | section of newspaper (rarely used) |
+| `section` | section of newspaper (rarely used) |
+| `url` | the persistent url for the article |
+| `page_url` | the persistent url of the page on which the article is published |
+| `snippet` | short text sample |
+| `relevance` | search relevance score of this result |
+| `status` | some articles that are still being processed will have the status "coming soon" and might be missing other fields |
+| `corrections` | number of text corrections |
+| `last_correction` | date of last correction |
+| `tags` | number of attached tags |
+| `comments` | number of attached comments |
+| `lists` | number of lists this article is included in |
+| `text` | path to text file (if harvested) |
+| `pdf` | path to PDF file (if harvested) |
+| `images` | path to image file(s) (if harvested) |
+
+### `text`
+
+The `text` directory contains the OCRd text of individual articles – there's one file for each article in the results set. These are just plain text files, stripped on any HTML. The files include some basic metadata in their file titles – the date of the article, the id number of the newspaper, and the id number of the article. So, for example, the filename `19460104-1002-206680758.txt` tells you:
+
+- `19460104` – the article was published on 4 January 1946 (YYYYMMDD)
+- `1002` – the article was published in The Tribune
+- `206680758` – the article's unique identifier
+
+You can use the newspaper and article ids to create direct links into Trove:
+
+- to a newspaper or gazette `https://trove.nla.gov.au/newspaper/title/[newspaper id]`
+- to an article `http://nla.gov.au/nla.news-article[article id]`
 
 +++
 
 ## Reshaping your results
 
-Creating corpora
-You might need to experiment.
+The Trove Newspaper & Gazette Harvester saves metadata and content from all the newspaper articles in a set of search results. You could easily end up with a dataset containing thousands (or even millions) of articles published across two centuries of Australian history. This opens up possibilities for fine-grained analysis, tracking language, events, and publication patterns back to a specific article in a specific newspaper issue. But you might also want to observe changes at a larger scale, comparing years, decades, or newspapers rather than individual articles. Some text analysis tools also work best with aggregated collections, or corpora, rather than thousands of tiny text files. As a result, you might want to reshape your harvested dataset, creating subsets of articles for analysis.
+
+```{figure} ../../images/harvester-reshaping-nb.png
+:width: 600px
+:name: harvester-reshaping-nb
+
+The [Reshaping your newspaper harvest](https://glam-workbench.net/trove-harvester/reshaping-harvests/) notebook in the GLAM Workbench.
+```
+
+The [Reshaping your newspaper harvest](https://glam-workbench.net/trove-harvester/reshaping-harvests/) notebook in the Trove Newspaper & Gazette Harvester section of the GLAM Workbench helps you slice your dataset in a number of different ways, creating subsets to suit particular research questions or preferred tools. You can slice the dataset:
+
+- by year or decade
+- by newspaper
+- by newspaper and year
+
+In addition, you can filter the newspapers to include only the 'top' titles – measured by either the number of articles in the dataset, or the total number of words in articles. 
+
+You can also filter the dataset using the relevance score generated by Trove's search index. For example, you can exclude articles with relevance scores in the bottom 50% across the entire dataset.
+
+These subsets can be saved in different formats to meet the needs of a variety of tools:
+
+- as zip files containing individual text files (one zip file for each slice)
+- as text files containing the concatenated text of all the articles in the subset (one text file for each slice)
+- as CSV files containing both the metadata and OCRd text for each article in the subset
+
+You might need to experiment with different ways of reshaping your harvest as you develop your research questions and become familar with the capabilities of different text analysis tools.
+
+### Running the notebook
+
+If the BinderHub session you used to create your harvest is still running, you can start the 'Reshaping your newspaper harvest' notebook by looking for the file `reshaping-harvests.ipynb` in the file browser and double clicking it.
+
+```{figure} ../../images/harvest-reshaping-filebrowser.png
+:width: 400px
+:name: harvest-reshaping-filebrowser
+
+Double click on `reshaping-harvests.ipynb` to start the notebook.
+```
+
+If you're using the ARDC BinderHub service, your session might still be running even if you don't have it open in your browser. Go to the [Control Hub](https://binder.rc.nectar.org.au/hub/home). If it says 'Your server is running', click on the **Go to my server** button to load it in your browser, then double click on the `reshaping-harvests.ipynb` file.
+
+```{figure} ../../images/ardc-binder-control.png
+:width: 600px
+:name: ardc-binder-control
+
+If your server is running click on the **Go to my server** button.
+```
+
+If the server isn't running, or if you're using the MyBinder service, go to [the notebook in the GLAM Workbench](https://glam-workbench.net/trove-harvester/reshaping-harvests/) and select either the [ARDC Binder](pathways:text:keywords:ardc) or [MyBinder](pathways:text:keywords:mybinder) option as described above.
+
+## Using the notebook to slice by year
+
+
+
+Once the notebook is running, click on the first cell to activate it, then press your keyboard's SHIFT and ENTER keys together. The SHIFT+ENTER key combination runs the currently selected cell in a Jupyter notebook. It also shifts the focus to the next cell, activating it. This means you can work your way down a notebook by hitting SHIFT+ENTER on each cell in turn. Running each cell in this way will make the code inside the cells available further down the notebook.
+
+Continue hitting SHIFT+ENTER until you reach the section headed 'Using the Harvest Slicer'.
+
+
+
+
 
 ```{figure} ../../images/harvester-reshaping-slicer.png
 :width: 600px
