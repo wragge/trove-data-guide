@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/pathways/text/newspapers-keywords.1a2ad098-2e82-4e67-8165-2e4e05d1120d.js"></script>
+    <script defer="defer" src="../../_static/tippy/pathways/text/newspapers-keywords.f9d3b022-fe25-4465-ae97-44cb0ea4d593.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pathways/text/newspapers-keywords';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -508,8 +508,18 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-harvest">Running your harvest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-your-results">Reshaping your results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harvester-config-json"><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-crate-metadata-json"><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-csv"><code class="docutils literal notranslate"><span class="pre">results.csv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-your-results">Reshaping your results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebook">Running the notebook</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-notebook-to-slice-by-year">Using the notebook to slice by year</a></li>
 </ul>
             </nav>
         </div>
@@ -524,6 +534,35 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="analysing-keywords-in-troves-digitised-newspapers">
 <h1>Analysing keywords in Trove’s digitised newspapers<a class="headerlink" href="#analysing-keywords-in-troves-digitised-newspapers" title="Link to this heading">#</a></h1>
 <p>You want to explore differences in language use across a collection of digitised newspaper articles. The <a class="reference external" href="https://www.atap.edu.au/">Australian Text Analytics Platform</a> provides a <a class="reference external" href="https://github.com/Australian-Text-Analytics-Platform/keywords-analysis">Keywords Analysis tool</a> that helps you examine whether particular words are over or under-represented across collections of text. But how do get data from Trove’s newspapers to the keyword analysis tool?</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#tools" id="id2">Tools</a></p></li>
+<li><p><a class="reference internal" href="#getting-your-own-trove-api-key" id="id3">Getting your own Trove API key</a></p></li>
+<li><p><a class="reference internal" href="#constructing-your-search" id="id4">Constructing your search</a></p></li>
+<li><p><a class="reference internal" href="#trove-newspaper-gazette-harvester" id="id5">Trove Newspaper &amp; Gazette Harvester</a></p></li>
+<li><p><a class="reference internal" href="#starting-the-notebook" id="id6">Starting the notebook</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-ardc-binder" id="id7">Using ARDC Binder</a></p></li>
+<li><p><a class="reference internal" href="#using-mybinder" id="id8">Using MyBinder</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#running-your-harvest" id="id9">Running your harvest</a></p></li>
+<li><p><a class="reference internal" href="#understanding-your-data" id="id10">Understanding your data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#harvester-config-json" id="id11"><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code></a></p></li>
+<li><p><a class="reference internal" href="#ro-crate-metadata-json" id="id12"><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code></a></p></li>
+<li><p><a class="reference internal" href="#results-csv" id="id13"><code class="docutils literal notranslate"><span class="pre">results.csv</span></code></a></p></li>
+<li><p><a class="reference internal" href="#text" id="id14"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#reshaping-your-results" id="id15">Reshaping your results</a></p>
+<ul>
+<li><p><a class="reference internal" href="#running-the-notebook" id="id16">Running the notebook</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-the-notebook-to-slice-by-year" id="id17">Using the notebook to slice by year</a></p></li>
+</ul>
+</nav>
 <ul class="simple">
 <li><p>constructing a search</p></li>
 <li><p>API key</p></li>
@@ -651,7 +690,7 @@ KeywordsAnalysis Tool</div>
 </figcaption>
 </figure>
 <section id="using-ardc-binder">
-<h3>Using ARDC Binder<a class="headerlink" href="#using-ardc-binder" title="Link to this heading">#</a></h3>
+<span id="pathways-text-keywords-ardc"></span><h3>Using ARDC Binder<a class="headerlink" href="#using-ardc-binder" title="Link to this heading">#</a></h3>
 <p>To use the ARDC Binder service, click on the ARDC Binder tab under the notebook preview. You should see a big, blue <strong>Run live on ARDC Binder</strong> button. Click on the button to launch the Binder service.</p>
 <p>If this is the first time you’ve used the ARDC Binder service you’ll be asked to login using the Australian Access Federation (AAF).</p>
 <figure class="align-default" id="id1">
@@ -671,7 +710,7 @@ KeywordsAnalysis Tool</div>
 <p>You’ll be redirected to your insitution’s login screen. Log in using your usual credentials. Once you’ve logged in you’ll be redirected back to ARDC Binder and the notebook will start to load. You might have to wait a bit while a customised computing environment is prepared for you. If you see a message saying that things are taking a long time and there might be a problem, just ignore it. Eventually the notebook will load in the Jupyter Lab interface.</p>
 </section>
 <section id="using-mybinder">
-<h3>Using MyBinder<a class="headerlink" href="#using-mybinder" title="Link to this heading">#</a></h3>
+<span id="pathways-text-keywords-mybinder"></span><h3>Using MyBinder<a class="headerlink" href="#using-mybinder" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="mybinder-tab">
 <a class="reference internal image-reference" href="../../_images/mybinder-tab.png"><img alt="../../_images/mybinder-tab.png" src="../../_images/mybinder-tab.png" style="width: 600px;" /></a>
 <figcaption>
@@ -736,26 +775,318 @@ KeywordsAnalysis Tool</div>
 <p>You can start exploring your harvested data in the Jupyter Lab interface. By default, the Harvester saves its outputs in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. Double click on the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory in the file browser to open it.</p>
 <p>Individual harvests are named according to the date and time they were started. Within the data directory you should see a directory that starts with the current year, for example <code class="docutils literal notranslate"><span class="pre">20240527055711</span></code>. Double click on the directory to open your harvest.</p>
 <figure class="align-default" id="trove-harvester-results">
-<a class="reference internal image-reference" href="../../_images/trove-harvester-results.png"><img alt="../../_images/trove-harvester-results.png" src="../../_images/trove-harvester-results.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../_images/trove-harvester-results.png"><img alt="../../_images/trove-harvester-results.png" src="../../_images/trove-harvester-results.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 27.13 </span><span class="caption-text">Open the harvest directory to view the results.</span><a class="headerlink" href="#trove-harvester-results" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>The harvest directory should contain three files and a directory.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code> a file that captures the parameters used to launch the harvest</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code> a metadata file documenting the harvest in <a class="reference external" href="https://www.researchobject.org/ro-crate/">RO-Crate</a> format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">results.csv</span></code> contains details of all the harvested articles in a plain text CSV (Comma Separated Values) file. You can open it with any spreadsheet program.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> a directory containing the OCRd text of individual articles</p></li>
+</ul>
+<p>You can double click on any of these to explore their contents in Jupyter Lab.</p>
+<section id="harvester-config-json">
+<h3><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code><a class="headerlink" href="#harvester-config-json" title="Link to this heading">#</a></h3>
+<p>This file captures the parameters used to create the harvest. This includes the search query parameters sent to the Trove API, as well as the Harvester’s own settings. Here’s an example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;query_params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;q&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fulltext:\&quot;technical education\&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;l-artType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;newspapers&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;l-category&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;Article&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;newspaper&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reclevel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;full&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;bulkHarvest&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;articleText&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[API KEY REDACTED]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;full_harvest_dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data/20240527055711&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maximum&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pdf&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;include_linebreaks&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code> to re-run a harvest at some point in the future. This can be useful if you want to understand how changes to Trove’s newspaper corpus affect your results. To re-run a harvest, initialise the Harvester with the <code class="docutils literal notranslate"><span class="pre">config_file</span></code> parameter pointing to the location of an existing <code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code>.</p>
+</section>
+<section id="ro-crate-metadata-json">
+<h3><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code><a class="headerlink" href="#ro-crate-metadata-json" title="Link to this heading">#</a></h3>
+<p>This file saves information about the context and results of the harvest in a standardised, machine-readable format. If you’ve ever come across a data file on your computer that you’ve created at some time in the past, but have no memory of how or why you created it, you’ll appreciate the importance of capturing the context in which datasets are created <em>at the point of creation</em>. The Harvester does this automatically to save you from future confusion and embed good data management practice. The file is formatted according to the <a class="reference external" href="https://www.researchobject.org/ro-crate/">RO-Crate</a> specification for describing research objects. It includes information such as the date of the harvest and the version of the Harvester software, as well as the number of articles saved. Here’s a (slightly truncated) example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/ro/crate/1.1/context&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@graph&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;datePublished&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-05-27T05:57:12+00:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This dataset of digitised newspaper articles from Trove was created using the Trove Newspaper Harvester. Details of the search query used to generate this dataset can be found in the harvester_config.json file.&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;hasPart&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;harvester_config.json&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;results.csv&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;mainEntity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#harvester_run&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dataset of digitised newspaper articles harvested from Trove on 27 May 2024&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ro-crate-metadata.json&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CreativeWork&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;about&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;conformsTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/ro/crate/1.1&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://creativecommons.org/publicdomain/zero/1.0/&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;harvester_config.json&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;File&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trove Newspaper Harvester configuration file&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;File&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;Dataset&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-05-27T16:41:30.491764+10:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;There is one text file per article. The file titles include basic article metadata \u2013 the date of the article, the id number of the newspaper, and the id number of the article.&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://rightsstatements.org/vocab/CNE/1.0/&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Text files harvested from articles&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">107032</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;results.csv&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;File&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;Dataset&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;contentSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">48017711</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-05-27T16:41:33.772582+10:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;encodingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/csv&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://rightsstatements.org/vocab/NKC/1.0/&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Metadata of harvested articles in CSV format&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">107032</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#harvester_run&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CreateAction&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;actionStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://schema.org/CompletedActionStatus&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;endDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-05-27T16:41:30.491764+10:00&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;instrument&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/wragge/trove-newspaper-harvester&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run of harvester&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;harvester_config.json&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;results.csv&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;startDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-05-27T15:57:12.306629+10:00&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/wragge/trove-newspaper-harvester&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SoftwareApplication&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The Trove Newspaper (&amp; Gazette) Harvester makes it easy to download large quantities of digitised articles from Trove\u2019s newspapers and gazettes.&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wragge.github.io/trove-newspaper-harvester/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trove Newspaper and Gazette Harvester&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;softwareVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.7.2&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/wragge/trove-newspaper-harvester&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="results-csv">
+<h3><code class="docutils literal notranslate"><span class="pre">results.csv</span></code><a class="headerlink" href="#results-csv" title="Link to this heading">#</a></h3>
+<p>The file saves metadata from all the articles in the results set. It’s formatted as a CSV (Comma Separated Values) file that can be opened in any spreadsheet program (though beware of Excel’s penchant for mangling dates). The dataset contains the following columns:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>column</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">article_id</span></code></p></td>
+<td><p>Trove’s unique identifier for the article</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>the title of the article</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td><p>date in ISO format, YYYY-MM-DD</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">page</span></code></p></td>
+<td><p>page number (of course), but might also indicate the page is part of a supplement or special section</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">newspaper_id</span></code></p></td>
+<td><p>Trove’s unique identifier for the newspaper or gazette title (this can be used to retrieve more information or build a link to the web interface)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">newspaper_title</span></code></p></td>
+<td><p>the name of the newspaper (or gazette)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">category</span></code></p></td>
+<td><p>one of ‘Article’, ‘Advertising’, ‘Detailed lists, results, guides’, ‘Family Notices’, or ‘Literature’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">words</span></code></p></td>
+<td><p>number of words in the article</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">illustrated</span></code></p></td>
+<td><p>is it illustrated (values are y or n)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">edition</span></code></p></td>
+<td><p>edition of newspaper (rarely used)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">supplement</span></code></p></td>
+<td><p>section of newspaper (rarely used)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">section</span></code></p></td>
+<td><p>section of newspaper (rarely used)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">url</span></code></p></td>
+<td><p>the persistent url for the article</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">page_url</span></code></p></td>
+<td><p>the persistent url of the page on which the article is published</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">snippet</span></code></p></td>
+<td><p>short text sample</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">relevance</span></code></p></td>
+<td><p>search relevance score of this result</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status</span></code></p></td>
+<td><p>some articles that are still being processed will have the status “coming soon” and might be missing other fields</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">corrections</span></code></p></td>
+<td><p>number of text corrections</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">last_correction</span></code></p></td>
+<td><p>date of last correction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tags</span></code></p></td>
+<td><p>number of attached tags</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">comments</span></code></p></td>
+<td><p>number of attached comments</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lists</span></code></p></td>
+<td><p>number of lists this article is included in</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text</span></code></p></td>
+<td><p>path to text file (if harvested)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pdf</span></code></p></td>
+<td><p>path to PDF file (if harvested)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">images</span></code></p></td>
+<td><p>path to image file(s) (if harvested)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="text">
+<h3><code class="docutils literal notranslate"><span class="pre">text</span></code><a class="headerlink" href="#text" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">text</span></code> directory contains the OCRd text of individual articles – there’s one file for each article in the results set. These are just plain text files, stripped on any HTML. The files include some basic metadata in their file titles – the date of the article, the id number of the newspaper, and the id number of the article. So, for example, the filename <code class="docutils literal notranslate"><span class="pre">19460104-1002-206680758.txt</span></code> tells you:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">19460104</span></code> – the article was published on 4 January 1946 (YYYYMMDD)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1002</span></code> – the article was published in The Tribune</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">206680758</span></code> – the article’s unique identifier</p></li>
+</ul>
+<p>You can use the newspaper and article ids to create direct links into Trove:</p>
+<ul class="simple">
+<li><p>to a newspaper or gazette <code class="docutils literal notranslate"><span class="pre">https://trove.nla.gov.au/newspaper/title/[newspaper</span> <span class="pre">id]</span></code></p></li>
+<li><p>to an article <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/nla.news-article[article</span> <span class="pre">id]</span></code></p></li>
+</ul>
+</section>
 </section>
 <section id="reshaping-your-results">
 <h2>Reshaping your results<a class="headerlink" href="#reshaping-your-results" title="Link to this heading">#</a></h2>
-<p>Creating corpora
-You might need to experiment.</p>
+<p>The Trove Newspaper &amp; Gazette Harvester saves metadata and content from all the newspaper articles in a set of search results. You could easily end up with a dataset containing thousands (or even millions) of articles published across two centuries of Australian history. This opens up possibilities for fine-grained analysis, tracking language, events, and publication patterns back to a specific article in a specific newspaper issue. But you might also want to observe changes at a larger scale, comparing years, decades, or newspapers rather than individual articles. Some text analysis tools also work best with aggregated collections, or corpora, rather than thousands of tiny text files. As a result, you might want to reshape your harvested dataset, creating subsets of articles for analysis.</p>
+<figure class="align-default" id="harvester-reshaping-nb">
+<a class="reference internal image-reference" href="../../_images/harvester-reshaping-nb.png"><img alt="../../_images/harvester-reshaping-nb.png" src="../../_images/harvester-reshaping-nb.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.14 </span><span class="caption-text">The <a class="reference external" href="https://glam-workbench.net/trove-harvester/reshaping-harvests/">Reshaping your newspaper harvest</a> notebook in the GLAM Workbench.</span><a class="headerlink" href="#harvester-reshaping-nb" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The <a class="reference external" href="https://glam-workbench.net/trove-harvester/reshaping-harvests/">Reshaping your newspaper harvest</a> notebook in the Trove Newspaper &amp; Gazette Harvester section of the GLAM Workbench helps you slice your dataset in a number of different ways, creating subsets to suit particular research questions or preferred tools. You can slice the dataset:</p>
+<ul class="simple">
+<li><p>by year or decade</p></li>
+<li><p>by newspaper</p></li>
+<li><p>by newspaper and year</p></li>
+</ul>
+<p>In addition, you can filter the newspapers to include only the ‘top’ titles – measured by either the number of articles in the dataset, or the total number of words in articles.</p>
+<p>You can also filter the dataset using the relevance score generated by Trove’s search index. For example, you can exclude articles with relevance scores in the bottom 50% across the entire dataset.</p>
+<p>These subsets can be saved in different formats to meet the needs of a variety of tools:</p>
+<ul class="simple">
+<li><p>as zip files containing individual text files (one zip file for each slice)</p></li>
+<li><p>as text files containing the concatenated text of all the articles in the subset (one text file for each slice)</p></li>
+<li><p>as CSV files containing both the metadata and OCRd text for each article in the subset</p></li>
+</ul>
+<p>You might need to experiment with different ways of reshaping your harvest as you develop your research questions and become familar with the capabilities of different text analysis tools.</p>
+<section id="running-the-notebook">
+<h3>Running the notebook<a class="headerlink" href="#running-the-notebook" title="Link to this heading">#</a></h3>
+<p>If the BinderHub session you used to create your harvest is still running, you can start the ‘Reshaping your newspaper harvest’ notebook by looking for the file <code class="docutils literal notranslate"><span class="pre">reshaping-harvests.ipynb</span></code> in the file browser and double clicking it.</p>
+<figure class="align-default" id="harvest-reshaping-filebrowser">
+<a class="reference internal image-reference" href="../../_images/harvest-reshaping-filebrowser.png"><img alt="../../_images/harvest-reshaping-filebrowser.png" src="../../_images/harvest-reshaping-filebrowser.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.15 </span><span class="caption-text">Double click on <code class="docutils literal notranslate"><span class="pre">reshaping-harvests.ipynb</span></code> to start the notebook.</span><a class="headerlink" href="#harvest-reshaping-filebrowser" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If you’re using the ARDC BinderHub service, your session might still be running even if you don’t have it open in your browser. Go to the <a class="reference external" href="https://binder.rc.nectar.org.au/hub/home">Control Hub</a>. If it says ‘Your server is running’, click on the <strong>Go to my server</strong> button to load it in your browser, then double click on the <code class="docutils literal notranslate"><span class="pre">reshaping-harvests.ipynb</span></code> file.</p>
+<figure class="align-default" id="ardc-binder-control">
+<a class="reference internal image-reference" href="../../_images/ardc-binder-control.png"><img alt="../../_images/ardc-binder-control.png" src="../../_images/ardc-binder-control.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.16 </span><span class="caption-text">If your server is running click on the <strong>Go to my server</strong> button.</span><a class="headerlink" href="#ardc-binder-control" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If the server isn’t running, or if you’re using the MyBinder service, go to <a class="reference external" href="https://glam-workbench.net/trove-harvester/reshaping-harvests/">the notebook in the GLAM Workbench</a> and select either the <a class="reference internal" href="#pathways-text-keywords-ardc"><span class="std std-ref">ARDC Binder</span></a> or <a class="reference internal" href="#pathways-text-keywords-mybinder"><span class="std std-ref">MyBinder</span></a> option as described above.</p>
+</section>
+</section>
+<section id="using-the-notebook-to-slice-by-year">
+<h2>Using the notebook to slice by year<a class="headerlink" href="#using-the-notebook-to-slice-by-year" title="Link to this heading">#</a></h2>
+<p>Once the notebook is running, click on the first cell to activate it, then press your keyboard’s SHIFT and ENTER keys together. The SHIFT+ENTER key combination runs the currently selected cell in a Jupyter notebook. It also shifts the focus to the next cell, activating it. This means you can work your way down a notebook by hitting SHIFT+ENTER on each cell in turn. Running each cell in this way will make the code inside the cells available further down the notebook.</p>
+<p>Continue hitting SHIFT+ENTER until you reach the section headed ‘Using the Harvest Slicer’.</p>
 <figure class="align-default" id="harvester-reshaping-slicer">
 <a class="reference internal image-reference" href="../../_images/harvester-reshaping-slicer.png"><img alt="../../_images/harvester-reshaping-slicer.png" src="../../_images/harvester-reshaping-slicer.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27.14 </span><span class="caption-text">Create a HarvestSlicer using your harvests id.</span><a class="headerlink" href="#harvester-reshaping-slicer" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27.17 </span><span class="caption-text">Create a HarvestSlicer using your harvests id.</span><a class="headerlink" href="#harvester-reshaping-slicer" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="harvester-reshaping-years">
 <a class="reference internal image-reference" href="../../_images/harvester-reshaping-years.png"><img alt="../../_images/harvester-reshaping-years.png" src="../../_images/harvester-reshaping-years.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27.15 </span><span class="caption-text">Slice your harvest by year or decade.</span><a class="headerlink" href="#harvester-reshaping-years" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27.18 </span><span class="caption-text">Slice your harvest by year or decade.</span><a class="headerlink" href="#harvester-reshaping-years" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -835,8 +1166,18 @@ You might need to experiment.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-harvest">Running your harvest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-your-results">Reshaping your results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harvester-config-json"><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-crate-metadata-json"><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-csv"><code class="docutils literal notranslate"><span class="pre">results.csv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-your-results">Reshaping your results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebook">Running the notebook</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-notebook-to-slice-by-year">Using the notebook to slice by year</a></li>
 </ul>
   </nav></div>
 
