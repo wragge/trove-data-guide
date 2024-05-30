@@ -15,23 +15,15 @@ kernelspec:
 
 You want to explore differences in language use across a collection of digitised newspaper articles. The [Australian Text Analytics Platform](https://www.atap.edu.au/) provides a [Keywords Analysis tool](https://github.com/Australian-Text-Analytics-Platform/keywords-analysis) that helps you examine whether particular words are over or under-represented across collections of text. But how do get data from Trove's newspapers to the keyword analysis tool?
 
+```{figure} ../../images/atap-keywords-chart-example.png
+
+```
+
 
 ```{contents}
 :local:
 :backlinks: None
 ```
-
-+++
-
-- constructing a search
-- API key
-- Using Binder
-- Trove Newspaper Harvester
-- understanding results
-- reshaping results
-- Using ATAP
-- keyword analysis
-- uploading text
 
 +++
 
@@ -140,7 +132,7 @@ This tutorial uses the Jupyter Lab notebook available in the GLAM Workbench. You
 - a Trove API key
 - the url of your search in the Trove web interface
 
-## Starting the notebook
+### Starting the notebook
 
 Go to [Using the Trove Harvester as a Python package](https://glam-workbench.net/trove-harvester/basic-harvester-example/) in the Trove newspaper harvester section of the GLAM Workbench.
 
@@ -161,7 +153,7 @@ The GLAM Workbench provides a number of ways you can run the notebook.
 ```
 
 (pathways:text:keywords:ardc)=
-### Using ARDC Binder
+#### Using ARDC Binder
 
 To use the ARDC Binder service, click on the ARDC Binder tab under the notebook preview. You should see a big, blue **Run live on ARDC Binder** button. Click on the button to launch the Binder service.
 
@@ -188,7 +180,7 @@ Select your institution from the AAF list
 You'll be redirected to your insitution's login screen. Log in using your usual credentials. Once you've logged in you'll be redirected back to ARDC Binder and the notebook will start to load. You might have to wait a bit while a customised computing environment is prepared for you. If you see a message saying that things are taking a long time and there might be a problem, just ignore it. Eventually the notebook will load in the Jupyter Lab interface.
 
 (pathways:text:keywords:mybinder)=
-### Using MyBinder
+#### Using MyBinder
 
 ```{figure} ../../images/mybinder-tab.png
 :width: 600px
@@ -199,7 +191,7 @@ Click on the MyBinder tab.
 
 To use the MyBinder service, click on the MyBinder tab under the notebook preview. You should see a big, blue **Run live on MyBinder** button. Click on the button to launch the Binder service. No login is required, so MyBinder immediately starts building a customised computing environment. This can take a while, but eventually the notebook should load in the Jupyter Lab interface.
 
-## Running your harvest
+### Running your harvest
 
 No matter what service you use to run the notebook, the result will be the same – the notebook will open in the Jupyter Lab interface.
 
@@ -526,28 +518,193 @@ If your server is running click on the **Go to my server** button.
 
 If the server isn't running, or if you're using the MyBinder service, go to [the notebook in the GLAM Workbench](https://glam-workbench.net/trove-harvester/reshaping-harvests/) and select either the [ARDC Binder](pathways:text:keywords:ardc) or [MyBinder](pathways:text:keywords:mybinder) option as described above.
 
-## Using the notebook to slice by year
+### Loading your data
 
+If the Binder session you used to harvest your data is still running, your results will already be available in the `data` directory.
 
+However, if you've launched a **new** Binder session, you'll have to upload your harvested data. Double click the `zips` directory in the Jupyter Lab file browser to open it. Then click on the upload icon and select the zip file containing your harvested results. The notebook will unzip the file and load the contents into the data directory.
 
-Once the notebook is running, click on the first cell to activate it, then press your keyboard's SHIFT and ENTER keys together. The SHIFT+ENTER key combination runs the currently selected cell in a Jupyter notebook. It also shifts the focus to the next cell, activating it. This means you can work your way down a notebook by hitting SHIFT+ENTER on each cell in turn. Running each cell in this way will make the code inside the cells available further down the notebook.
+### Creating a `HarvestSlicer`
 
-Continue hitting SHIFT+ENTER until you reach the section headed 'Using the Harvest Slicer'.
+Click on the first cell in the notebook to activate it, then press your keyboard's {kbd}`SHIFT` and {kbd}`ENTER` keys together. The {kbd}`SHIFT`+{kbd}`ENTER` key combination runs the currently selected cell in a Jupyter notebook. It also shifts the focus to the next cell, activating it. This means you can work your way down a notebook by hitting {kbd}`SHIFT`+{kbd}`ENTER` on each cell in turn. Running each cell in this way will make the code inside the cells available further down the notebook.
 
-
-
-
+Continue hitting {kbd}`SHIFT`+{kbd}`ENTER` until you reach the section headed 'Using the Harvest Slicer'.
 
 ```{figure} ../../images/harvester-reshaping-slicer.png
 :width: 600px
 :name: harvester-reshaping-slicer
 
-Create a HarvestSlicer using your harvests id.
+Look for the 'Using the Harvest Slicer' section.
 ```
+
+The first step in reshaping your results is to create a `HarvestSlicer`. To do this you'll need to know the name of the directory containing your results. You can find the name by looking in the `data` directory – it'll be a series of numbers representing the date and time when the harvest was started, for example `20240527055711`.
+
+When you create the `HarvestSlicer` you can choose whether you want to filter your results by their relevance scores. This can make large harvests more focussed and manageable, reducing the amount of data you have to move around. This is useful as some analysis tools will have limits on the amount of data they can process. However, there's no documentation on the way Trove calculates its relevance scores, so there's always the risk you might unknowingly lose valuable data points. You might want to experiment with relevance score filtering to see how it changes your analysis.
+
+Look for the two code cells under 'Using the Harvest Slicer'. The first creates a `HarvestSlicer` without any relevance filtering. 
+
+```{figure} ../../images/harvest-reshaping-create.png
+:width: 600px
+:name: harvester-reshaping-create
+
+This code cell creates a `HarvestSlicer`.
+```
+
+The second creates a `HarvestSlicer` with the `relevance_percent` parameter set to `50`. This means results with relevance scores in the bottom 50% will be excluded.
+
+```{figure} ../../images/harvest-reshaping-relevance.png
+:width: 600px
+:name: harvester-reshaping-relevance
+
+This code cell creates a `HarvestSlicer` and filters results by their relevance scores.
+```
+
+Decide whether you want to use relevance filtering or not and click on the corresponding cell. Paste the name of the directory containing your harvest between the double quotes where the code says `"[Your Harvest ID]"`. If you're using relevance filtering you can change the `relevance_percent` value from `50` to something else.
+
+Hit {kbd}`SHIFT`+{kbd}`ENTER` to run the code cell and create the `HarvestSlicer`.
+
+### Slicing by year
+
+The 'Reshaping your newspaper harvest' notebook includes a range of examples, demonstrating how you can slice your results set by year, decade, and newspaper.
+
+To slice by year, scroll down the notebook until you reach the 'Slicing by decade or year' section.
 
 ```{figure} ../../images/harvester-reshaping-years.png
 :width: 600px
 :name: harvester-reshaping-years
 
 Slice your harvest by year or decade.
+```
+
+You can save your slices as zip files or concatenated text files, with zip files the default. The notebook includes two code cells that slice results by year. The first uses the default settings to save the slices as zip files.
+
+```{figure} ../../images/harvest-reshaping-slice-years.png
+:width: 600px
+:name: harvest-reshaping-slice-years
+
+Slice your harvest by year saving the slices as zip files.
+```
+
+The second cell uses the `save_as` parameter to save the slices as `text`.
+
+```{figure} ../../images/harvest-reshaping-slice-years-text.png
+:width: 600px
+:name: harvest-reshaping-slice-years
+
+Slice your harvest by year saving the slices as concatenated text files.
+```
+
+Both zip and text files will work with ATAP's text analysis tool, so click on either of the cells and (you guessed it!) hit {kbd}`SHIFT`+{kbd}`ENTER` to start slicing!
+
+The slices will be saved in your harvest directory. Slices by year will be saved in a sub-directory named `year`, slices by decade in `decade`, slices by newspaper in `title`, and slices by year and newspaper in `year-title`. If you've filtered the results by relevance, the filter settings will be appended to the directory name, for example `year-relevance-50`.
+
+Individual slices will be named using the harvest identifier, slice type, and slice value, for example `20240527055711-year-1950.zip`.
+
+```{figure} ../../images/harvest-reshaping-slice-files.png
+:width: 400px
+:name: harvest-reshaping-slice-files
+
+Slices by year will be saved in the `year` directory.
+```
+
+Depending on the questions you want to pursue, you might choose to download either selected slices or the complete set. To download an individual file, right click on it in the file browser and select 'Download'.
+
+```{figure} ../../images/harvest-reshaping-download-file.png
+:width: 600px
+:name: harvest-reshaping-download-file
+
+Right click on a file and select 'Download'.
+```
+
+To download the complete directory as a single zip file, right click on the directory and select 'Download as an Archive'.
+
+```{figure} ../../images/harvest-reshaping-download-directory.png
+:width: 600px
+:name: harvest-reshaping-download-directory
+
+Right click on a directory and select 'Download as an Archive'.
+```
+
++++
+
+## Keywords Analysis Tool
+
+The Australian Text Analytics Platform (ATAP) has created a [Keywords Analysis Tool](https://github.com/Australian-Text-Analytics-Platform/keywords-analysis) that helps you examine whether particular words are over or under-represented across two or more collections of text. The tool is available as a Jupyter notebook from ATAP's GitHub repository. For an introduction to what the tool can do see this [blog post](https://www.atap.edu.au/posts/keyword-analysis/). There's also a [detailed user guide (PDF)](https://raw.githubusercontent.com/Australian-Text-Analytics-Platform/keywords-analysis/main/documents/keywords_help_pages.pdf).
+
+### Running the notebook
+
+ATAP uses its own BinderHub service, with a different authentication system. To get started, click on the [ATAP BinderHub link](https://binderhub.atap-binder.cloud.edu.au/v2/gh/Australian-Text-Analytics-Platform/keywords-analysis/main?labpath=keywords_analysis.ipynb). This will open a CILogon authentication page.
+
+```{figure} ../../images/atap-cilogon.png
+:width: 500px
+:name: atap-cilogon
+
+Select an authentication provider from the dropdown list and click the **Log on** button.
+```
+
+Click on the dropdown field to display a long list of authentication providers. If you don't have an institutional login, you can use ORCID or Google. Once you've selected an authentication provider, click on the **Log on** button and follow the instructions. When the authentication process is complete, you'll be redirected to the Keywords Analysis notebook running in Jupyter lab.
+
+```{figure} ../../images/atap-keywords-nb.png
+:width: 600px
+:name: atap-keywords-nb
+
+ATAP's Keyword Analysis notebook running in Jupyter Lab.
+```
+
+When the notebook has finished loading, scroll down to the 'Setup' section. click on the code cell and hit {kbd}`SHIFT`+{kbd}`ENTER` to load and configure the KeyWord Analysis software.
+
+```{figure} ../../images/atap-keywords-setup.png
+:width: 600px
+:name: atap-keywords-setup
+
+Click on the code cell and hit {kbd}`SHIFT`+{kbd}`ENTER`.
+```
+
+### Loading your data
+
+Scroll down the notebook through the 'Load data' section until you see a cell containing the code `ka.upload_file_widget()`. Click on the cell and hit {kbd}`SHIFT`+{kbd}`ENTER`. A file upload widget will appear below the code cell.
+
+```{figure} ../../images/atap-keywords-load-data.png
+:width: 600px
+:name: atap-keywords-load-data
+
+Click on the code cell and hit {kbd}`SHIFT`+{kbd}`ENTER` to generate a file upload widget.
+```
+
+Use the file upload widget to load your Trove newspaper data into the notebook. The notebook expects two or more text collections (or corpus) to compare. Using a sliced newspaper harvest you might, for example, decide to compare articles from 1900 with articles from 1950.
+
+Use the 'Corpus Name' text box to give your first corpus a name, for example '1900'. Then click on the **Upload your files** button and select a slice you downloaded from the 'Reshaping your harvest' notebook. You can upload either text of zip files. Wait for a bit while the file is uploaded and processed. Eventually a progress bar will appear.
+
+```{figure} ../../images/atap-keywords-data-loaded.png
+:width: 400px
+:name: atap-keywords-data-loaded
+
+Once you've uploaded a file, a progress bar will appear and the file will be processed.
+```
+
+Repeat this process one or more times to add additional corpora for comparison.
+
+### Analysing the uploaded data
+
+Using the Keyword Analysis notebook you can:
+
+- compare corpora to see which words are over or under-represented in each dataset
+- generate word frequency statistics across the combined corpora
+- compare the frequency of particular words in different corpora
+
+The notebook includes documentation describing each analysis and the statistical measures used. The [user guide](https://raw.githubusercontent.com/Australian-Text-Analytics-Platform/keywords-analysis/main/documents/keywords_help_pages.pdf) provides additional information.
+
+Work your way through the notebook, running each code cell using {kbd}`SHIFT`+{kbd}`ENTER`. The code cells generate interactive widgets you can use to display word frequency charts and statistics. 
+
+```{figure} ../../images/atap-keywords-chart.png
+:width: 600px
+:name: atap-keywords-chart
+
+Explore keyword frequencies using interactive widgets.
+```
+
+If you want to restart your analysis using different datasets, select 'Restart Kernel and Clear All Outputs' from the 'Kernel' menu. Then go back to the top of the notebook and repeat the steps above to run the setup, and load your data.
+
+```{code-cell} ipython3
+
 ```
