@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/pathways/text/newspapers-keywords.f9d3b022-fe25-4465-ae97-44cb0ea4d593.js"></script>
+    <script defer="defer" src="../../_static/tippy/pathways/text/newspapers-keywords.5241f6bc-8767-45c4-b286-32b62b3f5246.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pathways/text/newspapers-keywords';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -501,13 +501,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-your-own-trove-api-key">Getting your own Trove API key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-your-search">Constructing your search</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-gazette-harvester">Trove Newspaper &amp; Gazette Harvester</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-the-notebook">Starting the notebook</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ardc-binder">Using ARDC Binder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mybinder">Using MyBinder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-gazette-harvester">Trove Newspaper &amp; Gazette Harvester</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-the-notebook">Starting the notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ardc-binder">Using ARDC Binder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mybinder">Using MyBinder</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-harvest">Running your harvest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-harvest">Running your harvest</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harvester-config-json"><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-crate-metadata-json"><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code></a></li>
@@ -517,9 +519,17 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-your-results">Reshaping your results</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebook">Running the notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-your-data">Loading your data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-harvestslicer">Creating a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-by-year">Slicing by year</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-notebook-to-slice-by-year">Using the notebook to slice by year</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords-analysis-tool">Keywords Analysis Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Running the notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Loading your data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysing-the-uploaded-data">Analysing the uploaded data</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -534,46 +544,50 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="analysing-keywords-in-troves-digitised-newspapers">
 <h1>Analysing keywords in Trove’s digitised newspapers<a class="headerlink" href="#analysing-keywords-in-troves-digitised-newspapers" title="Link to this heading">#</a></h1>
 <p>You want to explore differences in language use across a collection of digitised newspaper articles. The <a class="reference external" href="https://www.atap.edu.au/">Australian Text Analytics Platform</a> provides a <a class="reference external" href="https://github.com/Australian-Text-Analytics-Platform/keywords-analysis">Keywords Analysis tool</a> that helps you examine whether particular words are over or under-represented across collections of text. But how do get data from Trove’s newspapers to the keyword analysis tool?</p>
+<figure class="align-default">
+<img alt="../../_images/atap-keywords-chart-example.png" src="../../_images/atap-keywords-chart-example.png" />
+</figure>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#tools" id="id2">Tools</a></p></li>
-<li><p><a class="reference internal" href="#getting-your-own-trove-api-key" id="id3">Getting your own Trove API key</a></p></li>
-<li><p><a class="reference internal" href="#constructing-your-search" id="id4">Constructing your search</a></p></li>
-<li><p><a class="reference internal" href="#trove-newspaper-gazette-harvester" id="id5">Trove Newspaper &amp; Gazette Harvester</a></p></li>
-<li><p><a class="reference internal" href="#starting-the-notebook" id="id6">Starting the notebook</a></p>
+<li><p><a class="reference internal" href="#tools" id="id5">Tools</a></p></li>
+<li><p><a class="reference internal" href="#getting-your-own-trove-api-key" id="id6">Getting your own Trove API key</a></p></li>
+<li><p><a class="reference internal" href="#constructing-your-search" id="id7">Constructing your search</a></p></li>
+<li><p><a class="reference internal" href="#trove-newspaper-gazette-harvester" id="id8">Trove Newspaper &amp; Gazette Harvester</a></p>
 <ul>
-<li><p><a class="reference internal" href="#using-ardc-binder" id="id7">Using ARDC Binder</a></p></li>
-<li><p><a class="reference internal" href="#using-mybinder" id="id8">Using MyBinder</a></p></li>
+<li><p><a class="reference internal" href="#starting-the-notebook" id="id9">Starting the notebook</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-ardc-binder" id="id10">Using ARDC Binder</a></p></li>
+<li><p><a class="reference internal" href="#using-mybinder" id="id11">Using MyBinder</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#running-your-harvest" id="id9">Running your harvest</a></p></li>
-<li><p><a class="reference internal" href="#understanding-your-data" id="id10">Understanding your data</a></p>
-<ul>
-<li><p><a class="reference internal" href="#harvester-config-json" id="id11"><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code></a></p></li>
-<li><p><a class="reference internal" href="#ro-crate-metadata-json" id="id12"><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code></a></p></li>
-<li><p><a class="reference internal" href="#results-csv" id="id13"><code class="docutils literal notranslate"><span class="pre">results.csv</span></code></a></p></li>
-<li><p><a class="reference internal" href="#text" id="id14"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></p></li>
+<li><p><a class="reference internal" href="#running-your-harvest" id="id12">Running your harvest</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#reshaping-your-results" id="id15">Reshaping your results</a></p>
+<li><p><a class="reference internal" href="#understanding-your-data" id="id13">Understanding your data</a></p>
 <ul>
-<li><p><a class="reference internal" href="#running-the-notebook" id="id16">Running the notebook</a></p></li>
+<li><p><a class="reference internal" href="#harvester-config-json" id="id14"><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code></a></p></li>
+<li><p><a class="reference internal" href="#ro-crate-metadata-json" id="id15"><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code></a></p></li>
+<li><p><a class="reference internal" href="#results-csv" id="id16"><code class="docutils literal notranslate"><span class="pre">results.csv</span></code></a></p></li>
+<li><p><a class="reference internal" href="#text" id="id17"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#using-the-notebook-to-slice-by-year" id="id17">Using the notebook to slice by year</a></p></li>
+<li><p><a class="reference internal" href="#reshaping-your-results" id="id18">Reshaping your results</a></p>
+<ul>
+<li><p><a class="reference internal" href="#running-the-notebook" id="id19">Running the notebook</a></p></li>
+<li><p><a class="reference internal" href="#loading-your-data" id="id20">Loading your data</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-harvestslicer" id="id21">Creating a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code></a></p></li>
+<li><p><a class="reference internal" href="#slicing-by-year" id="id22">Slicing by year</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#keywords-analysis-tool" id="id23">Keywords Analysis Tool</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id24">Running the notebook</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id25">Loading your data</a></p></li>
+<li><p><a class="reference internal" href="#analysing-the-uploaded-data" id="id26">Analysing the uploaded data</a></p></li>
+</ul>
+</li>
 </ul>
 </nav>
-<ul class="simple">
-<li><p>constructing a search</p></li>
-<li><p>API key</p></li>
-<li><p>Using Binder</p></li>
-<li><p>Trove Newspaper Harvester</p></li>
-<li><p>understanding results</p></li>
-<li><p>reshaping results</p></li>
-<li><p>Using ATAP</p></li>
-<li><p>keyword analysis</p></li>
-<li><p>uploading text</p></li>
-</ul>
 <section id="tools">
 <h2>Tools<a class="headerlink" href="#tools" title="Link to this heading">#</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
@@ -672,9 +686,8 @@ KeywordsAnalysis Tool</div>
 <li><p>a Trove API key</p></li>
 <li><p>the url of your search in the Trove web interface</p></li>
 </ul>
-</section>
 <section id="starting-the-notebook">
-<h2>Starting the notebook<a class="headerlink" href="#starting-the-notebook" title="Link to this heading">#</a></h2>
+<h3>Starting the notebook<a class="headerlink" href="#starting-the-notebook" title="Link to this heading">#</a></h3>
 <p>Go to <a class="reference external" href="https://glam-workbench.net/trove-harvester/basic-harvester-example/">Using the Trove Harvester as a Python package</a> in the Trove newspaper harvester section of the GLAM Workbench.</p>
 <p>This notebook, like all GLAM Workbench notebooks, needs to be run in a customised computing environment. The easiest way to do this is through BinderHub. BinderHub is a cloud-based service that gets a notebook up and running by reading its requirements from a code repository, and creating an environment with the necessary software. The GLAM Workbench is integrated with two BinderHub services:</p>
 <ul class="simple">
@@ -690,7 +703,7 @@ KeywordsAnalysis Tool</div>
 </figcaption>
 </figure>
 <section id="using-ardc-binder">
-<span id="pathways-text-keywords-ardc"></span><h3>Using ARDC Binder<a class="headerlink" href="#using-ardc-binder" title="Link to this heading">#</a></h3>
+<span id="pathways-text-keywords-ardc"></span><h4>Using ARDC Binder<a class="headerlink" href="#using-ardc-binder" title="Link to this heading">#</a></h4>
 <p>To use the ARDC Binder service, click on the ARDC Binder tab under the notebook preview. You should see a big, blue <strong>Run live on ARDC Binder</strong> button. Click on the button to launch the Binder service.</p>
 <p>If this is the first time you’ve used the ARDC Binder service you’ll be asked to login using the Australian Access Federation (AAF).</p>
 <figure class="align-default" id="id1">
@@ -710,7 +723,7 @@ KeywordsAnalysis Tool</div>
 <p>You’ll be redirected to your insitution’s login screen. Log in using your usual credentials. Once you’ve logged in you’ll be redirected back to ARDC Binder and the notebook will start to load. You might have to wait a bit while a customised computing environment is prepared for you. If you see a message saying that things are taking a long time and there might be a problem, just ignore it. Eventually the notebook will load in the Jupyter Lab interface.</p>
 </section>
 <section id="using-mybinder">
-<span id="pathways-text-keywords-mybinder"></span><h3>Using MyBinder<a class="headerlink" href="#using-mybinder" title="Link to this heading">#</a></h3>
+<span id="pathways-text-keywords-mybinder"></span><h4>Using MyBinder<a class="headerlink" href="#using-mybinder" title="Link to this heading">#</a></h4>
 <figure class="align-default" id="mybinder-tab">
 <a class="reference internal image-reference" href="../../_images/mybinder-tab.png"><img alt="../../_images/mybinder-tab.png" src="../../_images/mybinder-tab.png" style="width: 600px;" /></a>
 <figcaption>
@@ -721,7 +734,7 @@ KeywordsAnalysis Tool</div>
 </section>
 </section>
 <section id="running-your-harvest">
-<h2>Running your harvest<a class="headerlink" href="#running-your-harvest" title="Link to this heading">#</a></h2>
+<h3>Running your harvest<a class="headerlink" href="#running-your-harvest" title="Link to this heading">#</a></h3>
 <p>No matter what service you use to run the notebook, the result will be the same – the notebook will open in the Jupyter Lab interface.</p>
 <figure class="align-default" id="iiif-nb-jupyterlab">
 <a class="reference internal image-reference" href="../../_images/harvester-nb.png"><img alt="../../_images/harvester-nb.png" src="../../_images/harvester-nb.png" style="width: 600px;" /></a>
@@ -765,6 +778,7 @@ KeywordsAnalysis Tool</div>
 <p><span class="caption-number">Fig. 27.12 </span><span class="caption-text">The harvest is finished!</span><a class="headerlink" href="#trove-harvester-finished" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
 </section>
 <section id="understanding-your-data">
 <h2>Understanding your data<a class="headerlink" href="#understanding-your-data" title="Link to this heading">#</a></h2>
@@ -1072,23 +1086,153 @@ KeywordsAnalysis Tool</div>
 </figure>
 <p>If the server isn’t running, or if you’re using the MyBinder service, go to <a class="reference external" href="https://glam-workbench.net/trove-harvester/reshaping-harvests/">the notebook in the GLAM Workbench</a> and select either the <a class="reference internal" href="#pathways-text-keywords-ardc"><span class="std std-ref">ARDC Binder</span></a> or <a class="reference internal" href="#pathways-text-keywords-mybinder"><span class="std std-ref">MyBinder</span></a> option as described above.</p>
 </section>
+<section id="loading-your-data">
+<h3>Loading your data<a class="headerlink" href="#loading-your-data" title="Link to this heading">#</a></h3>
+<p>If the Binder session you used to harvest your data is still running, your results will already be available in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory.</p>
+<p>However, if you’ve launched a <strong>new</strong> Binder session, you’ll have to upload your harvested data. Double click the <code class="docutils literal notranslate"><span class="pre">zips</span></code> directory in the Jupyter Lab file browser to open it. Then click on the upload icon and select the zip file containing your harvested results. The notebook will unzip the file and load the contents into the data directory.</p>
 </section>
-<section id="using-the-notebook-to-slice-by-year">
-<h2>Using the notebook to slice by year<a class="headerlink" href="#using-the-notebook-to-slice-by-year" title="Link to this heading">#</a></h2>
-<p>Once the notebook is running, click on the first cell to activate it, then press your keyboard’s SHIFT and ENTER keys together. The SHIFT+ENTER key combination runs the currently selected cell in a Jupyter notebook. It also shifts the focus to the next cell, activating it. This means you can work your way down a notebook by hitting SHIFT+ENTER on each cell in turn. Running each cell in this way will make the code inside the cells available further down the notebook.</p>
-<p>Continue hitting SHIFT+ENTER until you reach the section headed ‘Using the Harvest Slicer’.</p>
+<section id="creating-a-harvestslicer">
+<h3>Creating a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code><a class="headerlink" href="#creating-a-harvestslicer" title="Link to this heading">#</a></h3>
+<p>Click on the first cell in the notebook to activate it, then press your keyboard’s <kbd class="kbd docutils literal notranslate">SHIFT</kbd> and <kbd class="kbd docutils literal notranslate">ENTER</kbd> keys together. The <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd> key combination runs the currently selected cell in a Jupyter notebook. It also shifts the focus to the next cell, activating it. This means you can work your way down a notebook by hitting <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd> on each cell in turn. Running each cell in this way will make the code inside the cells available further down the notebook.</p>
+<p>Continue hitting <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd> until you reach the section headed ‘Using the Harvest Slicer’.</p>
 <figure class="align-default" id="harvester-reshaping-slicer">
 <a class="reference internal image-reference" href="../../_images/harvester-reshaping-slicer.png"><img alt="../../_images/harvester-reshaping-slicer.png" src="../../_images/harvester-reshaping-slicer.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27.17 </span><span class="caption-text">Create a HarvestSlicer using your harvests id.</span><a class="headerlink" href="#harvester-reshaping-slicer" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27.17 </span><span class="caption-text">Look for the ‘Using the Harvest Slicer’ section.</span><a class="headerlink" href="#harvester-reshaping-slicer" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>The first step in reshaping your results is to create a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code>. To do this you’ll need to know the name of the directory containing your results. You can find the name by looking in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory – it’ll be a series of numbers representing the date and time when the harvest was started, for example <code class="docutils literal notranslate"><span class="pre">20240527055711</span></code>.</p>
+<p>When you create the <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code> you can choose whether you want to filter your results by their relevance scores. This can make large harvests more focussed and manageable, reducing the amount of data you have to move around. This is useful as some analysis tools will have limits on the amount of data they can process. However, there’s no documentation on the way Trove calculates its relevance scores, so there’s always the risk you might unknowingly lose valuable data points. You might want to experiment with relevance score filtering to see how it changes your analysis.</p>
+<p>Look for the two code cells under ‘Using the Harvest Slicer’. The first creates a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code> without any relevance filtering.</p>
+<figure class="align-default" id="harvester-reshaping-create">
+<a class="reference internal image-reference" href="../../_images/harvest-reshaping-create.png"><img alt="../../_images/harvest-reshaping-create.png" src="../../_images/harvest-reshaping-create.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.18 </span><span class="caption-text">This code cell creates a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code>.</span><a class="headerlink" href="#harvester-reshaping-create" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The second creates a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code> with the <code class="docutils literal notranslate"><span class="pre">relevance_percent</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">50</span></code>. This means results with relevance scores in the bottom 50% will be excluded.</p>
+<figure class="align-default" id="harvester-reshaping-relevance">
+<a class="reference internal image-reference" href="../../_images/harvest-reshaping-relevance.png"><img alt="../../_images/harvest-reshaping-relevance.png" src="../../_images/harvest-reshaping-relevance.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.19 </span><span class="caption-text">This code cell creates a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code> and filters results by their relevance scores.</span><a class="headerlink" href="#harvester-reshaping-relevance" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Decide whether you want to use relevance filtering or not and click on the corresponding cell. Paste the name of the directory containing your harvest between the double quotes where the code says <code class="docutils literal notranslate"><span class="pre">&quot;[Your</span> <span class="pre">Harvest</span> <span class="pre">ID]&quot;</span></code>. If you’re using relevance filtering you can change the <code class="docutils literal notranslate"><span class="pre">relevance_percent</span></code> value from <code class="docutils literal notranslate"><span class="pre">50</span></code> to something else.</p>
+<p>Hit <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd> to run the code cell and create the <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code>.</p>
+</section>
+<section id="slicing-by-year">
+<h3>Slicing by year<a class="headerlink" href="#slicing-by-year" title="Link to this heading">#</a></h3>
+<p>The ‘Reshaping your newspaper harvest’ notebook includes a range of examples, demonstrating how you can slice your results set by year, decade, and newspaper.</p>
+<p>To slice by year, scroll down the notebook until you reach the ‘Slicing by decade or year’ section.</p>
 <figure class="align-default" id="harvester-reshaping-years">
 <a class="reference internal image-reference" href="../../_images/harvester-reshaping-years.png"><img alt="../../_images/harvester-reshaping-years.png" src="../../_images/harvester-reshaping-years.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27.18 </span><span class="caption-text">Slice your harvest by year or decade.</span><a class="headerlink" href="#harvester-reshaping-years" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27.20 </span><span class="caption-text">Slice your harvest by year or decade.</span><a class="headerlink" href="#harvester-reshaping-years" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>You can save your slices as zip files or concatenated text files, with zip files the default. The notebook includes two code cells that slice results by year. The first uses the default settings to save the slices as zip files.</p>
+<figure class="align-default" id="harvest-reshaping-slice-years">
+<a class="reference internal image-reference" href="../../_images/harvest-reshaping-slice-years.png"><img alt="../../_images/harvest-reshaping-slice-years.png" src="../../_images/harvest-reshaping-slice-years.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.21 </span><span class="caption-text">Slice your harvest by year saving the slices as zip files.</span><a class="headerlink" href="#harvest-reshaping-slice-years" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The second cell uses the <code class="docutils literal notranslate"><span class="pre">save_as</span></code> parameter to save the slices as <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../../_images/harvest-reshaping-slice-years-text.png"><img alt="../../_images/harvest-reshaping-slice-years-text.png" src="../../_images/harvest-reshaping-slice-years-text.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.22 </span><span class="caption-text">Slice your harvest by year saving the slices as concatenated text files.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Both zip and text files will work with ATAP’s text analysis tool, so click on either of the cells and (you guessed it!) hit <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd> to start slicing!</p>
+<p>The slices will be saved in your harvest directory. Slices by year will be saved in a sub-directory named <code class="docutils literal notranslate"><span class="pre">year</span></code>, slices by decade in <code class="docutils literal notranslate"><span class="pre">decade</span></code>, slices by newspaper in <code class="docutils literal notranslate"><span class="pre">title</span></code>, and slices by year and newspaper in <code class="docutils literal notranslate"><span class="pre">year-title</span></code>. If you’ve filtered the results by relevance, the filter settings will be appended to the directory name, for example <code class="docutils literal notranslate"><span class="pre">year-relevance-50</span></code>.</p>
+<p>Individual slices will be named using the harvest identifier, slice type, and slice value, for example <code class="docutils literal notranslate"><span class="pre">20240527055711-year-1950.zip</span></code>.</p>
+<figure class="align-default" id="harvest-reshaping-slice-files">
+<a class="reference internal image-reference" href="../../_images/harvest-reshaping-slice-files.png"><img alt="../../_images/harvest-reshaping-slice-files.png" src="../../_images/harvest-reshaping-slice-files.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.23 </span><span class="caption-text">Slices by year will be saved in the <code class="docutils literal notranslate"><span class="pre">year</span></code> directory.</span><a class="headerlink" href="#harvest-reshaping-slice-files" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Depending on the questions you want to pursue, you might choose to download either selected slices or the complete set. To download an individual file, right click on it in the file browser and select ‘Download’.</p>
+<figure class="align-default" id="harvest-reshaping-download-file">
+<a class="reference internal image-reference" href="../../_images/harvest-reshaping-download-file.png"><img alt="../../_images/harvest-reshaping-download-file.png" src="../../_images/harvest-reshaping-download-file.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.24 </span><span class="caption-text">Right click on a file and select ‘Download’.</span><a class="headerlink" href="#harvest-reshaping-download-file" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To download the complete directory as a single zip file, right click on the directory and select ‘Download as an Archive’.</p>
+<figure class="align-default" id="harvest-reshaping-download-directory">
+<a class="reference internal image-reference" href="../../_images/harvest-reshaping-download-directory.png"><img alt="../../_images/harvest-reshaping-download-directory.png" src="../../_images/harvest-reshaping-download-directory.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.25 </span><span class="caption-text">Right click on a directory and select ‘Download as an Archive’.</span><a class="headerlink" href="#harvest-reshaping-download-directory" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="keywords-analysis-tool">
+<h2>Keywords Analysis Tool<a class="headerlink" href="#keywords-analysis-tool" title="Link to this heading">#</a></h2>
+<p>The Australian Text Analytics Platform (ATAP) has created a <a class="reference external" href="https://github.com/Australian-Text-Analytics-Platform/keywords-analysis">Keywords Analysis Tool</a> that helps you examine whether particular words are over or under-represented across two or more collections of text. The tool is available as a Jupyter notebook from ATAP’s GitHub repository. For an introduction to what the tool can do see this <a class="reference external" href="https://www.atap.edu.au/posts/keyword-analysis/">blog post</a>. There’s also a <a class="reference external" href="https://raw.githubusercontent.com/Australian-Text-Analytics-Platform/keywords-analysis/main/documents/keywords_help_pages.pdf">detailed user guide (PDF)</a>.</p>
+<section id="id3">
+<h3>Running the notebook<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>ATAP uses its own BinderHub service, with a different authentication system. To get started, click on the <a class="reference external" href="https://binderhub.atap-binder.cloud.edu.au/v2/gh/Australian-Text-Analytics-Platform/keywords-analysis/main?labpath=keywords_analysis.ipynb">ATAP BinderHub link</a>. This will open a CILogon authentication page.</p>
+<figure class="align-default" id="atap-cilogon">
+<a class="reference internal image-reference" href="../../_images/atap-cilogon.png"><img alt="../../_images/atap-cilogon.png" src="../../_images/atap-cilogon.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.26 </span><span class="caption-text">Select an authentication provider from the dropdown list and click the <strong>Log on</strong> button.</span><a class="headerlink" href="#atap-cilogon" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on the dropdown field to display a long list of authentication providers. If you don’t have an institutional login, you can use ORCID or Google. Once you’ve selected an authentication provider, click on the <strong>Log on</strong> button and follow the instructions. When the authentication process is complete, you’ll be redirected to the Keywords Analysis notebook running in Jupyter lab.</p>
+<figure class="align-default" id="atap-keywords-nb">
+<a class="reference internal image-reference" href="../../_images/atap-keywords-nb.png"><img alt="../../_images/atap-keywords-nb.png" src="../../_images/atap-keywords-nb.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.27 </span><span class="caption-text">ATAP’s Keyword Analysis notebook running in Jupyter Lab.</span><a class="headerlink" href="#atap-keywords-nb" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When the notebook has finished loading, scroll down to the ‘Setup’ section. click on the code cell and hit <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd> to load and configure the KeyWord Analysis software.</p>
+<figure class="align-default" id="atap-keywords-setup">
+<a class="reference internal image-reference" href="../../_images/atap-keywords-setup.png"><img alt="../../_images/atap-keywords-setup.png" src="../../_images/atap-keywords-setup.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.28 </span><span class="caption-text">Click on the code cell and hit <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd>.</span><a class="headerlink" href="#atap-keywords-setup" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h3>Loading your data<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Scroll down the notebook through the ‘Load data’ section until you see a cell containing the code <code class="docutils literal notranslate"><span class="pre">ka.upload_file_widget()</span></code>. Click on the cell and hit <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd>. A file upload widget will appear below the code cell.</p>
+<figure class="align-default" id="atap-keywords-load-data">
+<a class="reference internal image-reference" href="../../_images/atap-keywords-load-data.png"><img alt="../../_images/atap-keywords-load-data.png" src="../../_images/atap-keywords-load-data.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.29 </span><span class="caption-text">Click on the code cell and hit <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd> to generate a file upload widget.</span><a class="headerlink" href="#atap-keywords-load-data" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Use the file upload widget to load your Trove newspaper data into the notebook. The notebook expects two or more text collections (or corpus) to compare. Using a sliced newspaper harvest you might, for example, decide to compare articles from 1900 with articles from 1950.</p>
+<p>Use the ‘Corpus Name’ text box to give your first corpus a name, for example ‘1900’. Then click on the <strong>Upload your files</strong> button and select a slice you downloaded from the ‘Reshaping your harvest’ notebook. You can upload either text of zip files. Wait for a bit while the file is uploaded and processed. Eventually a progress bar will appear.</p>
+<figure class="align-default" id="atap-keywords-data-loaded">
+<a class="reference internal image-reference" href="../../_images/atap-keywords-data-loaded.png"><img alt="../../_images/atap-keywords-data-loaded.png" src="../../_images/atap-keywords-data-loaded.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.30 </span><span class="caption-text">Once you’ve uploaded a file, a progress bar will appear and the file will be processed.</span><a class="headerlink" href="#atap-keywords-data-loaded" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Repeat this process one or more times to add additional corpora for comparison.</p>
+</section>
+<section id="analysing-the-uploaded-data">
+<h3>Analysing the uploaded data<a class="headerlink" href="#analysing-the-uploaded-data" title="Link to this heading">#</a></h3>
+<p>Using the Keyword Analysis notebook you can:</p>
+<ul class="simple">
+<li><p>compare corpora to see which words are over or under-represented in each dataset</p></li>
+<li><p>generate word frequency statistics across the combined corpora</p></li>
+<li><p>compare the frequency of particular words in different corpora</p></li>
+</ul>
+<p>The notebook includes documentation describing each analysis and the statistical measures used. The <a class="reference external" href="https://raw.githubusercontent.com/Australian-Text-Analytics-Platform/keywords-analysis/main/documents/keywords_help_pages.pdf">user guide</a> provides additional information.</p>
+<p>Work your way through the notebook, running each code cell using <kbd class="kbd docutils literal notranslate">SHIFT</kbd>+<kbd class="kbd docutils literal notranslate">ENTER</kbd>. The code cells generate interactive widgets you can use to display word frequency charts and statistics.</p>
+<figure class="align-default" id="atap-keywords-chart">
+<a class="reference internal image-reference" href="../../_images/atap-keywords-chart.png"><img alt="../../_images/atap-keywords-chart.png" src="../../_images/atap-keywords-chart.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27.31 </span><span class="caption-text">Explore keyword frequencies using interactive widgets.</span><a class="headerlink" href="#atap-keywords-chart" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If you want to restart your analysis using different datasets, select ‘Restart Kernel and Clear All Outputs’ from the ‘Kernel’ menu. Then go back to the top of the notebook and repeat the steps above to run the setup, and load your data.</p>
+</section>
 </section>
 </section>
 
@@ -1159,13 +1303,15 @@ KeywordsAnalysis Tool</div>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-your-own-trove-api-key">Getting your own Trove API key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-your-search">Constructing your search</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-gazette-harvester">Trove Newspaper &amp; Gazette Harvester</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-the-notebook">Starting the notebook</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ardc-binder">Using ARDC Binder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mybinder">Using MyBinder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trove-newspaper-gazette-harvester">Trove Newspaper &amp; Gazette Harvester</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-the-notebook">Starting the notebook</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ardc-binder">Using ARDC Binder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mybinder">Using MyBinder</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-harvest">Running your harvest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-harvest">Running your harvest</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#harvester-config-json"><code class="docutils literal notranslate"><span class="pre">harvester_config.json</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ro-crate-metadata-json"><code class="docutils literal notranslate"><span class="pre">ro-crate-metadata.json</span></code></a></li>
@@ -1175,9 +1321,17 @@ KeywordsAnalysis Tool</div>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-your-results">Reshaping your results</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebook">Running the notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-your-data">Loading your data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-harvestslicer">Creating a <code class="docutils literal notranslate"><span class="pre">HarvestSlicer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-by-year">Slicing by year</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-notebook-to-slice-by-year">Using the notebook to slice by year</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords-analysis-tool">Keywords Analysis Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Running the notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Loading your data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysing-the-uploaded-data">Analysing the uploaded data</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
