@@ -469,7 +469,7 @@ You can use the newspaper and article ids to create direct links into Trove:
 
 ## Reshaping your results
 
-The Trove Newspaper & Gazette Harvester saves metadata and content from all the newspaper articles in a set of search results. You could easily end up with a dataset containing thousands (or even millions) of articles published across two centuries of Australian history. This opens up possibilities for fine-grained analysis, tracking language, events, and publication patterns back to a specific article in a specific newspaper issue. But you might also want to observe changes at a larger scale, comparing years, decades, or newspapers rather than individual articles. Some text analysis tools also work best with aggregated collections, or corpora, rather than thousands of tiny text files. As a result, you might want to reshape your harvested dataset, creating subsets of articles for analysis.
+The Trove Newspaper & Gazette Harvester saves metadata and content from all the newspaper articles in a set of search results. You could easily end up with a dataset containing thousands (or even millions) of articles published across two centuries of Australian history. This opens up possibilities for fine-grained analysis – tracking language, events, and publication patterns back to a specific article in a specific newspaper issue. But you might also want to observe changes at a larger scale, comparing years, decades, or newspapers rather than individual articles. Some text analysis tools also work best with aggregated collections, or corpora, rather than thousands of tiny text files. As a result, you might want to reshape your harvested dataset, creating subsets of articles for analysis.
 
 ```{figure} ../../images/harvester-reshaping-nb.png
 :width: 600px
@@ -671,7 +671,7 @@ Scroll down the notebook through the 'Load data' section until you see a cell co
 Click on the code cell and hit {kbd}`SHIFT`+{kbd}`ENTER` to generate a file upload widget.
 ```
 
-Use the file upload widget to load your Trove newspaper data into the notebook. The notebook expects two or more text collections (or corpus) to compare. Using a sliced newspaper harvest you might, for example, decide to compare articles from 1900 with articles from 1950.
+Use the file upload widget to load your Trove newspaper data into the notebook. The notebook expects two or more text collections (or corpora) to compare. Using a sliced newspaper harvest you might, for example, decide to compare articles from 1900 with articles from 1950.
 
 Use the 'Corpus Name' text box to give your first corpus a name, for example '1900'. Then click on the **Upload your files** button and select a slice you downloaded from the 'Reshaping your harvest' notebook. You can upload either text of zip files. Wait for a bit while the file is uploaded and processed. Eventually a progress bar will appear.
 
