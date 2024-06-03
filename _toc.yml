@@ -152,6 +152,7 @@ parts:
           - file: pathways/images/examples
             sections:
             - file: pathways/images/tropy
+            - file: pathways/images/mirador
       - file: pathways/structured-data
       - file: pathways/geospatial
       - file: pathways/networks

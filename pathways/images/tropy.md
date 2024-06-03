@@ -34,6 +34,20 @@ The Tropy interface showing photographs imported from the B.A.N.Z. Antarctic Res
 `````{grid}
 :gutter: 3
 
+````{grid-item-card} Save a collection of digitised images as an IIIF manifest
+:columns: 4
+
+![GLAM Workbench logo](/images/gw-icon.png)
+
+This notebook harvests metadata describing the contents of a digitised collection in Trove and saves it as an IIIF manifest. This makes it possible to work with data from Trove in a variety of IIIF-compliant tools.
+
++++
+```{button-link} https://glam-workbench.net/trove-images/save-image-collection-iiif/
+:color: primary
+More info
+```
+````
+
 ````{grid-item-card} IIIF
 :columns: 4
 
