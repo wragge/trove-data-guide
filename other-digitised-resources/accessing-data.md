@@ -35,11 +35,9 @@ There are two main sources of machine-readable metadata that describe digitised 
 
 ### JSON embedded in the digitised resource viewer
 
-
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Collections
-
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -58,6 +56,7 @@ There are two main ways of downloading images from digitised resources:
 
 This method is described in [](how-to/download-items-text-images.md). It's best suited to downloading small groups of page images from books and periodicals.
 
+(digitised:data:image-urls)=
 ### Constructing image urls using `nla.obj` identifiers
 
 This is the most flexible method for downloading digitised images, but you need to know the `nla.obj` identifier for the page or image you want to download. Once you have the identifier, it's just a matter of adding the appropriate suffix to construct a url that leads directly to the image file.

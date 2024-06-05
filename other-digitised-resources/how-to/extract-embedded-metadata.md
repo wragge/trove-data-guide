@@ -185,6 +185,7 @@ While some of these fields duplicate what's available at the top-level of the me
 
 Each page has a `copies` field describing the available image versions. The image dimensions of the `access` copy included in the `technicalmetadata` field can be useful if you want [to use the OCR data to crop sections out of the page image](other-digitised:ocr-data:crop-images).
 
+(digitised:howto:embedded-metadata:articles)=
 #### Articles
 
 Periodical issues can include a list of articles in the `article` field. Here's an example of an article entry from *Walkabout*:
