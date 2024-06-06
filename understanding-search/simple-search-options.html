@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.c990ff84-3815-4fbc-a81c-6e3766bf7e5a.js"></script>
+    <script defer="defer" src="../_static/tippy/understanding-search/simple-search-options.2f38a1d7-d0e4-4086-bfcf-e0e2a3bf0dbf.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'understanding-search/simple-search-options';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -299,6 +299,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../pathways/structured-data.html">29. Structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pathways/geospatial.html">30. Maps and places</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pathways/networks.html">31. Networks and relationships</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pathways/collections/collections.html">32. Creating collections</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pathways/collections/examples.html">32.1. Tutorials and examples</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pathways/collections/collectionbuilder.html">Sharing a Trove List as a CollectionBuilder exhibition</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to the Trove Data Guide</a></li>
@@ -566,15 +573,15 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,888,331</span></p></td>
+<td><p><span class="pasted-text">5,888,338</span></p></td>
 <td><p>Searches article text, tags &amp; comments (some fuzziness, terms are stemmed)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hobart*</span></code></p></td>
-<td><p><span class="pasted-text">5,959,776</span></p></td>
+<td><p><span class="pasted-text">5,959,783</span></p></td>
 <td><p>Searches article text, tags &amp; comments (more fuzziness, wildcard matches zero or more characters)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:hobart</span></code></p></td>
-<td><p><span class="pasted-text">5,601,548</span></p></td>
+<td><p><span class="pasted-text">5,601,555</span></p></td>
 <td><p>Searches article text only (exact match, ignores tags &amp; comments)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title:hobart</span></code></p></td>
@@ -594,27 +601,27 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">OR</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">49,716,932</span></p></td>
+<td><p><span class="pasted-text">49,716,943</span></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">white</span> <span class="pre">australia</span></code></p></td>
-<td><p><span class="pasted-text">5,791,842</span></p></td>
+<td><p><span class="pasted-text">5,791,844</span></p></td>
 <td><p>Same as white AND australia</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
-<td><p><span class="pasted-text">161,694</span></p></td>
+<td><p><span class="pasted-text">161,695</span></p></td>
 <td><p>Search for phrase (with stemming)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:&quot;white</span> <span class="pre">australia&quot;</span></code></p></td>
-<td><p><span class="pasted-text">157,381</span></p></td>
+<td><p><span class="pasted-text">157,382</span></p></td>
 <td><p>Search for phrase (no stemming &amp; ignores tags/comments)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;white</span> <span class="pre">australia&quot;~0</span></code></p></td>
-<td><p><span class="pasted-text">161,694</span></p></td>
+<td><p><span class="pasted-text">161,695</span></p></td>
 <td><p>Search for phrase (with stemming, no extra words)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:&quot;white</span> <span class="pre">australia&quot;~0</span></code></p></td>
-<td><p><span class="pasted-text">151,712</span></p></td>
+<td><p><span class="pasted-text">151,713</span></p></td>
 <td><p>Search for exact phrase (no extra words, no stemming, ignore tags/comments)</p></td>
 </tr>
 </tbody>
@@ -634,15 +641,15 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">naturalisation</span></code></p></td>
-<td><p><span class="pasted-text">249,968</span></p></td>
+<td><p><span class="pasted-text">249,969</span></p></td>
 <td><p>Stemmed to ‘naturalis’</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">naturalization</span></code></p></td>
-<td><p><span class="pasted-text">15,442,635</span></p></td>
+<td><p><span class="pasted-text">15,442,644</span></p></td>
 <td><p>Stemmed to ‘natur’</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalisation</span></code></p></td>
-<td><p><span class="pasted-text">132,514</span></p></td>
+<td><p><span class="pasted-text">132,515</span></p></td>
 <td><p>No stemming</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">text:naturalization</span></code></p></td>
@@ -665,7 +672,7 @@ On this page</div>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chinese</span> <span class="pre">tasmania</span></code></p></td>
-<td><p><span class="pasted-text">279,427</span></p></td>
+<td><p><span class="pasted-text">279,428</span></p></td>
 <td><p>articles contain both terms</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;chinese</span> <span class="pre">tasmania&quot;~10</span></code></p></td>

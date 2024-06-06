@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Creating collections &#8212; Trove Data Guide</title>
+    <title>32. Creating collections &#8212; Trove Data Guide</title>
   
   
   
@@ -64,11 +64,13 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/pathways/collections/collections.1895666c-1e6a-4963-b775-79897c166fca.js"></script>
+    <script defer="defer" src="../../_static/tippy/pathways/collections/collections.d2d94dbe-c24d-4d8c-8193-7c1c6fa7e7c4.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pathways/collections/collections';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="32.1. Tutorials and examples" href="examples.html" />
+    <link rel="prev" title="31. Networks and relationships" href="../networks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -135,8 +137,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -275,7 +275,7 @@
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Research pathways</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">26. Research pathways</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../text/text.html">27. Text</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../text/data-sources.html">27.1. Data sources</a></li>
@@ -299,6 +299,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../structured-data.html">29. Structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../geospatial.html">30. Maps and places</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../networks.html">31. Networks and relationships</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">32. Creating collections</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="examples.html">32.1. Tutorials and examples</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="collectionbuilder.html">Sharing a Trove List as a CollectionBuilder exhibition</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to the Trove Data Guide</a></li>
@@ -475,9 +482,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -493,19 +498,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-resources">Tools and resources</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ardc-community-data-lab">ARDC Community Data Lab</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-tools-and-resources">Other tools and resources</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-and-examples">Tutorials and examples</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -516,47 +508,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="creating-collections">
-<h1>Creating collections<a class="headerlink" href="#creating-collections" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">32. </span>Creating collections<a class="headerlink" href="#creating-collections" title="Link to this heading">#</a></h1>
 <p>Tools and methods for assembling, managing, and sharing collections of resources harvested from Trove.</p>
-<section id="tools-and-resources">
-<h2>Tools and resources<a class="headerlink" href="#tools-and-resources" title="Link to this heading">#</a></h2>
-<section id="ardc-community-data-lab">
-<h3>ARDC Community Data Lab<a class="headerlink" href="#ardc-community-data-lab" title="Link to this heading">#</a></h3>
-<p>These tools are developed, maintained or supported by the Community Data Lab or other projects within the HASS&amp;I Research Data Commons.</p>
-<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
-<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-50 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-RO-Crate</div>
-<p class="sd-card-text"><img alt="RO-Crate logo" src="../../_images/ro-crate-logo.svg" /></p>
-<p class="sd-card-text">RO-Crate is a community effort to establish a lightweight approach to packaging research data with their metadata.</p>
-</div>
-<div class="sd-card-footer docutils">
-<p class="sd-card-text"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary reference external" href="hhttps://www.researchobject.org/ro-crate/"><span>More info</span></a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="other-tools-and-resources">
-<h3>Other tools and resources<a class="headerlink" href="#other-tools-and-resources" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://tapor.ca/home">TAPoR 3: Discover research tools for studying texts</a></p></li>
-<li><p><a class="reference external" href="https://marketplace.sshopencloud.eu/">SSH Open Marketplace</a></p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">32.1. Tutorials and examples</a></li>
 </ul>
-</section>
-</section>
-<section id="tutorials-and-examples">
-<h2>Tutorials and examples<a class="headerlink" href="#tutorials-and-examples" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://glam-workbench.net/trove-lists/convert-a-trove-list-into-a-csv-file/">Convert a Trove list into a CSV file</a></p></li>
-<li><p><a class="reference external" href="https://glam-workbench.net/trove-lists/convert-list-to-cb-exhibition/">Convert a Trove list into a CollectionBuilder exhibition</a></p></li>
-<li><p><a class="reference external" href="https://glam-workbench.net/trove-newspapers/Upload-Trove-newspapers-to-Omeka/">Upload Trove newspaper articles to Omeka-S</a></p></li>
-</ul>
-</section>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -589,6 +547,24 @@ RO-Crate</div>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../networks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">31. </span>Networks and relationships</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="examples.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">32.1. </span>Tutorials and examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -596,25 +572,7 @@ RO-Crate</div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-resources">Tools and resources</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ardc-community-data-lab">ARDC Community Data Lab</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-tools-and-resources">Other tools and resources</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-and-examples">Tutorials and examples</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

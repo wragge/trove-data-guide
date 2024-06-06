@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/demo.d91fab33-7653-46cf-882e-ac112fea02ac.js"></script>
+    <script defer="defer" src="_static/tippy/demo.49a8ae7b-148a-4770-8f5c-b36160102ce0.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'demo';</script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -299,6 +299,13 @@
 <li class="toctree-l1"><a class="reference internal" href="pathways/structured-data.html">29. Structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pathways/geospatial.html">30. Maps and places</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pathways/networks.html">31. Networks and relationships</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pathways/collections/collections.html">32. Creating collections</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pathways/collections/examples.html">32.1. Tutorials and examples</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="pathways/collections/collectionbuilder.html">Sharing a Trove List as a CollectionBuilder exhibition</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to the Trove Data Guide</a></li>
@@ -525,7 +532,7 @@ Test content only!</p>
 <p class="sidebar-title"></p>
 <div class="note admonition">
 <p class="admonition-title">Did you know?</p>
-<p>As of <span class="pasted-text">5 Jun 2024</span>, there are <span class="pasted-text">252,315,091</span> digitised newspaper articles in Trove</p>
+<p>As of <span class="pasted-text">6 Jun 2024</span>, there are <span class="pasted-text">252,315,091</span> digitised newspaper articles in Trove</p>
 </div>
 </aside>
 <aside class="margin sidebar">
@@ -534,23 +541,23 @@ Test content only!</p>
 <p class="admonition-title">Trove categories</p>
 <div class="output text_html">
 <style>
-  #altair-viz-d0807380762d48df9f976a60bd78c22b.vega-embed {
+  #altair-viz-faad4c99179849fc9ca8ec9474b9bee7.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-d0807380762d48df9f976a60bd78c22b.vega-embed details,
-  #altair-viz-d0807380762d48df9f976a60bd78c22b.vega-embed details summary {
+  #altair-viz-faad4c99179849fc9ca8ec9474b9bee7.vega-embed details,
+  #altair-viz-faad4c99179849fc9ca8ec9474b9bee7.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-d0807380762d48df9f976a60bd78c22b"></div>
+<div id="altair-viz-faad4c99179849fc9ca8ec9474b9bee7"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-d0807380762d48df9f976a60bd78c22b") {
-      outputDiv = document.getElementById("altair-viz-d0807380762d48df9f976a60bd78c22b");
+    if (outputDiv.id !== "altair-viz-faad4c99179849fc9ca8ec9474b9bee7") {
+      outputDiv = document.getElementById("altair-viz-faad4c99179849fc9ca8ec9474b9bee7");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -596,29 +603,29 @@ Test content only!</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-d392d3e93b6f83d330dee54e821635c4"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-d392d3e93b6f83d330dee54e821635c4": [{"name": "Books & Libraries", "total": 27212975}, {"name": "Diaries, Letters & Archives", "total": 5290384}, {"name": "Images, Maps & Artefacts", "total": 6199403}, {"name": "Lists", "total": 112031}, {"name": "Magazines & Newsletters", "total": 1817205}, {"name": "Music, Audio & Video", "total": 3361008}, {"name": "Newspapers & Gazettes", "total": 252315091}, {"name": "People & Organisations", "total": 1329645}, {"name": "Research & Reports", "total": 5732237}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-79081960f06539cb97eb5dac59fb40f9"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-79081960f06539cb97eb5dac59fb40f9": [{"name": "Books & Libraries", "total": 27215934}, {"name": "Diaries, Letters & Archives", "total": 5290939}, {"name": "Images, Maps & Artefacts", "total": 6199492}, {"name": "Lists", "total": 112045}, {"name": "Magazines & Newsletters", "total": 1817205}, {"name": "Music, Audio & Video", "total": 3361015}, {"name": "Newspapers & Gazettes", "total": 252315091}, {"name": "People & Organisations", "total": 1329650}, {"name": "Research & Reports", "total": 5734102}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </aside>
 <figure class="align-center" id="fig-cats">
 <span id="index-0"></span><div class="output text_html">
 <style>
-  #altair-viz-6efd2646e5094045bf898fa8de367086.vega-embed {
+  #altair-viz-302822ca4c014d2d9510bb3377d74a3e.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-6efd2646e5094045bf898fa8de367086.vega-embed details,
-  #altair-viz-6efd2646e5094045bf898fa8de367086.vega-embed details summary {
+  #altair-viz-302822ca4c014d2d9510bb3377d74a3e.vega-embed details,
+  #altair-viz-302822ca4c014d2d9510bb3377d74a3e.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-6efd2646e5094045bf898fa8de367086"></div>
+<div id="altair-viz-302822ca4c014d2d9510bb3377d74a3e"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-6efd2646e5094045bf898fa8de367086") {
-      outputDiv = document.getElementById("altair-viz-6efd2646e5094045bf898fa8de367086");
+    if (outputDiv.id !== "altair-viz-302822ca4c014d2d9510bb3377d74a3e") {
+      outputDiv = document.getElementById("altair-viz-302822ca4c014d2d9510bb3377d74a3e");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -664,7 +671,7 @@ Test content only!</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-d392d3e93b6f83d330dee54e821635c4"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-d392d3e93b6f83d330dee54e821635c4": [{"name": "Books & Libraries", "total": 27212975}, {"name": "Diaries, Letters & Archives", "total": 5290384}, {"name": "Images, Maps & Artefacts", "total": 6199403}, {"name": "Lists", "total": 112031}, {"name": "Magazines & Newsletters", "total": 1817205}, {"name": "Music, Audio & Video", "total": 3361008}, {"name": "Newspapers & Gazettes", "total": 252315091}, {"name": "People & Organisations", "total": 1329645}, {"name": "Research & Reports", "total": 5732237}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-79081960f06539cb97eb5dac59fb40f9"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-79081960f06539cb97eb5dac59fb40f9": [{"name": "Books & Libraries", "total": 27215934}, {"name": "Diaries, Letters & Archives", "total": 5290939}, {"name": "Images, Maps & Artefacts", "total": 6199492}, {"name": "Lists", "total": 112045}, {"name": "Magazines & Newsletters", "total": 1817205}, {"name": "Music, Audio & Video", "total": 3361015}, {"name": "Newspapers & Gazettes", "total": 252315091}, {"name": "People & Organisations", "total": 1329650}, {"name": "Research & Reports", "total": 5734102}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
 <p><span class="caption-text">Number of resources per Trove category</span><a class="headerlink" href="#fig-cats" title="Link to this image">#</a></p>
 </figcaption>
