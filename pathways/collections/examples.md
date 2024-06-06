@@ -23,4 +23,14 @@ On this page
 ```
 ````
 
+## Tutorials
+
 - [](collectionbuilder.md)
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## More examples
+
+- [Convert a Trove list into a CSV file](https://glam-workbench.net/trove-lists/convert-a-trove-list-into-a-csv-file/)
+- [Convert a Trove list into a CollectionBuilder exhibition](https://glam-workbench.net/trove-lists/convert-list-to-cb-exhibition/)
+- [Upload Trove newspaper articles to Omeka-S](https://glam-workbench.net/trove-newspapers/Upload-Trove-newspapers-to-Omeka/)
