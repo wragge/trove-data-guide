@@ -156,7 +156,12 @@ parts:
       - file: pathways/structured-data
       - file: pathways/geospatial
       - file: pathways/networks
-      - file: pathways/collections
+      - file: pathways/collections/collections
+        title: Creating collections
+        sections:
+          - file: pathways/collections/examples
+            sections:
+              - file: pathways/collections/collectionbuilder
   - chapters:
     - file: contributing.md
 #    - file: glossary
