@@ -395,7 +395,7 @@ Finally, double click on the repository's `objects` directory and upload and com
 
 GitHub will now rebuild the exhibition using your new data.
 
-Reload the exhibition url to view your Trove data!
+Reload the exhibition url to see your brand new Trove exhibition!
 
 +++
 
