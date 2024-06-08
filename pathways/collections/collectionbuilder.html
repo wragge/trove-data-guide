@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/pathways/collections/collectionbuilder.ded80717-ced0-4ed1-9f13-1305b9fffb2e.js"></script>
+    <script defer="defer" src="../../_static/tippy/pathways/collections/collectionbuilder.b2db1281-a6e7-469b-9188-b42032ef68a9.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pathways/collections/collectionbuilder';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -526,9 +526,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-your-files">Examining your files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-your-collectionbuilder-repository">Preparing your CollectionBuilder repository</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-your-data-to-collectionbuilder">Uploading your data to CollectionBuilder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further">Going further</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further-optional">Going further (optional)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enriching-your-metadata">Enriching your metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-tiny-images">Replace tiny images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-theme">Edit the theme</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancing-your-exhibition">Enhancing your exhibition</a></li>
 </ul>
 </li>
@@ -546,7 +547,12 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="sharing-a-trove-list-as-a-collectionbuilder-exhibition">
 <h1>Sharing a Trove List as a CollectionBuilder exhibition<a class="headerlink" href="#sharing-a-trove-list-as-a-collectionbuilder-exhibition" title="Link to this heading">#</a></h1>
 <p>You’ve been collecting and annotating items relating to your research project in a Trove List. You’d like to display the contents of your list as an online exhibition for others to explore. <a class="reference external" href="https://collectionbuilder.github.io/">CollectionBuilder</a> creates online exhibitions using static web technologies. But how do you get your List data from Trove into CollectionBuilder?</p>
-<p><img alt="" src="../../_images/cb-wragge-demo.png" /></p>
+<figure class="align-default" id="cb-wragge-demo">
+<img alt="../../_images/cb-wragge-demo.png" src="../../_images/cb-wragge-demo.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 32.1 </span><span class="caption-text">Here’s an example: <a class="reference external" href="https://wragge.github.io/cb-wragge/">this exhibition</a> has been generated from <a class="reference external" href="https://trove.nla.gov.au/list/83777">this list</a>.</span><a class="headerlink" href="#cb-wragge-demo" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="tools">
 <h2>Tools<a class="headerlink" href="#tools" title="Link to this heading">#</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
@@ -605,7 +611,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="trove-user-api-tab">
 <a class="reference internal image-reference" href="../../_images/trove-user-api-tab.png"><img alt="../../_images/trove-user-api-tab.png" src="../../_images/trove-user-api-tab.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.1 </span><span class="caption-text">Your API will be displayed in the ‘For developers’ tab of your user profile.</span><a class="headerlink" href="#trove-user-api-tab" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.2 </span><span class="caption-text">Your API will be displayed in the ‘For developers’ tab of your user profile.</span><a class="headerlink" href="#trove-user-api-tab" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -615,7 +621,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-list-example">
 <a class="reference internal image-reference" href="../../_images/lists-cb-list-example.png"><img alt="../../_images/lists-cb-list-example.png" src="../../_images/lists-cb-list-example.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.2 </span><span class="caption-text">An example of a list, <a class="reference external" href="https://trove.nla.gov.au/list/83777">https://trove.nla.gov.au/list/83777</a></span><a class="headerlink" href="#lists-cb-list-example" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.3 </span><span class="caption-text">An example of a list, <a class="reference external" href="https://trove.nla.gov.au/list/83777">https://trove.nla.gov.au/list/83777</a></span><a class="headerlink" href="#lists-cb-list-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="adding-notes-and-tags-to-items">
@@ -624,7 +630,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-add-note">
 <a class="reference internal image-reference" href="../../_images/lists-cb-add-note.png"><img alt="../../_images/lists-cb-add-note.png" src="../../_images/lists-cb-add-note.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.3 </span><span class="caption-text">Click on the <strong>Add list item note</strong> button to annotate an item.</span><a class="headerlink" href="#lists-add-note" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.4 </span><span class="caption-text">Click on the <strong>Add list item note</strong> button to annotate an item.</span><a class="headerlink" href="#lists-add-note" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>One undocumented feature of these notes is that they support basic HTML tags like <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;&lt;/p&gt;</span></code> (for paragraphs), <code class="docutils literal notranslate"><span class="pre">&lt;b&gt;&lt;/b&gt;</span></code> (for <strong>bold</strong>), and <code class="docutils literal notranslate"><span class="pre">&lt;i&gt;&lt;/i&gt;</span></code> for italics. Links, however, will be removed. This means you can apply some simple formatting to your notes.</p>
@@ -637,14 +643,14 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-public">
 <a class="reference internal image-reference" href="../../_images/lists-cb-public.png"><img alt="../../_images/lists-cb-public.png" src="../../_images/lists-cb-public.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.4 </span><span class="caption-text">Check that your list is set to ‘public’.</span><a class="headerlink" href="#lists-cb-public" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.5 </span><span class="caption-text">Check that your list is set to ‘public’.</span><a class="headerlink" href="#lists-cb-public" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To change the setting from ‘private’ to ‘public’. Log into your Trove user account, then go to the list. Click on the ‘Manage this list’ link. Click on the ‘public’ radio button, then click <strong>Save</strong>.</p>
 <figure class="align-default" id="lists-cb-public-change">
 <a class="reference internal image-reference" href="../../_images/lists-cb-public-change.png"><img alt="../../_images/lists-cb-public-change.png" src="../../_images/lists-cb-public-change.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.5 </span><span class="caption-text">Click on the ‘public’ radio button.</span><a class="headerlink" href="#lists-cb-public-change" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.6 </span><span class="caption-text">Click on the ‘public’ radio button.</span><a class="headerlink" href="#lists-cb-public-change" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -659,12 +665,25 @@ CollectionBuilder</div>
 </section>
 <section id="preparing-your-list-data-for-collectionbuilder">
 <h2>Preparing your list data for CollectionBuilder<a class="headerlink" href="#preparing-your-list-data-for-collectionbuilder" title="Link to this heading">#</a></h2>
-<p>To create your CollectionBuilder exhibition you need a metadata file containing details of all the items in the exhibition, as well as any images associated with the items. The <a class="reference external" href="https://glam-workbench.net/trove-lists/convert-list-to-cb-exhibition/">Convert a Trove list into a CollectionBuilder exhibition</a> assembles all the necessary information from Trove and formats it ready for upload.</p>
+<p>To create your CollectionBuilder exhibition you need a metadata file containing details of all the items in the exhibition, as well as any images associated with the items. The <a class="reference external" href="https://glam-workbench.net/trove-lists/convert-list-to-cb-exhibition/">Convert a Trove list into a CollectionBuilder exhibition</a> notebook assembles all the necessary information from Trove and formats it ready for upload.</p>
+<p>As well as allowing you to search and browse the items in your exhibition, CollectionBuilder uses the item metadata to create a series of visualisations:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">subject</span></code> field is used to create a word cloud of subject headings and tags</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">location</span></code> field is used to create a word cloud of related places</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> fields are used to position items on a map</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">date</span></code> field is used to create a timeline</p></li>
+</ul>
+<figure class="align-default" id="lists-cb-timeline">
+<a class="reference internal image-reference" href="../../_images/lists-cb-timeline.png"><img alt="../../_images/lists-cb-timeline.png" src="../../_images/lists-cb-timeline.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32.7 </span><span class="caption-text">Example of CollectionBuilder’s timeline visualisation.</span><a class="headerlink" href="#lists-cb-timeline" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The Trove API provides basic details of all the items in a list, but to take advantage of CollectionBuilder’s visualisation options the notebook tries to enrich the API data by retrieving some additional information. For example:</p>
 <ul class="simple">
 <li><p>user added notes are saved into the <code class="docutils literal notranslate"><span class="pre">description</span></code> field</p></li>
 <li><p>user added tags are combined with subject headings in the <code class="docutils literal notranslate"><span class="pre">subject</span></code> field</p></li>
-<li><p>place names identified using the Library of Congress’s GeographicArea codes are converted to human-readable labels</p></li>
+<li><p>place names identified using the Library of Congress’s GeographicArea codes are converted to human-readable labels and added to the <code class="docutils literal notranslate"><span class="pre">location</span></code> field</p></li>
 <li><p>an attempt is made to find values for <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> – if the item is a digitised map from the NLA collection, the notebook looks for coordinates in the MARC data embedded in the digitised map viewer; otherwise if places are identified using the Library of Congress’s GeographicArea codes, the coordinates are retrieved using <a class="reference external" href="https://github.com/GLAM-Workbench/marc-geographicareas">this dataset</a></p></li>
 <li><p>if an item is associated with multiple images (such as a newspaper or periodical article) the notebook creates a parent record and saves each image in a separate child row – these are displayed as ‘compound objects’ in CollectionBuilder</p></li>
 </ul>
@@ -684,20 +703,20 @@ CollectionBuilder</div>
 </ul>
 <p>If you have a login at an Australian university or research agency, try the ARDC Binder service first. It’s a little more effort, but it’s usually faster and more reliable than the public MyBinder service which can have capacity issues.</p>
 <p>The GLAM Workbench displays a preview of the notebook, with options to run it using either the ARDC Binder or MyBinder service.</p>
-<figure class="align-default" id="gw-iiif-nb">
-<a class="reference internal image-reference" href="../../_images/gw-iiif-nb.png"><img alt="../../_images/gw-iiif-nb.png" src="../../_images/gw-iiif-nb.png" style="width: 600px;" /></a>
+<figure class="align-default" id="lists-cb-gw">
+<a class="reference internal image-reference" href="../../_images/lists-cb-gw.png"><img alt="../../_images/lists-cb-gw.png" src="../../_images/lists-cb-gw.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.6 </span><span class="caption-text">The GLAM Workbench provides a number of ways you can run the notebook.</span><a class="headerlink" href="#gw-iiif-nb" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.8 </span><span class="caption-text">The GLAM Workbench provides a number of ways you can run the notebook.</span><a class="headerlink" href="#lists-cb-gw" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="using-ardc-binder">
 <h4>Using ARDC Binder<a class="headerlink" href="#using-ardc-binder" title="Link to this heading">#</a></h4>
 <p>To use the ARDC Binder service, click on the ARDC Binder tab under the notebook preview. You should see a big, blue <strong>Run live on ARDC Binder</strong> button. Click on the button to launch the Binder service.</p>
 <p>If this is the first time you’ve used the ARDC Binder service you’ll be asked to login using the Australian Access Federation (AAF).</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="gw-iiif-nb">
 <a class="reference internal image-reference" href="../../_images/ardc-binder-aaf-login.png"><img alt="../../_images/ardc-binder-aaf-login.png" src="../../_images/ardc-binder-aaf-login.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.7 </span><span class="caption-text">ARDC Binder will ask you to log in using AAF</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.9 </span><span class="caption-text">ARDC Binder will ask you to log in using AAF</span><a class="headerlink" href="#gw-iiif-nb" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the <strong>Sign in with AAF/Tuakiri</strong> button. You’ll be asked to select either AAF or Tuakiri – select AAF.</p>
@@ -705,7 +724,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="aaf-institutions-select">
 <a class="reference internal image-reference" href="../../_images/aaf-institutions-select.png"><img alt="../../_images/aaf-institutions-select.png" src="../../_images/aaf-institutions-select.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.8 </span><span class="caption-text">Select your institution from the AAF list</span><a class="headerlink" href="#aaf-institutions-select" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.10 </span><span class="caption-text">Select your institution from the AAF list</span><a class="headerlink" href="#aaf-institutions-select" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>You’ll be redirected to your insitution’s login screen. Log in using your usual credentials. Once you’ve logged in you’ll be redirected back to ARDC Binder and the notebook will start to load. You might have to wait a bit while a customised computing environment is prepared for you. If you see a message saying that things are taking a long time and there might be a problem, just ignore it. Eventually the notebook will load in the Jupyter Lab interface.</p>
@@ -715,7 +734,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="mybinder-tab">
 <a class="reference internal image-reference" href="../../_images/mybinder-tab.png"><img alt="../../_images/mybinder-tab.png" src="../../_images/mybinder-tab.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.9 </span><span class="caption-text">Click on the MyBinder tab.</span><a class="headerlink" href="#mybinder-tab" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.11 </span><span class="caption-text">Click on the MyBinder tab.</span><a class="headerlink" href="#mybinder-tab" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>To use the MyBinder service, click on the MyBinder tab under the notebook preview. You should see a big, blue <strong>Run live on MyBinder</strong> button. Click on the button to launch the Binder service. No login is required, so MyBinder immediately starts building a customised computing environment. This can take a while, but eventually the notebook should load in the Jupyter Lab interface.</p>
@@ -727,7 +746,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-nb">
 <a class="reference internal image-reference" href="../../_images/lists-cb-nb.png"><img alt="../../_images/lists-cb-nb.png" src="../../_images/lists-cb-nb.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.10 </span><span class="caption-text">The notebook running in Jupyter Lab.</span><a class="headerlink" href="#lists-cb-nb" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.12 </span><span class="caption-text">The notebook running in Jupyter Lab.</span><a class="headerlink" href="#lists-cb-nb" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Scroll down the notebook until you reach the section headed ‘Add your API key and list ID values’. There are two cells in this section that you need to edit:</p>
@@ -738,14 +757,14 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-add-details">
 <a class="reference internal image-reference" href="../../_images/lists-cb-add-details.png"><img alt="../../_images/lists-cb-add-details.png" src="../../_images/lists-cb-add-details.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.11 </span><span class="caption-text">Paste your API key and list identifier where indicated</span><a class="headerlink" href="#lists-cb-add-details" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.13 </span><span class="caption-text">Paste your API key and list identifier where indicated</span><a class="headerlink" href="#lists-cb-add-details" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now you’re ready to generate your CollectionBuilder files! From the ‘Run’ menu select ‘Run All Cells’.</p>
 <figure class="align-default" id="lists-cb-run-cells">
 <a class="reference internal image-reference" href="../../_images/lists-cb-run-cells.png"><img alt="../../_images/lists-cb-run-cells.png" src="../../_images/lists-cb-run-cells.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.12 </span><span class="caption-text">Select ‘Run’ &gt; ‘Run All Cells’ from the JupyterLab menu</span><a class="headerlink" href="#lists-cb-run-cells" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.14 </span><span class="caption-text">Select ‘Run’ &gt; ‘Run All Cells’ from the JupyterLab menu</span><a class="headerlink" href="#lists-cb-run-cells" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Scroll further down the notebook until you reach the section headed ‘Let’s do it!’. Below the cell in this section you should see a progress bar that shows you how many list items have been processed.</p>
@@ -757,7 +776,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-run-download">
 <a class="reference internal image-reference" href="../../_images/lists-cb-download.png"><img alt="../../_images/lists-cb-download.png" src="../../_images/lists-cb-download.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.13 </span><span class="caption-text">Processing has finished! Click on the link to download your files.</span><a class="headerlink" href="#lists-cb-run-download" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.15 </span><span class="caption-text">Processing has finished! Click on the link to download your files.</span><a class="headerlink" href="#lists-cb-run-download" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Click on the ‘Download you files’ link to download a zip file containing all the metadata and images for your CollectionBuilder exhibition.</p>
@@ -769,7 +788,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-run-files">
 <a class="reference internal image-reference" href="../../_images/lists-cb-files.png"><img alt="../../_images/lists-cb-files.png" src="../../_images/lists-cb-files.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.14 </span><span class="caption-text">View the contents of the zip file.</span><a class="headerlink" href="#lists-cb-run-files" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.16 </span><span class="caption-text">View the contents of the zip file.</span><a class="headerlink" href="#lists-cb-run-files" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -787,21 +806,21 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-repo">
 <a class="reference internal image-reference" href="../../_images/lists-cb-repo.png"><img alt="../../_images/lists-cb-repo.png" src="../../_images/lists-cb-repo.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.15 </span><span class="caption-text">Click on the <strong>Use this template</strong> button.</span><a class="headerlink" href="#lists-cb-repo" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.17 </span><span class="caption-text">Click on the <strong>Use this template</strong> button.</span><a class="headerlink" href="#lists-cb-repo" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Enter a name for your repository in the ‘Repository name’ field. This name will be used in the url of your exhibition, so you might want to use something related to the content of your list.</p>
 <figure class="align-default" id="lists-cb-repo-new">
 <a class="reference internal image-reference" href="../../_images/lists-cb-repo-new.png"><img alt="../../_images/lists-cb-repo-new.png" src="../../_images/lists-cb-repo-new.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.16 </span><span class="caption-text">Give your repository a name.</span><a class="headerlink" href="#lists-cb-repo-new" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.18 </span><span class="caption-text">Give your repository a name.</span><a class="headerlink" href="#lists-cb-repo-new" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Your new repository will now be generated using the CollectionBuilder template. Once it loads, click on the ‘Settings’ tab and select ‘Pages’ from the left hand menu. In the <strong>Branch</strong> section, select <code class="docutils literal notranslate"><span class="pre">main</span></code> from the ‘Select branch’ dropdown list. Click <strong>Save</strong>.</p>
 <figure class="align-default" id="lists-cb-set-pages">
 <a class="reference internal image-reference" href="../../_images/lists-cb-set-pages.png"><img alt="../../_images/lists-cb-set-pages.png" src="../../_images/lists-cb-set-pages.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.17 </span><span class="caption-text">Set the ‘Pages’ branch to ‘main’ and save.</span><a class="headerlink" href="#lists-cb-set-pages" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.19 </span><span class="caption-text">Set the ‘Pages’ branch to ‘main’ and save.</span><a class="headerlink" href="#lists-cb-set-pages" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>GitHub will now build the default CollectionBuilder exhibition and publish it online. The exhibition url will have the form:</p>
@@ -810,7 +829,7 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-deployment">
 <a class="reference internal image-reference" href="../../_images/lists-cb-deployments.png"><img alt="../../_images/lists-cb-deployments.png" src="../../_images/lists-cb-deployments.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.18 </span><span class="caption-text">The exhibition url will be displayed on the ‘Deployments’ page.</span><a class="headerlink" href="#lists-cb-deployment" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.20 </span><span class="caption-text">The exhibition url will be displayed on the ‘Deployments’ page.</span><a class="headerlink" href="#lists-cb-deployment" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>At the moment the exhibition will just contain demo data – the next step is to add the data from your Trove list!</p>
@@ -827,29 +846,29 @@ CollectionBuilder</div>
 <figure class="align-default" id="lists-cb-upload-files">
 <a class="reference internal image-reference" href="../../_images/lists-cb-upload-files.png"><img alt="../../_images/lists-cb-upload-files.png" src="../../_images/lists-cb-upload-files.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.19 </span><span class="caption-text">Click on the <strong>Add file</strong> button and select ‘Upload files’.</span><a class="headerlink" href="#lists-cb-upload-files" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.21 </span><span class="caption-text">Click on the <strong>Add file</strong> button and select ‘Upload files’.</span><a class="headerlink" href="#lists-cb-upload-files" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Select the <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> file you downloaded from the notebook. Once it has uploaded to GitHub, click on the <strong>Commit changes</strong> button.</p>
 <figure class="align-default" id="lists-cb-commit-files">
 <a class="reference internal image-reference" href="../../_images/lists-cb-commit-files.png"><img alt="../../_images/lists-cb-commit-files.png" src="../../_images/lists-cb-commit-files.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.20 </span><span class="caption-text">Upload files then click on the <strong>Commit changes</strong> button.</span><a class="headerlink" href="#lists-cb-commit-files" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.22 </span><span class="caption-text">Upload files then click on the <strong>Commit changes</strong> button.</span><a class="headerlink" href="#lists-cb-commit-files" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Double click on the repository’s <code class="docutils literal notranslate"><span class="pre">data</span></code> directory to open it. Then repeat the process above to upload and commit your exhibition’s CSV metadata file. You’ll find it in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory of the files you downloaded from the notebook.</p>
 <figure class="align-default" id="lists-cb-data-dir">
 <a class="reference internal image-reference" href="../../_images/lists-cb-data-dir.png"><img alt="../../_images/lists-cb-data-dir.png" src="../../_images/lists-cb-data-dir.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32.21 </span><span class="caption-text">Upload files to the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">objects</span></code> directories.</span><a class="headerlink" href="#lists-cb-data-dir" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 32.23 </span><span class="caption-text">Upload files to the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">objects</span></code> directories.</span><a class="headerlink" href="#lists-cb-data-dir" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Finally, double click on the repository’s <code class="docutils literal notranslate"><span class="pre">objects</span></code> directory and upload and commit all of the image files for your exhibition. The images will be inside the <code class="docutils literal notranslate"><span class="pre">objects</span></code> directory of the files you downloaded from the notebook. You can select and upload multiple files at once.</p>
 <p>GitHub will now rebuild the exhibition using your new data.</p>
-<p>Reload the exhibition url to view your Trove data!</p>
+<p>Reload the exhibition url to see your brand new Trove exhibition!</p>
 </section>
-<section id="going-further">
-<h2>Going further<a class="headerlink" href="#going-further" title="Link to this heading">#</a></h2>
+<section id="going-further-optional">
+<h2>Going further (optional)<a class="headerlink" href="#going-further-optional" title="Link to this heading">#</a></h2>
 <section id="enriching-your-metadata">
 <h3>Enriching your metadata<a class="headerlink" href="#enriching-your-metadata" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://glam-workbench.net/trove-lists/convert-list-to-cb-exhibition/">Convert a Trove list into a CollectionBuilder exhibition</a> notebook does what it can to get useful metadata out of Trove, but sometime the information’s just not there. For example, there may be images or articles relating to a particular place that don’t have any spatial metadata. You can add this sort of information to your exhibition by manually editing the metadata CSV file.</p>
@@ -875,6 +894,15 @@ CollectionBuilder</div>
 <li><p>rename the downloaded image to match the name of the tiny thumbnailed version in your exhibition’s <code class="docutils literal notranslate"><span class="pre">objects</span></code> directory</p></li>
 <li><p>replace the thumbnail image in the <code class="docutils literal notranslate"><span class="pre">objects</span></code> directory with the new downloaded version</p></li>
 </ul>
+</section>
+<section id="edit-the-theme">
+<h3>Edit the theme<a class="headerlink" href="#edit-the-theme" title="Link to this heading">#</a></h3>
+<p>You can further customise the look and feel of your exhibition by editing the <code class="docutils literal notranslate"><span class="pre">_data/theme.yml</span></code> file. For example, you can:</p>
+<ul class="simple">
+<li><p>Set a different <code class="docutils literal notranslate"><span class="pre">featured-image</span></code> to display in the header of your exhibition.</p></li>
+<li><p>Change the <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> values to set the centre on the map view.</p></li>
+</ul>
+<p>See the <a class="reference external" href="https://collectionbuilder.github.io/cb-docs/docs/theme/">CollectionBuilder documentation</a> for more options.</p>
 </section>
 <section id="enhancing-your-exhibition">
 <h3>Enhancing your exhibition<a class="headerlink" href="#enhancing-your-exhibition" title="Link to this heading">#</a></h3>
@@ -968,9 +996,10 @@ CollectionBuilder</div>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-your-files">Examining your files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-your-collectionbuilder-repository">Preparing your CollectionBuilder repository</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-your-data-to-collectionbuilder">Uploading your data to CollectionBuilder</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further">Going further</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further-optional">Going further (optional)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enriching-your-metadata">Enriching your metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-tiny-images">Replace tiny images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-theme">Edit the theme</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enhancing-your-exhibition">Enhancing your exhibition</a></li>
 </ul>
 </li>
