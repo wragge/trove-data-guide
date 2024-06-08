@@ -15,7 +15,11 @@ kernelspec:
 
 You've been collecting and annotating items relating to your research project in a Trove List. You'd like to display the contents of your list as an online exhibition for others to explore. [CollectionBuilder](https://collectionbuilder.github.io/) creates online exhibitions using static web technologies. But how do you get your List data from Trove into CollectionBuilder?
 
-![](../../images/cb-wragge-demo.png)
+```{figure} ../../images/cb-wragge-demo.png
+:name: cb-wragge-demo
+
+Here's an example: [this exhibition](https://wragge.github.io/cb-wragge/) has been generated from [this list](https://trove.nla.gov.au/list/83777).
+```
 
 +++
 
@@ -144,13 +148,27 @@ To download data from your list using the [Convert a Trove list into a Collectio
 
 ## Preparing your list data for CollectionBuilder
 
-To create your CollectionBuilder exhibition you need a metadata file containing details of all the items in the exhibition, as well as any images associated with the items. The [Convert a Trove list into a CollectionBuilder exhibition](https://glam-workbench.net/trove-lists/convert-list-to-cb-exhibition/) assembles all the necessary information from Trove and formats it ready for upload.
+To create your CollectionBuilder exhibition you need a metadata file containing details of all the items in the exhibition, as well as any images associated with the items. The [Convert a Trove list into a CollectionBuilder exhibition](https://glam-workbench.net/trove-lists/convert-list-to-cb-exhibition/) notebook assembles all the necessary information from Trove and formats it ready for upload.
+
+As well as allowing you to search and browse the items in your exhibition, CollectionBuilder uses the item metadata to create a series of visualisations:
+
+- the `subject` field is used to create a word cloud of subject headings and tags
+- the `location` field is used to create a word cloud of related places
+- the `latitude` and `longitude` fields are used to position items on a map
+- the `date` field is used to create a timeline
+
+```{figure} ../../images/lists-cb-timeline.png
+:width: 600px
+:name: lists-cb-timeline
+
+Example of CollectionBuilder's timeline visualisation.
+```
 
 The Trove API provides basic details of all the items in a list, but to take advantage of CollectionBuilder's visualisation options the notebook tries to enrich the API data by retrieving some additional information. For example:
 
 - user added notes are saved into the `description` field
 - user added tags are combined with subject headings in the `subject` field
-- place names identified using the Library of Congress's GeographicArea codes are converted to human-readable labels
+- place names identified using the Library of Congress's GeographicArea codes are converted to human-readable labels and added to the `location` field
 - an attempt is made to find values for `latitude` and `longitude` – if the item is a digitised map from the NLA collection, the notebook looks for coordinates in the MARC data embedded in the digitised map viewer; otherwise if places are identified using the Library of Congress's GeographicArea codes, the coordinates are retrieved using [this dataset](https://github.com/GLAM-Workbench/marc-geographicareas)
 - if an item is associated with multiple images (such as a newspaper or periodical article) the notebook creates a parent record and saves each image in a separate child row – these are displayed as 'compound objects' in CollectionBuilder
 
@@ -159,7 +177,6 @@ Similarly, the notebook assembles images from a number of different sources:
 - images of newspaper articles are downloaded using the [trove-newspaper-images](https://wragge.github.io/trove_newspaper_images/) Python package
 - images from other digitised NLA collections are [downloaded from the digitised item viewer](digitised:data:image-urls) – for periodical articles, this means using the metadata embedded in the digitised journal viewer to [find links to the pages](digitised:howto:embedded-metadata:articles) on which the article appears
 - if the items are from other collections, the notebook first looks for a `viewcopy` link to download a digised image, if this isn't available it uses a `thumbnail` link
-
 
 ### Running the notebook
 
@@ -174,9 +191,9 @@ If you have a login at an Australian university or research agency, try the ARDC
 
 The GLAM Workbench displays a preview of the notebook, with options to run it using either the ARDC Binder or MyBinder service.
 
-```{figure} ../../images/gw-iiif-nb.png
+```{figure} ../../images/lists-cb-gw.png
 :width: 600px
-:name: gw-iiif-nb
+:name: lists-cb-gw
 
 The GLAM Workbench provides a number of ways you can run the notebook.
 ```
@@ -335,7 +352,7 @@ You can find the url by clicking on the 'Deployments' link from the repository h
 The exhibition url will be displayed on the 'Deployments' page.
 ```
 
-At the moment the exhibition will just contain demo data – the next step is to add the data from your Trove list! 
+At the moment the exhibition will just contain demo data – the next step is to add the data from your Trove list!
 
 +++
 
@@ -382,7 +399,7 @@ Reload the exhibition url to view your Trove data!
 
 +++
 
-## Going further
+## Going further (optional)
 
 ### Enriching your metadata
 
@@ -409,6 +426,15 @@ Trove aggregated work records often only include links to tiny thumbnailed versi
 - use whatever download mechanism is provided to save a copy of the image on your computer
 - rename the downloaded image to match the name of the tiny thumbnailed version in your exhibition's `objects` directory
 - replace the thumbnail image in the `objects` directory with the new downloaded version
+
+### Edit the theme
+
+You can further customise the look and feel of your exhibition by editing the `_data/theme.yml` file. For example, you can:
+
+* Set a different `featured-image` to display in the header of your exhibition.
+* Change the `latitude` and `longitude` values to set the centre on the map view.
+
+See the [CollectionBuilder documentation](https://collectionbuilder.github.io/cb-docs/docs/theme/) for more options.
 
 ### Enhancing your exhibition
 
