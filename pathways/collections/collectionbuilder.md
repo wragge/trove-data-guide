@@ -21,6 +21,11 @@ You've been collecting and annotating items relating to your research project in
 Here's an example: [this exhibition](https://wragge.github.io/cb-wragge/) has been generated from [this list](https://trove.nla.gov.au/list/83777).
 ```
 
+```{contents}
+:local:
+:backlinks: None
+```
+
 +++
 
 ## Tools

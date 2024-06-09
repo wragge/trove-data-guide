@@ -154,7 +154,12 @@ parts:
             - file: pathways/images/tropy
             - file: pathways/images/mirador
       - file: pathways/structured-data
-      - file: pathways/geospatial
+      - file: pathways/geospatial/geospatial
+        title: Maps and places
+        sections:
+          - file: pathways/geospatial/examples
+            sections:
+            - file: pathways/geospatial/maps-to-ghap
       - file: pathways/networks
       - file: pathways/collections/collections
         title: Creating collections
