@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/pathways/collections/collectionbuilder.b2db1281-a6e7-469b-9188-b42032ef68a9.js"></script>
+    <script defer="defer" src="../../_static/tippy/pathways/collections/collectionbuilder.03408cff-5939-433a-b92f-a67356b74a93.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pathways/collections/collectionbuilder';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -297,10 +297,16 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../structured-data.html">29. Structured data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../geospatial.html">30. Maps and places</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geospatial/geospatial.html">30. Maps and places</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../geospatial/examples.html">30.1. Tutorials and examples</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../geospatial/maps-to-ghap.html">Create a layer in the Gazetteer of Historical Australian Placenames using metadata from Trove’s digitised maps</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../networks.html">31. Networks and relationships</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="collections.html">32. Creating collections</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="examples.html">32.1. Tutorials and examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="collections.html">32. Creating collections</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="examples.html">32.1. Tutorials and examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Sharing a Trove List as a CollectionBuilder exhibition</a></li>
 </ul>
 </li>
@@ -553,6 +559,42 @@ document.write(`
 <p><span class="caption-number">Fig. 32.1 </span><span class="caption-text">Here’s an example: <a class="reference external" href="https://wragge.github.io/cb-wragge/">this exhibition</a> has been generated from <a class="reference external" href="https://trove.nla.gov.au/list/83777">this list</a>.</span><a class="headerlink" href="#cb-wragge-demo" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#tools" id="id1">Tools</a></p></li>
+<li><p><a class="reference internal" href="#what-you-need" id="id2">What you need</a></p></li>
+<li><p><a class="reference internal" href="#getting-your-own-trove-api-key" id="id3">Getting your own Trove API key</a></p></li>
+<li><p><a class="reference internal" href="#using-trove-lists" id="id4">Using Trove Lists</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-notes-and-tags-to-items" id="id5">Adding notes and tags to items</a></p></li>
+<li><p><a class="reference internal" href="#make-sure-your-list-is-set-to-public" id="id6">Make sure your list is set to <strong>public</strong></a></p></li>
+<li><p><a class="reference internal" href="#getting-your-list-identifier" id="id7">Getting your list identifier</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#preparing-your-list-data-for-collectionbuilder" id="id8">Preparing your list data for CollectionBuilder</a></p>
+<ul>
+<li><p><a class="reference internal" href="#running-the-notebook" id="id9">Running the notebook</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-ardc-binder" id="id10">Using ARDC Binder</a></p></li>
+<li><p><a class="reference internal" href="#using-mybinder" id="id11">Using MyBinder</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-the-notebook-in-jupyter-lab" id="id12">Using the notebook in Jupyter Lab</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#examining-your-files" id="id13">Examining your files</a></p></li>
+<li><p><a class="reference internal" href="#preparing-your-collectionbuilder-repository" id="id14">Preparing your CollectionBuilder repository</a></p></li>
+<li><p><a class="reference internal" href="#uploading-your-data-to-collectionbuilder" id="id15">Uploading your data to CollectionBuilder</a></p></li>
+<li><p><a class="reference internal" href="#going-further-optional" id="id16">Going further (optional)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#enriching-your-metadata" id="id17">Enriching your metadata</a></p></li>
+<li><p><a class="reference internal" href="#replace-tiny-images" id="id18">Replace tiny images</a></p></li>
+<li><p><a class="reference internal" href="#edit-the-theme" id="id19">Edit the theme</a></p></li>
+<li><p><a class="reference internal" href="#enhancing-your-exhibition" id="id20">Enhancing your exhibition</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
 <section id="tools">
 <h2>Tools<a class="headerlink" href="#tools" title="Link to this heading">#</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
