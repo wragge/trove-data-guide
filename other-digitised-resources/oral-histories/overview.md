@@ -255,6 +255,7 @@ A complete list of series values is available in [this text file](https://glam-w
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:oralhistories:locations)=
 ## Which countries do the oral histories relate to?
 
 The `spatial` metadata field is used to relate oral history interviews to specific geographic locations. The values used in this field are mostly codes from the [MARC list of geographic areas](https://www.loc.gov/marc/geoareas/gacs_code.html). For example, Australia is represented by the code `u-at` (although Trove often includes trailing dashes to make the code a fixed width, so in this case the value would be `u-at---`). The MARC codes are not very useful on their own, as there are no links to other sources of geospatial information. I've created [a dataset that maps the MARC codes to Wikidata entries](https://gist.github.com/wragge/7389bf347fb1b7e82011e5ddcb4b44dc). It includes geospatial coordinates, ISO country codes, and GeoNames identifiers. Using this dataset, you can link the Trove `spatial` values to ISO country codes, and create a choropleth map that shows the number of oral history records associated with each country.

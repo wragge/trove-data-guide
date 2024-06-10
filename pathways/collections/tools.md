@@ -13,6 +13,15 @@ kernelspec:
 
 # Tools and resources
 
+````{card}
+This page includes information on tools and resources to help you manage collections of resources from Trove.
+
+```{contents}
+:local:
+:backlinks: None
+```
+````
+
 ## ARDC Community Data Lab
 
 These tools are developed, maintained or supported by the Community Data Lab or other projects within the HASS&I Research Data Commons.

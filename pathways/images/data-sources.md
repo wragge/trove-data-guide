@@ -13,6 +13,7 @@ kernelspec:
 
 # Data sources
 
+This page describes options for obtaining images from Trove.
 
 ````{card}
 On this page
@@ -36,6 +37,8 @@ These sections of the Trove Data Guide explain how to access images from differe
 
 ## Pre-harvested data sets
 
+The GLAM Workbench provides datasets containing images harvested from Trove.
+
 `````{grid}
 :gutter: 3
 
@@ -49,12 +52,14 @@ This dataset includes a collection of 3,471 full-page editorial cartoons downloa
 +++
 ```{button-link} https://glam-workbench.net/trove-journals/bulletin-cartoons-collection/
 :color: primary
-More info from the GLAM Workbench
+More info
 ```
 ````
 `````
 
 ## Creating datasets
+
+These tools and examples can help you create your own collections of images from Trove.
 
 ### GLAM Workbench notebooks
 
@@ -70,14 +75,21 @@ More info from the GLAM Workbench
 [Harvest Australian Women's Weekly covers (or the front pages of any newspaper)](https://glam-workbench.net/trove-newspapers/harvest-aww-covers-and-newspaper-front-pages/)
 : Somewhat confusingly, the Australian Women's Weekly is in with Trove's digitised newspapers and not the rest of the magazines. There are notebooks in the GLAM Workbench's journals section to help harvest all of a journal's covers as images, so I thought I should do the same for the Weekly. This notebook can be easily adjusted to download the front pages of any digitised newspaper.
 
+[Download a collection of digitised images](https://glam-workbench.net/trove-images/download-image-collection/)
+: Digitised photographs and other images are often organised into collections. While the Trove web interface does include a download option for collections, it has a number of limitations. This notebook provides an alternative method that downloads all of the available images in a collection (and any sub-collections) at the highest available resolution.
+
 ### Software packages
 
 [trove-newspaper-images](https://wragge.github.io/trove_newspaper_images/)
 : This Python package includes tools to download Trove newspaper articles as complete JPEG images. If an article is printed across multiple newspaper pages, multiple images will be downloaded – one for each page. It’s intended for integration into other tools and processing workflows, or for people who like working on the command line.
 
 [trove-newspaper-harvester](https://wragge.github.io/trove-newspaper-harvester/)
-: The Trove Newspaper (& Gazette) Harvester makes it easy to download large quantities of digitised articles from Trove’s newspapers and gazettes. Just give it a search from the Trove web interface, and the harvester will save the metadata of all the articles in a CSV (spreadsheet) file for further analysis. You can also save the full text of every article, as well as copies of the articles as JPG images, and even PDFs. 
+: The Trove Newspaper (& Gazette) Harvester makes it easy to download large quantities of digitised articles from Trove’s newspapers and gazettes. Just give it a search from the Trove web interface, and the harvester will save the metadata of all the articles in a CSV (spreadsheet) file for further analysis. You can also save the full text of every article, as well as copies of the articles as JPG images, and even PDFs.
 
-```{code-cell} ipython3
+### Other tools
 
-```
+[Save Trove newspaper article as image](https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image-app/)
+: A simple web app that helps you save a Trove newspaper article as an image.
+
+[Download a page image from Trove's newspapers](https://glam-workbench.net/trove-newspapers/Save-page-image/)
+The Trove web interface doesn’t provide a way of getting high-resolution page images from newspapers. This simple app lets you download page images as complete, high-resolution jpeg files.

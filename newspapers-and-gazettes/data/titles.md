@@ -92,6 +92,7 @@ The `title["id"]` field contains the title's numeric identifier. By appending it
 
 +++
 
+(newspapers:titles:metadata)=
 ## Title metadata
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}

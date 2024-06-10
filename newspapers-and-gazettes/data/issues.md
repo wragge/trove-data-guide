@@ -60,6 +60,7 @@ Article records don't include issue identifiers, but articles can be linked to i
 
 +++
 
+(newspapers:issues:metadata)=
 ## Issue metadata
 
 Some issue metadata is available via the `newspaper/title` and `gazette/title` endpoints. You can also find details of articles published within an issue by searching for a specific day and newspaper using the `/result` endpoint.

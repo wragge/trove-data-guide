@@ -14,7 +14,7 @@ kernelspec:
 # Data sources
 
 ````{card}
-On this page
+This page describes options for obtaining text from Trove.
 
 ```{contents}
 :local:
@@ -37,6 +37,8 @@ These sections of the Trove Data Guide explain how to access text from different
 - [Transcripts and summaries from oral histories](oral-histories-transcripts)
 
 ## Pre-harvested datasets
+
+The GLAM Workbench provides a number of datasets containing OCRd text harvested from Trove.
 
 `````{grid}
 :gutter: 3
@@ -89,7 +91,11 @@ More info
 
 ## Creating datasets
 
+These tools and examples can help you create your own collections of text from Trove.
+
 ### GLAM Workbench notebooks
+
+These tools and examples can help you create your own collections of place data from Trove.
 
 [Trove Newspaper Harvester](https://glam-workbench.net/trove-harvester/)
 : The Trove Newspaper & Gazette Harvester makes it easy to download large quantities of digitised articles from Trove's newspapers and gazettes. 
@@ -113,3 +119,7 @@ More info
 
 [trove-newspaper-harvester](https://wragge.github.io/trove-newspaper-harvester/)
 : The Trove Newspaper (& Gazette) Harvester makes it easy to download large quantities of digitised articles from Trove’s newspapers and gazettes. Just give it a search from the Trove web interface, and the harvester will save the metadata of all the articles in a CSV (spreadsheet) file for further analysis. You can also save the full text of every article, as well as copies of the articles as JPG images, and even PDFs.
+
+```{code-cell} ipython3
+
+```

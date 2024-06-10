@@ -177,6 +177,7 @@ There are more [examples of this below](page-images-and-pdfs).
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(newspapers:pages:metadata)=
 ## Page metadata
 
 +++
