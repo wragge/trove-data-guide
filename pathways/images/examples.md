@@ -37,7 +37,7 @@ This page includes information on tutorials and examples to help you work with i
 You want to be able to work on a collection of digitised images from Trove on your desktop – adding notes, transcriptions, and annotations. [Tropy](https://tropy.org/) is a useful tool for managing collections of research images, but how do you import a collection of images from Trove into Tropy? This tutorial walks through one possible method.
 
 +++
-```{button-link} tropy.md
+```{button-link} tropy.html
 :color: primary
 Get started
 ```
@@ -51,7 +51,7 @@ Get started
 You want to compare the contents of two digitised manuscript collections and examine individual documents side-by-side. The [Mirador viewer](https://projectmirador.org/) can be configured as a flexible, research workspace that displays multiple images from different sources, but how do you get manuscript collections from Trove to Mirador?
 
 +++
-```{button-link} mirador.md
+```{button-link} mirador.html
 :color: primary
 Get started
 ```

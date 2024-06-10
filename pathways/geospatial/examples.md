@@ -37,7 +37,7 @@ This page includes information on tutorials and examples to help you work with m
 Trove includes thousands of digitised maps, created and published across the last few centuries. You want to create a collection of maps relating to your area of interest and explore it using the Gazetteer of Historical Australian Placenames (GHAP). You know it's possible to add layers to GHAP, but how do you get the data from Trove in a format that can be uploaded as a layer?
 
 +++
-```{button-link} maps-to-ghap.md
+```{button-link} maps-to-ghap.html
 :color: primary
 Get started
 ```
