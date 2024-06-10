@@ -169,8 +169,6 @@ parts:
             sections:
             - file: pathways/geospatial/maps-to-ghap
               title: Create a layer in GHAP using metadata from Trove’s digitised maps
-      - file: pathways/networks/networks
-        title: Networks and relationships
       - file: pathways/collections/collections
         title: Creating collections
         sections:
