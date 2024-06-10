@@ -35,7 +35,7 @@ This page includes information on tutorials and examples to help you create and 
 You've been collecting and annotating items relating to your research project in a Trove List. You'd like to display the contents of your list as an online exhibition for others to explore. [CollectionBuilder](https://collectionbuilder.github.io/) creates online exhibitions using static web technologies. But how do you get your List data from Trove into CollectionBuilder?
 
 +++
-```{button-link} collectionbuilder.md
+```{button-link} collectionbuilder.html
 :color: primary
 Get started
 ```
