@@ -14,7 +14,7 @@ kernelspec:
 # Tools and resources
 
 ````{card}
-On this page
+This page includes information on tools and resources that you can use to analyse text from Trove.
 
 ```{contents}
 :local:
@@ -60,5 +60,7 @@ More info
 
 ## Other tools and resources
 
+- [Voyant Tools](https://voyant-tools.org/)
+- [Antconc](https://www.laurenceanthony.net/software/antconc/)
 - [TAPoR 3: Discover research tools for studying texts](https://tapor.ca/home)
 - [SSH Open Marketplace](https://marketplace.sshopencloud.eu/)

@@ -127,6 +127,7 @@ The `page` value in an article's metadata is only ever a single number. If an ar
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(newspapers:articles:metadata)=
 ## Article metadata
 
 The {term}`metadata` associated with newspaper and gazette articles in Trove includes the basic information you'd expect to put in a citation, like the article's headline, publication date, newspaper, and page number. Additional fields are added by the OCR and data ingestion processes, such as internal links, the number of words, and the article category. User activity also adds data relating to tags, comments, lists, and corrections.

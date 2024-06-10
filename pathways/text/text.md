@@ -15,6 +15,7 @@ kernelspec:
 
 # Text
 
+Trove includes text extracted from digitised publications using OCR, text in born digital publications and website, and text in user added annotations.
 
 ```{tableofcontents}
 

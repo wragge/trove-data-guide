@@ -136,8 +136,9 @@ parts:
     maxdepth: 3
     chapters:
       - file: pathways/index
+        title: Introduction
       - file: pathways/text/text
-        title: Text
+        title: Using text
         sections:
           - file: pathways/text/data-sources
           - file: pathways/text/tools
@@ -145,7 +146,7 @@ parts:
             sections:
             - file: pathways/text/newspapers-keywords
       - file: pathways/images/images
-        title: Images
+        title: Using images
         sections:
           - file: pathways/images/data-sources
           - file: pathways/images/tools
@@ -153,17 +154,27 @@ parts:
             sections:
             - file: pathways/images/tropy
             - file: pathways/images/mirador
-      - file: pathways/structured-data
+      - file: pathways/metadata/metadata
+        title: Collection and system data
+        sections:
+          - file: pathways/metadata/data-sources
+          - file: pathways/metadata/tools
+          - file: pathways/metadata/examples
       - file: pathways/geospatial/geospatial
         title: Maps and places
         sections:
+          - file: pathways/geospatial/data-sources
+          - file: pathways/geospatial/tools
           - file: pathways/geospatial/examples
             sections:
             - file: pathways/geospatial/maps-to-ghap
-      - file: pathways/networks
+              title: Create a layer in GHAP using metadata from Trove’s digitised maps
+      - file: pathways/networks/networks
+        title: Networks and relationships
       - file: pathways/collections/collections
         title: Creating collections
         sections:
+          - file: pathways/collections/tools
           - file: pathways/collections/examples
             sections:
               - file: pathways/collections/collectionbuilder

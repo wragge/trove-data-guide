@@ -15,7 +15,7 @@ kernelspec:
 
 # Creating collections
 
-Tools and methods for assembling, managing, and sharing collections of resources harvested from Trove.
+Through your own research you're likely to create collections of resources from Trove. This section provides information on managing, sharing, and reusing those collections.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 

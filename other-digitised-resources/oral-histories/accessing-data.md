@@ -54,6 +54,7 @@ A single oral history can be recorded across multiple sessions. There are separa
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:oralhistories:metadata)=
 ## Metadata
 
 ````{margin}

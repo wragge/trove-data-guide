@@ -75,6 +75,7 @@ The different identifiers can be used to access additional metadata.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:periodicals:metadata)=
 ## Metadata
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
