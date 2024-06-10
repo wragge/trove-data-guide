@@ -34,9 +34,6 @@ This section highlights pathways that connect Trove data to a range of digital t
 [Maps and places](metadata/metadata)
 : Trove includes a large collection of digitised maps. There's also some spatial information included in metadata records.
 
-[Networks and relationships](networks/networks)
-: &nbsp;
-
 [Creating colletions](collections/collections)
 : Through your own research you're likely to create collections of resources from Trove. This section provides information on managing, sharing, and reusing those collections.
 
