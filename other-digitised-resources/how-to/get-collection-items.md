@@ -13,7 +13,7 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-# HOW TO: Get a list of items in a digitised collection
+# HOW TO: Get a list of items from a digitised collection
 
 ````{card}
 On this page
@@ -163,6 +163,11 @@ from bs4 import BeautifulSoup
 
 
 def harvest_collection_items(collection_id, include_subcollections=False):
+    """
+    Harvest all the items in a Trove collection (including any sub-collections)
+    by scraping the item identifiers from the 'Browse collection' pop-up.
+    See the Trove Data Guide:
+    """
     # The initial startIdx value
     start = 0
     # Number of results per page, used to increment the startIdx value
@@ -172,7 +177,7 @@ def harvest_collection_items(collection_id, include_subcollections=False):
     while n == 20:
         url = f"https://nla.gov.au/{collection_id}/browse?startIdx={start}&rows=20&op=c"
         # Get the browse page
-        response = requests.get(url)
+        response = s.get(url)
 
         # Beautifulsoup turns the HTML into an easily navigable structure
         soup = BeautifulSoup(response.text, "html.parser")
@@ -197,7 +202,7 @@ def harvest_collection_items(collection_id, include_subcollections=False):
             # If it has children, harvest items from the subcollection
             if has_children and include_subcollections is True:
                 item_type = "collection"
-                items += harvest_collection_items(item_id)
+                items += harvest_collection_items(item_id, include_subcollections=True)
 
             # Save the item
             # The parent_id will enable us to identify items that are in subcollections

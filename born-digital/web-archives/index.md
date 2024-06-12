@@ -13,6 +13,17 @@ kernelspec:
 
 # Web archives
 
-```{code-cell} ipython3
++++
+
+How to:
+
+- get a capture near a date
+- get a list of captures (timemap or cdx)
+- get captures from a domain
+- get the original html
+
+```{raw-cell}
 
 ```
+
+Look at harvested titles - domains etc (using surts)
