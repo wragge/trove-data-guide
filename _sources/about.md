@@ -4,6 +4,18 @@ The Trove Data Guide is being developed by [Tim Sherratt](https://timsherratt.or
 
 The published version is available at: <https://tdg.glam-workbench.net>.
 
+The Trove Data Guide received investment from the <a href="https://ardc.edu.au/">Australian Research Data Commons</a> (ARDC). The ARDC is funded by the National Collaborative Research Infrastructure Strategy (NCRIS).
+
+````{grid}
+:gutter: 20
+```{grid-item}
+![ARDC logo](/images/ARDC_logo_RGB.png)
+```
+```{grid-item}
+![NCRIS logo](/images/NCRIS-PROVIDER.png)
+```
+````
+
 ## GLAM Workbench
 
 The Trove Data Guide is a companion to the Trove sections of the [GLAM Workbench](https://glam-workbench.net/). While the GLAM Workbench provides tools and examples for working with data from Trove, this Guide digs deeper into the complexities to help researchers develop a critical understanding of Trove data – its limits and its possibilities.
