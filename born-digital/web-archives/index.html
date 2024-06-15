@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/born-digital/web-archives/index.04db3e05-caa7-4e87-9968-9668cb40363c.js"></script>
+    <script defer="defer" src="../../_static/tippy/born-digital/web-archives/index.b2d31750-5226-46af-9e89-a0490d4fbcd3.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'born-digital/web-archives/index';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -529,7 +529,587 @@ document.write(`
 <li><p>get captures from a domain</p></li>
 <li><p>get the original html</p></li>
 </ul>
-<p>Look at harvested titles - domains etc (using surts)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/GLAM-Workbench/trove-web-archives-titles/main/pandora-titles.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tep_id</th>
+      <th>name</th>
+      <th>gathered_url</th>
+      <th>surt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>/tep/94042</td>
+      <td>OLSC submission in response to the NSW...</td>
+      <td>http://www.lawlink.nsw.gov.au/lawlink/olsc/ll_...</td>
+      <td>au,gov,nsw,lawlink)/lawlink/olsc/ll_olsc.nsf/p...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>/tep/162201</td>
+      <td>2017-18 Federal Pre-Budget Submission (Austra...</td>
+      <td>http://www.acoss.org.au/wp-content/uploads/201...</td>
+      <td>au,org,acoss)/wp-content/uploads/2017/02/acoss...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>/tep/128226</td>
+      <td>A framework for assessing the biological risk...</td>
+      <td>http://www.dse.vic.gov.au/</td>
+      <td>au,gov,vic,dse)/</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>/tep/157892</td>
+      <td>Acknowledgment and publicity guidelines for V...</td>
+      <td>http://dhhs.vic.gov.au/</td>
+      <td>au,gov,vic,dhhs)/</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>/tep/147101</td>
+      <td>Administration and effectiveness of the envir...</td>
+      <td>http://www.audit.vic.gov.au/publications/20140...</td>
+      <td>au,gov,vic,audit)/publications/20140625-ecl-ad...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;surt&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(.*?)\)&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>domain
+youtu.be                      4247
+youtube.com                   2002
+betterhealth.vic.gov.au       1390
+mobile.twitter.com            1269
+nitter.archive.org.au         1117
+ww2.health.wa.gov.au          1027
+health.gov.au                  853
+dse.vic.gov.au                 841
+abc.net.au                     616
+home.vicnet.net.au             615
+dpcd.vic.gov.au                424
+health.vic.gov.au              422
+vec.vic.gov.au                 377
+esc.vic.gov.au                 330
+dpi.vic.gov.au                 292
+mediastatements.wa.gov.au      292
+ahuri.edu.au                   280
+levelcrossings.vic.gov.au      278
+epanote2.epa.vic.gov.au        277
+cfaonline.cfa.vic.gov.au       273
+smh.com.au                     255
+dhs.vic.gov.au                 243
+museum.vic.gov.au              233
+dest.gov.au                    233
+environment.gov.au             219
+education.vic.gov.au           217
+health.nsw.gov.au              214
+statistics.oesr.qld.gov.au     210
+bsl.org.au                     200
+epa.vic.gov.au                 197
+health.qld.gov.au              193
+nla.gov.au                     184
+theguardian.com                165
+theconversation.com            163
+vicroads.vic.gov.au            157
+depi.vic.gov.au                152
+sbs.com.au                     142
+greens.org.au                  141
+ipart.nsw.gov.au               135
+facs.gov.au                    132
+deh.gov.au                     130
+new.dpi.vic.gov.au             129
+melbourne.vic.gov.au           126
+ncver.edu.au                   123
+ourwater.vic.gov.au            123
+aph.gov.au                     122
+news.com.au                    118
+dtpli.vic.gov.au               118
+cityofsydney.nsw.gov.au        110
+vic.gov.au                     109
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look at harvested titles - domains etc (using surts)git</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tep_id</th>
+      <th>name</th>
+      <th>gathered_url</th>
+      <th>surt</th>
+      <th>domain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>/tep/94042</td>
+      <td>OLSC submission in response to the NSW...</td>
+      <td>http://www.lawlink.nsw.gov.au/lawlink/olsc/ll_...</td>
+      <td>au,gov,nsw,lawlink)/lawlink/olsc/ll_olsc.nsf/p...</td>
+      <td>lawlink.nsw.gov.au</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>/tep/162201</td>
+      <td>2017-18 Federal Pre-Budget Submission (Austra...</td>
+      <td>http://www.acoss.org.au/wp-content/uploads/201...</td>
+      <td>au,org,acoss)/wp-content/uploads/2017/02/acoss...</td>
+      <td>acoss.org.au</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>/tep/128226</td>
+      <td>A framework for assessing the biological risk...</td>
+      <td>http://www.dse.vic.gov.au/</td>
+      <td>au,gov,vic,dse)/</td>
+      <td>dse.vic.gov.au</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>/tep/157892</td>
+      <td>Acknowledgment and publicity guidelines for V...</td>
+      <td>http://dhhs.vic.gov.au/</td>
+      <td>au,gov,vic,dhhs)/</td>
+      <td>dhhs.vic.gov.au</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>/tep/147101</td>
+      <td>Administration and effectiveness of the envir...</td>
+      <td>http://www.audit.vic.gov.au/publications/20140...</td>
+      <td>au,gov,vic,audit)/publications/20140625-ecl-ad...</td>
+      <td>audit.vic.gov.au</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>87727</th>
+      <td>/tep/203222</td>
+      <td>Storytellers Distillery</td>
+      <td>https://storytellersdistillery.com.au/</td>
+      <td>au,com,storytellersdistillery)/</td>
+      <td>storytellersdistillery.com.au</td>
+    </tr>
+    <tr>
+      <th>87728</th>
+      <td>/tep/208701</td>
+      <td>‘Everything is so expensive’ : tax cuts, cost ...</td>
+      <td>https://www.theguardian.com/australia-news/202...</td>
+      <td>com,theguardian)/australia-news/2024/feb/25/ev...</td>
+      <td>theguardian.com</td>
+    </tr>
+    <tr>
+      <th>87729</th>
+      <td>/tep/203931</td>
+      <td>‘Felt alienated by the men’s game’: how the cu...</td>
+      <td>https://theconversation.com/felt-alienated-by-...</td>
+      <td>com,theconversation)/felt-alienated-by-the-men...</td>
+      <td>theconversation.com</td>
+    </tr>
+    <tr>
+      <th>87730</th>
+      <td>/tep/195843</td>
+      <td>‘Kookaburra sits on the telegraph wire…’</td>
+      <td>https://stories.slsa.sa.gov.au/kookaburra-sits...</td>
+      <td>au,gov,sa,slsa,stories)/kookaburra-sits-on-the...</td>
+      <td>stories.slsa.sa.gov.au</td>
+    </tr>
+    <tr>
+      <th>87731</th>
+      <td>/tep/205217</td>
+      <td>‘Yes’ to the Voice Referendum | Interim Truth ...</td>
+      <td>https://www.truthandtreatyqld.org.au/about/new...</td>
+      <td>au,org,truthandtreatyqld)/about/news-media/yes...</td>
+      <td>truthandtreatyqld.org.au</td>
+    </tr>
+  </tbody>
+</table>
+<p>87732 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">wc</span><span class="o">.</span><span class="n">to_image</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1be081348c1d8fe0af60ca87fa402373bfc101e7849b1e8c6f86774d86c52f4b.png" src="../../_images/1be081348c1d8fe0af60ca87fa402373bfc101e7849b1e8c6f86774d86c52f4b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;COVID&quot;</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;coronavirus&quot;</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tep_id</th>
+      <th>name</th>
+      <th>gathered_url</th>
+      <th>surt</th>
+      <th>domain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>28</th>
+      <td>/tep/182919</td>
+      <td>Coronavirus (COVID-19)  Albany Travel and Cru...</td>
+      <td>http://www.albanytravelandcruise.com.au/corona...</td>
+      <td>au,com,albanytravelandcruise)/corona-virus-alert</td>
+      <td>albanytravelandcruise.com.au</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>/tep/181347</td>
+      <td>Vision Australia's response to COVID-19</td>
+      <td>https://www.visionaustralia.org/COVID19</td>
+      <td>org,visionaustralia)/covid19</td>
+      <td>visionaustralia.org</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>/tep/182754</td>
+      <td>#COVID-19 All of us, together (The Greens)</td>
+      <td>https://greens.org.au/covid19</td>
+      <td>au,org,greens)/covid19</td>
+      <td>greens.org.au</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>/tep/187840</td>
+      <td>02 coronavirus testing</td>
+      <td>https://youtu.be/S6O0gXsG4Co</td>
+      <td>be,youtu)/s6o0gxsg4co</td>
+      <td>youtu.be</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>/tep/187838</td>
+      <td>06 are you worried about being diagnosed or te...</td>
+      <td>https://youtu.be/UidrqNy6PFg</td>
+      <td>be,youtu)/uidrqny6pfg</td>
+      <td>youtu.be</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>86150</th>
+      <td>/tep/182099</td>
+      <td>Yarra's business package response to COVID-19 ...</td>
+      <td>https://youtu.be/chRhaOTTbas</td>
+      <td>be,youtu)/chrhaottbas</td>
+      <td>youtu.be</td>
+    </tr>
+    <tr>
+      <th>86151</th>
+      <td>/tep/182100</td>
+      <td>Yarra's community package response to COVID-19...</td>
+      <td>https://youtu.be/pge05-14C90</td>
+      <td>be,youtu)/pge05-14c90</td>
+      <td>youtu.be</td>
+    </tr>
+    <tr>
+      <th>86152</th>
+      <td>/tep/182101</td>
+      <td>Yarra's creative industries package response t...</td>
+      <td>https://youtu.be/Q8YuD6SzxyI</td>
+      <td>be,youtu)/q8yud6szxyi</td>
+      <td>youtu.be</td>
+    </tr>
+    <tr>
+      <th>86405</th>
+      <td>/tep/181876</td>
+      <td>Your COVID-19 Resources hub (Chartered Account...</td>
+      <td>https://www.charteredaccountantsanz.com/news-a...</td>
+      <td>com,charteredaccountantsanz)/news-and-analysis...</td>
+      <td>charteredaccountantsanz.com</td>
+    </tr>
+    <tr>
+      <th>86432</th>
+      <td>/tep/181113</td>
+      <td>Your Source of Truth on COVID 19 (State Librar...</td>
+      <td>https://slwa.wa.gov.au/news/your-source-truth-...</td>
+      <td>au,gov,wa,slwa)/news/your-source-truth-covid-19</td>
+      <td>slwa.wa.gov.au</td>
+    </tr>
+  </tbody>
+</table>
+<p>2848 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yt</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;youtu.be&quot;</span><span class="p">,</span> <span class="s2">&quot;youtube.com&quot;</span><span class="p">])]</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">yt</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">wc</span><span class="o">.</span><span class="n">to_image</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f791e691cb5a2564736014e7be2f8ea183a7fe67144686e53e18f8626c225aba.png" src="../../_images/f791e691cb5a2564736014e7be2f8ea183a7fe67144686e53e18f8626c225aba.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tw</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;twitter&quot;</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;domain&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;nitter&quot;</span><span class="p">))]</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tw</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+<span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">wc</span><span class="o">.</span><span class="n">to_image</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/75228478feaf40bbae2df50762323a63c5059749869cd29242390d267c9ac28c.png" src="../../_images/75228478feaf40bbae2df50762323a63c5059749869cd29242390d267c9ac28c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tep_id</th>
+      <th>name</th>
+      <th>gathered_url</th>
+      <th>surt</th>
+      <th>domain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>77</th>
+      <td>/tep/142430</td>
+      <td>Tim Read (Twitter page)</td>
+      <td>https://mobile.twitter.com/TimRead_Wills</td>
+      <td>com,twitter,mobile)/timread_wills</td>
+      <td>mobile.twitter.com</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>/tep/142430</td>
+      <td>Tim Read (Twitter page)</td>
+      <td>https://mobile.twitter.com/timrread</td>
+      <td>com,twitter,mobile)/timrread</td>
+      <td>mobile.twitter.com</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>/tep/142430</td>
+      <td>Tim Read (Twitter page)</td>
+      <td>https://nitter.archive.org.au/timrread</td>
+      <td>au,org,archive,nitter)/timrread</td>
+      <td>nitter.archive.org.au</td>
+    </tr>
+    <tr>
+      <th>1436</th>
+      <td>/tep/191777</td>
+      <td>@LegCouncilSA (@legcouncilsa) | nitter</td>
+      <td>https://nitter.archive.org.au/legcouncilsa</td>
+      <td>au,org,archive,nitter)/legcouncilsa</td>
+      <td>nitter.archive.org.au</td>
+    </tr>
+    <tr>
+      <th>2022</th>
+      <td>/tep/179939</td>
+      <td>ABC Emergency @abcemergency (Twitter)</td>
+      <td>https://mobile.twitter.com/abcemergency</td>
+      <td>com,twitter,mobile)/abcemergency</td>
+      <td>mobile.twitter.com</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>87511</th>
+      <td>/tep/183115</td>
+      <td>non compliant native @drcbond (Twitter)</td>
+      <td>https://mobile.twitter.com/drcbond</td>
+      <td>com,twitter,mobile)/drcbond</td>
+      <td>mobile.twitter.com</td>
+    </tr>
+    <tr>
+      <th>87529</th>
+      <td>/tep/185465</td>
+      <td>peter maynard @peterma87373296 (Twitter page)</td>
+      <td>https://mobile.twitter.com/peterma87373296</td>
+      <td>com,twitter,mobile)/peterma87373296</td>
+      <td>mobile.twitter.com</td>
+    </tr>
+    <tr>
+      <th>87591</th>
+      <td>/tep/196279</td>
+      <td>suspended Dr Denes Borsos @DenesBorsos (Twitte...</td>
+      <td>https://nitter.archive.org.au/DenesBorsos</td>
+      <td>au,org,archive,nitter)/denesborsos</td>
+      <td>nitter.archive.org.au</td>
+    </tr>
+    <tr>
+      <th>87639</th>
+      <td>/tep/195657</td>
+      <td>ulurustatement (@ulurustatement) | Twitter</td>
+      <td>https://nitter.archive.org.au/ulurustatement</td>
+      <td>au,org,archive,nitter)/ulurustatement</td>
+      <td>nitter.archive.org.au</td>
+    </tr>
+    <tr>
+      <th>87669</th>
+      <td>/tep/191132</td>
+      <td>whatsdoinmedia @whatsdonmedia (Twitter page)</td>
+      <td>https://nitter.archive.org.au/whatsdoinmedia</td>
+      <td>au,org,archive,nitter)/whatsdoinmedia</td>
+      <td>nitter.archive.org.au</td>
+    </tr>
+  </tbody>
+</table>
+<p>2452 rows × 5 columns</p>
+</div></div></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

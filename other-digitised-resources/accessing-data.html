@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/other-digitised-resources/accessing-data.180ddb86-ef7b-4608-b175-7e801ec63554.js"></script>
+    <script defer="defer" src="../_static/tippy/other-digitised-resources/accessing-data.2709a375-a5a9-4524-9ae1-6bafef324a42.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/accessing-data';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -528,8 +528,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">20.4. Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-troves-download-links">Using Trove’s download links</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-image-urls-using-nla-obj-identifiers">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-get-nla-obj-identifiers-for-pages-or-images">How do you get <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers for pages or images?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-know-if-a-tiff-version-is-available">How do you know if a TIFF version is available?</a></li>
 </ul>
 </li>
@@ -548,8 +546,36 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="accessing-data-from-digitised-resources">
 <h1><span class="section-number">20. </span>Accessing data from digitised resources<a class="headerlink" href="#accessing-data-from-digitised-resources" title="Link to this heading">#</a></h1>
-<p>Trove’s digitised resources are delivered in a number of different ways depending on their format and arrangement. However, there are some ways of accessing data that work across different formats. These are described below.</p>
-<p>For more specific information see:</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">On this page</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#metadata" id="id1">Metadata</a></p>
+<ul>
+<li><p><a class="reference internal" href="#work-version-records-delivered-by-the-trove-api" id="id2">Work/version records delivered by the Trove API</a></p></li>
+<li><p><a class="reference internal" href="#json-embedded-in-the-digitised-resource-viewer" id="id3">JSON embedded in the digitised resource viewer</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#collections" id="id4">Collections</a></p></li>
+<li><p><a class="reference internal" href="#text" id="id5">Text</a></p></li>
+<li><p><a class="reference internal" href="#images" id="id6">Images</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-troves-download-links" id="id7">Using Trove’s download links</a></p></li>
+<li><p><a class="reference internal" href="#constructing-image-urls-using-nla-obj-identifiers" id="id8">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#how-do-you-know-if-a-tiff-version-is-available" id="id9">How do you know if a TIFF version is available?</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<p>Trove’s digitised resources are delivered in a number of different ways depending on their format and arrangement. See <a class="reference internal" href="../what-is-trove/interfaces.html#whatis-interfaces-digitised"><span class="std std-ref">Digitised content viewers</span></a> and <a class="reference internal" href="../accessing-data/using-web-interface.html"><span class="doc std std-doc">Downloading data from the Trove web interface</span></a> for hints on using digitised resources through Trove’s web interface.</p>
+<p>Access to machine-readable data is even more complicated. The Trove API provides limited information about digitised resources, necessitating a variety of hacks and workarounds. Nonetheless, there are some methods of accessing data from digitised resources that work reliably across multiple formats. These are described below.</p>
+<p>For more specific information relating to particular formats see:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="oral-histories/accessing-data.html"><span class="std std-doc">Accessing data from oral histories</span></a></p></li>
 <li><p><a class="reference internal" href="periodicals/accessing-data.html"><span class="std std-doc">Accessing data from periodicals</span></a></p></li>
@@ -570,9 +596,19 @@ document.write(`
 </section>
 <section id="collections">
 <h2><span class="section-number">20.2. </span>Collections<a class="headerlink" href="#collections" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-images/download-image-collection/">Download a collection of digitised images</a> uses this method to find and download all the images in a collection or finding-aid.</p>
+</div>
+</aside>
+<p>The NLA’s digitised resources are often presented as ‘collections’. A collection could be the volumes in a multi-volume work, the issues of a periodical, a map series, an album of photographs, or a manuscript collection. While you can use the <code class="docutils literal notranslate"><span class="pre">magazine/title</span></code> API endpoint to get a list of issues from a periodical, there’s no way to get the contents of other types of collections from the Trove API.</p>
+<p>To get machine-readable information about the members of a digitised collection you need to extract information from the browse window of Trove’s digitised collection viewer. This method is fully documented in <a class="reference internal" href="how-to/get-collection-items.html"><span class="doc std std-doc">HOW TO: Get a list of items from a digitised collection</span></a></p>
 </section>
 <section id="text">
 <h2><span class="section-number">20.3. </span>Text<a class="headerlink" href="#text" title="Link to this heading">#</a></h2>
+<p>Digitised publications like books, pamphlets, and periodicals usually make their contents available as plain text, extracted from the digitised pages using Optical Character Recognition (OCR). The</p>
 </section>
 <section id="images">
 <h2><span class="section-number">20.4. </span>Images<a class="headerlink" href="#images" title="Link to this heading">#</a></h2>
@@ -605,80 +641,6 @@ document.write(`
 <p class="admonition-title">Image sizes</p>
 <p>The sizes of images downloaded using the <code class="docutils literal notranslate"><span class="pre">/image</span></code> suffix vary unpredictably. Sizes seem to range up to a maximum of 5000 pixels along the longest dimension, but some are much smaller, including many digitised photographs. However, images obtained this way are at the same, or higher, resolution than those available through Trove’s built-in download option.</p>
 </div>
-<section id="examples">
-<h4>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h4>
-<p>This photograph of some angry penguins on Heard Island has the identifier <code class="docutils literal notranslate"><span class="pre">nla.obj-147135602</span></code>.</p>
-<figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/nla.obj-141171021.jpg"><img alt="../_images/nla.obj-141171021.jpg" src="../_images/nla.obj-141171021.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 20.1 </span><span class="caption-text">Two Rockhopper Penguins and a predatory Skua, Heard Island, Antarctica, ca. 1930 (by Frank Hurley) <a class="reference external" href="http://nla.gov.au/nla.obj-141171021">http://nla.gov.au/nla.obj-141171021</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>The persistent url is created by adding <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/</span></code> to the identifier</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-141171021">http://nla.gov.au/nla.obj-141171021</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>To view the photograph in Trove’s digitised image viewer, you just add <code class="docutils literal notranslate"><span class="pre">view</span></code> to the persistent url (this is where the persistent url redirects to anyway)</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-141171021/view">http://nla.gov.au/nla.obj-141171021/view</a></p></td>
-</tr>
-<tr class="row-even"><td><p>To access a thumbnail version of the image, you add <code class="docutils literal notranslate"><span class="pre">-t</span></code> to the persistent url</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-141171021-t">http://nla.gov.au/nla.obj-141171021-t</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>To access a high-resolution version of the image, you add <code class="docutils literal notranslate"><span class="pre">/image</span></code> to the persistent url</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-141171021/image">http://nla.gov.au/nla.obj-141171021/image</a></p></td>
-</tr>
-<tr class="row-even"><td><p>To access a version of the image that is 1000 pixels wide, you add <code class="docutils literal notranslate"><span class="pre">/image?wid=1000</span></code> to the persistent url</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-141171021/image?wid=1000">http://nla.gov.au/nla.obj-141171021/image?wid=1000</a></p></td>
-</tr>
-</tbody>
-</table>
-<p>This works the same way with pages in books and periodicals, however, the urls are a bit more complicated. For example, this page in <em>The Home</em> also features a photo of penguins by Frank Hurley. The page’s identifier is <code class="docutils literal notranslate"><span class="pre">nla.obj-387326197</span></code>.</p>
-<figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="../_images/nla.obj-387326197.jpg"><img alt="../_images/nla.obj-387326197.jpg" src="../_images/nla.obj-387326197.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 20.2 </span><span class="caption-text">‘Penguin pageant’ by Frank Hurley, <em>The Home</em>, vol. 20, no. 1, January 1940, p. 44 <a class="reference external" href="http://nla.gov.au/nla.obj-387326197">http://nla.gov.au/nla.obj-387326197</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>The persistent url is created by adding <code class="docutils literal notranslate"><span class="pre">http://nla.gov.au/</span></code> to the identifier</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-387326197">http://nla.gov.au/nla.obj-387326197</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>If you access the page’s persistent url you are redirected to the issue, with the page identifier included as a <code class="docutils literal notranslate"><span class="pre">partId</span></code> parameter</p></td>
-<td><p><a class="reference external" href="https://nla.gov.au/nla.obj-387284380/view?partId=nla.obj-387326197">https://nla.gov.au/nla.obj-387284380/view?partId=nla.obj-387326197</a></p></td>
-</tr>
-<tr class="row-even"><td><p>To access a thumbnail version of the page image, you add <code class="docutils literal notranslate"><span class="pre">-t</span></code> to the persistent url</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-387326197-t">http://nla.gov.au/nla.obj-387326197-t</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>To access a high-resolution version of the page image, you add <code class="docutils literal notranslate"><span class="pre">/image</span></code> to the persistent url</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-387326197/image">http://nla.gov.au/nla.obj-387326197/image</a></p></td>
-</tr>
-<tr class="row-even"><td><p>To access a version of the image that is 500 pixels high, you add <code class="docutils literal notranslate"><span class="pre">/image?hei=500</span></code> to the persistent url</p></td>
-<td><p><a class="reference external" href="http://nla.gov.au/nla.obj-387326197/image?hei=500">http://nla.gov.au/nla.obj-387326197/image?hei=500</a></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="how-do-you-get-nla-obj-identifiers-for-pages-or-images">
-<h4>How do you get <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers for pages or images?<a class="headerlink" href="#how-do-you-get-nla-obj-identifiers-for-pages-or-images" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>from the <strong>Cite</strong> tab</p></li>
-<li><p>from the digitised viewer’s url</p></li>
-<li><p>from the browse screens of a digitised collection</p></li>
-<li><p>from embedded metadata</p></li>
-</ul>
-</section>
 <section id="how-do-you-know-if-a-tiff-version-is-available">
 <h4>How do you know if a TIFF version is available?<a class="headerlink" href="#how-do-you-know-if-a-tiff-version-is-available" title="Link to this heading">#</a></h4>
 <p><a class="reference internal" href="how-to/extract-embedded-metadata.html#digitised-howto-embedded-images"><span class="std std-ref">embedded metadata</span></a></p>
@@ -761,8 +723,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">20.4. Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-troves-download-links">Using Trove’s download links</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-image-urls-using-nla-obj-identifiers">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-get-nla-obj-identifiers-for-pages-or-images">How do you get <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers for pages or images?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-know-if-a-tiff-version-is-available">How do you know if a TIFF version is available?</a></li>
 </ul>
 </li>

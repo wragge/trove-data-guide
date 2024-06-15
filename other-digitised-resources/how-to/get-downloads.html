@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-downloads.1908438e-9e5c-4733-a165-7d6cb6093967.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-downloads.4ec02eab-aaa6-4591-bdc4-37fc29053643.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/get-downloads';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -518,19 +518,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HOW TO: Get text, images, and PDFs using Trove’s download link</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-troves-download-link">Understanding Trove’s download link</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-urls">Constructing urls</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variations">Variations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diy-download-links">DIY download links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-selected-pages">Download selected pages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-know-the-number-of-pages">How do you know the number of pages?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-alternatives">Limitations and alternatives</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -581,27 +575,89 @@ document.write(`
 </table>
 <p>Note that ‘pages’ in this context actually refers to the number of images in the digitised version, rather than the number of printed pages in the original work. This is because the digitised version will typically include images of book covers and endpapers as well as printed pages.</p>
 </section>
-<section id="constructing-urls">
-<h2>Constructing urls<a class="headerlink" href="#constructing-urls" title="Link to this heading">#</a></h2>
-<p>Once you understand the structure of the download urls, you can construct your own, instead of using the web interface. All you need to know is the NLA identifier of a resource, and the number of pages/images it contains.</p>
-<p>for example, <a class="reference external" href="https://nla.gov.au/nla.obj-248742150">The gold finder of Australia : how he went, how he fared, how he made his fortune</a> is a pamphlet published in 1853. It’s NLA identifier is <code class="docutils literal notranslate"><span class="pre">nla.obj-248742150</span></code> and it has <code class="docutils literal notranslate"><span class="pre">80</span></code> pages. To download all</p>
+<section id="diy-download-links">
+<h2>DIY download links<a class="headerlink" href="#diy-download-links" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This method is used in a number of GLAM Workbench notebooks to download the OCRd text of books and periodicals. See, for example, <a class="reference external" href="https://glam-workbench.net/trove-books/harvesting-text-of-digitised-books/">Harvesting the text of digitised books (and ephemera)</a> and <a class="reference external" href="https://glam-workbench.net/trove-journals/get-ocrd-text-from-digitised-journal/">Get OCRd text from a digitised journal in Trove</a>.</p>
+</div>
+</aside>
+<p>Once you understand the structure of the download urls, you can create your own without using the web interface. All you need to know is a resource’s NLA identifier and the number of pages/images it contains.</p>
+<p>For example, <a class="reference external" href="https://nla.gov.au/nla.obj-248742150">The gold finder of Australia : how he went, how he fared, how he made his fortune</a> is a pamphlet published in 1853. It’s NLA identifier is <code class="docutils literal notranslate"><span class="pre">nla.obj-248742150</span></code> and it has <code class="docutils literal notranslate"><span class="pre">80</span></code> pages. To download all of the OCRd text from this book, you’d insert the identifier and set <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">79</span></code> (<code class="docutils literal notranslate"><span class="pre">80</span></code> minus <code class="docutils literal notranslate"><span class="pre">1</span></code>):</p>
+<p><a class="reference external" href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&amp;amp;firstPage=0&amp;amp;lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=79</a></p>
+<p>Or perhaps you’d like the whole pamphlet as a PDF? Just change <code class="docutils literal notranslate"><span class="pre">downloadOption</span></code> from <code class="docutils literal notranslate"><span class="pre">ocr</span></code> to <code class="docutils literal notranslate"><span class="pre">pdf</span></code>:</p>
+<p><a class="reference external" href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&amp;amp;firstPage=0&amp;amp;lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&amp;firstPage=0&amp;lastPage=79</a></p>
+<div class="warning admonition">
+<p class="admonition-title">Zip files can be big!</p>
+<p>By setting <code class="docutils literal notranslate"><span class="pre">downloadOption</span></code> to <code class="docutils literal notranslate"><span class="pre">zip</span></code> you can download all the digitised images that make up a resource in a single zip file. But beware! Pages of digitised books or journals can weigh in at a few megabytes each, so zipping them all together can create one, very large file. <em>The gold finder of Australia</em> only has 80 pages, but a zip file containing every page ends up at 282mb! If you want to download all the images from a collection of resources, it’s probably best to take a more patient approach and download each image individually.</p>
+</div>
 </section>
+<section id="download-selected-pages">
+<h2>Download selected pages<a class="headerlink" href="#download-selected-pages" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-journals/get-covers-from-digitised-journal/">Get covers (or any other pages) from a digitised journal in Trove</a> uses this method to download the cover from every issue of a  digitised periodical.</p>
+</div>
+</aside>
+<p>You don’t have to ask for everything at once. By adjusting the <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> values, you can download a specific range of pages. If you wanted the first ten pages of <em>The gold finder of Australia</em> as zipped images, you’d set <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">9</span></code>:</p>
+<p><a class="reference external" href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;amp;firstPage=0&amp;amp;lastPage=9">https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;firstPage=0&amp;lastPage=9</a></p>
+<p>To request a single page, set <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to the same value. For example, if you wanted an image of the cover, you’d set both <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code>:</p>
+<p><a class="reference external" href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;amp;firstPage=0&amp;amp;lastPage=0">https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;firstPage=0&amp;lastPage=0</a></p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="variations">
-<h1>Variations<a class="headerlink" href="#variations" title="Link to this heading">#</a></h1>
-<p>First pages only</p>
 <section id="how-do-you-know-the-number-of-pages">
 <h2>How do you know the number of pages?<a class="headerlink" href="#how-do-you-know-the-number-of-pages" title="Link to this heading">#</a></h2>
-</section>
-<section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
-<p>Zip files can be big</p>
-<p>The url above could be used to download all the OCRd text from the book <a class="reference external" href="https://nla.gov.au/nla.obj-33685055/">The pearling disaster, 1899 : a memorial</a>:</p>
+<p>The value of this method lies in the fact that it can be used programatically to download large collections of digitised items without any manual intervention. But to do that you need some way of finding out the number of pages or images in each item so you can set the <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> value. This information isn’t included in the metadata from the API, and so requires a little extra effort to extract.</p>
+<p>The approach varies depending on the type of resource.</p>
+<p>If you’re downloading a resource that is made up of pages, such as a book or periodical, you need to:</p>
 <ul class="simple">
-<li><p>it’s NLA identifier is <code class="docutils literal notranslate"><span class="pre">nla.obj-33685055</span></code></p></li>
-<li><p>it has 102 ‘pages’. Pages in this context actually refers to the images in the digitised version, rather than the number of printed pages in the original work. This is because the digitised version will typically include images of book covers, and endpapers, as well as printed pages. Using this information we can construct a url to download all the OCRd text in the book, setting <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">101</span></code> (102 - 1), because the numbering starts at <code class="docutils literal notranslate"><span class="pre">0</span></code>:</p></li>
+<li><p><a class="reference internal" href="extract-embedded-metadata.html#digitised-howto-embedded-extract-metadata"><span class="std std-ref">extract the metadata</span></a> embedded in the digitised book or journal viewer</p></li>
+<li><p><a class="reference internal" href="extract-embedded-metadata.html#digitised-howto-embedded-pages"><span class="std std-ref">get the length of the <code class="docutils literal notranslate"><span class="pre">page</span></code> array</span></a> from the metadata</p></li>
 </ul>
-<p><a class="reference external" href="https://nla.gov.au/nla.obj-33685055/download?downloadOption=ocr&amp;amp;firstPage=0&amp;amp;lastPage=101">https://nla.gov.au/nla.obj-33685055/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=101</a></p>
+<p>If you’re downloading a collection of images, manuscripts, or maps, you can look for the value of <code class="docutils literal notranslate"><span class="pre">maxNumOfChildDownloads</span></code> embedded in the HTML of the digitised image viewer. Here’s an example that finds the number of photographs in the collection of <a class="reference external" href="https://nla.gov.au/nla.obj-141170265">B.A.N.Z. Antarctic Research Expedition photographs</a> (nla.obj-141170265).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">obj_id</span> <span class="o">=</span> <span class="s2">&quot;nla.obj-141170265&quot;</span>
+
+<span class="c1"># Get the page from the digitised image viewer</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://nla.gov.au/</span><span class="si">{</span><span class="n">obj_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Find lines where this variable is referenced</span>
+<span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;maxNumOfChildDownloads = (\d+)&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># This variable can be referenced multiple times - we want to get the highest value</span>
+<span class="n">num_items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">num_items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>151
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="limitations-and-alternatives">
+<h2>Limitations and alternatives<a class="headerlink" href="#limitations-and-alternatives" title="Link to this heading">#</a></h2>
+<p>This method works really well if you want to get all the OCRd text out of books or periodical issues. It’s also handy if you want to download selected pages or images, such as the front covers of periodicals.</p>
+<p>However, if your aim is to download all the images from a collection of items then you might strike problems with the sizes of the zip files. Of course you also have to add in a step to unzip the zips! If you’re downloading lots of images I’d suggest you try an alternative approach.</p>
+<p>To download images from books and periodicals:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="extract-embedded-metadata.html#digitised-howto-embedded-extract-metadata"><span class="std std-ref">extract the metadata</span></a> embedded in the digitised book or journal viewer</p></li>
+<li><p><a class="reference internal" href="extract-embedded-metadata.html#digitised-howto-embedded-pages"><span class="std std-ref">get a list of page identifiers</span></a> from the metadata</p></li>
+<li><p>download each page individually by appending <code class="docutils literal notranslate"><span class="pre">/image</span></code> to the identifier</p></li>
+</ul>
+<p>To download images from a collection of photographs, maps, or manuscripts:</p>
+<ul class="simple">
+<li><p>get a list of individual item identifiers</p></li>
+</ul>
 </section>
 </section>
 
@@ -651,19 +707,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HOW TO: Get text, images, and PDFs using Trove’s download link</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-troves-download-link">Understanding Trove’s download link</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-urls">Constructing urls</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variations">Variations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diy-download-links">DIY download links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-selected-pages">Download selected pages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-know-the-number-of-pages">How do you know the number of pages?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-alternatives">Limitations and alternatives</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

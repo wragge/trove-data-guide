@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/extract-embedded-metadata.88d442d0-0ce6-4836-9867-147da6c447b0.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/extract-embedded-metadata.5891635e-6e40-4bd1-945f-d14a0dda4ef2.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/extract-embedded-metadata';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -769,7 +769,7 @@ document.write(`
 </section>
 </section>
 <section id="extracting-the-metadata">
-<h2>Extracting the metadata<a class="headerlink" href="#extracting-the-metadata" title="Link to this heading">#</a></h2>
+<span id="digitised-howto-embedded-extract-metadata"></span><h2>Extracting the metadata<a class="headerlink" href="#extracting-the-metadata" title="Link to this heading">#</a></h2>
 <p>The function to extract the metadata is fairly straightforward. It loads the viewer’s HTML code and uses a regular expression to find and extract the embedded JSON string. It expects an <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier. For the image and map viewers, this is the identifier of an individual item. For the book and journal viewer you can use the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier for the book, issue, page, or article. This is because page and article identifiers are redirected to issues. Here’s a full examp[le that extracts the embedded metadata for the book <a class="reference external" href="https://nla.gov.au/nla.obj-362059651"><em>Lord Robert Cecil’s gold fields diary</em></a>.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
