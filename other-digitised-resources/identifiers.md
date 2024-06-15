@@ -51,6 +51,69 @@ Print publications (book or periodical issue) -- get page identifiers, get secti
 | | get OCRd text from the complete publication | the total number of pages |
 | | 
 
-```{code-cell} ipython3
++++
 
+book, periodical issue, or other thing with pages:
+
+- get OCRd text from complete publication
+- get OCRd text from a range of pages
+- get OCRd text from a page with positional information
+
+- get PDF
+
+- get all pages in a zip file
+- get all pages individually
+
+- get additional metadata
+- get MARC data
+- get page identifiers
+- get article identifiers
+
+images, maps, manuscripts
+
+- get PDF
+
+- get all pages in a zip file
+- get all pages individually
+
++++
+
+#### Examples
+
+This photograph of some angry penguins on Heard Island has the identifier `nla.obj-147135602`.
+
+```{figure} /images/nla.obj-141171021.jpg
+:width: 600px
+
+Two Rockhopper Penguins and a predatory Skua, Heard Island, Antarctica, ca. 1930 (by Frank Hurley) [http://nla.gov.au/nla.obj-141171021](http://nla.gov.au/nla.obj-141171021)
 ```
+
+|  |  |
+|-------------|-----|
+|The persistent url is created by adding `http://nla.gov.au/` to the identifier|<http://nla.gov.au/nla.obj-141171021>|
+|To view the photograph in Trove's digitised image viewer, you just add `view` to the persistent url (this is where the persistent url redirects to anyway)|<http://nla.gov.au/nla.obj-141171021/view>|
+|To access a thumbnail version of the image, you add `-t` to the persistent url|<http://nla.gov.au/nla.obj-141171021-t>|
+|To access a high-resolution version of the image, you add `/image` to the persistent url|<http://nla.gov.au/nla.obj-141171021/image>|
+|To access a version of the image that is 1000 pixels wide, you add `/image?wid=1000` to the persistent url|<http://nla.gov.au/nla.obj-141171021/image?wid=1000>|
+
+This works the same way with pages in books and periodicals, however, the urls are a bit more complicated. For example, this page in *The Home* also features a photo of penguins by Frank Hurley. The page's identifier is `nla.obj-387326197`.
+
+```{figure} /images/nla.obj-387326197.jpg
+:width: 600px
+
+'Penguin pageant' by Frank Hurley, *The Home*, vol. 20, no. 1, January 1940, p. 44 [http://nla.gov.au/nla.obj-387326197](http://nla.gov.au/nla.obj-387326197)
+```
+|  |  |
+|-------------|-----|
+|The persistent url is created by adding `http://nla.gov.au/` to the identifier|<http://nla.gov.au/nla.obj-387326197>|
+|If you access the page's persistent url you are redirected to the issue, with the page identifier included as a `partId` parameter|<https://nla.gov.au/nla.obj-387284380/view?partId=nla.obj-387326197>|
+|To access a thumbnail version of the page image, you add `-t` to the persistent url|<http://nla.gov.au/nla.obj-387326197-t>|
+|To access a high-resolution version of the page image, you add `/image` to the persistent url|<http://nla.gov.au/nla.obj-387326197/image>|
+|To access a version of the image that is 500 pixels high, you add `/image?hei=500` to the persistent url|<http://nla.gov.au/nla.obj-387326197/image?hei=500>|
+
+#### How do you get `nla.obj` identifiers for pages or images?
+
+- from the **Cite** tab
+- from the digitised viewer's url
+- from the browse screens of a digitised collection
+- from embedded metadata

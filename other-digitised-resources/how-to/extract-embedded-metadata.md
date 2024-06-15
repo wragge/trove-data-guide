@@ -251,6 +251,7 @@ Chapters have their own values for `pid` and `title`, while the `subUnitNo` spec
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:howto:embedded:extract-metadata)=
 ## Extracting the metadata
 
 The function to extract the metadata is fairly straightforward. It loads the viewer's HTML code and uses a regular expression to find and extract the embedded JSON string. It expects an `nla.obj` identifier. For the image and map viewers, this is the identifier of an individual item. For the book and journal viewer you can use the `nla.obj` identifier for the book, issue, page, or article. This is because page and article identifiers are redirected to issues. Here's a full examp[le that extracts the embedded metadata for the book [*Lord Robert Cecil's gold fields diary*](https://nla.gov.au/nla.obj-362059651).

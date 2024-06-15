@@ -22,7 +22,7 @@ parts:
       - file: what-is-trove/collections
 #      - file: what-is-trove/types-of-data
       - file: what-is-trove/links-and-identifiers
-#      - file: what-is-trove/interfaces
+      - file: what-is-trove/interfaces
   - caption: Understanding search
     numbered: 2
     maxdepth: 3
@@ -32,6 +32,7 @@ parts:
       - file: understanding-search/simple-search-options
 #      - file: understanding-search/facets
       - file: understanding-search/date-searches
+      - file: understanding-search/search-hacks
       - file: understanding-search/finding-digitised-content
   - caption: Accessing data
     numbered: 2
@@ -92,10 +93,12 @@ parts:
         sections:
           - file: other-digitised-resources/books/overview
 #          - file: other-digitised-resources/books/accessing-data
-#      - file: other-digitised-resources/periodicals/intro
-#        title: Periodicals
-#        sections:
-#          - file: other-digitised-resources/periodicals/accessing-data
+      - file: other-digitised-resources/periodicals/index
+        title: Periodicals
+        sections:
+          - file: other-digitised-resources/periodicals/overview
+          - file: other-digitised-resources/periodicals/finding-periodicals
+          - file: other-digitised-resources/periodicals/accessing-data
       - file: other-digitised-resources/parliamentary-papers/index
         title: Parliamentary papers
         sections:
@@ -114,6 +117,7 @@ parts:
           - file: other-digitised-resources/how-to/get-collection-items
           - file: other-digitised-resources/how-to/download-items-text-images
           - file: other-digitised-resources/how-to/extract-embedded-metadata
+          - file: other-digitised-resources/how-to/get-ocr-layout-data.md
           - file: other-digitised-resources/how-to/harvest-digitised-resources
           - file: other-digitised-resources/how-to/scrape-metadata-audio-player
 #  - caption: Web archives
@@ -127,10 +131,52 @@ parts:
 #    chapters:
 #      - file: user-generated-data/trove-lists
   - caption: Research pathways
-    numbered: true
+    numbered: 2
+    maxdepth: 3
     chapters:
       - file: pathways/index
+        title: Introduction
+      - file: pathways/text/text
+        title: Using text
+        sections:
+          - file: pathways/text/data-sources
+          - file: pathways/text/tools
+          - file: pathways/text/examples
+            sections:
+            - file: pathways/text/newspapers-keywords
+      - file: pathways/images/images
+        title: Using images
+        sections:
+          - file: pathways/images/data-sources
+          - file: pathways/images/tools
+          - file: pathways/images/examples
+            sections:
+            - file: pathways/images/tropy
+            - file: pathways/images/mirador
+      - file: pathways/metadata/metadata
+        title: Collection and system data
+        sections:
+          - file: pathways/metadata/data-sources
+          - file: pathways/metadata/tools
+          - file: pathways/metadata/examples
+      - file: pathways/geospatial/geospatial
+        title: Maps and places
+        sections:
+          - file: pathways/geospatial/data-sources
+          - file: pathways/geospatial/tools
+          - file: pathways/geospatial/examples
+            sections:
+            - file: pathways/geospatial/maps-to-ghap
+              title: Create a layer in GHAP using metadata from Trove’s digitised maps
+      - file: pathways/collections/collections
+        title: Creating collections
+        sections:
+          - file: pathways/collections/tools
+          - file: pathways/collections/examples
+            sections:
+              - file: pathways/collections/collectionbuilder
   - chapters:
+    - file: contributing.md
 #    - file: glossary
 #    - file: genindex
     - file: references
