@@ -15,6 +15,16 @@ kernelspec:
 
 # Interfaces
 
+````{card}
+On this page
+
+
+```{contents}
+:local:
+:backlinks: None
+```
+````
+
 +++
 
 For most users, Trove is defined by its web interface – by the screens, buttons, boxes, links, and lists you interact with as you navigate around the site. This Guide focuses on getting and using the data that sits behind the web interface, but, in some cases, access to data is constrained by the design and functioning of the website. It's therefore useful to think about the different components of the web interface and how they fit together.
