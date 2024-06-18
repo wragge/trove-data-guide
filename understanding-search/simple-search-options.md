@@ -107,12 +107,12 @@ glue("wq_wild", get_total("hobart*"))
 glue("wq_text", get_total("text:hobart"))
 glue("wq_title", get_total("title:hobart"))
 
-glue("q_or", get_total('white OR australia'))
-glue("q_and", get_total('white australia'))
-glue("q_phrase", get_total('"white australia"'))
-glue("q_text", get_total('text:"white australia"'))
-glue("q_zero", get_total('"white australia"'))
-glue("q_text_zero", get_total('text:"white australia"~0'))
+glue("q_or", get_total('australia OR unlimited'))
+glue("q_and", get_total('australia unlimited'))
+glue("q_phrase", get_total('"australia unlimited"'))
+glue("q_text", get_total('text:"australia unlimited"'))
+glue("q_zero", get_total('"australia unlimited"'))
+glue("q_text_zero", get_total('text:"australia unlimited"~0'))
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
@@ -148,22 +148,22 @@ Similarly you can adjust the fuzziness of phrase searches.
 * - Query
   - Results
   - Explanation
-* - `white OR australia`
+* - `australia OR unlimited`
   - {glue:text}`q_or:,`
   - 
-* - `white australia`
+* - `australia unlimited`
   - {glue:text}`q_and:,`
-  - Same as white AND australia
-* - `"white australia"`
+  - Same as australia AND unlimited
+* - `"australia unlimited"`
   - {glue:text}`q_phrase:,`
   - Search for phrase (with stemming)
-* - `text:"white australia"`
+* - `text:"australia unlimited"`
   - {glue:text}`q_text:,`
   - Search for phrase (no stemming & ignores tags/comments)
-* - `"white australia"~0`
+* - `"australia unlimited"~0`
   - {glue:text}`q_zero:,`
   - Search for phrase (with stemming, no extra words)
-* - `text:"white australia"~0`
+* - `text:"australia unlimited"~0`
   - {glue:text}`q_text_zero:,`
   - Search for exact phrase (no extra words, no stemming, ignore tags/comments)
 

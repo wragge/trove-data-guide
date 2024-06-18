@@ -10,6 +10,7 @@ options:
 parts:
   - chapters:
     - file: about
+    - file: who-and-how
     - file: introduction/introduction
   - caption: "What is Trove?"
     numbered: 2
