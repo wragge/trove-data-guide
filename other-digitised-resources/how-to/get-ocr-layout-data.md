@@ -301,7 +301,7 @@ Image of page [nla.obj-326405522](https://nla.gov.au/nla.obj-326405522)
 
 ````{margin}
 ```{seealso}
-The GLAM Workbench notebook [Harvest illustrations from periodicals](https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/) demonstrates in detail how to use the OCR positional data to crop illustrations from the pages of periodicals. You can use it to harvest illustrations from articles, pages, issues, or a search in the *Magazines & Newsletters* category. Here's a [collection of cat photos](https://www.dropbox.com/scl/fo/60imdoyf4ss2b6vh01q1w/h?rlkey=zuwbjaqnmr7qvkuinovdu5ot0&dl=0) harvested from a search for articles with `cat` or `kitten` in their title! 
+The GLAM Workbench notebook [Harvest illustrations from periodicals](https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/) demonstrates in detail how to use the OCR positional data to crop illustrations from the pages of periodicals. You can use it to harvest illustrations from articles, pages, issues, or a search in the *Magazines & Newsletters* category. Here's a <a href="https://www.dropbox.com/scl/fo/60imdoyf4ss2b6vh01q1w/h?rlkey=zuwbjaqnmr7qvkuinovdu5ot0&dl=0">collection of cat photos</a> harvested from a search for articles with `cat` or `kitten` in their title! 
 
 ![](/images/nla.obj-465109404-3.jpg)
 ```

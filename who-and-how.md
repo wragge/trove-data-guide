@@ -13,7 +13,7 @@ kernelspec:
 
 # Who is the Trove Data Guide for?
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 The Trove Data Guide aims to help researchers understand, access, and use data from Trove. But just because it's about 'data' doesn't mean you need to be able to code. To understand Trove data and its possibilities for research, you first need to understand Trove itself – its history, its structure, its assumptions, and its limits. This knowledge is useful to any Trove user.
 

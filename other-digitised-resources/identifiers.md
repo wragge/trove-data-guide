@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Digital object identifiers
 
 The complexities of Trove's digital object identifer scheme are introduced in [](/what-is-trove/links-and-identifiers). The main issue confronting users is that identifiers for different types of digital objects – such as books, pages, issues, articles, photographs, and collections – all look the same. This is important because the digital identifier provides a key to unlock an object's metadata and digital representations. **To access data about digitised resources in Trove you need to understand how the identifiers work.**
@@ -49,7 +51,7 @@ Print publications (book or periodical issue) -- get page identifiers, get secti
 |-------------|----------------------------------|-------------|
 | **print publications (book or periodical issue)** | get OCRd text from a range of pages | |
 | | get OCRd text from the complete publication | the total number of pages |
-| | 
+| |
 
 +++
 
@@ -76,7 +78,7 @@ images, maps, manuscripts
 - get all pages in a zip file
 - get all pages individually
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 #### Examples
 
