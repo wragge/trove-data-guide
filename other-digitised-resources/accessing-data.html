@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/other-digitised-resources/accessing-data.4d403214-dd9e-4c13-bd36-022628a4aff1.js"></script>
+    <script defer="defer" src="../_static/tippy/other-digitised-resources/accessing-data.82d45786-16e0-4816-99e7-d6abea3773fd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/accessing-data';</script>
     <script src="../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -267,12 +267,13 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="how-to/digitised-resources.html">25. How to</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="how-to/get-collection-items.html">25.1. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how-to/download-items-text-images.html">25.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how-to/extract-embedded-metadata.html">25.3. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how-to/get-ocr-layout-data.html">25.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how-to/harvest-digitised-resources.html">25.5. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how-to/scrape-metadata-audio-player.html">25.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how-to/scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
@@ -526,13 +527,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">20.2. Collections</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">20.3. Text</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">20.4. Images</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-troves-download-links">Using Trove’s download links</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-image-urls-using-nla-obj-identifiers">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-know-if-a-tiff-version-is-available">How do you know if a TIFF version is available?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">20.3. Text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-download-links-for-a-complete-publication-or-range-of-pages">Construct download links for a complete publication or range of pages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-ocr-data-for-a-single-page">Download OCR data for a single page</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">20.4. Images and PDFs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-download-links-for-a-range-of-images">Construct download links for a range of images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-image-urls-using-nla-obj-identifiers">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-illustrations-from-pages-of-digitised-books-and-periodicals">Extract illustrations from pages of digitised books and periodicals</a></li>
 </ul>
 </li>
 </ul>
@@ -560,15 +563,17 @@ document.write(`
 </ul>
 </li>
 <li><p><a class="reference internal" href="#collections" id="id4">Collections</a></p></li>
-<li><p><a class="reference internal" href="#text" id="id5">Text</a></p></li>
-<li><p><a class="reference internal" href="#images" id="id6">Images</a></p>
+<li><p><a class="reference internal" href="#text" id="id5">Text</a></p>
 <ul>
-<li><p><a class="reference internal" href="#using-troves-download-links" id="id7">Using Trove’s download links</a></p></li>
-<li><p><a class="reference internal" href="#constructing-image-urls-using-nla-obj-identifiers" id="id8">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></p>
-<ul>
-<li><p><a class="reference internal" href="#how-do-you-know-if-a-tiff-version-is-available" id="id9">How do you know if a TIFF version is available?</a></p></li>
+<li><p><a class="reference internal" href="#construct-download-links-for-a-complete-publication-or-range-of-pages" id="id6">Construct download links for a complete publication or range of pages</a></p></li>
+<li><p><a class="reference internal" href="#download-ocr-data-for-a-single-page" id="id7">Download OCR data for a single page</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#images-and-pdfs" id="id8">Images and PDFs</a></p>
+<ul>
+<li><p><a class="reference internal" href="#construct-download-links-for-a-range-of-images" id="id9">Construct download links for a range of images</a></p></li>
+<li><p><a class="reference internal" href="#constructing-image-urls-using-nla-obj-identifiers" id="id10">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></p></li>
+<li><p><a class="reference internal" href="#extract-illustrations-from-pages-of-digitised-books-and-periodicals" id="id11">Extract illustrations from pages of digitised books and periodicals</a></p></li>
 </ul>
 </li>
 </ul>
@@ -609,44 +614,66 @@ document.write(`
 <p>To get machine-readable information about the members of a digitised collection you need to extract information from the browse window of Trove’s digitised collection viewer. This method is fully documented in <a class="reference internal" href="how-to/get-collection-items.html"><span class="doc std std-doc">HOW TO: Get a list of items from a digitised collection</span></a></p>
 </section>
 <section id="text">
-<h2><span class="section-number">20.3. </span>Text<a class="headerlink" href="#text" title="Link to this heading">#</a></h2>
-<p>Digitised publications like books, pamphlets, and periodicals usually make their contents available as plain text, extracted from the digitised pages using Optical Character Recognition (OCR). The</p>
-</section>
-<section id="images">
-<h2><span class="section-number">20.4. </span>Images<a class="headerlink" href="#images" title="Link to this heading">#</a></h2>
-<p>There are two main ways of downloading images from digitised resources:</p>
+<span id="digitised-accessing-data-text"></span><h2><span class="section-number">20.3. </span>Text<a class="headerlink" href="#text" title="Link to this heading">#</a></h2>
+<p>Digitised publications like books, pamphlets, and periodicals usually make their contents available as plain text, extracted from the digitised pages using Optical Character Recognition (OCR). There are two main ways of accessing OCRd text computationally:</p>
 <ul class="simple">
-<li><p>Using Trove’s download links</p></li>
+<li><p>construct download links for a complete publication or range of pages</p></li>
+<li><p>download OCR data for a single page</p></li>
+</ul>
+<section id="construct-download-links-for-a-complete-publication-or-range-of-pages">
+<span id="digitised-accessing-data-download-text-link"></span><h3>Construct download links for a complete publication or range of pages<a class="headerlink" href="#construct-download-links-for-a-complete-publication-or-range-of-pages" title="Link to this heading">#</a></h3>
+<p><strong>This method is fully documented in <a class="reference internal" href="how-to/get-downloads.html"><span class="doc std std-doc">HOW TO: Get text, images, and PDFs using Trove’s download link</span></a>, but here’s a quick summary.</strong></p>
+<p>To download the complete OCRd text of a single publication you need to know the number of pages in the publication. This can be found by <a class="reference internal" href="how-to/extract-embedded-metadata.html"><span class="doc std std-doc">extracting the metadata</span></a> embedded in the digitised book and journal viewer and <a class="reference internal" href="how-to/extract-embedded-metadata.html#digitised-howto-embedded-pages"><span class="std std-ref">getting the length of the <code class="docutils literal notranslate"><span class="pre">page</span></code> list</span></a>.</p>
+<p>You can then construct a url to download the OCRd text using the publications <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier and the total number of pages:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://nla.gov.au/[NLA.OBJ</span> <span class="pre">ID]/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=[TOTAL</span> <span class="pre">PAGES</span> <span class="pre">-</span> <span class="pre">1]</span></code></p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> parameter is set to the total number of pages, minus one. This is because page numbering starts at zero. For example, <a class="reference external" href="https://nla.gov.au/nla.obj-326379450">this issue</a> of <em>Pacific Islands Monthly</em> contains 164 pages, so the url to download the complete OCRd text would be:</p>
+<p><a href="https://nla.gov.au/nla.obj-326379450/download?downloadOption=ocr&firstPage=0&lastPage=163">https://nla.gov.au/nla.obj-326379450/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=163</a></p>
+<p>You can use the same url pattern to download OCRd text from any range of pages. For example, to download text from the first five pages of a publication, you’d set <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code>. To download text from page two, you’d set both <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</section>
+<section id="download-ocr-data-for-a-single-page">
+<span id="digitised-accessing-data-ocr"></span><h3>Download OCR data for a single page<a class="headerlink" href="#download-ocr-data-for-a-single-page" title="Link to this heading">#</a></h3>
+<p><strong>This method is fully documented in <a class="reference internal" href="how-to/get-ocr-layout-data.html"><span class="doc std std-doc">HOW TO: Get and use OCR data from a book or periodical page</span></a>, but here’s a quick summary.</strong></p>
+<p>If you know the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier of a specific page in a digitised publication, you can access machine-readable information about the OCR process by simply adding <code class="docutils literal notranslate"><span class="pre">/ocr</span></code> to the identifier url. For example, this <a class="reference external" href="http://nla.gov.au/nla.obj-326405522">page</a> in <em>Pacific Islands Monthly</em> has the identifier <code class="docutils literal notranslate"><span class="pre">nla.obj-326405522</span></code>. To retrieve the OCR data you just add <code class="docutils literal notranslate"><span class="pre">/ocr</span></code> to the identifier:</p>
+<p><a href="http://nla.gov.au/nla.obj-326405522/ocr">http://nla.gov.au/nla.obj-326405522/ocr</a></p>
+<p>To find the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers for all the pages in a publication, you can <a class="reference internal" href="how-to/extract-embedded-metadata.html"><span class="doc std std-doc">access the metadata</span></a> embedded in the digitised book and journal viewer and then <a class="reference internal" href="how-to/extract-embedded-metadata.html#digitised-howto-embedded-pages"><span class="std std-ref">extract the page identifiers from the <code class="docutils literal notranslate"><span class="pre">page</span></code> list</span></a>.</p>
+<p>The OCR data is quite complex. It contains information about the position of <em>every word</em> on the page. To extract just the text you have to find all the text blocks, then loop through each line and word, stitching them back together as a plain text document. If all you want is the text, the method described above is probably more efficient, but if you’re interested in the layout as well as the content of a page, this methods opens up some new possibilities.</p>
+</section>
+</section>
+<section id="images-and-pdfs">
+<span id="digitised-accessing-data-images"></span><h2><span class="section-number">20.4. </span>Images and PDFs<a class="headerlink" href="#images-and-pdfs" title="Link to this heading">#</a></h2>
+<p>Most digitised resources include images you can download. Images can be digitised versions of visual material such as photographs, maps, or artworks, but they can also be scanned copies of pages in a publication or manuscript collection. There are two main methods for accessing digitised images computationally:</p>
+<ul class="simple">
+<li><p>Construct download links for a range of images</p></li>
 <li><p>Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</p></li>
 </ul>
-<section id="using-troves-download-links">
-<h3>Using Trove’s download links<a class="headerlink" href="#using-troves-download-links" title="Link to this heading">#</a></h3>
-<p>This method is described in <a class="reference internal" href="how-to/download-items-text-images.html"><span class="std std-doc">HOW TO: Automate the download of digitised items as text, images, or PDFs</span></a>. It’s best suited to downloading small groups of page images from books and periodicals.</p>
+<p>In addition, it’s possible to extract illustrations from pages of digitised books and periodicals by using data generated through the OCR process.</p>
+<section id="construct-download-links-for-a-range-of-images">
+<span id="digitised-accessing-data-download-images-link"></span><h3>Construct download links for a range of images<a class="headerlink" href="#construct-download-links-for-a-range-of-images" title="Link to this heading">#</a></h3>
+<p><strong>This method is fully documented in <a class="reference internal" href="how-to/get-downloads.html"><span class="doc std std-doc">HOW TO: Get text, images, and PDFs using Trove’s download link</span></a>, but here’s a quick summary.</strong></p>
+<p>This method is basically the same as <a class="reference internal" href="#digitised-accessing-data-download-text-link"><span class="std std-ref">the method described above</span></a> to download OCRd text, you just need to set the <code class="docutils literal notranslate"><span class="pre">downloadOption</span></code> parameter in the url to either <code class="docutils literal notranslate"><span class="pre">zip</span></code> for images or <code class="docutils literal notranslate"><span class="pre">pdf</span></code> for a PDF. For example, the <a class="reference external" href="https://nla.gov.au/nla.obj-141826952">E.J. Brady collection of photographs</a> (nla.obj-141826952) contains 14 images, so the url to download the complete collection in a single zip file would be:</p>
+<p><a href="https://nla.gov.au/nla.obj-141826952/download?downloadOption=zip&firstPage=0&lastPage=13">https://nla.gov.au/nla.obj-141826952/download?downloadOption=zip&amp;firstPage=0&amp;lastPage=13</a></p>
+<p>Similarly, the <a class="reference external" href="https://nla.gov.au/nla.obj-248742150">The gold finder of Australia : how he went, how he fared, how he made his fortune</a> is a pamphlet with 80 pages, so the url to download it as a PDF would be:</p>
+<p><a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&firstPage=0&lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&amp;firstPage=0&amp;lastPage=79</a></p>
+<p>You can also adjust the <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to download selected images.</p>
+<p>It’s important to note that zip files containing multiple images can get very large. If you want to download all the images from publications or collections, you should probably use the method described below to download one image at a time.</p>
 </section>
 <section id="constructing-image-urls-using-nla-obj-identifiers">
 <span id="digitised-data-image-urls"></span><h3>Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers<a class="headerlink" href="#constructing-image-urls-using-nla-obj-identifiers" title="Link to this heading">#</a></h3>
-<p>This is the most flexible method for downloading digitised images, but you need to know the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier for the page or image you want to download. Once you have the identifier, it’s just a matter of adding the appropriate suffix to construct a url that leads directly to the image file.</p>
-<p>The suffixes are:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>: leads to a thumbnail version of the image (usually around 123px wide)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/image</span></code>: leads to a higher-resolution JPEG version of the image (longest dimension is a maximum of 5000px)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/representativeImage</span></code>: leads to an image which has been selected to represent a collection</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/m</span></code>: leads to a very high-resolution TIFF version of the image (only available for selected resources, mostly maps)</p></li>
-</ul>
-<p>There are additional parameters you can use with <code class="docutils literal notranslate"><span class="pre">/image</span></code> and <code class="docutils literal notranslate"><span class="pre">/representativeImage</span></code>, though I’m not sure how reliably they work:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">wid</span></code>: desired width in pixels</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hei</span></code>: desired height in pixels</p></li>
-</ul>
-<p>In most cases you’ll probably want to use the <code class="docutils literal notranslate"><span class="pre">/image</span></code> suffix to get a JPEG version of the image at the highest available resolution.</p>
-<div class="note admonition">
-<p class="admonition-title">Image sizes</p>
-<p>The sizes of images downloaded using the <code class="docutils literal notranslate"><span class="pre">/image</span></code> suffix vary unpredictably. Sizes seem to range up to a maximum of 5000 pixels along the longest dimension, but some are much smaller, including many digitised photographs. However, images obtained this way are at the same, or higher, resolution than those available through Trove’s built-in download option.</p>
-</div>
-<section id="how-do-you-know-if-a-tiff-version-is-available">
-<h4>How do you know if a TIFF version is available?<a class="headerlink" href="#how-do-you-know-if-a-tiff-version-is-available" title="Link to this heading">#</a></h4>
-<p><a class="reference internal" href="how-to/extract-embedded-metadata.html#digitised-howto-embedded-images"><span class="std std-ref">embedded metadata</span></a></p>
+<p><strong>This method is fully documented in <a class="reference internal" href="how-to/download-images.html"><span class="doc std std-doc">HOW TO: Create download links for images using nla.obj identifiers</span></a>. but here’s a quick summary.</strong></p>
+<p>If you know the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier for a page or image, you can download it simply by adding an <code class="docutils literal notranslate"><span class="pre">/image</span></code> suffix to the identifier url. For example, this <a class="reference external" href="https://nla.gov.au/nla.obj-141828112">photograph of a group of school children with gardening tools</a> has the identifier <code class="docutils literal notranslate"><span class="pre">nla.obj-141828112</span></code>. To create a direct link to the image, you just add <code class="docutils literal notranslate"><span class="pre">/image</span></code> to the identifier url:</p>
+<p><a class="reference external" href="https://nla.gov.au/nla.obj-141828112/image">https://nla.gov.au/nla.obj-141828112/image</a></p>
 </section>
+<section id="extract-illustrations-from-pages-of-digitised-books-and-periodicals">
+<h3>Extract illustrations from pages of digitised books and periodicals<a class="headerlink" href="#extract-illustrations-from-pages-of-digitised-books-and-periodicals" title="Link to this heading">#</a></h3>
+<p><strong>This method is fully documented in <a class="reference internal" href="how-to/get-ocr-layout-data.html#other-digitised-ocr-data-crop-images"><span class="std std-ref">Crop images from pages using the OCR coordinates</span></a>, but here’s a quick summary.</strong></p>
+<p>As described above, if you know the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier of a specific page in a digitised publication, you can <a class="reference internal" href="how-to/get-ocr-layout-data.html"><span class="doc std std-doc">access machine-readable information</span></a> about the OCR process by simply adding <code class="docutils literal notranslate"><span class="pre">/ocr</span></code> to the identifier url.</p>
+<p>Within the OCR data there are <code class="docutils literal notranslate"><span class="pre">zs</span></code> blocks describing the position of each illustration. You can loop through each of these blocks and use the coordinates to crop the illustrations from the full page image. However, the coordinates in the OCR data are sometimes derived from higher resolution versions of the page images than you can download. To workaround this, you can you can <a class="reference internal" href="how-to/extract-embedded-metadata.html"><span class="doc std std-doc">access the metadata</span></a> embedded in the digitised book and journal viewer, <a class="reference internal" href="how-to/extract-embedded-metadata.html#digitised-howto-embedded-pages"><span class="std std-ref">extract the dimensions</span></a> of the high-resolution version of the page, and then convert the coordinates to work with the downloadable version.</p>
+<figure class="align-default" id="cat-collection">
+<img alt="../_images/cat-collection.png" src="../_images/cat-collection.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20.1 </span><span class="caption-text">Sample from a <a href="https://www.dropbox.com/scl/fo/60imdoyf4ss2b6vh01q1w/h?rlkey=zuwbjaqnmr7qvkuinovdu5ot0&dl=0">collection of cat photos</a> harvested from a search for articles with <code class="docutils literal notranslate"><span class="pre">cat</span></code> or <code class="docutils literal notranslate"><span class="pre">kitten</span></code> in their title <a class="reference external" href="https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/">using the GLAM Workbench</a></span><a class="headerlink" href="#cat-collection" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 </section>
@@ -721,13 +748,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">20.2. Collections</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">20.3. Text</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">20.4. Images</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-troves-download-links">Using Trove’s download links</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-image-urls-using-nla-obj-identifiers">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-know-if-a-tiff-version-is-available">How do you know if a TIFF version is available?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">20.3. Text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-download-links-for-a-complete-publication-or-range-of-pages">Construct download links for a complete publication or range of pages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-ocr-data-for-a-single-page">Download OCR data for a single page</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">20.4. Images and PDFs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-download-links-for-a-range-of-images">Construct download links for a range of images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-image-urls-using-nla-obj-identifiers">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-illustrations-from-pages-of-digitised-books-and-periodicals">Extract illustrations from pages of digitised books and periodicals</a></li>
 </ul>
 </li>
 </ul>

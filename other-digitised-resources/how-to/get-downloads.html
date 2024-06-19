@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-downloads.e337e1a6-1254-49d2-9b99-893f33625c6c.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-downloads.263a60fd-ee4b-4699-aeb8-8cbcf25019fc.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/get-downloads';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -267,12 +267,13 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="digitised-resources.html">25. How to</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.1. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.3. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-ocr-layout-data.html">25.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
-<li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">25.5. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
@@ -588,9 +589,9 @@ document.write(`
 </aside>
 <p>Once you understand the structure of the download urls, you can create your own without using the web interface. All you need to know is a resource’s NLA identifier and the number of pages/images it contains.</p>
 <p>For example, <a class="reference external" href="https://nla.gov.au/nla.obj-248742150">The gold finder of Australia : how he went, how he fared, how he made his fortune</a> is a pamphlet published in 1853. It’s NLA identifier is <code class="docutils literal notranslate"><span class="pre">nla.obj-248742150</span></code> and it has <code class="docutils literal notranslate"><span class="pre">80</span></code> pages. To download all of the OCRd text from this book, you’d insert the identifier and set <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">79</span></code> (<code class="docutils literal notranslate"><span class="pre">80</span></code> minus <code class="docutils literal notranslate"><span class="pre">1</span></code>):</p>
-<p><a class="reference external" href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&amp;amp;firstPage=0&amp;amp;lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=79</a></p>
+<p><a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&firstPage=0&lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&amp;firstPage=0&amp;lastPage=79</a></p>
 <p>Or perhaps you’d like the whole pamphlet as a PDF? Just change <code class="docutils literal notranslate"><span class="pre">downloadOption</span></code> from <code class="docutils literal notranslate"><span class="pre">ocr</span></code> to <code class="docutils literal notranslate"><span class="pre">pdf</span></code>:</p>
-<p><a class="reference external" href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&amp;amp;firstPage=0&amp;amp;lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&amp;firstPage=0&amp;lastPage=79</a></p>
+<p><a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&firstPage=0&lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&amp;firstPage=0&amp;lastPage=79</a></p>
 <div class="warning admonition">
 <p class="admonition-title">Zip files can be big!</p>
 <p>By setting <code class="docutils literal notranslate"><span class="pre">downloadOption</span></code> to <code class="docutils literal notranslate"><span class="pre">zip</span></code> you can download all the digitised images that make up a resource in a single zip file. But beware! Pages of digitised books or journals can weigh in at a few megabytes each, so zipping them all together can create one, very large file. <em>The gold finder of Australia</em> only has 80 pages, but a zip file containing every page ends up at 282mb! If you want to download all the images from a collection of resources, it’s probably best to take a more patient approach and download each image individually.</p>
@@ -606,9 +607,9 @@ document.write(`
 </div>
 </aside>
 <p>You don’t have to ask for everything at once. By adjusting the <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> values, you can download a specific range of pages. If you wanted the first ten pages of <em>The gold finder of Australia</em> as zipped images, you’d set <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">9</span></code>:</p>
-<p><a class="reference external" href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;amp;firstPage=0&amp;amp;lastPage=9">https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;firstPage=0&amp;lastPage=9</a></p>
+<p><a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&firstPage=0&lastPage=9">https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;firstPage=0&amp;lastPage=9</a></p>
 <p>To request a single page, set <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to the same value. For example, if you wanted an image of the cover, you’d set both <code class="docutils literal notranslate"><span class="pre">firstPage</span></code> and <code class="docutils literal notranslate"><span class="pre">lastPage</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code>:</p>
-<p><a class="reference external" href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;amp;firstPage=0&amp;amp;lastPage=0">https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;firstPage=0&amp;lastPage=0</a></p>
+<p><a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&firstPage=0&lastPage=0">https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&amp;firstPage=0&amp;lastPage=0</a></p>
 </section>
 <section id="how-do-you-know-the-number-of-pages">
 <h2>How do you know the number of pages?<a class="headerlink" href="#how-do-you-know-the-number-of-pages" title="Link to this heading">#</a></h2>
@@ -649,8 +650,9 @@ document.write(`
 <section id="limitations-and-alternatives">
 <h2>Limitations and alternatives<a class="headerlink" href="#limitations-and-alternatives" title="Link to this heading">#</a></h2>
 <p>This method works really well if you want to get all the OCRd text out of books or periodical issues. It’s also handy if you want to download selected pages or images, such as the front covers of periodicals.</p>
-<p>However, if your aim is to download all the images from a collection of items then you might strike problems with the sizes of the zip files. Of course you also have to add in a step to unzip the zips! If you’re downloading lots of images I’d suggest you try an alternative approach.</p>
-<p>To download images from books and periodicals:</p>
+<p>However, if your aim is to download all the images from a collection of items then there are two potential problems. The first is that the download link doesn’t always provide images at their highest available resolution. This particularly seems to be the case with manuscript and photographic collections.</p>
+<p>The other problem is that the zip files can become very large if you request collections that contain a significant number of pages or images. This makes them slow to download and can cause errors. Of course you also have to add in a step to unzip the zips!</p>
+<p>If you’re downloading lots of images or the quality of the images is important to you, I’d suggest you try the alternative approach which involves downloading one at a time. This method is fully documented in</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="extract-embedded-metadata.html#digitised-howto-embedded-extract-metadata"><span class="std std-ref">extract the metadata</span></a> embedded in the digitised book or journal viewer</p></li>
 <li><p><a class="reference internal" href="extract-embedded-metadata.html#digitised-howto-embedded-pages"><span class="std std-ref">get a list of page identifiers</span></a> from the metadata</p></li>

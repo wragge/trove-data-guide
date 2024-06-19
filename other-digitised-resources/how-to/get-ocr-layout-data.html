@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>25.4. HOW TO: Get and use OCR data from a book or periodical page &#8212; Trove Data Guide</title>
+    <title>25.6. HOW TO: Get and use OCR data from a book or periodical page &#8212; Trove Data Guide</title>
   
   
   
@@ -64,14 +64,14 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-ocr-layout-data.aaa8bc0a-f6ba-4e8e-975e-dcdabf0f29a6.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-ocr-layout-data.41f50893-f11a-41ef-813e-62bd1da4df88.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/get-ocr-layout-data';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="25.5. HOW TO: Harvest data relating to digitised resources" href="harvest-digitised-resources.html" />
-    <link rel="prev" title="25.3. HOW TO: Extract additional metadata from the digitised resource viewer" href="extract-embedded-metadata.html" />
+    <link rel="next" title="25.7. HOW TO: Scrape metadata from the Trove audio player" href="scrape-metadata-audio-player.html" />
+    <link rel="prev" title="25.5. HOW TO: Create download links for images using nla.obj identifiers" href="download-images.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -267,12 +267,13 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="digitised-resources.html">25. How to</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.1. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.3. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">25.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
-<li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">25.5. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
@@ -537,7 +538,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-get-and-use-ocr-data-from-a-book-or-periodical-page">
-<h1><span class="section-number">25.4. </span>HOW TO: Get and use OCR data from a book or periodical page<a class="headerlink" href="#how-to-get-and-use-ocr-data-from-a-book-or-periodical-page" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">25.6. </span>HOW TO: Get and use OCR data from a book or periodical page<a class="headerlink" href="#how-to-get-and-use-ocr-data-from-a-book-or-periodical-page" title="Link to this heading">#</a></h1>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <p class="sd-card-text">On this page</p>
@@ -769,7 +770,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="layout-img">
 <a class="reference internal image-reference" href="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png"><img alt="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png" src="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.2 </span><span class="caption-text">OCR block layout of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#layout-img" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.5 </span><span class="caption-text">OCR block layout of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#layout-img" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -777,7 +778,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="nla-obj-326405522">
 <a class="reference internal image-reference" href="../../_images/nla.obj-326405522.jpg"><img alt="../../_images/nla.obj-326405522.jpg" src="../../_images/nla.obj-326405522.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.3 </span><span class="caption-text">Image of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#nla-obj-326405522" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.6 </span><span class="caption-text">Image of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#nla-obj-326405522" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -790,7 +791,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/">Harvest illustrations from periodicals</a> demonstrates in detail how to use the OCR positional data to crop illustrations from the pages of periodicals. You can use it to harvest illustrations from articles, pages, issues, or a search in the <em>Magazines &amp; Newsletters</em> category. Here’s a <a class="reference external" href="https://www.dropbox.com/scl/fo/60imdoyf4ss2b6vh01q1w/h?rlkey=zuwbjaqnmr7qvkuinovdu5ot0&amp;amp;dl=0">collection of cat photos</a> harvested from a search for articles with <code class="docutils literal notranslate"><span class="pre">cat</span></code> or <code class="docutils literal notranslate"><span class="pre">kitten</span></code> in their title!</p>
+<p>The GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/">Harvest illustrations from periodicals</a> demonstrates in detail how to use the OCR positional data to crop illustrations from the pages of periodicals. You can use it to harvest illustrations from articles, pages, issues, or a search in the <em>Magazines &amp; Newsletters</em> category. Here’s a <a href="https://www.dropbox.com/scl/fo/60imdoyf4ss2b6vh01q1w/h?rlkey=zuwbjaqnmr7qvkuinovdu5ot0&dl=0">collection of cat photos</a> harvested from a search for articles with <code class="docutils literal notranslate"><span class="pre">cat</span></code> or <code class="docutils literal notranslate"><span class="pre">kitten</span></code> in their title!</p>
 <p><img alt="" src="../../_images/nla.obj-465109404-3.jpg" /></p>
 </div>
 </aside>
@@ -913,7 +914,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="ill-img">
 <a class="reference internal image-reference" href="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png"><img alt="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png" src="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.4 </span><span class="caption-text">Cropped illustration</span><a class="headerlink" href="#ill-img" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.7 </span><span class="caption-text">Cropped illustration</span><a class="headerlink" href="#ill-img" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -921,7 +922,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="nla-obj-375667954">
 <a class="reference internal image-reference" href="../../_images/nla.obj-375667954.jpg"><img alt="../../_images/nla.obj-375667954.jpg" src="../../_images/nla.obj-375667954.jpg" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.5 </span><span class="caption-text">Complete image of page <a class="reference external" href="https://nla.gov.au/nla.obj-375667954">nla.obj-375667954</a></span><a class="headerlink" href="#nla-obj-375667954" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.8 </span><span class="caption-text">Complete image of page <a class="reference external" href="https://nla.gov.au/nla.obj-375667954">nla.obj-375667954</a></span><a class="headerlink" href="#nla-obj-375667954" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -989,7 +990,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="redacted-image">
 <a class="reference internal image-reference" href="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png"><img alt="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png" src="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.6 </span><span class="caption-text">Some randomly-generated redaction art!</span><a class="headerlink" href="#redacted-image" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.9 </span><span class="caption-text">Some randomly-generated redaction art!</span><a class="headerlink" href="#redacted-image" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1026,20 +1027,20 @@ nket—pardon me, safari —through Kenya has taught us is that
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="extract-embedded-metadata.html"
+       href="download-images.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">25.3. </span>HOW TO: Extract additional metadata from the digitised resource viewer</p>
+        <p class="prev-next-title"><span class="section-number">25.5. </span>HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</p>
       </div>
     </a>
     <a class="right-next"
-       href="harvest-digitised-resources.html"
+       href="scrape-metadata-audio-player.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">25.5. </span>HOW TO: Harvest data relating to digitised resources</p>
+        <p class="prev-next-title"><span class="section-number">25.7. </span>HOW TO: Scrape metadata from the Trove audio player</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

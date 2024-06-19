@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>25.5. HOW TO: Harvest data relating to digitised resources &#8212; Trove Data Guide</title>
+    <title>25.1. HOW TO: Harvest data relating to digitised resources &#8212; Trove Data Guide</title>
   
   
   
@@ -64,14 +64,14 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/harvest-digitised-resources.55cc4c12-1f2e-4e6b-b3c9-cd24380d4b40.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/harvest-digitised-resources.596dc09a-94c0-4fac-a395-09773f216e4d.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/harvest-digitised-resources';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="25.6. HOW TO: Scrape metadata from the Trove audio player" href="scrape-metadata-audio-player.html" />
-    <link rel="prev" title="25.4. HOW TO: Get and use OCR data from a book or periodical page" href="get-ocr-layout-data.html" />
+    <link rel="next" title="25.2. HOW TO: Extract additional metadata from the digitised resource viewer" href="extract-embedded-metadata.html" />
+    <link rel="prev" title="25. Digitised resources" href="digitised-resources.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -267,12 +267,13 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="digitised-resources.html">25. How to</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.1. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.3. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-ocr-layout-data.html">25.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">25.5. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
@@ -529,10 +530,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-images">Download images</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-from-api">Get metadata from API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enrich-dataset-using-embedded-metadata">Enrich dataset using embedded metadata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-missing-resources">Check for missing resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-duplicate-records">Merge duplicate records</a></li>
 </ul>
             </nav>
         </div>
@@ -545,12 +542,21 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-harvest-data-relating-to-digitised-resources">
-<h1><span class="section-number">25.5. </span>HOW TO: Harvest data relating to digitised resources<a class="headerlink" href="#how-to-harvest-data-relating-to-digitised-resources" title="Link to this heading">#</a></h1>
-<p>Harvesting data relating to digitised resources (other than newspapers) in Trove is not as simple as making a few API requests. The major problem is that digitised resources are often assembled into groups or collections, and the full details of these groupings are not available through the Trove API. This means that simply harvesting results from an API query will miss many digitised resources. In addition, the way resources are described and arranged is often inconsistent, so you can’t assume that a particular type of resource will be grouped in a particular way.</p>
+<h1><span class="section-number">25.1. </span>HOW TO: Harvest data relating to digitised resources<a class="headerlink" href="#how-to-harvest-data-relating-to-digitised-resources" title="Link to this heading">#</a></h1>
+<p>Harvesting data from a search for digitised resources (other than newspapers) in Trove is not as simple as making a few API requests. The major problem is that digitised resources are often assembled into groups or collections, and the full details of these groupings are not available through the Trove API. This means that simply harvesting results from an API query will miss many digitised resources. In addition, the way resources are described and arranged is often inconsistent, so you can’t assume that a particular type of resource will be grouped in a particular way.</p>
 <p>As a result of these problems, a ‘belts and braces’ approach seems best – follow every possible route and harvest as many records as possible. This may result in duplicates, but these can be dealt with later. In any case, Trove already contains a large number of duplicate records for digitised resources, so some form of merging or de-duplication will always be required.</p>
 <section id="outline-of-harvesting-method">
 <h2>Outline of harvesting method<a class="headerlink" href="#outline-of-harvesting-method" title="Link to this heading">#</a></h2>
-<p>This method works currently with multi-page publications like books and parliamentary papers. A few adjustments will be necessary for other resource types.</p>
+<p>Here I’m outlining the general approach. The specific method will depend on the type of resource, the filters you apply, and the metadata you want to save.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>There are a number of examples of this approach in the GLAM Workbench that you can use or modify to meet your own needs. For example:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://glam-workbench.net/trove-government/harvest-parliamentary-papers/">Harvest details of Commonwealth Parliamentary Papers digitised in Trove</a></p></li>
+<li><p><a class="reference external" href="https://glam-workbench.net/trove-journals/create-list-digitised-journals/">Create a list of Trove’s digitised journals</a></p></li>
+<li><p><a class="reference external" href="https://glam-workbench.net/trove-music/harvest-oral-histories/">Harvest oral histories metadata</a></p></li>
+</ul>
+</div>
 <section id="harvest-metadata-from-api">
 <h3>Harvest metadata from API<a class="headerlink" href="#harvest-metadata-from-api" title="Link to this heading">#</a></h3>
 <p>Searches using the API return work-level records. Sometimes digitised resources are grouped as versions of a work, even though they’re quite different. To make sure you get everything, you need to work your way down through through the hierarchy of work -&gt; version -&gt; sub-version (labelled ‘record’ in API responses), harvesting every relevant record.</p>
@@ -610,548 +616,7 @@ document.write(`
 <ul class="simple">
 <li><p>use the number of pages or page identifiers to <a class="reference internal" href="download-items-text-images.html"><span class="doc std std-doc">download page images from a publication</span></a></p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">requests_cache</span>
-<span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="kn">import</span> <span class="n">HTTPAdapter</span>
-<span class="kn">from</span> <span class="nn">requests.packages.urllib3.util.retry</span> <span class="kn">import</span> <span class="n">Retry</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">s</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="s2">&quot;harvest.db&quot;</span><span class="p">)</span>
-<span class="n">retries</span> <span class="o">=</span> <span class="n">Retry</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">backoff_factor</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">status_forcelist</span><span class="o">=</span><span class="p">[</span><span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">,</span> <span class="mi">504</span><span class="p">])</span>
-<span class="n">s</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="n">retries</span><span class="p">))</span>
-<span class="n">s</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="n">retries</span><span class="p">))</span>
-
-</pre></div>
-</div>
 </section>
-</section>
-<section id="get-metadata-from-api">
-<h2>Get metadata from API<a class="headerlink" href="#get-metadata-from-api" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_total_results</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get the total number of results for a search.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">these_params</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">these_params</span><span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-        <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">these_params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span>
-    <span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;total&quot;</span><span class="p">])</span>
-
-
-<span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get the values of a field.</span>
-<span class="sd">    Some fields are lists of dicts, if so use the `key` to get the value.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">if</span> <span class="n">value</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="k">pass</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">value</span>
-
-
-<span class="k">def</span> <span class="nf">merge_values</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Merges values from multiple fields, removing any duplicates.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-        <span class="n">values</span> <span class="o">+=</span> <span class="n">get_value</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">keys</span><span class="p">)</span>
-    <span class="c1"># Remove duplicates and None value</span>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]))</span>
-
-
-<span class="k">def</span> <span class="nf">flatten_values</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    If a field has a value and type, return the values as strings with this format: &#39;type: value&#39;</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">flattened</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">values</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-            <span class="n">flattened</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">flattened</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">flattened</span>
-
-
-<span class="k">def</span> <span class="nf">flatten_identifiers</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get a list of control numbers from the identifier field and flatten the values.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ids</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="n">v</span>
-            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="p">[])</span>
-            <span class="k">if</span> <span class="s2">&quot;type&quot;</span> <span class="ow">in</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;control number&quot;</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">flatten_values</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">get_fulltext_url</span><span class="p">(</span><span class="n">links</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Loop through the identifiers to find a link to the full text version of the book.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">urls</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="s2">&quot;linktype&quot;</span> <span class="ow">in</span> <span class="n">link</span>
-            <span class="ow">and</span> <span class="n">link</span><span class="p">[</span><span class="s2">&quot;linktype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;fulltext&quot;</span>
-            <span class="ow">and</span> <span class="s2">&quot;nla.obj&quot;</span> <span class="ow">in</span> <span class="n">link</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
-        <span class="p">):</span>
-            <span class="n">url</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^http\b&quot;</span><span class="p">,</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span> <span class="n">link</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
-            <span class="n">link_text</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;linktext&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;link_text&quot;</span><span class="p">:</span> <span class="n">link_text</span><span class="p">})</span>
-    <span class="k">return</span> <span class="n">urls</span>
-
-
-<span class="k">def</span> <span class="nf">get_catalogue_url</span><span class="p">(</span><span class="n">links</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Loop through the identifiers to find a link to the NLA catalogue.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="s2">&quot;linktype&quot;</span> <span class="ow">in</span> <span class="n">link</span>
-            <span class="ow">and</span> <span class="n">link</span><span class="p">[</span><span class="s2">&quot;linktype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;notonline&quot;</span>
-            <span class="ow">and</span> <span class="s2">&quot;nla.cat&quot;</span> <span class="ow">in</span> <span class="n">link</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
-        <span class="p">):</span>
-            <span class="k">return</span> <span class="n">link</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
-    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
-
-
-<span class="k">def</span> <span class="nf">has_fulltext_link</span><span class="p">(</span><span class="n">links</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check if a list of identifiers includes a fulltext url pointing to an NLA resource.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="s2">&quot;linktype&quot;</span> <span class="ow">in</span> <span class="n">link</span>
-            <span class="ow">and</span> <span class="n">link</span><span class="p">[</span><span class="s2">&quot;linktype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;fulltext&quot;</span>
-            <span class="ow">and</span> <span class="s2">&quot;nla.obj&quot;</span> <span class="ow">in</span> <span class="n">link</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
-        <span class="p">):</span>
-            <span class="k">return</span> <span class="kc">True</span>
-
-<span class="k">def</span> <span class="nf">has_holding</span><span class="p">(</span><span class="n">holdings</span><span class="p">,</span> <span class="n">nucs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check if a list of holdings includes one of the supplied nucs.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">holding</span> <span class="ow">in</span> <span class="n">holdings</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">holding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nuc&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="n">nucs</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-
-
-<span class="k">def</span> <span class="nf">get_digitised_versions</span><span class="p">(</span><span class="n">work</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get the versions from the given work that have a fulltext url pointing to an NLA resource</span>
-<span class="sd">    in the `identifier` field.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">versions</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">version</span> <span class="ow">in</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="s2">&quot;identifier&quot;</span> <span class="ow">in</span> <span class="n">version</span> <span class="ow">and</span> <span class="n">has_fulltext_link</span><span class="p">(</span><span class="n">version</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]):</span>
-            <span class="n">versions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">versions</span>
-
-<span class="k">def</span> <span class="nf">get_nuc_versions</span><span class="p">(</span><span class="n">work</span><span class="p">,</span> <span class="n">nucs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ANL&quot;</span><span class="p">,</span> <span class="s2">&quot;ANL:DL&quot;</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get the versions from the given work that are held by the NLA.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">versions</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">version</span> <span class="ow">in</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="s2">&quot;holding&quot;</span> <span class="ow">in</span> <span class="n">version</span> <span class="ow">and</span> <span class="n">has_holding</span><span class="p">(</span><span class="n">version</span><span class="p">[</span><span class="s2">&quot;holding&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;ANL&quot;</span><span class="p">,</span> <span class="s2">&quot;ANL:DL&quot;</span><span class="p">]):</span>
-            <span class="n">versions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">versions</span>
-
-
-<span class="k">def</span> <span class="nf">harvest_works</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">filter_by</span><span class="o">=</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="n">nucs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ANL&quot;</span><span class="p">,</span> <span class="s2">&quot;ANL:DL&quot;</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Harvest metadata relating to digitised works.</span>
-<span class="sd">    The filter_by parameter selects records for inclusion in the dataset, options:</span>
-<span class="sd">        * url -- only include versions that have an NLA fulltext url</span>
-<span class="sd">        * nuc -- only include versions that have an NLA nuc (ANL or ANL:DL)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">default_params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;bulkHarvest&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-        <span class="s2">&quot;encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;include&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;links&quot;</span><span class="p">,</span> <span class="s2">&quot;workversions&quot;</span><span class="p">,</span> <span class="s2">&quot;holdings&quot;</span><span class="p">],</span>
-    <span class="p">}</span>
-    <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">default_params</span><span class="p">)</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">API_KEY</span><span class="p">}</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">get_total_results</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
-    <span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;harvested-metadata.ndjson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ndjson_file</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
-            <span class="k">while</span> <span class="n">start</span><span class="p">:</span>
-                <span class="n">params</span><span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span>
-                <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                    <span class="s2">&quot;https://api.trove.nla.gov.au/v3/result&quot;</span><span class="p">,</span>
-                    <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-                    <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-                <span class="p">)</span>
-                <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-                <span class="n">items</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;item&quot;</span><span class="p">]</span>
-                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">category</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                        <span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="s2">&quot;work&quot;</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="n">filter_by</span> <span class="o">==</span> <span class="s2">&quot;nuc&quot;</span><span class="p">:</span>
-                                <span class="n">versions</span> <span class="o">=</span> <span class="n">get_nuc_versions</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nucs</span><span class="p">)</span> 
-                            <span class="k">else</span><span class="p">:</span>
-                                <span class="n">versions</span> <span class="o">=</span> <span class="n">get_digitised_versions</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-                            <span class="k">for</span> <span class="n">version</span> <span class="ow">in</span> <span class="n">versions</span><span class="p">:</span>
-                                <span class="k">for</span> <span class="n">sub_version</span> <span class="ow">in</span> <span class="n">version</span><span class="p">[</span><span class="s2">&quot;record&quot;</span><span class="p">]:</span>
-                                    <span class="n">metadata</span> <span class="o">=</span> <span class="n">sub_version</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">][</span><span class="s2">&quot;dc&quot;</span><span class="p">]</span>
-                                    <span class="c1"># Sometimes fulltext identifiers are only available on the</span>
-                                    <span class="c1"># version rather than the sub version. So we&#39;ll look in the</span>
-                                    <span class="c1"># sub version first, and if they&#39;re not there use the url from</span>
-                                    <span class="c1"># the version.</span>
-                                    <span class="c1"># Sometimes there are multiple fulltext urls associated with a version:</span>
-                                    <span class="c1"># eg a collection page and a publication. If so add records for both urls.</span>
-                                    <span class="c1"># They could end up pointing to the same digitised publication, but</span>
-                                    <span class="c1"># we can sort that out later. Aim here is to try and not miss any possible</span>
-                                    <span class="c1"># routes to digitised publications!</span>
-                                    <span class="n">urls</span> <span class="o">=</span> <span class="n">get_fulltext_url</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="p">[]))</span>
-                                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                                        <span class="n">urls</span> <span class="o">=</span> <span class="n">get_fulltext_url</span><span class="p">(</span><span class="n">version</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="p">[]))</span>
-                                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">filter_by</span> <span class="o">==</span> <span class="s2">&quot;nuc&quot;</span><span class="p">:</span>
-                                        <span class="n">urls</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;link_text&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">}]</span>
-                                    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
-                                        <span class="n">work</span> <span class="o">=</span> <span class="p">{</span>
-                                            <span class="c1"># This is not the full set of available fields,</span>
-                                            <span class="c1"># adjust as necessary.</span>
-                                            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">get_value</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">),</span>
-                                            <span class="s2">&quot;work_url&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;troveUrl&quot;</span><span class="p">),</span>
-                                            <span class="s2">&quot;work_type&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="p">[]),</span>
-                                            <span class="s2">&quot;contributor&quot;</span><span class="p">:</span> <span class="n">merge_values</span><span class="p">(</span>
-                                                <span class="n">metadata</span><span class="p">,</span>
-                                                <span class="p">[</span><span class="s2">&quot;creator&quot;</span><span class="p">,</span> <span class="s2">&quot;contributor&quot;</span><span class="p">],</span>
-                                                <span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                                            <span class="p">),</span>
-                                            <span class="s2">&quot;publisher&quot;</span><span class="p">:</span> <span class="n">get_value</span><span class="p">(</span>
-                                                <span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;publisher&quot;</span>
-                                            <span class="p">),</span>
-                                            <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">merge_values</span><span class="p">(</span>
-                                                <span class="n">metadata</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;issued&quot;</span><span class="p">]</span>
-                                            <span class="p">),</span>
-                                            <span class="c1"># Using merge here because I&#39;ve noticed some duplicate values</span>
-                                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">merge_values</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]),</span>
-                                            <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="n">get_value</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;format&quot;</span><span class="p">),</span>
-                                            <span class="s2">&quot;rights&quot;</span><span class="p">:</span> <span class="n">merge_values</span><span class="p">(</span>
-                                                <span class="n">metadata</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;rights&quot;</span><span class="p">,</span> <span class="s2">&quot;licenseRef&quot;</span><span class="p">]</span>
-                                            <span class="p">),</span>
-                                            <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="n">get_value</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;language&quot;</span><span class="p">),</span>
-                                            <span class="s2">&quot;extent&quot;</span><span class="p">:</span> <span class="n">get_value</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;extent&quot;</span><span class="p">),</span>
-                                            <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="n">merge_values</span><span class="p">(</span>
-                                                <span class="n">metadata</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">]</span>
-                                            <span class="p">),</span>
-                                            <span class="s2">&quot;spatial&quot;</span><span class="p">:</span> <span class="n">get_value</span><span class="p">(</span>
-                                                <span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;spatial&quot;</span>
-                                            <span class="p">),</span>
-                                            <span class="c1"># Flattened type/value</span>
-                                            <span class="s2">&quot;is_part_of&quot;</span><span class="p">:</span> <span class="n">flatten_values</span><span class="p">(</span>
-                                                <span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;isPartOf&quot;</span>
-                                            <span class="p">),</span>
-                                            <span class="c1"># Only get control numbers and flatten</span>
-                                            <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="n">flatten_identifiers</span><span class="p">(</span><span class="n">metadata</span><span class="p">),</span>
-                                            <span class="s2">&quot;fulltext_url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
-                                            <span class="s2">&quot;fulltext_url_text&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">[</span><span class="s2">&quot;link_text&quot;</span><span class="p">],</span>
-                                            <span class="s2">&quot;catalogue_url&quot;</span><span class="p">:</span> <span class="n">get_catalogue_url</span><span class="p">(</span>
-                                                <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span>
-                                            <span class="p">)</span>
-                                            <span class="c1"># Could also add in data from bibliographicCitation</span>
-                                            <span class="c1"># Although the types used in citations seem to vary by work and format.</span>
-                                        <span class="p">}</span>
-                                        <span class="n">ndjson_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">work</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="c1"># The nextStart parameter is used to get the next page of results.</span>
-                <span class="c1"># If there&#39;s no nextStart then it means we&#39;re on the last page of results.</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="n">start</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;records&quot;</span><span class="p">][</span><span class="s2">&quot;nextStart&quot;</span><span class="p">]</span>
-                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                    <span class="n">start</span> <span class="o">=</span> <span class="kc">None</span>
-                <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
-</pre></div>
-</div>
-</section>
-<section id="enrich-dataset-using-embedded-metadata">
-<h2>Enrich dataset using embedded metadata<a class="headerlink" href="#enrich-dataset-using-embedded-metadata" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_work_data</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Extract work data in a JSON string from the work&#39;s HTML page.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">InvalidURL</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;//&quot;</span><span class="p">))</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">work_data</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-            <span class="sa">r</span><span class="s2">&quot;var work = JSON\.parse\(JSON\.stringify\((\{.*\})&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-        <span class="n">work_data</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">from_cache</span><span class="p">:</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">work_data</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">get_pages</span><span class="p">(</span><span class="n">work</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get the number of pages from the work metadata.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">pages</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">work</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;page&quot;</span><span class="p">])</span>
-    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="n">pages</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">pages</span>
-
-
-<span class="k">def</span> <span class="nf">get_page_ids</span><span class="p">(</span><span class="n">work</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get a list of page identifiers from the work metadata.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">page_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;pid&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">][</span><span class="s2">&quot;page&quot;</span><span class="p">]]</span>
-    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="n">page_ids</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">return</span> <span class="n">page_ids</span>
-
-
-<span class="k">def</span> <span class="nf">get_volumes</span><span class="p">(</span><span class="n">parent_id</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get the ids of volumes that are children of the current record.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">start_url</span> <span class="o">=</span> <span class="s2">&quot;https://nla.gov.au/</span><span class="si">{}</span><span class="s2">/browse?startIdx=</span><span class="si">{}</span><span class="s2">&amp;rows=20&amp;op=c&quot;</span>
-    <span class="c1"># The initial startIdx value</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="c1"># Number of results per page</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="c1"># If there aren&#39;t 20 results on the page then we&#39;ve reached the end, so continue harvesting until that happens.</span>
-    <span class="k">while</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
-        <span class="c1"># Get the browse page</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">start_url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">parent_id</span><span class="p">,</span> <span class="n">start</span><span class="p">))</span>
-        <span class="c1"># Beautifulsoup turns the HTML into an easily navigable structure</span>
-        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;lxml&quot;</span><span class="p">)</span>
-        <span class="c1"># Find all the divs containing issue details and loop through them</span>
-        <span class="n">details</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s2">&quot;l-item-info&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">details</span><span class="p">:</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">detail</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;h3&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
-                <span class="n">issue_id</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">issue_id</span> <span class="o">=</span> <span class="n">detail</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)[</span><span class="s2">&quot;href&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-            <span class="c1"># Get the issue id</span>
-            <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">issue_id</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">from_cache</span><span class="p">:</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
-        <span class="c1"># Increment the startIdx</span>
-        <span class="n">start</span> <span class="o">+=</span> <span class="n">n</span>
-        <span class="c1"># Set n to the number of results on the current page</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">details</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">parts</span>
-
-
-<span class="k">def</span> <span class="nf">add_metadata</span><span class="p">(</span><span class="n">work</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">pages</span><span class="p">,</span> <span class="n">include_page_ids</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Add embedded metadata to existing record.</span>
-<span class="sd">    New values will be appended to existing list.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;title&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;contributor&quot;</span><span class="p">,</span> <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;creator&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;publisher&quot;</span><span class="p">,</span> <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;publisherName&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;format&quot;</span><span class="p">,</span> <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;form&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;rights&quot;</span><span class="p">,</span> <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;copyrightPolicy&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;extent&quot;</span><span class="p">,</span> <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;extent&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;holdingNumber&quot;</span><span class="p">},</span>
-    <span class="p">]</span>
-    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-        <span class="n">value_from</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="n">value_from</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">value_from</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">work</span><span class="p">[</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">]]:</span>
-                    <span class="n">work</span><span class="p">[</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">]))</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="n">work</span><span class="p">[</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">])]</span>
-            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">value_from</span> <span class="o">!=</span> <span class="n">work</span><span class="p">[</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">]]:</span>
-                    <span class="n">work</span><span class="p">[</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">work</span><span class="p">[</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;to&quot;</span><span class="p">]],</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">])]</span>
-    <span class="n">work</span><span class="p">[</span><span class="s2">&quot;sub_unit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;subUnitType&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
-            <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;subUnitNo&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
-        <span class="p">]</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">date</span> <span class="o">:=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\b(\d</span><span class="si">{4}</span><span class="s2">)$&quot;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;issueDate&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)):</span>
-        <span class="n">work</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">work</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pages</span>
-    <span class="k">if</span> <span class="n">include_page_ids</span><span class="p">:</span>
-        <span class="n">work</span><span class="p">[</span><span class="s2">&quot;page_ids&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_page_ids</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">work</span>
-
-
-<span class="k">def</span> <span class="nf">add_pages</span><span class="p">(</span><span class="n">include_page_ids</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Add the number of pages to the metadata for each work.</span>
-<span class="sd">    Add volumes from multi volume books.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pp-metadata.ndjson&quot;</span><span class="p">))</span>
-    <span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;harvested-metadata.ndjson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ndjson_in</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;harvested-metadata-pages.ndjson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ndjson_out</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">ndjson_in</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">):</span>
-                <span class="n">work</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-                <span class="c1"># print(book[&#39;fulltext_url&#39;])</span>
-                <span class="n">metadata</span> <span class="o">=</span> <span class="n">get_work_data</span><span class="p">(</span><span class="n">work</span><span class="p">[</span><span class="s2">&quot;fulltext_url&quot;</span><span class="p">])</span>
-                <span class="c1"># Some ids are for sections (articles) rather than the complete publications</span>
-                <span class="c1"># ignore these as we should already have the complete publication.</span>
-                <span class="n">trove_id</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(nla\.obj\-\d+)&quot;</span><span class="p">,</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;fulltext_url&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">trove_id</span> <span class="o">==</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pid&quot;</span><span class="p">):</span>
-                    <span class="n">form</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;form&quot;</span><span class="p">)</span>
-                    <span class="n">pages</span> <span class="o">=</span> <span class="n">get_pages</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-                    <span class="n">work</span> <span class="o">=</span> <span class="n">add_metadata</span><span class="p">(</span><span class="n">work</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">pages</span><span class="p">,</span> <span class="n">include_page_ids</span><span class="p">)</span>
-                    <span class="n">work</span><span class="p">[</span><span class="s2">&quot;parent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-                    <span class="n">work</span><span class="p">[</span><span class="s2">&quot;parent_url&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-                    <span class="n">work</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-                    <span class="c1"># Multi volume books are containers with child volumes</span>
-                    <span class="c1"># so we have to get the ids of each individual volume and process them</span>
-                    <span class="k">if</span> <span class="n">pages</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">form</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Multi Volume Book&quot;</span><span class="p">,</span> <span class="s2">&quot;Journal&quot;</span><span class="p">]:</span>
-                        <span class="c1"># Get child volumes</span>
-                        <span class="n">volumes</span> <span class="o">=</span> <span class="n">get_volumes</span><span class="p">(</span><span class="n">trove_id</span><span class="p">)</span>
-                        <span class="c1"># For each volume get details and add as a new book entry</span>
-                        <span class="k">for</span> <span class="n">volume_id</span> <span class="ow">in</span> <span class="n">volumes</span><span class="p">:</span>
-                            <span class="n">volume</span> <span class="o">=</span> <span class="p">{</span>
-                                <span class="c1"># Use values from parent</span>
-                                <span class="c1"># If there are additional values in embedded metadata,</span>
-                                <span class="c1"># they&#39;ll be added by add_metadata() below</span>
-                                <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">],</span>
-                                <span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">],</span>
-                                <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;language&quot;</span><span class="p">],</span>
-                                <span class="s2">&quot;is_part_of&quot;</span><span class="p">:</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;is_part_of&quot;</span><span class="p">],</span>
-                                <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">],</span>
-                                <span class="c1"># Add link up to parent</span>
-                                <span class="s2">&quot;parent&quot;</span><span class="p">:</span> <span class="n">trove_id</span><span class="p">,</span>
-                                <span class="s2">&quot;parent_url&quot;</span><span class="p">:</span> <span class="n">work</span><span class="p">[</span><span class="s2">&quot;work_url&quot;</span><span class="p">],</span>
-                                <span class="c1"># Because this is a collection child it has no work url.</span>
-                                <span class="c1"># If there&#39;s an individual record for this publication</span>
-                                <span class="c1"># it&#39;ll be separately harvested and merged later.</span>
-                                <span class="s2">&quot;work_url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-                                <span class="s2">&quot;fulltext_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://nla.gov.au/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                                    <span class="n">volume_id</span>
-                                <span class="p">),</span>
-                            <span class="p">}</span>
-                            <span class="n">metadata</span> <span class="o">=</span> <span class="n">get_work_data</span><span class="p">(</span><span class="n">volume</span><span class="p">[</span><span class="s2">&quot;fulltext_url&quot;</span><span class="p">])</span>
-                            <span class="n">pages</span> <span class="o">=</span> <span class="n">get_pages</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-                            <span class="n">volume</span> <span class="o">=</span> <span class="n">add_metadata</span><span class="p">(</span>
-                                <span class="n">volume</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">pages</span><span class="p">,</span> <span class="n">include_page_ids</span>
-                            <span class="p">)</span>
-                            <span class="c1"># print(volume)</span>
-                            <span class="n">ndjson_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-                        <span class="c1"># Add links from container to volumes</span>
-                        <span class="n">work</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">volumes</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">work</span><span class="p">[</span><span class="s2">&quot;parent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pid&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-                <span class="c1"># print(book)</span>
-                <span class="n">ndjson_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">work</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="check-for-missing-resources">
-<h2>Check for missing resources<a class="headerlink" href="#check-for-missing-resources" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="k">def</span> <span class="nf">get_missing_metadata</span><span class="p">(</span><span class="n">include_page_ids</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;harvested-metadata-pages.ndjson&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_dates</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">parent_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;parent&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-    <span class="n">fulltext_urls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;fulltext_url&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-    <span class="n">fulltext_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fulltext_urls</span><span class="p">]</span>
-    <span class="n">missing_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">parent_ids</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">fulltext_ids</span><span class="p">))</span> <span class="k">if</span> <span class="n">m</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
-    <span class="k">with</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;harvested-metadata-pages.ndjson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ndjson_out</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">mid</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">missing_ids</span><span class="p">):</span>
-            <span class="n">fulltext_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://nla.gov.au/</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="n">metadata</span> <span class="o">=</span> <span class="n">get_work_data</span><span class="p">(</span><span class="n">fulltext_url</span><span class="p">)</span>
-            <span class="n">work</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;fulltext_url&quot;</span><span class="p">:</span> <span class="n">fulltext_url</span><span class="p">,</span>
-            <span class="p">}</span>
-            <span class="n">pages</span> <span class="o">=</span> <span class="n">get_pages</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-            <span class="n">work</span> <span class="o">=</span> <span class="n">add_metadata</span><span class="p">(</span><span class="n">work</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">pages</span><span class="p">,</span> <span class="n">include_page_ids</span><span class="p">)</span>
-            <span class="n">ndjson_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">work</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="merge-duplicate-records">
-<h2>Merge duplicate records<a class="headerlink" href="#merge-duplicate-records" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="k">def</span> <span class="nf">merge_column</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-                <span class="n">values</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span> <span class="k">if</span> <span class="n">v</span><span class="p">]</span>
-            <span class="k">elif</span> <span class="n">value</span><span class="p">:</span>
-                <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
-        <span class="k">return</span> <span class="s2">&quot; | &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="p">)))</span>
-
-<span class="k">def</span> <span class="nf">merge_records</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;Int64&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Add base dataset with columns that will always have only one value</span>
-    <span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">][</span>
-            <span class="p">[</span><span class="s2">&quot;fulltext_url&quot;</span><span class="p">,</span> <span class="s2">&quot;pages&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_unit&quot;</span><span class="p">,</span> <span class="s2">&quot;text_file&quot;</span><span class="p">]</span>
-        <span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-    <span class="p">]</span>
-
-    <span class="c1"># Columns that potentially have multiple values which will be merged</span>
-    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;title&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;work_url&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;work_type&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;contributor&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;publisher&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;date&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;format&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;extent&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;language&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;subject&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;spatial&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;is_part_of&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;identifier&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;rights&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;fulltext_url_text&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;catalogue_url&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;parent&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;parent_url&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;children&quot;</span><span class="p">,</span>
-    <span class="p">]</span>
-
-    <span class="c1"># Merge values from each column in turn, creating a new dataframe from each</span>
-    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
-        <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;fulltext_url&quot;</span><span class="p">])[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">merge_column</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-        <span class="p">)</span>
-
-    <span class="c1"># Merge all the individual dataframes into one, linking on `text_file` value</span>
-    <span class="n">df_merged</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fulltext_url&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">),</span> <span class="n">dfs</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">df_merged</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;harvested-metadata-pages-text.ndjson&quot;</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">convert_dates</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">df_merged</span> <span class="o">=</span> <span class="n">merge_records</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -1186,20 +651,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="get-ocr-layout-data.html"
+       href="digitised-resources.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">25.4. </span>HOW TO: Get and use OCR data from a book or periodical page</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>Digitised resources</p>
       </div>
     </a>
     <a class="right-next"
-       href="scrape-metadata-audio-player.html"
+       href="extract-embedded-metadata.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">25.6. </span>HOW TO: Scrape metadata from the Trove audio player</p>
+        <p class="prev-next-title"><span class="section-number">25.2. </span>HOW TO: Extract additional metadata from the digitised resource viewer</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1228,10 +693,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-images">Download images</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-metadata-from-api">Get metadata from API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enrich-dataset-using-embedded-metadata">Enrich dataset using embedded metadata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-missing-resources">Check for missing resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-duplicate-records">Merge duplicate records</a></li>
 </ul>
   </nav></div>
 

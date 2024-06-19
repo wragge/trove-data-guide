@@ -64,13 +64,13 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/digitised-resources.92069928-fd36-49ff-8f0a-952d57cc0a32.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/digitised-resources.61d50189-5207-4a09-a1fe-0eef5642682e.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/digitised-resources';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="25.1. HOW TO: Get a list of items from a digitised collection" href="get-collection-items.html" />
+    <link rel="next" title="25.1. HOW TO: Harvest data relating to digitised resources" href="harvest-digitised-resources.html" />
     <link rel="prev" title="24.2. Accessing data from digitised oral histories" href="../oral-histories/accessing-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -267,12 +267,13 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">25. How to</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.1. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.3. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="get-ocr-layout-data.html">25.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
-<li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">25.5. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </li>
 </ul>
@@ -526,12 +527,13 @@ document.write(`
 <h1><span class="section-number">25. </span>Digitised resources<a class="headerlink" href="#digitised-resources" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="get-collection-items.html">25.1. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="download-items-text-images.html">25.2. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extract-embedded-metadata.html">25.3. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get-ocr-layout-data.html">25.4. HOW TO: Get and use OCR data from a book or periodical page</a></li>
-<li class="toctree-l1"><a class="reference internal" href="harvest-digitised-resources.html">25.5. HOW TO: Harvest data relating to digitised resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scrape-metadata-audio-player.html">25.6. HOW TO: Scrape metadata from the Trove audio player</a></li>
+<li class="toctree-l1"><a class="reference internal" href="harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
 </ul>
 </div>
 </section>
@@ -576,11 +578,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="get-collection-items.html"
+       href="harvest-digitised-resources.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">25.1. </span>HOW TO: Get a list of items from a digitised collection</p>
+        <p class="prev-next-title"><span class="section-number">25.1. </span>HOW TO: Harvest data relating to digitised resources</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
