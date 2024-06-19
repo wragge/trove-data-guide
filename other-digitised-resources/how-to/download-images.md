@@ -16,7 +16,7 @@ kernelspec:
 # HOW TO: Create download links for images using `nla.obj` identifiers
 
 ````{card}
-This page includes information on tutorials and examples to help you create and share your own collections or resources from Trove.
+On this page
 
 ```{contents}
 :local:
