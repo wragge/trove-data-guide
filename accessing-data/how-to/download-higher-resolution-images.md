@@ -35,8 +35,9 @@ Just paste a Trove url into the box and click the button to download the image.
 
 Dezoomify works with many GLAM collections, not just Trove, so it's a useful addition to your digital research toolbox.
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(accessing-data:howto:highres:urls)=
 ## URL hacking
 
 There's an even easier way of getting high-resolution images from the web interface. All that's needed is a little {term}`url hacking`. Here's a link to a page in one of Alfred Deakin's diaries: 

@@ -64,59 +64,93 @@ To get machine-readable information about the members of a digitised collection 
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:accessing-data:text)=
 ## Text
 
-Digitised publications like books, pamphlets, and periodicals usually make their contents available as plain text, extracted from the digitised pages using Optical Character Recognition (OCR). The 
+Digitised publications like books, pamphlets, and periodicals usually make their contents available as plain text, extracted from the digitised pages using Optical Character Recognition (OCR). There are two main ways of accessing OCRd text computationally:
+
+- construct download links for a complete publication or range of pages
+- download OCR data for a single page
+
+(digitised:accessing-data:download-text-link)=
+### Construct download links for a complete publication or range of pages
+
+**This method is fully documented in [](how-to/get-downloads), but here's a quick summary.**
+
+To download the complete OCRd text of a single publication you need to know the number of pages in the publication. This can be found by [extracting the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the digitised book and journal viewer and [getting the length of the `page` list](digitised:howto:embedded:pages).
+
+You can then construct a url to download the OCRd text using the publications `nla.obj` identifier and the total number of pages:
+
+`https://nla.gov.au/[NLA.OBJ ID]/download?downloadOption=ocr&firstPage=0&lastPage=[TOTAL PAGES - 1]`
+
+Note that the `lastPage` parameter is set to the total number of pages, minus one. This is because page numbering starts at zero. For example, [this issue](https://nla.gov.au/nla.obj-326379450) of *Pacific Islands Monthly* contains 164 pages, so the url to download the complete OCRd text would be:
+
+<a href="https://nla.gov.au/nla.obj-326379450/download?downloadOption=ocr&firstPage=0&lastPage=163">https://nla.gov.au/nla.obj-326379450/download?downloadOption=ocr&firstPage=0&lastPage=163</a>
+
+You can use the same url pattern to download OCRd text from any range of pages. For example, to download text from the first five pages of a publication, you'd set `firstPage` to `0` and `lastPage` to `4`. To download text from page two, you'd set both `firstPage` and `lastPage` to `1`.
+
+(digitised:accessing-data:ocr)=
+### Download OCR data for a single page
+
+**This method is fully documented in [](how-to/get-ocr-layout-data), but here's a quick summary.**
+
+If you know the `nla.obj` identifier of a specific page in a digitised publication, you can access machine-readable information about the OCR process by simply adding `/ocr` to the identifier url. For example, this [page](http://nla.gov.au/nla.obj-326405522) in *Pacific Islands Monthly* has the identifier `nla.obj-326405522`. To retrieve the OCR data you just add `/ocr` to the identifier: 
+
+<a href="http://nla.gov.au/nla.obj-326405522/ocr">http://nla.gov.au/nla.obj-326405522/ocr</a>
+
+To find the `nla.obj` identifiers for all the pages in a publication, you can [access the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the digitised book and journal viewer and then [extract the page identifiers from the `page` list](digitised:howto:embedded:pages).
+
+The OCR data is quite complex. It contains information about the position of *every word* on the page. To extract just the text you have to find all the text blocks, then loop through each line and word, stitching them back together as a plain text document. If all you want is the text, the method described above is probably more efficient, but if you're interested in the layout as well as the content of a page, this methods opens up some new possibilities.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Images
+(digitised:accessing-data:images)=
+## Images and PDFs
 
-There are two main ways of downloading images from digitised resources:
+Most digitised resources include images you can download. Images can be digitised versions of visual material such as photographs, maps, or artworks, but they can also be scanned copies of pages in a publication or manuscript collection. There are two main methods for accessing digitised images computationally:
 
-- Using Trove's download links
+- Construct download links for a range of images
 - Constructing image urls using `nla.obj` identifiers
 
-### Using Trove's download links
+In addition, it's possible to extract illustrations from pages of digitised books and periodicals by using data generated through the OCR process.
 
-This method is described in [](how-to/download-items-text-images.md). It's best suited to downloading small groups of page images from books and periodicals.
+(digitised:accessing-data:download-images-link)=
+### Construct download links for a range of images
+
+**This method is fully documented in [](how-to/get-downloads), but here's a quick summary.**
+
+This method is basically the same as [the method described above](digitised:accessing-data:download-text-link) to download OCRd text, you just need to set the `downloadOption` parameter in the url to either `zip` for images or `pdf` for a PDF. For example, the [E.J. Brady collection of photographs](https://nla.gov.au/nla.obj-141826952) (nla.obj-141826952) contains 14 images, so the url to download the complete collection in a single zip file would be: 
+
+<a href="https://nla.gov.au/nla.obj-141826952/download?downloadOption=zip&firstPage=0&lastPage=13">https://nla.gov.au/nla.obj-141826952/download?downloadOption=zip&firstPage=0&lastPage=13</a>
+
+Similarly, the [The gold finder of Australia : how he went, how he fared, how he made his fortune](https://nla.gov.au/nla.obj-248742150) is a pamphlet with 80 pages, so the url to download it as a PDF would be:
+
+<a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&firstPage=0&lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&firstPage=0&lastPage=79</a>
+
+You can also adjust the `firstPage` and `lastPage` to download selected images.
+
+It's important to note that zip files containing multiple images can get very large. If you want to download all the images from publications or collections, you should probably use the method described below to download one image at a time.
 
 (digitised:data:image-urls)=
-
 ### Constructing image urls using `nla.obj` identifiers
 
-This is the most flexible method for downloading digitised images, but you need to know the `nla.obj` identifier for the page or image you want to download. Once you have the identifier, it's just a matter of adding the appropriate suffix to construct a url that leads directly to the image file.
+**This method is fully documented in [](/other-digitised-resources/how-to/download-images). but here's a quick summary.**
 
-The suffixes are:
+If you know the `nla.obj` identifier for a page or image, you can download it simply by adding an `/image` suffix to the identifier url. For example, this [photograph of a group of school children with gardening tools](https://nla.gov.au/nla.obj-141828112) has the identifier `nla.obj-141828112`. To create a direct link to the image, you just add `/image` to the identifier url:
 
-- `-t`: leads to a thumbnail version of the image (usually around 123px wide)
-- `/image`: leads to a higher-resolution JPEG version of the image (longest dimension is a maximum of 5000px)
-- `/representativeImage`: leads to an image which has been selected to represent a collection
-- `/m`: leads to a very high-resolution TIFF version of the image (only available for selected resources, mostly maps)
-
-There are additional parameters you can use with `/image` and `/representativeImage`, though I'm not sure how reliably they work:
-
-- `wid`: desired width in pixels
-- `hei`: desired height in pixels
-
-In most cases you'll probably want to use the `/image` suffix to get a JPEG version of the image at the highest available resolution. 
-
-```{admonition} Image sizes
-:class: note
-The sizes of images downloaded using the `/image` suffix vary unpredictably. Sizes seem to range up to a maximum of 5000 pixels along the longest dimension, but some are much smaller, including many digitised photographs. However, images obtained this way are at the same, or higher, resolution than those available through Trove's built-in download option.
-```
+<https://nla.gov.au/nla.obj-141828112/image>
 
 
+### Extract illustrations from pages of digitised books and periodicals
 
-#### How do you know if a TIFF version is available?
+**This method is fully documented in [](other-digitised:ocr-data:crop-images), but here's a quick summary.**
 
-[embedded metadata](digitised:howto:embedded:images)
+As described above, if you know the `nla.obj` identifier of a specific page in a digitised publication, you can [access machine-readable information](/other-digitised-resources/how-to/get-ocr-layout-data) about the OCR process by simply adding `/ocr` to the identifier url.
 
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
+Within the OCR data there are `zs` blocks describing the position of each illustration. You can loop through each of these blocks and use the coordinates to crop the illustrations from the full page image. However, the coordinates in the OCR data are sometimes derived from higher resolution versions of the page images than you can download. To workaround this, you can you can [access the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the digitised book and journal viewer, [extract the dimensions](digitised:howto:embedded:pages) of the high-resolution version of the page, and then convert the coordinates to work with the downloadable version.
 
+```{figure} /images/cat-collection.png
+:name: cat-collection
+
+Sample from a <a href="https://www.dropbox.com/scl/fo/60imdoyf4ss2b6vh01q1w/h?rlkey=zuwbjaqnmr7qvkuinovdu5ot0&dl=0">collection of cat photos</a> harvested from a search for articles with `cat` or `kitten` in their title [using the GLAM Workbench](https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/)
 ```

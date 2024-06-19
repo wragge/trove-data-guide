@@ -661,7 +661,7 @@ The [periodical-issues.csv](https://glam-workbench.net/trove-journals/periodical
 ```
 ````
 
-To download the complete OCRd text of a single periodical issue you need to know the number of pages in the issue. This can be found by [extracting the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the issue viewer and getting the length of the `page` list.
+To download the complete OCRd text of a single periodical issue you need to know the number of pages in the issue. This can be found by [extracting the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the issue viewer and [getting the length of the `page` list.
 
 You can then construct a url to download the OCRd text using the issue identifier and the total number of pages:
 
@@ -721,6 +721,7 @@ You can use the same method to download the covers (or any other range of pages)
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(digitised:periodicals:data:thumbnails)=
 ### Download issue thumbnails
 
 To download a thumbnail image of the first page of an issue, just add `-t` to the the issue identifier, eg:

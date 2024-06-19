@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # HOW TO: Get text, images, and PDFs using Trove's download link
 
 ## Background
@@ -58,11 +60,11 @@ Once you understand the structure of the download urls, you can create your own 
 
 For example, [The gold finder of Australia : how he went, how he fared, how he made his fortune](https://nla.gov.au/nla.obj-248742150) is a pamphlet published in 1853. It's NLA identifier is `nla.obj-248742150` and it has `80` pages. To download all of the OCRd text from this book, you'd insert the identifier and set `lastPage` to `79` (`80` minus `1`):
 
-<https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&firstPage=0&lastPage=79>
+<a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&firstPage=0&lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=ocr&firstPage=0&lastPage=79</a>
 
 Or perhaps you'd like the whole pamphlet as a PDF? Just change `downloadOption` from `ocr` to `pdf`:
 
-<https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&firstPage=0&lastPage=79>
+<a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&firstPage=0&lastPage=79">https://nla.gov.au/nla.obj-248742150/download?downloadOption=pdf&firstPage=0&lastPage=79</a>
 
 ```{admonition} Zip files can be big!
 :class: warning
@@ -81,11 +83,11 @@ The GLAM Workbench notebook [Get covers (or any other pages) from a digitised jo
 
 You don't have to ask for everything at once. By adjusting the `firstPage` and `lastPage` values, you can download a specific range of pages. If you wanted the first ten pages of *The gold finder of Australia* as zipped images, you'd set `firstPage` to `0` and `lastPage` to `9`:
 
-<https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&firstPage=0&lastPage=9>
+<a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&firstPage=0&lastPage=9">https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&firstPage=0&lastPage=9</a>
 
 To request a single page, set `firstPage` and `lastPage` to the same value. For example, if you wanted an image of the cover, you'd set both `firstPage` and `lastPage` to `0`:
 
-<https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&firstPage=0&lastPage=0>
+<a href="https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&firstPage=0&lastPage=0">https://nla.gov.au/nla.obj-248742150/download?downloadOption=zip&firstPage=0&lastPage=0</a>
 
 ## How do you know the number of pages?
 
@@ -117,13 +119,17 @@ num_items = sorted([int(m) for m in matches])[-1]
 print(num_items)
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 ## Limitations and alternatives
 
 This method works really well if you want to get all the OCRd text out of books or periodical issues. It's also handy if you want to download selected pages or images, such as the front covers of periodicals.
 
-However, if your aim is to download all the images from a collection of items then you might strike problems with the sizes of the zip files. Of course you also have to add in a step to unzip the zips! If you're downloading lots of images I'd suggest you try an alternative approach.
+However, if your aim is to download all the images from a collection of items then there are two potential problems. The first is that the download link doesn't always provide images at their highest available resolution. This particularly seems to be the case with manuscript and photographic collections.
 
-To download images from books and periodicals:
+The other problem is that the zip files can become very large if you request collections that contain a significant number of pages or images. This makes them slow to download and can cause errors. Of course you also have to add in a step to unzip the zips! 
+
+If you're downloading lots of images or the quality of the images is important to you, I'd suggest you try the alternative approach which involves downloading one at a time. This method is fully documented in
 
 - [extract the metadata](digitised:howto:embedded:extract-metadata) embedded in the digitised book or journal viewer
 - [get a list of page identifiers](digitised:howto:embedded:pages) from the metadata

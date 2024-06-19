@@ -74,7 +74,7 @@ sphinx:
     - sphinxcontrib.mermaid
     - sphinxcontrib.icon
   config:
-    html_theme: sphinx_book_theme
+    #html_theme: sphinx_book_theme
     #html_theme: pydata_sphinx_theme
     html_show_copyright: true
     #templates_path:
@@ -84,4 +84,6 @@ sphinx:
     bibtex_foot_reference_style: foot
     tippy_skip_anchor_classes: ["headerlink", "sd-stretched-link", "sd-rounded-pill"]
     tippy_anchor_parent_selector: "article.bd-article"
+
+    
 
