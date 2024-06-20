@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/download-images.839da4c6-7ff2-4a34-84c8-2baabffe6ebb.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/download-images.2f21df20-d638-4825-a51f-ab6a8a9a76c2.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/download-images';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -569,12 +569,27 @@ document.write(`
 <p>To construct a url to an image file you just add a suffix to the identifier url. For example, this <a class="reference external" href="https://nla.gov.au/nla.obj-141828112">photograph of a group of school children with gardening tools</a> has the identifier <code class="docutils literal notranslate"><span class="pre">nla.obj-141828112</span></code>. To create a direct link to the image, you just add <code class="docutils literal notranslate"><span class="pre">/image</span></code> to the identifier url:</p>
 <p><a class="reference external" href="https://nla.gov.au/nla.obj-141828112/image">https://nla.gov.au/nla.obj-141828112/image</a></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">/image</span></code> suffix is probably the most useful option as it provides access to the image at its highest available resolution. In many cases this will be at a higher resolution than is available through the download option provided by the web interface. There are, however, other possible image suffixes:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">/image</span></code>: leads to a higher-resolution JPEG version of the image (longest dimension is a maximum of 5000px)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code>: leads to a thumbnail version of the image (usually around 123px wide)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/representativeImage</span></code>: leads to an image which has been selected to represent a collection</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/m</span></code>: leads to a very high-resolution TIFF version of the image (only available for selected resources, mostly maps)</p></li>
-</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>url suffix</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/image</span></code></p></td>
+<td><p>leads to a higher-resolution JPEG version of the image (longest dimension is a maximum of 5000px)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-t</span></code></p></td>
+<td><p>leads to a thumbnail version of the image (usually around 123px wide)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/representativeImage</span></code></p></td>
+<td><p>leads to an image which has been selected to represent a collection</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/m</span></code></p></td>
+<td><p>leads to a very high-resolution TIFF version of the image (only available for selected resources, mostly maps)</p></td>
+</tr>
+</tbody>
+</table>
 <figure class="align-default" id="journal-cover-thumbnails">
 <img alt="../../_images/journal-cover-thumbnails.png" src="../../_images/journal-cover-thumbnails.png" />
 <figcaption>
@@ -582,10 +597,21 @@ document.write(`
 </figcaption>
 </figure>
 <p>There are additional parameters you can use with <code class="docutils literal notranslate"><span class="pre">/image</span></code> and <code class="docutils literal notranslate"><span class="pre">/representativeImage</span></code>, though I’m not sure how reliably they work:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">wid</span></code>: desired width in pixels</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hei</span></code>: desired height in pixels</p></li>
-</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>parameter</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wid</span></code></p></td>
+<td><p>desired width in pixels</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hei</span></code></p></td>
+<td><p>desired height in pixels</p></td>
+</tr>
+</tbody>
+</table>
 <p>For example: <a href="https://nla.gov.au/nla.obj-141828112/image?wid=500">https://nla.gov.au/nla.obj-141828112/image?wid=500</a></p>
 <div class="note admonition">
 <p class="admonition-title">Image sizes</p>

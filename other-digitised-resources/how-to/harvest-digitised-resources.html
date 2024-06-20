@@ -64,7 +64,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/harvest-digitised-resources.2324d8c1-e13d-41c1-8855-bdce215d9131.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/harvest-digitised-resources.65af04fa-64ae-4153-9d15-e1e4720042af.js"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/harvest-digitised-resources';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -526,10 +528,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expand-collections-and-enrich-dataset-using-embedded-metadata">Expand collections and enrich dataset using embedded metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-missing-records">Check for ‘missing’ records</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-remove-duplicates-from-dataset">Merge/remove duplicates from dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-text">Download text</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-images">Download images</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-processing">Additional processing</a></li>
 </ul>
             </nav>
         </div>
@@ -543,14 +544,32 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="how-to-harvest-data-relating-to-digitised-resources">
 <h1><span class="section-number">25.1. </span>HOW TO: Harvest data relating to digitised resources<a class="headerlink" href="#how-to-harvest-data-relating-to-digitised-resources" title="Link to this heading">#</a></h1>
-<p>Harvesting data from a search for digitised resources (other than newspapers) in Trove is not as simple as making a few API requests. The major problem is that digitised resources are often assembled into groups or collections, and the full details of these groupings are not available through the Trove API. This means that simply harvesting results from an API query will miss many digitised resources. In addition, the way resources are described and arranged is often inconsistent, so you can’t assume that a particular type of resource will be grouped in a particular way.</p>
-<p>As a result of these problems, a ‘belts and braces’ approach seems best – follow every possible route and harvest as many records as possible. This may result in duplicates, but these can be dealt with later. In any case, Trove already contains a large number of duplicate records for digitised resources, so some form of merging or de-duplication will always be required.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">On this page</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#outline-of-harvesting-method" id="id1">Outline of harvesting method</a></p>
+<ul>
+<li><p><a class="reference internal" href="#harvest-metadata-from-api" id="id2">Harvest metadata from API</a></p></li>
+<li><p><a class="reference internal" href="#expand-collections-and-enrich-dataset-using-embedded-metadata" id="id3">Expand collections and enrich dataset using embedded metadata</a></p></li>
+<li><p><a class="reference internal" href="#check-for-missing-records" id="id4">Check for ‘missing’ records</a></p></li>
+<li><p><a class="reference internal" href="#merge-remove-duplicates-from-dataset" id="id5">Merge/remove duplicates from dataset</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#additional-processing" id="id6">Additional processing</a></p></li>
+</ul>
+</nav>
+</div>
+</div>
+<p>Harvesting data from a search for digitised resources (other than newspapers) in Trove is not as simple as making a few <a class="reference internal" href="../../accessing-data/trove-api-intro.html"><span class="doc std std-doc">API requests</span></a>. The major problem is that digitised resources are often assembled into groups or collections, and the full details of these groupings are not available through the Trove API. This means that simply harvesting results from an API query can miss many digitised resources. In addition, the way resources are described and arranged is often inconsistent, so you can’t assume that a particular type of resource will be grouped in a particular way.</p>
+<p>As a result of these problems, a ‘belts and braces’ approach seems best – follow every possible route and harvest as many records as possible. This may result in duplicates, but these can be dealt with later. In any case, Trove already contains a large number of duplicate records for digitised resources, so some form of merging or deduplication will always be required.</p>
 <section id="outline-of-harvesting-method">
 <h2>Outline of harvesting method<a class="headerlink" href="#outline-of-harvesting-method" title="Link to this heading">#</a></h2>
-<p>Here I’m outlining the general approach. The specific method will depend on the type of resource, the filters you apply, and the metadata you want to save.</p>
+<p>This is an outline of a general, ‘belts and braces’ approach to harvesting details of digitised resources. The specific method will depend on the type of resource, the filters you apply, and the metadata you want to save.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>There are a number of examples of this approach in the GLAM Workbench that you can use or modify to meet your own needs. For example:</p>
+<p>There are a number of complete, concrete examples in the GLAM Workbench that you can use or modify to meet your own needs. For example:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://glam-workbench.net/trove-government/harvest-parliamentary-papers/">Harvest details of Commonwealth Parliamentary Papers digitised in Trove</a></p></li>
 <li><p><a class="reference external" href="https://glam-workbench.net/trove-journals/create-list-digitised-journals/">Create a list of Trove’s digitised journals</a></p></li>
@@ -559,64 +578,102 @@ document.write(`
 </div>
 <section id="harvest-metadata-from-api">
 <h3>Harvest metadata from API<a class="headerlink" href="#harvest-metadata-from-api" title="Link to this heading">#</a></h3>
-<p>Searches using the API return work-level records. Sometimes digitised resources are grouped as versions of a work, even though they’re quite different. To make sure you get everything, you need to work your way down through through the hierarchy of work -&gt; version -&gt; sub-version (labelled ‘record’ in API responses), harvesting every relevant record.</p>
+<p>Searches using the API return work-level records. Sometimes digitised resources are grouped as <a class="reference internal" href="../../what-is-trove/works-and-versions.html"><span class="doc std std-doc">versions of a work</span></a>, even though they’re quite different. To make sure you get everything, you need to work your way down through through the hierarchy of <code class="docutils literal notranslate"><span class="pre">work</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">version</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">sub-version</span></code> (labelled <code class="docutils literal notranslate"><span class="pre">record</span></code> in API responses), harvesting every relevant record. The steps are:</p>
 <ul class="simple">
-<li><p>get work records from search results</p></li>
+<li><p>get work records from search results <a class="reference internal" href="../../accessing-data/how-to/harvest-complete-results.html"><span class="doc std std-doc">using the Trove API</span></a></p></li>
 <li><p>get version/sub-version records from each work</p></li>
-<li><p>loop through all versions/sub-versions checking to see if they have an NLA fulltext link (indicating that a digitised version is available)</p></li>
+<li><p>loop through all versions/sub-versions and check to see if they have an NLA fulltext link (indicating that a digitised version is available)</p></li>
 <li><p>if they do, get the metadata from the sub-version and add to dataset</p>
 <ul>
 <li><p>sometimes records will have multiple fulltext urls, if so, add a record for each url to the dataset</p></li>
-<li><p>sometimes sub-versions don’t have fulltext links but the parent version does – if so add fulltext links from parent version to sub-version metadata</p></li>
+<li><p>sometimes sub-versions don’t have fulltext links but the parent version does – if so add fulltext links from the parent version to the sub-version metadata</p></li>
 </ul>
 </li>
 </ul>
-</section>
+<div align="center" class="mermaid align-center">
+            graph TD
+    Trove[(Trove API)] -- search query --&gt; results[/results/]
+    results --&gt; Trove
+    results --&gt; work[/work record/]
+    work --&gt; results
+    work --&gt; version[/version record/]
+    version --&gt; work
+    version --&gt; digitised{&quot;is this digitised?&quot;}
+    digitised -- yes --&gt; record[/sub-version record/]
+    digitised -- no --&gt; ignore([ignore])
+    record --&gt; version
+    record --&gt; url[/&quot;fulltext url&quot;/]
+    url --&gt; record
+    url --&gt; save([&quot;save metadata&quot;])
+        </div>
+        </section>
 <section id="expand-collections-and-enrich-dataset-using-embedded-metadata">
 <h3>Expand collections and enrich dataset using embedded metadata<a class="headerlink" href="#expand-collections-and-enrich-dataset-using-embedded-metadata" title="Link to this heading">#</a></h3>
-<p>As noted in <a class="reference internal" href="extract-embedded-metadata.html"><span class="doc std std-doc">HOW TO: Extract additional metadata from the digitised resource viewer</span></a>, most of Trove’s digitised resource viewers embed useful metadata in the HTML of their web pages. You can use this to determine whether a fulltext url points to a single resource or a collection, and to enrich the metadata you obtained from the API.</p>
+<p>Most of Trove’s digitised resource viewers embed useful metadata in the HTML of their web pages. You can use this to determine whether a fulltext url points to a single resource or a collection, and to enrich the metadata you obtained from the API. The steps are:</p>
 <ul class="simple">
-<li><p>scrape metadata from the page returned by each fulltext url in the dataset</p></li>
-<li><p>if the metadata doesn’t include a list of pages then it’s probably a collection page</p>
+<li><p><a class="reference internal" href="extract-embedded-metadata.html"><span class="doc std std-doc">scrape metadata</span></a> from the digitised viewer page returned by each fulltext url in the dataset</p></li>
+<li><p>check to see if the record describes a collection or a single item</p>
 <ul>
-<li><p>if so <a class="reference internal" href="get-collection-items.html"><span class="doc std std-doc">harvest a list of collection items</span></a> and add them to the dataset</p></li>
+<li><p>if it’s a collection then <a class="reference internal" href="get-collection-items.html"><span class="doc std std-doc">harvest a list of collection items</span></a> and add each one to the dataset</p></li>
 </ul>
 </li>
-<li><p>get the number of pages in the resource (or optionally a list of page identifiers) – this information can be used to download OCRd text and images from a resource</p></li>
-<li><p>add or update fields using scraped metadata (eg add sub-unit values)</p></li>
+<li><p>enrich each item record using the embedded metadata (for example, get the number of pages in a book)</p></li>
+<li><p>save enriched item records</p></li>
 </ul>
+<div align="center" class="mermaid align-center">
+            graph TD
+    metadata[(&quot;harvested metadata&quot;)] --&gt; record[/&quot;record&quot;/]
+    record --&gt; metadata
+    record --&gt; viewer&gt;&quot;digitised object viewer&quot;]
+    viewer --&gt; em_metadata[/&quot;embedded metadata&quot;/]
+    em_metadata --&gt; is_collection{&quot;is this a collection?&quot;}
+    is_collection -- yes --&gt; collection_viewer&gt;&quot;digitised collection viewer&quot;]
+    is_collection -- no --&gt; enrich_md
+    collection_viewer --&gt; extract_items
+    extract_items --&gt; item[/&quot;item&quot;/]
+    item --&gt; extract_items
+    item --&gt; enrich_md[&quot;enrich metadata&quot;]
+    enrich_md --&gt; save([&quot;save metadata&quot;])
+        </div>
+        <div class="info admonition">
+<p class="admonition-title">How do you identify ‘collections’?</p>
+<p>There don’t seem to be any consistent markers to identify whether a digital object is a ‘collection’ or an ‘item’, however, there are some useful clues in the <a class="reference internal" href="extract-embedded-metadata.html"><span class="doc std std-doc">metadata embedded in the digital object viewers</span></a>. If you’re working with print publications, the existence of a non-empty <code class="docutils literal notranslate"><span class="pre">page</span></code> list in the metadata indicates the item is a single publication, rather than a collection. If you’re working with maps or images, a non-empty <code class="docutils literal notranslate"><span class="pre">copies</span></code> list indicates that you’re dealing with a single image.</p>
+</div>
 </section>
 <section id="check-for-missing-records">
 <h3>Check for ‘missing’ records<a class="headerlink" href="#check-for-missing-records" title="Link to this heading">#</a></h3>
-<p>Some of the records in the dataset will represent <em>parts</em> of resources, such as the sections of a Parliamentary Paper. The identifiers of the parent resources are added to the child records in the previous processing step. You can check the parent identifiers to make sure they’re already included in the dataset.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See the GLAM Workbench notebook <a class="reference external" href="https://glam-workbench.net/trove-government/harvest-parliamentary-papers/">Harvest details of Commonwealth Parliamentary Papers digitised in Trove</a> for an example of this processing step.</p>
+</div>
+</aside>
+<p>Some of the records in the dataset might represent <em>parts</em> of resources, such as the sections of a Parliamentary Paper. You’d expect there to be separate results for the parent records, but I’ve found this is not always the case – the parent records are missing. In the previous processing step you can add the identifiers for any parent resources from the metadata embedded in the digital object viewer. You can then check all the parent identifiers to make sure they’re already included in the dataset. Something like this:</p>
 <ul class="simple">
-<li><p>compare the list of parent identifiers in the dataset with the fulltext urls</p></li>
-<li><p>if a parent identifier is missing, scrape metadata about it and add to the dataset</p></li>
+<li><p>compare the list of parent identifiers in the dataset with the fulltext urls already harvested</p></li>
+<li><p>if a parent identifier is missing, scrape metadata about it from the digitised object viewer and add it to the dataset</p></li>
 </ul>
 </section>
 <section id="merge-remove-duplicates-from-dataset">
 <h3>Merge/remove duplicates from dataset<a class="headerlink" href="#merge-remove-duplicates-from-dataset" title="Link to this heading">#</a></h3>
-<p>The aim of this step is to de-duplicate the harvested records while preserving all the harvested metadata. The result is a dataset with one record for each fulltext url. If there are multiple values in any column, these will merged into a single list.</p>
+<p>Duplicates exist at multiple levels amongst Trove’s digitised resources. There can be more than one work record pointing to a single digitised object. Single works can also contain near-duplicate versions pointing to the same resource but including slightly different metadata. The processing steps above will exapand all of these duplicates and near-duplicates out into individual records. The aim of this step is to deduplicate the records while preserving all the harvested metadata. The desired result is a dataset with one record for each fulltext url. If there are multiple values in any column, these need to be concatenated into a single list or value.</p>
 <ul class="simple">
-<li><p>identify columns that can contain only one value (eg <code class="docutils literal notranslate"><span class="pre">fulltext_url</span></code>) and create a de-duplicated dataframe containing these columns</p></li>
-<li><p>identify columns that could contain multiple values that need to be de-duplicated</p></li>
-<li><p>merge values of columns with multiple values into new dataframes</p></li>
-<li><p>merge dataframe with single value columns together with all the new dataframes, linking on the <code class="docutils literal notranslate"><span class="pre">fulltext_url</span></code> field</p></li>
+<li><p>identify columns that can contain only one unique value (eg <code class="docutils literal notranslate"><span class="pre">fulltext_url</span></code>) and create a deduplicated dataframe containing these columns</p></li>
+<li><p>identify columns that could contain multiple values</p></li>
+<li><p>split these columns from the original dataframe</p></li>
+<li><p>group and concatenate the values in these columns and save the results as a new dataframe</p></li>
+<li><p>merge the deduplicated dataframe with unique values together with all the new dataframes, linking on the unique identifier (eg <code class="docutils literal notranslate"><span class="pre">fulltext_url</span></code>)</p></li>
 </ul>
 </section>
-<section id="download-text">
-<h3>Download text<a class="headerlink" href="#download-text" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>use the number of pages attempt to <a class="reference internal" href="download-items-text-images.html"><span class="doc std std-doc">download text from publication</span></a></p></li>
-<li><p>if successful add text file name to dataset</p></li>
-</ul>
 </section>
-<section id="download-images">
-<h3>Download images<a class="headerlink" href="#download-images" title="Link to this heading">#</a></h3>
+<section id="additional-processing">
+<h2>Additional processing<a class="headerlink" href="#additional-processing" title="Link to this heading">#</a></h2>
+<p>Once you have a dataset that is as complete as possible, you might want to:</p>
 <ul class="simple">
-<li><p>use the number of pages or page identifiers to <a class="reference internal" href="download-items-text-images.html"><span class="doc std std-doc">download page images from a publication</span></a></p></li>
+<li><p><a class="reference internal" href="download-items-text-images.html"><span class="doc std std-doc">download OCRd text</span></a> from all the publications in the dataset</p></li>
+<li><p><a class="reference internal" href="download-images.html"><span class="doc std std-doc">download individual pages or images</span></a> from all the items in the dataset</p></li>
 </ul>
-</section>
 </section>
 </section>
 
@@ -689,10 +746,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expand-collections-and-enrich-dataset-using-embedded-metadata">Expand collections and enrich dataset using embedded metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-missing-records">Check for ‘missing’ records</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-remove-duplicates-from-dataset">Merge/remove duplicates from dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-text">Download text</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-images">Download images</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-processing">Additional processing</a></li>
 </ul>
   </nav></div>
 

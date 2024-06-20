@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/other-digitised-resources/accessing-data.20f6ddfe-7aae-4dbd-b4b5-f60f55cb0d8c.js"></script>
+    <script defer="defer" src="../_static/tippy/other-digitised-resources/accessing-data.413a175e-5e6b-45d3-bbd5-195bc81a0e01.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/accessing-data';</script>
     <script src="../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -521,18 +521,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">20.1. Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">20.1. Search results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#item-metadata">20.2. Item metadata</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work-version-records-delivered-by-the-trove-api">Work/version records delivered by the Trove API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-embedded-in-the-digitised-resource-viewer">JSON embedded in the digitised resource viewer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">20.2. Collections</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">20.3. Text</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">20.3. Collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">20.4. Text</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-download-links-for-a-complete-publication-or-range-of-pages">Construct download links for a complete publication or range of pages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-ocr-data-for-a-single-page">Download OCR data for a single page</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">20.4. Images and PDFs</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">20.5. Images and PDFs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-download-links-for-a-range-of-images">Construct download links for a range of images</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-image-urls-using-nla-obj-identifiers">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-illustrations-from-pages-of-digitised-books-and-periodicals">Extract illustrations from pages of digitised books and periodicals</a></li>
@@ -556,24 +557,25 @@ document.write(`
 <p class="sd-card-text">On this page</p>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#metadata" id="id1">Metadata</a></p>
+<li><p><a class="reference internal" href="#search-results" id="id1">Search results</a></p></li>
+<li><p><a class="reference internal" href="#item-metadata" id="id2">Item metadata</a></p>
 <ul>
-<li><p><a class="reference internal" href="#work-version-records-delivered-by-the-trove-api" id="id2">Work/version records delivered by the Trove API</a></p></li>
-<li><p><a class="reference internal" href="#json-embedded-in-the-digitised-resource-viewer" id="id3">JSON embedded in the digitised resource viewer</a></p></li>
+<li><p><a class="reference internal" href="#work-version-records-delivered-by-the-trove-api" id="id3">Work/version records delivered by the Trove API</a></p></li>
+<li><p><a class="reference internal" href="#json-embedded-in-the-digitised-resource-viewer" id="id4">JSON embedded in the digitised resource viewer</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#collections" id="id4">Collections</a></p></li>
-<li><p><a class="reference internal" href="#text" id="id5">Text</a></p>
+<li><p><a class="reference internal" href="#collections" id="id5">Collections</a></p></li>
+<li><p><a class="reference internal" href="#text" id="id6">Text</a></p>
 <ul>
-<li><p><a class="reference internal" href="#construct-download-links-for-a-complete-publication-or-range-of-pages" id="id6">Construct download links for a complete publication or range of pages</a></p></li>
-<li><p><a class="reference internal" href="#download-ocr-data-for-a-single-page" id="id7">Download OCR data for a single page</a></p></li>
+<li><p><a class="reference internal" href="#construct-download-links-for-a-complete-publication-or-range-of-pages" id="id7">Construct download links for a complete publication or range of pages</a></p></li>
+<li><p><a class="reference internal" href="#download-ocr-data-for-a-single-page" id="id8">Download OCR data for a single page</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#images-and-pdfs" id="id8">Images and PDFs</a></p>
+<li><p><a class="reference internal" href="#images-and-pdfs" id="id9">Images and PDFs</a></p>
 <ul>
-<li><p><a class="reference internal" href="#construct-download-links-for-a-range-of-images" id="id9">Construct download links for a range of images</a></p></li>
-<li><p><a class="reference internal" href="#constructing-image-urls-using-nla-obj-identifiers" id="id10">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></p></li>
-<li><p><a class="reference internal" href="#extract-illustrations-from-pages-of-digitised-books-and-periodicals" id="id11">Extract illustrations from pages of digitised books and periodicals</a></p></li>
+<li><p><a class="reference internal" href="#construct-download-links-for-a-range-of-images" id="id10">Construct download links for a range of images</a></p></li>
+<li><p><a class="reference internal" href="#constructing-image-urls-using-nla-obj-identifiers" id="id11">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></p></li>
+<li><p><a class="reference internal" href="#extract-illustrations-from-pages-of-digitised-books-and-periodicals" id="id12">Extract illustrations from pages of digitised books and periodicals</a></p></li>
 </ul>
 </li>
 </ul>
@@ -587,22 +589,61 @@ document.write(`
 <li><p><a class="reference internal" href="oral-histories/accessing-data.html"><span class="std std-doc">Accessing data from oral histories</span></a></p></li>
 <li><p><a class="reference internal" href="periodicals/accessing-data.html"><span class="std std-doc">Accessing data from periodicals</span></a></p></li>
 </ul>
-<section id="metadata">
-<h2><span class="section-number">20.1. </span>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h2>
-<p>There are two main sources of machine-readable metadata that describe digitised resources:</p>
+<section id="search-results">
+<h2><span class="section-number">20.1. </span>Search results<a class="headerlink" href="#search-results" title="Link to this heading">#</a></h2>
+<p>While it’s easy to search Trove for a particular word or phrase, how do you limit your results to resources digitised by the NLA and partners? Unfortunately, there’s no single filter or facet you can use to find digitised resources. Various search strategies are described in <a class="reference internal" href="../understanding-search/finding-digitised-content.html"><span class="doc std std-doc">Finding NLA digitised content you can download</span></a>, but the most reliable method involves searching for the string <code class="docutils literal notranslate"><span class="pre">&quot;nla.obj&quot;</span></code> and then filtering the results using facets, such as by setting <code class="docutils literal notranslate"><span class="pre">l-availability</span></code> to <code class="docutils literal notranslate"><span class="pre">y</span></code>. Here are some additional hints for different format types:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="books/overview.html#other-digitised-books-finding"><span class="std std-ref">Finding digitised books</span></a></p></li>
+<li><p><a class="reference internal" href="parliamentary-papers/finding-pp.html"><span class="doc std std-doc">Finding digitised Parliamentary Papers</span></a></p></li>
+<li><p><a class="reference internal" href="periodicals/finding-periodicals.html"><span class="doc std std-doc">Finding digitised periodicals</span></a></p></li>
+<li><p><a class="reference internal" href="oral-histories/overview.html#finding-oral-histories"><span class="std std-ref">Finding oral histories</span></a></p></li>
+</ul>
+<p>Once you’ve constructed your search you can <a class="reference internal" href="#accessing-data/how-to/harvest-complete-results"><span class="xref myst">harvest the complete set of results using the Trove API</span></a>. However, because of the way digitised resources are arranged and described, a simple harvest of work records is likely to miss some digitised resources and include duplicate records for others. To construct a dataset of digitised resources that is as complete as possible and yet contains no duplicates, you need to join a number of different processing steps together. <strong>This strategy is described in detail in <a class="reference internal" href="how-to/harvest-digitised-resources.html"><span class="doc std std-doc">HOW TO: Harvest data relating to digitised resources</span></a>.</strong></p>
+</section>
+<section id="item-metadata">
+<h2><span class="section-number">20.2. </span>Item metadata<a class="headerlink" href="#item-metadata" title="Link to this heading">#</a></h2>
+<p>There are two main sources of machine-readable metadata that describe individual digitised resources:</p>
 <ul class="simple">
 <li><p>work/version records delivered by the Trove API</p></li>
 <li><p>JSON embedded in the digitised resource viewer</p></li>
 </ul>
 <section id="work-version-records-delivered-by-the-trove-api">
 <h3>Work/version records delivered by the Trove API<a class="headerlink" href="#work-version-records-delivered-by-the-trove-api" title="Link to this heading">#</a></h3>
+<p>You can request information about an individual work using the Trove API’s <code class="docutils literal notranslate"><span class="pre">/work</span></code> endpoint. For example, the pamphlet <a class="reference external" href="https://trove.nla.gov.au/work/9453675">The gold-finder of Australia : how he went, how he fared, how he made his fortune</a> has the work identifier <code class="docutils literal notranslate"><span class="pre">9453675</span></code>. You can request metadata about it using the url:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://api.trove.nla.gov.au/v3/work/9453675?encoding=json&amp;reclevel=full</span></code></p>
+<p><a class="reference external" href="https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F9453675%3Fencoding%3Djson%26reclevel%3Dfull&amp;amp;comment="><img alt="Try it!" src="https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg" /></a></p>
+<p>The link to view a digitised item in one of Trove’s <a class="reference internal" href="../what-is-trove/interfaces.html#whatis-interfaces-digitised"><span class="std std-ref">digitised resource viewers</span></a> is contained in the <code class="docutils literal notranslate"><span class="pre">identifier</span></code> field. You need to loop through the values in <code class="docutils literal notranslate"><span class="pre">identifier</span></code> looking for one that has <code class="docutils literal notranslate"><span class="pre">linktype</span></code> set to <code class="docutils literal notranslate"><span class="pre">fulltext</span></code>. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X-API-KEY&quot;</span><span class="p">:</span> <span class="n">YOUR_API_KEY</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.trove.nla.gov.au/v3/work/9453675?encoding=json&amp;reclevel=full&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">url</span><span class="p">[</span><span class="s2">&quot;linktype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;fulltext&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>http://nla.gov.au/nla.obj-248742150
+</pre></div>
+</div>
+</div>
+</div>
+<p>Problem - might combine metadata from versions</p>
+<p>Only get the digitised version</p>
+<p>What if you only have the <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier rather than the work identifier? There’s no direct way to look up additional metadata describing a digitised resource from the API endpoint using its <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifier. To find a corresponding work record, you have to search for the digital object identifier using the /result endpoint. This is not an exact search, and will match the identifier wherever it appears in a record. As a result, it’s likely to return multiple results and require some manual checking. Setting <code class="docutils literal notranslate"><span class="pre">l-availability</span></code> to <code class="docutils literal notranslate"><span class="pre">y</span></code> should help narrow things down.</p>
 </section>
 <section id="json-embedded-in-the-digitised-resource-viewer">
 <h3>JSON embedded in the digitised resource viewer<a class="headerlink" href="#json-embedded-in-the-digitised-resource-viewer" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="collections">
-<h2><span class="section-number">20.2. </span>Collections<a class="headerlink" href="#collections" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.3. </span>Collections<a class="headerlink" href="#collections" title="Link to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
@@ -611,10 +652,10 @@ document.write(`
 </div>
 </aside>
 <p>The NLA’s digitised resources are often presented as ‘collections’. A collection could be the volumes in a multi-volume work, the issues of a periodical, a map series, an album of photographs, or a manuscript collection. While you can use the <code class="docutils literal notranslate"><span class="pre">magazine/title</span></code> API endpoint to get a list of issues from a periodical, there’s no way to get the contents of other types of collections from the Trove API.</p>
-<p>To get machine-readable information about the members of a digitised collection you need to extract information from the browse window of Trove’s digitised collection viewer. This method is fully documented in <a class="reference internal" href="how-to/get-collection-items.html"><span class="doc std std-doc">HOW TO: Get a list of items from a digitised collection</span></a></p>
+<p>To get machine-readable information about the members of a digitised collection you need to extract information from the browse window of Trove’s digitised collection viewer. <strong>This method is fully documented in <a class="reference internal" href="how-to/get-collection-items.html"><span class="doc std std-doc">HOW TO: Get a list of items from a digitised collection</span></a>.</strong></p>
 </section>
 <section id="text">
-<span id="digitised-accessing-data-text"></span><h2><span class="section-number">20.3. </span>Text<a class="headerlink" href="#text" title="Link to this heading">#</a></h2>
+<span id="digitised-accessing-data-text"></span><h2><span class="section-number">20.4. </span>Text<a class="headerlink" href="#text" title="Link to this heading">#</a></h2>
 <p>Digitised publications like books, pamphlets, and periodicals usually make their contents available as plain text, extracted from the digitised pages using Optical Character Recognition (OCR). There are two main ways of accessing OCRd text computationally:</p>
 <ul class="simple">
 <li><p>construct download links for a complete publication or range of pages</p></li>
@@ -640,7 +681,7 @@ document.write(`
 </section>
 </section>
 <section id="images-and-pdfs">
-<span id="digitised-accessing-data-images"></span><h2><span class="section-number">20.4. </span>Images and PDFs<a class="headerlink" href="#images-and-pdfs" title="Link to this heading">#</a></h2>
+<span id="digitised-accessing-data-images"></span><h2><span class="section-number">20.5. </span>Images and PDFs<a class="headerlink" href="#images-and-pdfs" title="Link to this heading">#</a></h2>
 <p>Most digitised resources include images you can download. Images can be digitised versions of visual material such as photographs, maps, or artworks, but they can also be scanned copies of pages in a publication or manuscript collection. There are two main methods for accessing digitised images computationally:</p>
 <ul class="simple">
 <li><p>Construct download links for a range of images</p></li>
@@ -742,18 +783,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">20.1. Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-results">20.1. Search results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#item-metadata">20.2. Item metadata</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work-version-records-delivered-by-the-trove-api">Work/version records delivered by the Trove API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-embedded-in-the-digitised-resource-viewer">JSON embedded in the digitised resource viewer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">20.2. Collections</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">20.3. Text</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">20.3. Collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text">20.4. Text</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-download-links-for-a-complete-publication-or-range-of-pages">Construct download links for a complete publication or range of pages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-ocr-data-for-a-single-page">Download OCR data for a single page</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">20.4. Images and PDFs</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs">20.5. Images and PDFs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-download-links-for-a-range-of-images">Construct download links for a range of images</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-image-urls-using-nla-obj-identifiers">Constructing image urls using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-illustrations-from-pages-of-digitised-books-and-periodicals">Extract illustrations from pages of digitised books and periodicals</a></li>
