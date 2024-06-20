@@ -42,10 +42,12 @@ To construct a url to an image file you just add a suffix to the identifier url.
 
 The `/image` suffix is probably the most useful option as it provides access to the image at its highest available resolution. In many cases this will be at a higher resolution than is available through the download option provided by the web interface. There are, however, other possible image suffixes:
 
-- `/image`: leads to a higher-resolution JPEG version of the image (longest dimension is a maximum of 5000px)
-- `-t`: leads to a thumbnail version of the image (usually around 123px wide)
-- `/representativeImage`: leads to an image which has been selected to represent a collection
-- `/m`: leads to a very high-resolution TIFF version of the image (only available for selected resources, mostly maps)
+| url suffix | description |
+|------------| ------------|
+| `/image` | leads to a higher-resolution JPEG version of the image (longest dimension is a maximum of 5000px) |
+| `-t` | leads to a thumbnail version of the image (usually around 123px wide) |
+| `/representativeImage` | leads to an image which has been selected to represent a collection |
+| `/m` | leads to a very high-resolution TIFF version of the image (only available for selected resources, mostly maps) |
 
 ```{figure} /images/journal-cover-thumbnails.png
 :name: journal-cover-thumbnails
@@ -55,8 +57,10 @@ An example of using the `-t` suffix to [assemble a collection of periodical cove
 
 There are additional parameters you can use with `/image` and `/representativeImage`, though I'm not sure how reliably they work:
 
-- `wid`: desired width in pixels
-- `hei`: desired height in pixels
+| parameter | description |
+|-----------|-------------|
+| `wid` | desired width in pixels |
+| `hei` | desired height in pixels |
 
 For example: <a href="https://nla.gov.au/nla.obj-141828112/image?wid=500">https://nla.gov.au/nla.obj-141828112/image?wid=500</a>
 

@@ -33,18 +33,91 @@ For more specific information relating to particular formats see:
 - [Accessing data from oral histories](oral-histories/accessing-data.md)
 - [Accessing data from periodicals](periodicals/accessing-data.md)
 
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+# Let's import the libraries we need.
+import os
+import requests
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+# Insert your Trove API key
+YOUR_API_KEY = "YOUR API KEY"
+
+# Use api key value from environment variables if it is available
+if os.getenv("TROVE_API_KEY"):
+    YOUR_API_KEY = os.getenv("TROVE_API_KEY")
+```
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Metadata
+## Search results
 
-There are two main sources of machine-readable metadata that describe digitised resources:
+While it's easy to search Trove for a particular word or phrase, how do you limit your results to resources digitised by the NLA and partners? Unfortunately, there's no single filter or facet you can use to find digitised resources. Various search strategies are described in [](/understanding-search/finding-digitised-content), but the most reliable method involves searching for the string `"nla.obj"` and then filtering the results using facets, such as by setting `l-availability` to `y`. Here are some additional hints for different format types:
+
+- [Finding digitised books](other-digitised:books:finding)
+- [Finding digitised Parliamentary Papers](/other-digitised-resources/parliamentary-papers/finding-pp)
+- [Finding digitised periodicals](/other-digitised-resources/periodicals/finding-periodicals)
+- [Finding oral histories](finding-oral-histories)
+
+Once you've constructed your search you can [harvest the complete set of results using the Trove API](accessing-data/how-to/harvest-complete-results). However, because of the way digitised resources are arranged and described, a simple harvest of work records is likely to miss some digitised resources and include duplicate records for others. To construct a dataset of digitised resources that is as complete as possible and yet contains no duplicates, you need to join a number of different processing steps together. **This strategy is described in detail in [](/other-digitised-resources/how-to/harvest-digitised-resources).**
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+## Item metadata 
+There are two main sources of machine-readable metadata that describe individual digitised resources:
 
 - work/version records delivered by the Trove API
 - JSON embedded in the digitised resource viewer
 
 ### Work/version records delivered by the Trove API
 
+You can request information about an individual work using the Trove API's `/work` endpoint. For example, the pamphlet [The gold-finder of Australia : how he went, how he fared, how he made his fortune](https://trove.nla.gov.au/work/9453675) has the work identifier `9453675`. You can request metadata about it using the url:
 
+`https://api.trove.nla.gov.au/v3/work/9453675?encoding=json&reclevel=full`
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F9453675%3Fencoding%3Djson%26reclevel%3Dfull&comment=)
+
+The link to view a digitised item in one of Trove's [digitised resource viewers](whatis:interfaces:digitised) is contained in the `identifier` field. You need to loop through the values in `identifier` looking for one that has `linktype` set to `fulltext`. For example:
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+import requests
+
+headers = {"X-API-KEY": YOUR_API_KEY}
+
+response = requests.get("https://api.trove.nla.gov.au/v3/work/9453675?encoding=json&reclevel=full", headers=headers)
+data = response.json()
+for url in data["identifier"]:
+    if url["linktype"] == "fulltext":
+        break
+print(url["value"])
+```
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+Problem - might combine metadata from versions
+
+Only get the digitised version
+
+What if you only have the `nla.obj` identifier rather than the work identifier? There’s no direct way to look up additional metadata describing a digitised resource from the API endpoint using its `nla.obj` identifier. To find a corresponding work record, you have to search for the digital object identifier using the /result endpoint. This is not an exact search, and will match the identifier wherever it appears in a record. As a result, it’s likely to return multiple results and require some manual checking. Setting `l-availability` to `y` should help narrow things down.
 
 ### JSON embedded in the digitised resource viewer
 
@@ -60,7 +133,7 @@ The GLAM Workbench notebook [Download a collection of digitised images](https://
 
 The NLA’s digitised resources are often presented as 'collections'. A collection could be the volumes in a multi-volume work, the issues of a periodical, a map series, an album of photographs, or a manuscript collection. While you can use the `magazine/title` API endpoint to get a list of issues from a periodical, there’s no way to get the contents of other types of collections from the Trove API.
 
-To get machine-readable information about the members of a digitised collection you need to extract information from the browse window of Trove's digitised collection viewer. This method is fully documented in [](how-to/get-collection-items)
+To get machine-readable information about the members of a digitised collection you need to extract information from the browse window of Trove's digitised collection viewer. **This method is fully documented in [](how-to/get-collection-items).**
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
