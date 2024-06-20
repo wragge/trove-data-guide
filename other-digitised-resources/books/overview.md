@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -22,6 +22,7 @@ On this page
 ```
 ````
 
+(other-digitised:books:finding)=
 ## Finding digitised books
 
 Trove includes thousands of digitised resources described as books. You can find them by using the [standard search strategy for digitised resources](/understanding-search/finding-digitised-content) – search for `"nla.obj"` in the **Books & Libraries** category with the `availability` facet set to `y`, and the `format` facet set to `Book`.
