@@ -21,6 +21,7 @@ kernelspec:
 
 ```{contents}
 :local:
+:backlinks: None
 ```
 
 ```{code-cell} ipython3
@@ -323,7 +324,7 @@ for issue in issues[:5]:
 
 The number at the end of the page url uniquely identifies that page. It can be used to [download an image of the page](download-a-page-image). While this method is a bit inefficient, forcing us to fire off a request for every issue, it does enable us to link three important pieces of page metadata – the *date*, the *page number*, and the *page identifier*.
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ### Scraping article metadata from a page
 

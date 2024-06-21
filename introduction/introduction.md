@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -52,7 +52,7 @@ By accessing Trove’s search data directly, we can start to grapple with the ch
 
 But that’s just the beginning. If the resources we’re interested in are digitised, we can often access their *contents* as data – such as the text of a book, or a digital image of a photograph. We can use computational methods to analyse and compare these resources, looking in depth at their structure and form.
 
-Search results and digitised content are two types of data available from Trove, but there are more. This Guide describes the different types of data Trove provides, explains [how to access them](/accessing-data/data-access-options), and gives [some examples](/pathways/pathways) of what you can do with this data. What new types of questions can we ask?
+Search results and digitised content are two types of data available from Trove, but there are more. This Guide describes the different types of data Trove provides, explains [how to access them](/accessing-data/index), and gives [some examples](/pathways/index) of what you can do with this data. What new types of questions can we ask?
 
 But there are new dangers and challenges too. If we look again at the charts created by QueryPic, we might wonder what the peaks and troughs actually mean. How are the results influenced by the number of newspapers published or digitised? If we’re going to use Trove as a source of research data, we need to ask critical questions about where that data comes from, what it represents, and what it is missing. That’s why this Guide starts by examining [the nature of Trove itself](/what-is-trove/trove-is). As researchers we should always seek to understand the context of our sources, whether a single handwritten letter, or a massive digital collection.
 

@@ -11,23 +11,11 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Periodicals
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{tableofcontents}
-```
-
-+++
-
-## Identifiers and links
-
-https://nla.gov.au/nla.obj-2904453468/view?sectionId=nla.obj-2910847932&partId=nla.obj-2907109728
-
-first id is issue, second is article, third is page
-
-article link redirects to issue
-
-```{code-cell} ipython3
-
 ```

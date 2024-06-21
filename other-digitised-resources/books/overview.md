@@ -19,6 +19,7 @@ kernelspec:
 On this page
 ```{contents}
 :local:
+:backlinks: None
 ```
 ````
 
