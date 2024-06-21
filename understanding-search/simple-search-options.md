@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # 'Simple' search options
 
 ````{card} On this page
@@ -215,7 +217,7 @@ glue("text_ise", get_total("text:naturalisation"))
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-(search:simple:proxity)=
+(search:simple:proximity)=
 ## Proximity searches
 
 The defuzzify examples above use the proximity modifier (`~`) to remove extra words from a query, but you can also use it to set a maximum distance between search terms. One thing to note is that the order of the search terms makes a difference to your results, as reversing the order of your terms counts as a 'word'. For example:

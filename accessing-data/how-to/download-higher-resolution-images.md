@@ -15,6 +15,15 @@ kernelspec:
 
 # HOW TO: Download higher resolution versions of images from the web interface
 
+````{card}
+On this page
+
+```{contents}
+:local:
+:backlinks: None
+```
+````
+
 +++
 
 One confusing, and often frustrating, aspect of [image downloads via the Trove web interface](downloading-images-web-interface) is their resolution. You can use the Trove image viewer to zoom right in to many photographs and manuscripts, enabling you to pick up fine details. But if you download the same image you could find the resolution is much lower. This means you're limited in how you can use the downloaded image. The available resolutions vary across categories and formats, and you really don't know what you'll get until you download it. Many manuscripts, in particular, seem to have low-resolution downloads, which doesn't help you much when you're trying to decipher someone's handwriting!
@@ -75,11 +84,11 @@ Alternatively, you can click on the 'Cite' tab of the book viewer. Select 'Image
 Get the image identifier from the 'Cite' tab
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Other possibilities
 
-Here I've focused on methods you can use within your web browser to download a single image at high resolution. But what if you want all the covers of a journal, or all the documents in a manuscript collection? The [Accessing data](/accessing-data/data-access-options) section describes a number of alternative approaches.
+Here I've focused on methods you can use within your web browser to download a single image at high resolution. But what if you want all the covers of a journal, or all the documents in a manuscript collection? There's more information on automating the download of images from newspaper [articles](articles-as-images) and [pages](page-images-and-pdfs), as well as [images from other digitised resources](digitised:accessing-data:images).
 
 ```{code-cell} ipython3
 

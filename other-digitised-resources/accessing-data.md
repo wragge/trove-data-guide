@@ -64,24 +64,19 @@ if os.getenv("TROVE_API_KEY"):
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-## Search results
+## Metadata
 
-While it's easy to search Trove for a particular word or phrase, how do you limit your results to resources digitised by the NLA and partners? Unfortunately, there's no single filter or facet you can use to find digitised resources. Various search strategies are described in [](/understanding-search/finding-digitised-content), but the most reliable method involves searching for the string `"nla.obj"` and then filtering the results using facets, such as by setting `l-availability` to `y`. Here are some additional hints for different format types:
+There are three main sources of machine-readable metadata describing digitised resources:
 
-- [Finding digitised books](other-digitised:books:finding)
-- [Finding digitised Parliamentary Papers](/other-digitised-resources/parliamentary-papers/finding-pp)
-- [Finding digitised periodicals](/other-digitised-resources/periodicals/finding-periodicals)
-- [Finding oral histories](finding-oral-histories)
+- search results delivered by the Trove API
+- individual work/version records delivered by the Trove API
+- JSON embedded in the digitised resource viewer
 
-Once you've constructed your search you can [harvest the complete set of results using the Trove API](accessing-data/how-to/harvest-complete-results). However, because of the way digitised resources are arranged and described, a simple harvest of work records is likely to miss some digitised resources and include duplicate records for others. To construct a dataset of digitised resources that is as complete as possible and yet contains no duplicates, you need to join a number of different processing steps together. **This strategy is described in detail in [](/other-digitised-resources/how-to/harvest-digitised-resources).**
+### Search results delivered by the Trove API
+
+[Finding digitised resources](other-digitised:finding) is not straightforward, so it might take some experimentation to build a query that meets your needs. Once you've constructed your search you can [harvest the complete set of results using the Trove API](/accessing-data/how-to/harvest-complete-results). However, because of the way digitised resources are arranged and described, a simple harvest of work records is likely to miss some digitised resources and include duplicate records for others. To construct a dataset of digitised resources that is as complete as possible and yet contains no duplicates, you need to join a number of different processing steps together. **This strategy is described in detail in [](/other-digitised-resources/how-to/harvest-digitised-resources).**
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## Item metadata 
-There are two main sources of machine-readable metadata that describe individual digitised resources:
-
-- work/version records delivered by the Trove API
-- JSON embedded in the digitised resource viewer
 
 ### Work/version records delivered by the Trove API
 
@@ -91,7 +86,7 @@ You can request information about an individual work using the Trove API's `/wor
 
 [![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F9453675%3Fencoding%3Djson%26reclevel%3Dfull&comment=)
 
-The link to view a digitised item in one of Trove's [digitised resource viewers](whatis:interfaces:digitised) is contained in the `identifier` field. You need to loop through the values in `identifier` looking for one that has `linktype` set to `fulltext`. For example:
+The link to view a digitised item in one of Trove's [digitised resource viewers](whatis:interfaces:digitised) is contained in the `identifier` field. You need to loop through the values in `identifier` looking for one that has `linktype` set to `fulltext` and a url that contains `"nla.obj"`. For example:
 
 ```{code-cell} ipython3
 ---
@@ -106,20 +101,35 @@ headers = {"X-API-KEY": YOUR_API_KEY}
 response = requests.get("https://api.trove.nla.gov.au/v3/work/9453675?encoding=json&reclevel=full", headers=headers)
 data = response.json()
 for url in data["identifier"]:
-    if url["linktype"] == "fulltext":
+    if url["linktype"] == "fulltext" and "nla.obj" in url["value"]:
         break
 print(url["value"])
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-Problem - might combine metadata from versions
+Work records can combine metadata from digitised and non-digitised versions, so the information in the top-level record might not accurately represent what's been digitised. For example, the API response for *The gold-finder of Australia* gives the date of the publication as `1853-1973`, munging together the original publication date and the date of a later reproduction. For this reason, you will probably want to access the individual version records for any work that includes digitised resources. You do this by setting the `include` parameter to `workVersions`:
 
-Only get the digitised version
+`https://api.trove.nla.gov.au/v3/work/9453675?encoding=json&reclevel=full&include=workVersions`
 
-What if you only have the `nla.obj` identifier rather than the work identifier? There’s no direct way to look up additional metadata describing a digitised resource from the API endpoint using its `nla.obj` identifier. To find a corresponding work record, you have to search for the digital object identifier using the /result endpoint. This is not an exact search, and will match the identifier wherever it appears in a record. As a result, it’s likely to return multiple results and require some manual checking. Setting `l-availability` to `y` should help narrow things down.
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fwork%2F9453675%3Fencoding%3Djson%26reclevel%3Dfull%26include%3DworkVersions&comment=)
+
+What if you only have the `nla.obj` identifier rather than the work identifier? There’s no direct way to look up additional metadata describing a digitised resource from the API endpoint using its `nla.obj` identifier. To find a corresponding work record, you have to search for the digital object identifier using the `/result` endpoint. This is not an exact search, and will match the identifier wherever it appears in a record. As a result, it’s possible there might be multiple results requiring some manual checking. Setting `l-availability` to `y` should help narrow things down. Here's an API search for *The gold-finder of Australia* using its identifier `"nla.obj-248742150"`.
+
+[![Try it!](https://troveconsole.herokuapp.com/static/img/try-trove-api-console.svg)](https://troveconsole.herokuapp.com/v3/?url=https%3A%2F%2Fapi.trove.nla.gov.au%2Fv3%2Fresult%3Fq%3D%22nla.obj-248742150%22%26category%3Dbook%26encoding%3Djson%26l-availability%3Dy&comment=)
 
 ### JSON embedded in the digitised resource viewer
+
+Trove's [digitised resource viewers](/what-is-trove/interfaces) display limited metadata about each item. But there's more useful metadata embedded as a JSON string in the HTML code of the page. **Methods for accessing and using this metadata are fully documented in [](/other-digitised-resources/how-to/extract-embedded-metadata), but here's a quick summary.**
+
+To access the embedded metadata you need to load the digitised viewer and then scrape the JSON string from the HTML code. The actual metadata available depends on the format of the resource, but can include:
+
+- lists of pages in digitised books and periodicals, including individual page identifiers
+- lists of articles in a periodical issue
+- details of digitised images, including pixel dimensions
+- complete MARC records from the NLA catalogue
+
+This metadata can be used to enrich and expand records provided by the Trove API, but it also opens up a number of new possibilities. For example, by accessing information about pages in a book or periodical you can [automate the download of OCRd text or images](/other-digitised-resources/how-to/download-items-text-images).
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 

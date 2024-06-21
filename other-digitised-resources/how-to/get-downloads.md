@@ -15,6 +15,15 @@ kernelspec:
 
 # HOW TO: Get text, images, and PDFs using Trove's download link
 
+````{card}
+On this page
+
+```{contents}
+:local:
+:backlinks: None
+```
+````
+
 ## Background
 
 You can download text, images, and PDFs from individual digitised items using the Trove web interface. But only the text of periodical articles is available for machine access through the Trove API. This makes it difficult to assemble datasets, or build processing pipelines involving digitised resources.

@@ -20,6 +20,7 @@ Learn more about the history and characteristics of Trove's collection of digiti
 
 ```{contents}
 :local:
+:backlinks: None
 ```
 ````
 

@@ -15,6 +15,15 @@ kernelspec:
 
 # HOW TO: Automate the download of digitised items as text, images, or PDFs
 
+````{card}
+On this page
+
+```{contents}
+:local:
+:backlinks: None
+```
+````
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 You can download text, images, and PDFs from individual digitised items [using the Trove web interface](/accessing-data/using-web-interface.md). But only the text of periodical articles is available for machine access through the Trove API. This makes it difficult to assemble datasets, or build processing pipelines involving digitised resources. This page documents a series of work arounds that enable you to automate the download of digitised items as text, images, or PDFs.

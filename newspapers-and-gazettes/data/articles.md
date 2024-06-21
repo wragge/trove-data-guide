@@ -19,7 +19,7 @@ kernelspec:
 
 ![Screenshot of Trove web interface displaying basic article metadata](/images/trove-article-metadata.png)
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ```{contents}
 :local:
@@ -193,11 +193,9 @@ The [trove-query-parser](https://wragge.github.io/trove_query_parser/) Python li
 ```
 ````
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 You can use the `q` parameter to supply search keywords. The query string can be anything you might include in Trove's ['simple' search](/understanding-search/simple-search-options) box. Results can also be filtered using a number of facets, such as `category`, `state`, `illustrated`, and `decade`.
-
-<mark>==More detail on constructing searches here or somewhere else?==</mark>
 
 For example, to get the first 100 results of a search for `"clement wragge" AND cyclone`, limited to news articles published in Queensland, you would do something like:
 
@@ -466,8 +464,9 @@ However, the full text that's provided by the API is actually an HTML fragment, 
 Unfortunately, adding `include=articleText` doesn't work with the Australian Women's Weekly as a decision was made early on to exclude AWW text from the API results. If you want the full text of AWW articles you need to scrape it from the web page. The good news is that the [Trove Newspaper and Gazette Harvester](https://wragge.github.io/trove-newspaper-harvester/) will do this for you automatically!
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(newspapers:articles:images)=
 ## Images and PDFs of articles
 
 While you can download article images (embedded in an HTML page) and PDFs from the Trove web interface, there's no direct mechanism for accessing them via the API. This makes it difficult to automate downloads, assemble image datasets, and build image processing pipelines. Fortunately, there are a few handy workarounds you can use.

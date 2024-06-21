@@ -10,6 +10,8 @@ options:
 parts:
   - chapters:
     - file: about
+    - file: who-and-how
+      title: Who is this for?
     - file: introduction/introduction
   - caption: "What is Trove?"
     numbered: 2
@@ -84,14 +86,15 @@ parts:
           - file: newspapers-and-gazettes/how-to/get-ocr-coordinates
           - file: newspapers-and-gazettes/how-to/create-newspaper-articles-dataset
   - caption: Other digitised resources
-    numbered: 2
+    numbered: 3
     maxdepth: 3
     chapters:
       - file: other-digitised-resources/index
-      - file: other-digitised-resources/books/index
+      - file: other-digitised-resources/accessing-data
+      - file: other-digitised-resources/books/overview
         title: Books
-        sections:
-          - file: other-digitised-resources/books/overview
+        #sections:
+        #  - file: other-digitised-resources/books/overview
 #          - file: other-digitised-resources/books/accessing-data
       - file: other-digitised-resources/periodicals/index
         title: Periodicals
@@ -114,11 +117,12 @@ parts:
         title: How to
         sections:
 #          - file: accessing-data/how-to/download-higher-resolution-images
+          - file: other-digitised-resources/how-to/harvest-digitised-resources
+          - file: other-digitised-resources/how-to/extract-embedded-metadata
           - file: other-digitised-resources/how-to/get-collection-items
           - file: other-digitised-resources/how-to/download-items-text-images
-          - file: other-digitised-resources/how-to/extract-embedded-metadata
-          - file: other-digitised-resources/how-to/get-ocr-layout-data.md
-          - file: other-digitised-resources/how-to/harvest-digitised-resources
+          - file: other-digitised-resources/how-to/download-images
+          - file: other-digitised-resources/how-to/get-ocr-layout-data
           - file: other-digitised-resources/how-to/scrape-metadata-audio-player
 #  - caption: Web archives
 #    numbered: 2

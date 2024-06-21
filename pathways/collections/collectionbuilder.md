@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Sharing a Trove List as a CollectionBuilder exhibition
 
 You've been collecting and annotating items relating to your research project in a Trove List. You'd like to display the contents of your list as an online exhibition for others to explore. [CollectionBuilder](https://collectionbuilder.github.io/) creates online exhibitions using static web technologies. But how do you get your List data from Trove into CollectionBuilder?
@@ -307,13 +309,13 @@ View the contents of the zip file.
 - the `objects` directory will contain all the images downloaded from items in your list
 - the `_data` directory will contain the item metadata in a CSV file named according to your list identifier – for example, if your list identifier is `83777`, your metadata file will be named `83777-items.csv`
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Preparing your CollectionBuilder repository
 
 Now that the data is ready, you can set up the CollectionBuilder repository.
 
-There are three different flavours of CollectionBuilder. This tutorial uses the GitHub Pages template, which is quick and doesn't require you to install any software. The CollectionBuilder site provides more detailed documentation about [CollectionBuilder-GH ](ttps://collectionbuilder.github.io/cb-docs/docs/walkthroughs/gh-walkthrough/).
+There are three different flavours of CollectionBuilder. This tutorial uses the GitHub Pages template, which is quick and doesn't require you to install any software. The CollectionBuilder site provides more detailed documentation about [CollectionBuilder-GH ](https://collectionbuilder.github.io/cb-docs/docs/walkthroughs/gh-walkthrough/).
 
 If you don't have one already, you'll need [to create a GitHub user account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) – the standard free, personal account is fine. Log into your account before proceeding.
 
