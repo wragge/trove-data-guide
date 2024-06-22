@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/works-and-versions.b4a3bf1d-9697-446f-8a28-a81d13c3e608.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/works-and-versions.c5d01168-0634-4e71-9833-861b0e829c12.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/works-and-versions';</script>
     <script src="../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -551,7 +551,7 @@ On this page</div>
 </div>
 </div>
 <section id="grouping-versions-into-works">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink"><span class="section-number">3.1. </span>Grouping versions into works</a><a class="headerlink" href="#grouping-versions-into-works" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>Grouping versions into works<a class="headerlink" href="#grouping-versions-into-works" title="Link to this heading">#</a></h2>
 <p>The idea is simple enough – bring all the versions of a publication together under a single heading to simplify a user’s search results. Instead of having to wade through a long list of near-identical entries, a user can quickly focus in on a title of interest, and drill down to find a specific version at a specific library. This idea is based on the <a class="reference external" href="https://www.ifla.org/references/best-practice-for-national-bibliographic-agencies-in-a-digital-age/resource-description-and-standards/bibliographic-control/functional-requirements-the-frbr-family-of-models/functional-requirements-for-bibliographic-records-frbr/">Functional Requirements for Bibliographic Records</a> (FRBR). The FRBR data model describes four entities: ‘work’, ‘expression’, ‘manifestation’, and ‘item’:</p>
 <blockquote>
 <div><ul class="simple">
@@ -592,7 +592,7 @@ On this page</div>
 <p>KEY POINTS</p>
 </section>
 <section id="muddy-metadata">
-<span id="id2"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">3.2. </span>Muddy metadata</a><a class="headerlink" href="#muddy-metadata" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h2><span class="section-number">3.2. </span>Muddy metadata<a class="headerlink" href="#muddy-metadata" title="Link to this heading">#</a></h2>
 <p>Grouping versions into works promises users cleaner search results, but the reality is more complex and confusing. You don’t have to look around too much to find problems with the way Trove’s groupings are implemented.</p>
 <p>This ‘work’ is titled <a class="reference external" href="https://trove.nla.gov.au/work/158465667">The Wiggles</a> and has 31 ‘editions’ listed in Trove. The problem is that most of those editions are actually different works, a mix of books, CDs, and DVDs. Presumably the grouping algorithm is connecting them because of the appearance of ‘The Wiggles’ somewhere in the title, but it’s hard to know for sure as the scoring mechanism isn’t publicly available.</p>
 <figure class="align-default" id="wiggles-versions">
@@ -607,7 +607,7 @@ On this page</div>
 <p>User testing on early versions of Trove showed that the ‘core conceptual model of FRBR’ was ‘largely not understood’.<span id="id3">[<a class="reference internal" href="../references.html#id22" title="Rose Holley. Resource Sharing in Australia: Find and Get in Trove - Making &quot;Getting&quot; Better. D-Lib Magazine, March 2011. doi:10.1045/march2011-holley.">Holley, 2011</a>]</span> Over the years there have been changes to the grouping algorithm, and to the way versions are presented in the web interface, but it’s still a challenge for users to understand what’s going on. Perhaps this is an inevitable result of trying to bolt a FRBR-ish system on top of an aggregated collection – it’s hard to make effective and consistent rules when merging metadata from multiple sources.</p>
 </section>
 <section id="not-the-same">
-<span id="id4"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">3.3. </span>Not the same</a><a class="headerlink" href="#not-the-same" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h2><span class="section-number">3.3. </span>Not the same<a class="headerlink" href="#not-the-same" title="Link to this heading">#</a></h2>
 <p>The challenges are magnified when working with resources that don’t come from standard library systems. For example, Trove indexes speeches and interviews by Australian Prime Ministers from the <a class="reference external" href="https://pmtranscripts.pmc.gov.au/">PM Transcripts</a> site. As a result, you can find transcripts of 106 different press conferences by John Howard grouped as a single work!</p>
 <figure class="align-default" id="john-howard-transcripts">
 <img alt="../_images/john-howard-transcripts.png" src="../_images/john-howard-transcripts.png" />
@@ -620,7 +620,7 @@ On this page</div>
 <p>Researchers need to factor both the FRBR concept, and Trove’s implementation of it, into their search strategies – recognising that there will be errors and inconsistencies in the way versions are grouped together.</p>
 </section>
 <section id="digitised-works">
-<span id="digitised-works-groups"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">3.4. </span>Digitised works</a><a class="headerlink" href="#digitised-works" title="Link to this heading">#</a></h2>
+<span id="digitised-works-groups"></span><h2><span class="section-number">3.4. </span>Digitised works<a class="headerlink" href="#digitised-works" title="Link to this heading">#</a></h2>
 <p>You’d expect there to be fewer problems with work records related to Trove’s own digitised content, but there’s actually a few additional oddities. These stem from the use of works and versions to describe collections – the ‘work’ is used as a collection container and each ‘version’ is a separate item in that collection. It’s really not very FRBR-ish at all, and perhaps reflects the fact that Trove is severely limited in its ability to represent hierarchical data structures.</p>
 <p><a class="reference external" href="https://trove.nla.gov.au/work/163048354">This ‘work’</a> is actually a collection of ephemera relating to the National Anti-Sweating League of Victoria. There are nine items in this collection and they’re all quite different – they’re not versions or editions of a single work.</p>
 </section>
@@ -733,11 +733,12 @@ By <a href="https://timsherratt.org">Tim Sherratt</a>
     
 <div class="extra_footer">
   <p>
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/80x15.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
 </p>
 <p>
 The Trove Data Guide received investment from the <a href="https://ardc.edu.au/">Australian Research Data Commons</a> (ARDC). The ARDC is funded by the National Collaborative Research Infrastructure Strategy (NCRIS).
 </p>
+<p><a href="https://doi.org/10.5281/zenodo.12216708"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.12216708.svg"></a></p>
 
 </div>
   </div>
