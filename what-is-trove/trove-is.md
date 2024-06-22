@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -16,12 +16,13 @@ kernelspec:
 
 # Trove is...
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ````{card} On this page
 
 ```{contents}
 :local:
+:backlinks: None
 ```
 ````
 

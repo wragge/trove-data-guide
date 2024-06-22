@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -21,6 +21,7 @@ Many of Trove's categories contain things called 'works'. Works are not individu
 
 ```{contents}
 :local:
+:backlinks: None
 ```
 ````
 
@@ -114,7 +115,7 @@ Researchers need to factor both the FRBR concept, and Trove's implementation of 
 
 You'd expect there to be fewer problems with work records related to Trove's own digitised content, but there's actually a few additional oddities. These stem from the use of works and versions to describe collections – the 'work' is used as a collection container and each 'version' is a separate item in that collection. It's really not very FRBR-ish at all, and perhaps reflects the fact that Trove is severely limited in its ability to represent hierarchical data structures.
 
-[This 'work'](https://trove.nla.gov.au/work/163048354) is actually a collection of ephemera relating to the National Anti-Sweating League of Victoria. There are nine items in this collection and they're all quite different – they're not versions or editions of a single work. 
+[This 'work'](https://trove.nla.gov.au/work/163048354) is actually a collection of ephemera relating to the National Anti-Sweating League of Victoria. There are nine items in this collection and they're all quite different – they're not versions or editions of a single work.
 
 ```{code-cell} ipython3
 
