@@ -21,6 +21,7 @@ Learn about Trove's top-level categories. What's in them and why?
 
 ```{contents}
 :local:
+:backlinks: None
 ```
 ````
 

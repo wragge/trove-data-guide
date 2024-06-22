@@ -12,17 +12,18 @@ kernelspec:
   name: python3
 ---
 
-+++ {"user_expressions": []}
++++ {"user_expressions": [], "editable": true, "slideshow": {"slide_type": ""}}
 
 # Links and identifiers
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ````{card} On this page
 What are the different types of urls you'll find when you're using Trove? Learn what they do and why it matters.
 
 ```{contents}
 :local:
+:backlinks: None
 ```
 ````
 

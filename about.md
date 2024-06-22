@@ -25,3 +25,10 @@ The Trove Data Guide is a companion to the Trove sections of the [GLAM Workbench
 More content will be added to the Trove Data Guide over coming months. To view work-in-progress see the [development version](https://wragge.github.io/trove-data-guide/) and the project's [GitHub repository](https://github.com/wragge/trove-data-guide).
 
 Ideas, corrections, and new content are very welcome – find out more about [contributing to the Trove Data Guide](contributing.md). 
+
+## Cite as
+
+Sherratt, T. (2024). Trove Data Guide. Zenodo. https://doi.org/10.5281/zenodo.12216708
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12216708.svg)](https://doi.org/10.5281/zenodo.12216708)
+
