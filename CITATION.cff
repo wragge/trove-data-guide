@@ -1,0 +1,25 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Trove Data Guide
+message: >-
+  This is the code repository used to generate the Trove
+  Data Guide.
+type: software
+authors:
+  - given-names: Tim
+    family-names: Sherratt
+    email: tim@timsherratt.au
+    orcid: 'https://orcid.org/0000-0001-7956-4498'
+repository-code: 'https://github.com/wragge/trove-data-guide'
+url: 'https://tdg.glam-workbench.net/home.html'
+abstract: >-
+  The Trove Data Guide explores the different types of data available
+  from Trove – what it is, how you can access it, and what
+  you can do with it. It aims to give researchers a critical
+  understanding of Trove data, both its limits and its
+  possibilities.
+keywords:
+  - Trove
+license: CC-BY-4.0
