@@ -67,14 +67,14 @@ html:
     The Trove Data Guide received investment from the <a href="https://ardc.edu.au/">Australian Research Data Commons</a> (ARDC). The ARDC is funded by the National Collaborative Research Infrastructure Strategy (NCRIS).
     </p>
   comments:
-    utterances:
-      repo: "wragge/trove-data-guide"
+    hypothesis: true
   use_multitoc_numbering: true
 sphinx:
   recursive_update: true
   extra_extensions:
     - sphinx_tippy
     - sphinxcontrib.mermaid
+    - sphinxcontrib.icon
   config:
     #html_theme: sphinx_book_theme
     #html_theme: pydata_sphinx_theme
