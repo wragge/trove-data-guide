@@ -11,6 +11,8 @@ kernelspec:
   name: python3
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Tools and resources
 
 ````{card}
@@ -50,7 +52,7 @@ More info
 Trove's collection of digitised newspapers is always changing – new articles and newspapers are being added by the NLA, while Trove users are busy correcting OCRd text and adding tags and comments. The search you run today might produce different results than the same query did a month ago, a year ago, or ten years ago. Researchers need to understand how these changes affect the queries they make, the results they find, and the arguments they construct. This dashboard helps researchers understand the context of their queries by presenting a snapshot of Trove's digitised newspapers, based on weekly data harvests.
 
 +++
-```{button-link} https://glam-workbench.net/trove-newspapers/querypic/
+```{button-link} https://wragge.github.io/trove-newspaper-totals/
 :color: primary
 More info
 ```
