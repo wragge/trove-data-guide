@@ -129,7 +129,7 @@ To access the embedded metadata you need to load the digitised viewer and then s
 - details of digitised images, including pixel dimensions
 - complete MARC records from the NLA catalogue
 
-This metadata can be used to enrich and expand records provided by the Trove API, but it also opens up a number of new possibilities. For example, by accessing information about pages in a book or periodical you can [automate the download of OCRd text or images](/other-digitised-resources/how-to/download-items-text-images).
+This metadata can be used to enrich and expand records provided by the Trove API, but it also opens up a number of new possibilities. For example, by accessing information about pages in a book or periodical you can [automate the download of OCRd text or images](/other-digitised-resources/how-to/get-downloads).
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -158,7 +158,7 @@ Digitised publications like books, pamphlets, and periodicals usually make their
 (digitised:accessing-data:download-text-link)=
 ### Construct download links for a complete publication or range of pages
 
-**This method is fully documented in [](how-to/get-downloads), but here's a quick summary.**
+**This method is fully documented in [](/other-digitised-resources/how-to/get-downloads), but here's a quick summary.**
 
 To download the complete OCRd text of a single publication you need to know the number of pages in the publication. This can be found by [extracting the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the digitised book and journal viewer and [getting the length of the `page` list](digitised:howto:embedded:pages).
 
@@ -200,7 +200,7 @@ In addition, it's possible to extract illustrations from pages of digitised book
 (digitised:accessing-data:download-images-link)=
 ### Construct download links for a range of images
 
-**This method is fully documented in [](how-to/get-downloads), but here's a quick summary.**
+**This method is fully documented in [](/other-digitised-resources/how-to/get-downloads), but here's a quick summary.**
 
 This method is basically the same as [the method described above](digitised:accessing-data:download-text-link) to download OCRd text, you just need to set the `downloadOption` parameter in the url to either `zip` for images or `pdf` for a PDF. For example, the [E.J. Brady collection of photographs](https://nla.gov.au/nla.obj-141826952) (nla.obj-141826952) contains 14 images, so the url to download the complete collection in a single zip file would be: 
 
@@ -236,4 +236,13 @@ Within the OCR data there are `zs` blocks describing the position of each illust
 :name: cat-collection
 
 Sample from a <a href="https://www.dropbox.com/scl/fo/60imdoyf4ss2b6vh01q1w/h?rlkey=zuwbjaqnmr7qvkuinovdu5ot0&dl=0">collection of cat photos</a> harvested from a search for articles with `cat` or `kitten` in their title [using the GLAM Workbench](https://glam-workbench.net/trove-journals/harvest-illustrations-from-periodicals/)
+```
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+
 ```

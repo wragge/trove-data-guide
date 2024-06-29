@@ -113,7 +113,7 @@ glue("q_or", get_total('australia OR unlimited'))
 glue("q_and", get_total('australia unlimited'))
 glue("q_phrase", get_total('"australia unlimited"'))
 glue("q_text", get_total('text:"australia unlimited"'))
-glue("q_zero", get_total('"australia unlimited"'))
+glue("q_zero", get_total('"australia unlimited"~0'))
 glue("q_text_zero", get_total('text:"australia unlimited"~0'))
 ```
 

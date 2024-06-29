@@ -177,7 +177,7 @@ def harvest_collection_items(collection_id, include_subcollections=False):
     while n == 20:
         url = f"https://nla.gov.au/{collection_id}/browse?startIdx={start}&rows=20&op=c"
         # Get the browse page
-        response = s.get(url)
+        response = requests.get(url)
 
         # Beautifulsoup turns the HTML into an easily navigable structure
         soup = BeautifulSoup(response.text, "html.parser")
