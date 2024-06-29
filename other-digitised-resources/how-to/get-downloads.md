@@ -138,12 +138,4 @@ However, if your aim is to download all the images from a collection of items th
 
 The other problem is that the zip files can become very large if you request collections that contain a significant number of pages or images. This makes them slow to download and can cause errors. Of course you also have to add in a step to unzip the zips! 
 
-If you're downloading lots of images or the quality of the images is important to you, I'd suggest you try the alternative approach which involves downloading one at a time. This method is fully documented in
-
-- [extract the metadata](digitised:howto:embedded:extract-metadata) embedded in the digitised book or journal viewer
-- [get a list of page identifiers](digitised:howto:embedded:pages) from the metadata
-- download each page individually by appending `/image` to the identifier
-
-To download images from a collection of photographs, maps, or manuscripts:
-
-- get a list of individual item identifiers
+If you're downloading lots of images or the quality of the images is important to you, I'd suggest you try the alternative approach which involves downloading one at a time. This method is fully documented in [](/other-digitised-resources/how-to/download-images.ipynb).
