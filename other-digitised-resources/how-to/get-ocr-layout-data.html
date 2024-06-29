@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-ocr-layout-data.b4aae31a-e544-4a18-b740-4b046fdf25ec.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/get-ocr-layout-data.3b05c264-39e6-4c76-9f08-e508794e0e6b.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/get-ocr-layout-data';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -267,7 +267,7 @@
 <li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-downloads.html">25.4. HOW TO: Get text, images, and PDFs using Trove’s download link</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
@@ -658,7 +658,7 @@ document.write(`
                     <span class="k">yield</span> <span class="n">result</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">dict_extract</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">dict_extract</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
                         <span class="k">yield</span> <span class="n">result</span>
 
 <span class="k">def</span> <span class="nf">get_blocks</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;ps&quot;</span><span class="p">):</span>
@@ -767,7 +767,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="layout-img">
 <a class="reference internal image-reference" href="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png"><img alt="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png" src="../../_images/6a993faf6173bce8c4cd7a14a038b2c98247bf6ed4e0ee534047a3a7e53fcea1.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.5 </span><span class="caption-text">OCR block layout of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#layout-img" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.6 </span><span class="caption-text">OCR block layout of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#layout-img" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -775,7 +775,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="nla-obj-326405522">
 <a class="reference internal image-reference" href="../../_images/nla.obj-326405522.jpg"><img alt="../../_images/nla.obj-326405522.jpg" src="../../_images/nla.obj-326405522.jpg" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.6 </span><span class="caption-text">Image of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#nla-obj-326405522" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.7 </span><span class="caption-text">Image of page <a class="reference external" href="https://nla.gov.au/nla.obj-326405522">nla.obj-326405522</a></span><a class="headerlink" href="#nla-obj-326405522" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -911,7 +911,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="ill-img">
 <a class="reference internal image-reference" href="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png"><img alt="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png" src="../../_images/d71cc673a8895c8a8e969a3deaceb24e0d568ceef2f77414e94cd1bcd9892239.png" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.7 </span><span class="caption-text">Cropped illustration</span><a class="headerlink" href="#ill-img" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.8 </span><span class="caption-text">Cropped illustration</span><a class="headerlink" href="#ill-img" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -919,7 +919,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <figure class="align-default" id="nla-obj-375667954">
 <a class="reference internal image-reference" href="../../_images/nla.obj-375667954.jpg"><img alt="../../_images/nla.obj-375667954.jpg" src="../../_images/nla.obj-375667954.jpg" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.8 </span><span class="caption-text">Complete image of page <a class="reference external" href="https://nla.gov.au/nla.obj-375667954">nla.obj-375667954</a></span><a class="headerlink" href="#nla-obj-375667954" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.9 </span><span class="caption-text">Complete image of page <a class="reference external" href="https://nla.gov.au/nla.obj-375667954">nla.obj-375667954</a></span><a class="headerlink" href="#nla-obj-375667954" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
@@ -958,7 +958,7 @@ nket—pardon me, safari —through Kenya has taught us is that
 <span class="n">data</span> <span class="o">=</span> <span class="n">ocr_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 <span class="c1"># Get all the text blocks</span>
-<span class="n">text_blocks</span> <span class="o">=</span> <span class="n">get_blocks</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">text_blocks</span> <span class="o">=</span> <span class="n">get_blocks</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;ps&quot;</span><span class="p">)</span>
 
 <span class="n">words</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c1"># Loop through text blacks and then lines saving the words</span>
@@ -985,9 +985,9 @@ nket—pardon me, safari —through Kenya has taught us is that
 </div>
 </div>
 <figure class="align-default" id="redacted-image">
-<a class="reference internal image-reference" href="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png"><img alt="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png" src="../../_images/9b420d60176dd1dc22a794b7bd82e88e5f0e6765b9aff15c0961fe9085f1295d.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../../_images/bda296ba58eb031336060260a0050c9cf23acdcd1ca61305fb2ab192fb371df4.png"><img alt="../../_images/bda296ba58eb031336060260a0050c9cf23acdcd1ca61305fb2ab192fb371df4.png" src="../../_images/bda296ba58eb031336060260a0050c9cf23acdcd1ca61305fb2ab192fb371df4.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.9 </span><span class="caption-text">Some randomly-generated redaction art!</span><a class="headerlink" href="#redacted-image" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.10 </span><span class="caption-text">Some randomly-generated redaction art!</span><a class="headerlink" href="#redacted-image" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

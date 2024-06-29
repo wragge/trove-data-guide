@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/articles.45fb505f-0254-4ff1-bfa4-4954de000eea.js"></script>
+    <script defer="defer" src="../../_static/tippy/newspapers-and-gazettes/data/articles.198e2d98-d24f-4a73-b01d-93884d831172.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'newspapers-and-gazettes/data/articles';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -267,7 +267,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/get-downloads.html">25.4. HOW TO: Get text, images, and PDFs using Trove’s download link</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../other-digitised-resources/how-to/scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
@@ -542,7 +542,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs-of-articles">Images and PDFs of articles</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-article-pdfs">Downloading article PDFs</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-articles-as-images">Save articles as images</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-article-illustrations-as-images">Save article illustrations as images</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-words-as-images">Save words as images</a></li>
 </ul>
 </li>
@@ -590,8 +589,7 @@ document.write(`
 <ul>
 <li><p><a class="reference internal" href="#downloading-article-pdfs" id="id17">Downloading article PDFs</a></p></li>
 <li><p><a class="reference internal" href="#save-articles-as-images" id="id18">Save articles as images</a></p></li>
-<li><p><a class="reference internal" href="#save-article-illustrations-as-images" id="id19">Save article illustrations as images</a></p></li>
-<li><p><a class="reference internal" href="#save-words-as-images" id="id20">Save words as images</a></p></li>
+<li><p><a class="reference internal" href="#save-words-as-images" id="id19">Save words as images</a></p></li>
 </ul>
 </li>
 </ul>
@@ -750,7 +748,7 @@ document.write(`
  &#39;date&#39;: &#39;1927-03-08&#39;,
  &#39;page&#39;: &#39;3&#39;,
  &#39;pageSequence&#39;: &#39;3&#39;,
- &#39;relevance&#39;: {&#39;score&#39;: 540.6981201171875, &#39;value&#39;: &#39;very relevant&#39;},
+ &#39;relevance&#39;: {&#39;score&#39;: 540.671142578125, &#39;value&#39;: &#39;very relevant&#39;},
  &#39;snippet&#39;: &#39;&quot;Coyyan&quot; writes in the Cairns \&#39;Post\&#39;:-- Mr. Clement Wragge was generally referred to as the Inclement Wragge,&quot; purely on account of&#39;,
  &#39;troveUrl&#39;: &#39;https://nla.gov.au/nla.news-article169851997?searchTerm=%22clement+wragge%22+AND+cyclone&#39;}
 </pre></div>
@@ -849,7 +847,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 24 June 2024, there are 252,535,509 newspaper &amp; gazette articles in Trove
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>As of 29 June 2024, there are 252,535,509 newspaper &amp; gazette articles in Trove
 </pre></div>
 </div>
 </div>
@@ -911,53 +909,53 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_67495">
+<table id="T_8bb79">
   <thead>
     <tr>
-      <th id="T_67495_level0_col0" class="col_heading level0 col0" >state</th>
-      <th id="T_67495_level0_col1" class="col_heading level0 col1" >total_articles</th>
+      <th id="T_8bb79_level0_col0" class="col_heading level0 col0" >state</th>
+      <th id="T_8bb79_level0_col1" class="col_heading level0 col1" >total_articles</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_67495_row0_col0" class="data row0 col0" >ACT</td>
-      <td id="T_67495_row0_col1" class="data row0 col1" >3,296,997</td>
+      <td id="T_8bb79_row0_col0" class="data row0 col0" >ACT</td>
+      <td id="T_8bb79_row0_col1" class="data row0 col1" >3,296,997</td>
     </tr>
     <tr>
-      <td id="T_67495_row1_col0" class="data row1 col0" >International</td>
-      <td id="T_67495_row1_col1" class="data row1 col1" >916,795</td>
+      <td id="T_8bb79_row1_col0" class="data row1 col0" >International</td>
+      <td id="T_8bb79_row1_col1" class="data row1 col1" >916,795</td>
     </tr>
     <tr>
-      <td id="T_67495_row2_col0" class="data row2 col0" >National</td>
-      <td id="T_67495_row2_col1" class="data row2 col1" >1,739,802</td>
+      <td id="T_8bb79_row2_col0" class="data row2 col0" >National</td>
+      <td id="T_8bb79_row2_col1" class="data row2 col1" >1,739,802</td>
     </tr>
     <tr>
-      <td id="T_67495_row3_col0" class="data row3 col0" >New South Wales</td>
-      <td id="T_67495_row3_col1" class="data row3 col1" >90,599,434</td>
+      <td id="T_8bb79_row3_col0" class="data row3 col0" >New South Wales</td>
+      <td id="T_8bb79_row3_col1" class="data row3 col1" >90,599,434</td>
     </tr>
     <tr>
-      <td id="T_67495_row4_col0" class="data row4 col0" >Northern Territory</td>
-      <td id="T_67495_row4_col1" class="data row4 col1" >409,433</td>
+      <td id="T_8bb79_row4_col0" class="data row4 col0" >Northern Territory</td>
+      <td id="T_8bb79_row4_col1" class="data row4 col1" >409,433</td>
     </tr>
     <tr>
-      <td id="T_67495_row5_col0" class="data row5 col0" >Queensland</td>
-      <td id="T_67495_row5_col1" class="data row5 col1" >41,131,526</td>
+      <td id="T_8bb79_row5_col0" class="data row5 col0" >Queensland</td>
+      <td id="T_8bb79_row5_col1" class="data row5 col1" >41,131,526</td>
     </tr>
     <tr>
-      <td id="T_67495_row6_col0" class="data row6 col0" >South Australia</td>
-      <td id="T_67495_row6_col1" class="data row6 col1" >25,386,183</td>
+      <td id="T_8bb79_row6_col0" class="data row6 col0" >South Australia</td>
+      <td id="T_8bb79_row6_col1" class="data row6 col1" >25,386,183</td>
     </tr>
     <tr>
-      <td id="T_67495_row7_col0" class="data row7 col0" >Tasmania</td>
-      <td id="T_67495_row7_col1" class="data row7 col1" >15,850,246</td>
+      <td id="T_8bb79_row7_col0" class="data row7 col0" >Tasmania</td>
+      <td id="T_8bb79_row7_col1" class="data row7 col1" >15,850,246</td>
     </tr>
     <tr>
-      <td id="T_67495_row8_col0" class="data row8 col0" >Victoria</td>
-      <td id="T_67495_row8_col1" class="data row8 col1" >47,835,462</td>
+      <td id="T_8bb79_row8_col0" class="data row8 col0" >Victoria</td>
+      <td id="T_8bb79_row8_col1" class="data row8 col1" >47,835,462</td>
     </tr>
     <tr>
-      <td id="T_67495_row9_col0" class="data row9 col0" >Western Australia</td>
-      <td id="T_67495_row9_col1" class="data row9 col1" >25,369,631</td>
+      <td id="T_8bb79_row9_col0" class="data row9 col0" >Western Australia</td>
+      <td id="T_8bb79_row9_col1" class="data row9 col1" >25,369,631</td>
     </tr>
   </tbody>
 </table>
@@ -980,7 +978,7 @@ document.write(`
 </figure>
 </section>
 <section id="get-positional-information-from-ocr">
-<h3>Get positional information from OCR<a class="headerlink" href="#get-positional-information-from-ocr" title="Link to this heading">#</a></h3>
+<span id="newspapers-articles-positional-ocr"></span><h3>Get positional information from OCR<a class="headerlink" href="#get-positional-information-from-ocr" title="Link to this heading">#</a></h3>
 <p>The OCR process generates some article metadata that is not available through the Trove API. As well as extracting text from the page images, the OCR process captures positional information that relates blocks of text to their location within the original image.</p>
 <p>Some of this positional information can be scraped from the Trove web site, enabling you to locate individual lines of text, and, by combining their coordinates, draw a bounding box around a complete article. This method is explained in <a class="reference internal" href="../how-to/get-ocr-coordinates.html"><span class="doc std std-doc">HOW TO: Get information about the position of OCRd newspaper text</span></a>.</p>
 <figure class="align-default" id="newspaper-article-coords">
@@ -1038,15 +1036,19 @@ document.write(`
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
+<p>If you have a small number of articles you want to save as images, use the <a class="reference external" href="https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image-app/">Save Trove newspaper article as image web app</a> in the GLAM Workbench.</p>
 <p>If you need an automated method for downloading images of newspaper articles, have a look at the <a class="reference external" href="https://wragge.github.io/trove_newspaper_images/">trove-newspaper-images</a> Python package. You can use it as a library or a command-line tool. Just give it a newspaper article identifier, and it downloads a high-res image. It’s also built-in to the <a class="reference external" href="https://wragge.github.io/trove-newspaper-harvester/">Trove Newspaper &amp; Gazette Harvester</a>.</p>
 </div>
 </aside>
 <p>The ‘images’ of articles you download from the web interface are actually HTML pages with embedded images. The embedded images themselves are often sliced up to fit on a page, and there’s no straightforward way of putting them back together. This means there’s no point trying to download images by duplicating what the web interface does. Fortunately, there’s an alternative.</p>
-<p>As described above, it’s possible the extract the positional coordinates of an article from the web interface. It’s also possible to download a high-resolution image of a page. By putting the two together you can crop an article image from the full page. This <a class="reference external" href="https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image/">method is fully documented</a> in the GLAM Workbench.</p>
-</section>
-<section id="save-article-illustrations-as-images">
-<span id="illustrations-as-images"></span><h3>Save article illustrations as images<a class="headerlink" href="#save-article-illustrations-as-images" title="Link to this heading">#</a></h3>
-<p><mark>==I should probably add a GW notebook for this – some of the necessary code is in the save a thumbnail nb==</mark></p>
+<p>As described above, it’s possible <a class="reference internal" href="#newspapers-articles-positional-ocr"><span class="std std-ref">to extract the positional coordinates</span></a> of an article from the web interface. It’s also possible to <a class="reference internal" href="pages.html#download-a-page-image"><span class="std std-ref">download a high-resolution image of a page</span></a>. By putting the two together you can crop an article image from the full page. This <a class="reference external" href="https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image/">method is fully documented</a> in the GLAM Workbench.</p>
+<!--
+(illustrations-as-images)=
+### Save article illustrations as images
+
+<mark>==I should probably add a GW notebook for this -- some of the necessary code is in the save a thumbnail nb==</mark>
+
+-->
 </section>
 <section id="save-words-as-images">
 <span id="words-as-images"></span><h3>Save words as images<a class="headerlink" href="#save-words-as-images" title="Link to this heading">#</a></h3>
@@ -1144,7 +1146,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images-and-pdfs-of-articles">Images and PDFs of articles</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-article-pdfs">Downloading article PDFs</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-articles-as-images">Save articles as images</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-article-illustrations-as-images">Save article illustrations as images</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-words-as-images">Save words as images</a></li>
 </ul>
 </li>

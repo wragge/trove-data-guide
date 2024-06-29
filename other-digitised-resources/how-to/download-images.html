@@ -64,14 +64,14 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/download-images.7584e26a-76d3-4e09-8bf4-602356e9d0d5.js"></script>
+    <script defer="defer" src="../../_static/tippy/other-digitised-resources/how-to/download-images.0547e445-f580-4267-aff6-6393aaf09848.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'other-digitised-resources/how-to/download-images';</script>
     <script src="../../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="25.6. HOW TO: Get and use OCR data from a book or periodical page" href="get-ocr-layout-data.html" />
-    <link rel="prev" title="25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs" href="download-items-text-images.html" />
+    <link rel="prev" title="25.4. HOW TO: Get text, images, and PDFs using Trove’s download link" href="get-downloads.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -267,7 +267,7 @@
 <li class="toctree-l2"><a class="reference internal" href="harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get-downloads.html">25.4. HOW TO: Get text, images, and PDFs using Trove’s download link</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
@@ -590,7 +590,7 @@ document.write(`
 <figure class="align-default" id="journal-cover-thumbnails">
 <img alt="../../_images/journal-cover-thumbnails.png" src="../../_images/journal-cover-thumbnails.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 25.2 </span><span class="caption-text">An example of using the <code class="docutils literal notranslate"><span class="pre">-t</span></code> suffix to <a class="reference internal" href="../periodicals/accessing-data.html#digitised-periodicals-data-thumbnails"><span class="std std-ref">assemble a collection of periodical cover thumbnails</span></a></span><a class="headerlink" href="#journal-cover-thumbnails" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.3 </span><span class="caption-text">An example of using the <code class="docutils literal notranslate"><span class="pre">-t</span></code> suffix to <a class="reference internal" href="../periodicals/accessing-data.html#digitised-periodicals-data-thumbnails"><span class="std std-ref">assemble a collection of periodical cover thumbnails</span></a></span><a class="headerlink" href="#journal-cover-thumbnails" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>There are additional parameters you can use with <code class="docutils literal notranslate"><span class="pre">/image</span></code> and <code class="docutils literal notranslate"><span class="pre">/representativeImage</span></code>, though I’m not sure how reliably they work:</p>
@@ -621,7 +621,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../../_images/nla.obj-141171021.jpg"><img alt="../../_images/nla.obj-141171021.jpg" src="../../_images/nla.obj-141171021.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.3 </span><span class="caption-text">Two Rockhopper Penguins and a predatory Skua, Heard Island, Antarctica, ca. 1930 (by Frank Hurley) <a class="reference external" href="http://nla.gov.au/nla.obj-141171021">http://nla.gov.au/nla.obj-141171021</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.4 </span><span class="caption-text">Two Rockhopper Penguins and a predatory Skua, Heard Island, Antarctica, ca. 1930 (by Frank Hurley) <a class="reference external" href="http://nla.gov.au/nla.obj-141171021">http://nla.gov.au/nla.obj-141171021</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <table class="table">
@@ -652,7 +652,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../../_images/nla.obj-387326197.jpg"><img alt="../../_images/nla.obj-387326197.jpg" src="../../_images/nla.obj-387326197.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25.4 </span><span class="caption-text">‘Penguin pageant’ by Frank Hurley, <em>The Home</em>, vol. 20, no. 1, January 1940, p. 44 <a class="reference external" href="http://nla.gov.au/nla.obj-387326197">http://nla.gov.au/nla.obj-387326197</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25.5 </span><span class="caption-text">‘Penguin pageant’ by Frank Hurley, <em>The Home</em>, vol. 20, no. 1, January 1940, p. 44 <a class="reference external" href="http://nla.gov.au/nla.obj-387326197">http://nla.gov.au/nla.obj-387326197</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <table class="table">
@@ -749,12 +749,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="download-items-text-images.html"
+       href="get-downloads.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">25.4. </span>HOW TO: Automate the download of digitised items as text, images, or PDFs</p>
+        <p class="prev-next-title"><span class="section-number">25.4. </span>HOW TO: Get text, images, and PDFs using Trove’s download link</p>
       </div>
     </a>
     <a class="right-next"

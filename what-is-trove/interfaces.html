@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="../_static/tippy/what-is-trove/interfaces.54ab6553-5bc7-4e6f-90a5-708d14dd9c38.js"></script>
+    <script defer="defer" src="../_static/tippy/what-is-trove/interfaces.92492c21-a41b-42de-8ab4-dd0be1022cb2.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'what-is-trove/interfaces';</script>
     <script src="../_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="../about.html" />
@@ -267,7 +267,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-downloads.html">25.4. HOW TO: Get text, images, and PDFs using Trove’s download link</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other-digitised-resources/how-to/scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
@@ -806,7 +806,7 @@ document.write(`
 <span id="whatis-interfaces-digitised"></span><h2><span class="section-number">6.5. </span>Digitised content viewers<a class="headerlink" href="#digitised-content-viewers" title="Link to this heading">#</a></h2>
 <p>There are different viewers for different types of digitised content. Most of the viewers share a basic design and set of functions, however, the audio player is quite distinct.</p>
 <p>You’re most likely to arrive at one of the digitised content viewers from a link in a work record. However, the viewers don’t include links <em>back</em> to work records in Trove. Instead they usually include links to the NLA’s catalogue. If you want to find the corresponding work record (or records) in Trove, you’ll need to construct a search using the <a class="reference internal" href="links-and-identifiers.html#identifiers-digitised-resources"><span class="std std-ref">digital object identifier</span></a>.</p>
-<p>The amount of metadata presented in the digitised content viewers varies, and it doesn’t always match what’s in the work record. Interestingly, the HTML of the viewers embeds additional metadata as a JSON object. You <a class="reference internal" href="../other-digitised-resources/how-to/extract-embedded-metadata.html"><span class="doc std std-doc">can extract this data</span></a> and use it to do things like <a class="reference internal" href="../other-digitised-resources/how-to/download-items-text-images.html"><span class="doc std std-doc">downloading text, images, and PDFs</span></a>.</p>
+<p>The amount of metadata presented in the digitised content viewers varies, and it doesn’t always match what’s in the work record. Interestingly, the HTML of the viewers embeds additional metadata as a JSON object. You <a class="reference internal" href="../other-digitised-resources/how-to/extract-embedded-metadata.html"><span class="doc std std-doc">can extract this data</span></a> and use it to do things like <a class="reference internal" href="../other-digitised-resources/how-to/get-downloads.html"><span class="doc std std-doc">downloading text, images, and PDFs</span></a>.</p>
 <section id="collection-viewer">
 <span id="interfaces-digitised-collection-viewer"></span><h3>Collection viewer<a class="headerlink" href="#collection-viewer" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="digital-collection">

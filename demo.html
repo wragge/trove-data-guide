@@ -64,7 +64,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script defer="defer" src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer="defer" src="https://unpkg.com/tippy.js@6"></script>
-    <script defer="defer" src="_static/tippy/demo.2b0bc90e-f07c-496a-85dd-70fa891ecfeb.js"></script>
+    <script defer="defer" src="_static/tippy/demo.556451c7-7f45-4f89-a0f1-708b4b470945.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'demo';</script>
     <script src="_static/plausible.js?v=1382b812"></script>
     <link rel="author" title="About these documents" href="about.html" />
@@ -267,7 +267,7 @@
 <li class="toctree-l2"><a class="reference internal" href="other-digitised-resources/how-to/harvest-digitised-resources.html">25.1. HOW TO: Harvest data relating to digitised resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other-digitised-resources/how-to/extract-embedded-metadata.html">25.2. HOW TO: Extract additional metadata from the digitised resource viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other-digitised-resources/how-to/get-collection-items.html">25.3. HOW TO: Get a list of items from a digitised collection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="other-digitised-resources/how-to/download-items-text-images.html">25.4. HOW TO: Automate the download of digitised items as text, images, or PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other-digitised-resources/how-to/get-downloads.html">25.4. HOW TO: Get text, images, and PDFs using Trove’s download link</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other-digitised-resources/how-to/download-images.html">25.5. HOW TO: Create download links for images using <code class="docutils literal notranslate"><span class="pre">nla.obj</span></code> identifiers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other-digitised-resources/how-to/get-ocr-layout-data.html">25.6. HOW TO: Get and use OCR data from a book or periodical page</a></li>
 <li class="toctree-l2"><a class="reference internal" href="other-digitised-resources/how-to/scrape-metadata-audio-player.html">25.7. HOW TO: Scrape metadata from the Trove audio player</a></li>
@@ -545,7 +545,7 @@ Test content only!</p>
 <p class="sidebar-title"></p>
 <div class="note admonition">
 <p class="admonition-title">Did you know?</p>
-<p>As of <span class="pasted-text">24 Jun 2024</span>, there are <span class="pasted-text">252,535,509</span> digitised newspaper articles in Trove</p>
+<p>As of <span class="pasted-text">29 Jun 2024</span>, there are <span class="pasted-text">252,535,509</span> digitised newspaper articles in Trove</p>
 </div>
 </aside>
 <aside class="margin sidebar">
@@ -554,23 +554,23 @@ Test content only!</p>
 <p class="admonition-title">Trove categories</p>
 <div class="output text_html">
 <style>
-  #altair-viz-124c6dea907d40e78a668edfe8078ed5.vega-embed {
+  #altair-viz-c95c9a13a9da4c6d86abc05dfb81306f.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-124c6dea907d40e78a668edfe8078ed5.vega-embed details,
-  #altair-viz-124c6dea907d40e78a668edfe8078ed5.vega-embed details summary {
+  #altair-viz-c95c9a13a9da4c6d86abc05dfb81306f.vega-embed details,
+  #altair-viz-c95c9a13a9da4c6d86abc05dfb81306f.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-124c6dea907d40e78a668edfe8078ed5"></div>
+<div id="altair-viz-c95c9a13a9da4c6d86abc05dfb81306f"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-124c6dea907d40e78a668edfe8078ed5") {
-      outputDiv = document.getElementById("altair-viz-124c6dea907d40e78a668edfe8078ed5");
+    if (outputDiv.id !== "altair-viz-c95c9a13a9da4c6d86abc05dfb81306f") {
+      outputDiv = document.getElementById("altair-viz-c95c9a13a9da4c6d86abc05dfb81306f");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -616,29 +616,29 @@ Test content only!</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-67224ed1ece557fed9c8cdfa084775d7"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-67224ed1ece557fed9c8cdfa084775d7": [{"name": "Books & Libraries", "total": 27352129}, {"name": "Diaries, Letters & Archives", "total": 5314033}, {"name": "Images, Maps & Artefacts", "total": 6205452}, {"name": "Lists", "total": 112269}, {"name": "Magazines & Newsletters", "total": 1817305}, {"name": "Music, Audio & Video", "total": 3370929}, {"name": "Newspapers & Gazettes", "total": 252535509}, {"name": "People & Organisations", "total": 1329859}, {"name": "Research & Reports", "total": 5755019}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b6aa47612c1f8e6e13c048be66c33c23"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 150, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-b6aa47612c1f8e6e13c048be66c33c23": [{"name": "Books & Libraries", "total": 27492256}, {"name": "Diaries, Letters & Archives", "total": 5314828}, {"name": "Images, Maps & Artefacts", "total": 6206467}, {"name": "Lists", "total": 112317}, {"name": "Magazines & Newsletters", "total": 1817305}, {"name": "Music, Audio & Video", "total": 3371604}, {"name": "Newspapers & Gazettes", "total": 252535509}, {"name": "People & Organisations", "total": 1330019}, {"name": "Research & Reports", "total": 5758972}]}}, {"mode": "vega-lite"});
 </script></div></div>
 </aside>
 <figure class="align-center" id="fig-cats">
 <span id="index-0"></span><div class="output text_html">
 <style>
-  #altair-viz-b52072786b2e48a08eb5d3105f8f95a4.vega-embed {
+  #altair-viz-3236dfb4521f423c9a062b314e98c3a7.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-b52072786b2e48a08eb5d3105f8f95a4.vega-embed details,
-  #altair-viz-b52072786b2e48a08eb5d3105f8f95a4.vega-embed details summary {
+  #altair-viz-3236dfb4521f423c9a062b314e98c3a7.vega-embed details,
+  #altair-viz-3236dfb4521f423c9a062b314e98c3a7.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-b52072786b2e48a08eb5d3105f8f95a4"></div>
+<div id="altair-viz-3236dfb4521f423c9a062b314e98c3a7"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b52072786b2e48a08eb5d3105f8f95a4") {
-      outputDiv = document.getElementById("altair-viz-b52072786b2e48a08eb5d3105f8f95a4");
+    if (outputDiv.id !== "altair-viz-3236dfb4521f423c9a062b314e98c3a7") {
+      outputDiv = document.getElementById("altair-viz-3236dfb4521f423c9a062b314e98c3a7");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -684,7 +684,7 @@ Test content only!</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-67224ed1ece557fed9c8cdfa084775d7"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-67224ed1ece557fed9c8cdfa084775d7": [{"name": "Books & Libraries", "total": 27352129}, {"name": "Diaries, Letters & Archives", "total": 5314033}, {"name": "Images, Maps & Artefacts", "total": 6205452}, {"name": "Lists", "total": 112269}, {"name": "Magazines & Newsletters", "total": 1817305}, {"name": "Music, Audio & Video", "total": 3370929}, {"name": "Newspapers & Gazettes", "total": 252535509}, {"name": "People & Organisations", "total": 1329859}, {"name": "Research & Reports", "total": 5755019}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b6aa47612c1f8e6e13c048be66c33c23"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "name", "legend": null, "type": "nominal"}, "x": {"axis": {"title": null}, "field": "name", "type": "nominal"}, "y": {"axis": {"format": "~s", "title": null}, "field": "total", "type": "quantitative"}}, "height": 250, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-b6aa47612c1f8e6e13c048be66c33c23": [{"name": "Books & Libraries", "total": 27492256}, {"name": "Diaries, Letters & Archives", "total": 5314828}, {"name": "Images, Maps & Artefacts", "total": 6206467}, {"name": "Lists", "total": 112317}, {"name": "Magazines & Newsletters", "total": 1817305}, {"name": "Music, Audio & Video", "total": 3371604}, {"name": "Newspapers & Gazettes", "total": 252535509}, {"name": "People & Organisations", "total": 1330019}, {"name": "Research & Reports", "total": 5758972}]}}, {"mode": "vega-lite"});
 </script></div><figcaption>
 <p><span class="caption-text">Number of resources per Trove category</span><a class="headerlink" href="#fig-cats" title="Link to this image">#</a></p>
 </figcaption>
