@@ -653,7 +653,7 @@ To complicate things further, some article records contain multiple versions. Th
 
 ### Download OCRd text from pages and issues
 
-You can download OCRd text from periodical issues and pages using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in [](/other-digitised-resources/how-to/download-items-text-images), but here's a quick summary.
+You can download OCRd text from periodical issues and pages using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in [](/other-digitised-resources/how-to/get-downloads), but here's a quick summary.
 
 ````{margin}
 ```{seealso}
@@ -707,7 +707,7 @@ The GLAM Workbench notebook [Get covers (or any other pages) from a digitised jo
 ```
 ````
 
-You can download page images from periodical issues using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in [](/other-digitised-resources/how-to/download-items-text-images), but here's a quick summary.
+You can download page images from periodical issues using the web interface. To automate this process you can mimic the behaviour of the download button. Full details are available in [](/other-digitised-resources/how-to/get-downloads), but here's a quick summary.
 
 To download all the page images from a single periodical issue you need to know the number of pages in the issue. This can be found by [extracting the metadata](/other-digitised-resources/how-to/extract-embedded-metadata) embedded in the issue viewer and getting the length of the `page` list.
 

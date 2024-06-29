@@ -405,8 +405,9 @@ Here's a visualisation of the results. The first chart shows the raw number of e
 Visualisation of the numbers of different illustration types in Trove newspaper articles over time.
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
+(newspapers:articles:positional-ocr)=
 ### Get positional information from OCR
 
 The OCR process generates some article metadata that is not available through the Trove API. As well as extracting text from the page images, the OCR process captures positional information that relates blocks of text to their location within the original image.
@@ -488,18 +489,23 @@ If you want to automate the download of article PDFs, you'll need to reproduce t
 
 ````{margin}
 ```{seealso} 
+If you have a small number of articles you want to save as images, use the [Save Trove newspaper article as image web app](https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image-app/) in the GLAM Workbench.
+
 If you need an automated method for downloading images of newspaper articles, have a look at the [trove-newspaper-images](https://wragge.github.io/trove_newspaper_images/) Python package. You can use it as a library or a command-line tool. Just give it a newspaper article identifier, and it downloads a high-res image. It's also built-in to the [Trove Newspaper & Gazette Harvester](https://wragge.github.io/trove-newspaper-harvester/).
 ```
 ````
 
 The 'images' of articles you download from the web interface are actually HTML pages with embedded images. The embedded images themselves are often sliced up to fit on a page, and there's no straightforward way of putting them back together. This means there's no point trying to download images by duplicating what the web interface does. Fortunately, there's an alternative.
 
-As described above, it's possible the extract the positional coordinates of an article from the web interface. It's also possible to download a high-resolution image of a page. By putting the two together you can crop an article image from the full page. This [method is fully documented](https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image/) in the GLAM Workbench.
+As described above, it's possible [to extract the positional coordinates](newspapers:articles:positional-ocr) of an article from the web interface. It's also possible to [download a high-resolution image of a page](download-a-page-image). By putting the two together you can crop an article image from the full page. This [method is fully documented](https://glam-workbench.net/trove-newspapers/Save-Trove-newspaper-article-as-image/) in the GLAM Workbench.
 
+<!--
 (illustrations-as-images)=
 ### Save article illustrations as images
 
 <mark>==I should probably add a GW notebook for this -- some of the necessary code is in the save a thumbnail nb==</mark>
+
+-->
 
 (words-as-images)=
 ### Save words as images
@@ -509,5 +515,10 @@ By using a variation on the method described above, you can even save images of 
 ![Scissors and paste style message created from snipped words: "Help trapped inside Trove cannot escape."](/images/trapped-trove.jpg)
 
 ```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
 
 ```

@@ -45,7 +45,7 @@ This method is also documented in the GLAM Workbench notebook, [Metadata for Tro
 
 The viewers you use to examine digitised resources in Trove embed some metadata that isn't available through the Trove API. This includes a JSON-ified version of the item's MARC record (presumably copied from the NLA catalogue), as well as structural information used by the viewer itself, such as a list of pages in a digitised book.
 
-This metadata can be useful in a number of different contexts. For example, you can extract the number of pages in a digitised book, then use this number to [automatically download the full text or a PDF](download-items-text-images). The GLAM Workbench includes an example where geospatial coordinates are extracted from the MARC data to add to a [harvest of digitised maps](https://glam-workbench.net/trove-maps/exploring-digitised-maps/).
+This metadata can be useful in a number of different contexts. For example, you can extract the number of pages in a digitised book, then use this number to [automatically download the full text or a PDF](/other-digitised-resources/how-to/get-downloads). The GLAM Workbench includes an example where geospatial coordinates are extracted from the MARC data to add to a [harvest of digitised maps](https://glam-workbench.net/trove-maps/exploring-digitised-maps/).
 
 ## What metadata is available?
 

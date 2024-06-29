@@ -132,7 +132,7 @@ Duplicates exist at multiple levels amongst Trove's digitised resources. There c
 
 Once you have a dataset that is as complete as possible, you might want to:
 
-- [download OCRd text](/other-digitised-resources/how-to/download-items-text-images) from all the publications in the dataset
+- [download OCRd text](/other-digitised-resources/how-to/get-downloads) from all the publications in the dataset
 - [download individual pages or images](/other-digitised-resources/how-to/download-images) from all the items in the dataset
 
 ```{code-cell} ipython3

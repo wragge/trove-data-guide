@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -215,7 +215,7 @@ Keep in mind that the web interface works a bit differently than the API. It see
 Also, in those cases where you do need `l-decade` and `l-year` together, leaving out `l-decade` returns results without any date limits, rather than no results at all. This means it can look like the facet is working when it's actually not.
 ```
 
-+++
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 (using-the-date-index)=
 ### Using the date index
@@ -236,10 +236,10 @@ In the *Newspapers & Gazettes* category, the values of `STARTDATE` and `ENDDATE`
 
 Also, when you use days rather than years, the date range is **not** inclusive. **You have to set `STARTDATE` to the day before the one you you want.** For example:
 
-- `date[1914 TO 1914]` – returns results from 1914 (range is inclusive)
-- `date[1914-01-01T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns zero results (range is not inclusive)
-- `date[1913-12-31T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns results from 1 January 1914
-- `date[1913-12-30T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns results from 31 December 1913 to 1 January 1914
+- `date:[1914 TO 1914]` – returns results from 1914 (range is inclusive)
+- `date:[1914-01-01T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns zero results (range is not inclusive)
+- `date:[1913-12-31T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns results from 1 January 1914
+- `date:[1913-12-30T00:00:00Z TO 1914-01-01T00:00:00Z]` – returns results from 31 December 1913 to 1 January 1914
 
 This means that if you want to search for newspaper or gazette articles from a *specific day*, you need to set the the `STARTDATE` value to the day before the one you want. For example, to find articles published on 2 November 1944, the `STARTDATE` would be `1944-11-01T00:00:00Z` and the full query would be `date:[1944-11-01T00:00:00Z TO 1944-11-02T00:00:00Z]`.
 

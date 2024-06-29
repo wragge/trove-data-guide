@@ -194,7 +194,7 @@ There are different viewers for different types of digitised content. Most of th
 
 You're most likely to arrive at one of the digitised content viewers from a link in a work record. However, the viewers don't include links *back* to work records in Trove. Instead they usually include links to the NLA's catalogue. If you want to find the corresponding work record (or records) in Trove, you'll need to construct a search using the [digital object identifier](identifiers:digitised-resources).
 
-The amount of metadata presented in the digitised content viewers varies, and it doesn't always match what's in the work record. Interestingly, the HTML of the viewers embeds additional metadata as a JSON object. You [can extract this data](/other-digitised-resources/how-to/extract-embedded-metadata) and use it to do things like [downloading text, images, and PDFs](/other-digitised-resources/how-to/download-items-text-images).
+The amount of metadata presented in the digitised content viewers varies, and it doesn't always match what's in the work record. Interestingly, the HTML of the viewers embeds additional metadata as a JSON object. You [can extract this data](/other-digitised-resources/how-to/extract-embedded-metadata) and use it to do things like [downloading text, images, and PDFs](/other-digitised-resources/how-to/get-downloads).
 
 (interfaces:digitised-collection-viewer)=
 ### Collection viewer

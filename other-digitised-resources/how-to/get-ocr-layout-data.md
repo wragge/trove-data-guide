@@ -155,7 +155,7 @@ def dict_extract(data, key):
                     yield result
             elif isinstance(v, list):
                 for d in v:
-                    for result in dict_extract(v, key):
+                    for result in dict_extract(d, key):
                         yield result
 
 def get_blocks(data, type="ps"):
@@ -500,7 +500,7 @@ ocr_response = requests.get(f"http://nla.gov.au/{page_id}/ocr")
 data = ocr_response.json()
 
 # Get all the text blocks
-text_blocks = get_blocks(data)
+text_blocks = get_blocks(data, "ps")
 
 words = []
 # Loop through text blacks and then lines saving the words
