@@ -92,7 +92,7 @@ glue("pp-total", df.shape[0], display=False)
 
 ## How many Parliamentary Papers are digitised in Trove?
 
-Many Commonwealth Parliamentary Papers have been digitised and made available through Trove. But, because of the way they're arranged and described, it's difficult to know exactly how many there are. I've attempted to harvest details of all the Parliamentary Papers in Trove using a combination of techniques. Based on [this dataset](https://github.com/GLAM-Workbench/trove-parliamentary-papers-data), it seems there are currently {glue:text}`pp-total:,` digitised Parliamentary Papers in Trove. Here are some more statistics from this dataset:
+Many Commonwealth Parliamentary Papers have been digitised and made available through Trove. But, because of the way they're arranged and described, it's difficult to know exactly how many there are. I've attempted to harvest details of all the Parliamentary Papers in Trove using a combination of techniques. Based on [this dataset](https://glam-workbench.net/trove-government/trove-parliamentary-papers-data/), it seems there are currently {glue:text}`pp-total:,` digitised Parliamentary Papers in Trove. Here are some more statistics from this dataset:
 
 ```{code-cell} ipython3
 ---
