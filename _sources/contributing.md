@@ -2,7 +2,11 @@
 
 The Trove Data guide will continue to expand and evolve over time. Your contributions are very welcome!
 
-## Share ideas
+## Share and reuse
+
+The Trove Data Guide is openly licensed to encourage reuse. Feel free to copy content into your own teaching or research training materials. If you find something useful, please share it with others!
+
+## Contribute ideas
 
 If you have ideas for new topics or tutorials add them to the Trove Data Guide's [Ideas Board](https://github.com/wragge/trove-data-guide/discussions).
 
