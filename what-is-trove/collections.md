@@ -211,7 +211,7 @@ To get a complete list of collections you'd need to harvest the `isPartOf` value
 
 ## Digitised collections
 
-Resources digitised by the NLA and delivered trhough Trove are sometimes grouped into collections. In the **Digitised Newspapers & Gazettes** category, relationships exist between the different parts of a newspaper – titles, issues, pages, and articles – enabling you move from one level to another, and [to access and aggregate data](/newspapers-and-gazettes/data/accessing-data) from the different components. For example, you can [find articles published on a particular page](get-page-identifier-from-search).
+Resources digitised by the NLA and delivered through Trove are sometimes grouped into collections. In the **Digitised Newspapers & Gazettes** category, relationships exist between the different parts of a newspaper – titles, issues, pages, and articles – enabling you move from one level to another, and [to access and aggregate data](/newspapers-and-gazettes/data/accessing-data) from the different components. For example, you can [find articles published on a particular page](get-page-identifier-from-search).
 
 These sorts of relationships are not as clearly defined for other types of digitised resources, and little data about them is directly available from the Trove API. The [Other digitised resources](/other-digitised-resources/index) section describes in detail the issues and possible workarounds for different content types.
 
